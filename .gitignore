@@ -1,0 +1,16 @@
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Editors / IDE
+.vscode/
+.idea/
+*.swp
+*~
+
+# Python (if local experiments)
+__pycache__/
+*.pyc
+.venv/
+venv/
