@@ -9,6 +9,10 @@ Desktop.ini
 *.swp
 *~
 
+# Secrets / local env
+.env
+.env.*
+
 # Python (if local experiments)
 __pycache__/
 *.pyc

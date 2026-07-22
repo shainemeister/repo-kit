@@ -104,7 +104,17 @@ Summarize:
 
 ## 6. Recommended validation
 
+Use the block for your host OS. Keep both when multi-platform; drop the unused OS when primary platform is single and declared.
+
+**Windows**
+
 ```bat
+{{VALIDATION_COMMANDS}}
+```
+
+**Linux / macOS**
+
+```bash
 {{VALIDATION_COMMANDS}}
 ```
 

@@ -66,8 +66,19 @@ last_updated: "{{LAST_UPDATED}}"
 
 ## Recommended workflow
 
+Use the block for your host OS. Keep both when the project is multi-platform; drop the unused OS when primary platform is single and declared.
+
+### Windows
+
 ```bat
 cd /d C:\path\to\{{FOLDER_NAME}}
+{{QUICKSTART_COMMANDS}}
+```
+
+### Linux / macOS
+
+```bash
+cd /path/to/{{FOLDER_NAME}}
 {{QUICKSTART_COMMANDS}}
 ```
 

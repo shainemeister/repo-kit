@@ -1,7 +1,7 @@
 ---
 title: Repository Maintenance Rules
 description: Fundamental rules for documenting, changing, verifying, and versioning any repository consistently.
-version: "1.0.0"
+version: "1.0.1"
 status: current
 audience:
   - developers
@@ -19,7 +19,7 @@ last_updated: "2026-07-22"
 
 Fundamental rules for maintaining a professional, auditable repository. These rules govern documentation, architecture boundaries, contracts, git hygiene, and verification—not product tutorials.
 
-**Document version:** 1.0.0  
+**Document version:** 1.0.1  
 
 **Related:** [README.md](./README.md) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) · [configs/pylintrc](./configs/pylintrc)
 
@@ -29,7 +29,7 @@ Fundamental rules for maintaining a professional, auditable repository. These ru
 
 **RULES.md** is the maintenance policy. Detailed contracts live elsewhere (CLI guides, APIs, methodology, security notes). When those contracts change, update the **canonical** file in the same change set—do not leave docs, fixtures, or versions stale.
 
-Copy this file into a project and **fill the authority map and verification table** with that project’s real paths and commands. Keep product-specific policy here or in a thin overlay; keep authoring rules in [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md).
+Copy this file into a project and **fill the authority map and verification table** with that project’s real paths and commands. On initiation, derive those paths from **project interest** (see [README — Initiate a project](./README.md#initiate-a-project-by-interest)) so this policy guides day-to-day development—not only post-hoc documentation. Keep product-specific policy here or in a thin overlay; keep authoring rules in [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md).
 
 | Must | Must not |
 |------|----------|
@@ -38,6 +38,7 @@ Copy this file into a project and **fill the authority map and verification tabl
 | Keep packages composable at the workflow layer | Silently rename public APIs, CLI fields, or schema columns |
 | Run **pylint** on Python product code after those edits | Treat pylint as a product runtime install for end users |
 | Verify before sharing contract or behavior changes | Force-rewrite published shared history without coordination |
+| Fill authority map + verification from project interest at start | Leave contracts empty until “docs later” after behavior ships |
 
 ---
 
@@ -79,7 +80,7 @@ Replace paths below with your project’s real files. Rows that do not apply may
 | Data or schema definitions | `{{SCHEMA_PATH}}` |
 | Default config | `{{CONFIG_PATH}}` |
 | Golden tests / fixtures | `{{FIXTURES_PATH}}` |
-| Python style / PEP-8 gate | [configs/pylintrc](./configs/pylintrc) (copy as `.pylintrc` in the package) |
+| Python style / PEP-8 gate | [configs/pylintrc](./configs/pylintrc) (copy as `.pylintrc` at package or repo root, or pass `--rcfile`) |
 
 **Rule:** Adding, removing, or renaming intentional source files should update the inventory (catalog or equivalent) in the same change set when the project maintains one.
 
@@ -88,14 +89,15 @@ Replace paths below with your project’s real files. Rows that do not apply may
 ## Documentation rules
 
 1. **Substantial documents** follow [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md): YAML frontmatter, single H1, lead, Summary before Contents, body, history when versioned.  
-2. **New docs** start from [templates/](./templates/); leave no unresolved `{{PLACEHOLDERS}}`.  
+2. **New docs** start from [templates/](./templates/); leave no unresolved `{{PLACEHOLDERS}}`. Pick templates from [project interest](./README.md#initiate-a-project-by-interest) so contracts exist before or with first code.  
 3. **Behavior change ⇒ doc change** in the same commit or PR:  
    - CLI verbs, flags, exit codes, JSON shapes → matching CLI / API guide  
    - Formulas, output columns, validation → methodology (+ fixtures if contract shifts)  
    - Trust boundary or execution model → matching security doc  
 4. **Prefer link + short summary** over pasting another document in full.  
 5. **Root README** stays an overview; deep contracts stay in package docs.  
-6. **Status honesty:** set frontmatter `status` to `draft` / `current` / `deprecated` accurately.
+6. **Status honesty:** set frontmatter `status` to `draft` / `current` / `deprecated` accurately.  
+7. **Platform-aware examples** follow [MARKDOWN-STANDARD — Platform-aware examples](./MARKDOWN-STANDARD.md#platform-aware-examples): declare primary OS when examples are OS-specific; dual fences when multi-platform.
 
 ---
 
@@ -108,8 +110,9 @@ Replace paths below with your project’s real files. Rows that do not apply may
 | Identifiers | `` `inline code` `` for paths, flags, column names, module names |
 | Markdown structure | Per [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md); language-tagged code fences |
 | Links | Relative from the file’s directory (`./CLI-GUIDE.md`, `../README.md`) |
-| Paths in prose | Consistent separators within a file; OS-appropriate examples are fine |
-| Examples | Prefer placeholders (`C:\path\to\...` or `/path/to/...`) plus one concrete repo-relative example |
+| Paths in prose | Consistent separators within a file; match [platform-aware rules](./MARKDOWN-STANDARD.md#platform-aware-examples) |
+| Examples | Prefer placeholders (`C:\path\to\...` and/or `/path/to/...`) plus one concrete repo-relative example; dual shell fences when multi-OS |
+| Platform | State primary platform(s) for verify/build examples; fill verification table with the command(s) the team actually runs |
 | Python | When the project ships Python product code: **PEP-8 via pylint** — see [Python style gate (pylint)](#python-style-gate-pylint) |
 | Other languages | Declare a style gate in this file or a thin overlay (formatter/linter + pass criteria) |
 
@@ -280,14 +283,17 @@ Commit messages and **what is staged** must stay consistent with the documentati
 
 ### Suggested commit workflow
 
-```bat
+Prefer platform-neutral git steps (same on Windows, Linux, and macOS):
+
+```text
 git status
 git diff
-rem Stage one focused surface (or one logical pair), then:
-git add path\to\file
+git add path/to/file
 git commit -m "type(scope): imperative summary of this file or surface"
 git status
 ```
+
+On Windows Command Prompt, path separators may be `\`; Git accepts `/` in paths on all common platforms. Stage one focused surface (or one logical pair) per commit.
 
 For a multi-file feature, a typical stack is: implementation → package version → docs (CLI, README, security, methodology as needed) → inventory / RULES if those inventories or policies changed.
 
@@ -303,14 +309,14 @@ Fill concrete commands for your project. Rows that do not apply may be removed.
 
 | Change type | Minimum verification |
 |-------------|----------------------|
-| Public behavior, scores, exports | Project tests / golden fixtures (define command) |
+| Public behavior, scores, exports | Project tests / golden fixtures (define command for each primary platform) |
 | Python product code style | `python -m pylint <package_or_paths>` (must pass; see [Python style gate](#python-style-gate-pylint)) |
-| Environment / packaging | Project probe or smoke script (define command) |
+| Environment / packaging | Project probe or smoke script (define command; list Windows and Unix forms if both are supported) |
 | Schema or sample data | Headers/fields match schema; consumers still load samples |
-| Docs only | [Author checklist](./MARKDOWN-STANDARD.md#author-checklist); relative links resolve |
+| Docs only | [Author checklist](./MARKDOWN-STANDARD.md#author-checklist); relative links resolve; platform examples consistent |
 | New/removed source files | Inventory/catalog updated (if maintained) |
 
-Do not claim a behavior change is complete if the relevant validation was skipped. Do not claim a Python product change is complete if the pylint gate was skipped or failed.
+Fill commands for the host OS(es) the team develops on. When multi-platform, either one portable command or one row/note per OS. Do not claim a behavior change is complete if the relevant validation was skipped. Do not claim a Python product change is complete if the pylint gate was skipped or failed.
 
 ---
 
@@ -366,4 +372,5 @@ Before you commit or share a change:
 
 | Version | Notes |
 |---------|--------|
+| 1.0.1 | Initiation from project interest; platform-aware verify/examples; pylintrc path wording aligned |
 | 1.0.0 | Initial portable maintenance rules: authority map, docs, format, pylint PEP-8 gate, architecture, contracts, security baseline, versioning, git, verification |

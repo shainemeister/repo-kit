@@ -1,7 +1,7 @@
 ---
 title: Markdown Documentation Standard
 description: Cross-functional standard for consistent, professional markdown across any repository or project.
-version: "1.0.0"
+version: "1.0.1"
 status: current
 audience:
   - developers
@@ -21,7 +21,7 @@ last_updated: "2026-07-22"
 
 A repeatable standard for professional, consistent markdown in any repository—usable across packages, CLIs, methodologies, security notes, design concepts, and runbooks.
 
-**Standard version:** 1.0.0  
+**Standard version:** 1.0.1  
 **Location:** kit root (`MARKDOWN-STANDARD.md`)  
 **Templates:** [`templates/`](./templates/)
 
@@ -49,11 +49,12 @@ Most **substantial** documents use **YAML frontmatter**, a clear **H1**, a short
 6. [Headings and anchors](#headings-and-anchors)
 7. [Writing conventions](#writing-conventions)
 8. [Tables, code, and links](#tables-code-and-links)
-9. [Document types and body outlines](#document-types-and-body-outlines)
-10. [Templates](#templates)
-11. [Author checklist](#author-checklist)
-12. [Anti-patterns](#anti-patterns)
-13. [Document history](#document-history)
+9. [Platform-aware examples](#platform-aware-examples)
+10. [Document types and body outlines](#document-types-and-body-outlines)
+11. [Templates](#templates)
+12. [Author checklist](#author-checklist)
+13. [Anti-patterns](#anti-patterns)
+14. [Document history](#document-history)
 
 ---
 
@@ -238,6 +239,7 @@ Include **Summary** as item 1 when Summary exists as an H2.
 | Dates | Prefer ISO in metadata; human dates OK in narrative |
 | Versioning | Bump `version` + `last_updated` when behavior or contract changes |
 | Cross-links | Prefer relative links: `./CLI-GUIDE.md`, `../README.md` |
+| Platform | When examples are OS-specific, follow [Platform-aware examples](#platform-aware-examples) |
 
 ---
 
@@ -283,6 +285,40 @@ product-folder/
 - Sibling: `[CLI Guide](./CLI-GUIDE.md)`  
 - In-doc: `[Summary](#summary)`  
 - Avoid bare URLs when a descriptive label is clearer  
+
+---
+
+## Platform-aware examples
+
+Shell, path, and build examples must match how the project is actually developed and run. Do not assume a single OS unless the project declares one.
+
+| Rule | Guidance |
+|------|----------|
+| **Primary platform** | When examples are OS-specific, state the primary platform in the status block, prerequisites, or a short note (Windows, Linux, macOS, or multi). |
+| **Single-platform projects** | One shell fence is enough; keep paths and commands consistent with that OS. |
+| **Multi-platform or unknown host** | Prefer **dual fences** (Windows + Linux/macOS) for invocation, quick start, and validation, **or** one primary fence plus a one-line alternate. |
+| **Shell language tags** | Use `bat` / `cmd`, `powershell`, or `bash` / `sh` to match the example—not a generic fence. |
+| **Paths** | Placeholders (`C:\path\to\...` and `/path/to/...`) plus one concrete repo-relative example when helpful. |
+| **Product OS detection** | If scripts adapt by host (`sys.platform`, `$IsWindows`, `uname`), document that behavior in the CLI or security contract—not only in prose. |
+| **Verification commands** | Fill [RULES.md](./RULES.md) verification rows with the command(s) used on the team’s platform(s); list both when multi-OS. |
+
+### Dual-path pattern (illustrative)
+
+**Windows**
+
+```bat
+cd /d C:\path\to\{{FOLDER_NAME}}
+{{QUICKSTART_COMMANDS}}
+```
+
+**Linux / macOS**
+
+```bash
+cd /path/to/{{FOLDER_NAME}}
+{{QUICKSTART_COMMANDS}}
+```
+
+Templates for README, CLI, and security already show this pattern where shell matters. Drop the unused OS block only when the project is deliberately single-platform.
 
 ---
 
@@ -380,13 +416,16 @@ Use **Summary → Contents → logical H2s → History**. Prefer `TEMPLATE-GENER
 | Concept / design | `concept` | [templates/TEMPLATE-CONCEPT.md](./templates/TEMPLATE-CONCEPT.md) |
 | Minimal / any | `other` | [templates/TEMPLATE-GENERIC.md](./templates/TEMPLATE-GENERIC.md) |
 
+There is no dedicated runbook file. For `runbook`, copy [TEMPLATE-GENERIC.md](./templates/TEMPLATE-GENERIC.md) and follow the [runbook body outline](#runbook--operational-procedure) (or freeform H2s that match When to use → Preconditions → Steps → Verification → Failure / recovery → Escalation).
+
 ### How to use a template
 
 1. Copy the file into the target folder (e.g. `packages/my-service/README.md`).  
 2. Replace all `{{PLACEHOLDERS}}`.  
 3. Delete sections that do not apply; do not leave placeholder prose.  
-4. Refresh **Contents** links to match final headings.  
-5. Run through the [Author checklist](#author-checklist).  
+4. Keep dual-path shell blocks when the project is multi-platform; drop the unused OS when primary platform is single and declared.  
+5. Refresh **Contents** links to match final headings.  
+6. Run through the [Author checklist](#author-checklist).  
 
 ### Common placeholders
 
@@ -399,6 +438,8 @@ Use **Summary → Contents → logical H2s → History**. Prefer `TEMPLATE-GENER
 | `{{LAST_UPDATED}}` | `YYYY-MM-DD` |
 | `{{RELATED_DOC}}` | Sibling doc filename |
 
+Templates may use additional `{{TOKENS}}` beyond this table. Replace every token in the copied file—do not leave unresolved placeholders.
+
 ---
 
 ## Author checklist
@@ -410,6 +451,7 @@ Before merging or publishing a doc:
 - [ ] Single H1; Summary present if the body is non-trivial  
 - [ ] Relative links work from the file’s directory  
 - [ ] Code fences have language tags  
+- [ ] Shell/path examples match [platform-aware rules](#platform-aware-examples) (primary platform declared when OS-specific)  
 - [ ] No unresolved `{{PLACEHOLDERS}}`  
 - [ ] Tables render (header separator present)  
 - [ ] “Out of scope” or “Not in this doc” used instead of silent omissions when helpful  
@@ -449,6 +491,8 @@ Before merging or publishing a doc:
 | Frontmatter on a deliberately simple landing page | Omit frontmatter; H1 + lead + Summary |
 | Root page that opens with RULES / catalog / templates | Put maintainers last |
 | Pasting full CLI-GUIDE into the root README | One example + link |
+| Windows-only examples in a multi-OS project | Dual fences or declared primary platform |
+| Unresolved template tokens in shipped docs | Replace every `{{TOKEN}}` |
 
 ---
 
@@ -456,4 +500,5 @@ Before merging or publishing a doc:
 
 | Version | Notes |
 |---------|--------|
+| 1.0.1 | Platform-aware examples; runbook → GENERIC pointer; placeholder completeness note |
 | 1.0.0 | Initial portable standard (generalized for multi-domain repos); root landing pattern; templates under `templates/` |

@@ -75,10 +75,17 @@ last_updated: "{{LAST_UPDATED}}"
 
 ## Invocation
 
-### From Command Prompt
+### Windows
 
 ```bat
 cd /d C:\path\to\{{FOLDER_NAME}}
+{{CLI_ENTRY}} {{EXAMPLE_COMMAND}}
+```
+
+### Linux / macOS
+
+```bash
+cd /path/to/{{FOLDER_NAME}}
 {{CLI_ENTRY}} {{EXAMPLE_COMMAND}}
 ```
 
@@ -87,6 +94,8 @@ cd /d C:\path\to\{{FOLDER_NAME}}
 ```text
 {{CLI_ENTRY}} <command> [options]
 ```
+
+Keep both OS blocks when multi-platform; drop the unused OS when primary platform is single and declared. If the product detects the host OS and adapts paths or launchers, document that under Constraints or Security.
 
 ---
 
@@ -122,9 +131,15 @@ cd /d C:\path\to\{{FOLDER_NAME}}
 |--------|----------|---------|-------------|
 | `{{OPTION}}` | No | {{DEFAULT}} | {{OPTION_DESC}} |
 
-**Example**
+**Example (Windows)**
 
 ```bat
+{{EXAMPLE_INVOCATION}}
+```
+
+**Example (Linux / macOS)**
+
+```bash
 {{EXAMPLE_INVOCATION}}
 ```
 
@@ -144,7 +159,15 @@ cd /d C:\path\to\{{FOLDER_NAME}}
 
 ### {{USE_CASE_TITLE}}
 
+**Windows**
+
 ```bat
+{{USE_CASE_COMMANDS}}
+```
+
+**Linux / macOS**
+
+```bash
 {{USE_CASE_COMMANDS}}
 ```
 

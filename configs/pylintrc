@@ -52,6 +52,7 @@ indent-string = "    "
 expected-line-ending-format =
 
 [BASIC]
+# Starter allowlist for short intentional names; extend per project (see RULES adopt steps).
 good-names =
     i,
     j,
@@ -79,6 +80,8 @@ good-names =
     mid
 
 [DESIGN]
+# Not in the enable list; limits apply only if design checks are re-enabled.
+# Design/refactor metrics (too-many-*) stay out of the PEP-8 gate by default.
 max-args = 8
 max-locals = 40
 max-branches = 20
