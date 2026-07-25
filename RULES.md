@@ -1,7 +1,7 @@
 ---
 title: Repository Maintenance Rules
 description: Fundamental rules for documenting, changing, verifying, and versioning any repository consistently.
-version: "1.0.1"
+version: "1.1.0"
 status: current
 audience:
   - developers
@@ -11,17 +11,18 @@ doc_type: other
 related:
   - README.md
   - MARKDOWN-STANDARD.md
+  - SETUP.md
   - configs/pylintrc
-last_updated: "2026-07-22"
+last_updated: "2026-07-24"
 ---
 
 # Repository Maintenance Rules
 
 Fundamental rules for maintaining a professional, auditable repository. These rules govern documentation, architecture boundaries, contracts, git hygiene, and verification—not product tutorials.
 
-**Document version:** 1.0.1  
+**Document version:** 1.1.0  
 
-**Related:** [README.md](./README.md) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) · [configs/pylintrc](./configs/pylintrc)
+**Related:** [README.md](./README.md) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) · [SETUP.md](./SETUP.md) · [configs/pylintrc](./configs/pylintrc)
 
 ---
 
@@ -29,7 +30,7 @@ Fundamental rules for maintaining a professional, auditable repository. These ru
 
 **RULES.md** is the maintenance policy. Detailed contracts live elsewhere (CLI guides, APIs, methodology, security notes). When those contracts change, update the **canonical** file in the same change set—do not leave docs, fixtures, or versions stale.
 
-Copy this file into a project and **fill the authority map and verification table** with that project’s real paths and commands. On initiation, derive those paths from **project interest** (see [README — Initiate a project](./README.md#initiate-a-project-by-interest)) so this policy guides day-to-day development—not only post-hoc documentation. Keep product-specific policy here or in a thin overlay; keep authoring rules in [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md).
+Copy this file into a project and **fill the authority map and verification table** with that project’s real paths and commands. On initiation, derive those paths from **project interest** (see [SETUP.md](./SETUP.md)) so this policy guides day-to-day development—not only post-hoc documentation. Keep product-specific policy here or in a thin overlay; keep authoring rules in [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md). Filled map examples: [examples/](./examples/).
 
 | Must | Must not |
 |------|----------|
@@ -46,18 +47,19 @@ Copy this file into a project and **fill the authority map and verification tabl
 
 1. [Summary](#summary)
 2. [Authority map](#authority-map)
-3. [Documentation rules](#documentation-rules)
-4. [Formatting and style](#formatting-and-style) (includes [Python style gate (pylint)](#python-style-gate-pylint))
-5. [Architecture and boundaries](#architecture-and-boundaries)
-6. [Data and contract rules](#data-and-contract-rules)
-7. [Security baseline](#security-baseline)
-8. [Versioning and change control](#versioning-and-change-control)
-9. [Git rules](#git-rules)
-10. [Verification before ship](#verification-before-ship)
-11. [Maintenance cadence](#maintenance-cadence)
-12. [Anti-patterns](#anti-patterns)
-13. [Contributor checklist](#contributor-checklist)
-14. [Document history](#document-history)
+3. [Root hygiene](#root-hygiene)
+4. [Documentation rules](#documentation-rules)
+5. [Formatting and style](#formatting-and-style) (includes [Python style gate (pylint)](#python-style-gate-pylint) and [Non-Python style gates](#non-python-style-gates))
+6. [Architecture and boundaries](#architecture-and-boundaries)
+7. [Data and contract rules](#data-and-contract-rules)
+8. [Security baseline](#security-baseline)
+9. [Versioning and change control](#versioning-and-change-control)
+10. [Git rules](#git-rules)
+11. [Verification before ship](#verification-before-ship)
+12. [Maintenance cadence](#maintenance-cadence)
+13. [Anti-patterns](#anti-patterns)
+14. [Contributor checklist](#contributor-checklist)
+15. [Document history](#document-history)
 
 ---
 
@@ -65,14 +67,17 @@ Copy this file into a project and **fill the authority map and verification tabl
 
 Update the **owner** document for a change. Cross-link; do not duplicate full contracts.
 
-Replace paths below with your project’s real files. Rows that do not apply may be removed; add rows for domain-specific contracts.
+Replace paths below with your project’s real files. Rows that do not apply may be removed; add rows for domain-specific contracts. For filled skeletons by interest, see [examples/](./examples/).
 
 | Concern | Canonical source |
 |---------|------------------|
 | Repo purpose and quick start | [README.md](./README.md) |
+| One-time adoption (ephemeral) | [SETUP.md](./SETUP.md) — follow, then delete or archive |
 | Path-level file inventory (optional) | `FILE-CATALOG.md` (or equivalent) |
 | Markdown structure, frontmatter, author checklist | [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) · [templates/](./templates/) |
 | Maintenance policy (this file) | [RULES.md](./RULES.md) |
+| Kit / project history (optional) | [CHANGELOG.md](./CHANGELOG.md) |
+| Filled authority-map examples (kit reference) | [examples/](./examples/) |
 | Package overview | `{{PACKAGE}}/README.md` |
 | CLI or automation contract | `{{PACKAGE}}/CLI-GUIDE.md` (or `API.md`) |
 | Formulas / “how it works” | `{{PACKAGE}}/METHODOLOGY.md` (or design notes) |
@@ -86,10 +91,49 @@ Replace paths below with your project’s real files. Rows that do not apply may
 
 ---
 
+## Root hygiene
+
+Keep the repository root **scannable**: entry points and policy first; purpose directories for everything else. These rules apply to this kit and to projects that adopt it.
+
+### What belongs at root
+
+| File / item | Role |
+|-------------|------|
+| `README.md` | Landing / use-cases (no frontmatter) |
+| `LICENSE` | License |
+| `.gitignore` | Ignore rules |
+| `RULES.md` | Maintenance policy + authority map |
+| `MARKDOWN-STANDARD.md` | Writing and structure standard |
+| `SETUP.md` | One-time only (then remove or archive) |
+| `CHANGELOG.md` | History (recommended) |
+| `FILE-CATALOG.md` | Optional inventory |
+| Package or product entry files | Only when they are the natural top-level surface |
+
+### What does not belong at root
+
+| Concern | Preferred home |
+|---------|----------------|
+| Templates | `templates/` |
+| Style configs | `configs/` (or package-local `.pylintrc` / tool config) |
+| Filled examples | `examples/` |
+| Scripts / helpers | `scripts/` or `tooling/` (keep minimal) |
+| Package-level contracts | Inside the package |
+| Regenerable output | Never committed |
+| CI workflows | `.github/` (or equivalent) |
+
+### Supporting practices
+
+1. Update the authority map in the **same change set** whenever an intentional path is added, removed, or renamed (when the map lists that path).  
+2. Prefer purpose directories over additional root files.  
+3. Mark ephemeral files clearly (e.g. SETUP header) so they do not accumulate.  
+4. Respect `.gitignore`; never force-add regenerable artifacts.
+
+---
+
 ## Documentation rules
 
 1. **Substantial documents** follow [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md): YAML frontmatter, single H1, lead, Summary before Contents, body, history when versioned.  
-2. **New docs** start from [templates/](./templates/); leave no unresolved `{{PLACEHOLDERS}}`. Pick templates from [project interest](./README.md#initiate-a-project-by-interest) so contracts exist before or with first code.  
+2. **New docs** start from [templates/](./templates/); leave no unresolved `{{PLACEHOLDERS}}`. Pick templates from [project interest](./SETUP.md#5-pick-templates-by-interest) so contracts exist before or with first code.  
 3. **Behavior change ⇒ doc change** in the same commit or PR:  
    - CLI verbs, flags, exit codes, JSON shapes → matching CLI / API guide  
    - Formulas, output columns, validation → methodology (+ fixtures if contract shifts)  
@@ -114,7 +158,7 @@ Replace paths below with your project’s real files. Rows that do not apply may
 | Examples | Prefer placeholders (`C:\path\to\...` and/or `/path/to/...`) plus one concrete repo-relative example; dual shell fences when multi-OS |
 | Platform | State primary platform(s) for verify/build examples; fill verification table with the command(s) the team actually runs |
 | Python | When the project ships Python product code: **PEP-8 via pylint** — see [Python style gate (pylint)](#python-style-gate-pylint) |
-| Other languages | Declare a style gate in this file or a thin overlay (formatter/linter + pass criteria) |
+| Other languages | Declare a style gate — see [Non-Python style gates](#non-python-style-gates) |
 
 ### Python style gate (pylint)
 
@@ -139,6 +183,26 @@ If pylint is not installed on a developer machine, install it into the **develop
 2. Set `py-version` to the project’s supported Python.  
 3. Point the verification table at the real package path.  
 4. Extend `good-names` only when short identifiers are intentional and repeated.
+
+### Non-Python style gates
+
+Projects that ship non-Python product code should declare **one primary gate per language surface** in this file or a thin overlay: tool name, command, and pass criteria. Put the command in the [verification table](#verification-before-ship). Non-Python gates **do not** inherit the pylint 10.00 score rule.
+
+Recommended starting points (advisory—choose what the team will actually run):
+
+| Language / ecosystem | Common gate tools | Typical pass criteria |
+|----------------------|-------------------|------------------------|
+| JavaScript / TypeScript | eslint, prettier | Lint exit 0; format clean (or check mode clean) |
+| Go | gofmt / go fmt, golangci-lint | Format clean; linter exit 0 under project config |
+| Rust | rustfmt, clippy | Format clean; clippy clean under project flags |
+| Shell | shellcheck | No errors (or project-defined severity) |
+| Other / mixed | Document tool + command in verification table | Exit 0 / project-defined |
+
+**Rules:**
+
+1. Name the tool and pass criteria explicitly—do not leave “we lint somehow” implied.  
+2. Keep style tools as **developer tooling** unless the product truly requires them at runtime.  
+3. Docs-only repositories may omit language style gates entirely.
 
 ---
 
@@ -217,7 +281,7 @@ Respect `.gitignore`. Do not force-add ignored generated artifacts “for conven
 ### Commits and history
 
 1. **Review before commit:** `git status` and `git diff`. Confirm no accidental large dumps, credentials, or regenerable artifacts.  
-2. **Small, focused commits** preferred over mixed unrelated changes.  
+2. **Small, focused commits** preferred over mixed unrelated changes—one logical concern / one authority-map surface when practical. Prefer a **short stack** over a single mixed mega-commit.  
 3. **Messages** follow [Commit message format](#commit-message-format) below.  
 4. **Do not rewrite published shared history** (`push --force` to a shared default branch) without explicit coordination.  
 5. **Branches (recommended):** `feature/…`, `fix/…`, `docs/…` when work is non-trivial.  
@@ -225,6 +289,8 @@ Respect `.gitignore`. Do not force-add ignored generated artifacts “for conven
 7. **No secrets in history.** If leaked, rotate credentials and treat history cleanup as an incident—not a casual amend.
 
 ### Commit message format
+
+**Principle:** The commit subject (and body, when present) should remain understandable **years later** when searching history—name the real surface and intent, not a temporary mood.
 
 Use a **Conventional Commits–style** subject so history stays scannable.
 
@@ -235,9 +301,9 @@ Use a **Conventional Commits–style** subject so history stays scannable.
 | Part | Rule |
 |------|------|
 | **type** | One of the types in the table below |
-| **scope** | Package or area (e.g. `my-service`, `cli`); omit for repo-wide files (`RULES.md`, root README, shared schema) |
+| **scope** | Package or area; see [Scope conventions](#scope-conventions). Omit for true repo-wide root files when no better scope fits |
 | **summary** | Imperative mood, specific, ≤ ~72 characters; no trailing period |
-| **body** (optional) | Why the change matters; migration notes; link to canonical doc if non-obvious |
+| **body** (optional) | For non-trivial commits: **why** the change matters and any **migration** notes; link to the canonical doc if non-obvious. Tiny one-line docs fixes may omit a body |
 
 | type | Use when |
 |------|----------|
@@ -248,7 +314,29 @@ Use a **Conventional Commits–style** subject so history stays scannable.
 | `refactor` | Internal structure only; same public contracts |
 | `test` | Fixtures, validation harness, probes (no product API change) |
 
-**Examples (match this voice):**
+#### Scope conventions
+
+| Context | Preferred scopes | Notes |
+|---------|------------------|--------|
+| **This kit** | `rules`, `markdown`, `templates`, `setup`, `examples`, `plan` | Use when the change is limited to that surface |
+| **Adopting projects** | Package folder name, `cli`, `security`, `methodology` | Or omit for root-wide policy/README/shared schema |
+| **Omit scope** | — | Root-wide files with no single package owner |
+
+Scopes are advisory: consistency within a repo matters more than matching this table exactly.
+
+#### Optional footers
+
+Useful when needed; **not** mandatory:
+
+| Footer | Use when |
+|--------|----------|
+| `BREAKING CHANGE: <description>` | Public contract breaks; describe migration |
+| `Refs: <issue-or-doc>` | Link a tracker item or canonical doc |
+| `Co-authored-by: Name <email>` | Shared authorship |
+
+#### Examples (match this voice)
+
+**Good:**
 
 ```text
 feat(my-service): add validate command and exit-code contract
@@ -256,6 +344,24 @@ chore(my-service): bump package version to 1.2.0
 docs(my-service): document validate command and CLI contract
 docs: catalog new package layout
 fix(cli): retry failed remote call with backoff
+docs(rules): clarify non-Python style gate expectations
+```
+
+**Bad → good:**
+
+| Avoid | Prefer |
+|-------|--------|
+| `update stuff` | `docs(my-cli): document validate exit codes` |
+| `wip` | `feat(my-cli): add validate command (draft)` only if you must; better finish then commit a clear subject |
+| `fix bugs` | `fix(my-cli): handle missing config path without traceback` |
+| `feat: updates` (docs-only staged) | `docs: …` — do not use `feat` for markdown-only changes |
+
+**Multi-commit stack example** (one feature, modular history):
+
+```text
+feat(my-cli): add validate command and exit-code contract
+chore(my-cli): bump package version to 1.2.0
+docs(my-cli): document validate command and CLI contract
 ```
 
 ### Documentation consistency in commits
@@ -265,7 +371,7 @@ Commit messages and **what is staged** must stay consistent with the documentati
 | Situation | Commit practice |
 |-----------|-----------------|
 | Behavior / CLI / API / security model changes | Update the **canonical** doc in the **same change set**. Do not ship code that leaves guides stale. |
-| Prefer readability of history | Prefer **one logical surface per commit**. Avoid “mega-commits” that mix unrelated packages. |
+| Prefer readability of history | Prefer **one logical surface per commit** (one authority-map concern). Avoid “mega-commits” that mix unrelated packages. |
 | Code + matching docs for one feature | Either (a) one commit with code **and** its canonical docs, or (b) a short stack with subjects that name the same feature. |
 | Path add/remove/rename | Include inventory/catalog update when the project maintains one. |
 | Package version bump | Subject uses `chore(<scope>): bump … to X.Y.Z`. Docs that cite the product version get matching `docs` updates. |
@@ -275,11 +381,13 @@ Commit messages and **what is staged** must stay consistent with the documentati
 **Pre-commit message check:**
 
 1. Does the subject type match the staged content (`docs` only if no product code/config behavior)?  
-2. If CLI/API verbs, flags, exit codes, or JSON shapes changed, is the matching guide updated?  
-3. If trust/execution model changed, is the matching security doc updated?  
-4. If formulas or public output fields changed, are methodology + fixtures updated?  
-5. If product Python changed, will the pylint gate pass?  
-6. Would a reviewer find the subject by searching the feature name used in the README?
+2. Is this **one logical surface** (or an intentional code+docs pair for the same feature)?  
+3. If CLI/API verbs, flags, exit codes, or JSON shapes changed, is the matching guide updated?  
+4. If trust/execution model changed, is the matching security doc updated?  
+5. If formulas or public output fields changed, are methodology + fixtures updated?  
+6. If product Python changed, will the pylint gate pass?  
+7. Would a reviewer find the subject by searching the feature name used in the README?  
+8. Would this subject still make sense **two years** from now without the PR description?
 
 ### Suggested commit workflow
 
@@ -311,6 +419,7 @@ Fill concrete commands for your project. Rows that do not apply may be removed.
 |-------------|----------------------|
 | Public behavior, scores, exports | Project tests / golden fixtures (define command for each primary platform) |
 | Python product code style | `python -m pylint <package_or_paths>` (must pass; see [Python style gate](#python-style-gate-pylint)) |
+| Other language product style | Project-declared gate (see [Non-Python style gates](#non-python-style-gates)) |
 | Environment / packaging | Project probe or smoke script (define command; list Windows and Unix forms if both are supported) |
 | Schema or sample data | Headers/fields match schema; consumers still load samples |
 | Docs only | [Author checklist](./MARKDOWN-STANDARD.md#author-checklist); relative links resolve; platform examples consistent |
@@ -349,6 +458,8 @@ Fill commands for the host OS(es) the team develops on. When multi-platform, eit
 | Vague commits (`update stuff`, `wip`) | Conventional `type(scope):` subject naming the real surface |
 | Code without CLI/methodology/security docs | Same change set as the canonical doc per authority map |
 | `feat` commit that only edits markdown | Use `docs` / `docs(scope)` |
+| Leaving SETUP.md forever at root after adoption | Delete or archive after initiation |
+| Language style “somehow” without a named gate | Declare tool + pass criteria in RULES / verification table |
 
 ---
 
@@ -364,6 +475,7 @@ Before you commit or share a change:
 - [ ] No secrets, sensitive production data, regenerable outputs, or caches staged  
 - [ ] Markdown follows [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) when docs were edited  
 - [ ] Commit message uses `type(scope):` format and matches the staged files  
+- [ ] Subject would still make sense years later; one logical surface preferred  
 - [ ] Canonical docs for any behavior change are in the same change set  
 
 ---
@@ -372,5 +484,6 @@ Before you commit or share a change:
 
 | Version | Notes |
 |---------|--------|
+| 1.1.0 | Root hygiene; non-Python style gates; stronger commit-message modularity, scopes, body, examples, footers; SETUP/examples links; initiation pointer to SETUP.md |
 | 1.0.1 | Initiation from project interest; platform-aware verify/examples; pylintrc path wording aligned |
 | 1.0.0 | Initial portable maintenance rules: authority map, docs, format, pylint PEP-8 gate, architecture, contracts, security baseline, versioning, git, verification |
