@@ -1,7 +1,7 @@
 ---
 title: Kit Improvement Plan
-description: Recommendations and concrete execution plan for greater efficiency, multi-domain mobility, and clean root hygiene in the Repository Standards Kit.
-version: "1.0.0"
+description: Recommendations and concrete execution plan for greater efficiency, multi-domain mobility, clean root hygiene, and stronger commit-message consistency in the Repository Standards Kit.
+version: "1.0.1"
 status: draft
 audience:
   - maintainers
@@ -16,9 +16,9 @@ last_updated: "2026-07-24"
 
 # Kit Improvement Plan
 
-Recommendations and execution guidance for evolving the kit toward higher adoption efficiency, cross-domain mobility, and a consistently clean repository root—while preserving its domain-agnostic, copy-ready character.
+Recommendations and execution guidance for evolving the kit toward higher adoption efficiency, cross-domain mobility, a consistently clean repository root, and more consistent modular commit history—while preserving its domain-agnostic, copy-ready character.
 
-**Document version:** 1.0.0  
+**Document version:** 1.0.1  
 **Status:** draft  
 **Related:** [README.md](./README.md) · [RULES.md](./RULES.md) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md)
 
@@ -33,6 +33,7 @@ The kit is already strong: flat layout, authority-map design, initiate-from-inte
 3. Codify **root hygiene rules** so intentional files stay scannable.
 4. Optionally seed a thin **`examples/`** folder with filled authority-map skeletons for faster domain adaptation.
 5. A few low-cost hygiene items (CHANGELOG, clearer non-Python gate guidance, explicit adoption modes).
+6. **Strengthen commit-message guidance in RULES.md** for greater consistency, modularity, and long-term documentation value of the git history.
 
 These changes raise first-use speed and long-term maintainability without sacrificing the “copy a few files and go” mobility that is currently a core strength.
 
@@ -60,6 +61,7 @@ These changes raise first-use speed and long-term maintainability without sacrif
 | **Clean, scannable root** | Keep the top-level directory focused on entry points and policy so both humans and tools can orient quickly. |
 | **Preserve domain-agnostic core** | Avoid baking product- or stack-specific assumptions into the shared kit. |
 | **Low maintenance burden** | Prefer thin, disposable, or optional artifacts over permanent new surface area. |
+| **Consistent, modular, self-documenting commits** | Make git history a reliable, searchable record of intent and change. |
 
 ---
 
@@ -70,6 +72,7 @@ These changes raise first-use speed and long-term maintainability without sacrif
 - Authority map + overlays design allows projects to specialize without forking the kit.
 - Initiate-from-interest flow and docs-as-contracts principles are sound.
 - Platform-aware dual fences and the pylint gate are well-scoped.
+- Existing Conventional Commits guidance in RULES.md is already solid.
 
 **Friction points**
 - Detailed initiation steps currently live inside the root README, making the landing page heavier than ideal.
@@ -77,6 +80,7 @@ These changes raise first-use speed and long-term maintainability without sacrif
 - No ready-made filled examples of a completed authority map / verification table.
 - Non-Python style-gate guidance is mentioned but thin.
 - Kit itself has light versioning surface (frontmatter only).
+- Commit guidance can be tightened for stricter modularity, clearer scopes, and better long-term documentation value.
 
 **Conclusion:** Incremental, low-risk changes are sufficient. Heavy restructuring would reduce rather than improve mobility.
 
@@ -141,6 +145,30 @@ Removes ambiguity and supports different project sizes and governance models.
 - Strengthen the non-Python style-gate paragraph in RULES.md into a short table of recommended tools + pass criteria.
 - Keep the optional `FILE-CATALOG.md` recommendation; consider shipping a minimal template for it.
 
+### 6. Strengthen commit-message guidance in RULES.md
+
+**What**  
+Enhance the existing “Git rules → Commit message format” and related subsections so commit messages become more consistent, modular, and useful as permanent documentation.
+
+**Specific enhancements**
+
+| Enhancement | Detail |
+|-------------|--------|
+| **Stronger modularity language** | Explicitly prefer *atomic* commits (one logical concern / one authority-map surface). Clarify when a short stack is preferable to a single mixed commit. |
+| **Scope conventions** | Provide preferred scopes for the kit itself (`rules`, `markdown`, `templates`, `setup`, `examples`) and for adopting projects (package name, `cli`, `security`, `methodology`, or omit for root-wide). |
+| **Light body guidance** | Recommend a short structured body for non-trivial commits (why the change matters + any migration notes). |
+| **Expanded examples** | Add “bad → good” pairs and at least one multi-commit stack example. |
+| **Optional footers** | Mention `BREAKING CHANGE:`, `Refs:`, and `Co-authored-by:` as useful but non-mandatory. |
+| **Principle statement** | One clear sentence: the commit subject + body should remain understandable years later when searching history. |
+
+**Reasoning**  
+The current guidance is already good. These additions cost almost nothing in process overhead yet produce noticeably more consistent, searchable, and self-documenting history—exactly the quality the kit aims for in every other contract.
+
+**Suggested location inside RULES.md**  
+- Expand “Commit message format”
+- Strengthen “Documentation consistency in commits”
+- Slightly extend the pre-commit message checklist if needed
+
 ---
 
 ## Root hygiene rules
@@ -188,7 +216,7 @@ Execute in small, focused commits that follow the kit’s own Conventional Commi
 
 ### Phase 1 — Documentation scaffolding (no behavior change)
 
-1. **Create this file** (`PLAN.md`) — already done by this commit.
+1. **Create this file** (`PLAN.md`) — already done.
 2. **Create `SETUP.md`**  
    - Content: full initiate-by-interest checklist, authority-map fill steps, platform declaration, three adoption modes, first verification commands.  
    - Header: “One-time adoption guide — follow, then delete or archive.”  
@@ -201,30 +229,35 @@ Execute in small, focused commits that follow the kit’s own Conventional Commi
    - Seed with 1.0.0 / 1.0.1 history already present in frontmatter.  
    - Commit: `docs: add CHANGELOG.md for kit history`
 
-### Phase 2 — Examples and authority-map clarity
+### Phase 2 — Examples, authority-map clarity, and commit guidance
 
 5. **Create `examples/`**  
    - Add 2–3 minimal directories or single markdown files showing filled authority-map + verification rows for different interests (CLI, library, docs-only).  
    - Commit: `docs: seed examples/ with filled authority-map skeletons`
-6. **Strengthen RULES.md**  
+6. **Strengthen RULES.md (non-Python gates)**  
    - Expand non-Python style-gate guidance into a short table.  
    - Commit: `docs(rules): clarify non-Python style gate expectations`
+7. **Strengthen RULES.md (commit messages)**  
+   - Apply the enhancements listed in Recommendation 6 (modularity language, scope conventions, body guidance, expanded examples, optional footers, principle statement).  
+   - Commit: `docs(rules): improve commit-message modularity, scopes, and documentation value`
 
 ### Phase 3 — Polish and verification
 
-7. Update any cross-links and the optional FILE-CATALOG if maintained.  
-8. Run through the Author checklist in MARKDOWN-STANDARD.md on every new or edited doc.  
-9. Bump `version` + `last_updated` on RULES.md / MARKDOWN-STANDARD.md only if their contracts actually change.
+8. Update any cross-links and the optional FILE-CATALOG if maintained.  
+9. Run through the Author checklist in MARKDOWN-STANDARD.md on every new or edited doc.  
+10. Bump `version` + `last_updated` on RULES.md / MARKDOWN-STANDARD.md only if their contracts actually change.
 
 ### Suggested commit sequence (copy-ready)
 
 ```text
 docs: add PLAN.md with improvement recommendations for efficiency, mobility, and clean root
+docs(plan): add commit-message guidance improvements for RULES.md
 docs: add ephemeral SETUP.md for one-time project initiation
 docs: slim README initiation section; point to SETUP.md
 docs: add CHANGELOG.md for kit history
 docs: seed examples/ with filled authority-map skeletons
 docs(rules): clarify non-Python style gate expectations
+docs(rules): improve commit-message modularity, scopes, and documentation value
 ```
 
 ---
@@ -239,6 +272,7 @@ docs(rules): clarify non-Python style gate expectations
 | Examples become product-specific | Keep them generic and minimal; use placeholders |
 | Adding automation that is hard to maintain | Prefer documentation and thin examples over scripts unless the script is trivial |
 | Silent drift of authority map | Enforce “same change set” rule already in RULES |
+| Overly rigid commit rules that slow contributors | Keep enhancements advisory and lightweight; no mandatory tooling |
 
 ---
 
@@ -246,4 +280,5 @@ docs(rules): clarify non-Python style gate expectations
 
 | Version | Notes |
 |---------|--------|
+| 1.0.1 | Added Recommendation 6 (commit-message improvements for RULES.md); updated goals, execution plan, and risks |
 | 1.0.0 | Initial improvement plan: SETUP.md, flat-structure preservation, root hygiene, examples/, execution steps |
