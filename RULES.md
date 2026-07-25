@@ -433,7 +433,7 @@ docs(rules): clarify non-Python style gate expectations
 | `update stuff` | `docs(my-cli): document validate exit codes` |
 | `wip` | `feat(my-cli): add validate command (draft)` only if you must; better finish then commit a clear subject |
 | `fix bugs` | `fix(my-cli): handle missing config path without traceback` |
-| `feat: updates` (docs-only staged) | `docs: …` — do not use `feat` for markdown-only changes |
+| `feat: updates` (docs-only staged) | `docs: …` — do not use `feat` for documentation-only changes |
 
 **Multi-commit stack example** (one feature, modular history):
 
@@ -545,6 +545,7 @@ Fill commands for the host OS(es) the team develops on. When multi-platform, eit
 | Shipping release-worthy behavior without CHANGELOG | Same change set: behavior + canonical docs + version + CHANGELOG |
 | Kit upgrade with no baseline or CHANGELOG note | Update Adopted kit version/date and project CHANGELOG |
 | Inventing an alternate kit source URL | Use https://github.com/shainemeister/repo-kit (unless a deliberate fork) |
+| Putting kit release history into a project `CHANGELOG.md` | Keep kit version only in the Kit baseline table (and, for the kit repo itself, in this file’s dated sections) |
 
 ---
 
