@@ -48,7 +48,6 @@ Copy what you need, **initiate from project interest** so formal docs guide deve
 | `configs/pylintrc` | Portable pylint config (copy as `.pylintrc`) |
 | `templates/` | Copy-ready document skeletons |
 | `examples/` | Filled authority-map + verification skeletons |
-| `PLAN.md` | Kit improvement plan (maintainers) |
 | `LICENSE` | MIT license for this kit |
 
 ## Quick start
@@ -137,5 +136,4 @@ Details: [RULES.md — Python style gate](./RULES.md#python-style-gate-pylint). 
 - Keep examples domain-neutral (`my-service`, `my-cli`, `my_library`).  
 - Templates must retain `{{PLACEHOLDERS}}`; finished project docs must not.  
 - Dual-path shell blocks in templates stay until a project declares a single primary platform and drops the unused OS.  
-- Prefer purpose directories (`templates/`, `configs/`, `examples/`) over extra root files; see [Root hygiene](./RULES.md#root-hygiene).  
-- Kit evolution notes: [PLAN.md](./PLAN.md).
+- Prefer purpose directories (`templates/`, `configs/`, `examples/`) over extra root files; see [Root hygiene](./RULES.md#root-hygiene).
