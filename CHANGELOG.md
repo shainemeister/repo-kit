@@ -21,6 +21,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/). Dates ar
 
 - Root `README.md`: initiation checklist moved to `SETUP.md`; landing page kept light.
 
+### Removed
+
+- Completed `PLAN.md` (improvement plan fully executed).
+
 ---
 
 ## [1.0.1] - 2026-07-22
