@@ -41,9 +41,18 @@ Omit package CLI, schema, fixtures, and Python style rows when they do not apply
 
 | Field | Value |
 |-------|--------|
-| Adopted kit version | `1.0.1` *(example — use latest kit CHANGELOG release)* |
+| Adopted kit version | `1.1.0` *(example — use latest kit CHANGELOG release)* |
 | Adopted on | `2026-07-25` |
 | Kit source | https://github.com/shainemeister/repo-kit |
+
+### Sample project CHANGELOG entry (first adoption)
+
+```markdown
+## [Unreleased]
+
+### Added
+- Adopted repo-kit 1.1.0 from https://github.com/shainemeister/repo-kit
+```
 
 ---
 
