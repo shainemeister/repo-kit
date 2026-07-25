@@ -13,7 +13,7 @@ Copy what you need, **initiate from project interest** so formal docs guide deve
 | [SETUP.md](./SETUP.md) | One-time adoption guide (follow, then delete or archive) |
 | [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) | Structure, frontmatter, doc types, platform-aware examples, author checklist |
 | [RULES.md](./RULES.md) | Authority map, contracts, versioning, CHANGELOG, kit baseline, git, verification, style gates |
-| [CHANGELOG.md](./CHANGELOG.md) | Kit version history (canonical kit releases) |
+| [CHANGELOG.md](./CHANGELOG.md) | Kit version history (this repo) · **Required project history** for every adopter |
 | [configs/pylintrc](./configs/pylintrc) | PEP-8 style gate for Python product code (developer tooling) |
 | [templates/](./templates/) | Starting skeletons for README, CLI, methodology, security, concept, generic |
 | [examples/](./examples/) | Filled authority-map skeletons (CLI, library, docs-only) |
@@ -45,7 +45,7 @@ Copy what you need, **initiate from project interest** so formal docs guide deve
 | `SETUP.md` | One-time initiation checklist (ephemeral) |
 | `MARKDOWN-STANDARD.md` | How to structure and write markdown |
 | `RULES.md` | How to maintain the repository |
-| `CHANGELOG.md` | Kit history |
+| `CHANGELOG.md` | Kit history (this repo) · required project history for adopters |
 | `configs/pylintrc` | Portable pylint config (copy as `.pylintrc`) |
 | `templates/` | Copy-ready document skeletons |
 | `examples/` | Filled authority-map + verification skeletons |
