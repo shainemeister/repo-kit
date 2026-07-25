@@ -2,6 +2,10 @@
 
 History of the **Repository Standards Kit**. **Kit version** is defined by the dated release sections below (`## [X.Y.Z] - YYYY-MM-DD`). Upstream: https://github.com/shainemeister/repo-kit.
 
+This file is the history of the Repository Standards Kit itself.  
+**Adopting projects** maintain their own root `CHANGELOG.md` for *project/package* history (behavior, contracts, releases, kit adoption/upgrade notes).  
+They record the adopted kit version in the **Kit baseline** table inside `RULES.md` (see [RULES — Kit baseline](./RULES.md#kit-baseline) and [Mandatory project CHANGELOG](./RULES.md#mandatory-project-changelog)).
+
 Versioned standards also record per-document history in YAML frontmatter and document-history tables (`RULES.md`, `MARKDOWN-STANDARD.md`). Those document versions are independent of kit and product versions—see [RULES — Versioning](./RULES.md#versioning-and-change-control).
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/). Dates are ISO 8601.
@@ -9,6 +13,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/). Dates ar
 ---
 
 ## [Unreleased]
+
+### Changed
+
+- Clarified kit vs project history distinction in this file’s header and in root README.
+- Strengthened anti-pattern guidance in RULES.md against putting kit release history into a project CHANGELOG.
 
 ---
 
