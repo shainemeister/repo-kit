@@ -1,0 +1,56 @@
+# Example: CLI / automation tool
+
+**Illustrative only** — copy the *pattern* of a filled authority map and verification table. Replace names and commands with your project’s.
+
+**Sample interest:** “CLI that validates config files and reports contract failures with stable exit codes.”
+
+**Primary platform (example):** multi (Windows + Linux/macOS)
+
+---
+
+## Suggested first templates
+
+| Template | Becomes |
+|----------|---------|
+| [TEMPLATE-README.md](../templates/TEMPLATE-README.md) | `my-cli/README.md` |
+| [TEMPLATE-CLI.md](../templates/TEMPLATE-CLI.md) | `my-cli/CLI-GUIDE.md` |
+| [TEMPLATE-SECURITY.md](../templates/TEMPLATE-SECURITY.md) | `my-cli/SECURITY.md` |
+
+---
+
+## Filled authority map (snippet)
+
+| Concern | Canonical source |
+|---------|------------------|
+| Repo purpose and quick start | [README.md](../README.md) (project root) |
+| Markdown structure | `MARKDOWN-STANDARD.md` |
+| Maintenance policy | `RULES.md` |
+| Package overview | `my-cli/README.md` |
+| CLI or automation contract | `my-cli/CLI-GUIDE.md` |
+| Security / trust boundary | `my-cli/SECURITY.md` |
+| Default config | `my-cli/config.example.yaml` |
+| Golden tests / fixtures | `my-cli/tests/fixtures/` |
+
+Rows that do not apply (schema, methodology, etc.) are omitted.
+
+---
+
+## Verification before ship (snippet)
+
+| Change type | Minimum verification |
+|-------------|----------------------|
+| Public CLI behavior | `python -m my_cli validate path/to/sample.yaml` (exit 0 on good; non-zero on bad) |
+| Environment / packaging | `python -m my_cli --help` |
+| Docs only | Author checklist; relative links from `my-cli/` resolve |
+| New/removed source files | Inventory/catalog updated (if maintained) |
+
+**Windows note:** same module form works; or `py -3 -m my_cli …` if that is the team convention.
+
+---
+
+## Sample commit subjects
+
+```text
+feat(my-cli): add validate command and exit-code contract
+docs(my-cli): document validate verbs and exit codes
+```

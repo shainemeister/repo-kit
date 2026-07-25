@@ -1,0 +1,58 @@
+# Example: Docs-only / standards repository
+
+**Illustrative only** — copy the *pattern* of a filled authority map and verification table. Replace names and paths with your project’s.
+
+**Sample interest:** “Design and standards repo that captures methodology and progressive concepts without shipping product code.”
+
+**Primary platform (example):** multi (path examples only; no runtime gate)
+
+---
+
+## Suggested first templates
+
+| Template | Becomes |
+|----------|---------|
+| Root landing pattern | `README.md` (no frontmatter; see MARKDOWN-STANDARD landing rules) |
+| [TEMPLATE-GENERIC.md](../templates/TEMPLATE-GENERIC.md) | e.g. `DESIGN-NOTES.md` |
+| [TEMPLATE-CONCEPT.md](../templates/TEMPLATE-CONCEPT.md) | e.g. `CONCEPT-v1.md` |
+| [TEMPLATE-METHODOLOGY.md](../templates/TEMPLATE-METHODOLOGY.md) | e.g. `METHODOLOGY.md` when formulas exist |
+
+Copy [RULES.md](../RULES.md) and [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md); remove or skip code-only rows.
+
+---
+
+## Filled authority map (snippet)
+
+| Concern | Canonical source |
+|---------|------------------|
+| Repo purpose and quick start | `README.md` |
+| Path-level file inventory (optional) | `FILE-CATALOG.md` |
+| Markdown structure | `MARKDOWN-STANDARD.md` |
+| Maintenance policy | `RULES.md` |
+| Design / concept notes | `CONCEPT-v1.md` |
+| Formulas / “how it works” | `METHODOLOGY.md` |
+| Kit evolution / planning | `PLAN.md` (if used) |
+
+Omit package CLI, schema, fixtures, and Python style rows when they do not apply.
+
+---
+
+## Verification before ship (snippet)
+
+| Change type | Minimum verification |
+|-------------|----------------------|
+| Docs only | Author checklist; relative links resolve; platform examples consistent |
+| New/removed source files | `FILE-CATALOG.md` updated (if maintained) |
+| Methodology interpretation change | Document history row + status honesty |
+
+No pylint or product test gate unless code is later added.
+
+---
+
+## Sample commit subjects
+
+```text
+docs: add concept phases for v1 design
+docs(methodology): clarify scoring pipeline steps
+chore: catalog new DESIGN-NOTES path
+```
