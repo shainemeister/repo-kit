@@ -10,14 +10,17 @@ Copy what you need, **initiate from project interest** so formal docs guide deve
 
 | Piece | Role |
 |-------|------|
+| [SETUP.md](./SETUP.md) | One-time adoption guide (follow, then delete or archive) |
 | [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) | Structure, frontmatter, doc types, platform-aware examples, author checklist |
-| [RULES.md](./RULES.md) | Authority map, contracts, git, verification, pylint gate |
+| [RULES.md](./RULES.md) | Authority map, contracts, git, verification, style gates |
 | [configs/pylintrc](./configs/pylintrc) | PEP-8 style gate for Python product code (developer tooling) |
 | [templates/](./templates/) | Starting skeletons for README, CLI, methodology, security, concept, generic |
+| [examples/](./examples/) | Filled authority-map skeletons (CLI, library, docs-only) |
 
 | You want to… | Start here |
 |--------------|------------|
-| Start a project from an interest | [Initiate a project](#initiate-a-project-by-interest) |
+| Start a project from an interest | [SETUP.md](./SETUP.md) |
+| See a filled authority map | [examples/](./examples/) |
 | Scaffold docs for a new package | [templates/](./templates/) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) |
 | Set maintenance policy | [RULES.md](./RULES.md) |
 | Gate Python style (PEP-8) | [configs/pylintrc](./configs/pylintrc) · [RULES — pylint](./RULES.md#python-style-gate-pylint) |
@@ -27,43 +30,43 @@ Copy what you need, **initiate from project interest** so formal docs guide deve
 
 | Use case | What you get | Start here |
 |----------|--------------|------------|
-| **New greenfield repo** | Same doc shape and git hygiene from day one | [Initiate a project](#initiate-a-project-by-interest) |
-| **Align an existing repo** | Authority map + checklists without a rewrite | Copy RULES + MARKDOWN; fill paths |
+| **New greenfield repo** | Same doc shape and git hygiene from day one | [SETUP.md](./SETUP.md) |
+| **Align an existing repo** | Authority map + checklists without a rewrite | [SETUP.md](./SETUP.md) (selective copy) |
 | **Multi-package monorepo** | Shared standards; per-package README/CLI/security | Templates under each package |
 | **Python product code** | pylint PEP-8 gate, score 10.00, not a runtime dep | `configs/pylintrc` |
-| **Docs-only design repo** | Frontmatter, Summary→Contents, concept/methodology templates | MARKDOWN-STANDARD + templates |
+| **Docs-only design repo** | Frontmatter, Summary→Contents, concept/methodology templates | [examples/docs-only.md](./examples/docs-only.md) |
 | **Multi-OS team** | Dual-path examples and per-platform verify commands | [Platform-aware examples](./MARKDOWN-STANDARD.md#platform-aware-examples) |
 
 ## What’s included
 
 | Path | Role |
 |------|------|
+| `SETUP.md` | One-time initiation checklist (ephemeral) |
 | `MARKDOWN-STANDARD.md` | How to structure and write markdown |
 | `RULES.md` | How to maintain the repository |
+| `CHANGELOG.md` | Kit history |
 | `configs/pylintrc` | Portable pylint config (copy as `.pylintrc`) |
-| `templates/TEMPLATE-README.md` | Package overview (`doc_type: readme`) |
-| `templates/TEMPLATE-CLI.md` | CLI / automation contract |
-| `templates/TEMPLATE-METHODOLOGY.md` | Formulas and “how it works” |
-| `templates/TEMPLATE-SECURITY.md` | Trust boundary and execution notes |
-| `templates/TEMPLATE-CONCEPT.md` | Progressive design / multi-version concepts |
-| `templates/TEMPLATE-GENERIC.md` | Minimal substantial doc |
+| `templates/` | Copy-ready document skeletons |
+| `examples/` | Filled authority-map + verification skeletons |
+| `PLAN.md` | Kit improvement plan (maintainers) |
 | `LICENSE` | MIT license for this kit |
 
 ## Quick start
 
 Adopt this kit in a target repository:
 
-1. **Initiate from interest** — follow [Initiate a project](#initiate-a-project-by-interest) (platform, templates, authority map).  
+1. **Initiate from interest** — follow the full checklist in [SETUP.md](./SETUP.md) (adoption mode, platform, templates, authority map).  
 2. **Copy** into the target repository (or link this kit as a reference):
    - `MARKDOWN-STANDARD.md`
    - `RULES.md`
    - `templates/` (as needed)
    - `configs/pylintrc` if the project has Python product code  
-3. **Fill** the [authority map](./RULES.md#authority-map) and [verification before ship](./RULES.md#verification-before-ship) tables with real (or planned) paths and commands for your platform(s).  
+3. **Fill** the [authority map](./RULES.md#authority-map) and [verification before ship](./RULES.md#verification-before-ship) tables with real (or planned) paths and commands for your platform(s). Use [examples/](./examples/) as patterns.  
 4. **Root README:** follow the [landing pattern](./MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter) (no frontmatter; use cases first).  
 5. **Package docs:** copy a template, replace all `{{PLACEHOLDERS}}`, keep or drop OS blocks per [platform-aware rules](./MARKDOWN-STANDARD.md#platform-aware-examples), refresh Contents.  
 6. **Python:** copy `configs/pylintrc` to `.pylintrc` at package or repo root, set `py-version`, run `python -m pylint <package>`. Install pylint in the **developer** environment only.  
-7. **Optional inventory:** maintain a `FILE-CATALOG.md` (or similar) and update it on path add/remove/rename.
+7. **Optional inventory:** maintain a `FILE-CATALOG.md` (or similar) and update it on path add/remove/rename.  
+8. **After setup:** delete or archive `SETUP.md` so the root stays permanent contracts only.
 
 ### Suggested root layout after adopt
 
@@ -72,6 +75,7 @@ your-repo/
   README.md                 # landing (no frontmatter)
   RULES.md                  # maintenance (filled authority map)
   MARKDOWN-STANDARD.md      # or link to this kit
+  SETUP.md                  # temporary — delete after initiation
   .pylintrc                 # if Python product code
   FILE-CATALOG.md           # optional
   templates/                # optional local copies
@@ -84,31 +88,9 @@ your-repo/
 
 ## Initiate a project (by interest)
 
-Use this when starting or aligning a repo so **formal markdown guides development**, not only documents finished work.
+Use formal markdown to **guide development**, not only document finished work. The full one-time checklist—adoption modes, platform declaration, template pick by interest, authority-map fill, and first verification—lives in **[SETUP.md](./SETUP.md)**.
 
-1. **State the interest** — one sentence: product type (library / CLI / service / data tool / docs-only / monorepo) and primary user outcome.  
-2. **Set platform context** — primary OS for examples and verify commands: Windows, Linux, macOS, or multi. Follow [Platform-aware examples](./MARKDOWN-STANDARD.md#platform-aware-examples).  
-3. **Copy** the kit pieces you need (see [Quick start](#quick-start)).  
-4. **Fill the authority map** in [RULES.md](./RULES.md#authority-map) with real or **planned** paths—even before code exists—so every concern has a canonical home.  
-5. **Pick templates by interest:**
-
-| Project interest | Start with templates | First contracts to write |
-|------------------|----------------------|---------------------------|
-| Library / package API | README | Overview + consume example |
-| CLI / automation | README + CLI | Invocation, exit codes, verbs |
-| Service / long-running | README + SECURITY (+ CLI if any) | Trust boundary, run/verify |
-| Methodology / scoring / formulas | README + METHODOLOGY | Pipeline, formulas, outputs |
-| Security-sensitive tool | README + SECURITY | Trust boundary before features sprawl |
-| Design / multi-phase concept | CONCEPT | Principles + phases; label implementation status |
-| Docs-only / standards | GENERIC + root landing | Summary, use cases, history |
-| Monorepo multi-package | Per-package README (+ CLI/SECURITY as needed) | Shared RULES; thin per-package overlays |
-
-6. **Scaffold docs first** (or in the same change set as first code) — replace placeholders; refresh Contents; leave `status: draft` until the contract matches behavior.  
-7. **Use docs as the development guide:**  
-   - New behavior → update the **canonical** authority-map file in the same change set.  
-   - New public surface → CLI/API or README section before the feature is “done.”  
-   - Verification table → fill real commands as soon as they exist; run them before ship.  
-8. **Optional:** inventory file; pylint gate if Python product code.
+After initiation, delete or archive `SETUP.md`. Ongoing policy stays in [RULES.md](./RULES.md); authoring rules stay in [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md).
 
 **Checklists:** [Author checklist](./MARKDOWN-STANDARD.md#author-checklist) · [Contributor checklist](./RULES.md#contributor-checklist) · [How overlays work](#how-overlays-work)
 
@@ -133,14 +115,17 @@ When a project ships **Python product code**:
 | Install | Developer tooling only—not required for end users of the product |
 | Command | `python -m pylint <package_or_paths>` |
 
-Details: [RULES.md — Python style gate](./RULES.md#python-style-gate-pylint).
+Details: [RULES.md — Python style gate](./RULES.md#python-style-gate-pylint). For other languages: [Non-Python style gates](./RULES.md#non-python-style-gates).
 
 ## Where to go next
 
 | Need | Document |
 |------|----------|
+| One-time adoption / initiation | [SETUP.md](./SETUP.md) |
+| Filled authority-map examples | [examples/](./examples/) |
 | Frontmatter, Summary→Contents, platform examples, doc types | [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) |
-| Commits, contracts, checklists, pylint | [RULES.md](./RULES.md) |
+| Commits, contracts, checklists, style gates | [RULES.md](./RULES.md) |
+| Kit history | [CHANGELOG.md](./CHANGELOG.md) |
 | Start a package README | [templates/TEMPLATE-README.md](./templates/TEMPLATE-README.md) |
 | Start a CLI guide | [templates/TEMPLATE-CLI.md](./templates/TEMPLATE-CLI.md) |
 | License terms | [LICENSE](./LICENSE) |
@@ -148,6 +133,9 @@ Details: [RULES.md — Python style gate](./RULES.md#python-style-gate-pylint).
 ## For maintainers of this kit
 
 - Edit standards in place; bump `version` and `last_updated` on [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) and [RULES.md](./RULES.md) when contracts change.  
-- Keep examples domain-neutral (`my-service`, `packages/cli`).  
+- Record kit-level history in [CHANGELOG.md](./CHANGELOG.md).  
+- Keep examples domain-neutral (`my-service`, `my-cli`, `my_library`).  
 - Templates must retain `{{PLACEHOLDERS}}`; finished project docs must not.  
-- Dual-path shell blocks in templates stay until a project declares a single primary platform and drops the unused OS.
+- Dual-path shell blocks in templates stay until a project declares a single primary platform and drops the unused OS.  
+- Prefer purpose directories (`templates/`, `configs/`, `examples/`) over extra root files; see [Root hygiene](./RULES.md#root-hygiene).  
+- Kit evolution notes: [PLAN.md](./PLAN.md).
