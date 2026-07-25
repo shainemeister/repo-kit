@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/). Dates ar
 
 ## [Unreleased]
 
+---
+
+## [1.1.0] - 2026-07-25
+
 ### Added
 
 - Ephemeral `SETUP.md` for one-time project initiation (adoption modes, authority-map fill, template pick).
