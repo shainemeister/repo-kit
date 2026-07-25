@@ -39,17 +39,20 @@ Rows that do not apply (schema, methodology, etc.) are omitted.
 
 | Field | Value |
 |-------|--------|
-| Adopted kit version | `1.1.0` *(example — use latest kit CHANGELOG release)* |
+| Adopted kit version | `1.1.1` *(example — use latest kit CHANGELOG release under `## repo-kit`)* |
 | Adopted on | `2026-07-25` |
 | Kit source | https://github.com/shainemeister/repo-kit |
 
 ### Sample project CHANGELOG entry (first adoption)
 
 ```markdown
-## [Unreleased]
+## my-cli
 
-### Added
-- Adopted repo-kit 1.1.0 from https://github.com/shainemeister/repo-kit
+### [0.1.0] - 2026-07-25
+
+#### Added
+
+- Adopted repo-kit 1.1.1 from https://github.com/shainemeister/repo-kit
 ```
 
 ---

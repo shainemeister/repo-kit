@@ -54,7 +54,7 @@ Into the target repository (or keep a reference per your adoption mode):
 |-------|---------|--------|
 | [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) | Yes (or link) | Authoring rules |
 | [RULES.md](./RULES.md) | Yes | Fill authority map, verification, and kit baseline |
-| [CHANGELOG.md](./CHANGELOG.md) | **Yes** | Project history is **required** (Keep a Changelog); start from kit pattern or a fresh file |
+| [CHANGELOG.md](./CHANGELOG.md) | **Yes** | Project history is **required** (repository H2 → version H3 → category H4); start from kit pattern or a fresh file |
 | [templates/](./templates/) | As needed | Copy only the skeletons you will fill |
 | [configs/pylintrc](./configs/pylintrc) | If Python product code | Copy as `.pylintrc` at package or repo root |
 | This `SETUP.md` | Temporary | Follow, then delete or archive |
@@ -83,11 +83,11 @@ Before deleting this file, fill [Kit baseline](./RULES.md#kit-baseline) in the p
 
 | Field | What to set |
 |-------|-------------|
-| **Adopted kit version** | Latest released version from the kit [CHANGELOG.md](./CHANGELOG.md) (or note Unreleased + commit if copying mid-cycle) |
+| **Adopted kit version** | Latest released `### [X.Y.Z]` under `## repo-kit` in the kit [CHANGELOG.md](./CHANGELOG.md) (or latest released version + commit SHA if copying a non-release tip) |
 | **Adopted on** | Today’s date (`YYYY-MM-DD`) |
 | **Kit source** | Always **https://github.com/shainemeister/repo-kit** |
 
-Also ensure root `CHANGELOG.md` exists and record first adoption under `[Unreleased]` or an initial version section (e.g. “Adopted repo-kit X.Y.Z from https://github.com/shainemeister/repo-kit”).
+Also ensure root `CHANGELOG.md` exists with structure `## <Repository Name>` → `### [X.Y.Z] - YYYY-MM-DD` → `####` categories. Record first adoption under the initial project version section (e.g. under `#### Added`: “Adopted repo-kit X.Y.Z from https://github.com/shainemeister/repo-kit”).
 
 Upgrades later: [Upgrading the kit](./RULES.md#upgrading-the-kit-post-initiation).
 

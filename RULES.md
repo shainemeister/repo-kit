@@ -1,7 +1,7 @@
 ---
 title: Repository Maintenance Rules
 description: Fundamental rules for documenting, changing, verifying, and versioning any repository consistently.
-version: "1.2.0"
+version: "1.2.1"
 status: current
 audience:
   - developers
@@ -21,7 +21,7 @@ last_updated: "2026-07-25"
 
 Fundamental rules for maintaining a professional, auditable repository. These rules govern documentation, architecture boundaries, contracts, git hygiene, and verification—not product tutorials.
 
-**Document version:** 1.2.0  
+**Document version:** 1.2.1  
 
 **Related:** [README.md](./README.md) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) · [SETUP.md](./SETUP.md) · [CHANGELOG.md](./CHANGELOG.md) · [configs/pylintrc](./configs/pylintrc)
 
@@ -261,7 +261,7 @@ Every adopting repository follows these rules. They distinguish **three version 
 
 | Surface | What it is | Authority |
 |---------|------------|-----------|
-| **Kit version** | Semver of the Repository Standards Kit as a whole | Kit root [CHANGELOG.md](https://github.com/shainemeister/repo-kit/blob/main/CHANGELOG.md) release sections (`## [X.Y.Z] - YYYY-MM-DD`). Document frontmatter on kit files may move during Unreleased work; a **release** cuts one kit version. |
+| **Kit version** | Semver of the Repository Standards Kit as a whole | Kit root [CHANGELOG.md](https://github.com/shainemeister/repo-kit/blob/main/CHANGELOG.md) dated sections (`### [X.Y.Z] - YYYY-MM-DD`) under `## repo-kit`. Document frontmatter on kit files may move between kit releases; a **release** cuts one kit version as a dated section. |
 | **Project / package version** | The adopting repo’s product or library semver | Project packaging metadata **and** project [CHANGELOG.md](./CHANGELOG.md) |
 | **Document version** | Per-document frontmatter `version` + `last_updated` | That document only—not automatically equal to package or kit version |
 
@@ -280,22 +280,24 @@ Every repository that adopts this kit **must** maintain a root **`CHANGELOG.md`*
 | Rule | Detail |
 |------|--------|
 | **Required file** | Root `CHANGELOG.md` — listed in the [authority map](#authority-map) and [root hygiene](#root-hygiene) |
-| **Format** | [Keep a Changelog](https://keepachangelog.com/) style; dates ISO 8601 (`YYYY-MM-DD`) |
-| **Structure** | Top section **`## [Unreleased]`**, then dated `## [X.Y.Z] - YYYY-MM-DD` for each release |
+| **Format** | [Keep a Changelog](https://keepachangelog.com/) categories; dates ISO 8601 (`YYYY-MM-DD`) |
+| **Structure** | `## <Repository Name>` (integrated repository) → dated `### [X.Y.Z] - YYYY-MM-DD` (version change/update) → `#### Added` / `#### Changed` / … (categories) |
 | **Categories** | Use as needed: **Added**, **Changed**, **Deprecated**, **Removed**, **Fixed**, **Security** |
 | **Same change set** | Release-worthy behavior or contract changes include the CHANGELOG entry with the code/docs that ship them |
+
+There is **no Unreleased section**. Record each change under the `### [X.Y.Z]` version section that ships it (create or update that section in the same change set when cutting the release).
 
 **When a CHANGELOG entry is required**
 
 | Change | CHANGELOG |
 |--------|-----------|
-| Package / public contract version bump | **Required** — matching version section when releasing; or `[Unreleased]` until cut |
-| Behavior, CLI, API, schema, security-model change | **Required** |
-| Kit adoption or kit upgrade | **Required** (note kit version) |
+| Package / public contract version bump | **Required** — matching `### [X.Y.Z]` under the repository H2 for that release |
+| Behavior, CLI, API, schema, security-model change | **Required** under the version section that ships the change |
+| Kit adoption or kit upgrade | **Required** (note kit version; do **not** paste kit release history) |
 | Security fix | **Required** |
-| Pure typo or non-contract wording | May wait under `[Unreleased]`; **must not** ship a package version bump without a CHANGELOG section for that version |
+| Pure typo or non-contract wording | Optional; **must not** ship a package version bump without a matching version section for that version |
 
-Do not delete the Unreleased workflow. Do not ship a package version tag or release without a matching CHANGELOG section.
+Do not ship a package version tag or release without a matching `### [X.Y.Z]` CHANGELOG section under the repository H2.
 
 ### Kit baseline
 
@@ -315,11 +317,11 @@ Fill and keep this table in every adopting project’s `RULES.md` (this section)
 
 | Field | Value |
 |-------|--------|
-| Adopted kit version | *(this repo **is** the kit — current kit version = latest dated section in [CHANGELOG.md](./CHANGELOG.md), or Unreleased work toward the next)* |
+| Adopted kit version | *(this repo **is** the kit — current kit version = latest dated `### [X.Y.Z]` under `## repo-kit` in [CHANGELOG.md](./CHANGELOG.md))* |
 | Adopted on | — |
 | Kit source | https://github.com/shainemeister/repo-kit |
 
-At adopt time: read the kit’s `CHANGELOG.md` (latest released `X.Y.Z`, or note Unreleased + commit if copying mid-cycle), set **Adopted kit version** and **Adopted on**, keep **Kit source** as above, then delete or archive `SETUP.md`.
+At adopt time: read the kit’s `CHANGELOG.md` (latest released `### [X.Y.Z]` under `## repo-kit`, or note latest released version + commit SHA if copying a non-release tip), set **Adopted kit version** and **Adopted on**, keep **Kit source** as above, then delete or archive `SETUP.md`.
 
 ### Upgrading the kit (post-initiation)
 
@@ -540,12 +542,12 @@ Fill commands for the host OS(es) the team develops on. When multi-platform, eit
 | `feat` commit that only edits markdown | Use `docs` / `docs(scope)` |
 | Leaving SETUP.md forever at root after adoption | Delete or archive after initiation; keep [Kit baseline](#kit-baseline) |
 | Language style “somehow” without a named gate | Declare tool + pass criteria in RULES / verification table |
-| No project `CHANGELOG.md` | Maintain root CHANGELOG (Keep a Changelog); required for all adopters |
-| Package version bump without CHANGELOG section | Add matching release section (or Unreleased then cut) in the same change set |
+| No project `CHANGELOG.md` | Maintain root CHANGELOG (repository H2 → version H3 → category H4); required for all adopters |
+| Package version bump without CHANGELOG section | Add matching `### [X.Y.Z]` under the repository H2 in the same change set |
 | Shipping release-worthy behavior without CHANGELOG | Same change set: behavior + canonical docs + version + CHANGELOG |
 | Kit upgrade with no baseline or CHANGELOG note | Update Adopted kit version/date and project CHANGELOG |
 | Inventing an alternate kit source URL | Use https://github.com/shainemeister/repo-kit (unless a deliberate fork) |
-| Putting kit release history into a project `CHANGELOG.md` | Keep kit version only in the Kit baseline table (and, for the kit repo itself, in this file’s dated sections) |
+| Putting kit release history into a project `CHANGELOG.md` | Keep kit version only in the Kit baseline table (and, for the kit repo itself, under `## repo-kit` dated `###` sections) |
 
 ---
 
@@ -572,6 +574,7 @@ Before you commit or share a change:
 
 | Version | Notes |
 |---------|--------|
+| 1.2.1 | Hierarchical CHANGELOG structure (repository H2 → version H3 → category H4); Unreleased workflow removed; kit version authority = `### [X.Y.Z]` under `## repo-kit` |
 | 1.2.0 | Mandatory project CHANGELOG; three version surfaces; kit baseline + upgrade path (source https://github.com/shainemeister/repo-kit); SETUP lifecycle note; stronger versioning consistency |
 | 1.1.0 | Root hygiene; non-Python style gates; stronger commit-message modularity, scopes, body, examples, footers; SETUP/examples links; initiation pointer to SETUP.md |
 | 1.0.1 | Initiation from project interest; platform-aware verify/examples; pylintrc path wording aligned |

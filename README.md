@@ -136,10 +136,11 @@ Details: [RULES.md — Python style gate](./RULES.md#python-style-gate-pylint). 
 
 ## For maintainers of this kit
 
-- **Kit version** is defined by dated sections in [CHANGELOG.md](./CHANGELOG.md). Cutting a release = add `## [X.Y.Z] - YYYY-MM-DD` and treat that semver as the kit version adopters record.  
+- **Kit version** is defined by dated sections under `## repo-kit` in [CHANGELOG.md](./CHANGELOG.md). Cutting a release = add `### [X.Y.Z] - YYYY-MM-DD` (with `####` categories) under `## repo-kit` and treat that semver as the kit version adopters record.  
 - **Canonical source:** https://github.com/shainemeister/repo-kit — adopters always point [Kit baseline](./RULES.md#kit-baseline) here for upgrades.  
+- Adopters keep **project** history in their own `CHANGELOG.md` under `## <Repository Name>`; they do **not** copy kit release sections—kit version goes only in Kit baseline.  
 - Edit standards in place; bump `version` and `last_updated` on [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) and [RULES.md](./RULES.md) when contracts change.  
-- Record kit-level history under `[Unreleased]` until the next kit release.  
+- Record kit-level history under the `### [X.Y.Z]` version section that ships the change (no Unreleased section).  
 - `SETUP.md` is intentionally shipped for first-time adopters; adopters delete it after initiation. Future major releases may move or remove root SETUP; permanent contracts remain README / RULES / MARKDOWN-STANDARD / CHANGELOG.  
 - Keep examples domain-neutral (`my-service`, `my-cli`, `my_library`).  
 - Templates must retain `{{PLACEHOLDERS}}`; finished project docs must not.  
