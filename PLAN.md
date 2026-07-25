@@ -2,7 +2,7 @@
 title: Kit Improvement Plan
 description: Recommendations and concrete execution plan for greater efficiency, multi-domain mobility, clean root hygiene, and stronger commit-message consistency in the Repository Standards Kit.
 version: "1.0.1"
-status: draft
+status: current
 audience:
   - maintainers
   - adopters
@@ -11,6 +11,8 @@ related:
   - README.md
   - RULES.md
   - MARKDOWN-STANDARD.md
+  - SETUP.md
+  - CHANGELOG.md
 last_updated: "2026-07-24"
 ---
 
@@ -19,8 +21,8 @@ last_updated: "2026-07-24"
 Recommendations and execution guidance for evolving the kit toward higher adoption efficiency, cross-domain mobility, a consistently clean repository root, and more consistent modular commit history—while preserving its domain-agnostic, copy-ready character.
 
 **Document version:** 1.0.1  
-**Status:** draft  
-**Related:** [README.md](./README.md) · [RULES.md](./RULES.md) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md)
+**Status:** current (enhancements implemented)  
+**Related:** [README.md](./README.md) · [RULES.md](./RULES.md) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) · [SETUP.md](./SETUP.md) · [CHANGELOG.md](./CHANGELOG.md)
 
 ---
 
@@ -280,5 +282,5 @@ docs(rules): improve commit-message modularity, scopes, and documentation value
 
 | Version | Notes |
 |---------|--------|
-| 1.0.1 | Added Recommendation 6 (commit-message improvements for RULES.md); updated goals, execution plan, and risks |
+| 1.0.1 | Added Recommendation 6 (commit-message improvements for RULES.md); updated goals, execution plan, and risks. Status set to current after implementing Phases 1–3 (SETUP, slim README, CHANGELOG, examples/, RULES gates + commits + root hygiene). |
 | 1.0.0 | Initial improvement plan: SETUP.md, flat-structure preservation, root hygiene, examples/, execution steps |
