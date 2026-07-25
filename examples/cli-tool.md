@@ -25,6 +25,8 @@
 | Repo purpose and quick start | [README.md](../README.md) (project root) |
 | Markdown structure | `MARKDOWN-STANDARD.md` |
 | Maintenance policy | `RULES.md` |
+| Project history (**required**) | `CHANGELOG.md` |
+| Standards kit baseline | RULES — Kit baseline |
 | Package overview | `my-cli/README.md` |
 | CLI or automation contract | `my-cli/CLI-GUIDE.md` |
 | Security / trust boundary | `my-cli/SECURITY.md` |
@@ -32,6 +34,14 @@
 | Golden tests / fixtures | `my-cli/tests/fixtures/` |
 
 Rows that do not apply (schema, methodology, etc.) are omitted.
+
+### Sample kit baseline
+
+| Field | Value |
+|-------|--------|
+| Adopted kit version | `1.0.1` *(example — use latest kit CHANGELOG release)* |
+| Adopted on | `2026-07-25` |
+| Kit source | https://github.com/shainemeister/repo-kit |
 
 ---
 

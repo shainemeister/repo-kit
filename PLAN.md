@@ -13,12 +13,18 @@
 
 | # | Area | Decision |
 |---|------|----------|
-| 1 | Versioning / CHANGELOG hardening in `RULES.md` | **Primary focus** — make expectations explicit for every repo that adopts the kit |
+| 1 | Versioning / CHANGELOG hardening in `RULES.md` | **Primary focus** — **mandatory** project CHANGELOG; three version surfaces; **kit baseline** + upgrade path via https://github.com/shainemeister/repo-kit |
 | 2 | `.gitignore` | Enrich the default (or add clear adopter guidance) |
 | 3 | `configs/pylintrc` | Generalize `py-version`; keep strong PEP-8 / pylint emphasis |
 | 4 | Light automation (CI, pre-commit, validate-docs scripts) | **Out of scope** — leave as-is |
 | 5 | Discoverability (GitHub description, topics) | **Out of scope** — leave as-is |
 | 6 | Small consistency nits | Fix relative-link style + future-proof SETUP.md note |
+
+### Refinements (execution)
+
+1. Project `CHANGELOG.md` is a **must** (enforced in RULES: authority map, versioning, checklist, anti-patterns)—not optional.  
+2. Kit has a durable self-version (CHANGELOG releases + Adopted kit version in RULES) so repos can upgrade after SETUP is gone.  
+3. **Kit source** is always **https://github.com/shainemeister/repo-kit**.
 
 ---
 
@@ -31,10 +37,11 @@ The kit itself has slightly divergent version numbers (`RULES.md` 1.1.0, `MARKDO
 `RULES.md` gains an explicit, copy-ready section (or expanded existing “Versioning and change control” section) that:
 
 - Tells adopting repositories exactly what they must version and where.
-- Clarifies the relationship between **kit version** and **project / package version**.
-- Makes CHANGELOG expectations concrete (when to write entries, Keep a Changelog style, Unreleased section, etc.).
+- Clarifies the relationship between **kit version**, **project / package version**, and **document version**.
+- Makes CHANGELOG **mandatory** (when to write entries, Keep a Changelog style, Unreleased section, etc.).
+- Requires a durable **Kit baseline** (version, date, source = https://github.com/shainemeister/repo-kit) and an upgrade procedure.
 - Requires that document frontmatter `version` + `last_updated` stay aligned with the project’s change-control practice.
-- Is written so an adopter can fill a short authority-map row or verification row without inventing policy.
+- Is written so an adopter can fill kit baseline + authority-map rows without inventing policy.
 
 ### Tasks for AI / implementer
 
@@ -53,11 +60,12 @@ The kit itself has slightly divergent version numbers (`RULES.md` 1.1.0, `MARKDO
 7. Add a corresponding entry under `[Unreleased]` in `CHANGELOG.md`.
 
 ### Acceptance criteria
-- [ ] A reader of an adopting repo can answer “What versioning rules do I follow?” from `RULES.md` alone.
-- [ ] Kit vs project version distinction is unambiguous.
-- [ ] CHANGELOG expectations are concrete (not “consider keeping a changelog”).
-- [ ] No unresolved placeholders left in the new text.
-- [ ] `RULES.md` version and history updated; kit `CHANGELOG.md` notes the change.
+- [x] A reader of an adopting repo can answer “What versioning rules do I follow?” from `RULES.md` alone.
+- [x] Kit vs project vs document version distinction is unambiguous.
+- [x] CHANGELOG is mandatory and expectations are concrete.
+- [x] Kit baseline + upgrade path (source fixed to GitHub) survive SETUP removal.
+- [x] No unresolved placeholders left in the new policy text (adopter fill-ins use the kit’s existing `{{…}}` pattern).
+- [x] `RULES.md` version and history updated; kit `CHANGELOG.md` notes the change.
 
 ### Files
 - `RULES.md` (primary)
@@ -85,9 +93,9 @@ A practical, still-lightweight `.gitignore` that covers common cases without bec
 3. Do **not** add language-specific noise that would surprise a pure-docs or non-Python adopter.
 
 ### Acceptance criteria
-- [ ] No secrets or regenerable build/test artifacts are likely to be committed by accident under common workflows.
-- [ ] File remains short and readable.
-- [ ] Header comment present.
+- [x] No secrets or regenerable build/test artifacts are likely to be committed by accident under common workflows.
+- [x] File remains short and readable.
+- [x] Header comment present.
 
 ### Files
 - `.gitignore`
@@ -113,9 +121,9 @@ A practical, still-lightweight `.gitignore` that covers common cases without bec
 3. Confirm that `RULES.md` Python style-gate section still points correctly at the config and the 10.00 / exit-0 pass criteria.
 
 ### Acceptance criteria
-- [ ] An adopter cannot miss that they must set `py-version`.
-- [ ] PEP-8 / consistent-style purpose remains clear.
-- [ ] No change to the enable/disable philosophy (style gate, not design gate).
+- [x] An adopter cannot miss that they must set `py-version`.
+- [x] PEP-8 / consistent-style purpose remains clear.
+- [x] No change to the enable/disable philosophy (style gate, not design gate).
 
 ### Files
 - `configs/pylintrc`
@@ -141,7 +149,7 @@ A practical, still-lightweight `.gitignore` that covers common cases without bec
 2. Normalize to the style already preferred in `MARKDOWN-STANDARD.md` (relative, with `./` for same-directory siblings where it improves clarity, or the dominant existing style — pick one and apply uniformly).
 3. Prefer the form that matches the majority of current correct links so the diff stays small.
 
-**Acceptance:** No mixed styles for the same class of link (sibling vs parent).
+**Acceptance:** No mixed styles for the same class of link (sibling vs parent). *(Pre-audit: dominant style already `./` / `../`; no mass reformat required.)*
 
 ### 5b. Future-proof note for SETUP.md
 
@@ -154,7 +162,7 @@ A practical, still-lightweight `.gitignore` that covers common cases without bec
    - Future major kit releases may move or remove the root SETUP.md; the permanent contracts remain README / RULES / MARKDOWN-STANDARD.
 2. Keep the note brief — do not turn it into a migration guide yet.
 
-**Acceptance:** A future reader understands the intentional lifecycle of SETUP.md.
+**Acceptance:** A future reader understands the intentional lifecycle of SETUP.md. *(Done: SETUP header, RULES root hygiene, README maintainers.)*
 
 ### Files
 - All `.md` files that contain internal links (audit)
@@ -174,11 +182,11 @@ A practical, still-lightweight `.gitignore` that covers common cases without bec
 
 ## Definition of done for this plan
 
-- [ ] All acceptance criteria above are met.
-- [ ] No new unresolved `{{PLACEHOLDERS}}`.
-- [ ] Kit still follows its own MARKDOWN-STANDARD and RULES (frontmatter, Summary, history, etc.).
-- [ ] `CHANGELOG.md` records the work under Unreleased (or a new version section if releasing).
-- [ ] This `PLAN.md` can be archived or deleted once the work is complete (same pattern as the previous completed plan).
+- [x] All acceptance criteria above are met.
+- [x] No new unresolved `{{PLACEHOLDERS}}` beyond intentional adopter fill-ins (authority map / kit baseline).
+- [x] Kit still follows its own MARKDOWN-STANDARD and RULES (frontmatter, Summary, history, etc.).
+- [x] `CHANGELOG.md` records the work under Unreleased (or a new version section if releasing).
+- [ ] This `PLAN.md` can be archived or deleted once the work is complete (same pattern as the previous completed plan) — **await user confirmation**.
 
 ---
 

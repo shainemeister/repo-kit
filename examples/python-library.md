@@ -26,12 +26,22 @@ Optional: methodology template if formulas or scoring are part of the contract.
 | Repo purpose and quick start | `README.md` (project root) |
 | Markdown structure | `MARKDOWN-STANDARD.md` |
 | Maintenance policy | `RULES.md` |
+| Project history (**required**) | `CHANGELOG.md` |
+| Standards kit baseline | RULES — Kit baseline |
 | Package overview | `my_library/README.md` |
 | Public API contract | `my_library/README.md` (or `API.md`) |
 | Security / trust boundary | `my_library/SECURITY.md` |
 | Default config | `my_library/defaults.yaml` |
 | Golden tests / fixtures | `tests/fixtures/` |
-| Python style / PEP-8 gate | `.pylintrc` (from kit `configs/pylintrc`) |
+| Python style / PEP-8 gate | `.pylintrc` (from kit `configs/pylintrc`; **set `py-version`**) |
+
+### Sample kit baseline
+
+| Field | Value |
+|-------|--------|
+| Adopted kit version | `1.0.1` *(example — use latest kit CHANGELOG release)* |
+| Adopted on | `2026-07-25` |
+| Kit source | https://github.com/shainemeister/repo-kit |
 
 ---
 

@@ -2,9 +2,9 @@
 
 > **One-time adoption guide — follow, then delete or archive.**
 
-Use this file when starting or aligning a repository so **formal markdown guides development**, not only documents finished work. After you have filled the authority map, verification table, and first contracts, **delete or archive this file** so it does not accumulate as stale root noise.
+Use this file when starting or aligning a repository so **formal markdown guides development**, not only documents finished work. After you have filled the authority map, verification table, kit baseline, and first contracts, **delete or archive this file** so it does not accumulate as stale root noise.
 
-Permanent standards stay in [README.md](./README.md), [RULES.md](./RULES.md), and [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md).
+This kit **intentionally ships** `SETUP.md` at root for first-time adopters. Adopting projects remove it after initiation. Future major kit releases may move or remove root `SETUP.md`. **Permanent contracts** remain [README.md](./README.md), [RULES.md](./RULES.md), [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md), and [CHANGELOG.md](./CHANGELOG.md). The [Kit baseline](./RULES.md#kit-baseline) in RULES survives this file’s removal so you can upgrade from [https://github.com/shainemeister/repo-kit](https://github.com/shainemeister/repo-kit).
 
 ---
 
@@ -14,8 +14,9 @@ Permanent standards stay in [README.md](./README.md), [RULES.md](./RULES.md), an
 2. [State the interest](#1-state-the-interest) and [platform context](#2-set-platform-context).  
 3. [Copy](#3-copy-kit-pieces) the pieces you need.  
 4. [Fill the authority map](#4-fill-the-authority-map) (see [examples/](./examples/) for filled skeletons).  
-5. [Pick templates](#5-pick-templates-by-interest), scaffold docs, and [verify](#8-first-verification-commands).  
-6. [Delete or archive this file](#after-setup).
+5. [Record kit baseline](#4b-record-kit-baseline) and ensure root `CHANGELOG.md` exists.  
+6. [Pick templates](#5-pick-templates-by-interest), scaffold docs, and [verify](#8-first-verification-commands).  
+7. [Delete or archive this file](#after-setup).
 
 ---
 
@@ -52,7 +53,8 @@ Into the target repository (or keep a reference per your adoption mode):
 | Piece | Always? | Notes |
 |-------|---------|--------|
 | [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) | Yes (or link) | Authoring rules |
-| [RULES.md](./RULES.md) | Yes | Fill authority map + verification |
+| [RULES.md](./RULES.md) | Yes | Fill authority map, verification, and kit baseline |
+| [CHANGELOG.md](./CHANGELOG.md) | **Yes** | Project history is **required** (Keep a Changelog); start from kit pattern or a fresh file |
 | [templates/](./templates/) | As needed | Copy only the skeletons you will fill |
 | [configs/pylintrc](./configs/pylintrc) | If Python product code | Copy as `.pylintrc` at package or repo root |
 | This `SETUP.md` | Temporary | Follow, then delete or archive |
@@ -72,6 +74,22 @@ Also fill [Verification before ship](./RULES.md#verification-before-ship) with c
 | CLI / automation | [examples/cli-tool.md](./examples/cli-tool.md) |
 | Python library | [examples/python-library.md](./examples/python-library.md) |
 | Docs-only / standards | [examples/docs-only.md](./examples/docs-only.md) |
+
+---
+
+## 4b. Record kit baseline
+
+Before deleting this file, fill [Kit baseline](./RULES.md#kit-baseline) in the project’s `RULES.md`:
+
+| Field | What to set |
+|-------|-------------|
+| **Adopted kit version** | Latest released version from the kit [CHANGELOG.md](./CHANGELOG.md) (or note Unreleased + commit if copying mid-cycle) |
+| **Adopted on** | Today’s date (`YYYY-MM-DD`) |
+| **Kit source** | Always **https://github.com/shainemeister/repo-kit** |
+
+Also ensure root `CHANGELOG.md` exists and record first adoption under `[Unreleased]` or an initial version section (e.g. “Adopted repo-kit X.Y.Z from https://github.com/shainemeister/repo-kit”).
+
+Upgrades later: [Upgrading the kit](./RULES.md#upgrading-the-kit-post-initiation).
 
 ---
 
@@ -152,8 +170,10 @@ On Windows you may use `py -3.x -m pylint …`. Install pylint in the **develope
 | Keep (permanent) | Remove or archive |
 |------------------|-------------------|
 | Root README, RULES, MARKDOWN-STANDARD | **This `SETUP.md`** |
+| Root **CHANGELOG.md** (required) | — |
+| Kit baseline filled in RULES | — |
 | Filled package docs and templates you still use | Unfilled template copies you do not need |
 | `.pylintrc` / style configs you adopted | — |
-| Optional FILE-CATALOG, CHANGELOG | — |
+| Optional FILE-CATALOG | — |
 
-Root hygiene (what belongs at the repository root): [RULES — Root hygiene](./RULES.md#root-hygiene).
+Root hygiene: [RULES — Root hygiene](./RULES.md#root-hygiene). Kit upgrades: [RULES — Upgrading the kit](./RULES.md#upgrading-the-kit-post-initiation) via https://github.com/shainemeister/repo-kit.

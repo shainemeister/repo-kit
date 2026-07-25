@@ -29,11 +29,21 @@ Copy [RULES.md](../RULES.md) and [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md)
 | Path-level file inventory (optional) | `FILE-CATALOG.md` |
 | Markdown structure | `MARKDOWN-STANDARD.md` |
 | Maintenance policy | `RULES.md` |
+| Project history (**required**) | `CHANGELOG.md` |
+| Standards kit baseline | RULES — Kit baseline |
 | Design / concept notes | `CONCEPT-v1.md` |
 | Formulas / “how it works” | `METHODOLOGY.md` |
 | Kit evolution / planning | `PLAN.md` (if used) |
 
-Omit package CLI, schema, fixtures, and Python style rows when they do not apply.
+Omit package CLI, schema, fixtures, and Python style rows when they do not apply. Docs-only repos still **must** keep `CHANGELOG.md` for policy/doc releases.
+
+### Sample kit baseline
+
+| Field | Value |
+|-------|--------|
+| Adopted kit version | `1.0.1` *(example — use latest kit CHANGELOG release)* |
+| Adopted on | `2026-07-25` |
+| Kit source | https://github.com/shainemeister/repo-kit |
 
 ---
 

@@ -12,7 +12,8 @@ Copy what you need, **initiate from project interest** so formal docs guide deve
 |-------|------|
 | [SETUP.md](./SETUP.md) | One-time adoption guide (follow, then delete or archive) |
 | [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) | Structure, frontmatter, doc types, platform-aware examples, author checklist |
-| [RULES.md](./RULES.md) | Authority map, contracts, git, verification, style gates |
+| [RULES.md](./RULES.md) | Authority map, contracts, versioning, CHANGELOG, kit baseline, git, verification, style gates |
+| [CHANGELOG.md](./CHANGELOG.md) | Kit version history (canonical kit releases) |
 | [configs/pylintrc](./configs/pylintrc) | PEP-8 style gate for Python product code (developer tooling) |
 | [templates/](./templates/) | Starting skeletons for README, CLI, methodology, security, concept, generic |
 | [examples/](./examples/) | Filled authority-map skeletons (CLI, library, docs-only) |
@@ -63,17 +64,19 @@ Adopt this kit in a target repository:
 3. **Fill** the [authority map](./RULES.md#authority-map) and [verification before ship](./RULES.md#verification-before-ship) tables with real (or planned) paths and commands for your platform(s). Use [examples/](./examples/) as patterns.  
 4. **Root README:** follow the [landing pattern](./MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter) (no frontmatter; use cases first).  
 5. **Package docs:** copy a template, replace all `{{PLACEHOLDERS}}`, keep or drop OS blocks per [platform-aware rules](./MARKDOWN-STANDARD.md#platform-aware-examples), refresh Contents.  
-6. **Python:** copy `configs/pylintrc` to `.pylintrc` at package or repo root, set `py-version`, run `python -m pylint <package>`. Install pylint in the **developer** environment only.  
-7. **Optional inventory:** maintain a `FILE-CATALOG.md` (or similar) and update it on path add/remove/rename.  
-8. **After setup:** delete or archive `SETUP.md` so the root stays permanent contracts only.
+6. **Python:** copy `configs/pylintrc` to `.pylintrc` at package or repo root, **set `py-version` to your supported Python**, run `python -m pylint <package>`. Install pylint in the **developer** environment only.  
+7. **CHANGELOG + kit baseline:** keep root `CHANGELOG.md` (required). Record [Adopted kit version](./RULES.md#kit-baseline) and date; kit source is always https://github.com/shainemeister/repo-kit.  
+8. **Optional inventory:** maintain a `FILE-CATALOG.md` (or similar) and update it on path add/remove/rename.  
+9. **After setup:** delete or archive `SETUP.md` so the root stays permanent contracts only (README, RULES, MARKDOWN-STANDARD, CHANGELOG).
 
 ### Suggested root layout after adopt
 
 ```text
 your-repo/
   README.md                 # landing (no frontmatter)
-  RULES.md                  # maintenance (filled authority map)
+  RULES.md                  # maintenance (filled authority map + kit baseline)
   MARKDOWN-STANDARD.md      # or link to this kit
+  CHANGELOG.md              # required — project history
   SETUP.md                  # temporary — delete after initiation
   .pylintrc                 # if Python product code
   FILE-CATALOG.md           # optional
@@ -124,15 +127,20 @@ Details: [RULES.md — Python style gate](./RULES.md#python-style-gate-pylint). 
 | Filled authority-map examples | [examples/](./examples/) |
 | Frontmatter, Summary→Contents, platform examples, doc types | [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) |
 | Commits, contracts, checklists, style gates | [RULES.md](./RULES.md) |
-| Kit history | [CHANGELOG.md](./CHANGELOG.md) |
+| Kit history / kit version | [CHANGELOG.md](./CHANGELOG.md) |
+| Upstream kit (adopt / upgrade) | https://github.com/shainemeister/repo-kit |
+| Versioning, CHANGELOG, kit baseline | [RULES — Versioning](./RULES.md#versioning-and-change-control) |
 | Start a package README | [templates/TEMPLATE-README.md](./templates/TEMPLATE-README.md) |
 | Start a CLI guide | [templates/TEMPLATE-CLI.md](./templates/TEMPLATE-CLI.md) |
 | License terms | [LICENSE](./LICENSE) |
 
 ## For maintainers of this kit
 
+- **Kit version** is defined by dated sections in [CHANGELOG.md](./CHANGELOG.md). Cutting a release = add `## [X.Y.Z] - YYYY-MM-DD` and treat that semver as the kit version adopters record.  
+- **Canonical source:** https://github.com/shainemeister/repo-kit — adopters always point [Kit baseline](./RULES.md#kit-baseline) here for upgrades.  
 - Edit standards in place; bump `version` and `last_updated` on [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) and [RULES.md](./RULES.md) when contracts change.  
-- Record kit-level history in [CHANGELOG.md](./CHANGELOG.md).  
+- Record kit-level history under `[Unreleased]` until the next kit release.  
+- `SETUP.md` is intentionally shipped for first-time adopters; adopters delete it after initiation. Future major releases may move or remove root SETUP; permanent contracts remain README / RULES / MARKDOWN-STANDARD / CHANGELOG.  
 - Keep examples domain-neutral (`my-service`, `my-cli`, `my_library`).  
 - Templates must retain `{{PLACEHOLDERS}}`; finished project docs must not.  
 - Dual-path shell blocks in templates stay until a project declares a single primary platform and drops the unused OS.  

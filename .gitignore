@@ -1,3 +1,6 @@
+# Starter ignore list for adopters of repo-kit.
+# Extend for your language, tooling, and local conventions.
+
 # OS
 Thumbs.db
 Desktop.ini
@@ -13,8 +16,26 @@ Desktop.ini
 .env
 .env.*
 
-# Python (if local experiments)
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+*.egg
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
 .venv/
 venv/
+env/
+
+# Coverage / test runners
+.coverage
+htmlcov/
+.tox/
+
+# Node (light — mixed or frontend-adjacent repos)
+node_modules/

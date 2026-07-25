@@ -1,7 +1,7 @@
 ---
 title: Repository Maintenance Rules
 description: Fundamental rules for documenting, changing, verifying, and versioning any repository consistently.
-version: "1.1.0"
+version: "1.2.0"
 status: current
 audience:
   - developers
@@ -12,17 +12,18 @@ related:
   - README.md
   - MARKDOWN-STANDARD.md
   - SETUP.md
+  - CHANGELOG.md
   - configs/pylintrc
-last_updated: "2026-07-24"
+last_updated: "2026-07-25"
 ---
 
 # Repository Maintenance Rules
 
 Fundamental rules for maintaining a professional, auditable repository. These rules govern documentation, architecture boundaries, contracts, git hygiene, and verification—not product tutorials.
 
-**Document version:** 1.1.0  
+**Document version:** 1.2.0  
 
-**Related:** [README.md](./README.md) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) · [SETUP.md](./SETUP.md) · [configs/pylintrc](./configs/pylintrc)
+**Related:** [README.md](./README.md) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) · [SETUP.md](./SETUP.md) · [CHANGELOG.md](./CHANGELOG.md) · [configs/pylintrc](./configs/pylintrc)
 
 ---
 
@@ -35,6 +36,8 @@ Copy this file into a project and **fill the authority map and verification tabl
 | Must | Must not |
 |------|----------|
 | Update canonical docs with behavior changes | Commit secrets, regenerable outputs, or real sensitive data |
+| Maintain root **CHANGELOG.md** (Keep a Changelog) | Ship version bumps or release-worthy changes without CHANGELOG |
+| Keep [Kit baseline](#kit-baseline) current after adopt/upgrade | Lose track of kit version after deleting SETUP |
 | Use conventional commit messages that match staged files | Mix unrelated packages or leave CLI/API/security docs stale |
 | Keep packages composable at the workflow layer | Silently rename public APIs, CLI fields, or schema columns |
 | Run **pylint** on Python product code after those edits | Treat pylint as a product runtime install for end users |
@@ -76,7 +79,8 @@ Replace paths below with your project’s real files. Rows that do not apply may
 | Path-level file inventory (optional) | `FILE-CATALOG.md` (or equivalent) |
 | Markdown structure, frontmatter, author checklist | [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) · [templates/](./templates/) |
 | Maintenance policy (this file) | [RULES.md](./RULES.md) |
-| Kit / project history (optional) | [CHANGELOG.md](./CHANGELOG.md) |
+| Project history (**required**) | [CHANGELOG.md](./CHANGELOG.md) |
+| Standards kit baseline | [Kit baseline](#kit-baseline) in this file (version + source) |
 | Filled authority-map examples (kit reference) | [examples/](./examples/) |
 | Package overview | `{{PACKAGE}}/README.md` |
 | CLI or automation contract | `{{PACKAGE}}/CLI-GUIDE.md` (or `API.md`) |
@@ -104,8 +108,8 @@ Keep the repository root **scannable**: entry points and policy first; purpose d
 | `.gitignore` | Ignore rules |
 | `RULES.md` | Maintenance policy + authority map |
 | `MARKDOWN-STANDARD.md` | Writing and structure standard |
-| `SETUP.md` | One-time only (then remove or archive) |
-| `CHANGELOG.md` | History (recommended) |
+| `SETUP.md` | One-time only (then remove or archive); kit may ship it for first-time adopters |
+| `CHANGELOG.md` | Project history (**required**) |
 | `FILE-CATALOG.md` | Optional inventory |
 | Package or product entry files | Only when they are the natural top-level surface |
 
@@ -126,7 +130,8 @@ Keep the repository root **scannable**: entry points and policy first; purpose d
 1. Update the authority map in the **same change set** whenever an intentional path is added, removed, or renamed (when the map lists that path).  
 2. Prefer purpose directories over additional root files.  
 3. Mark ephemeral files clearly (e.g. SETUP header) so they do not accumulate.  
-4. Respect `.gitignore`; never force-add regenerable artifacts.
+4. Respect `.gitignore`; never force-add regenerable artifacts.  
+5. **SETUP.md lifecycle:** this kit ships `SETUP.md` at root for first-time adopters. Adopting projects **delete or archive** it after initiation. Future major kit releases may move or remove root `SETUP.md`; permanent contracts remain `README.md`, `RULES.md`, `MARKDOWN-STANDARD.md`, and `CHANGELOG.md`. The [Kit baseline](#kit-baseline) in RULES survives SETUP removal so upgrades stay trackable.
 
 ---
 
@@ -180,7 +185,7 @@ If pylint is not installed on a developer machine, install it into the **develop
 **Adopt steps:**
 
 1. Copy `configs/pylintrc` to the package or repo root as `.pylintrc`.  
-2. Set `py-version` to the project’s supported Python.  
+2. **Must:** set `py-version` to the project’s supported Python (the file ships a starter default only—change it).  
 3. Point the verification table at the real package path.  
 4. Extend `good-names` only when short identifiers are intentional and repeated.
 
@@ -250,18 +255,92 @@ Canonical detail: the package `SECURITY.md` / `ENTERPRISE-SECURITY.md` (or equiv
 
 ## Versioning and change control
 
+Every adopting repository follows these rules. They distinguish **three version surfaces**, require a project **CHANGELOG**, and keep a durable **kit baseline** so standards upgrades remain possible after `SETUP.md` is removed.
+
+### Three version surfaces
+
+| Surface | What it is | Authority |
+|---------|------------|-----------|
+| **Kit version** | Semver of the Repository Standards Kit as a whole | Kit root [CHANGELOG.md](https://github.com/shainemeister/repo-kit/blob/main/CHANGELOG.md) release sections (`## [X.Y.Z] - YYYY-MM-DD`). Document frontmatter on kit files may move during Unreleased work; a **release** cuts one kit version. |
+| **Project / package version** | The adopting repo’s product or library semver | Project packaging metadata **and** project [CHANGELOG.md](./CHANGELOG.md) |
+| **Document version** | Per-document frontmatter `version` + `last_updated` | That document only—not automatically equal to package or kit version |
+
 | Surface | When to bump |
 |---------|----------------|
 | Package / library version | CLI contract, public API, scoring/export behavior, or stable output field names change |
 | Document frontmatter `version` + `last_updated` | That document’s guidance or contract changes |
 | Methodology **Document history** table | Material formula or interpretation changes |
+| Project `CHANGELOG.md` | See [Mandatory project CHANGELOG](#mandatory-project-changelog) |
+| Kit baseline (adopted kit version) | On first adopt and every kit upgrade — see [Kit baseline](#kit-baseline) |
 
-Additional rules:
+### Mandatory project CHANGELOG
+
+Every repository that adopts this kit **must** maintain a root **`CHANGELOG.md`**. Docs-only and standards repos are not exempt: they version documentation and policy releases the same way.
+
+| Rule | Detail |
+|------|--------|
+| **Required file** | Root `CHANGELOG.md` — listed in the [authority map](#authority-map) and [root hygiene](#root-hygiene) |
+| **Format** | [Keep a Changelog](https://keepachangelog.com/) style; dates ISO 8601 (`YYYY-MM-DD`) |
+| **Structure** | Top section **`## [Unreleased]`**, then dated `## [X.Y.Z] - YYYY-MM-DD` for each release |
+| **Categories** | Use as needed: **Added**, **Changed**, **Deprecated**, **Removed**, **Fixed**, **Security** |
+| **Same change set** | Release-worthy behavior or contract changes include the CHANGELOG entry with the code/docs that ship them |
+
+**When a CHANGELOG entry is required**
+
+| Change | CHANGELOG |
+|--------|-----------|
+| Package / public contract version bump | **Required** — matching version section when releasing; or `[Unreleased]` until cut |
+| Behavior, CLI, API, schema, security-model change | **Required** |
+| Kit adoption or kit upgrade | **Required** (note kit version) |
+| Security fix | **Required** |
+| Pure typo or non-contract wording | May wait under `[Unreleased]`; **must not** ship a package version bump without a CHANGELOG section for that version |
+
+Do not delete the Unreleased workflow. Do not ship a package version tag or release without a matching CHANGELOG section.
+
+### Kit baseline
+
+After initiation, `SETUP.md` is gone. Projects still need a durable record of **which kit version** they adopted and **where upgrades come from**.
+
+Fill and keep this table in every adopting project’s `RULES.md` (this section). Update it on every kit upgrade.
+
+| Field | Value |
+|-------|--------|
+| Adopted kit version | `{{KIT_VERSION}}` |
+| Adopted on | `{{KIT_ADOPTED_ON}}` |
+| Kit source | https://github.com/shainemeister/repo-kit |
+
+**Kit source** is always **https://github.com/shainemeister/repo-kit** for this standards kit (not a free-form alternate). Forks that deliberately diverge document their own source.
+
+**This repository (the kit itself):**
+
+| Field | Value |
+|-------|--------|
+| Adopted kit version | *(this repo **is** the kit — current kit version = latest dated section in [CHANGELOG.md](./CHANGELOG.md), or Unreleased work toward the next)* |
+| Adopted on | — |
+| Kit source | https://github.com/shainemeister/repo-kit |
+
+At adopt time: read the kit’s `CHANGELOG.md` (latest released `X.Y.Z`, or note Unreleased + commit if copying mid-cycle), set **Adopted kit version** and **Adopted on**, keep **Kit source** as above, then delete or archive `SETUP.md`.
+
+### Upgrading the kit (post-initiation)
+
+1. Open **https://github.com/shainemeister/repo-kit** and read `CHANGELOG.md` (and releases if present).  
+2. Compare the project’s **Adopted kit version** to the latest kit version.  
+3. Review CHANGELOG entries since the adopted version.  
+4. Copy or merge wanted pieces (`RULES.md` policy sections, `MARKDOWN-STANDARD.md`, `templates/`, `configs/pylintrc`, `.gitignore`, examples patterns). Preserve project-specific authority-map paths and verification commands.  
+5. Update **Adopted kit version** and **Adopted on**; keep Kit source unchanged.  
+6. Add a project CHANGELOG entry (e.g. under Changed: “Upgraded repo-kit baseline to X.Y.Z”).  
+7. Re-check authority map, verification table, and any new kit contracts.
+
+No automation is required—policy and the [contributor checklist](#contributor-checklist) enforce the practice.
+
+### Consistency rules
 
 1. Frontmatter `version` and the in-doc status line must **match** when both exist.  
 2. Docs that cite a product version must stay aligned with the code version they describe.  
-3. Prefer **backward-compatible** additions (new columns, new optional flags) over silent renames. Breaking changes require explicit notes in the CLI/API guide and history.  
-4. Design / concept docs may advance without implementing code; label implementation status clearly.
+3. Prefer **backward-compatible** additions (new columns, new optional flags) over silent renames. Breaking changes require explicit notes in the CLI/API guide, history, and CHANGELOG.  
+4. Design / concept docs may advance without implementing code; label implementation status clearly.  
+5. Behavior or contract changes, their **canonical** docs, the appropriate **version bump**, and the **CHANGELOG** entry belong in the **same change set** when the change is release-worthy.  
+6. Kit version and project/package version are **independent**. Adopting a new kit does not force a product version bump unless product behavior also changes.
 
 ---
 
@@ -434,11 +513,12 @@ Fill commands for the host OS(es) the team develops on. When multi-platform, eit
 | Trigger | Action |
 |---------|--------|
 | Every source path add/remove/rename | Update inventory/catalog if maintained |
-| Every release-worthy package behavior change | Bump code version; refresh CLI/API guide and status blocks |
+| Every release-worthy package behavior change | Bump code version; refresh CLI/API guide and status blocks; update `CHANGELOG.md` |
 | Every product Python edit | Run pylint gate; keep exit 0 / 10.00 score |
-| Security-relevant change | Update matching security doc; re-run probes as appropriate |
+| Security-relevant change | Update matching security doc; re-run probes as appropriate; CHANGELOG entry |
 | Fixture failure after intentional math/logic change | Refresh expected outputs only with methodology note |
 | Stale `last_updated` on heavily edited docs | Set ISO date when merging |
+| Kit upgrade available upstream | Follow [Upgrading the kit](#upgrading-the-kit-post-initiation); update baseline + project CHANGELOG |
 
 ---
 
@@ -458,8 +538,13 @@ Fill commands for the host OS(es) the team develops on. When multi-platform, eit
 | Vague commits (`update stuff`, `wip`) | Conventional `type(scope):` subject naming the real surface |
 | Code without CLI/methodology/security docs | Same change set as the canonical doc per authority map |
 | `feat` commit that only edits markdown | Use `docs` / `docs(scope)` |
-| Leaving SETUP.md forever at root after adoption | Delete or archive after initiation |
+| Leaving SETUP.md forever at root after adoption | Delete or archive after initiation; keep [Kit baseline](#kit-baseline) |
 | Language style “somehow” without a named gate | Declare tool + pass criteria in RULES / verification table |
+| No project `CHANGELOG.md` | Maintain root CHANGELOG (Keep a Changelog); required for all adopters |
+| Package version bump without CHANGELOG section | Add matching release section (or Unreleased then cut) in the same change set |
+| Shipping release-worthy behavior without CHANGELOG | Same change set: behavior + canonical docs + version + CHANGELOG |
+| Kit upgrade with no baseline or CHANGELOG note | Update Adopted kit version/date and project CHANGELOG |
+| Inventing an alternate kit source URL | Use https://github.com/shainemeister/repo-kit (unless a deliberate fork) |
 
 ---
 
@@ -470,6 +555,7 @@ Before you commit or share a change:
 - [ ] Behavior matches the **canonical** doc for that surface (CLI / API / methodology / security / README)  
 - [ ] Inventory/catalog updated if paths changed (when maintained)  
 - [ ] Versions and `last_updated` bumped where contracts changed  
+- [ ] **CHANGELOG.md** updated when required (release-worthy behavior, version bump, security, kit adopt/upgrade)  
 - [ ] Required **verification** from the table above has been run  
 - [ ] If product Python changed: **pylint gate** passed (`python -m pylint <package_or_paths>`)  
 - [ ] No secrets, sensitive production data, regenerable outputs, or caches staged  
@@ -477,6 +563,7 @@ Before you commit or share a change:
 - [ ] Commit message uses `type(scope):` format and matches the staged files  
 - [ ] Subject would still make sense years later; one logical surface preferred  
 - [ ] Canonical docs for any behavior change are in the same change set  
+- [ ] If kit pieces changed: [Kit baseline](#kit-baseline) version/date updated and CHANGELOG notes the upgrade  
 
 ---
 
@@ -484,6 +571,7 @@ Before you commit or share a change:
 
 | Version | Notes |
 |---------|--------|
+| 1.2.0 | Mandatory project CHANGELOG; three version surfaces; kit baseline + upgrade path (source https://github.com/shainemeister/repo-kit); SETUP lifecycle note; stronger versioning consistency |
 | 1.1.0 | Root hygiene; non-Python style gates; stronger commit-message modularity, scopes, body, examples, footers; SETUP/examples links; initiation pointer to SETUP.md |
 | 1.0.1 | Initiation from project interest; platform-aware verify/examples; pylintrc path wording aligned |
 | 1.0.0 | Initial portable maintenance rules: authority map, docs, format, pylint PEP-8 gate, architecture, contracts, security baseline, versioning, git, verification |

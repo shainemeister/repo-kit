@@ -2,12 +2,21 @@
 # Copy this file to your package or repo root as `.pylintrc`, or pass:
 #   python -m pylint --rcfile=path/to/pylintrc <package_or_paths>
 #
-# Set py-version to your supported Python (e.g. 3.11, 3.12, 3.13).
+# PURPOSE: PEP-8 / consistent-style gate for Python product code.
+#   Pass criteria (see RULES.md): exit code 0 and score 10.00/10.
+#   Do NOT add pylint as a product runtime dependency for end users.
+#
+# *** ADOPTER ACTION REQUIRED ***
+#   Set py-version below to YOUR project's supported Python version
+#   (e.g. 3.11, 3.12, 3.13). The value 3.13 is a starter default only—
+#   it is NOT a kit lock-in. Change it before relying on the gate.
+#
 # Example:
 #   python -m pylint mypackage
 
 [MAIN]
 jobs = 1
+# CHANGE ME: set to the project's supported Python (e.g. 3.11, 3.12, 3.13).
 py-version = 3.13
 ignore = __pycache__
 
