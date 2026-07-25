@@ -318,7 +318,7 @@ Use a **Conventional Commits–style** subject so history stays scannable.
 
 | Context | Preferred scopes | Notes |
 |---------|------------------|--------|
-| **This kit** | `rules`, `markdown`, `templates`, `setup`, `examples`, `plan` | Use when the change is limited to that surface |
+| **This kit** | `rules`, `markdown`, `templates`, `setup`, `examples` | Use when the change is limited to that surface |
 | **Adopting projects** | Package folder name, `cli`, `security`, `methodology` | Or omit for root-wide policy/README/shared schema |
 | **Omit scope** | — | Root-wide files with no single package owner |
 
