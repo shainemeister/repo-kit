@@ -41,6 +41,25 @@ Then follow the full one-time checklist in [SETUP.md](./SETUP.md), fill the auth
 
 `PLAN.md` is a **user-provided dependency**. The kit does not ship one. Without a clear plan the adoption still works, but results are less precise.
 
+### Upgrading an existing adoption
+
+If your repository **already** has a [Kit baseline](./RULES.md#kit-baseline) in `RULES.md`, do **not** re-run SETUP as the primary path. Follow **[Upgrading the kit (post-initiation)](./RULES.md#upgrading-the-kit-post-initiation)**.
+
+Read only the kit [CHANGELOG.md](./CHANGELOG.md) entries since your current Adopted kit version; merge only what you need; never copy the full kit history into your project CHANGELOG.
+
+**One-prompt upgrade (AI agent):**
+
+```text
+I have an existing repository that already adopted repo-kit.
+Current Adopted kit version is recorded in my RULES.md Kit baseline table.
+
+Please:
+1. Read the kit CHANGELOG.md at https://github.com/shainemeister/repo-kit (or the local clone) and show me only the entries since my current baseline version.
+2. Help me decide which pieces to merge (RULES policy sections, MARKDOWN-STANDARD, templates, configs/pylintrc, etc.) while preserving my project-specific authority map and verification commands.
+3. Update my Kit baseline (version + date) and add a short note to my project CHANGELOG.md.
+Do not copy the full kit CHANGELOG history into my project CHANGELOG.
+```
+
 ## Summary
 
 This kit is **domain-agnostic**. Use it for libraries, CLIs, services, data tools, monorepos, or docs-only work. It generalizes patterns proven in larger multi-package repos without baking in a single product or industry.
@@ -60,6 +79,7 @@ Copy what you need, **initiate from project interest** so formal docs guide deve
 | You want to… | Start here |
 |--------------|------------|
 | Start a project from an interest | [SETUP.md](./SETUP.md) |
+| Upgrade an existing kit adoption | [Upgrading an existing adoption](#upgrading-an-existing-adoption) · [RULES — Upgrading the kit](./RULES.md#upgrading-the-kit-post-initiation) |
 | See a filled authority map | [examples/](./examples/) |
 | Scaffold docs for a new package | [templates/](./templates/) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) |
 | Set maintenance policy | [RULES.md](./RULES.md) |
@@ -72,6 +92,7 @@ Copy what you need, **initiate from project interest** so formal docs guide deve
 |----------|--------------|------------|
 | **New greenfield repo** | Same doc shape and git hygiene from day one | [SETUP.md](./SETUP.md) |
 | **Align an existing repo** | Authority map + checklists without a rewrite | [SETUP.md](./SETUP.md) (selective copy) |
+| **Upgrade existing kit adoption** | Merge kit deltas since baseline; keep project authority map | [Upgrading an existing adoption](#upgrading-an-existing-adoption) |
 | **Multi-package monorepo** | Shared standards; per-package README/CLI/security | Templates under each package |
 | **Python product code** | pylint PEP-8 gate, score 10.00, not a runtime dep | `configs/pylintrc` |
 | **Docs-only design repo** | Frontmatter, Summary→Contents, concept/methodology templates | [examples/docs-only.md](./examples/docs-only.md) |
@@ -154,7 +175,8 @@ Details: [RULES.md — Python style gate](./RULES.md#python-style-gate-pylint). 
 | Frontmatter, Summary→Contents, platform examples, doc types | [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) |
 | Commits, contracts, checklists, style gates | [RULES.md](./RULES.md) |
 | Kit history / kit version | [CHANGELOG.md](./CHANGELOG.md) |
-| Upstream kit (adopt / upgrade) | https://github.com/shainemeister/repo-kit |
+| Upgrade an existing adoption | [Upgrading an existing adoption](#upgrading-an-existing-adoption) · [RULES — Upgrading the kit](./RULES.md#upgrading-the-kit-post-initiation) |
+| Upstream kit (source) | https://github.com/shainemeister/repo-kit |
 | Versioning, CHANGELOG, kit baseline | [RULES — Versioning](./RULES.md#versioning-and-change-control) |
 | Start a package README | [templates/TEMPLATE-README.md](./templates/TEMPLATE-README.md) |
 | Start a CLI guide | [templates/TEMPLATE-CLI.md](./templates/TEMPLATE-CLI.md) |

@@ -24,6 +24,22 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 
 ## repo-kit
 
+### [1.1.6] - 2026-07-26
+
+#### Added
+
+- Root README **Upgrading an existing adoption** pointer (with copy-pasteable AI upgrade prompt) and navigation rows in “You want to…”, Use cases, and Where to go next.
+- Explicit CHANGELOG discipline sentence in RULES.md upgrade procedure: read only kit CHANGELOG entries since the current Adopted kit version; merge only what you need; never copy the full kit history into the project CHANGELOG.
+- Cross-link from RULES upgrade section to the README AI upgrade prompt.
+
+#### Changed
+
+- RULES.md document version 1.3.0 → **1.3.1** (upgrade-path clarity only).
+
+#### Removed
+
+- Completed root `PLAN.md` for the upgrade-instructions / existing-adopters cycle (enhancement fully executed).
+
 ### [1.1.5] - 2026-07-26
 
 #### Added
