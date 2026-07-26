@@ -35,7 +35,7 @@ Copy [RULES.md](../RULES.md) and [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md)
 | Formulas / “how it works” | `METHODOLOGY.md` |
 | Kit evolution / planning | `PLAN.md` (if used) |
 
-Omit package CLI, schema, fixtures, and Python style rows when they do not apply. Docs-only repos still **must** keep `CHANGELOG.md` for policy/doc releases.
+Omit package CLI, schema, fixtures, Python style, and **Security / trust boundary** rows when they do not apply. This example **omits `SECURITY.md`** because there is no execution surface, network access, elevated privilege, or secrets handling—see [RULES — Security documentation modularity](../RULES.md#security-documentation-modularity). Docs-only repos still **must** keep `CHANGELOG.md` for policy/doc releases.
 
 ### Sample kit baseline
 
@@ -67,7 +67,7 @@ Omit package CLI, schema, fixtures, and Python style rows when they do not apply
 | New/removed source files | `FILE-CATALOG.md` updated (if maintained) |
 | Methodology interpretation change | Document history row + status honesty |
 
-No pylint or product test gate unless code is later added.
+No pylint, product test, or **security / SAST** gates unless code is later added. Do not copy the full multi-language SAST table from RULES—docs-only lists **none**.
 
 ---
 

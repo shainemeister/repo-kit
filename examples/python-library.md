@@ -13,7 +13,7 @@
 | Template | Becomes |
 |----------|---------|
 | [TEMPLATE-README.md](../templates/TEMPLATE-README.md) | `my_library/README.md` |
-| [TEMPLATE-SECURITY.md](../templates/TEMPLATE-SECURITY.md) | `my_library/SECURITY.md` (if trust boundary matters) |
+| [TEMPLATE-SECURITY.md](../templates/TEMPLATE-SECURITY.md) | `my_library/SECURITY.md` **only if** trust boundary matters (execution, network, privilege, or secrets)—otherwise **omit** |
 
 Optional: methodology template if formulas or scoring are part of the contract.
 
@@ -30,7 +30,7 @@ Optional: methodology template if formulas or scoring are part of the contract.
 | Standards kit baseline | RULES — Kit baseline |
 | Package overview | `my_library/README.md` |
 | Public API contract | `my_library/README.md` (or `API.md`) |
-| Security / trust boundary | `my_library/SECURITY.md` |
+| Security / trust boundary | `my_library/SECURITY.md` *(include only if the modularity rule requires it; pure library with no side effects may omit this row)* |
 | Default config | `my_library/defaults.yaml` |
 | Golden tests / fixtures | `tests/fixtures/` |
 | Python style / PEP-8 gate | `.pylintrc` (from kit `configs/pylintrc`; **set `py-version`**) |
@@ -63,10 +63,13 @@ Optional: methodology template if formulas or scoring are part of the contract.
 |-------------|----------------------|
 | Public behavior / exports | `python -m pytest tests/` (or project test command) |
 | Python product code style | `python -m pylint my_library` (exit 0, score 10.00/10) |
+| Security / SAST (Python only) | `python -m bandit -r my_library` *(optional; declare only because this repo ships Python—not the full multi-language table)*; `pip-audit` if deps are locked/audited |
 | Schema or sample data | Headers/fields match schema; consumers still load samples |
 | Docs only | Author checklist; consume example in README still runs |
 
 **Adopt pylint:** copy kit `configs/pylintrc` to repo or package root as `.pylintrc`; set `py-version`; keep pylint **developer-only** (not a product runtime dependency).
+
+**Security / SAST:** declare **Python** tools only (Bandit / pip-audit as chosen). Do not add npm audit, govulncheck, cargo-audit, etc. unless those languages exist. Keep all security tools developer-only.
 
 ---
 

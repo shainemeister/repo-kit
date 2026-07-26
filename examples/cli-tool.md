@@ -29,7 +29,7 @@
 | Standards kit baseline | RULES — Kit baseline |
 | Package overview | `my-cli/README.md` |
 | CLI or automation contract | `my-cli/CLI-GUIDE.md` |
-| Security / trust boundary | `my-cli/SECURITY.md` |
+| Security / trust boundary | `my-cli/SECURITY.md` *(present because a CLI is an execution surface)* |
 | Default config | `my-cli/config.example.yaml` |
 | Golden tests / fixtures | `my-cli/tests/fixtures/` |
 
@@ -63,10 +63,13 @@ Rows that do not apply (schema, methodology, etc.) are omitted.
 |-------------|----------------------|
 | Public CLI behavior | `python -m my_cli validate path/to/sample.yaml` (exit 0 on good; non-zero on bad) |
 | Environment / packaging | `python -m my_cli --help` |
+| Security / SAST (this CLI’s language only) | `python -m bandit -r my_cli` *(example assumes Python CLI—swap for the real stack: npm audit, govulncheck, etc.; never paste the full multi-language table)* |
 | Docs only | Author checklist; relative links from `my-cli/` resolve |
 | New/removed source files | Inventory/catalog updated (if maintained) |
 
 **Windows note:** same module form works; or `py -3 -m my_cli …` if that is the team convention.
+
+**SECURITY.md** is required here because the package is an execution surface. SAST gates match **only** the language of this CLI, not every language in the kit table.
 
 ---
 

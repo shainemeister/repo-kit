@@ -1,7 +1,7 @@
 ---
 title: Repository Maintenance Rules
 description: Fundamental rules for documenting, changing, verifying, and versioning any repository consistently.
-version: "1.2.2"
+version: "1.3.0"
 status: current
 audience:
   - developers
@@ -14,14 +14,14 @@ related:
   - SETUP.md
   - CHANGELOG.md
   - configs/pylintrc
-last_updated: "2026-07-25"
+last_updated: "2026-07-26"
 ---
 
 # Repository Maintenance Rules
 
 Fundamental rules for maintaining a professional, auditable repository. These rules govern documentation, architecture boundaries, contracts, git hygiene, and verification—not product tutorials.
 
-**Document version:** 1.2.2  
+**Document version:** 1.3.0  
 
 **Related:** [README.md](./README.md) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) · [SETUP.md](./SETUP.md) · [CHANGELOG.md](./CHANGELOG.md) · [configs/pylintrc](./configs/pylintrc)
 
@@ -55,7 +55,7 @@ Copy this file into a project and **fill the authority map and verification tabl
 5. [Formatting and style](#formatting-and-style) (includes [Python style gate (pylint)](#python-style-gate-pylint) and [Non-Python style gates](#non-python-style-gates))
 6. [Architecture and boundaries](#architecture-and-boundaries)
 7. [Data and contract rules](#data-and-contract-rules)
-8. [Security baseline](#security-baseline)
+8. [Security baseline](#security-baseline) (includes [Security / SAST gates (advisory)](#security--sast-gates-advisory))
 9. [Versioning and change control](#versioning-and-change-control)
 10. [Git rules](#git-rules)
 11. [Verification before ship](#verification-before-ship)
@@ -85,7 +85,7 @@ Replace paths below with your project’s real files. Rows that do not apply may
 | Package overview | `{{PACKAGE}}/README.md` |
 | CLI or automation contract | `{{PACKAGE}}/CLI-GUIDE.md` (or `API.md`) |
 | Formulas / “how it works” | `{{PACKAGE}}/METHODOLOGY.md` (or design notes) |
-| Security / trust boundary | `{{PACKAGE}}/SECURITY.md` (or `ENTERPRISE-SECURITY.md`) |
+| Security / trust boundary | `{{PACKAGE}}/SECURITY.md` (or `ENTERPRISE-SECURITY.md`) — **omit this row** when [Security documentation modularity](#security-documentation-modularity) says `SECURITY.md` is not required |
 | Data or schema definitions | `{{SCHEMA_PATH}}` |
 | Default config | `{{CONFIG_PATH}}` |
 | Golden tests / fixtures | `{{FIXTURES_PATH}}` |
@@ -239,7 +239,7 @@ Fill project-specific rows (runtimes, “never do X”) in a thin overlay or by 
 
 ## Security baseline
 
-Hard rules for product code and launchers. Full matrices live in the project security doc.
+Hard rules for product code and launchers. Full matrices live in the project security doc when one is required.
 
 | Rule | Guidance |
 |------|----------|
@@ -249,7 +249,50 @@ Hard rules for product code and launchers. Full matrices live in the project sec
 | Dependencies | Match the declared dependency policy; no silent download-and-run |
 | Host policy | Do not permanently weaken host security policy in product install steps without explicit, documented need |
 
-Canonical detail: the package `SECURITY.md` / `ENTERPRISE-SECURITY.md` (or equivalent) listed in the authority map.
+Canonical detail (when applicable): the package `SECURITY.md` / `ENTERPRISE-SECURITY.md` (or equivalent) listed in the authority map.
+
+### Security documentation modularity
+
+Create or maintain a package `SECURITY.md` (or equivalent) **only when** the package has an **execution surface**, **network access**, **elevated privilege**, or **handles secrets**. Pure documentation packages and pure libraries with **no runtime side effects** may **omit** security documentation entirely—do not create empty files to satisfy a template habit.
+
+| Situation | `SECURITY.md` |
+|-----------|---------------|
+| Docs-only / standards repo | **Omit** |
+| Pure library, no network / privilege / secrets handling | **Omit** (optional short note in package README if helpful) |
+| CLI, service, automation, or other execution surface | **Required** |
+| Handles credentials, tokens, or elevated install | **Required** |
+| Monorepo | Per package: required only for packages that meet the triggers above |
+
+When omitted, remove the Security / trust boundary row from the [authority map](#authority-map). When present, keep trust-boundary detail in that canonical file—not duplicated into README.
+
+### Security / SAST gates (advisory)
+
+Optional **developer-tooling** gates for security-oriented static analysis. These are **not** style gates (see [Non-Python style gates](#non-python-style-gates)) and are **not** product runtime dependencies.
+
+**Modularity rule:** Declare **only** tools for **languages and surfaces the repo actually ships**. Copy **zero** rows for docs-only projects. Multi-language monorepos add **one verification row per language surface that exists**—never paste the full kit table. List chosen commands in the [verification table](#verification-before-ship).
+
+Prefer official or near-official tools with a small install footprint. All work across Windows, Linux, and macOS unless noted by the tool vendor.
+
+| If the repo ships… | Primary tool | Typical command (pass = exit 0 / clean) | Secondary (optional) | Skip if… |
+|--------------------|--------------|------------------------------------------|----------------------|----------|
+| **Python** product code | **Bandit** (PyCQA) | `python -m bandit -r <package>` | — | No product `*.py` packages |
+| **Python** dependencies | **pip-audit** (PyPA) | `pip-audit` | — | No Python deps / pure docs |
+| **PowerShell** (`*.ps1`, modules) | **PSScriptAnalyzer** (Microsoft) | `Invoke-ScriptAnalyzer -Path . -Severity Error` | Security rules subset only | No PowerShell surface |
+| **JavaScript / Node.js / TypeScript** | **npm audit** | `npm audit --audit-level=moderate` | eslint-plugin-security | No `package.json` / Node surface |
+| **Go** | **govulncheck** (Go team) | `govulncheck ./...` | — | No Go modules |
+| **Rust** | **cargo-audit** (RustSec) | `cargo audit` | — | No `Cargo.toml` |
+| **Shell** (bash/sh as product surface) | **ShellCheck** | `shellcheck *.sh` | — | No shell product scripts *(also a common [style gate](#non-python-style-gates)—one declaration is enough)* |
+| **Secrets** (whole repo) | **Gitleaks** (preferred) | `gitleaks detect` | TruffleHog | Team chooses not to scan (e.g. pure public docs with no secret risk) |
+| **Multi-language / custom rules** | **Semgrep** | `semgrep --config=auto` | — | Language-specific tools already cover the surface |
+
+**Product dependency:** **No.** Bandit, pip-audit, npm audit, govulncheck, cargo-audit, ShellCheck, Gitleaks, Semgrep, and similar tools are **developer tooling** only. Do **not** add them as required installs for end users of the product.
+
+**Rules:**
+
+1. Name the tool and pass criteria in the verification table—do not leave “we scan somehow” implied.  
+2. Install tools in the **developer** environment only.  
+3. Docs-only repositories may omit every security / SAST gate.  
+4. Do not treat the full table above as a checklist for every project.
 
 ---
 
@@ -572,12 +615,13 @@ Fill concrete commands for your project. Rows that do not apply may be removed.
 | Public behavior, scores, exports | Project tests / golden fixtures (define command for each primary platform) |
 | Python product code style | `python -m pylint <package_or_paths>` (must pass; see [Python style gate](#python-style-gate-pylint)) |
 | Other language product style | Project-declared gate (see [Non-Python style gates](#non-python-style-gates)) |
+| Security / SAST (language-specific) | Only the commands for **languages this repo ships** (see [Security / SAST gates](#security--sast-gates-advisory)); omit entire row if none declared |
 | Environment / packaging | Project probe or smoke script (define command; list Windows and Unix forms if both are supported) |
 | Schema or sample data | Headers/fields match schema; consumers still load samples |
 | Docs only | [Author checklist](./MARKDOWN-STANDARD.md#author-checklist); relative links resolve; platform examples consistent |
 | New/removed source files | Inventory/catalog updated (if maintained) |
 
-Fill commands for the host OS(es) the team develops on. When multi-platform, either one portable command or one row/note per OS. Do not claim a behavior change is complete if the relevant validation was skipped. Do not claim a Python product change is complete if the pylint gate was skipped or failed.
+Fill commands for the host OS(es) the team develops on. When multi-platform, either one portable command or one row/note per OS. Do not claim a behavior change is complete if the relevant validation was skipped. Do not claim a Python product change is complete if the pylint gate was skipped or failed. Do not claim a declared security / SAST gate was run if it was skipped or failed.
 
 ---
 
@@ -609,7 +653,10 @@ Fill commands for the host OS(es) the team develops on. When multi-platform, eit
 | Absolute machine-only paths as the only example | Placeholder + one repo-relative example |
 | Orphan files missing from the inventory | Update catalog in the same change |
 | Vague commits (`update stuff`, `wip`) | Conventional `type(scope):` subject naming the real surface |
-| Code without CLI/methodology/security docs | Same change set as the canonical doc per authority map |
+| Code without CLI/methodology/security docs when those contracts apply | Same change set as the canonical doc per authority map; omit security docs when [modularity](#security-documentation-modularity) allows |
+| Empty `SECURITY.md` for docs-only or pure libraries with no side effects | Omit the file and the authority-map row |
+| Pasting the full multi-language SAST table into every project | Declare only tools for languages the repo ships |
+| Shipping Bandit / npm audit / Gitleaks / etc. as product runtime deps | Keep security / SAST tools developer-only |
 | `feat` commit that only edits markdown | Use `docs` / `docs(scope)` |
 | Leaving SETUP.md forever at root after adoption | Delete or archive after initiation; keep [Kit baseline](#kit-baseline) |
 | Language style “somehow” without a named gate | Declare tool + pass criteria in RULES / verification table |
@@ -646,6 +693,7 @@ Before you commit or share a change:
 
 | Version | Notes |
 |---------|--------|
+| 1.3.0 | Security documentation modularity (omit SECURITY.md when no execution/network/privilege/secrets surface); advisory multi-language Security / SAST gates keyed by language; verification and anti-pattern updates |
 | 1.2.2 | Required AI-assisted commit disclosure: dynamic `Assisted-by` (make/model), `Compliance: RULES.md`, dynamic `Instructed-by` from `git config user.name`; checklist updates |
 | 1.2.1 | Hierarchical CHANGELOG structure (repository H2 → version H3 → category H4); Unreleased workflow removed; kit version authority = `### [X.Y.Z]` under `## repo-kit` |
 | 1.2.0 | Mandatory project CHANGELOG; three version surfaces; kit baseline + upgrade path (source https://github.com/shainemeister/repo-kit); SETUP lifecycle note; stronger versioning consistency |

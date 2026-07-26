@@ -65,6 +65,8 @@ Into the target repository (or keep a reference per your adoption mode):
 
 In [RULES.md — Authority map](./RULES.md#authority-map), replace placeholders with **real or planned** paths—even before code exists—so every concern has a canonical home.
 
+**Security documentation is optional** for packages with no execution surface, network access, elevated privilege, or secrets handling—omit `SECURITY.md` and the authority-map security row rather than creating an empty file. See [RULES — Security documentation modularity](./RULES.md#security-documentation-modularity).
+
 Also fill [Verification before ship](./RULES.md#verification-before-ship) with commands the team will actually run on each primary platform.
 
 **Filled examples (copy the pattern, not the product names):**
@@ -152,6 +154,8 @@ python -m pylint <package_or_paths>
 On Windows you may use `py -3.x -m pylint …`. Install pylint in the **developer** environment only—not as a product runtime dependency. Details: [RULES — Python style gate](./RULES.md#python-style-gate-pylint).
 
 **Non-Python languages:** declare a style gate (tool + pass criteria) in RULES or a thin overlay—see [Non-Python style gates](./RULES.md#non-python-style-gates).
+
+**Security / SAST gates (optional):** declare only tools for **languages the project interest actually uses** (e.g. Bandit for Python product code, npm audit for Node, govulncheck for Go). Docs-only projects declare none. See [RULES — Security / SAST gates](./RULES.md#security--sast-gates-advisory).
 
 ---
 

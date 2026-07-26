@@ -24,6 +24,25 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 
 ## repo-kit
 
+### [1.1.5] - 2026-07-26
+
+#### Added
+
+- Security documentation modularity in RULES.md: omit `SECURITY.md` when a package has no execution surface, network access, elevated privilege, or secrets handling.
+- Advisory multi-language **Security / SAST gates** in RULES.md, keyed by language/surface (Bandit, pip-audit, PSScriptAnalyzer, npm audit, govulncheck, cargo-audit, ShellCheck, Gitleaks, optional Semgrep)—declare only languages the repo ships.
+- Optional verification-table row for language-specific security / SAST commands.
+- Brief “delete if not applicable” guidance on key sections of `templates/TEMPLATE-SECURITY.md`.
+- SETUP pointers for optional security docs and language-scoped SAST gates.
+- Explicit modularity notes in `examples/docs-only.md`, `examples/python-library.md`, and `examples/cli-tool.md`.
+
+#### Changed
+
+- RULES.md document version 1.2.2 → **1.3.0** (security modularity + SAST section; anti-pattern updates).
+
+#### Removed
+
+- Completed root `PLAN.md` for the modular security documentation & multi-language SAST gates cycle (enhancement fully executed).
+
 ### [1.1.4] - 2026-07-26
 
 #### Changed
