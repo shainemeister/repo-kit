@@ -165,7 +165,6 @@ Details: [RULES.md — Python style gate](./RULES.md#python-style-gate-pylint). 
 - Adopters keep **project** history in their own `CHANGELOG.md` under `## <Repository Name>`; they do **not** copy kit release sections—kit version goes only in Kit baseline.  
 - Edit standards in place; bump `version` and `last_updated` on [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) and [RULES.md](./RULES.md) when contracts change.  
 - Record kit-level history under the `### [X.Y.Z]` version section that ships the change (no Unreleased section).  
-- Living plan for the current enhancement cycle: [PLAN.md](./PLAN.md) (kit maintainers / agents—not an adopter template).  
 - `SETUP.md` is intentionally shipped for first-time adopters; adopters delete it after initiation. Future major releases may move or remove root SETUP; permanent contracts remain README / RULES / MARKDOWN-STANDARD / CHANGELOG.  
 - Keep examples domain-neutral (`my-service`, `my-cli`, `my_library`).  
 - Templates must retain `{{PLACEHOLDERS}}`; finished project docs must not.  

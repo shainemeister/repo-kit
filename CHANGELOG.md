@@ -28,13 +28,16 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 
 #### Added
 
-- Root [PLAN.md](./PLAN.md): living plan for the README purpose / AI-context enhancement cycle.
 - Root README **Purpose** and **How to use (quick path)** blocks: human consistency + AI-agent context efficiency; recommend a user-supplied project `PLAN.md`; copy-pasteable clone and agent-context prompts.
 
 #### Changed
 
 - Root README Quick start: primary 9-step checklist deferred to [SETUP.md](./SETUP.md); suggested layout notes recommended project `PLAN.md`.
-- Root README lead and maintainers section: surface AI-context differentiator; link kit PLAN.md for maintainers/agents only.
+- Root README lead and maintainers section: surface AI-context differentiator.
+
+#### Removed
+
+- Completed root `PLAN.md` for the README purpose / AI-context cycle (enhancement fully executed).
 
 ### [1.1.2] - 2026-07-25
 
