@@ -13,52 +13,36 @@ Create a comprehensive `PLAN.md` for *your* target repository (goals, packages, 
 
 ### How to use (quick path)
 
-There is **no traditional install step**. You copy the files you need into your target repository (or keep this kit as a reference).
+There is **no traditional install step**. Prefer keeping this kit as a reference (remote link or separate clone) rather than copying the entire tree into an existing repository.
 
-**Option A — local clone**
-
-1. Clone the kit:
-
-   ```text
-   git clone https://github.com/shainemeister/repo-kit
-   ```
-
-2. Give an AI agent (or yourself) the context it needs:
-
-   ```text
-   Review PLAN.md (my project plan) and SETUP.md from ./repo-kit, then initiate the adoption checklist.
-   ```
-
-**Option B — no local clone**
-
-1. One-prompt process:
-
-   ```text
-   Review PLAN.md (my project plan) and SETUP.md at https://github.com/shainemeister/repo-kit, then initiate the adoption checklist.
-   ```
-
-Then follow the full one-time checklist in [SETUP.md](./SETUP.md), fill the authority map and verification table, and delete or archive `SETUP.md` once complete.
-
-`PLAN.md` is a **user-provided dependency**. The kit does not ship one. Without a clear plan the adoption still works, but results are less precise.
-
-### Upgrading an existing adoption
-
-If your repository **already** has a [Kit baseline](./RULES.md#kit-baseline) in `RULES.md`, do **not** re-run SETUP as the primary path. Follow **[Upgrading the kit (post-initiation)](./RULES.md#upgrading-the-kit-post-initiation)**.
-
-Read only the kit [CHANGELOG.md](./CHANGELOG.md) entries since your current Adopted kit version; merge only what you need; never copy the full kit history into your project CHANGELOG.
-
-**One-prompt upgrade (AI agent):**
+**New implementation** (bring the kit into a current or greenfield repository)
 
 ```text
-I have an existing repository that already adopted repo-kit.
-Current Adopted kit version is recorded in my RULES.md Kit baseline table.
-
-Please:
-1. Read the kit CHANGELOG.md at https://github.com/shainemeister/repo-kit (or the local clone) and show me only the entries since my current baseline version.
-2. Help me decide which pieces to merge (RULES policy sections, MARKDOWN-STANDARD, templates, configs/pylintrc, etc.) while preserving my project-specific authority map and verification commands.
-3. Update my Kit baseline (version + date) and add a short note to my project CHANGELOG.md.
-Do not copy the full kit CHANGELOG history into my project CHANGELOG.
+Review PLAN.md (project plan) and SETUP.md at https://github.com/shainemeister/repo-kit, then initiate the adoption checklist. Preserve existing project but integrate `repo-kit` as per RULES.md.
 ```
+
+**Alternative (local reference clone)**
+
+```text
+git clone https://github.com/shainemeister/repo-kit ../repo-kit-reference
+```
+
+```text
+Review PLAN.md (project plan) and SETUP.md from ../repo-kit-reference, then initiate the adoption checklist. Preserve existing project but integrate `repo-kit` as per RULES.md.
+```
+
+**Upgrade** (repository already has a Kit baseline in RULES.md)
+
+```text
+Read the `repo-kit` CHANGELOG.md at https://github.com/shainemeister/repo-kit then identify current repo version and changes.
+Build a comprehensive PLAN.md for only appropriate files per RULES policy sections, MARKDOWN-STANDARD, templates, configs/pylintrc, etc. while preserving current repo project-specific authority map and verification commands.
+Then update the Kit baseline (version + date) and add a short note to the project CHANGELOG.md.
+Do not copy the full kit CHANGELOG history into the project CHANGELOG.
+```
+
+Then follow the full procedure in [SETUP.md](./SETUP.md) (new adoption) or [Upgrading the kit](./RULES.md#upgrading-the-kit-post-initiation) (existing adoption).
+
+`PLAN.md` is a **user-provided dependency**. The kit does not ship one. Without a clear plan the adoption still works, but results are less precise.
 
 ## Summary
 
@@ -79,7 +63,7 @@ Copy what you need, **initiate from project interest** so formal docs guide deve
 | You want to… | Start here |
 |--------------|------------|
 | Start a project from an interest | [SETUP.md](./SETUP.md) |
-| Upgrade an existing kit adoption | [Upgrading an existing adoption](#upgrading-an-existing-adoption) · [RULES — Upgrading the kit](./RULES.md#upgrading-the-kit-post-initiation) |
+| Upgrade an existing kit adoption | [How to use (quick path)](#how-to-use-quick-path) · [RULES — Upgrading the kit](./RULES.md#upgrading-the-kit-post-initiation) |
 | See a filled authority map | [examples/](./examples/) |
 | Scaffold docs for a new package | [templates/](./templates/) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) |
 | Set maintenance policy | [RULES.md](./RULES.md) |
@@ -92,7 +76,7 @@ Copy what you need, **initiate from project interest** so formal docs guide deve
 |----------|--------------|------------|
 | **New greenfield repo** | Same doc shape and git hygiene from day one | [SETUP.md](./SETUP.md) |
 | **Align an existing repo** | Authority map + checklists without a rewrite | [SETUP.md](./SETUP.md) (selective copy) |
-| **Upgrade existing kit adoption** | Merge kit deltas since baseline; keep project authority map | [Upgrading an existing adoption](#upgrading-an-existing-adoption) |
+| **Upgrade existing kit adoption** | Merge kit deltas since baseline; keep project authority map | [How to use (quick path)](#how-to-use-quick-path) |
 | **Multi-package monorepo** | Shared standards; per-package README/CLI/security | Templates under each package |
 | **Python product code** | pylint PEP-8 gate, score 10.00, not a runtime dep | `configs/pylintrc` |
 | **Docs-only design repo** | Frontmatter, Summary→Contents, concept/methodology templates | [examples/docs-only.md](./examples/docs-only.md) |
@@ -113,7 +97,7 @@ Copy what you need, **initiate from project interest** so formal docs guide deve
 
 ## Quick start
 
-Adopt this kit via the full one-time checklist in **[SETUP.md](./SETUP.md)** (adoption mode, platform, copy, authority map, kit baseline, templates, pylint, and deleting SETUP after initiation). Use the [How to use](#how-to-use-quick-path) path above to clone the kit and load context from your project `PLAN.md` first.
+Adopt this kit via the full one-time checklist in **[SETUP.md](./SETUP.md)** (adoption mode, platform, copy, authority map, kit baseline, templates, pylint, and deleting SETUP after initiation). Use the [How to use](#how-to-use-quick-path) path above to load context from your project `PLAN.md` first.
 
 ### Suggested root layout after adopt
 
@@ -175,7 +159,7 @@ Details: [RULES.md — Python style gate](./RULES.md#python-style-gate-pylint). 
 | Frontmatter, Summary→Contents, platform examples, doc types | [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) |
 | Commits, contracts, checklists, style gates | [RULES.md](./RULES.md) |
 | Kit history / kit version | [CHANGELOG.md](./CHANGELOG.md) |
-| Upgrade an existing adoption | [Upgrading an existing adoption](#upgrading-an-existing-adoption) · [RULES — Upgrading the kit](./RULES.md#upgrading-the-kit-post-initiation) |
+| Upgrade an existing adoption | [How to use (quick path)](#how-to-use-quick-path) · [RULES — Upgrading the kit](./RULES.md#upgrading-the-kit-post-initiation) |
 | Upstream kit (source) | https://github.com/shainemeister/repo-kit |
 | Versioning, CHANGELOG, kit baseline | [RULES — Versioning](./RULES.md#versioning-and-change-control) |
 | Start a package README | [templates/TEMPLATE-README.md](./templates/TEMPLATE-README.md) |
