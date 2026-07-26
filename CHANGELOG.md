@@ -24,6 +24,12 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 
 ## repo-kit
 
+### [1.1.4] - 2026-07-26
+
+#### Changed
+
+- Root README How-to section: fixed typo, added explicit “no traditional install” sentence, and smoothed agent prompts for cleaner copy-paste use.
+
 ### [1.1.3] - 2026-07-26
 
 #### Added
