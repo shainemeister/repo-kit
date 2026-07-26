@@ -13,9 +13,11 @@ Create a comprehensive `PLAN.md` for *your* target repository (goals, packages, 
 
 ### How to use (quick path)
 
-Option A:
+There is **no traditional install step**. You copy the files you need into your target repository (or keep this kit as a reference).
 
-1. Clone the kit (or keep it as a reference):
+**Option A — local clone**
+
+1. Clone the kit:
 
    ```text
    git clone https://github.com/shainemeister/repo-kit
@@ -24,18 +26,18 @@ Option A:
 2. Give an AI agent (or yourself) the context it needs:
 
    ```text
-   Review `PLAN.md` and build context, then initiate `SETUP.md` from ./repo-kit
+   Review PLAN.md (my project plan) and SETUP.md from ./repo-kit, then initiate the adoption checklist.
    ```
 
-Option B:
+**Option B — no local clone**
 
-1. Alternative one prompt process (no local clone):
+1. One-prompt process:
 
    ```text
-   Review `PLAN.md` and build context, then initiate `SETUP.md` from https://github.com/shainemeister/repo-kit
+   Review PLAN.md (my project plan) and SETUP.md at https://github.com/shainemeister/repo-kit, then initiate the adoption checklist.
    ```
 
-*Follow the full one-time checklist in [SETUP.md](./SETUP.md), fill the authority map and verification table, then delete or archive `SETUP.md` onece complete.*
+Then follow the full one-time checklist in [SETUP.md](./SETUP.md), fill the authority map and verification table, and delete or archive `SETUP.md` once complete.
 
 `PLAN.md` is a **user-provided dependency**. The kit does not ship one. Without a clear plan the adoption still works, but results are less precise.
 
