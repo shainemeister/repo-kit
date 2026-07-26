@@ -24,6 +24,16 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 
 ## repo-kit
 
+### [1.1.2] - 2026-07-25
+
+#### Added
+
+- Required AI-assisted commit disclosure footers in RULES.md Git rules: `Assisted-by` (AI make/model per commit), `Compliance: RULES.md`, `Instructed-by` (from `git config user.name`).
+
+#### Changed
+
+- RULES.md document version 1.2.1 → 1.2.2; strengthened pre-commit and contributor checklists for AI transparency.
+
 ### [1.1.1] - 2026-07-25
 
 #### Changed

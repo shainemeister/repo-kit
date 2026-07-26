@@ -1,7 +1,7 @@
 ---
 title: Repository Maintenance Rules
 description: Fundamental rules for documenting, changing, verifying, and versioning any repository consistently.
-version: "1.2.1"
+version: "1.2.2"
 status: current
 audience:
   - developers
@@ -21,7 +21,7 @@ last_updated: "2026-07-25"
 
 Fundamental rules for maintaining a professional, auditable repository. These rules govern documentation, architecture boundaries, contracts, git hygiene, and verification—not product tutorials.
 
-**Document version:** 1.2.1  
+**Document version:** 1.2.2  
 
 **Related:** [README.md](./README.md) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) · [SETUP.md](./SETUP.md) · [CHANGELOG.md](./CHANGELOG.md) · [configs/pylintrc](./configs/pylintrc)
 
@@ -407,13 +407,83 @@ Scopes are advisory: consistency within a repo matters more than matching this t
 
 #### Optional footers
 
-Useful when needed; **not** mandatory:
+Useful when needed; **not** mandatory (except the AI disclosure block, which is **required when applicable**):
 
 | Footer | Use when |
 |--------|----------|
 | `BREAKING CHANGE: <description>` | Public contract breaks; describe migration |
 | `Refs: <issue-or-doc>` | Link a tracker item or canonical doc |
 | `Co-authored-by: Name <email>` | Shared authorship |
+| AI disclosure block (`Assisted-by` / `Compliance` / `Instructed-by`) | **Required** when AI meaningfully assisted; `Assisted-by` = actual make/model; `Instructed-by` = `git config user.name`; see [AI-assisted commits](#ai-assisted-commits-required-disclosure) |
+
+#### AI-assisted commits (required disclosure)
+
+When an AI system meaningfully assists with the **change itself** (code, docs, configuration, or the commit message), the commit **must** include the following footer block. Pure human-only commits omit it.
+
+| Trailer | Required content |
+|---------|------------------|
+| `Assisted-by:` | AI make / model (and optional tool) that assisted **this** commit — fill at commit time |
+| `Compliance:` | Explicit reference to this file (`RULES.md`) |
+| `Instructed-by:` | Directing human — **value of** `git config user.name` for the committer |
+
+**Template form** (copy structure; resolve fields at commit time):
+
+```text
+Assisted-by: <AI make / model>
+Compliance: RULES.md
+Instructed-by: <git config user.name>
+```
+
+**How to resolve fields**
+
+| Field | Resolution |
+|-------|------------|
+| `Assisted-by` | Name the AI make/model/tool that actually performed the work for this commit (examples below). Do not hardcode a vendor from documentation. |
+| `Instructed-by` | Run `git config user.name` and use that exact string. If unset, configure it before committing so disclosure matches Git author identity. |
+
+```text
+git config user.name
+```
+
+**Example values for `Assisted-by`** (use the one that actually did the work):
+
+| Situation | Example value |
+|-----------|----------------|
+| xAI Grok assistant | `Grok (xAI)` |
+| Anthropic Claude | `Claude 4 Sonnet` (or the exact model name used) |
+| GitHub Copilot | `GitHub Copilot` |
+| Cursor agent | `Cursor Agent` |
+| Other | Name the primary assistant for this commit |
+
+**Rules**
+
+1. Place the three lines at the end of the commit message (after any body or other footers).
+2. **`Assisted-by` is dynamic:** use the real AI make/model (and tool if useful) that performed the work for **this** commit. Never treat a single brand in the docs as the only allowed value.
+3. **`Instructed-by` is dynamic:** set it to the output of `git config user.name`. Never omit it; do not invent a different name unless it is also the configured Git user for that commit.
+4. The presence of this block asserts that the human (Git-configured committer) reviewed the result and that the change follows the contracts in this RULES.md.
+5. Do **not** put the AI disclosure in the subject line. Keep the subject focused on the change.
+
+**When it is required**
+
+| Situation | Disclosure |
+|-----------|------------|
+| AI wrote or substantially edited product code, docs, or config | **Required** |
+| AI drafted the commit message itself | **Required** |
+| AI only suggested a one-line fix that the human rewrote | Optional (prefer to include) |
+| Pure human work | Omit |
+
+**Good example** (illustrative AI only; `Instructed-by` must match `git config user.name` on the machine that commits — `Jane Developer` is a placeholder illustration, not a required name):
+
+```text
+docs(rules): require AI disclosure footer on assisted commits
+
+Add Assisted-by / Compliance / Instructed-by trailers so AI
+participation is transparent and auditable years later.
+
+Assisted-by: Grok (xAI)
+Compliance: RULES.md
+Instructed-by: Jane Developer
+```
 
 #### Examples (match this voice)
 
@@ -468,7 +538,8 @@ Commit messages and **what is staged** must stay consistent with the documentati
 5. If formulas or public output fields changed, are methodology + fixtures updated?  
 6. If product Python changed, will the pylint gate pass?  
 7. Would a reviewer find the subject by searching the feature name used in the README?  
-8. Would this subject still make sense **two years** from now without the PR description?
+8. Would this subject still make sense **two years** from now without the PR description?  
+9. If AI assisted: are `Assisted-by` / `Compliance` / `Instructed-by` present? Does `Assisted-by` name the AI that did the work? Does `Instructed-by` match `git config user.name`?
 
 ### Suggested commit workflow
 
@@ -567,6 +638,7 @@ Before you commit or share a change:
 - [ ] Subject would still make sense years later; one logical surface preferred  
 - [ ] Canonical docs for any behavior change are in the same change set  
 - [ ] If kit pieces changed: [Kit baseline](#kit-baseline) version/date updated and CHANGELOG notes the upgrade  
+- [ ] If AI assisted: commit includes `Assisted-by` / `Compliance` / `Instructed-by` (`Assisted-by` = actual make/model; `Instructed-by` = `git config user.name`)  
 
 ---
 
@@ -574,6 +646,7 @@ Before you commit or share a change:
 
 | Version | Notes |
 |---------|--------|
+| 1.2.2 | Required AI-assisted commit disclosure: dynamic `Assisted-by` (make/model), `Compliance: RULES.md`, dynamic `Instructed-by` from `git config user.name`; checklist updates |
 | 1.2.1 | Hierarchical CHANGELOG structure (repository H2 → version H3 → category H4); Unreleased workflow removed; kit version authority = `### [X.Y.Z]` under `## repo-kit` |
 | 1.2.0 | Mandatory project CHANGELOG; three version surfaces; kit baseline + upgrade path (source https://github.com/shainemeister/repo-kit); SETUP lifecycle note; stronger versioning consistency |
 | 1.1.0 | Root hygiene; non-Python style gates; stronger commit-message modularity, scopes, body, examples, footers; SETUP/examples links; initiation pointer to SETUP.md |
