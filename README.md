@@ -1,6 +1,43 @@
 # Repository Standards Kit
 
-Portable standards for **consistent repositories and projects**: how to write markdown, how to maintain a repo, and copy-ready templates—plus a **pylint** config for PEP-8 Python product code.
+Portable standards for **consistent repositories and projects**—markdown structure, maintenance contracts, and copy-ready templates—plus a **pylint** config for PEP-8 Python product code. The kit is also structured so **AI agents can dynamically build reliable context** for any repository that adopts it.
+
+## Purpose
+
+Use this kit so humans get the same doc shape and git hygiene everywhere, and so AI agents (or you) can load a small set of authoritative files and work with precision instead of guessing structure.
+
+**Best results come from a good project plan.**  
+Create a comprehensive `PLAN.md` for *your* target repository (goals, packages, platforms, constraints, desired outcomes) using an AI chat such as Grok, Gemini, ChatGPT, or others. The more specific the plan, the better the kit’s authority-map and templates can be applied. A dedicated prompt persona for generating high-quality PLAN.md files is planned for a future release.
+
+**Dependency:** `git`
+
+### How to use (quick path)
+
+Option A:
+
+1. Clone the kit (or keep it as a reference):
+
+   ```text
+   git clone https://github.com/shainemeister/repo-kit
+   ```
+
+2. Give an AI agent (or yourself) the context it needs:
+
+   ```text
+   Review `PLAN.md` and build context, then initiate `SETUP.md` from ./repo-kit
+   ```
+
+Option B:
+
+1. Alternative one prompt process (no local clone):
+
+   ```text
+   Review `PLAN.md` and build context, then initiate `SETUP.md` from https://github.com/shainemeister/repo-kit
+   ```
+
+*Follow the full one-time checklist in [SETUP.md](./SETUP.md), fill the authority map and verification table, then delete or archive `SETUP.md` onece complete.*
+
+`PLAN.md` is a **user-provided dependency**. The kit does not ship one. Without a clear plan the adoption still works, but results are less precise.
 
 ## Summary
 
@@ -53,21 +90,7 @@ Copy what you need, **initiate from project interest** so formal docs guide deve
 
 ## Quick start
 
-Adopt this kit in a target repository:
-
-1. **Initiate from interest** — follow the full checklist in [SETUP.md](./SETUP.md) (adoption mode, platform, templates, authority map).  
-2. **Copy** into the target repository (or link this kit as a reference):
-   - `MARKDOWN-STANDARD.md`
-   - `RULES.md`
-   - `templates/` (as needed)
-   - `configs/pylintrc` if the project has Python product code  
-3. **Fill** the [authority map](./RULES.md#authority-map) and [verification before ship](./RULES.md#verification-before-ship) tables with real (or planned) paths and commands for your platform(s). Use [examples/](./examples/) as patterns.  
-4. **Root README:** follow the [landing pattern](./MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter) (no frontmatter; use cases first).  
-5. **Package docs:** copy a template, replace all `{{PLACEHOLDERS}}`, keep or drop OS blocks per [platform-aware rules](./MARKDOWN-STANDARD.md#platform-aware-examples), refresh Contents.  
-6. **Python:** copy `configs/pylintrc` to `.pylintrc` at package or repo root, **set `py-version` to your supported Python**, run `python -m pylint <package>`. Install pylint in the **developer** environment only.  
-7. **CHANGELOG + kit baseline:** keep root `CHANGELOG.md` (required). Record [Adopted kit version](./RULES.md#kit-baseline) and date; kit source is always https://github.com/shainemeister/repo-kit.  
-8. **Optional inventory:** maintain a `FILE-CATALOG.md` (or similar) and update it on path add/remove/rename.  
-9. **After setup:** delete or archive `SETUP.md` so the root stays permanent contracts only (README, RULES, MARKDOWN-STANDARD, CHANGELOG).
+Adopt this kit via the full one-time checklist in **[SETUP.md](./SETUP.md)** (adoption mode, platform, copy, authority map, kit baseline, templates, pylint, and deleting SETUP after initiation). Use the [How to use](#how-to-use-quick-path) path above to clone the kit and load context from your project `PLAN.md` first.
 
 ### Suggested root layout after adopt
 
@@ -77,6 +100,7 @@ your-repo/
   RULES.md                  # maintenance (filled authority map + kit baseline)
   MARKDOWN-STANDARD.md      # or link to this kit
   CHANGELOG.md              # required — project history
+  PLAN.md                   # your project plan (recommended; not shipped by the kit)
   SETUP.md                  # temporary — delete after initiation
   .pylintrc                 # if Python product code
   FILE-CATALOG.md           # optional
@@ -141,6 +165,7 @@ Details: [RULES.md — Python style gate](./RULES.md#python-style-gate-pylint). 
 - Adopters keep **project** history in their own `CHANGELOG.md` under `## <Repository Name>`; they do **not** copy kit release sections—kit version goes only in Kit baseline.  
 - Edit standards in place; bump `version` and `last_updated` on [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) and [RULES.md](./RULES.md) when contracts change.  
 - Record kit-level history under the `### [X.Y.Z]` version section that ships the change (no Unreleased section).  
+- Living plan for the current enhancement cycle: [PLAN.md](./PLAN.md) (kit maintainers / agents—not an adopter template).  
 - `SETUP.md` is intentionally shipped for first-time adopters; adopters delete it after initiation. Future major releases may move or remove root SETUP; permanent contracts remain README / RULES / MARKDOWN-STANDARD / CHANGELOG.  
 - Keep examples domain-neutral (`my-service`, `my-cli`, `my_library`).  
 - Templates must retain `{{PLACEHOLDERS}}`; finished project docs must not.  
