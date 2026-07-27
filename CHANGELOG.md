@@ -24,6 +24,12 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 
 ## repo-kit
 
+### [1.1.7] - 2026-07-26
+
+#### Changed
+
+- Root README Purpose: fixed typo (“percision” → “precision”) and tightened the sentence while preserving instructional voice.
+
 ### [1.1.6] - 2026-07-26
 
 #### Added
