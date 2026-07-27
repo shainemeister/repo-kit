@@ -4,7 +4,7 @@ Portable standards for **consistent repositories and projects**—markdown struc
 
 ## Purpose
 
-Use this `repo-kit` for AI to load authoritative and maintainer files which helps with percision instead of guessing repository structure and standardizations.
+Use this `repo-kit` so AI can load authoritative maintainer files with precision instead of guessing repository structure and standards.
 
 **Best results come from a good project plan.**  
 Create a comprehensive `PLAN.md` for *your* target repository (goals, packages, platforms, constraints, desired outcomes) using an AI chat such as Grok, Gemini, ChatGPT, or others. The more specific the plan, the better the kit’s authority-map and templates can be applied. A dedicated prompt persona for generating high-quality PLAN.md files is planned for a future release.
