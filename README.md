@@ -15,13 +15,13 @@ Create a comprehensive `PLAN.md` for *your* target repository (goals, packages, 
 
 There is **no traditional install step**. Prefer keeping this kit as a reference (remote link or separate clone) rather than copying the entire tree into an existing repository.
 
-**New implementation** (bring the kit into a current or greenfield repository)
+**New implementation**
 
 ```text
 Review PLAN.md (project plan) and SETUP.md at https://github.com/shainemeister/repo-kit, then initiate the adoption checklist. Preserve existing project but integrate `repo-kit` as per RULES.md.
 ```
 
-**Alternative (local reference clone)**
+**Alternative (local clone reference)**
 
 ```text
 git clone https://github.com/shainemeister/repo-kit ../repo-kit-reference
@@ -36,7 +36,7 @@ Review PLAN.md (project plan) and SETUP.md from ../repo-kit-reference, then init
 ```text
 Read the `repo-kit` CHANGELOG.md at https://github.com/shainemeister/repo-kit then identify current repo version and changes.
 Build a comprehensive PLAN.md for only appropriate files per RULES policy sections, MARKDOWN-STANDARD, templates, configs/pylintrc, etc. while preserving current repo project-specific authority map and verification commands.
-Then update the Kit baseline (version + date) and add a short note to the project CHANGELOG.md.
+Then update the Kit baseline (version + date) and add a short note to the project CHANGELOG.md. 
 Do not copy the full kit CHANGELOG history into the project CHANGELOG.
 ```
 
