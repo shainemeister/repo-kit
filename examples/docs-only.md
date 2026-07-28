@@ -37,6 +37,14 @@ Copy [RULES.md](../RULES.md) and [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md)
 
 Omit package CLI, schema, fixtures, Python style, and **Security / trust boundary** rows when they do not apply. This example **omits `SECURITY.md`** because there is no execution surface, network access, elevated privilege, or secrets handling—see [RULES — Security documentation modularity](../RULES.md#security-documentation-modularity). Docs-only repos still **must** keep `CHANGELOG.md` for policy/doc releases.
 
+### Language surface inventory (snippet)
+
+| Surface | Domain B | Domain A |
+|---------|----------|----------|
+| *(none — docs-only)* | — | — |
+
+Empty inventory: no pylint, Bandit, npm audit, govulncheck, or other language gates. Do **not** paste the full multi-language catalog from RULES. No `certification/` folder required.
+
 ### Sample kit baseline
 
 | Field | Value |
@@ -67,7 +75,7 @@ Omit package CLI, schema, fixtures, Python style, and **Security / trust boundar
 | New/removed source files | `FILE-CATALOG.md` updated (if maintained) |
 | Methodology interpretation change | Document history row + status honesty |
 
-No pylint, product test, or **security / SAST** gates unless code is later added. Do not copy the full multi-language SAST table from RULES—docs-only lists **none**.
+No pylint, product test, or **security / SAST** gates unless code is later added. Do not copy the full multi-language SAST table from RULES—docs-only lists **none**. Declared gates elsewhere are **required** when declared; here nothing is declared.
 
 ---
 

@@ -39,3 +39,8 @@ htmlcov/
 
 # Node (light — mixed or frontend-adjacent repos)
 node_modules/
+
+# Formal security + code-validation certificates (regenerable; see RULES.md)
+certification/last_certification.json
+certification/last_certification.txt
+certification/logs/

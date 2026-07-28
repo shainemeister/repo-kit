@@ -1,7 +1,7 @@
 ---
 title: Repository Maintenance Rules
 description: Fundamental rules for documenting, changing, verifying, and versioning any repository consistently.
-version: "1.3.1"
+version: "1.4.0"
 status: current
 audience:
   - developers
@@ -14,14 +14,14 @@ related:
   - SETUP.md
   - CHANGELOG.md
   - configs/pylintrc
-last_updated: "2026-07-26"
+last_updated: "2026-07-28"
 ---
 
 # Repository Maintenance Rules
 
 Fundamental rules for maintaining a professional, auditable repository. These rules govern documentation, architecture boundaries, contracts, git hygiene, and verification—not product tutorials.
 
-**Document version:** 1.3.1  
+**Document version:** 1.4.0  
 
 **Related:** [README.md](./README.md) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) · [SETUP.md](./SETUP.md) · [CHANGELOG.md](./CHANGELOG.md) · [configs/pylintrc](./configs/pylintrc)
 
@@ -41,7 +41,9 @@ Copy this file into a project and **fill the authority map and verification tabl
 | Use conventional commit messages that match staged files | Mix unrelated packages or leave CLI/API/security docs stale |
 | Keep packages composable at the workflow layer | Silently rename public APIs, CLI fields, or schema columns |
 | Run **pylint** on Python product code after those edits | Treat pylint as a product runtime install for end users |
-| Verify before sharing contract or behavior changes | Force-rewrite published shared history without coordination |
+| Fill [language surface inventory](#language-surface-inventory); run declared style + SAST before complete | Paste the full multi-language SAST table without inventory evidence |
+| Verify before sharing contract or behavior changes | Claim complete when a **declared** style or SAST gate was skipped or failed |
+| Regenerate `certification/` outputs when that folder is maintained | Commit `last_certification.*` or treat certification as a product launcher gate |
 | Fill authority map + verification from project interest at start | Leave contracts empty until “docs later” after behavior ships |
 
 ---
@@ -55,10 +57,10 @@ Copy this file into a project and **fill the authority map and verification tabl
 5. [Formatting and style](#formatting-and-style) (includes [Python style gate (pylint)](#python-style-gate-pylint) and [Non-Python style gates](#non-python-style-gates))
 6. [Architecture and boundaries](#architecture-and-boundaries)
 7. [Data and contract rules](#data-and-contract-rules)
-8. [Security baseline](#security-baseline) (includes [Security / SAST gates (advisory)](#security--sast-gates-advisory))
+8. [Security baseline](#security-baseline) (includes [Language surface inventory](#language-surface-inventory), [Security / SAST gates](#security--sast-gates-required-when-declared), and [Security and code-validation certification](#security-and-code-validation-certification))
 9. [Versioning and change control](#versioning-and-change-control)
 10. [Git rules](#git-rules)
-11. [Verification before ship](#verification-before-ship)
+11. [Verification before ship](#verification-before-ship) (includes [Before marking work complete](#before-marking-work-complete))
 12. [Maintenance cadence](#maintenance-cadence)
 13. [Anti-patterns](#anti-patterns)
 14. [Contributor checklist](#contributor-checklist)
@@ -86,6 +88,8 @@ Replace paths below with your project’s real files. Rows that do not apply may
 | CLI or automation contract | `{{PACKAGE}}/CLI-GUIDE.md` (or `API.md`) |
 | Formulas / “how it works” | `{{PACKAGE}}/METHODOLOGY.md` (or design notes) |
 | Security / trust boundary | `{{PACKAGE}}/SECURITY.md` (or `ENTERPRISE-SECURITY.md`) — **omit this row** when [Security documentation modularity](#security-documentation-modularity) says `SECURITY.md` is not required |
+| Language surface inventory | [Language surface inventory](#language-surface-inventory) in this file (filled rows for languages this repo ships) |
+| Security & code-validation certification | `certification/README.md` — **omit** when the project does not maintain a `certification/` folder (docs-only or no formal cert yet) |
 | Data or schema definitions | `{{SCHEMA_PATH}}` |
 | Default config | `{{CONFIG_PATH}}` |
 | Golden tests / fixtures | `{{FIXTURES_PATH}}` |
@@ -121,6 +125,7 @@ Keep the repository root **scannable**: entry points and policy first; purpose d
 | Style configs | `configs/` (or package-local `.pylintrc` / tool config) |
 | Filled examples | `examples/` |
 | Scripts / helpers | `scripts/` or `tooling/` (keep minimal) |
+| Formal security + code-validation certificates | `certification/` (see [Security and code-validation certification](#security-and-code-validation-certification)); regenerable outputs gitignored |
 | Package-level contracts | Inside the package |
 | Regenerable output | Never committed |
 | CI workflows | `.github/` (or equivalent) |
@@ -265,9 +270,39 @@ Create or maintain a package `SECURITY.md` (or equivalent) **only when** the pac
 
 When omitted, remove the Security / trust boundary row from the [authority map](#authority-map). When present, keep trust-boundary detail in that canonical file—not duplicated into README.
 
-### Security / SAST gates (advisory)
+### Language surface inventory
 
-Optional **developer-tooling** gates for security-oriented static analysis. These are **not** style gates (see [Non-Python style gates](#non-python-style-gates)) and are **not** product runtime dependencies.
+Declare **which product language and security surfaces this repository ships**. The inventory is the **source of truth** for style gates, SAST gates, verification rows, and (when maintained) formal certification checks. Copy **only** rows that apply—never paste the full catalog into a docs-only project.
+
+Fill a project table (examples: [examples/](./examples/)). Kit catalog of surfaces (Domain B = code validation / style; Domain A = security / SAST):
+
+| Surface | Evidence it exists | Domain B — style / validation | Domain A — security / SAST | Typical pass | Omit when… |
+|---------|-------------------|-------------------------------|----------------------------|--------------|------------|
+| *(none — docs-only)* | No product code | — | — | Author checklist | Standards / design repos |
+| **Python** product code | Product `*.py` packages | **pylint** (exit 0, score **10.00/10**) | **Bandit** (`python -m bandit -r <package>`) | Style + SAST clean | No product Python |
+| **Python** dependencies | Third-party deps (not stdlib-only) | — | **pip-audit** | Exit 0 / clean | No Python deps / pure docs / stdlib-only |
+| **PowerShell** | Product `*.ps1` / modules | Project primary (e.g. PS AST parse, BOM policy) | **PSScriptAnalyzer** (`-Severity Error`); optional security-rules subset | Zero Error findings | No PowerShell surface |
+| **JavaScript / TypeScript** (Node) | `package.json` / Node surface | **eslint**, **prettier** (or project primary) | **npm audit** (`--audit-level=moderate`); secondary: eslint-plugin-security | Lint/format clean; audit clean | No Node surface |
+| **Go** | Go modules | **gofmt** / `go fmt`, **golangci-lint** | **govulncheck** (`govulncheck ./...`) | Format + lint clean; SAST clean | No Go modules |
+| **Rust** | `Cargo.toml` | **rustfmt**, **clippy** | **cargo-audit** (`cargo audit`) | Format + clippy clean; audit clean | No `Cargo.toml` |
+| **Shell** (bash/sh product) | Product shell scripts | **shellcheck** | **ShellCheck** (same tool may cover both domains—one declaration is enough) | No errors (or project severity) | No shell product scripts |
+| **Other / mixed** | Other product languages | Document tool + command | Language-appropriate tool, or **Semgrep** | Exit 0 / project-defined | No other product languages |
+| **Secrets** (whole repo) | Team chooses to scan | — | **Gitleaks** (preferred); secondary TruffleHog | No leaks | Explicit opt-out (e.g. pure public docs) |
+| **Multi-language / custom rules** | Cross-language or org rules | — | **Semgrep** | Exit 0 / clean | Language-specific tools already cover |
+
+**Rules:**
+
+1. Inventory drives the [verification table](#verification-before-ship)—each declared surface needs named commands and pass criteria.  
+2. Adding a language later updates inventory, verification, authority map (if needed), and certification checks in the **same change set**.  
+3. **Python product** and **Python dependencies** are separate rows (Bandit vs pip-audit).  
+4. **Secrets** and **Semgrep** are inventory surfaces even though they are not programming languages.  
+5. Prefer declared inventory over heuristic filesystem scans. At initiation, derive rows from [project interest](./SETUP.md) and planned layout.
+
+### Security / SAST gates (required when declared)
+
+**Developer-tooling** gates for security-oriented static analysis. These are **not** style gates (see [Non-Python style gates](#non-python-style-gates) and [Language surface inventory](#language-surface-inventory)) and are **not** product runtime dependencies.
+
+**Posture:** When a language or security surface is **present in the inventory**, its Domain A tool is **required** before task completion and ship (see [Completion rule](#completion-rule)). Surfaces not in the inventory must not be implied. Docs-only inventories declare **zero** SAST gates.
 
 **Modularity rule:** Declare **only** tools for **languages and surfaces the repo actually ships**. Copy **zero** rows for docs-only projects. Multi-language monorepos add **one verification row per language surface that exists**—never paste the full kit table. List chosen commands in the [verification table](#verification-before-ship).
 
@@ -290,9 +325,78 @@ Prefer official or near-official tools with a small install footprint. All work 
 **Rules:**
 
 1. Name the tool and pass criteria in the verification table—do not leave “we scan somehow” implied.  
-2. Install tools in the **developer** environment only.  
+2. Install tools in the **developer** environment only. Missing required tools fail the gate (install hints)—do not silently skip.  
 3. Docs-only repositories may omit every security / SAST gate.  
-4. Do not treat the full table above as a checklist for every project.
+4. Do not treat the full table above as a checklist for every project.  
+5. Warning-level findings (e.g. PSScriptAnalyzer **Warning**) stay advisory unless the project promotes them to critical.
+
+### Security and code-validation certification
+
+Optional formal **developer self-attestation** that, for git commit *C* at time *T*, declared product surfaces passed **Domain A (security / SAST)** and **Domain B (code validation)**. This is **not** a third-party audit, SOC 2, ISO seal, or product runtime diagnostics gate.
+
+| This **is** | This **is not** |
+|-------------|-----------------|
+| Self-attestation of automated checks bound to a commit | Third-party certification or compliance logo |
+| Security **and** code validation in one certificate pair | A second product CLI / diagnostics gate for end users |
+| Suitable for IT tickets and pre-ship review packets | Proof of regulated Safe Harbor or data claims |
+| Regenerable, gitignored output under one folder | A substitute for human threat modeling |
+
+#### Single-folder rule
+
+When the project maintains formal certificates, **all** of them live under one folder:
+
+```text
+certification/
+  README.md                    # operator guide + disclaimer (versioned)
+  last_certification.json      # gitignored, regenerable
+  last_certification.txt       # gitignored, regenerable
+  # optional later: logs/ (gitignored); orchestrator harness (deferred)
+```
+
+| Rule | Detail |
+|------|--------|
+| One folder | No split `security-cert/` vs `validation-cert/`; no extra root purpose directories |
+| One certificate pair | Both domains appear **inside** the same JSON/TXT |
+| Regenerable | Never commit `last_certification.*` |
+| Optional | Docs-only and early projects may omit the folder until product code warrants it |
+
+#### Domains and OverallPass
+
+```text
+Domains.Security.OverallPass
+Domains.CodeValidation.OverallPass
+OverallPass = AND of domains that apply for declared inventory surfaces
+```
+
+**OverallPass** means: every **critical** check that ran passed, **and** no required critical tool was missing.
+
+| Domain | Covers |
+|--------|--------|
+| **Security** | Declared Domain A tools from the inventory (Bandit, pip-audit, PSScriptAnalyzer Error, npm audit, govulncheck, cargo-audit, ShellCheck, Gitleaks, Semgrep, …) |
+| **Code validation** | Declared Domain B style gates (pylint, eslint, gofmt, …) plus project contract checks (tests, probes, parse) listed in verification |
+
+#### Certificate shape (illustrative)
+
+**Machine-readable** (`certification/last_certification.json`) should include:
+
+- `CertificateType`: `SecurityAndCodeValidationCertification`
+- `OverallPass`, `Success`, timestamps, `RepoRoot`
+- `GitCommit`, `GitBranch`, `GitDirty`
+- `LanguageSurfaces[]` (from inventory; e.g. Python, PythonDeps, PowerShell, JavaScriptTypeScript, Go, Rust, Shell, Other, Secrets, Semgrep)
+- `PackageVersions`, `ToolVersions`, `PassCriteria`
+- `Domains.Security` / `Domains.CodeValidation` with `OverallPass`, `CriticalFailed`
+- `Checks[]`: `Name`, `Domain`, `Language` (optional), `Passed`, `Severity`, `Detail`, optional `DurationMs`
+- `Disclaimer`, `Message`
+
+**Human-readable** (`last_certification.txt`): same facts in sections (`== Security ==`, `== Code validation ==`, disclaimer).
+
+**Privacy:** paths, versions, rule ids, counts only—never secrets, passwords, PHI, or production claim rows.
+
+#### Certification rule
+
+When the repository maintains `certification/`, regenerate `last_certification.json` and `.txt` after critical gates for the change set; leave regenerable outputs **untracked**. Missing required tools yield `OverallPass = false`, not a silent skip. A future kit harness may automate generation; until then, operators may produce the pair manually or with project scripts that match this schema.
+
+**Relationship to package diagnostics:** package probes answer “can **this machine** run the product?” Certification answers “does **this source tree** meet security + validation policy?” Do not merge package diagnostics into `certification/`.
 
 ---
 
@@ -579,10 +683,11 @@ Commit messages and **what is staged** must stay consistent with the documentati
 3. If CLI/API verbs, flags, exit codes, or JSON shapes changed, is the matching guide updated?  
 4. If trust/execution model changed, is the matching security doc updated?  
 5. If formulas or public output fields changed, are methodology + fixtures updated?  
-6. If product Python changed, will the pylint gate pass?  
-7. Would a reviewer find the subject by searching the feature name used in the README?  
-8. Would this subject still make sense **two years** from now without the PR description?  
-9. If AI assisted: are `Assisted-by` / `Compliance` / `Instructed-by` present? Does `Assisted-by` name the AI that did the work? Does `Instructed-by` match `git config user.name`?
+6. If product Python changed, will the pylint gate pass? If Python is in the language inventory, will Bandit pass?  
+7. Were **declared** Domain A/B gates for other touched language surfaces run?  
+8. Would a reviewer find the subject by searching the feature name used in the README?  
+9. Would this subject still make sense **two years** from now without the PR description?  
+10. If AI assisted: are `Assisted-by` / `Compliance` / `Instructed-by` present? Does `Assisted-by` name the AI that did the work? Does `Instructed-by` match `git config user.name`?
 
 ### Suggested commit workflow
 
@@ -608,20 +713,36 @@ A remote is optional. When one exists, do not assume write access to `main`/`mas
 
 ## Verification before ship
 
-Fill concrete commands for your project. Rows that do not apply may be removed.
+Fill concrete commands for your project from the [language surface inventory](#language-surface-inventory). Rows that do not apply may be removed.
 
 | Change type | Minimum verification |
 |-------------|----------------------|
 | Public behavior, scores, exports | Project tests / golden fixtures (define command for each primary platform) |
 | Python product code style | `python -m pylint <package_or_paths>` (must pass; see [Python style gate](#python-style-gate-pylint)) |
-| Other language product style | Project-declared gate (see [Non-Python style gates](#non-python-style-gates)) |
-| Security / SAST (language-specific) | Only the commands for **languages this repo ships** (see [Security / SAST gates](#security--sast-gates-advisory)); omit entire row if none declared |
+| Other language product style | Project-declared gate per inventory (see [Non-Python style gates](#non-python-style-gates)) |
+| Security / SAST (language-specific) | Only the commands for **surfaces in the inventory** (see [Security / SAST gates](#security--sast-gates-required-when-declared)); omit entire row if inventory is empty |
+| Formal certification | If `certification/` is maintained: regenerate `last_certification.json` / `.txt` after critical gates; confirm OverallPass; do not stage outputs |
 | Environment / packaging | Project probe or smoke script (define command; list Windows and Unix forms if both are supported) |
 | Schema or sample data | Headers/fields match schema; consumers still load samples |
 | Docs only | [Author checklist](./MARKDOWN-STANDARD.md#author-checklist); relative links resolve; platform examples consistent |
-| New/removed source files | Inventory/catalog updated (if maintained) |
+| New/removed source files | Inventory/catalog updated (if maintained); language surface inventory if languages added/removed |
 
-Fill commands for the host OS(es) the team develops on. When multi-platform, either one portable command or one row/note per OS. Do not claim a behavior change is complete if the relevant validation was skipped. Do not claim a Python product change is complete if the pylint gate was skipped or failed. Do not claim a declared security / SAST gate was run if it was skipped or failed.
+### Completion rule
+
+Do **not** mark a change complete, and do **not** claim ship readiness, if any **declared** Domain B (code validation / style) or Domain A (security / SAST) gate for a **surface present in the inventory** was skipped or failed. Docs-only inventories declare no language gates. Missing required developer tools is a **failed** gate, not a skip.
+
+Fill commands for the host OS(es) the team develops on. When multi-platform, either one portable command or one row/note per OS.
+
+### Before marking work complete
+
+Ordered steps for humans and AI agents:
+
+1. Read **language surface inventory** in this file (pick only declared rows from the full kit catalog: Python, Python deps, PowerShell, JS/TS/Node, Go, Rust, Shell, Other/mixed, Secrets, Semgrep).  
+2. Run **Domain B** gates for every surface touched by the change.  
+3. Run **Domain A** gates for every surface touched (plus Secrets / Semgrep if those rows exist).  
+4. Update canonical docs / `CHANGELOG.md` per the authority map.  
+5. If `certification/` is maintained: regenerate the certificate pair; confirm OverallPass; leave outputs unstaged.  
+6. Only then state the task is complete.
 
 ---
 
@@ -630,9 +751,12 @@ Fill commands for the host OS(es) the team develops on. When multi-platform, eit
 | Trigger | Action |
 |---------|--------|
 | Every source path add/remove/rename | Update inventory/catalog if maintained |
+| Language surface added or removed | Update [language surface inventory](#language-surface-inventory) + verification rows (+ certification checks if maintained) |
 | Every release-worthy package behavior change | Bump code version; refresh CLI/API guide and status blocks; update `CHANGELOG.md` |
-| Every product Python edit | Run pylint gate; keep exit 0 / 10.00 score |
-| Security-relevant change | Update matching security doc; re-run probes as appropriate; CHANGELOG entry |
+| Every product Python edit | Run pylint gate; keep exit 0 / 10.00 score; run Bandit if Python is in inventory |
+| Every product edit in another declared language | Run that surface’s Domain B + Domain A gates |
+| Security-relevant change | Update matching security doc; re-run declared SAST; CHANGELOG entry |
+| Formal certification maintained | Regenerate `last_certification.*` after critical gates; do not commit outputs |
 | Fixture failure after intentional math/logic change | Refresh expected outputs only with methodology note |
 | Stale `last_updated` on heavily edited docs | Set ISO date when merging |
 | Kit upgrade available upstream | Follow [Upgrading the kit](#upgrading-the-kit-post-initiation); update baseline + project CHANGELOG |
@@ -655,8 +779,12 @@ Fill commands for the host OS(es) the team develops on. When multi-platform, eit
 | Vague commits (`update stuff`, `wip`) | Conventional `type(scope):` subject naming the real surface |
 | Code without CLI/methodology/security docs when those contracts apply | Same change set as the canonical doc per authority map; omit security docs when [modularity](#security-documentation-modularity) allows |
 | Empty `SECURITY.md` for docs-only or pure libraries with no side effects | Omit the file and the authority-map row |
-| Pasting the full multi-language SAST table into every project | Declare only tools for languages the repo ships |
+| Pasting the full multi-language SAST table into every project | Declare only tools for languages the repo ships ([language surface inventory](#language-surface-inventory)) |
+| Claiming complete while skipping a **declared** style or SAST gate | Run inventory gates; see [Completion rule](#completion-rule) |
 | Shipping Bandit / npm audit / Gitleaks / etc. as product runtime deps | Keep security / SAST tools developer-only |
+| Committing `certification/last_certification.*` | Gitignore regenerable cert outputs; regenerate locally |
+| Treating certification as a product launcher / diagnostics gate | Certification attests **source tree** policy only |
+| Empty language inventory while shipping product code | Fill inventory when product languages exist |
 | `feat` commit that only edits markdown | Use `docs` / `docs(scope)` |
 | Leaving SETUP.md forever at root after adoption | Delete or archive after initiation; keep [Kit baseline](#kit-baseline) |
 | Language style “somehow” without a named gate | Declare tool + pass criteria in RULES / verification table |
@@ -675,10 +803,13 @@ Before you commit or share a change:
 
 - [ ] Behavior matches the **canonical** doc for that surface (CLI / API / methodology / security / README)  
 - [ ] Inventory/catalog updated if paths changed (when maintained)  
+- [ ] [Language surface inventory](#language-surface-inventory) still matches languages the repo ships  
 - [ ] Versions and `last_updated` bumped where contracts changed  
 - [ ] **CHANGELOG.md** updated when required (release-worthy behavior, version bump, security, kit adopt/upgrade)  
-- [ ] Required **verification** from the table above has been run  
-- [ ] If product Python changed: **pylint gate** passed (`python -m pylint <package_or_paths>`)  
+- [ ] Required **verification** from the table above has been run ([Completion rule](#completion-rule))  
+- [ ] If product Python changed: **pylint** passed; **Bandit** passed when Python is in inventory  
+- [ ] Other declared language surfaces: Domain B + Domain A gates passed for surfaces touched  
+- [ ] If `certification/` is maintained: certificate regenerated; OverallPass true; outputs not staged  
 - [ ] No secrets, sensitive production data, regenerable outputs, or caches staged  
 - [ ] Markdown follows [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) when docs were edited  
 - [ ] Commit message uses `type(scope):` format and matches the staged files  
@@ -693,6 +824,7 @@ Before you commit or share a change:
 
 | Version | Notes |
 |---------|--------|
+| 1.4.0 | Language surface inventory (full RULES catalog); SAST **required when declared**; security & code-validation certification schema (single `certification/` folder); completion rule + before-complete steps; verification/checklist/anti-pattern updates |
 | 1.3.1 | Upgrade procedure: explicit CHANGELOG discipline (read only entries since baseline; never copy full kit history into project CHANGELOG); link to README AI upgrade prompt |
 | 1.3.0 | Security documentation modularity (omit SECURITY.md when no execution/network/privilege/secrets surface); advisory multi-language Security / SAST gates keyed by language; verification and anti-pattern updates |
 | 1.2.2 | Required AI-assisted commit disclosure: dynamic `Assisted-by` (make/model), `Compliance: RULES.md`, dynamic `Instructed-by` from `git config user.name`; checklist updates |

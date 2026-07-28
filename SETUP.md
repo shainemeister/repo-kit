@@ -13,7 +13,7 @@ This kit **intentionally ships** `SETUP.md` at root for first-time adopters. Ado
 1. Choose an [adoption mode](#adoption-modes).  
 2. [State the interest](#1-state-the-interest) and [platform context](#2-set-platform-context).  
 3. [Copy](#3-copy-kit-pieces) the pieces you need.  
-4. [Fill the authority map](#4-fill-the-authority-map) (see [examples/](./examples/) for filled skeletons).  
+4. [Fill the authority map](#4-fill-the-authority-map), [language surface inventory](./RULES.md#language-surface-inventory), and verification table (see [examples/](./examples/)).  
 5. [Record kit baseline](#4b-record-kit-baseline) and ensure root `CHANGELOG.md` exists.  
 6. [Pick templates](#5-pick-templates-by-interest), scaffold docs, and [verify](#8-first-verification-commands).  
 7. [Delete or archive this file](#after-setup).
@@ -55,7 +55,7 @@ Into the target repository (or keep a reference per your adoption mode):
 | [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) | Yes (or link) | Authoring rules |
 | [RULES.md](./RULES.md) | Yes | Fill authority map, verification, and kit baseline |
 | [CHANGELOG.md](./CHANGELOG.md) | **Yes** | Project history is **required** (repository H2 → version H3 → category H4); start from kit pattern or a fresh file |
-| [templates/](./templates/) | As needed | Copy only the skeletons you will fill |
+| [templates/](./templates/) | As needed | Copy only the skeletons you will fill (include TEMPLATE-CERTIFICATION-README when formal certs are wanted) |
 | [configs/pylintrc](./configs/pylintrc) | If Python product code | Copy as `.pylintrc` at package or repo root |
 | This `SETUP.md` | Temporary | Follow, then delete or archive |
 
@@ -67,7 +67,11 @@ In [RULES.md — Authority map](./RULES.md#authority-map), replace placeholders 
 
 **Security documentation is optional** for packages with no execution surface, network access, elevated privilege, or secrets handling—omit `SECURITY.md` and the authority-map security row rather than creating an empty file. See [RULES — Security documentation modularity](./RULES.md#security-documentation-modularity).
 
-Also fill [Verification before ship](./RULES.md#verification-before-ship) with commands the team will actually run on each primary platform.
+Also fill:
+
+1. **[Language surface inventory](./RULES.md#language-surface-inventory)** — copy **only** rows for languages this project will ship from the full kit catalog (Python, Python deps, PowerShell, JavaScript/TypeScript/Node, Go, Rust, Shell, Other/mixed, Secrets, Semgrep). Docs-only → empty inventory.  
+2. **[Verification before ship](./RULES.md#verification-before-ship)** — commands for each declared surface (Domain B style + Domain A SAST). Declared gates are **required** before task completion.  
+3. **Optional `certification/`** — when the project ships product code and wants formal self-attestation certificates, add `certification/README.md` (see [templates/TEMPLATE-CERTIFICATION-README.md](./templates/TEMPLATE-CERTIFICATION-README.md) and [RULES — Certification](./RULES.md#security-and-code-validation-certification)); gitignore regenerable `last_certification.*`.
 
 **Filled examples (copy the pattern, not the product names):**
 
@@ -155,7 +159,9 @@ On Windows you may use `py -3.x -m pylint …`. Install pylint in the **develope
 
 **Non-Python languages:** declare a style gate (tool + pass criteria) in RULES or a thin overlay—see [Non-Python style gates](./RULES.md#non-python-style-gates).
 
-**Security / SAST gates (optional):** declare only tools for **languages the project interest actually uses** (e.g. Bandit for Python product code, npm audit for Node, govulncheck for Go). Docs-only projects declare none. See [RULES — Security / SAST gates](./RULES.md#security--sast-gates-advisory).
+**Security / SAST gates (required when declared):** declare only tools for **surfaces in the language inventory** (e.g. Bandit for Python product code, npm audit for Node, govulncheck for Go). Once declared, they must pass before task completion—do not silently skip. Docs-only projects declare none. See [RULES — Security / SAST gates](./RULES.md#security--sast-gates-required-when-declared) and [Completion rule](./RULES.md#completion-rule).
+
+**Formal certification (optional):** if you maintain `certification/`, regenerate `last_certification.json` / `.txt` after critical gates; never commit those outputs. Schema: [RULES — Certification](./RULES.md#security-and-code-validation-certification).
 
 ---
 
@@ -163,6 +169,7 @@ On Windows you may use `py -3.x -m pylint …`. Install pylint in the **develope
 
 - Maintain a `FILE-CATALOG.md` (or similar) and update it on path add/remove/rename.  
 - Copy `configs/pylintrc` → `.pylintrc`, set `py-version`, point the verification table at the real package path.  
+- Add `certification/` + operator README when product code warrants formal self-attestation certificates.  
 - Read [How overlays work](./README.md#how-overlays-work) so stack-specific rules stay in the project map, not a forked kit.
 
 **Checklists:** [Author checklist](./MARKDOWN-STANDARD.md#author-checklist) · [Contributor checklist](./RULES.md#contributor-checklist)

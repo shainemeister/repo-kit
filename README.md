@@ -54,10 +54,10 @@ Copy what you need, **initiate from project interest** so formal docs guide deve
 |-------|------|
 | [SETUP.md](./SETUP.md) | One-time adoption guide (follow, then delete or archive) |
 | [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) | Structure, frontmatter, doc types, platform-aware examples, author checklist |
-| [RULES.md](./RULES.md) | Authority map, contracts, versioning, CHANGELOG, kit baseline, git, verification, style gates |
+| [RULES.md](./RULES.md) | Authority map, language inventory, contracts, versioning, CHANGELOG, kit baseline, git, verification, style + SAST gates, certification policy |
 | [CHANGELOG.md](./CHANGELOG.md) | Kit version history (this repo) · **Required project history** for every adopter |
 | [configs/pylintrc](./configs/pylintrc) | PEP-8 style gate for Python product code (developer tooling) |
-| [templates/](./templates/) | Starting skeletons for README, CLI, methodology, security, concept, generic |
+| [templates/](./templates/) | Starting skeletons for README, CLI, methodology, security, certification, concept, generic |
 | [examples/](./examples/) | Filled authority-map skeletons (CLI, library, docs-only) |
 
 | You want to… | Start here |
@@ -68,6 +68,8 @@ Copy what you need, **initiate from project interest** so formal docs guide deve
 | Scaffold docs for a new package | [templates/](./templates/) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) |
 | Set maintenance policy | [RULES.md](./RULES.md) |
 | Gate Python style (PEP-8) | [configs/pylintrc](./configs/pylintrc) · [RULES — pylint](./RULES.md#python-style-gate-pylint) |
+| Language inventory + SAST (required when declared) | [RULES — Language surface inventory](./RULES.md#language-surface-inventory) · [Security / SAST](./RULES.md#security--sast-gates-required-when-declared) |
+| Formal security + code-validation certificates | [RULES — Certification](./RULES.md#security-and-code-validation-certification) · [TEMPLATE-CERTIFICATION-README.md](./templates/TEMPLATE-CERTIFICATION-README.md) |
 | Write a root landing README | [Landing / root README](./MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter) |
 
 ## Use cases
@@ -78,8 +80,10 @@ Copy what you need, **initiate from project interest** so formal docs guide deve
 | **Align an existing repo** | Authority map + checklists without a rewrite | [SETUP.md](./SETUP.md) (selective copy) |
 | **Upgrade existing kit adoption** | Merge kit deltas since baseline; keep project authority map | [How to use (quick path)](#how-to-use-quick-path) |
 | **Multi-package monorepo** | Shared standards; per-package README/CLI/security | Templates under each package |
-| **Python product code** | pylint PEP-8 gate, score 10.00, not a runtime dep | `configs/pylintrc` |
-| **Docs-only design repo** | Frontmatter, Summary→Contents, concept/methodology templates | [examples/docs-only.md](./examples/docs-only.md) |
+| **Python product code** | pylint PEP-8 gate, score 10.00, not a runtime dep; Bandit when declared | `configs/pylintrc` · [SAST](./RULES.md#security--sast-gates-required-when-declared) |
+| **Multi-language product code** | Inventory-driven style + SAST per language (Python, PowerShell, JS/TS, Go, Rust, Shell, …) | [Language surface inventory](./RULES.md#language-surface-inventory) |
+| **Docs-only design repo** | Frontmatter, Summary→Contents, concept/methodology templates; empty language inventory | [examples/docs-only.md](./examples/docs-only.md) |
+| **Pre-ship self-attestation** | Optional `certification/` JSON+TXT schema (no product runtime gate) | [RULES — Certification](./RULES.md#security-and-code-validation-certification) |
 | **Multi-OS team** | Dual-path examples and per-platform verify commands | [Platform-aware examples](./MARKDOWN-STANDARD.md#platform-aware-examples) |
 
 ## What’s included
@@ -111,6 +115,7 @@ your-repo/
   SETUP.md                  # temporary — delete after initiation
   .pylintrc                 # if Python product code
   FILE-CATALOG.md           # optional
+  certification/            # optional — formal self-attestation certs (gitignored outputs)
   templates/                # optional local copies
   packages/                 # or your layout
     my-service/
@@ -149,6 +154,10 @@ When a project ships **Python product code**:
 | Command | `python -m pylint <package_or_paths>` |
 
 Details: [RULES.md — Python style gate](./RULES.md#python-style-gate-pylint). For other languages: [Non-Python style gates](./RULES.md#non-python-style-gates).
+
+## Language inventory, SAST, and certification
+
+When a project ships product code, fill the [language surface inventory](./RULES.md#language-surface-inventory) from the full kit catalog (Python, Python deps, PowerShell, JavaScript/TypeScript/Node, Go, Rust, Shell, Other/mixed, Secrets, Semgrep)—**only** rows that apply. Declared Domain B (style) and Domain A (SAST) gates are **required** before task completion. Optional formal certificates live under `certification/` ([schema and rules](./RULES.md#security-and-code-validation-certification)); regenerable outputs are gitignored and never gate end-user product launchers. Docs-only repos keep an empty inventory.
 
 ## Where to go next
 

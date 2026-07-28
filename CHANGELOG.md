@@ -24,6 +24,21 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 
 ## repo-kit
 
+### [1.2.0] - 2026-07-28
+
+#### Added
+
+- **Language surface inventory** in RULES.md: full catalog aligned with existing style + SAST tables (Python, Python deps, PowerShell, JavaScript/TypeScript/Node, Go, Rust, Shell, Other/mixed, Secrets, Semgrep) with Domain A (security) and Domain B (code validation) columns.
+- **Security and code-validation certification** policy in RULES.md: single `certification/` folder, certificate JSON/TXT schema, OverallPass rules, developer-only and non–product-gate constraints (no runnable harness yet).
+- **Completion rule** and **Before marking work complete** steps (humans and AI agents): declared style + SAST gates required when inventory lists the surface.
+- `templates/TEMPLATE-CERTIFICATION-README.md` operator guide skeleton for adopter `certification/README.md`.
+- SETUP, examples (docs-only / Python library / CLI), TEMPLATE-SECURITY, README, and `.gitignore` updates for inventory, required-when-declared SAST, and regenerable cert outputs.
+
+#### Changed
+
+- RULES.md document version 1.3.1 → **1.4.0**: SAST posture from advisory-only to **required when declared**; verification, checklist, maintenance cadence, and anti-patterns updated.
+- Root `SECURITY_PLAN.md` marked **deprecated** (v0.2.0); portable authority is RULES only (product-specific harness notes no longer compete).
+
 ### [1.1.7] - 2026-07-26
 
 #### Changed
