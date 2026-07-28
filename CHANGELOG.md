@@ -37,7 +37,10 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 #### Changed
 
 - RULES.md document version 1.3.1 → **1.4.0**: SAST posture from advisory-only to **required when declared**; verification, checklist, maintenance cadence, and anti-patterns updated.
-- Root `SECURITY_PLAN.md` marked **deprecated** (v0.2.0); portable authority is RULES only (product-specific harness notes no longer compete).
+
+#### Removed
+
+- Root `SECURITY_PLAN.md` — product-oriented concept fully absorbed into RULES (language inventory, SAST required-when-declared, certification schema, completion rule); RULES is the sole authority.
 
 ### [1.1.7] - 2026-07-26
 
