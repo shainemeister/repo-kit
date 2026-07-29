@@ -20,13 +20,13 @@ There is **no traditional install step**. Prefer keeping this kit as a reference
 #### New implementation
 
 ```text
-Review PLAN.md (project plan) and kit/SETUP.md at https://github.com/shainemeister/repo-kit, then initiate the adoption checklist. Preserve existing project but integrate repo-kit as per kit/RULES.md.
+Review PLAN.md (project plan) and kit/SETUP.md at https://github.com/shainemeister/repo-kit, then initiate the adoption checklist. Place standards under kit/ in the target repo; keep product code and project CHANGELOG outside kit/. Fill kit/RULES.md authority map with real product paths.
 ```
 
 #### Existing repository (first adopt)
 
 ```text
-This repository has no repo-kit Kit baseline yet. Follow kit/SETUP.md selective adoption / Existing repository (first adopt). Map real paths into the authority map; do not force a product directory rewrite. Record Kit baseline; then delete SETUP. Later upgrades use kit/UPGRADE.md.
+This repository has no repo-kit Kit baseline yet. Follow kit/SETUP.md selective adoption / Existing repository (first adopt). Add a kit/ standards tree (do not flatten standards onto root). Map real product paths into the authority map; do not force a product directory rewrite. Record Kit baseline in kit/RULES.md; delete kit/SETUP.md. Later upgrades use kit/UPGRADE.md.
 ```
 
 #### Alternative (local clone reference)
@@ -36,20 +36,20 @@ git clone https://github.com/shainemeister/repo-kit ../repo-kit-reference
 ```
 
 ```text
-Review PLAN.md and kit/SETUP.md from ../repo-kit-reference, then initiate the adoption checklist. Preserve existing project but integrate repo-kit as per kit/RULES.md.
+Review PLAN.md and kit/SETUP.md from ../repo-kit-reference, then initiate the adoption checklist. Standards live under the target repo's kit/; product data stays outside kit/.
 ```
 
 #### Upgrade repo-kit
 
 ```text
-Upgrade repo-kit for this repository (Kit baseline already present in RULES.md).
+Upgrade repo-kit for this repository (Kit baseline already present in kit/RULES.md, or root RULES.md if still on 1.x layout).
 
-1. Read this project's RULES.md Kit baseline (Adopted kit version, Kit source).
+1. Read this project's Kit baseline (Adopted kit version, Kit source) in kit/RULES.md (or root RULES.md until migrated).
 2. Open the kit at Kit source (canonical: https://github.com/shainemeister/repo-kit) and read kit/UPGRADE.md and kit/CHANGELOG.md under ## repo-kit.
-3. If baseline is 1.x, follow UPGRADE — Migrate from kit 1.x to 2.0; otherwise follow the routine upgrade procedure.
-4. Merge only appropriate kit pieces; preserve this project's authority map and verification commands.
+3. If baseline is 1.x or standards still sit at project root, follow UPGRADE — Migrate from kit 1.x to 2.x layout; otherwise follow the routine upgrade procedure.
+4. Merge only appropriate kit pieces into this project's kit/; preserve authority-map product paths and verification commands.
 5. Update Kit baseline (version + date); keep Kit source unchanged unless this repo is a deliberate fork.
-6. Add a short note to the project CHANGELOG.md. Do not copy the full kit CHANGELOG history into the project CHANGELOG.
+6. Add a short note to the project root CHANGELOG.md. Do not copy the full kit CHANGELOG history into the project CHANGELOG.
 ```
 
 Then follow [kit/SETUP.md](./kit/SETUP.md) (first adopt) or [kit/UPGRADE.md](./kit/UPGRADE.md) (existing baseline).
@@ -58,13 +58,14 @@ Then follow [kit/SETUP.md](./kit/SETUP.md) (first adopt) or [kit/UPGRADE.md](./k
 
 ## Mandatory governance
 
-Maintenance of any adopting repository follows **[`kit/RULES.md`](./kit/RULES.md)** (hub: authority map, kit baseline, Must / Must not). Domain detail is under [`kit/rules/`](./kit/rules/).
+Maintenance of any adopting repository follows **`kit/RULES.md`** (hub: authority map, kit baseline, Must / Must not). Domain detail is under **`kit/rules/`**. In *this* repo those files are at [`kit/RULES.md`](./kit/RULES.md) and [`kit/rules/`](./kit/rules/).
 
 | Must (digest) | Must not (digest) |
 |---------------|-------------------|
 | Update **canonical** docs with behavior changes | Commit secrets or regenerable outputs |
-| Keep project root **CHANGELOG.md** | Ship release-worthy changes without CHANGELOG |
-| Keep **Kit baseline** current | Lose track of kit version after deleting SETUP |
+| Keep **project root** `CHANGELOG.md` (project history) | Ship release-worthy changes without CHANGELOG |
+| Keep standards under **`kit/`**; product outside | Flatten RULES / standards onto product root as default |
+| Keep **Kit baseline** current in `kit/RULES.md` | Lose track of kit version after deleting SETUP |
 | Run **declared** style + SAST gates before complete | Claim complete when a declared gate failed or was skipped |
 | Fill authority map from project interest at start | Leave contracts empty until “docs later” |
 
@@ -120,39 +121,47 @@ Copy what you need from `kit/`, **initiate from project interest** so formal doc
 
 ## Quick start
 
-Adopt via **[kit/SETUP.md](./kit/SETUP.md)** (adoption mode, platform, copy from `kit/`, authority map, kit baseline, templates, pylint, delete SETUP). Prefer loading context from your project `PLAN.md` first ([How to use](#how-to-use-quick-path)).
+Adopt via **[kit/SETUP.md](./kit/SETUP.md)** (adoption mode, platform, copy upstream standards **into the target repo’s `kit/`**, fill authority map, kit baseline, templates, pylint, delete SETUP). Prefer loading context from your project `PLAN.md` first ([How to use](#how-to-use-quick-path)).
 
 ### Suggested root layout after adopt (product repo)
 
+Standards stay under **`kit/`** (same packaging as this repository). Repository-specific data stays **outside** `kit/`.
+
 ```text
 your-repo/
-  README.md                 # landing (no frontmatter)
-  RULES.md                  # hub (filled authority map + kit baseline)
-  rules/                    # optional domain modules from kit/rules/
-  MARKDOWN-STANDARD.md      # or link to this kit
-  CHANGELOG.md              # required — project history
-  PLAN.md                   # your project plan (recommended)
-  UPGRADE.md                # optional local copy of durable upgrade guide
-  .pylintrc                 # if Python product code
-  certification/            # optional
-  packages/                 # or your layout
+  README.md                 # product landing (no frontmatter)
+  LICENSE
+  .gitignore
+  CHANGELOG.md              # PROJECT history (required) — not kit release notes
+  PLAN.md                   # optional project plan (repo-specific)
+  kit/                      # standards from repo-kit (filled for this project)
+    RULES.md                # hub: authority map + kit baseline
+    rules/                  # domain modules from kit/rules/
+    MARKDOWN-STANDARD.md
+    UPGRADE.md              # durable (or open from Kit source only)
+    SETUP.md                # temporary — delete after initiation
+    configs/                # optional local copy of pylintrc etc.
+    templates/              # optional local skeletons
+  packages/                 # or src/ / your product layout — repo-specific
     my-service/
       README.md
       CLI-GUIDE.md
       SECURITY.md
+  certification/            # optional self-attestation
+  .pylintrc                 # if Python; or package-local / kit/configs
 ```
 
-**Note:** This **kit repository** keeps payload under `kit/`; **adopting** projects usually copy *out of* `kit/` onto their root. See [kit/rules/hygiene.md](./kit/rules/hygiene.md).
+**Separation:** do not put product code under `kit/`; do not dump standards onto the project root. Detail: [kit/rules/hygiene.md](./kit/rules/hygiene.md).
 
 ## How overlays work
 
 | Layer | Contains |
 |-------|----------|
-| **This kit** (`kit/`) | Portable structure, formatting, git, pylint policy, templates, upgrade guide |
-| **Project RULES** | Real paths, runtimes, platform verify commands, dependency policy, domain “must not” |
-| **Package docs** | CLI contracts, methodology, security matrices for that package |
+| **Standards** (`kit/`) | Portable structure, formatting, git, pylint policy, templates, upgrade guide; project-filled authority map |
+| **Project RULES hub** | `kit/RULES.md` — real paths (to product outside `kit/`), runtimes, verify commands, domain “must not” |
+| **Package docs** | Outside `kit/`: CLI contracts, methodology, security matrices for that package |
 
-Do not fork the whole standard for every product fact. Keep shared rules stable; put stack-specific rules in the project authority map and verification table.
+Do not fork the whole standard for every product fact. Keep shared rules stable under `kit/`; put stack-specific paths and commands in the project authority map and verification table.
 
 ## Python style gate (pylint)
 

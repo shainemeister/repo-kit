@@ -26,6 +26,21 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 
 ## repo-kit
 
+### [2.0.1] - 2026-07-28
+
+#### Changed
+
+- **Adopter packaging doctrine:** new implementations keep **standards under `kit/`** (same model as this repository); **repository-specific** data (product packages, project `CHANGELOG.md`, `PLAN.md`) stays **outside** `kit/`.
+- README **Suggested root layout after adopt** corrected (no longer flattens RULES/standards onto product root).
+- SETUP copy targets → project `kit/`; permanent hub path → `kit/RULES.md`.
+- UPGRADE 1.1.0: migrate 1.x/root-layout standards **into** `kit/`; routine merges target `kit/`.
+- Hygiene 1.1.0: unified packaging (replaces “copy onto root” dual layout).
+- RULES hub 2.0.1, examples, versioning-and-git: authority map and baseline paths aligned.
+
+#### Notes
+
+- Supersedes 2.0.0 wording that adopters “usually keep RULES at project root after copy.”
+
 ### [2.0.0] - 2026-07-28
 
 #### Added
@@ -63,7 +78,7 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 | `/templates/` | `/kit/templates/` |
 | `/examples/` | `/kit/examples/` |
 
-Adopting **project** roots usually keep `RULES.md` / `CHANGELOG.md` at project root after copy. Upstream **reading** paths for upgrades are under `kit/`. Full procedure: [UPGRADE.md — Migrate from kit 1.x to 2.0](./UPGRADE.md#migrate-from-kit-1x-to-20).
+Adopting projects keep **standards under `kit/`** and **project** `CHANGELOG.md` at repo root (see [2.0.1](#201---2026-07-28)). Upstream **reading** paths for upgrades are under `kit/`. Full procedure: [UPGRADE.md — Migrate from kit 1.x / root layout to 2.x](./UPGRADE.md#migrate-from-kit-1x--root-layout-to-2x).
 
 ### [1.2.1] - 2026-07-28
 

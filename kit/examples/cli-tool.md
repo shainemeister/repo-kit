@@ -6,6 +6,8 @@
 
 **Primary platform (example):** multi (Windows + Linux/macOS)
 
+**Packaging:** standards under `kit/`; product under `my-cli/` (outside `kit/`). See [hygiene](../rules/hygiene.md).
+
 ---
 
 ## Suggested first templates
@@ -22,17 +24,17 @@
 
 | Concern | Canonical source |
 |---------|------------------|
-| Repo purpose and quick start | [README.md](../../README.md) (project root) |
-| Markdown structure | `MARKDOWN-STANDARD.md` |
-| Maintenance policy | `RULES.md` + `rules/` modules |
-| Contract policy | `rules/contracts.md` |
-| Project history (**required**) | `CHANGELOG.md` |
-| Standards kit baseline | RULES — Kit baseline |
+| Repo purpose and quick start | Root `README.md` |
+| Markdown structure | `kit/MARKDOWN-STANDARD.md` |
+| Maintenance policy | `kit/RULES.md` + `kit/rules/` |
+| Contract policy | `kit/rules/contracts.md` |
+| Project history (**required**) | Root `CHANGELOG.md` |
+| Standards kit baseline | `kit/RULES.md` — Kit baseline |
 | Package overview | `my-cli/README.md` |
 | CLI or automation contract | `my-cli/CLI-GUIDE.md` |
-| Security / trust boundary | `my-cli/SECURITY.md` *(present because a CLI is an execution surface)* |
-| Language surface inventory | RULES / security module (filled below) |
-| Security & code-validation certification | `certification/README.md` *(optional until formal certs are wanted)* |
+| Security / trust boundary | `my-cli/SECURITY.md` *(CLI is an execution surface)* |
+| Language surface inventory | Inventory in project RULES / security module (filled below) |
+| Security & code-validation certification | `certification/README.md` *(optional)* |
 | Default config | `my-cli/config.example.yaml` |
 | Golden tests / fixtures | `my-cli/tests/fixtures/` |
 
@@ -42,8 +44,8 @@ Rows that do not apply (schema, methodology, etc.) are omitted.
 
 | Surface | Domain B (validation) | Domain A (security) | Notes |
 |---------|----------------------|---------------------|--------|
-| **Python** product code | `python -m pylint my_cli` (if the CLI is Python) | `python -m bandit -r my_cli` | Swap the whole row for the real stack (e.g. JS/TS → eslint + npm audit; Go → golangci-lint + govulncheck) |
-| **Secrets** (optional) | — | `gitleaks detect` | Encourage when configs or tokens might appear in history |
+| **Python** product code | `python -m pylint my_cli` (if the CLI is Python) | `python -m bandit -r my_cli` | Swap the whole row for the real stack |
+| **Secrets** (optional) | — | `gitleaks detect` | When configs or tokens might appear in history |
 
 Declare **only** surfaces this CLI ships. Never paste the full kit language table.
 
@@ -64,7 +66,7 @@ Declare **only** surfaces this CLI ships. Never paste the full kit language tabl
 
 #### Added
 
-- Adopted repo-kit 2.0.0 from https://github.com/shainemeister/repo-kit
+- Adopted repo-kit 2.0.1 from https://github.com/shainemeister/repo-kit (standards under kit/)
 ```
 
 ---
@@ -75,15 +77,13 @@ Declare **only** surfaces this CLI ships. Never paste the full kit language tabl
 |-------------|----------------------|
 | Public CLI behavior | `python -m my_cli validate path/to/sample.yaml` (exit 0 on good; non-zero on bad) |
 | Environment / packaging | `python -m my_cli --help` |
-| Product style (Domain B) | Gate for the CLI’s language (e.g. pylint for Python)—**required** when in inventory |
-| Security / SAST (Domain A) | `python -m bandit -r my_cli` *(example assumes Python CLI—swap for the real stack: npm audit, govulncheck, cargo-audit, PSScriptAnalyzer, etc.; never paste the full multi-language table)* — **required** when declared |
+| Product style (Domain B) | Gate for the CLI’s language—**required** when in inventory |
+| Security / SAST (Domain A) | Language-specific SAST for declared surfaces—**required** when declared |
 | Formal certification | If `certification/` maintained: regenerate `last_certification.*`; do not stage outputs |
 | Docs only | Author checklist; relative links from `my-cli/` resolve |
 | New/removed source files | Inventory/catalog updated (if maintained) |
 
-**Windows note:** same module form works; or `py -3 -m my_cli …` if that is the team convention.
-
-**SECURITY.md** is required here because the package is an execution surface. SAST gates match **only** the language of this CLI, not every language in the kit table. Declared gates must pass before task completion ([Completion rule](../rules/verification-and-ops.md#completion-rule)). Upgrades: [UPGRADE.md](../UPGRADE.md).
+**SECURITY.md** is required here because the package is an execution surface. Declared gates must pass before task completion ([Completion rule](../rules/verification-and-ops.md#completion-rule)). Upgrades: [UPGRADE.md](../UPGRADE.md).
 
 ---
 

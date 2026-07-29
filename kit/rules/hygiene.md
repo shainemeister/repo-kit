@@ -1,7 +1,7 @@
 ---
 title: Root Hygiene
-description: What belongs at repository root versus purpose directories; kit-repo vs adopter layout; SETUP and UPGRADE lifecycles.
-version: "1.0.0"
+description: Unified packaging—standards under kit/, repository-specific data outside; SETUP and UPGRADE lifecycles.
+version: "1.1.0"
 status: current
 audience:
   - developers
@@ -12,101 +12,113 @@ related:
   - ../SETUP.md
   - ../UPGRADE.md
   - ../CHANGELOG.md
+  - ../../README.md
 last_updated: "2026-07-28"
 ---
 
 # Root Hygiene
 
-Keep the repository root **scannable**: entry points and policy first; purpose directories for everything else.
+Keep the repository root **scannable**: entry points and project-specific surfaces first; **standards under `kit/`**; product code in purpose directories outside `kit/`.
 
-**Document version:** 1.0.0  
+**Document version:** 1.1.0  
 
-**Related:** [RULES.md](../RULES.md) · [SETUP.md](../SETUP.md) · [UPGRADE.md](../UPGRADE.md) · [CHANGELOG.md](../CHANGELOG.md)
+**Related:** [RULES.md](../RULES.md) · [SETUP.md](../SETUP.md) · [UPGRADE.md](../UPGRADE.md) · [CHANGELOG.md](../CHANGELOG.md) · [README.md](../../README.md)
 
 ---
 
 ## Summary
 
-Root hygiene differs slightly for **this kit repository** versus **adopting product repositories**. Adopters copy standards **from** `kit/` **into** their project layout; they do not have to nest product code under `kit/`.
+**Unified packaging:** this kit repository and **adopting product repositories** both keep standards under `kit/`. Repository-specific data (product code, project CHANGELOG, PLAN) stays **outside** `kit/`.
 
 | Must | Must not |
 |------|----------|
+| Keep adopted standards under `kit/` | Dump RULES / MARKDOWN-STANDARD / rules modules onto product root as the default |
+| Keep product code outside `kit/` | Put packages, services, or app source under `kit/` |
 | Prefer purpose directories over extra root files | Accumulate ephemeral SETUP after initiation |
 | Update the authority map when listed paths change | Force-add regenerable artifacts |
-| Keep UPGRADE durable (or re-fetch from Kit source) | Treat kit packaging layout as mandatory product tree shape |
+| Keep UPGRADE durable (or re-fetch from Kit source) | Mix kit release history into project CHANGELOG |
 
 ---
 
 ## Contents
 
 1. [Summary](#summary)
-2. [Dual layout](#dual-layout)
-3. [Adopter project — what belongs at root](#adopter-project--what-belongs-at-root)
-4. [This kit repository](#this-kit-repository)
-5. [What does not belong at root](#what-does-not-belong-at-root)
-6. [Supporting practices](#supporting-practices)
-7. [SETUP and UPGRADE lifecycles](#setup-and-upgrade-lifecycles)
-8. [Document history](#document-history)
+2. [Unified packaging](#unified-packaging)
+3. [What belongs at project root](#what-belongs-at-project-root)
+4. [What belongs under kit/](#what-belongs-under-kit)
+5. [What does not belong at root or under kit/](#what-does-not-belong-at-root-or-under-kit)
+6. [Separation rules](#separation-rules)
+7. [Supporting practices](#supporting-practices)
+8. [SETUP and UPGRADE lifecycles](#setup-and-upgrade-lifecycles)
+9. [Document history](#document-history)
 
 ---
 
-## Dual layout
+## Unified packaging
 
-| Context | Layout |
-|---------|--------|
-| **This repository (repo-kit)** | Payload under [`kit/`](../); root holds only `README.md`, `LICENSE`, and `.gitignore` |
-| **Adopting product repo** | Copy or merge pieces **from** upstream `kit/` **into** the **target project root** (or link/submodule and overlay). Product code, packages, and project `RULES.md` / `CHANGELOG.md` stay root-oriented unless the team chooses otherwise |
+| Context | Standards | Repository-specific |
+|---------|-----------|---------------------|
+| **This repository (repo-kit)** | Entire payload under [`kit/`](../) | Root README (kit landing), LICENSE, `.gitignore`; kit history in `kit/CHANGELOG.md` under `## repo-kit` |
+| **Adopting product repo** | Same: standards under **`kit/`** (copy/merge from upstream `kit/`, or link/submodule) | Root product README, **project** `CHANGELOG.md`, optional `PLAN.md`, packages/src, certification |
 
-**Kit packaging ≠ adopter hygiene.** Do not force every product repo into `product/kit/RULES.md`.
+**Default for new implementations:** `kit/RULES.md` (filled hub) + `kit/rules/*` — not root-level `RULES.md`.
+
+**Escape hatch:** reference or submodule the upstream kit without a local copy; still treat *project* history and product code as outside any standards tree, and record Kit baseline in the project’s maintenance hub path you document in the authority map.
 
 ---
 
-## Adopter project — what belongs at root
-
-After first adopt, a typical product repository root includes:
+## What belongs at project root
 
 | File / item | Role |
 |-------------|------|
-| `README.md` | Landing / use-cases (no frontmatter) |
+| `README.md` | Product / public landing (no frontmatter) |
 | `LICENSE` | License |
 | `.gitignore` | Ignore rules |
-| `RULES.md` | Maintenance hub + authority map + kit baseline |
-| `MARKDOWN-STANDARD.md` | Writing and structure standard (or link to kit) |
-| `CHANGELOG.md` | Project history (**required**) |
-| `rules/` | Optional domain modules mirrored from kit (recommended for 2.x) |
-| `SETUP.md` | One-time only — **delete or archive after initiation** |
-| `UPGRADE.md` | Optional local copy of durable upgrade guide (or always open from Kit source) |
-| `FILE-CATALOG.md` | Optional inventory |
+| `CHANGELOG.md` | **Project** history (**required**) — repository H2 → version H3 → categories; **not** kit release notes |
+| `PLAN.md` | Optional project plan (repo-specific; not shipped by the kit) |
 | Package or product entry files | Only when they are the natural top-level surface |
+| `.pylintrc` | Optional Python style gate (or package-local / under `kit/configs/`) |
 
 ---
 
-## This kit repository
+## What belongs under `kit/`
 
-| Path | Role |
-|------|------|
-| Root `README.md` | Landing, mandatory governance, source inventory |
-| Root `LICENSE` | MIT |
-| Root `.gitignore` | Starter ignore list |
-| [`kit/`](../) | Entire standards payload (SETUP, UPGRADE, RULES, children, templates, configs, examples, kit CHANGELOG) |
+| File / item | Role |
+|-------------|------|
+| `RULES.md` | Maintenance hub + authority map + kit baseline (**project-filled**) |
+| `rules/` | Domain modules from upstream `kit/rules/` |
+| `MARKDOWN-STANDARD.md` | Authoring standard (or link to upstream) |
+| `UPGRADE.md` | Durable upgrade guide (local copy optional; may always open from Kit source) |
+| `SETUP.md` | One-time only — **delete or archive after initiation** |
+| `configs/` | Optional local style configs (e.g. pylintrc) |
+| `templates/` | Optional local document skeletons |
+| `examples/` | Optional reference only (usually not required in product repos) |
 
-Permanent **kit** contracts live under `kit/`. Permanent **adopter** contracts after copy remain README / RULES / MARKDOWN-STANDARD / CHANGELOG (project root) plus kit baseline in RULES.
+**Do not** treat upstream kit `CHANGELOG.md` as the product’s project history. Read Kit source `kit/CHANGELOG.md` under `## repo-kit` when upgrading.
 
 ---
 
-## What does not belong at root
+## What does not belong at root or under `kit/`
 
 | Concern | Preferred home |
 |---------|----------------|
-| Templates | `templates/` |
-| Style configs | `configs/` (or package-local `.pylintrc` / tool config) |
-| Filled examples | `examples/` (kit reference) |
-| RULES domain modules | `rules/` (hub links here) |
+| Product packages / services | `packages/`, `src/`, or project-chosen layout **outside** `kit/` |
+| Package-level contracts (CLI, SECURITY, methodology) | Inside the package |
+| Formal security + code-validation certificates | `certification/` at repo root (or documented path); regenerable outputs gitignored |
 | Scripts / helpers | `scripts/` or `tooling/` (keep minimal) |
-| Formal security + code-validation certificates | `certification/` (see [security.md](./security.md)); regenerable outputs gitignored |
-| Package-level contracts | Inside the package |
 | Regenerable output | Never committed |
 | CI workflows | `.github/` (or equivalent) |
+
+---
+
+## Separation rules
+
+1. **Do not** put product code under `kit/`.  
+2. **Do not** put kit release history into project root `CHANGELOG.md`.  
+3. **Do not** use the project root as a dump of all standards files; keep standards under `kit/`.  
+4. Authority map lists **owners**: standards paths under `kit/`, product paths outside (e.g. `packages/my-service/CLI-GUIDE.md`).  
+5. Relative links from files under `kit/` to root or product use `../` (e.g. `../README.md`, `../CHANGELOG.md`, `../packages/…`).  
+6. Existing 1.x adoptions may gradually move root-level standards into `kit/`; greenfield **must** use this layout — see [UPGRADE.md](../UPGRADE.md).
 
 ---
 
@@ -124,9 +136,9 @@ Permanent **kit** contracts live under `kit/`. Permanent **adopter** contracts a
 
 | File | Lifecycle | Audience |
 |------|-----------|----------|
-| [SETUP.md](../SETUP.md) | **Ephemeral** in adopting projects — follow, then delete or archive | First adopt (greenfield or existing repo without baseline) |
-| [UPGRADE.md](../UPGRADE.md) | **Durable** — keep a local copy or always open from Kit source | Already adopted; routine upgrades and 1.x → 2.0 migration |
-| [Kit baseline](../RULES.md#kit-baseline) | **Durable** in project RULES | Survives SETUP removal; required for upgrades |
+| [SETUP.md](../SETUP.md) | **Ephemeral** — follow, then delete or archive from the project’s `kit/` | First adopt (greenfield or existing repo without baseline) |
+| [UPGRADE.md](../UPGRADE.md) | **Durable** — keep under `kit/` or always open from Kit source | Already adopted; routine upgrades and 1.x → 2.x layout migration |
+| [Kit baseline](../RULES.md#kit-baseline) | **Durable** in project `kit/RULES.md` | Survives SETUP removal; required for upgrades |
 
 First adopt: [SETUP.md](../SETUP.md). Later kit bumps: [UPGRADE.md](../UPGRADE.md).
 
@@ -136,4 +148,5 @@ First adopt: [SETUP.md](../SETUP.md). Later kit bumps: [UPGRADE.md](../UPGRADE.m
 
 | Version | Notes |
 |---------|--------|
-| 1.0.0 | Extracted from RULES 1.4.1 for kit 2.0; dual layout (kit/ vs adopter root); UPGRADE durable lifecycle |
+| 1.1.0 | Unified packaging: adopters keep standards under `kit/`; product and project CHANGELOG outside; remove “flatten to root” default |
+| 1.0.0 | Extracted from RULES 1.4.1 for kit 2.0; dual layout (later superseded) |

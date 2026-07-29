@@ -1,7 +1,7 @@
 ---
 title: Versioning and Git
 description: Three version surfaces, mandatory CHANGELOG, kit baseline pointer, git hygiene, commit format, and AI disclosure.
-version: "1.0.0"
+version: "1.0.1"
 status: current
 audience:
   - developers
@@ -19,7 +19,7 @@ last_updated: "2026-07-28"
 
 Version surfaces, CHANGELOG discipline, and git / commit rules.
 
-**Document version:** 1.0.0  
+**Document version:** 1.0.1  
 
 **Related:** [RULES.md](../RULES.md) · [UPGRADE.md](../UPGRADE.md) · [CHANGELOG.md](../CHANGELOG.md) · [contracts.md](./contracts.md) · [verification-and-ops.md](./verification-and-ops.md)
 
@@ -29,8 +29,9 @@ Version surfaces, CHANGELOG discipline, and git / commit rules.
 
 | Must | Must not |
 |------|----------|
-| Maintain project root **CHANGELOG.md** (Keep a Changelog) | Ship version bumps without CHANGELOG |
-| Keep [Kit baseline](../RULES.md#kit-baseline) current | Paste full kit history into project CHANGELOG |
+| Maintain **project root** `CHANGELOG.md` (Keep a Changelog) | Ship version bumps without CHANGELOG |
+| Keep [Kit baseline](../RULES.md#kit-baseline) current in `kit/RULES.md` | Paste full kit history into project CHANGELOG |
+| Keep standards under `kit/` ([hygiene](./hygiene.md)) | Flatten standards onto product root as default |
 | Use conventional commits that match staged files | Vague subjects (`update stuff`, `wip`) |
 | Disclose AI assistance when applicable | Rewrite shared published history without coordination |
 
@@ -78,7 +79,7 @@ Every repository that adopts this kit **must** maintain a root **`CHANGELOG.md`*
 
 | Rule | Detail |
 |------|--------|
-| **Required file** | Root `CHANGELOG.md` — listed in the [authority map](../RULES.md#authority-map) and [hygiene](./hygiene.md) |
+| **Required file** | **Project root** `CHANGELOG.md` — listed in the [authority map](../RULES.md#authority-map) and [hygiene](./hygiene.md); standards stay under `kit/` |
 | **Format** | [Keep a Changelog](https://keepachangelog.com/) categories; dates ISO 8601 (`YYYY-MM-DD`) |
 | **Structure** | `## <Repository Name>` → dated `### [X.Y.Z] - YYYY-MM-DD` → `#### Added` / `#### Changed` / … |
 | **Categories** | Use as needed: **Added**, **Changed**, **Deprecated**, **Removed**, **Fixed**, **Security** |
@@ -102,7 +103,7 @@ There is **no Unreleased section**. Record each change under the `### [X.Y.Z]` v
 
 ## Kit baseline and upgrades
 
-Fill and keep the [Kit baseline](../RULES.md#kit-baseline) table in every adopting project’s `RULES.md`. Update it on every kit upgrade.
+Fill and keep the [Kit baseline](../RULES.md#kit-baseline) table in every adopting project’s **`kit/RULES.md`**. Update it on every kit upgrade.
 
 **Procedure (do not duplicate here):** [UPGRADE.md](../UPGRADE.md) — routine upgrade, 1.x → 2.0 migration, merge options, AI prompts.
 
@@ -348,4 +349,5 @@ A remote is optional. When one exists, do not assume write access to `main`/`mas
 
 | Version | Notes |
 |---------|--------|
+| 1.0.1 | Kit baseline path `kit/RULES.md`; standards under kit/; project CHANGELOG at root |
 | 1.0.0 | Extracted from RULES 1.4.1 for kit 2.0; upgrade playbook deferred to UPGRADE.md; kit CHANGELOG path under kit/ |

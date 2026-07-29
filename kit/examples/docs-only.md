@@ -6,6 +6,8 @@
 
 **Primary platform (example):** multi (path examples only; no runtime gate)
 
+**Packaging:** standards under `kit/`; design docs at repo root or under a docs tree **outside** `kit/` if you want clear separation. See [hygiene](../rules/hygiene.md).
+
 ---
 
 ## Suggested first templates
@@ -17,7 +19,7 @@
 | [TEMPLATE-CONCEPT.md](../templates/TEMPLATE-CONCEPT.md) | e.g. `CONCEPT-v1.md` |
 | [TEMPLATE-METHODOLOGY.md](../templates/TEMPLATE-METHODOLOGY.md) | e.g. `METHODOLOGY.md` when formulas exist |
 
-Copy [RULES.md](../RULES.md) and [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md); remove or skip code-only rows.
+Copy [RULES.md](../RULES.md) and [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md) into project **`kit/`**; remove or skip code-only rows.
 
 ---
 
@@ -25,18 +27,18 @@ Copy [RULES.md](../RULES.md) and [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md)
 
 | Concern | Canonical source |
 |---------|------------------|
-| Repo purpose and quick start | `README.md` |
-| Path-level file inventory (optional) | `FILE-CATALOG.md` |
-| Markdown structure | `MARKDOWN-STANDARD.md` |
-| Maintenance policy | `RULES.md` + `rules/` modules |
-| Contract policy | `rules/contracts.md` |
-| Project history (**required**) | `CHANGELOG.md` |
-| Standards kit baseline | RULES — Kit baseline |
-| Design / concept notes | `CONCEPT-v1.md` |
+| Repo purpose and quick start | Root `README.md` |
+| Path-level file inventory (optional) | Root `FILE-CATALOG.md` |
+| Markdown structure | `kit/MARKDOWN-STANDARD.md` |
+| Maintenance policy | `kit/RULES.md` + `kit/rules/` |
+| Contract policy | `kit/rules/contracts.md` |
+| Project history (**required**) | Root `CHANGELOG.md` |
+| Standards kit baseline | `kit/RULES.md` — Kit baseline |
+| Design / concept notes | `CONCEPT-v1.md` (outside `kit/`) |
 | Formulas / “how it works” | `METHODOLOGY.md` |
-| Kit evolution / planning | `PLAN.md` (if used) |
+| Kit evolution / planning | Root `PLAN.md` (if used) |
 
-Omit package CLI, schema, fixtures, Python style, and **Security / trust boundary** rows when they do not apply. This example **omits `SECURITY.md`** because there is no execution surface, network access, elevated privilege, or secrets handling—see [Security documentation modularity](../rules/security.md#security-documentation-modularity). Docs-only repos still **must** keep `CHANGELOG.md` for policy/doc releases.
+Omit package CLI, schema, fixtures, Python style, and **Security / trust boundary** rows when they do not apply. This example **omits `SECURITY.md`**—see [Security documentation modularity](../rules/security.md#security-documentation-modularity). Docs-only repos still **must** keep root `CHANGELOG.md` for policy/doc releases.
 
 ### Language surface inventory (snippet)
 
@@ -44,7 +46,7 @@ Omit package CLI, schema, fixtures, Python style, and **Security / trust boundar
 |---------|----------|----------|
 | *(none — docs-only)* | — | — |
 
-Empty inventory: no pylint, Bandit, npm audit, govulncheck, or other language gates. Do **not** paste the full multi-language catalog from RULES. No `certification/` folder required.
+Empty inventory: no language gates. No `certification/` folder required.
 
 ### Sample kit baseline
 
@@ -63,7 +65,7 @@ Empty inventory: no pylint, Bandit, npm audit, govulncheck, or other language ga
 
 #### Added
 
-- Adopted repo-kit 2.0.0 from https://github.com/shainemeister/repo-kit
+- Adopted repo-kit 2.0.1 from https://github.com/shainemeister/repo-kit (standards under kit/)
 ```
 
 ---
@@ -76,7 +78,7 @@ Empty inventory: no pylint, Bandit, npm audit, govulncheck, or other language ga
 | New/removed source files | `FILE-CATALOG.md` updated (if maintained) |
 | Methodology interpretation change | Document history row + status honesty |
 
-No pylint, product test, or **security / SAST** gates unless code is later added. Do not copy the full multi-language SAST table from RULES—docs-only lists **none**. Declared gates elsewhere are **required** when declared; here nothing is declared.
+No product language gates unless code is later added. Upgrades: [UPGRADE.md](../UPGRADE.md).
 
 ---
 
