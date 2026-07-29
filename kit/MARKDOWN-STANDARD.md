@@ -1,7 +1,7 @@
 ---
 title: Markdown Documentation Standard
 description: Cross-functional standard for consistent, professional markdown across any repository or project.
-version: "1.0.1"
+version: "1.1.0"
 status: current
 audience:
   - developers
@@ -10,22 +10,24 @@ audience:
   - security
 doc_type: other
 related:
-  - README.md
+  - ../README.md
   - RULES.md
+  - rules/contracts.md
+  - rules/authoring-and-style.md
   - templates/TEMPLATE-GENERIC.md
   - templates/TEMPLATE-README.md
-last_updated: "2026-07-22"
+last_updated: "2026-07-28"
 ---
 
 # Markdown Documentation Standard
 
 A repeatable standard for professional, consistent markdown in any repository—usable across packages, CLIs, methodologies, security notes, design concepts, and runbooks.
 
-**Standard version:** 1.0.1  
-**Location:** kit root (`MARKDOWN-STANDARD.md`)  
+**Standard version:** 1.1.0  
+**Location:** `kit/MARKDOWN-STANDARD.md`  
 **Templates:** [`templates/`](./templates/)
 
-**Related:** [README.md](./README.md) · [RULES.md](./RULES.md) · [templates/TEMPLATE-GENERIC.md](./templates/TEMPLATE-GENERIC.md) · [templates/TEMPLATE-README.md](./templates/TEMPLATE-README.md)
+**Related:** [README.md](../README.md) · [RULES.md](./RULES.md) · [contracts.md](./rules/contracts.md) · [authoring-and-style.md](./rules/authoring-and-style.md) · [templates/TEMPLATE-GENERIC.md](./templates/TEMPLATE-GENERIC.md) · [templates/TEMPLATE-README.md](./templates/TEMPLATE-README.md)
 
 ---
 
@@ -48,13 +50,14 @@ Most **substantial** documents use **YAML frontmatter**, a clear **H1**, a short
 5. [YAML frontmatter](#yaml-frontmatter)
 6. [Headings and anchors](#headings-and-anchors)
 7. [Writing conventions](#writing-conventions)
-8. [Tables, code, and links](#tables-code-and-links)
-9. [Platform-aware examples](#platform-aware-examples)
-10. [Document types and body outlines](#document-types-and-body-outlines)
-11. [Templates](#templates)
-12. [Author checklist](#author-checklist)
-13. [Anti-patterns](#anti-patterns)
-14. [Document history](#document-history)
+8. [Cross-linking form](#cross-linking-form)
+9. [Tables, code, and links](#tables-code-and-links)
+10. [Platform-aware examples](#platform-aware-examples)
+11. [Document types and body outlines](#document-types-and-body-outlines)
+12. [Templates](#templates)
+13. [Author checklist](#author-checklist)
+14. [Anti-patterns](#anti-patterns)
+15. [Document history](#document-history)
 
 ---
 
@@ -68,7 +71,7 @@ Most **substantial** documents use **YAML frontmatter**, a clear **H1**, a short
 | Security / trust boundary | `SECURITY.md`, `ENTERPRISE-SECURITY.md` | **Yes** |
 | Design concepts | Progressive design, multi-version concepts | **Yes** |
 | Operational runbooks | Deploy, validate, recover | **Yes** |
-| **Repo landing / root entry** | Root [README.md](./README.md) | **No** (by design) |
+| **Repo landing / root entry** | Root [README.md](../README.md) | **No** (by design) |
 
 | Optional / lighter treatment | Examples |
 |------------------------------|----------|
@@ -238,8 +241,24 @@ Include **Summary** as item 1 when Summary exists as an H2.
 | Placeholders | `{{LIKE_THIS}}` in templates; `C:\path\to\...` or `/path/to/...` in examples |
 | Dates | Prefer ISO in metadata; human dates OK in narrative |
 | Versioning | Bump `version` + `last_updated` when behavior or contract changes |
-| Cross-links | Prefer relative links: `./CLI-GUIDE.md`, `../README.md` |
+| Cross-links | Prefer relative links: `./CLI-GUIDE.md`, `../README.md` — see [Cross-linking form](#cross-linking-form) |
 | Platform | When examples are OS-specific, follow [Platform-aware examples](#platform-aware-examples) |
+
+---
+
+## Cross-linking form
+
+How to wire documents so humans and AI agents can navigate without duplicating full contracts. **Policy** (when to co-update, what is a contract): [rules/contracts.md](./rules/contracts.md). **This section** is **form** only.
+
+| Mechanism | Guidance |
+|-----------|----------|
+| Frontmatter **`related:`** | List true peer paths (not the entire tree) |
+| Visible **Related:** line | Mirror peers under the lead for scannability |
+| Relative links | Always from *this file’s* directory |
+| Deep anchors | Prefer linking a specific heading when citing a rule |
+| Summary + link | Prefer over pasting another document’s full table |
+
+Substantial docs should keep `related:` and Related lines current when peers move. Authority-map **owners** live in [RULES.md](./RULES.md#authority-map).
 
 ---
 
@@ -300,7 +319,7 @@ Shell, path, and build examples must match how the project is actually developed
 | **Shell language tags** | Use `bat` / `cmd`, `powershell`, or `bash` / `sh` to match the example—not a generic fence. |
 | **Paths** | Placeholders (`C:\path\to\...` and `/path/to/...`) plus one concrete repo-relative example when helpful. |
 | **Product OS detection** | If scripts adapt by host (`sys.platform`, `$IsWindows`, `uname`), document that behavior in the CLI or security contract—not only in prose. |
-| **Verification commands** | Fill [RULES.md](./RULES.md) verification rows with the command(s) used on the team’s platform(s); list both when multi-OS. |
+| **Verification commands** | Fill [verification table](./rules/verification-and-ops.md#verification-before-ship) rows with the command(s) used on the team’s platform(s); list both when multi-OS. |
 
 ### Dual-path pattern (illustrative)
 
@@ -500,5 +519,6 @@ Before merging or publishing a doc:
 
 | Version | Notes |
 |---------|--------|
+| 1.1.0 | Cross-linking form section; kit 2.0 paths (`kit/`); links to contracts and verification modules |
 | 1.0.1 | Platform-aware examples; runbook → GENERIC pointer; placeholder completeness note |
 | 1.0.0 | Initial portable standard (generalized for multi-domain repos); root landing pattern; templates under `templates/` |

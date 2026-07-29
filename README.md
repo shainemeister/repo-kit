@@ -1,6 +1,8 @@
 # Repository Standards Kit
 
-Portable standards for **consistent repositories and projects**—markdown structure, maintenance contracts, and copy-ready templates—plus a **pylint** config for PEP-8 Python product code. The kit is also structured so **AI agents can dynamically build reliable context** for any repository that adopts it.
+Portable standards for **consistent repositories and projects**—markdown structure, maintenance contracts, and copy-ready templates—plus a **pylint** config for PEP-8 Python product code. The kit is structured so **AI agents can dynamically build reliable context** for any repository that adopts it.
+
+All kit source lives under [`kit/`](./kit/) except this README, [LICENSE](./LICENSE), and [`.gitignore`](./.gitignore).
 
 ## Purpose
 
@@ -13,12 +15,18 @@ Create a comprehensive `PLAN.md` for *your* target repository (goals, packages, 
 
 ### How to use (quick path)
 
-There is **no traditional install step**. Prefer keeping this kit as a reference (remote link or separate clone) rather than copying the entire tree into an existing repository.
+There is **no traditional install step**. Prefer keeping this kit as a reference (remote link or separate clone) rather than copying the entire tree into an existing repository. Standards payload paths are under **`kit/`**.
 
 #### New implementation
 
 ```text
-Review PLAN.md (project plan) and SETUP.md at https://github.com/shainemeister/repo-kit, then initiate the adoption checklist. Preserve existing project but integrate `repo-kit` as per RULES.md.
+Review PLAN.md (project plan) and kit/SETUP.md at https://github.com/shainemeister/repo-kit, then initiate the adoption checklist. Preserve existing project but integrate repo-kit as per kit/RULES.md.
+```
+
+#### Existing repository (first adopt)
+
+```text
+This repository has no repo-kit Kit baseline yet. Follow kit/SETUP.md selective adoption / Existing repository (first adopt). Map real paths into the authority map; do not force a product directory rewrite. Record Kit baseline; then delete SETUP. Later upgrades use kit/UPGRADE.md.
 ```
 
 #### Alternative (local clone reference)
@@ -28,101 +36,105 @@ git clone https://github.com/shainemeister/repo-kit ../repo-kit-reference
 ```
 
 ```text
-Review PLAN.md (project plan) and SETUP.md from ../repo-kit-reference, then initiate the adoption checklist. Preserve existing project but integrate `repo-kit` as per RULES.md.
+Review PLAN.md and kit/SETUP.md from ../repo-kit-reference, then initiate the adoption checklist. Preserve existing project but integrate repo-kit as per kit/RULES.md.
 ```
 
 #### Upgrade repo-kit
 
 ```text
-Upgrade `repo-kit` for this repository (Kit baseline already present in RULES.md).
+Upgrade repo-kit for this repository (Kit baseline already present in RULES.md).
 
 1. Read this project's RULES.md Kit baseline (Adopted kit version, Kit source).
-2. Open the kit at Kit source (canonical: https://github.com/shainemeister/repo-kit) and read CHANGELOG.md under ## repo-kit.
-3. Identify deltas since the Adopted kit version.
-4. Build a focused PLAN.md for only appropriate kit pieces (RULES policy sections, MARKDOWN-STANDARD, templates, configs/pylintrc, etc.) while preserving this project's authority map and verification commands.
-5. Apply the merge; update Kit baseline (version + date); keep Kit source unchanged unless this repo is a deliberate fork.
+2. Open the kit at Kit source (canonical: https://github.com/shainemeister/repo-kit) and read kit/UPGRADE.md and kit/CHANGELOG.md under ## repo-kit.
+3. If baseline is 1.x, follow UPGRADE — Migrate from kit 1.x to 2.0; otherwise follow the routine upgrade procedure.
+4. Merge only appropriate kit pieces; preserve this project's authority map and verification commands.
+5. Update Kit baseline (version + date); keep Kit source unchanged unless this repo is a deliberate fork.
 6. Add a short note to the project CHANGELOG.md. Do not copy the full kit CHANGELOG history into the project CHANGELOG.
-
-Then follow RULES.md — Upgrading the kit (post-initiation).
 ```
 
-Then follow the full procedure in [SETUP.md](./SETUP.md) (new adoption) or [Upgrading the kit](./RULES.md#upgrading-the-kit-post-initiation) (existing adoption).
+Then follow [kit/SETUP.md](./kit/SETUP.md) (first adopt) or [kit/UPGRADE.md](./kit/UPGRADE.md) (existing baseline).
 
 `PLAN.md` is a **user-provided dependency**. The kit does not ship one. Without a clear plan the adoption still works, but results are less precise.
+
+## Mandatory governance
+
+Maintenance of any adopting repository follows **[`kit/RULES.md`](./kit/RULES.md)** (hub: authority map, kit baseline, Must / Must not). Domain detail is under [`kit/rules/`](./kit/rules/).
+
+| Must (digest) | Must not (digest) |
+|---------------|-------------------|
+| Update **canonical** docs with behavior changes | Commit secrets or regenerable outputs |
+| Keep project root **CHANGELOG.md** | Ship release-worthy changes without CHANGELOG |
+| Keep **Kit baseline** current | Lose track of kit version after deleting SETUP |
+| Run **declared** style + SAST gates before complete | Claim complete when a declared gate failed or was skipped |
+| Fill authority map from project interest at start | Leave contracts empty until “docs later” |
+
+- **Contracts:** co-update and cross-link rules — [`kit/rules/contracts.md`](./kit/rules/contracts.md)  
+- **Completion:** declared Domain A/B gates — [`kit/rules/verification-and-ops.md`](./kit/rules/verification-and-ops.md#completion-rule)  
+- **First adopt:** [`kit/SETUP.md`](./kit/SETUP.md) (then delete)  
+- **Upgrades:** [`kit/UPGRADE.md`](./kit/UPGRADE.md) (durable)
 
 ## Summary
 
 This kit is **domain-agnostic**. Use it for libraries, CLIs, services, data tools, monorepos, or docs-only work. It generalizes patterns proven in larger multi-package repos without baking in a single product or industry.
 
-Copy what you need, **initiate from project interest** so formal docs guide development, and adapt shell/path examples to **Windows, Linux, or macOS**. Licensed under MIT—see [LICENSE](./LICENSE).
+Copy what you need from `kit/`, **initiate from project interest** so formal docs guide development, and adapt shell/path examples to **Windows, Linux, or macOS**. Licensed under MIT—see [LICENSE](./LICENSE).
 
 | Piece | Role |
 |-------|------|
-| [SETUP.md](./SETUP.md) | One-time adoption guide (follow, then delete or archive) |
-| [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) | Structure, frontmatter, doc types, platform-aware examples, author checklist |
-| [RULES.md](./RULES.md) | Authority map, language inventory, contracts, versioning, CHANGELOG, kit baseline, git, verification, style + SAST gates, certification policy |
-| [CHANGELOG.md](./CHANGELOG.md) | Kit version history (this repo) · **Required project history** for every adopter |
-| [configs/pylintrc](./configs/pylintrc) | PEP-8 style gate for Python product code (developer tooling) |
-| [templates/](./templates/) | Starting skeletons for README, CLI, methodology, security, certification, concept, generic |
-| [examples/](./examples/) | Filled authority-map skeletons (CLI, library, docs-only) |
+| [kit/SETUP.md](./kit/SETUP.md) | One-time adoption (greenfield + existing repo); then delete |
+| [kit/UPGRADE.md](./kit/UPGRADE.md) | Durable upgrade + 1.x→2.0 migration |
+| [kit/RULES.md](./kit/RULES.md) | Maintenance hub: authority map, kit baseline |
+| [kit/rules/](./kit/rules/) | Domain modules (hygiene, style, architecture, contracts, security, versioning/git, verification) |
+| [kit/MARKDOWN-STANDARD.md](./kit/MARKDOWN-STANDARD.md) | Structure, frontmatter, doc types, platform-aware examples |
+| [kit/CHANGELOG.md](./kit/CHANGELOG.md) | Kit version history under `## repo-kit` |
+| [kit/configs/pylintrc](./kit/configs/pylintrc) | PEP-8 style gate for Python product code |
+| [kit/templates/](./kit/templates/) | Document skeletons |
+| [kit/examples/](./kit/examples/) | Filled authority-map skeletons |
 
 | You want to… | Start here |
 |--------------|------------|
-| Start a project from an interest | [SETUP.md](./SETUP.md) |
-| Upgrade repo-kit | [Upgrade repo-kit](#upgrade-repo-kit) · [RULES — Upgrading the kit](./RULES.md#upgrading-the-kit-post-initiation) |
-| See a filled authority map | [examples/](./examples/) |
-| Scaffold docs for a new package | [templates/](./templates/) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) |
-| Set maintenance policy | [RULES.md](./RULES.md) |
-| Gate Python style (PEP-8) | [configs/pylintrc](./configs/pylintrc) · [RULES — pylint](./RULES.md#python-style-gate-pylint) |
-| Language inventory + SAST (required when declared) | [RULES — Language surface inventory](./RULES.md#language-surface-inventory) · [Security / SAST](./RULES.md#security--sast-gates-required-when-declared) |
-| Formal security + code-validation certificates | [RULES — Certification](./RULES.md#security-and-code-validation-certification) · [TEMPLATE-CERTIFICATION-README.md](./templates/TEMPLATE-CERTIFICATION-README.md) |
-| Write a root landing README | [Landing / root README](./MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter) |
+| Start a project from an interest | [kit/SETUP.md](./kit/SETUP.md) |
+| Align an **existing** repo (first kit adopt) | [kit/SETUP.md — Existing repository](./kit/SETUP.md#existing-repository-first-adopt) |
+| Upgrade repo-kit | [Upgrade repo-kit](#upgrade-repo-kit) · [kit/UPGRADE.md](./kit/UPGRADE.md) |
+| See a filled authority map | [kit/examples/](./kit/examples/) |
+| Scaffold docs for a new package | [kit/templates/](./kit/templates/) · [kit/MARKDOWN-STANDARD.md](./kit/MARKDOWN-STANDARD.md) |
+| Set maintenance policy | [kit/RULES.md](./kit/RULES.md) |
+| Contract co-updates / cross-links | [kit/rules/contracts.md](./kit/rules/contracts.md) |
+| Gate Python style (PEP-8) | [kit/configs/pylintrc](./kit/configs/pylintrc) · [pylint](./kit/rules/authoring-and-style.md#python-style-gate-pylint) |
+| Language inventory + SAST | [inventory](./kit/rules/security.md#language-surface-inventory) · [SAST](./kit/rules/security.md#security--sast-gates-required-when-declared) |
+| Formal certificates | [Certification](./kit/rules/security.md#security-and-code-validation-certification) · [TEMPLATE-CERTIFICATION-README](./kit/templates/TEMPLATE-CERTIFICATION-README.md) |
+| Write a root landing README | [Landing / root README](./kit/MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter) |
 
 ## Use cases
 
 | Use case | What you get | Start here |
 |----------|--------------|------------|
-| **New greenfield repo** | Same doc shape and git hygiene from day one | [SETUP.md](./SETUP.md) |
-| **Align an existing repo** | Authority map + checklists without a rewrite | [SETUP.md](./SETUP.md) (selective copy) |
-| **Upgrade repo-kit** | Merge kit deltas since baseline; keep project authority map | [Upgrade repo-kit](#upgrade-repo-kit) |
+| **New greenfield repo** | Same doc shape and git hygiene from day one | [kit/SETUP.md](./kit/SETUP.md) |
+| **Align an existing repo** | Authority map + checklists without a rewrite | [kit/SETUP.md](./kit/SETUP.md) (selective) |
+| **Upgrade repo-kit** | Merge kit deltas since baseline; keep project authority map | [kit/UPGRADE.md](./kit/UPGRADE.md) |
+| **Migrate from kit 1.x** | Path migration + modular RULES | [kit/UPGRADE.md — 1.x→2.0](./kit/UPGRADE.md#migrate-from-kit-1x-to-20) |
 | **Multi-package monorepo** | Shared standards; per-package README/CLI/security | Templates under each package |
-| **Python product code** | pylint PEP-8 gate, score 10.00, not a runtime dep; Bandit when declared | `configs/pylintrc` · [SAST](./RULES.md#security--sast-gates-required-when-declared) |
-| **Multi-language product code** | Inventory-driven style + SAST per language (Python, PowerShell, JS/TS, Go, Rust, Shell, …) | [Language surface inventory](./RULES.md#language-surface-inventory) |
-| **Docs-only design repo** | Frontmatter, Summary→Contents, concept/methodology templates; empty language inventory | [examples/docs-only.md](./examples/docs-only.md) |
-| **Pre-ship self-attestation** | Optional `certification/` JSON+TXT schema (no product runtime gate) | [RULES — Certification](./RULES.md#security-and-code-validation-certification) |
-| **Multi-OS team** | Dual-path examples and per-platform verify commands | [Platform-aware examples](./MARKDOWN-STANDARD.md#platform-aware-examples) |
-
-## What’s included
-
-| Path | Role |
-|------|------|
-| `SETUP.md` | One-time initiation checklist (ephemeral) |
-| `MARKDOWN-STANDARD.md` | How to structure and write markdown |
-| `RULES.md` | How to maintain the repository |
-| `CHANGELOG.md` | Kit history (this repo) · required project history for adopters |
-| `configs/pylintrc` | Portable pylint config (copy as `.pylintrc`) |
-| `templates/` | Copy-ready document skeletons |
-| `examples/` | Filled authority-map + verification skeletons |
-| `LICENSE` | MIT license for this kit |
+| **Python product code** | pylint PEP-8 gate; Bandit when declared | `kit/configs/pylintrc` · [SAST](./kit/rules/security.md#security--sast-gates-required-when-declared) |
+| **Docs-only design repo** | Frontmatter, Summary→Contents; empty language inventory | [kit/examples/docs-only.md](./kit/examples/docs-only.md) |
+| **Pre-ship self-attestation** | Optional `certification/` JSON+TXT schema | [Certification](./kit/rules/security.md#security-and-code-validation-certification) |
 
 ## Quick start
 
-Adopt this kit via the full one-time checklist in **[SETUP.md](./SETUP.md)** (adoption mode, platform, copy, authority map, kit baseline, templates, pylint, and deleting SETUP after initiation). Use the [How to use](#how-to-use-quick-path) path above to load context from your project `PLAN.md` first.
+Adopt via **[kit/SETUP.md](./kit/SETUP.md)** (adoption mode, platform, copy from `kit/`, authority map, kit baseline, templates, pylint, delete SETUP). Prefer loading context from your project `PLAN.md` first ([How to use](#how-to-use-quick-path)).
 
-### Suggested root layout after adopt
+### Suggested root layout after adopt (product repo)
 
 ```text
 your-repo/
   README.md                 # landing (no frontmatter)
-  RULES.md                  # maintenance (filled authority map + kit baseline)
+  RULES.md                  # hub (filled authority map + kit baseline)
+  rules/                    # optional domain modules from kit/rules/
   MARKDOWN-STANDARD.md      # or link to this kit
   CHANGELOG.md              # required — project history
-  PLAN.md                   # your project plan (recommended; not shipped by the kit)
-  SETUP.md                  # temporary — delete after initiation
+  PLAN.md                   # your project plan (recommended)
+  UPGRADE.md                # optional local copy of durable upgrade guide
   .pylintrc                 # if Python product code
-  FILE-CATALOG.md           # optional
-  certification/            # optional — formal self-attestation certs (gitignored outputs)
-  templates/                # optional local copies
+  certification/            # optional
   packages/                 # or your layout
     my-service/
       README.md
@@ -130,19 +142,13 @@ your-repo/
       SECURITY.md
 ```
 
-## Initiate a project (by interest)
-
-Use formal markdown to **guide development**, not only document finished work. The full one-time checklist—adoption modes, platform declaration, template pick by interest, authority-map fill, and first verification—lives in **[SETUP.md](./SETUP.md)**.
-
-After initiation, delete or archive `SETUP.md`. Ongoing policy stays in [RULES.md](./RULES.md); authoring rules stay in [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md).
-
-**Checklists:** [Author checklist](./MARKDOWN-STANDARD.md#author-checklist) · [Contributor checklist](./RULES.md#contributor-checklist) · [How overlays work](#how-overlays-work)
+**Note:** This **kit repository** keeps payload under `kit/`; **adopting** projects usually copy *out of* `kit/` onto their root. See [kit/rules/hygiene.md](./kit/rules/hygiene.md).
 
 ## How overlays work
 
 | Layer | Contains |
 |-------|----------|
-| **This kit** | Portable structure, formatting, git, pylint policy, templates |
+| **This kit** (`kit/`) | Portable structure, formatting, git, pylint policy, templates, upgrade guide |
 | **Project RULES** | Real paths, runtimes, platform verify commands, dependency policy, domain “must not” |
 | **Package docs** | CLI contracts, methodology, security matrices for that package |
 
@@ -158,38 +164,44 @@ When a project ships **Python product code**:
 | Pass | Exit code **0**, score **10.00/10** |
 | Install | Developer tooling only—not required for end users of the product |
 | Command | `python -m pylint <package_or_paths>` |
+| Config | Copy [kit/configs/pylintrc](./kit/configs/pylintrc) as `.pylintrc` |
 
-Details: [RULES.md — Python style gate](./RULES.md#python-style-gate-pylint). For other languages: [Non-Python style gates](./RULES.md#non-python-style-gates).
+Details: [Python style gate](./kit/rules/authoring-and-style.md#python-style-gate-pylint). Other languages: [Non-Python style gates](./kit/rules/authoring-and-style.md#non-python-style-gates).
 
 ## Language inventory, SAST, and certification
 
-When a project ships product code, fill the [language surface inventory](./RULES.md#language-surface-inventory) from the full kit catalog (Python, Python deps, PowerShell, JavaScript/TypeScript/Node, Go, Rust, Shell, Other/mixed, Secrets, Semgrep)—**only** rows that apply. Declared Domain B (style) and Domain A (SAST) gates are **required** before task completion. Optional formal certificates live under `certification/` ([schema and rules](./RULES.md#security-and-code-validation-certification)); regenerable outputs are gitignored and never gate end-user product launchers. Docs-only repos keep an empty inventory.
-
-## Where to go next
-
-| Need | Document |
-|------|----------|
-| One-time adoption / initiation | [SETUP.md](./SETUP.md) |
-| Filled authority-map examples | [examples/](./examples/) |
-| Frontmatter, Summary→Contents, platform examples, doc types | [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) |
-| Commits, contracts, checklists, style gates | [RULES.md](./RULES.md) |
-| Kit history / kit version | [CHANGELOG.md](./CHANGELOG.md) |
-| Upgrade repo-kit | [Upgrade repo-kit](#upgrade-repo-kit) · [RULES — Upgrading the kit](./RULES.md#upgrading-the-kit-post-initiation) |
-| Upstream kit (source) | https://github.com/shainemeister/repo-kit |
-| Versioning, CHANGELOG, kit baseline | [RULES — Versioning](./RULES.md#versioning-and-change-control) |
-| Start a package README | [templates/TEMPLATE-README.md](./templates/TEMPLATE-README.md) |
-| Start a CLI guide | [templates/TEMPLATE-CLI.md](./templates/TEMPLATE-CLI.md) |
-| License terms | [LICENSE](./LICENSE) |
+When a project ships product code, fill the [language surface inventory](./kit/rules/security.md#language-surface-inventory) for languages that apply. Declared Domain B (style) and Domain A (SAST) gates are **required** before task completion. Optional formal certificates live under `certification/` ([schema](./kit/rules/security.md#security-and-code-validation-certification)). Docs-only repos keep an empty inventory.
 
 ## For maintainers of this kit
 
-- **Kit version** is defined by dated sections under `## repo-kit` in [CHANGELOG.md](./CHANGELOG.md). Cutting a release = add `### [X.Y.Z] - YYYY-MM-DD` (with `####` categories) under `## repo-kit` and treat that semver as the kit version adopters record.  
-- **Canonical source:** https://github.com/shainemeister/repo-kit — adopters always point [Kit baseline](./RULES.md#kit-baseline) here for upgrades.  
-- Adopters keep **project** history in their own `CHANGELOG.md` under `## <Repository Name>`; they do **not** copy kit release sections—kit version goes only in Kit baseline.  
-- Edit standards in place; bump `version` and `last_updated` on [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) and [RULES.md](./RULES.md) when contracts change.  
-- Record kit-level history under the `### [X.Y.Z]` version section that ships the change (no Unreleased section).  
-- `SETUP.md` is intentionally shipped for first-time adopters; adopters delete it after initiation. Future major releases may move or remove root SETUP; permanent contracts remain README / RULES / MARKDOWN-STANDARD / CHANGELOG.  
-- Keep examples domain-neutral (`my-service`, `my-cli`, `my_library`).  
+- **Kit version** is defined by dated sections under `## repo-kit` in [kit/CHANGELOG.md](./kit/CHANGELOG.md).  
+- **Canonical source:** https://github.com/shainemeister/repo-kit  
+- Edit standards under **`kit/`**; bump document `version` / `last_updated` when contracts change.  
+- Keep [kit/UPGRADE.md](./kit/UPGRADE.md) in sync when upgrade steps or public paths change.  
+- Adopters keep **project** history in their own root `CHANGELOG.md`; kit version goes only in Kit baseline (and, for this repo, under `## repo-kit`).  
 - Templates must retain `{{PLACEHOLDERS}}`; finished project docs must not.  
-- Dual-path shell blocks in templates stay until a project declares a single primary platform and drops the unused OS.  
-- Prefer purpose directories (`templates/`, `configs/`, `examples/`) over extra root files; see [Root hygiene](./RULES.md#root-hygiene).
+- Prefer purpose directories under `kit/` (`templates/`, `configs/`, `examples/`, `rules/`); see [hygiene](./kit/rules/hygiene.md).
+
+## Source files
+
+All kit source lives under [`kit/`](./kit/) except this README, LICENSE, and `.gitignore`.
+
+| Path | Role |
+|------|------|
+| [kit/SETUP.md](./kit/SETUP.md) | One-time adoption (delete after initiation) |
+| [kit/UPGRADE.md](./kit/UPGRADE.md) | Durable upgrade and 1.x→2.0 migration |
+| [kit/RULES.md](./kit/RULES.md) | Maintenance hub: authority map, kit baseline |
+| [kit/rules/hygiene.md](./kit/rules/hygiene.md) | Root hygiene; dual layout; SETUP/UPGRADE lifecycle |
+| [kit/rules/authoring-and-style.md](./kit/rules/authoring-and-style.md) | Docs rules; pylint; non-Python style |
+| [kit/rules/architecture.md](./kit/rules/architecture.md) | Architecture and boundaries |
+| [kit/rules/contracts.md](./kit/rules/contracts.md) | Contract policy; co-updates; cross-links |
+| [kit/rules/security.md](./kit/rules/security.md) | Inventory, SAST, certification |
+| [kit/rules/versioning-and-git.md](./kit/rules/versioning-and-git.md) | Versioning, CHANGELOG rules, git, AI disclosure |
+| [kit/rules/verification-and-ops.md](./kit/rules/verification-and-ops.md) | Verification, completion, checklist |
+| [kit/MARKDOWN-STANDARD.md](./kit/MARKDOWN-STANDARD.md) | Authoring standard |
+| [kit/CHANGELOG.md](./kit/CHANGELOG.md) | Kit version history (`## repo-kit`) |
+| [kit/configs/pylintrc](./kit/configs/pylintrc) | Python pylint gate config |
+| [kit/templates/](./kit/templates/) | Document skeletons |
+| [kit/examples/](./kit/examples/) | Filled authority-map examples |
+| [LICENSE](./LICENSE) | MIT |
+| [`.gitignore`](./.gitignore) | Starter ignore list |

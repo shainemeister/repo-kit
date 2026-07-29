@@ -25,7 +25,8 @@ Optional: methodology template if formulas or scoring are part of the contract.
 |---------|------------------|
 | Repo purpose and quick start | `README.md` (project root) |
 | Markdown structure | `MARKDOWN-STANDARD.md` |
-| Maintenance policy | `RULES.md` |
+| Maintenance policy | `RULES.md` + `rules/` modules |
+| Contract policy | `rules/contracts.md` |
 | Project history (**required**) | `CHANGELOG.md` |
 | Standards kit baseline | RULES — Kit baseline |
 | Package overview | `my_library/README.md` |
@@ -34,7 +35,7 @@ Optional: methodology template if formulas or scoring are part of the contract.
 | Default config | `my_library/defaults.yaml` |
 | Golden tests / fixtures | `tests/fixtures/` |
 | Python style / PEP-8 gate | `.pylintrc` (from kit `configs/pylintrc`; **set `py-version`**) |
-| Language surface inventory | RULES — Language surface inventory (filled below) |
+| Language surface inventory | RULES / security module (filled below) |
 | Security & code-validation certification | `certification/README.md` *(optional until formal certs are wanted)* |
 
 ### Language surface inventory (snippet)
@@ -50,8 +51,8 @@ Do **not** add PowerShell, JS/TS, Go, Rust, Shell, or Semgrep rows unless those 
 
 | Field | Value |
 |-------|--------|
-| Adopted kit version | `1.1.1` *(example — use latest kit CHANGELOG release under `## repo-kit`)* |
-| Adopted on | `2026-07-25` |
+| Adopted kit version | *(use latest `### [X.Y.Z]` under `## repo-kit` in kit/CHANGELOG.md)* |
+| Adopted on | `2026-07-28` |
 | Kit source | https://github.com/shainemeister/repo-kit |
 
 ### Sample project CHANGELOG entry (first adoption)
@@ -59,11 +60,11 @@ Do **not** add PowerShell, JS/TS, Go, Rust, Shell, or Semgrep rows unless those 
 ```markdown
 ## my-library
 
-### [0.1.0] - 2026-07-25
+### [0.1.0] - 2026-07-28
 
 #### Added
 
-- Adopted repo-kit 1.1.1 from https://github.com/shainemeister/repo-kit
+- Adopted repo-kit 2.0.0 from https://github.com/shainemeister/repo-kit
 ```
 
 ---
@@ -81,7 +82,7 @@ Do **not** add PowerShell, JS/TS, Go, Rust, Shell, or Semgrep rows unless those 
 
 **Adopt pylint:** copy kit `configs/pylintrc` to repo or package root as `.pylintrc`; set `py-version`; keep pylint **developer-only** (not a product runtime dependency).
 
-**Security / SAST:** declare **Python** tools only (Bandit / pip-audit as chosen). Do not add npm audit, govulncheck, cargo-audit, etc. unless those languages exist. Keep all security tools developer-only. Once declared, gates must pass before task completion ([RULES — Completion rule](../RULES.md#completion-rule)).
+**Security / SAST:** declare **Python** tools only (Bandit / pip-audit as chosen). Do not add npm audit, govulncheck, cargo-audit, etc. unless those languages exist. Keep all security tools developer-only. Once declared, gates must pass before task completion ([Completion rule](../rules/verification-and-ops.md#completion-rule)). Upgrades: [UPGRADE.md](../UPGRADE.md).
 
 ---
 

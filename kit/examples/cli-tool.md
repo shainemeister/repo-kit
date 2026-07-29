@@ -22,15 +22,16 @@
 
 | Concern | Canonical source |
 |---------|------------------|
-| Repo purpose and quick start | [README.md](../README.md) (project root) |
+| Repo purpose and quick start | [README.md](../../README.md) (project root) |
 | Markdown structure | `MARKDOWN-STANDARD.md` |
-| Maintenance policy | `RULES.md` |
+| Maintenance policy | `RULES.md` + `rules/` modules |
+| Contract policy | `rules/contracts.md` |
 | Project history (**required**) | `CHANGELOG.md` |
 | Standards kit baseline | RULES — Kit baseline |
 | Package overview | `my-cli/README.md` |
 | CLI or automation contract | `my-cli/CLI-GUIDE.md` |
 | Security / trust boundary | `my-cli/SECURITY.md` *(present because a CLI is an execution surface)* |
-| Language surface inventory | RULES — Language surface inventory (filled below) |
+| Language surface inventory | RULES / security module (filled below) |
 | Security & code-validation certification | `certification/README.md` *(optional until formal certs are wanted)* |
 | Default config | `my-cli/config.example.yaml` |
 | Golden tests / fixtures | `my-cli/tests/fixtures/` |
@@ -50,8 +51,8 @@ Declare **only** surfaces this CLI ships. Never paste the full kit language tabl
 
 | Field | Value |
 |-------|--------|
-| Adopted kit version | `1.1.1` *(example — use latest kit CHANGELOG release under `## repo-kit`)* |
-| Adopted on | `2026-07-25` |
+| Adopted kit version | *(use latest `### [X.Y.Z]` under `## repo-kit` in kit/CHANGELOG.md)* |
+| Adopted on | `2026-07-28` |
 | Kit source | https://github.com/shainemeister/repo-kit |
 
 ### Sample project CHANGELOG entry (first adoption)
@@ -59,11 +60,11 @@ Declare **only** surfaces this CLI ships. Never paste the full kit language tabl
 ```markdown
 ## my-cli
 
-### [0.1.0] - 2026-07-25
+### [0.1.0] - 2026-07-28
 
 #### Added
 
-- Adopted repo-kit 1.1.1 from https://github.com/shainemeister/repo-kit
+- Adopted repo-kit 2.0.0 from https://github.com/shainemeister/repo-kit
 ```
 
 ---
@@ -82,7 +83,7 @@ Declare **only** surfaces this CLI ships. Never paste the full kit language tabl
 
 **Windows note:** same module form works; or `py -3 -m my_cli …` if that is the team convention.
 
-**SECURITY.md** is required here because the package is an execution surface. SAST gates match **only** the language of this CLI, not every language in the kit table. Declared gates must pass before task completion ([RULES — Completion rule](../RULES.md#completion-rule)).
+**SECURITY.md** is required here because the package is an execution surface. SAST gates match **only** the language of this CLI, not every language in the kit table. Declared gates must pass before task completion ([Completion rule](../rules/verification-and-ops.md#completion-rule)). Upgrades: [UPGRADE.md](../UPGRADE.md).
 
 ---
 

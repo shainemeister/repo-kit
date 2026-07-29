@@ -10,6 +10,7 @@ audience:
 doc_type: other
 related:
   - ../RULES.md
+  - ../rules/security.md
   - ../CHANGELOG.md
 last_updated: "{{LAST_UPDATED}}"
 ---
@@ -21,7 +22,7 @@ Operator guide for the **formal, regenerable** security and code-validation cert
 **Document version:** {{VERSION}}  
 **Status:** draft  
 
-**Related:** [RULES — Security and code-validation certification](../RULES.md#security-and-code-validation-certification) · [Language surface inventory](../RULES.md#language-surface-inventory)
+**Related:** [Security and code-validation certification](../rules/security.md#security-and-code-validation-certification) · [Language surface inventory](../rules/security.md#language-surface-inventory) · [RULES.md](../RULES.md)
 
 ---
 
@@ -54,7 +55,7 @@ This is **not** a third-party audit, SOC 2, or ISO seal.
 
 After any change set that touches product code or declared gates:
 
-1. Run Domain B and Domain A commands for surfaces in the project [language surface inventory](../RULES.md#language-surface-inventory).  
+1. Run Domain B and Domain A commands for surfaces in the project [language surface inventory](../rules/security.md#language-surface-inventory).  
 2. Write or refresh `last_certification.json` and `last_certification.txt`.  
 3. Confirm `OverallPass` is true when shipping.  
 4. Leave regenerable outputs **untracked** (gitignored).
@@ -80,7 +81,7 @@ Do not mark the task complete if a **declared** gate was skipped or failed.
 | `last_certification.json` | Machine-readable certificate (gitignored) |
 | `last_certification.txt` | Human-readable certificate (gitignored) |
 
-Illustrative JSON fields: `CertificateType`, `OverallPass`, `GitCommit`, `GitDirty`, `LanguageSurfaces`, `ToolVersions`, `Domains.Security`, `Domains.CodeValidation`, `Checks[]`, `Disclaimer`. Full shape: [RULES — Certificate shape](../RULES.md#certificate-shape-illustrative).
+Illustrative JSON fields: `CertificateType`, `OverallPass`, `GitCommit`, `GitDirty`, `LanguageSurfaces`, `ToolVersions`, `Domains.Security`, `Domains.CodeValidation`, `Checks[]`, `Disclaimer`. Full shape: [Certificate shape](../rules/security.md#certificate-shape-illustrative).
 
 ---
 

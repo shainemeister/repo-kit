@@ -2,13 +2,15 @@
 
 History of the **Repository Standards Kit**. **Kit version** is defined by dated release sections (`### [X.Y.Z] - YYYY-MM-DD`) under `## repo-kit`. Upstream: https://github.com/shainemeister/repo-kit.
 
-This file is the history of the Repository Standards Kit itself.  
+This file is the history of the Repository Standards Kit itself (path: `kit/CHANGELOG.md`).  
 **Adopting projects** maintain their own root `CHANGELOG.md` for *project/package* history (behavior, contracts, releases, kit adoption/upgrade notes).  
-They record the adopted kit version in the **Kit baseline** table inside `RULES.md` (see [RULES — Kit baseline](./RULES.md#kit-baseline) and [Mandatory project CHANGELOG](./RULES.md#mandatory-project-changelog)).
+They record the adopted kit version in the **Kit baseline** table inside `RULES.md` (see [RULES — Kit baseline](./RULES.md#kit-baseline) and [Mandatory project CHANGELOG](./rules/versioning-and-git.md#mandatory-project-changelog)).
 
-Versioned standards also record per-document history in YAML frontmatter and document-history tables (`RULES.md`, `MARKDOWN-STANDARD.md`). Those document versions are independent of kit and product versions—see [RULES — Versioning](./RULES.md#versioning-and-change-control).
+Versioned standards also record per-document history in YAML frontmatter and document-history tables. Those document versions are independent of kit and product versions—see [versioning-and-git](./rules/versioning-and-git.md).
 
 **Structure:** `## <Repository Name>` (integrated repository) → `### [X.Y.Z] - YYYY-MM-DD` (version change/update) → `#### Added` / `#### Changed` / … (categories). Categories follow [Keep a Changelog](https://keepachangelog.com/). Dates are ISO 8601. There is no Unreleased section—record each change under the version section that ships it.
+
+**Upgrades:** [UPGRADE.md](./UPGRADE.md).
 
 ---
 
@@ -23,6 +25,45 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 ---
 
 ## repo-kit
+
+### [2.0.0] - 2026-07-28
+
+#### Added
+
+- **`kit/` payload directory** — all standards source under one directory; repository root holds only `README.md`, `LICENSE`, and `.gitignore`.
+- **`kit/rules/` domain modules** (7): `hygiene.md`, `authoring-and-style.md`, `architecture.md`, **`contracts.md`**, `security.md`, `versioning-and-git.md`, `verification-and-ops.md`.
+- **`kit/UPGRADE.md`** — durable upgrade guide (routine procedure, **1.x → 2.0 migration**, merge options, AI prompts). Not deleted after initiation.
+- Dedicated **contract policy** module (`rules/contracts.md`): ownership, same-change-set, cross-reference rules.
+- Root README **Mandatory governance** digest and bottom **Source files** inventory.
+- SETUP **Existing repository (first adopt)** section for live codebases without a kit baseline.
+
+#### Changed
+
+- **BREAKING:** Public kit paths moved under `kit/` (see migration table below).
+- `RULES.md` is a **hub** (authority map, kit baseline, module index); body content lives in `rules/*`.
+- MARKDOWN-STANDARD 1.0.1 → **1.1.0**: cross-linking form; kit paths.
+- README how-to: three paths (new / existing first adopt / upgrade) pointing at SETUP vs UPGRADE.
+- Upgrade procedure deferred from RULES body to **UPGRADE.md**.
+- Kit CHANGELOG location: `kit/CHANGELOG.md` (this file).
+
+#### Removed
+
+- Root-level `RULES.md`, `SETUP.md`, `MARKDOWN-STANDARD.md`, `CHANGELOG.md`, `configs/`, `templates/`, `examples/` (moved under `kit/`).
+
+#### Migration (1.x → 2.0)
+
+| Old (1.x) | New (2.0) |
+|-----------|-----------|
+| `/RULES.md` | `/kit/RULES.md` + `/kit/rules/*` |
+| `/SETUP.md` | `/kit/SETUP.md` |
+| *(none)* | `/kit/UPGRADE.md` |
+| `/MARKDOWN-STANDARD.md` | `/kit/MARKDOWN-STANDARD.md` |
+| `/CHANGELOG.md` | `/kit/CHANGELOG.md` |
+| `/configs/` | `/kit/configs/` |
+| `/templates/` | `/kit/templates/` |
+| `/examples/` | `/kit/examples/` |
+
+Adopting **project** roots usually keep `RULES.md` / `CHANGELOG.md` at project root after copy. Upstream **reading** paths for upgrades are under `kit/`. Full procedure: [UPGRADE.md — Migrate from kit 1.x to 2.0](./UPGRADE.md#migrate-from-kit-1x-to-20).
 
 ### [1.2.1] - 2026-07-28
 

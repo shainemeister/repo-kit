@@ -28,14 +28,15 @@ Copy [RULES.md](../RULES.md) and [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md)
 | Repo purpose and quick start | `README.md` |
 | Path-level file inventory (optional) | `FILE-CATALOG.md` |
 | Markdown structure | `MARKDOWN-STANDARD.md` |
-| Maintenance policy | `RULES.md` |
+| Maintenance policy | `RULES.md` + `rules/` modules |
+| Contract policy | `rules/contracts.md` |
 | Project history (**required**) | `CHANGELOG.md` |
 | Standards kit baseline | RULES — Kit baseline |
 | Design / concept notes | `CONCEPT-v1.md` |
 | Formulas / “how it works” | `METHODOLOGY.md` |
 | Kit evolution / planning | `PLAN.md` (if used) |
 
-Omit package CLI, schema, fixtures, Python style, and **Security / trust boundary** rows when they do not apply. This example **omits `SECURITY.md`** because there is no execution surface, network access, elevated privilege, or secrets handling—see [RULES — Security documentation modularity](../RULES.md#security-documentation-modularity). Docs-only repos still **must** keep `CHANGELOG.md` for policy/doc releases.
+Omit package CLI, schema, fixtures, Python style, and **Security / trust boundary** rows when they do not apply. This example **omits `SECURITY.md`** because there is no execution surface, network access, elevated privilege, or secrets handling—see [Security documentation modularity](../rules/security.md#security-documentation-modularity). Docs-only repos still **must** keep `CHANGELOG.md` for policy/doc releases.
 
 ### Language surface inventory (snippet)
 
@@ -49,8 +50,8 @@ Empty inventory: no pylint, Bandit, npm audit, govulncheck, or other language ga
 
 | Field | Value |
 |-------|--------|
-| Adopted kit version | `1.1.1` *(example — use latest kit CHANGELOG release under `## repo-kit`)* |
-| Adopted on | `2026-07-25` |
+| Adopted kit version | *(use latest `### [X.Y.Z]` under `## repo-kit` in kit/CHANGELOG.md)* |
+| Adopted on | `2026-07-28` |
 | Kit source | https://github.com/shainemeister/repo-kit |
 
 ### Sample project CHANGELOG entry (first adoption)
@@ -58,11 +59,11 @@ Empty inventory: no pylint, Bandit, npm audit, govulncheck, or other language ga
 ```markdown
 ## design-notes
 
-### [0.1.0] - 2026-07-25
+### [0.1.0] - 2026-07-28
 
 #### Added
 
-- Adopted repo-kit 1.1.1 from https://github.com/shainemeister/repo-kit
+- Adopted repo-kit 2.0.0 from https://github.com/shainemeister/repo-kit
 ```
 
 ---
