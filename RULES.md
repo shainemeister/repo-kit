@@ -1,7 +1,7 @@
 ---
 title: Repository Maintenance Rules
 description: Fundamental rules for documenting, changing, verifying, and versioning any repository consistently.
-version: "1.4.0"
+version: "1.4.1"
 status: current
 audience:
   - developers
@@ -21,7 +21,7 @@ last_updated: "2026-07-28"
 
 Fundamental rules for maintaining a professional, auditable repository. These rules govern documentation, architecture boundaries, contracts, git hygiene, and verification—not product tutorials.
 
-**Document version:** 1.4.0  
+**Document version:** 1.4.1  
 
 **Related:** [README.md](./README.md) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) · [SETUP.md](./SETUP.md) · [CHANGELOG.md](./CHANGELOG.md) · [configs/pylintrc](./configs/pylintrc)
 
@@ -472,15 +472,15 @@ At adopt time: read the kit’s `CHANGELOG.md` (latest released `### [X.Y.Z]` un
 
 ### Upgrading the kit (post-initiation)
 
-1. Open **https://github.com/shainemeister/repo-kit** and read `CHANGELOG.md` (and releases if present).  
-2. Compare the project’s **Adopted kit version** to the latest kit version.  
+1. Read this project’s [Kit baseline](#kit-baseline) (**Adopted kit version**, **Kit source**). Open **Kit source** (canonical for this kit: **https://github.com/shainemeister/repo-kit**) and read `CHANGELOG.md` (and releases if present).  
+2. Compare the project’s **Adopted kit version** to the latest kit version under `## repo-kit`.  
 3. Read only the kit CHANGELOG entries since your current Adopted kit version; merge only what you need; never copy the full kit history into the project CHANGELOG.  
 4. Copy or merge wanted pieces (`RULES.md` policy sections, `MARKDOWN-STANDARD.md`, `templates/`, `configs/pylintrc`, `.gitignore`, examples patterns). Preserve project-specific authority-map paths and verification commands.  
-5. Update **Adopted kit version** and **Adopted on**; keep Kit source unchanged.  
+5. Update **Adopted kit version** and **Adopted on**; keep Kit source unchanged (unless this repo is a deliberate fork with its own documented source).  
 6. Add a project CHANGELOG entry (e.g. under Changed: “Upgraded repo-kit baseline to X.Y.Z”).  
 7. Re-check authority map, verification table, and any new kit contracts.
 
-No automation is required—policy and the [contributor checklist](#contributor-checklist) enforce the practice. Copy-paste AI prompt for this flow: [README — Upgrading an existing adoption](./README.md#upgrading-an-existing-adoption).
+No automation is required—policy and the [contributor checklist](#contributor-checklist) enforce the practice. Copy-paste AI prompt for this flow: [README — Upgrade repo-kit](./README.md#upgrade-repo-kit).
 
 ### Consistency rules
 
@@ -824,6 +824,7 @@ Before you commit or share a change:
 
 | Version | Notes |
 |---------|--------|
+| 1.4.1 | Upgrade procedure: start from Kit baseline (Adopted kit version + Kit source); README AI prompt deep link → `#upgrade-repo-kit` |
 | 1.4.0 | Language surface inventory (full RULES catalog); SAST **required when declared**; security & code-validation certification schema (single `certification/` folder); completion rule + before-complete steps; verification/checklist/anti-pattern updates |
 | 1.3.1 | Upgrade procedure: explicit CHANGELOG discipline (read only entries since baseline; never copy full kit history into project CHANGELOG); link to README AI upgrade prompt |
 | 1.3.0 | Security documentation modularity (omit SECURITY.md when no execution/network/privilege/secrets surface); advisory multi-language Security / SAST gates keyed by language; verification and anti-pattern updates |

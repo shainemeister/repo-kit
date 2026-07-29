@@ -15,13 +15,13 @@ Create a comprehensive `PLAN.md` for *your* target repository (goals, packages, 
 
 There is **no traditional install step**. Prefer keeping this kit as a reference (remote link or separate clone) rather than copying the entire tree into an existing repository.
 
-**New implementation**
+#### New implementation
 
 ```text
 Review PLAN.md (project plan) and SETUP.md at https://github.com/shainemeister/repo-kit, then initiate the adoption checklist. Preserve existing project but integrate `repo-kit` as per RULES.md.
 ```
 
-**Alternative (local clone reference)**
+#### Alternative (local clone reference)
 
 ```text
 git clone https://github.com/shainemeister/repo-kit ../repo-kit-reference
@@ -31,13 +31,19 @@ git clone https://github.com/shainemeister/repo-kit ../repo-kit-reference
 Review PLAN.md (project plan) and SETUP.md from ../repo-kit-reference, then initiate the adoption checklist. Preserve existing project but integrate `repo-kit` as per RULES.md.
 ```
 
-**Upgrade** (repository already has a Kit baseline in RULES.md)
+#### Upgrade repo-kit
 
 ```text
-Read the `repo-kit` CHANGELOG.md at https://github.com/shainemeister/repo-kit then identify current repo version and changes.
-Build a comprehensive PLAN.md for only appropriate files per RULES policy sections, MARKDOWN-STANDARD, templates, configs/pylintrc, etc. while preserving current repo project-specific authority map and verification commands.
-Then update the Kit baseline (version + date) and add a short note to the project CHANGELOG.md. 
-Do not copy the full kit CHANGELOG history into the project CHANGELOG.
+Upgrade `repo-kit` for this repository (Kit baseline already present in RULES.md).
+
+1. Read this project's RULES.md Kit baseline (Adopted kit version, Kit source).
+2. Open the kit at Kit source (canonical: https://github.com/shainemeister/repo-kit) and read CHANGELOG.md under ## repo-kit.
+3. Identify deltas since the Adopted kit version.
+4. Build a focused PLAN.md for only appropriate kit pieces (RULES policy sections, MARKDOWN-STANDARD, templates, configs/pylintrc, etc.) while preserving this project's authority map and verification commands.
+5. Apply the merge; update Kit baseline (version + date); keep Kit source unchanged unless this repo is a deliberate fork.
+6. Add a short note to the project CHANGELOG.md. Do not copy the full kit CHANGELOG history into the project CHANGELOG.
+
+Then follow RULES.md — Upgrading the kit (post-initiation).
 ```
 
 Then follow the full procedure in [SETUP.md](./SETUP.md) (new adoption) or [Upgrading the kit](./RULES.md#upgrading-the-kit-post-initiation) (existing adoption).
@@ -63,7 +69,7 @@ Copy what you need, **initiate from project interest** so formal docs guide deve
 | You want to… | Start here |
 |--------------|------------|
 | Start a project from an interest | [SETUP.md](./SETUP.md) |
-| Upgrade an existing kit adoption | [How to use (quick path)](#how-to-use-quick-path) · [RULES — Upgrading the kit](./RULES.md#upgrading-the-kit-post-initiation) |
+| Upgrade repo-kit | [Upgrade repo-kit](#upgrade-repo-kit) · [RULES — Upgrading the kit](./RULES.md#upgrading-the-kit-post-initiation) |
 | See a filled authority map | [examples/](./examples/) |
 | Scaffold docs for a new package | [templates/](./templates/) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) |
 | Set maintenance policy | [RULES.md](./RULES.md) |
@@ -78,7 +84,7 @@ Copy what you need, **initiate from project interest** so formal docs guide deve
 |----------|--------------|------------|
 | **New greenfield repo** | Same doc shape and git hygiene from day one | [SETUP.md](./SETUP.md) |
 | **Align an existing repo** | Authority map + checklists without a rewrite | [SETUP.md](./SETUP.md) (selective copy) |
-| **Upgrade existing kit adoption** | Merge kit deltas since baseline; keep project authority map | [How to use (quick path)](#how-to-use-quick-path) |
+| **Upgrade repo-kit** | Merge kit deltas since baseline; keep project authority map | [Upgrade repo-kit](#upgrade-repo-kit) |
 | **Multi-package monorepo** | Shared standards; per-package README/CLI/security | Templates under each package |
 | **Python product code** | pylint PEP-8 gate, score 10.00, not a runtime dep; Bandit when declared | `configs/pylintrc` · [SAST](./RULES.md#security--sast-gates-required-when-declared) |
 | **Multi-language product code** | Inventory-driven style + SAST per language (Python, PowerShell, JS/TS, Go, Rust, Shell, …) | [Language surface inventory](./RULES.md#language-surface-inventory) |
@@ -168,7 +174,7 @@ When a project ships product code, fill the [language surface inventory](./RULES
 | Frontmatter, Summary→Contents, platform examples, doc types | [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) |
 | Commits, contracts, checklists, style gates | [RULES.md](./RULES.md) |
 | Kit history / kit version | [CHANGELOG.md](./CHANGELOG.md) |
-| Upgrade an existing adoption | [How to use (quick path)](#how-to-use-quick-path) · [RULES — Upgrading the kit](./RULES.md#upgrading-the-kit-post-initiation) |
+| Upgrade repo-kit | [Upgrade repo-kit](#upgrade-repo-kit) · [RULES — Upgrading the kit](./RULES.md#upgrading-the-kit-post-initiation) |
 | Upstream kit (source) | https://github.com/shainemeister/repo-kit |
 | Versioning, CHANGELOG, kit baseline | [RULES — Versioning](./RULES.md#versioning-and-change-control) |
 | Start a package README | [templates/TEMPLATE-README.md](./templates/TEMPLATE-README.md) |

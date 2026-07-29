@@ -95,7 +95,7 @@ Before deleting this file, fill [Kit baseline](./RULES.md#kit-baseline) in the p
 
 Also ensure root `CHANGELOG.md` exists with structure `## <Repository Name>` → `### [X.Y.Z] - YYYY-MM-DD` → `####` categories. Record first adoption under the initial project version section (e.g. under `#### Added`: “Adopted repo-kit X.Y.Z from https://github.com/shainemeister/repo-kit”).
 
-Upgrades later: [Upgrading the kit](./RULES.md#upgrading-the-kit-post-initiation).
+Upgrades later: [README — Upgrade repo-kit](./README.md#upgrade-repo-kit) · [RULES — Upgrading the kit](./RULES.md#upgrading-the-kit-post-initiation).
 
 ---
 
@@ -187,4 +187,4 @@ On Windows you may use `py -3.x -m pylint …`. Install pylint in the **develope
 | `.pylintrc` / style configs you adopted | — |
 | Optional FILE-CATALOG | — |
 
-Root hygiene: [RULES — Root hygiene](./RULES.md#root-hygiene). Kit upgrades: [RULES — Upgrading the kit](./RULES.md#upgrading-the-kit-post-initiation) via https://github.com/shainemeister/repo-kit.
+Root hygiene: [RULES — Root hygiene](./RULES.md#root-hygiene). Kit upgrades: [README — Upgrade repo-kit](./README.md#upgrade-repo-kit) · [RULES — Upgrading the kit](./RULES.md#upgrading-the-kit-post-initiation) via https://github.com/shainemeister/repo-kit.

@@ -24,6 +24,15 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 
 ## repo-kit
 
+### [1.2.1] - 2026-07-28
+
+#### Changed
+
+- README quick-path upgrade label renamed to **Upgrade repo-kit** (`####` heading); AI upgrade prompt now references project Kit baseline (Adopted kit version, Kit source) and the canonical kit source.
+- Quick-path modes promoted to stable `####` headings (New implementation, Alternative, Upgrade repo-kit) for deep links.
+- RULES.md document version 1.4.0 → **1.4.1**: upgrade procedure starts from Kit baseline **Kit source**; deep link to README prompt corrected to `#upgrade-repo-kit`.
+- SETUP upgrade pointer includes README **Upgrade repo-kit** alongside RULES.
+
 ### [1.2.0] - 2026-07-28
 
 #### Added
