@@ -1,7 +1,7 @@
 ---
 title: Agent BUILD Procedure
 description: AI-executable procedure to resolve the active agent set and emit thin AgentPacks.
-version: "1.1.0"
+version: "1.1.1"
 status: current
 audience:
   - developers
@@ -23,7 +23,7 @@ last_updated: "2026-08-05"
 
 **BUILD** is the AI-executable procedure that **resolves the active agent set** and **emits thin AgentPacks** from templates + PLAN + authority map. Prefer **deterministic template fill** over freeform rewriting of kit law.
 
-**Document version:** 1.1.0  
+**Document version:** 1.1.1  
 
 **Related:** [README.md](./README.md) · [PARAMS.md](./PARAMS.md) · [CATALOG.md](./CATALOG.md) · [PLAN-HOOK.md](./PLAN-HOOK.md) · [FRAMEWORK.md](./FRAMEWORK.md) · [RUNTIME.md](./RUNTIME.md) · [RULES.md](../RULES.md) · [UPGRADE.md](../UPGRADE.md)
 
@@ -119,6 +119,8 @@ last_updated: "2026-08-05"
 
 Distinguish **section absent**, **field unset**, and **explicit empty list**. Never treat an intentional empty list as “turn on the whole catalog.”
 
+**PLAN is markdown-native** (bullets under `### Active models`). Pseudo-code below uses `active_models: []` only as shorthand for an **empty** Active models list (zero bullets or a single `*(none)*` line)—see [PLAN-HOOK](./PLAN-HOOK.md#active_models-semantics).
+
 ```text
 if Agent models section absent:
   → bare adopt → SKIP BUILD
@@ -133,6 +135,7 @@ if active_models field ABSENT or UNSET:
     (do not invent full catalog)
 
 if active_models present and is empty list []:
+  # empty = zero bullets under ### Active models, or *(none)*
   active := []
   REPORT: "active set empty — emit nothing"
   # do NOT fall back to catalog defaults
@@ -260,5 +263,6 @@ On kit upgrade regen, apply [Source load order](#source-load-order) so adopter p
 
 | Version | Notes |
 |---------|--------|
+| 1.1.1 | Note: PLAN markdown-native empty Active models; `[]` is BUILD shorthand only |
 | 1.1.0 | Unset vs empty active_models; source load order; preserve adopter packs; empty placeholder omit; overlay shadow + trust boundary |
 | 1.0.0 | Initial BUILD procedure (kit 2.1.0) |

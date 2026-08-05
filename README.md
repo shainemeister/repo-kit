@@ -200,7 +200,7 @@ When a project ships product code, fill the [language surface inventory](./kit/r
 - Keep [kit/UPGRADE.md](./kit/UPGRADE.md) in sync when upgrade steps or public paths change.  
 - Adopters keep **project** history in their own root `CHANGELOG.md`; kit version goes only in Kit baseline (and, for this repo, under `## repo-kit`).  
 - Templates must retain `{{PLACEHOLDERS}}`; finished project docs must not.  
-- Prefer purpose directories under `kit/` (`templates/`, `configs/`, `examples/`, `rules/`); see [hygiene](./kit/rules/hygiene.md).
+- Prefer purpose directories under `kit/` (`templates/`, `configs/`, `examples/`, `rules/`, `agents/`); see [hygiene](./kit/rules/hygiene.md).
 
 ## Source files
 

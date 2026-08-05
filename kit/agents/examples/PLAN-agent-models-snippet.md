@@ -27,9 +27,10 @@ When using **Agent Instruct**, PLAN.md is **required** and must include this sec
 - plan-author
 - reviewer
 
-<!-- Explicit empty list means emit nothing (not "all catalog defaults"):
+<!-- Empty active set (emit nothing — not "all catalog defaults"):
 ### Active models
-(none)
+
+*(none)*
 -->
 
 ### Disabled

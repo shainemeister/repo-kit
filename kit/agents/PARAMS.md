@@ -1,7 +1,7 @@
 ---
 title: AgentPack Parameters
 description: Schema, enums, validation, and emit shapes for Agent Instruct packs.
-version: "1.0.2"
+version: "1.0.3"
 status: current
 audience:
   - developers
@@ -21,7 +21,7 @@ last_updated: "2026-08-05"
 
 Every agent model is an **AgentPack**: a structured record with catalog fields (for match), a short body (procedure), and **authority_paths** / **verify** linking to canonical law.
 
-**Document version:** 1.0.2  
+**Document version:** 1.0.3  
 
 **Related:** [README.md](./README.md) · [FRAMEWORK.md](./FRAMEWORK.md) · [CATALOG.md](./CATALOG.md) · [BUILD.md](./BUILD.md) · [PLAN-HOOK.md](./PLAN-HOOK.md) · [RUNTIME.md](./RUNTIME.md)
 
@@ -145,7 +145,7 @@ Freeform user language is **not** written directly into pack law. Map to structu
 | “Turn on security agent” | `active_models` += `security` |
 | “We don’t need adopt help anymore” | `disabled` += `adopter` |
 | “Prefer docs discipline” | `tuning.emphasize` += `docs-author` |
-| “Never force Python pylint here” | `tuning.must_not` or inventory-driven note |
+| “Never force Python pylint here” | Prefer inventory/verify edit; else `tuning.must_not_extra` |
 | “After stage 7 enable reviewer always” | `stage_gates` / `stage_min` for `reviewer` |
 | “Add a design-review agent” | overlay or new generated pack + map row + `active_models` |
 
@@ -195,6 +195,7 @@ Do **not** reject packs solely because `must`, `must_not`, or `body` are absent 
 
 | Version | Notes |
 |---------|--------|
+| 1.0.3 | PLAN delta table: `tuning.must_not_extra` (aligned with PLAN-HOOK/BUILD) |
 | 1.0.2 | Validation: forbid raw placeholders in generated packs; unknown id vs adopter packs |
 | 1.0.1 | Field location: YAML vs body; must/must_not/body are not required YAML keys |
 | 1.0.0 | Initial schema (kit 2.1.0) |

@@ -6,7 +6,7 @@ Use this file when starting or aligning a repository so **formal markdown guides
 
 This kit ships `SETUP.md` under [`kit/`](./). **Copy standards into the target repository’s `kit/`** (same packaging as this repo). Keep **product code** and **project** `CHANGELOG.md` **outside** `kit/`. Adopting projects remove SETUP after initiation.
 
-**Permanent after initiation:** root `README.md`, root **project** `CHANGELOG.md`, **`kit/RULES.md`** (hub + kit baseline), `kit/MARKDOWN-STANDARD.md` (or link), and `kit/rules/` as needed. **Later kit upgrades:** durable [UPGRADE.md](./UPGRADE.md).
+**Permanent after initiation:** root `README.md`, root **project** `CHANGELOG.md`, **`kit/RULES.md`** (hub + kit baseline), `kit/MARKDOWN-STANDARD.md` (or link), and `kit/rules/` as needed. **When using Agent Instruct:** keep `kit/agents/` and root `PLAN.md` Agent models. **Later kit upgrades:** durable [UPGRADE.md](./UPGRADE.md).
 
 **Already have a Kit baseline?** Stop and use [UPGRADE.md](./UPGRADE.md).
 

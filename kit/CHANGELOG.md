@@ -26,6 +26,25 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 
 ## repo-kit
 
+### [2.1.1] - 2026-08-05
+
+#### Changed
+
+- PARAMS **1.0.3**: PLAN delta table uses `tuning.must_not_extra` (aligned with PLAN-HOOK/BUILD).
+- PLAN-HOOK **1.1.1** / BUILD **1.1.1**: markdown-native empty Active models (zero bullets / `*(none)*`); `active_models: []` is BUILD algorithm shorthand only.
+- Root README purpose directories list includes `agents/`.
+- SETUP permanent-after lead mentions optional `kit/agents/` + PLAN Agent models when using Instruct.
+- Seed templates `maintainer` / `docs-author`: STOP + completion-rule parity with other roles.
+- PLAN snippet / anti-patterns: empty Active models wording clarified.
+
+#### Removed
+
+- Implementation plan package `plans/agent-instruct/` (landed; not adopter payload).
+
+#### Notes
+
+- Post-audit polish only—no schema or catalog redesign. Empty Active models still means emit nothing; unset after first BUILD still requires an explicit list (or `use_catalog_defaults`).
+
 ### [2.1.0] - 2026-08-05
 
 #### Added
@@ -60,7 +79,7 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 
 - Packs do not redefine law; on conflict L4 wins. v1 is docs + AI-executed BUILD (convention, not a Domain A/B gate).
 - Default catalog is portable maintenance/docs/security seeds only—no product/game/CAD pipelines.
-- Explicit empty `active_models: []` means emit nothing; do not re-enable the full catalog.
+- Explicit empty Active models list means emit nothing; do not re-enable the full catalog.
 
 ### [2.0.1] - 2026-07-28
 

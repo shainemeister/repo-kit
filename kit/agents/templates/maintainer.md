@@ -43,6 +43,7 @@ compose_with:
 - Commit secrets, `.env`, or regenerable build outputs.
 - Paste full kit release history into project CHANGELOG.
 - Rewrite published shared history without coordination.
+- Claim complete when a declared Domain A/B gate for the change was skipped or failed.
 - {{TUNING_MUST_NOT_EXTRA}}
 
 ## Procedure
@@ -53,6 +54,7 @@ compose_with:
 4. If release-worthy, update CHANGELOG under the version section.
 5. If AI-assisted, add disclosure trailers per versioning-and-git.
 6. Confirm hygiene: no force-add of ignored artifacts.
+7. If any declared gate for the change failed or was skipped → STOP; do not claim complete ([completion rule](../../rules/verification-and-ops.md#completion-rule)).
 
 ## Open for law
 

@@ -1,7 +1,7 @@
 ---
 title: PLAN.md Agent Models Hook
 description: Durable control surface contract for Agent Instruct in adopter PLAN.md.
-version: "1.1.0"
+version: "1.1.1"
 status: current
 audience:
   - developers
@@ -22,7 +22,7 @@ last_updated: "2026-08-05"
 
 When a project uses **Agent Instruct**, root **PLAN.md** is the **durable control surface**. It references the Instruct docs and declares which agent models are active, disabled, overlaid, and tuned. Mid-project adjustments happen here; AI then re-runs BUILD.
 
-**Document version:** 1.1.0  
+**Document version:** 1.1.1  
 
 **Related:** [README.md](./README.md) · [BUILD.md](./BUILD.md) · [CATALOG.md](./CATALOG.md) · [PARAMS.md](./PARAMS.md) · [examples/PLAN-agent-models-snippet.md](./examples/PLAN-agent-models-snippet.md) · [SETUP.md](../SETUP.md) · [UPGRADE.md](../UPGRADE.md)
 
@@ -35,7 +35,7 @@ When a project uses **Agent Instruct**, root **PLAN.md** is the **durable contro
 | Include **Agent models** when using Agent Instruct | Leave agent enablement only in chat history |
 | Link to kit Instruct paths (`kit/agents/*`) | Duplicate full FRAMEWORK/BUILD text inside PLAN |
 | List `active_models` / `disabled` / `overlays` explicitly | Imply “all catalog agents always on” without statement |
-| Treat empty `active_models: []` as intentional empty set | Conflate empty list with “unset → enable catalog defaults” |
+| Treat an **empty Active models list** as intentional empty set | Conflate empty list with “unset → enable catalog defaults” |
 | Overlays are **repo-relative** paths only | Remote `http(s)` overlay URLs |
 | Treat PLAN edits as the path for durable user intent | Require kit fork for product emphasis changes |
 
@@ -78,7 +78,7 @@ Acceptable aliases if consistent in-repo: `## Agents`, `## Agent Instruct`. Pref
 | Field | Required | Description |
 |-------|----------|-------------|
 | **Instruct authority** | yes | Links to FRAMEWORK, BUILD, PARAMS, CATALOG, PLAN-HOOK, RUNTIME |
-| **active_models** | yes when Instruct in use | List of agent ids enabled for match/use. **Explicit `[]`** means no agents active (emit nothing). **Unset** is not the same as empty — see BUILD resolution |
+| **active_models** | yes when Instruct in use | List of agent ids under `### Active models` (markdown bullets). **Empty list** (zero bullets, or a single `*(none)*` line) means no agents active (emit nothing). **Unset** after first BUILD is not the same as empty — see BUILD resolution |
 | **disabled** | yes (may be empty) | Ids explicitly off |
 | **overlays** | yes (may be empty) | **Repo-relative** paths to adopter/platform pack sources |
 | **use_catalog_defaults** | optional | If `true`, first-time/BUILD may apply CATALOG suggested defaults when `active_models` is unset; default is first-BUILD-only behavior per [BUILD](./BUILD.md#resolution-rules) |
@@ -89,12 +89,14 @@ Acceptable aliases if consistent in-repo: `## Agents`, `## Agent Instruct`. Pref
 
 ### `active_models` semantics
 
+PLAN is **markdown-native**. BUILD algorithm docs may write `active_models: []` as shorthand for an **empty** Active models list in PLAN.
+
 | State | Meaning for BUILD |
 |-------|-------------------|
-| Section **absent** | Bare adopt — no BUILD |
-| Field **unset** (Instruct in use) | Catalog defaults only on **first BUILD** or when `use_catalog_defaults: true`; otherwise require an explicit list |
-| Explicit **empty list** | Active set empty — no packs emitted; **not** “all catalog agents” |
-| Non-empty list | Enabled set (minus `disabled`, plus overlay ids) |
+| **Agent models** section **absent** | Bare adopt — no BUILD |
+| Active models **unset** (section present, field never filled; Instruct in use) | Catalog defaults only on **first BUILD** or when `use_catalog_defaults: true`; otherwise require an explicit list |
+| **Empty** Active models list | Zero bullets under `### Active models`, or a single `*(none)*` (or equivalent “none”) line — active set empty; **emit nothing**; **not** “all catalog agents” |
+| **Non-empty** bullet list | Enabled set (minus `disabled`, plus overlay ids) |
 
 Do **not** imply “all catalog agents always on” without an explicit list or documented first-BUILD defaults report.
 
@@ -237,5 +239,6 @@ BUILD reads these sections when filling templates; it does not delete them.
 
 | Version | Notes |
 |---------|--------|
+| 1.1.1 | Markdown-native empty Active models (zero bullets / `*(none)*`); `[]` = BUILD shorthand only |
 | 1.1.0 | active_models unset vs empty; use_catalog_defaults; trust boundary; overlay shadow |
 | 1.0.0 | Initial PLAN hook (kit 2.1.0) |

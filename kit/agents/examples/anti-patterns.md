@@ -8,7 +8,7 @@
 | Kit CATALOG includes product/game art agents | Platform leak | Adopter overlays only |
 | PLAN has no Agent models while using agents | Non-durable | PLAN-HOOK section |
 | Bare adopt forced to invent full PLAN | Over-require | Bare path: skip BUILD if no Agent models |
-| Empty `active_models: []` re-enables full catalog | Ignores user intent | Empty list = emit nothing ([BUILD resolution](../BUILD.md#resolution-rules)) |
+| Empty Active models list re-enables full catalog | Ignores user intent | Empty list (zero bullets / `*(none)*`) = emit nothing ([BUILD resolution](../BUILD.md#resolution-rules)) |
 | Unset `active_models` always loads catalog after first BUILD | Silent re-enable | Require explicit list (or `use_catalog_defaults`) |
 | UPGRADE resets active_models | User intent loss | Preserve Agent models + selective BUILD regen |
 | UPGRADE clobbers adopter `generated/` packs | Loss of project personas | Preserve `portability: adopter\|platform` ([load order](../BUILD.md#source-load-order)) |

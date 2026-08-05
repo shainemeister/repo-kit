@@ -44,6 +44,7 @@ compose_with:
 
 - Leave `{{PLACEHOLDERS}}` in shipped product docs.
 - Create a second canonical home for the same contract.
+- Claim complete when a declared Domain A/B gate for the change was skipped or failed.
 - {{TUNING_MUST_NOT_EXTRA}}
 
 ## Procedure
@@ -53,6 +54,7 @@ compose_with:
 3. Update Contents anchors after heading edits.
 4. Cross-link related docs with relative paths.
 5. Run author checklist from MARKDOWN-STANDARD.
+6. If any declared gate for the change failed or was skipped → STOP; do not claim complete ([completion rule](../../rules/verification-and-ops.md#completion-rule)).
 
 ## Open for law
 
