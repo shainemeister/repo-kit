@@ -1,7 +1,7 @@
 ---
 title: Root Hygiene
 description: Unified packaging—standards under kit/, repository-specific data outside; SETUP and UPGRADE lifecycles.
-version: "1.1.0"
+version: "1.2.0"
 status: current
 audience:
   - developers
@@ -12,17 +12,18 @@ related:
   - ../SETUP.md
   - ../UPGRADE.md
   - ../CHANGELOG.md
+  - ../agents/README.md
   - ../../README.md
-last_updated: "2026-07-28"
+last_updated: "2026-08-05"
 ---
 
 # Root Hygiene
 
 Keep the repository root **scannable**: entry points and project-specific surfaces first; **standards under `kit/`**; product code in purpose directories outside `kit/`.
 
-**Document version:** 1.1.0  
+**Document version:** 1.2.0  
 
-**Related:** [RULES.md](../RULES.md) · [SETUP.md](../SETUP.md) · [UPGRADE.md](../UPGRADE.md) · [CHANGELOG.md](../CHANGELOG.md) · [README.md](../../README.md)
+**Related:** [RULES.md](../RULES.md) · [SETUP.md](../SETUP.md) · [UPGRADE.md](../UPGRADE.md) · [CHANGELOG.md](../CHANGELOG.md) · [agents/README.md](../agents/README.md) · [README.md](../../README.md)
 
 ---
 
@@ -75,7 +76,7 @@ Keep the repository root **scannable**: entry points and project-specific surfac
 | `LICENSE` | License |
 | `.gitignore` | Ignore rules |
 | `CHANGELOG.md` | **Project** history (**required**) — repository H2 → version H3 → categories; **not** kit release notes |
-| `PLAN.md` | Optional project plan (repo-specific; not shipped by the kit) |
+| `PLAN.md` | Project plan (repo-specific; not shipped by the kit). **Required when using Agent Instruct** (Agent models section); optional for bare adopt |
 | Package or product entry files | Only when they are the natural top-level surface |
 | `.pylintrc` | Optional Python style gate (or package-local / under `kit/configs/`) |
 
@@ -93,6 +94,7 @@ Keep the repository root **scannable**: entry points and project-specific surfac
 | `configs/` | Optional local style configs (e.g. pylintrc) |
 | `templates/` | Optional local document skeletons |
 | `examples/` | Optional reference only (usually not required in product repos) |
+| `agents/` | Agent Instruct law, templates, examples; project-filled packs under `agents/generated/` (views, not product code) |
 
 **Do not** treat upstream kit `CHANGELOG.md` as the product’s project history. Read Kit source `kit/CHANGELOG.md` under `## repo-kit` when upgrading.
 
@@ -148,5 +150,6 @@ First adopt: [SETUP.md](../SETUP.md). Later kit bumps: [UPGRADE.md](../UPGRADE.m
 
 | Version | Notes |
 |---------|--------|
+| 1.2.0 | Agent Instruct: `kit/agents/`; PLAN required when using agents; generated packs are project-filled views under `kit/` |
 | 1.1.0 | Unified packaging: adopters keep standards under `kit/`; product and project CHANGELOG outside; remove “flatten to root” default |
 | 1.0.0 | Extracted from RULES 1.4.1 for kit 2.0; dual layout (later superseded) |

@@ -39,6 +39,7 @@ Optional: methodology template if formulas or scoring are part of the contract.
 | Python style / PEP-8 gate | `.pylintrc` (from `kit/configs/pylintrc`; **set `py-version`**) |
 | Language surface inventory | Inventory in project RULES / security module (filled below) |
 | Security & code-validation certification | `certification/README.md` *(optional)* |
+| Agent Instruct (optional) | `kit/agents/README.md`; PLAN **Agent models** if using agents ([PLAN-HOOK](../agents/PLAN-HOOK.md)); BUILD → `kit/agents/generated/` — see [PLAN snippet](../agents/examples/PLAN-agent-models-snippet.md) |
 
 ### Language surface inventory (snippet)
 

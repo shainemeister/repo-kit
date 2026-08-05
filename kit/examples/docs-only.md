@@ -37,6 +37,7 @@ Copy [RULES.md](../RULES.md) and [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md)
 | Design / concept notes | `CONCEPT-v1.md` (outside `kit/`) |
 | Formulas / “how it works” | `METHODOLOGY.md` |
 | Kit evolution / planning | Root `PLAN.md` (if used) |
+| Agent Instruct (optional) | `kit/agents/README.md`; PLAN **Agent models** if using agents ([PLAN-HOOK](../agents/PLAN-HOOK.md)); BUILD → `kit/agents/generated/` — see [PLAN snippet](../agents/examples/PLAN-agent-models-snippet.md) |
 
 Omit package CLI, schema, fixtures, Python style, and **Security / trust boundary** rows when they do not apply. This example **omits `SECURITY.md`**—see [Security documentation modularity](../rules/security.md#security-documentation-modularity). Docs-only repos still **must** keep root `CHANGELOG.md` for policy/doc releases.
 

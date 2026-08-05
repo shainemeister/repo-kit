@@ -1,7 +1,7 @@
 ---
 title: Repository Maintenance Rules
 description: Maintenance policy hub—authority map, kit baseline, and index to domain rule modules.
-version: "2.0.1"
+version: "2.1.1"
 status: current
 audience:
   - developers
@@ -14,6 +14,7 @@ related:
   - UPGRADE.md
   - MARKDOWN-STANDARD.md
   - CHANGELOG.md
+  - agents/README.md
   - rules/hygiene.md
   - rules/authoring-and-style.md
   - rules/architecture.md
@@ -22,16 +23,16 @@ related:
   - rules/versioning-and-git.md
   - rules/verification-and-ops.md
   - configs/pylintrc
-last_updated: "2026-07-28"
+last_updated: "2026-08-05"
 ---
 
 # Repository Maintenance Rules
 
 Fundamental rules for maintaining a professional, auditable repository. This file is the **hub**: authority map, kit baseline, and Must / Must not. Domain detail lives in [rules/](./rules/). In adopting product repos this hub lives at **`kit/RULES.md`**.
 
-**Document version:** 2.0.1  
+**Document version:** 2.1.1  
 
-**Related:** [README.md](../README.md) · [SETUP.md](./SETUP.md) · [UPGRADE.md](./UPGRADE.md) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) · [CHANGELOG.md](./CHANGELOG.md) · [rules/](./rules/) · [configs/pylintrc](./configs/pylintrc)
+**Related:** [README.md](../README.md) · [SETUP.md](./SETUP.md) · [UPGRADE.md](./UPGRADE.md) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) · [CHANGELOG.md](./CHANGELOG.md) · [agents/README.md](./agents/README.md) · [rules/](./rules/) · [configs/pylintrc](./configs/pylintrc)
 
 ---
 
@@ -54,8 +55,9 @@ Copy this hub (and the `rules/` modules you need) into the project’s **`kit/`*
 | Verify before sharing contract or behavior changes ([verification-and-ops](./rules/verification-and-ops.md)) | Claim complete when a **declared** style or SAST gate was skipped or failed |
 | Regenerate `certification/` outputs when that folder is maintained | Commit `last_certification.*` or treat certification as a product launcher gate |
 | Fill authority map + verification from project interest at start | Leave contracts empty until “docs later” after behavior ships |
+| Treat Agent Instruct packs as **views** over this hub + domain modules ([agents](./agents/README.md)) | Embed full persona bodies in this hub; invent a second RULES tree in packs |
 
-**First adopt:** [SETUP.md](./SETUP.md) (then delete or archive). **Later kit upgrades:** [UPGRADE.md](./UPGRADE.md) (durable).
+**First adopt:** [SETUP.md](./SETUP.md) (then delete or archive). **Later kit upgrades:** [UPGRADE.md](./UPGRADE.md) (durable). **Agent Instruct:** [agents/README.md](./agents/README.md) (description + link only in this hub).
 
 ---
 
@@ -105,6 +107,9 @@ Replace paths below with your project’s real files. Rows that do not apply may
 | Default config | `{{CONFIG_PATH}}` |
 | Golden tests / fixtures | `{{FIXTURES_PATH}}` |
 | Python style / PEP-8 gate | [configs/pylintrc](./configs/pylintrc) (copy as `.pylintrc` at package or repo root, or pass `--rcfile`) |
+| Agent Instruct (framework, catalog, BUILD, runtime) | [agents/README.md](./agents/README.md) — index to FRAMEWORK, PARAMS, CATALOG, PLAN-HOOK, BUILD, RUNTIME |
+| Project agent control surface | Root `PLAN.md` (**Agent models** section) — required when using agents; see [agents/PLAN-HOOK.md](./agents/PLAN-HOOK.md) |
+| Generated agent packs | [agents/generated/](./agents/generated/) — project-filled views; track thin packs recommended |
 
 **Rule:** Adding, removing, or renaming intentional source files should update the inventory (catalog or equivalent) in the same change set when the project maintains one.
 
@@ -123,6 +128,14 @@ Replace paths below with your project’s real files. Rows that do not apply may
 | [rules/verification-and-ops.md](./rules/verification-and-ops.md) | Verify table; completion; cadence; anti-patterns; checklist |
 
 Adopters keep domain modules under **`kit/rules/`**, or fold selected modules into a single `kit/RULES.md`—document the choice in the authority map. See [UPGRADE.md](./UPGRADE.md) merge options.
+
+### Optional Instruct (not foldable)
+
+| Path | Topic |
+|------|--------|
+| [agents/](./agents/) | Agent Instruct — L3 **views** over this hub + `rules/*`; **not** a replacement for domain modules |
+
+**Do not fold** full Agent Instruct personas, templates, or generated packs into this hub. Keep **description + link only** in the [authority map](#authority-map). See [agents/README.md](./agents/README.md).
 
 ---
 
@@ -168,6 +181,8 @@ Copy-paste prompt also on root [README — Upgrade repo-kit](../README.md#upgrad
 
 | Version | Notes |
 |---------|--------|
+| 2.1.1 | Agent Instruct: optional Instruct subsection; agents **not foldable** into hub (description + link only) |
+| 2.1.0 | Agent Instruct: authority map rows (agents README, PLAN control surface, generated/); packs are views; domain index line for `kit/agents/` |
 | 2.0.1 | Adopter packaging: standards under `kit/`; project CHANGELOG and product paths outside; hygiene-aligned authority map |
 | 2.0.0 | Kit 2.0 hub: authority map + kit baseline + domain module index; body content moved to `rules/*`; upgrade deferred to UPGRADE.md |
 | 1.4.1 | (pre-split) Upgrade procedure from Kit baseline; README AI prompt deep link |

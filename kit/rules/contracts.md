@@ -1,7 +1,7 @@
 ---
 title: Contracts
 description: What counts as a contract, canonical ownership, co-update rules, fixtures/schema/API, and cross-reference policy.
-version: "1.0.0"
+version: "1.0.1"
 status: current
 audience:
   - developers
@@ -15,16 +15,17 @@ related:
   - ./verification-and-ops.md
   - ./authoring-and-style.md
   - ../MARKDOWN-STANDARD.md
-last_updated: "2026-07-28"
+  - ../agents/README.md
+last_updated: "2026-08-05"
 ---
 
 # Contracts
 
 Stable promises a repository makes—behavior, shapes, exits, fields—and the rules for keeping them honest.
 
-**Document version:** 1.0.0  
+**Document version:** 1.0.1  
 
-**Related:** [RULES.md](../RULES.md) · [architecture.md](./architecture.md) · [versioning-and-git.md](./versioning-and-git.md) · [verification-and-ops.md](./verification-and-ops.md) · [authoring-and-style.md](./authoring-and-style.md) · [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md)
+**Related:** [RULES.md](../RULES.md) · [architecture.md](./architecture.md) · [versioning-and-git.md](./versioning-and-git.md) · [verification-and-ops.md](./verification-and-ops.md) · [authoring-and-style.md](./authoring-and-style.md) · [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md) · [agents/README.md](../agents/README.md)
 
 ---
 
@@ -67,6 +68,8 @@ Stable promises a repository makes—behavior, shapes, exits, fields—and the r
 | Kit / maintenance policy | [RULES.md](../RULES.md) + [rules/](./) | authority map, baseline, gates |
 
 Package structure and runtime boundaries are **architecture** ([architecture.md](./architecture.md)); the promises those packages make are **contracts**.
+
+**Not contracts:** Agent Instruct packs under `kit/agents/` are **views** over L4 law (`kit/RULES.md`, `kit/rules/*`, product contracts). They do not own CHANGELOG, SAST, hygiene, or public API promises—see [agents/README.md](../agents/README.md).
 
 ---
 
@@ -136,6 +139,7 @@ Every substantial markdown file should remain navigable for humans and AI agents
 | Code ships, guide “later” | Same change set as the canonical doc |
 | Silent public field or API rename | Coordinated contract bump + fixtures + docs + CHANGELOG |
 | Duplicating full matrices into every doc | Link + short summary |
+| Pack redefines CHANGELOG, SAST, hygiene, or public API law | Short procedure + `authority_paths` to L4; fix pack/BUILD if conflict ([agents](../agents/README.md)) |
 
 ---
 
@@ -143,4 +147,5 @@ Every substantial markdown file should remain navigable for humans and AI agents
 
 | Version | Notes |
 |---------|--------|
+| 1.0.1 | Agent Instruct packs are views, not contracts; dual-authority anti-pattern |
 | 1.0.0 | New first-class module for kit 2.0; ownership rules from former “Data and contract rules”; cross-reference policy |

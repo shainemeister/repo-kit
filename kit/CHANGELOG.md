@@ -26,6 +26,42 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 
 ## repo-kit
 
+### [2.1.0] - 2026-08-05
+
+#### Added
+
+- **`kit/agents/` Agent Instruct** — portable agent personas as **views** over L4 law (`kit/RULES.md` + `kit/rules/*` + product contracts). Core docs: `README`, `FRAMEWORK`, `PARAMS`, `CATALOG`, `PLAN-HOOK`, `BUILD`, `RUNTIME`.
+- Seed role **templates** (`plan-author`, `adopter`, `maintainer`, `implementer`, `docs-author`, `security`, `reviewer`) and **examples** (PLAN Agent models snippet, sample generated pack, anti-patterns).
+- `kit/agents/generated/.gitkeep` — project-filled thin packs; track recommended.
+- SETUP **Agent Instruct path** (PLAN dual path: required when using agents; bare adopt may skip BUILD).
+- UPGRADE merge/preserve/regen for agents + PLAN Agent models.
+- RULES hub map rows: agents index, PLAN control surface, generated packs (description + link only).
+
+#### Changed
+
+- Root README purpose, layout, piece tables, and overlays for Agent Instruct.
+- Root README **upgrade + quick-path prompts** include conditional/optional Agent Instruct; governance digest packs-as-views row; Source files hygiene wording (unified packaging, not dual layout).
+- Hygiene: PLAN required when using agents; `kit/agents/` packaging note.
+- Verification-and-ops **1.2.0**: agent verify rows plus cadence, anti-patterns, before-complete step, and contributor checklist for Agent Instruct.
+- UPGRADE document version **1.3.0**: preserve vs regen by pack portability; BUILD source load order on upgrade (kit seeds regen; adopter/platform packs preserved).
+- RULES hub **2.1.1**: Optional Instruct subsection; agents **not foldable** into the hub.
+- BUILD **1.1.0**: unset vs empty `active_models`; source load order; empty placeholder omit; overlay shadow + trust boundary.
+- PLAN-HOOK **1.1.0**: `active_models` semantics; `use_catalog_defaults`; trust boundary (repo-relative overlays only).
+- RUNTIME **1.1.0**: authority-map-first matching; STOP on failed declared gates.
+- FRAMEWORK **1.0.1**: hard rules for STOP, repo-relative overlays, non-foldable hub, adopter pack preserve.
+- PARAMS **1.0.2**: validation forbids raw placeholders in generated packs.
+- CATALOG **1.0.1**: plan-author dual-path verify; security Domain A focus.
+- Seed dual-path fixes: adopter conditional `kit/agents/` copy; plan-author conditional Agent models; implementer/security/reviewer STOP + completion-rule links.
+- contracts **1.0.1** and versioning-and-git **1.0.2**: thin Agent Instruct cross-links (packs are not contracts; `agents`/`plan` commit scopes).
+- Product examples: PLAN-HOOK + PLAN snippet pointers when using agents.
+- Anti-patterns expanded for empty `active_models`, clobber on upgrade, remote overlays, STOP on gates.
+
+#### Notes
+
+- Packs do not redefine law; on conflict L4 wins. v1 is docs + AI-executed BUILD (convention, not a Domain A/B gate).
+- Default catalog is portable maintenance/docs/security seeds only—no product/game/CAD pipelines.
+- Explicit empty `active_models: []` means emit nothing; do not re-enable the full catalog.
+
 ### [2.0.1] - 2026-07-28
 
 #### Changed

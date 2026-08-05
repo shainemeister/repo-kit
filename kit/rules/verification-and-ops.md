@@ -1,7 +1,7 @@
 ---
 title: Verification and Operations
 description: Verification before ship, completion rule, maintenance cadence, anti-patterns, and contributor checklist.
-version: "1.0.0"
+version: "1.2.0"
 status: current
 audience:
   - developers
@@ -15,16 +15,19 @@ related:
   - ./versioning-and-git.md
   - ../MARKDOWN-STANDARD.md
   - ../UPGRADE.md
-last_updated: "2026-07-28"
+  - ../agents/README.md
+  - ../agents/BUILD.md
+  - ../agents/PARAMS.md
+last_updated: "2026-08-05"
 ---
 
 # Verification and Operations
 
 Ship gates, completion rules, cadence, anti-patterns, and the contributor checklist.
 
-**Document version:** 1.0.0  
+**Document version:** 1.2.0  
 
-**Related:** [RULES.md](../RULES.md) · [security.md](./security.md) · [authoring-and-style.md](./authoring-and-style.md) · [contracts.md](./contracts.md) · [versioning-and-git.md](./versioning-and-git.md) · [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md) · [UPGRADE.md](../UPGRADE.md)
+**Related:** [RULES.md](../RULES.md) · [security.md](./security.md) · [authoring-and-style.md](./authoring-and-style.md) · [contracts.md](./contracts.md) · [versioning-and-git.md](./versioning-and-git.md) · [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md) · [UPGRADE.md](../UPGRADE.md) · [agents/README.md](../agents/README.md)
 
 ---
 
@@ -62,6 +65,9 @@ Fill concrete commands for your project from the [language surface inventory](./
 | Schema or sample data | Headers/fields match schema; consumers still load samples |
 | Docs only | [Author checklist](../MARKDOWN-STANDARD.md#author-checklist); relative links resolve; platform examples consistent |
 | New/removed source files | Inventory/catalog updated (if maintained); language surface inventory if languages added/removed |
+| Agent template / catalog change | Pack samples validate ([agents/PARAMS.md](../agents/PARAMS.md)); PLAN-HOOK fields still accurate; examples updated |
+| BUILD regen only | Diff review; no authority path invention; respect PLAN disabled set |
+| New project agent pack | Schema fields complete; verify[] from inventory/table only; PLAN active_models/overlays updated |
 
 ---
 
@@ -81,8 +87,9 @@ Ordered steps for humans and AI agents:
 2. Run **Domain B** gates for every surface touched by the change.  
 3. Run **Domain A** gates for every surface touched (plus Secrets / Semgrep if those rows exist).  
 4. Update canonical docs / `CHANGELOG.md` per the [authority map](../RULES.md#authority-map) and [contracts.md](./contracts.md).  
-5. If `certification/` is maintained: regenerate the certificate pair; confirm OverallPass; leave outputs unstaged.  
-6. Only then state the task is complete.
+5. If Agent Instruct is in use and PLAN Agent models, agent templates, or agent-relevant authority paths changed: re-run [BUILD](../agents/BUILD.md); validate packs per [PARAMS](../agents/PARAMS.md); respect PLAN `disabled`; review generated pack diffs. (Convention—not a Domain A/B gate.)  
+6. If `certification/` is maintained: regenerate the certificate pair; confirm OverallPass; leave outputs unstaged.  
+7. Only then state the task is complete.
 
 ---
 
@@ -100,6 +107,9 @@ Ordered steps for humans and AI agents:
 | Fixture failure after intentional math/logic change | Refresh expected outputs only with methodology note |
 | Stale `last_updated` on heavily edited docs | Set ISO date when merging |
 | Kit upgrade available upstream | Follow [UPGRADE.md](../UPGRADE.md); update baseline + project CHANGELOG |
+| PLAN Agent models change (active/disabled/overlays/tuning) | Re-run [BUILD](../agents/BUILD.md); review generated pack diff |
+| Kit agents templates / CATALOG upgrade | Merge `kit/agents/`; preserve PLAN Agent models; BUILD regen ([UPGRADE](../UPGRADE.md)) |
+| New durable project agent | Emit pack under `kit/agents/generated/`; update PLAN; authority-map row only if durable and needed |
 
 ---
 
@@ -134,6 +144,12 @@ Ordered steps for humans and AI agents:
 | Kit upgrade with no baseline or CHANGELOG note | Update Adopted kit version/date and project CHANGELOG via [UPGRADE.md](../UPGRADE.md) |
 | Inventing an alternate kit source URL | Use https://github.com/shainemeister/repo-kit (unless a deliberate fork) |
 | Putting kit release history into a project `CHANGELOG.md` | Keep kit version only in the Kit baseline table |
+| Pack body restates full domain modules | Link `authority_paths`; short procedure ([agents](../agents/README.md)) |
+| Treating Agent Instruct as a Domain A/B gate | Convention only; real gates = inventory ([Completion rule](#completion-rule)) |
+| UPGRADE resets PLAN `active_models` | Preserve Agent models + BUILD regen ([UPGRADE](../UPGRADE.md)) |
+| Full persona essays in `kit/RULES.md` | Map description + path only |
+| Inventing pack verify tools not in RULES / inventory | `verify[]` only from declared verification table |
+| Gitignoring generated packs with no rebuild path | Track thin packs under `kit/agents/generated/` or document regen |
 
 ---
 
@@ -156,6 +172,9 @@ Before you commit or share a change:
 - [ ] Subject would still make sense years later; one logical surface preferred  
 - [ ] Canonical docs for any behavior change are in the same change set ([contracts.md](./contracts.md))  
 - [ ] If kit pieces changed: [Kit baseline](../RULES.md#kit-baseline) version/date updated and CHANGELOG notes the upgrade ([UPGRADE.md](../UPGRADE.md))  
+- [ ] If Agent Instruct used and enablement/templates/authority paths for agents changed: [BUILD](../agents/BUILD.md) regen; thin packs reviewed  
+- [ ] Agent packs do not redefine L4 law; `authority_paths` / `verify` align with RULES ([agents](../agents/README.md))  
+- [ ] PLAN Agent models preserved across kit upgrade (when agents are in use)  
 - [ ] If AI assisted: commit includes `Assisted-by` / `Compliance` / `Instructed-by`  
 
 ---
@@ -164,4 +183,5 @@ Before you commit or share a change:
 
 | Version | Notes |
 |---------|--------|
+| 1.2.0 | Agent Instruct: verification rows for template/catalog/BUILD; cadence; anti-patterns; before-complete step; contributor checklist (editorial 1.1.0 intermediate folded here—not a separate kit release) |
 | 1.0.0 | Extracted from RULES 1.4.1 for kit 2.0 |

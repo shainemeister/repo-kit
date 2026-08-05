@@ -16,14 +16,17 @@ This kit ships `SETUP.md` under [`kit/`](./). **Copy standards into the target r
 
 1. Choose an [adoption mode](#adoption-modes) (greenfield, existing repo, or reference).  
 2. [State the interest](#1-state-the-interest) and [platform context](#2-set-platform-context).  
-3. [Copy](#3-copy-kit-pieces) pieces **from upstream `kit/` into the target repo’s `kit/`**.  
-4. Ensure **project root** has README, `CHANGELOG.md`, LICENSE, `.gitignore` (and optional `PLAN.md`).  
+3. [Copy](#3-copy-kit-pieces) pieces **from upstream `kit/` into the target repo’s `kit/`** (include `kit/agents/` when using Agent Instruct).  
+4. Ensure **project root** has README, `CHANGELOG.md`, LICENSE, `.gitignore`.  
+   - **With Agent Instruct:** root **`PLAN.md` is required** — include an **Agent models** section ([agents/PLAN-HOOK.md](./agents/PLAN-HOOK.md)).  
+   - **Bare adopt (no agents):** `PLAN.md` remains optional; skip BUILD.  
 5. [Fill the authority map](#4-fill-the-authority-map) (product paths **outside** `kit/`), [language inventory](./rules/security.md#language-surface-inventory), and verification table.  
 6. [Record kit baseline](#4b-record-kit-baseline) in `kit/RULES.md`.  
 7. [Pick templates](#5-pick-templates-by-interest), scaffold package docs **outside** `kit/`, and [verify](#8-first-verification-commands).  
-8. [Delete or archive this file](#after-setup); point maintainers at [UPGRADE.md](./UPGRADE.md).
+8. **If using Agent Instruct:** ensure Agent models section, then run **[BUILD](./agents/BUILD.md)** → `kit/agents/generated/` ([Agent Instruct path](#agent-instruct-path)).  
+9. [Delete or archive this file](#after-setup); point maintainers at [UPGRADE.md](./UPGRADE.md). **Keep** `kit/agents/` and PLAN Agent models.
 
-Layout doctrine: [rules/hygiene.md](./rules/hygiene.md).
+Layout doctrine: [rules/hygiene.md](./rules/hygiene.md). Agent Instruct: [agents/README.md](./agents/README.md).
 
 ---
 
@@ -47,9 +50,10 @@ For a **live codebase** that has never recorded a Kit baseline:
 4. **Minimal viable adopt:** `kit/RULES.md` hub + kit baseline + root project `CHANGELOG.md` + `kit/MARKDOWN-STANDARD.md` (or link) + language inventory + verification rows for languages you already ship.  
 5. **Add contracts only where surfaces exist** (package CLI guide if a CLI exists; skip empty SECURITY per [modularity](./rules/security.md#security-documentation-modularity)).  
 6. **Adopt contract policy** — keep [rules/contracts.md](./rules/contracts.md) under `kit/rules/`.  
-7. **Record Kit baseline** from upstream [CHANGELOG.md](./CHANGELOG.md) under `## repo-kit`.  
-8. **Project root CHANGELOG** adoption entry under the current version.  
-9. **Delete or archive this SETUP** from the project’s `kit/`; future kit bumps use **[UPGRADE.md](./UPGRADE.md)**.
+7. **Optional Agent Instruct** — if using agents: PLAN Agent models + first [BUILD](./agents/BUILD.md); see [Agent Instruct path](#agent-instruct-path).  
+8. **Record Kit baseline** from upstream [CHANGELOG.md](./CHANGELOG.md) under `## repo-kit`.  
+9. **Project root CHANGELOG** adoption entry under the current version.  
+10. **Delete or archive this SETUP** from the project’s `kit/`; keep `kit/agents/` and PLAN Agent models if present; future kit bumps use **[UPGRADE.md](./UPGRADE.md)**.
 
 ---
 
@@ -83,6 +87,7 @@ Follow [Platform-aware examples](./MARKDOWN-STANDARD.md#platform-aware-examples)
 | Project `CHANGELOG.md` | **repo root** | **Yes** | Project history (H2 → H3 → H4); **not** a copy of kit release history |
 | Root `README.md` | **repo root** | Yes | Product landing (no frontmatter) |
 | [templates/](./templates/) | `kit/templates/` or package paths | As needed | Scaffold into **packages** outside `kit/` |
+| [agents/](./agents/) | `kit/agents/` | If Agent Instruct | Instruct docs, templates; then BUILD → `generated/` |
 | [configs/pylintrc](./configs/pylintrc) | `kit/configs/` or `.pylintrc` at package/repo | If Python | Developer tooling only |
 | [UPGRADE.md](./UPGRADE.md) | `kit/` | Recommended | Durable upgrade guide—or always open from Kit source |
 | This `SETUP.md` | `kit/` | Temporary | Follow, then delete or archive |
@@ -131,6 +136,26 @@ Before deleting this file, fill [Kit baseline](./RULES.md#kit-baseline) in the p
 Also ensure **project root** `CHANGELOG.md` exists with structure `## <Repository Name>` → `### [X.Y.Z] - YYYY-MM-DD` → `####` categories. Record first adoption under the initial project version section (e.g. under `#### Added`: “Adopted repo-kit X.Y.Z from https://github.com/shainemeister/repo-kit”).
 
 Upgrades later: [README — Upgrade repo-kit](../README.md#upgrade-repo-kit) · [UPGRADE.md](./UPGRADE.md).
+
+---
+
+## Agent Instruct path
+
+Optional but recommended for AI-maintained repos. Full index: [agents/README.md](./agents/README.md).
+
+| Step | Action |
+|------|--------|
+| 1 | Copy/merge `kit/agents/**` with the rest of `kit/` |
+| 2 | Ensure root **PLAN.md** exists from project interest |
+| 3 | Ensure **`## Agent models`** section exists — insert from [agents/PLAN-HOOK.md](./agents/PLAN-HOOK.md) or [agents/examples/PLAN-agent-models-snippet.md](./agents/examples/PLAN-agent-models-snippet.md) |
+| 4 | Fill authority map + language inventory (existing SETUP steps) |
+| 5 | Run **BUILD** per [agents/BUILD.md](./agents/BUILD.md) → emit `kit/agents/generated/<id>.md` |
+| 6 | Prefer **tracking** thin generated packs in git so clones work offline |
+| 7 | When deleting this SETUP file: **keep** `kit/agents/` and PLAN Agent models |
+
+**Bare adopt:** omit Agent models and skip BUILD. You can add Agent Instruct later via PLAN-HOOK + BUILD without re-running full SETUP.
+
+Packs are **views** over L4 law (`kit/RULES.md` + `kit/rules/*` + product contracts). On conflict, law wins.
 
 ---
 
@@ -205,6 +230,7 @@ On Windows you may use `py -3.x -m pylint …`. Install pylint in the **develope
 - Maintain a root `FILE-CATALOG.md` (or similar) and update it on path add/remove/rename.  
 - Copy `configs/pylintrc` → `.pylintrc` (package or repo root), set `py-version`, point the verification table at the real package path.  
 - Add root `certification/` + operator README when product code warrants formal self-attestation certificates.  
+- Enable or tune Agent Instruct: PLAN Agent models + [BUILD](./agents/BUILD.md) ([agents/README.md](./agents/README.md)).  
 - Read [How overlays work](../README.md#how-overlays-work) so stack-specific rules stay in the project map, not a forked kit.
 
 **Checklists:** [Author checklist](./MARKDOWN-STANDARD.md#author-checklist) · [Contributor checklist](./rules/verification-and-ops.md#contributor-checklist)
@@ -220,7 +246,10 @@ On Windows you may use `py -3.x -m pylint …`. Install pylint in the **develope
 | `kit/MARKDOWN-STANDARD.md` (or link) | — |
 | `kit/rules/` modules (or folded policy) | — |
 | `kit/UPGRADE.md` path known (local copy optional) | — |
+| `kit/agents/` Instruct + templates (if adopted) | — |
+| `kit/agents/generated/` thin packs (if using agents; track recommended) | — |
+| Root `PLAN.md` Agent models (if using agents) | — |
 | Product packages **outside** `kit/` | Unfilled template copies you do not need |
 | `.pylintrc` / style configs you adopted | — |
 
-Root hygiene / packaging: [rules/hygiene.md](./rules/hygiene.md). Kit upgrades: [UPGRADE.md](./UPGRADE.md) · [README — Upgrade repo-kit](../README.md#upgrade-repo-kit) via https://github.com/shainemeister/repo-kit.
+Root hygiene / packaging: [rules/hygiene.md](./rules/hygiene.md). Kit upgrades: [UPGRADE.md](./UPGRADE.md) · [README — Upgrade repo-kit](../README.md#upgrade-repo-kit) via https://github.com/shainemeister/repo-kit. Agent Instruct: [agents/README.md](./agents/README.md).

@@ -1,7 +1,7 @@
 ---
 title: Versioning and Git
 description: Three version surfaces, mandatory CHANGELOG, kit baseline pointer, git hygiene, commit format, and AI disclosure.
-version: "1.0.1"
+version: "1.0.2"
 status: current
 audience:
   - developers
@@ -12,16 +12,17 @@ related:
   - ../CHANGELOG.md
   - ./contracts.md
   - ./verification-and-ops.md
-last_updated: "2026-07-28"
+  - ../agents/PLAN-HOOK.md
+last_updated: "2026-08-05"
 ---
 
 # Versioning and Git
 
 Version surfaces, CHANGELOG discipline, and git / commit rules.
 
-**Document version:** 1.0.1  
+**Document version:** 1.0.2  
 
-**Related:** [RULES.md](../RULES.md) · [UPGRADE.md](../UPGRADE.md) · [CHANGELOG.md](../CHANGELOG.md) · [contracts.md](./contracts.md) · [verification-and-ops.md](./verification-and-ops.md)
+**Related:** [RULES.md](../RULES.md) · [UPGRADE.md](../UPGRADE.md) · [CHANGELOG.md](../CHANGELOG.md) · [contracts.md](./contracts.md) · [verification-and-ops.md](./verification-and-ops.md) · [PLAN-HOOK.md](../agents/PLAN-HOOK.md)
 
 ---
 
@@ -177,9 +178,11 @@ Use a **Conventional Commits–style** subject so history stays scannable.
 
 | Context | Preferred scopes | Notes |
 |---------|------------------|--------|
-| **This kit** | `rules`, `markdown`, `templates`, `setup`, `upgrade`, `examples`, `kit` | Use when the change is limited to that surface |
-| **Adopting projects** | Package folder name, `cli`, `security`, `methodology` | Or omit for root-wide policy/README/shared schema |
+| **This kit** | `rules`, `markdown`, `templates`, `setup`, `upgrade`, `examples`, `kit`, `agents` | Use when the change is limited to that surface |
+| **Adopting projects** | Package folder name, `cli`, `security`, `methodology`, `agents`, `plan` | Or omit for root-wide policy/README/shared schema |
 | **Omit scope** | — | Root-wide files with no single package owner |
+
+**Agent Instruct (when used):** enablement-only PLAN edits often use `docs(plan):` or `chore(agents):`; new/updated generated packs use `docs(agents):` or `chore(agents):`. Full enablement contract: [PLAN-HOOK.md](../agents/PLAN-HOOK.md).
 
 Scopes are advisory: consistency within a repo matters more than matching this table exactly.
 
@@ -349,5 +352,6 @@ A remote is optional. When one exists, do not assume write access to `main`/`mas
 
 | Version | Notes |
 |---------|--------|
+| 1.0.2 | Agent Instruct scopes (`agents`, `plan`); pointer to PLAN-HOOK commit guidance |
 | 1.0.1 | Kit baseline path `kit/RULES.md`; standards under kit/; project CHANGELOG at root |
 | 1.0.0 | Extracted from RULES 1.4.1 for kit 2.0; upgrade playbook deferred to UPGRADE.md; kit CHANGELOG path under kit/ |
