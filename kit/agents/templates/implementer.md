@@ -36,6 +36,9 @@ references:
   - path: kit/agents/OPS.md
     kind: repo
     purpose: O3 utilization and feature lifecycle
+  - path: kit/rules/ai-docs-workspace.md
+    kind: repo
+    purpose: project_build notes for non-trivial implementation
   - path: kit/rules/authoring-and-style.md
     kind: repo
     purpose: Style gates (e.g. pylint) when inventory declares them
@@ -59,6 +62,7 @@ compose_with:
 - Co-update canonical docs when behavior changes (same change set).
 - When Instruct is in use: follow [OPS](../OPS.md); open expertise before inventing paths/tools.
 - On new feature/package/surface: update authority map paths as needed; trigger PLAN/BUILD lifecycle if agents must evolve.
+- For non-trivial implementation: maintain `docs/project_build/` context when it helps future sessions ([ai-docs-workspace](../../rules/ai-docs-workspace.md)).
 
 ## Must not
 
@@ -66,6 +70,7 @@ compose_with:
 - Invent style/SAST tools not listed in the project inventory/verify table.
 - Claim complete when a declared gate failed or was skipped.
 - Skip primary-pack match when Instruct is in use.
+- Leave public contract changes only under `docs/` without promoting to L4.
 - {{TUNING_MUST_NOT_EXTRA}}
 
 ## Expertise map
@@ -77,7 +82,9 @@ compose_with:
 - `kit/rules/contracts.md` — co-update policy
 - `kit/rules/verification-and-ops.md` — gates and completion
 - `kit/rules/authoring-and-style.md` — style gates
+- `kit/rules/ai-docs-workspace.md` — AI docs workspace
 - `kit/agents/OPS.md` — order of operations + lifecycle
+- `docs/project_build/` — build context when used
 - `PLAN.md` — mission, non-goals, Agent models
 
 ### External (citations — guidance only)
@@ -88,12 +95,13 @@ compose_with:
 
 1. Load PLAN (mission/non-goals + Agent models if Instruct); open kit/RULES.md authority map, language inventory, and verification table before inventing paths or tools.
 2. Confirm primary pack match (this role) per OPS when Instruct is in use; open Expertise map.
-3. Implement the minimal change for the task.
-4. Update canonical contract docs if behavior/shape changed ([contracts](../../rules/contracts.md)).
-5. Run {{VERIFY_COMMANDS}} (from project verification table / inventory only).
-6. If feature/surface/language/task-class growth: update PLAN Agent models if needed and re-run BUILD.
-7. Compose with reviewer/security only when pre-done checks are warranted (one primary pack default).
-8. If any declared Domain A/B gate or verify item fails or is skipped → STOP; do not claim complete; list remediation ([completion rule](../../rules/verification-and-ops.md#completion-rule)).
+3. If non-trivial build context is needed: ensure `docs/project_build/` (+ index) exists and is updated.
+4. Implement the minimal change for the task.
+5. Update canonical contract docs if behavior/shape changed ([contracts](../../rules/contracts.md)).
+6. Run {{VERIFY_COMMANDS}} (from project verification table / inventory only).
+7. If feature/surface/language/task-class growth: update PLAN Agent models if needed and re-run BUILD.
+8. Compose with reviewer/security only when pre-done checks are warranted (one primary pack default).
+9. If any declared Domain A/B gate or verify item fails or is skipped → STOP; do not claim complete; list remediation ([completion rule](../../rules/verification-and-ops.md#completion-rule)).
 
 ## Open for law
 

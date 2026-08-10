@@ -74,6 +74,7 @@ Maintenance of any adopting repository follows **`kit/RULES.md`** (hub: authorit
 | Treat Agent Instruct packs as **views** over `kit/RULES.md` + `kit/rules/*` when agents are used | Invent a second RULES tree in packs or embed full persona bodies in the RULES hub |
 | **When Instruct is in use:** match one primary expert pack; follow [OPS](./kit/agents/OPS.md); co-maintain L4; evolve agents with features | Skip pack match; leave packs stale after surface growth; remote overlays |
 | Follow [Operator enforcement](./kit/RULES.md#operator-enforcement) (verify request, procedure, persona, plan when needed, git/complete, Progress Tracker) | Skip Progress Tracker or procedure check when advancing repo work |
+| Dynamically build/maintain root **`docs/`** AI workspace when research/plan/build context is needed ([ai-docs-workspace](./kit/rules/ai-docs-workspace.md)) | Put project research under `kit/`; use `docs/` as sole public contract home |
 
 - **Contracts:** co-update and cross-link rules — [`kit/rules/contracts.md`](./kit/rules/contracts.md)  
 - **Completion:** declared Domain A/B gates — [`kit/rules/verification-and-ops.md`](./kit/rules/verification-and-ops.md#completion-rule)  
@@ -92,7 +93,8 @@ Copy what you need from `kit/`, **initiate from project interest** so formal doc
 | [kit/SETUP.md](./kit/SETUP.md) | One-time adoption (greenfield + existing repo); then delete |
 | [kit/UPGRADE.md](./kit/UPGRADE.md) | Durable upgrade + 1.x→2.0 migration |
 | [kit/RULES.md](./kit/RULES.md) | Maintenance hub: authority map, kit baseline |
-| [kit/rules/](./kit/rules/) | Domain modules (hygiene, style, architecture, contracts, security, versioning/git, verification) |
+| [kit/rules/](./kit/rules/) | Domain modules (hygiene, style, architecture, contracts, security, versioning/git, verification, **AI docs workspace**) |
+| Root [`docs/`](./docs/) | AI resource workspace (research, plan, project_build, resources)—outside `kit/` |
 | [kit/agents/](./kit/agents/) | Agent Instruct — expert personas as views; PLAN + BUILD + [OPS](./kit/agents/OPS.md) |
 | [kit/MARKDOWN-STANDARD.md](./kit/MARKDOWN-STANDARD.md) | Structure, frontmatter, doc types, platform-aware examples |
 | [kit/CHANGELOG.md](./kit/CHANGELOG.md) | Kit version history under `## repo-kit` |
@@ -144,6 +146,8 @@ your-repo/
   .gitignore
   CHANGELOG.md              # PROJECT history (required) — not kit release notes
   PLAN.md                   # project plan; required when using Agent Instruct
+  docs/                     # AI resource workspace (scaffold when needed)
+    research/ plan/ project_build/ resources/
   kit/                      # standards from repo-kit (filled for this project)
     RULES.md                # hub: authority map + kit baseline
     rules/                  # domain modules from kit/rules/
@@ -172,6 +176,7 @@ your-repo/
 | **Standards** (`kit/`) | Portable structure, formatting, git, pylint policy, templates, upgrade guide; project-filled authority map; optional Agent Instruct |
 | **Project RULES hub** | `kit/RULES.md` — real paths (to product outside `kit/`), runtimes, verify commands, domain “must not” |
 | **Agent packs** (optional) | `kit/agents/generated/` expert views + PLAN control surface + [OPS](./kit/agents/OPS.md) utilization — not a second RULES tree |
+| **AI docs workspace** | Root `docs/` research/plan/project_build/resources — working memory for AI; promote durable promises to L4 ([ai-docs-workspace](./kit/rules/ai-docs-workspace.md)) |
 | **Package docs** | Outside `kit/`: CLI contracts, methodology, security matrices for that package |
 
 Do not fork the whole standard for every product fact. Keep shared rules stable under `kit/`; put stack-specific paths and commands in the project authority map and verification table.
@@ -215,6 +220,8 @@ All kit source lives under [`kit/`](./kit/) except this README, LICENSE, and `.g
 | [kit/RULES.md](./kit/RULES.md) | Maintenance hub: authority map, kit baseline |
 | [kit/agents/README.md](./kit/agents/README.md) | Agent Instruct index (OPS, FRAMEWORK, BUILD, PLAN-HOOK, …) |
 | [kit/agents/OPS.md](./kit/agents/OPS.md) | Utilization order of operations when Instruct is in use |
+| [kit/rules/ai-docs-workspace.md](./kit/rules/ai-docs-workspace.md) | Root `docs/` AI resource workspace policy |
+| [docs/](./docs/) | This kit’s own AI workspace (pattern for adopters) |
 | [kit/rules/hygiene.md](./kit/rules/hygiene.md) | Root hygiene; unified packaging (standards under kit/); SETUP/UPGRADE lifecycle |
 | [kit/rules/authoring-and-style.md](./kit/rules/authoring-and-style.md) | Docs rules; pylint; non-Python style |
 | [kit/rules/architecture.md](./kit/rules/architecture.md) | Architecture and boundaries |

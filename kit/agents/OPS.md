@@ -1,7 +1,7 @@
 ---
 title: Agent Instruct Order of Operations
 description: Required utilization procedure when Agent Instruct is adopted—match, expertise, co-maintain docs/rules, lifecycle BUILD.
-version: "1.0.1"
+version: "1.1.0"
 status: current
 audience:
   - developers
@@ -18,6 +18,7 @@ related:
   - ../RULES.md
   - ../rules/verification-and-ops.md
   - ../rules/contracts.md
+  - ../rules/ai-docs-workspace.md
 last_updated: "2026-08-10"
 ---
 
@@ -27,7 +28,7 @@ Canonical **order of operations (O3)** for AI and humans when **Agent Instruct i
 
 Standing hub checklist (all maintenance turns): [RULES — Operator enforcement](../RULES.md#operator-enforcement).
 
-**Document version:** 1.0.1  
+**Document version:** 1.1.0  
 
 **Related:** [README.md](./README.md) · [RUNTIME.md](./RUNTIME.md) · [FRAMEWORK.md](./FRAMEWORK.md) · [PARAMS.md](./PARAMS.md) · [BUILD.md](./BUILD.md) · [PLAN-HOOK.md](./PLAN-HOOK.md) · [RULES.md](../RULES.md) · [verification-and-ops](../rules/verification-and-ops.md) · [contracts](../rules/contracts.md)
 
@@ -39,7 +40,7 @@ Standing hub checklist (all maintenance turns): [RULES — Operator enforcement]
 |------|----------|
 | Run O3 steps **when Instruct is adopted** (PLAN Agent models present and/or tracked packs under `kit/agents/generated/`) | Skip primary-pack match and improvise durable policy only in chat |
 | Load **one primary** expert pack; open expertise map before inventing paths/tools | Auto-load the full compose matrix or all generated packs |
-| Co-update **canonical L4** docs/rules in the same change set as behavior/contracts | Treat packs as a second RULES tree or as law over L4 |
+| Co-update **canonical L4** docs/rules; maintain root **`docs/`** when research/plan/build context applies | Treat packs or `docs/` as a second RULES tree or as law over L4 |
 | Evolve agents (PLAN + BUILD) when features, packages, surfaces, languages, or durable task classes appear | Leave packs stale after authority map / inventory / enablement change |
 | Prefer in-repo law; use external URLs only as **citations** (guidance) | Use remote URLs as overlays or as substitute law |
 
@@ -93,7 +94,7 @@ Detect Instruct early (step 0). Do not force O3 on bare adopters.
 5  COMPOSE: load compose_with only if task clearly needs a second concern
 6  LOAD Expertise map: authority_paths + references (repo + external citations)
 7  EXECUTE pack Procedure under L4; on conflict L4 wins
-8  CO-MAINTAIN: update canonical L4 owner docs/rules in the same change set
+8  CO-MAINTAIN: update canonical L4 owner docs/rules; maintain root docs/ when research/plan/build applies
 9  LIFECYCLE: if feature/surface/language/task-class growth → PLAN delta + BUILD
 10 VERIFY: pack verify[] + declared Domain A/B; STOP if fail/skip
 11 REPORT: primary id, compose, docs touched, BUILD y/n, gates
@@ -149,6 +150,8 @@ When Instruct is in use, document and rule maintenance is **part of every task**
 | Trigger | Required maintenance |
 |---------|----------------------|
 | Behavior or public surface change | Update **canonical** owner in authority map ([contracts](../rules/contracts.md)) same change set |
+| Research / multi-step plan / build notes | Scaffold/update root `docs/` modules ([ai-docs-workspace](../rules/ai-docs-workspace.md)); keep index honest |
+| Finding becomes product promise | Promote from `docs/` to L4 owner; leave pointer if useful |
 | Path add/remove/rename | Update inventory/catalog if maintained; authority map if owner paths change |
 | Language added/removed | Update language surface inventory + verification rows |
 | Release-worthy change | Project root `CHANGELOG.md` entry |
@@ -241,5 +244,6 @@ More: [examples/anti-patterns.md](./examples/anti-patterns.md).
 
 | Version | Notes |
 |---------|--------|
+| 1.1.0 | Co-maintain root docs/ AI workspace when research/plan/build applies (kit 2.3.0) |
 | 1.0.1 | Report shape ties to RULES Progress Tracker / operator enforcement (kit 2.2.1) |
 | 1.0.0 | Initial O3 utilization authority (kit 2.2.0): match, expertise, co-maintain, lifecycle |

@@ -26,6 +26,31 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 
 ## repo-kit
 
+### [2.3.0] - 2026-08-10
+
+#### Added
+
+- **AI docs workspace** — project root `docs/` as modular AI resource tree: `research/`, `plan/`, `project_build/`, `resources/` + index.
+- Policy module **`kit/rules/ai-docs-workspace.md`**: lifecycle (scaffold when needed, maintain when used), promotion to L4, PLAN dual surface, enforcement triggers, anti-patterns.
+- Templates **`kit/templates/docs/**`** for adopter scaffold.
+- This repository demonstrates the pattern under root **`docs/`** (kit-maintainer notes).
+- RULES hub **2.3.0**: authority map rows, Must, operator step 4 (plan + docs workspace).
+
+#### Changed
+
+- hygiene **1.3.0**: root `docs/` outside kit; separation rules.
+- contracts **1.2.0**: docs workspace is not a product contract; promotion anti-pattern.
+- verification-and-ops **1.4.0**: before-complete, cadence, checklist for docs workspace.
+- SETUP / UPGRADE **1.5.0**: scaffold path; preserve project `docs/` content on upgrade.
+- OPS co-maintain includes docs workspace when research/plan/build applies.
+- Examples and root README layout/overlays/source tables.
+
+#### Notes
+
+- Dynamic: trivial Q&A need not touch `docs/`; multi-step research/plan/build must maintain relevant modules.
+- Does not replace package contracts, kit standards, or root PLAN Agent models.
+- Not a Domain A/B gate.
+
 ### [2.2.1] - 2026-08-10
 
 #### Added

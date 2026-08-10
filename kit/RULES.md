@@ -1,7 +1,7 @@
 ---
 title: Repository Maintenance Rules
 description: Maintenance policy hub—authority map, kit baseline, and index to domain rule modules.
-version: "2.2.1"
+version: "2.3.0"
 status: current
 audience:
   - developers
@@ -23,6 +23,7 @@ related:
   - rules/security.md
   - rules/versioning-and-git.md
   - rules/verification-and-ops.md
+  - rules/ai-docs-workspace.md
   - configs/pylintrc
 last_updated: "2026-08-10"
 ---
@@ -31,7 +32,7 @@ last_updated: "2026-08-10"
 
 Fundamental rules for maintaining a professional, auditable repository. This file is the **hub**: authority map, kit baseline, and Must / Must not. Domain detail lives in [rules/](./rules/). In adopting product repos this hub lives at **`kit/RULES.md`**.
 
-**Document version:** 2.2.1  
+**Document version:** 2.3.0  
 
 **Related:** [README.md](../README.md) · [SETUP.md](./SETUP.md) · [UPGRADE.md](./UPGRADE.md) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) · [CHANGELOG.md](./CHANGELOG.md) · [agents/README.md](./agents/README.md) · [agents/OPS.md](./agents/OPS.md) · [rules/](./rules/) · [configs/pylintrc](./configs/pylintrc)
 
@@ -61,8 +62,9 @@ Copy this hub (and the `rules/` modules you need) into the project’s **`kit/`*
 | **When Instruct is in use:** open pack expertise (`authority_paths` + references); co-update **canonical L4** docs/rules in the same change set ([contracts](./rules/contracts.md)) | Load all generated packs, or use remote URLs as overlays/law |
 | **When Instruct is in use:** evolve agents (PLAN + [BUILD](./agents/BUILD.md)) when features, packages, surfaces, languages, or durable task classes appear | Leave packs stale after authority map / inventory / enablement change |
 | Follow [Operator enforcement](#operator-enforcement) on every maintenance turn | Skip request verify, procedure check, or Progress Tracker when advancing repo work |
+| Dynamically build and maintain root **`docs/`** AI workspace when research/plan/build context is needed ([ai-docs-workspace](./rules/ai-docs-workspace.md)) | Put project research under `kit/`; use `docs/` as dual home for public contracts; abandon stale critical plans without status |
 
-**First adopt:** [SETUP.md](./SETUP.md) (then delete or archive). **Later kit upgrades:** [UPGRADE.md](./UPGRADE.md) (durable). **Agent Instruct:** [agents/README.md](./agents/README.md) · utilization **[agents/OPS.md](./agents/OPS.md)** (description + link only in this hub). **Operator checklist:** [Operator enforcement](#operator-enforcement).
+**First adopt:** [SETUP.md](./SETUP.md) (then delete or archive). **Later kit upgrades:** [UPGRADE.md](./UPGRADE.md) (durable). **Agent Instruct:** [agents/README.md](./agents/README.md) · utilization **[agents/OPS.md](./agents/OPS.md)** (description + link only in this hub). **Operator checklist:** [Operator enforcement](#operator-enforcement). **AI workspace:** root [`docs/`](../docs/) · policy [ai-docs-workspace](./rules/ai-docs-workspace.md).
 
 ---
 
@@ -75,9 +77,9 @@ Standing checklist for AI and humans **maintaining this repository**. Domain det
 | 1 | **Verify the user request** and comply with this hub + domain modules | Open the [authority map](#authority-map); do not invent policy outside L4 |
 | 2 | **Validate the procedure** before execution | When Instruct: [OPS O3](./agents/OPS.md). Always: declared gates and completion ([verification-and-ops](./rules/verification-and-ops.md)) |
 | 3 | **Apply the appropriate Agent / Persona** for the task | When Instruct is in use: one primary expert pack ([OPS](./agents/OPS.md), [When Instruct is in use](#when-agent-instruct-is-in-use)). Bare adopt: this hub + domain modules only |
-| 4 | **Ensure or build a plan** when work is multi-step or durable | Prefer root `PLAN.md` / task plan; Agent models when Instruct ([PLAN-HOOK](./agents/PLAN-HOOK.md)). Skip for trivial single-step replies |
-| 5 | **Git format + confirm complete** | Conventional commits match staged files ([versioning-and-git](./rules/versioning-and-git.md)); confirm docs co-updates and declared gates before “done” ([completion rule](./rules/verification-and-ops.md#completion-rule)) |
-| 6 | **Progress Tracker** at the end of each reply that advances work | Ordered tasks with status; **commit SHA** for each completed task that was committed; `—` if not committed |
+| 4 | **Plan + AI `docs/` workspace** when work is multi-step, research, or durable | Root `PLAN.md` for mission/Agent models; detailed plans → `docs/plan/`; research → `docs/research/`; build context → `docs/project_build/`; curated refs → `docs/resources/` ([ai-docs-workspace](./rules/ai-docs-workspace.md)). Scaffold modules **when needed**. Skip for trivial single-step replies |
+| 5 | **Git format + confirm complete** | Conventional commits match staged files ([versioning-and-git](./rules/versioning-and-git.md)); confirm L4 co-updates and declared gates before “done” ([completion rule](./rules/verification-and-ops.md#completion-rule)); promote durable findings from `docs/` to L4 when they become promises |
+| 6 | **Progress Tracker** at the end of each reply that advances work | Ordered tasks with status; **commit SHA** for each completed task that was committed; `—` if not committed. Durable notes belong in `docs/`, not only the tracker |
 
 ### Progress Tracker (minimum shape)
 
@@ -153,6 +155,12 @@ Replace paths below with your project’s real files. Rows that do not apply may
 | Agent utilization (order of operations) | [agents/OPS.md](./agents/OPS.md) — required O3 when Instruct is in use |
 | Project agent control surface | Root `PLAN.md` (**Agent models** section) — required when using agents; see [agents/PLAN-HOOK.md](./agents/PLAN-HOOK.md) |
 | Generated agent packs | [agents/generated/](./agents/generated/) — project-filled expert views; track thin packs recommended |
+| AI docs workspace policy | [rules/ai-docs-workspace.md](./rules/ai-docs-workspace.md) |
+| AI docs workspace (index) | Project root `docs/README.md` (**outside** `kit/`) — scaffold when first needed |
+| Research notes (AI) | `docs/research/` |
+| Detailed execution plans (AI) | `docs/plan/` — complements root `PLAN.md` |
+| Project build context (AI) | `docs/project_build/` |
+| Curated AI resources | `docs/resources/` |
 
 **Rule:** Adding, removing, or renaming intentional source files should update the inventory (catalog or equivalent) in the same change set when the project maintains one.
 
@@ -169,6 +177,7 @@ Replace paths below with your project’s real files. Rows that do not apply may
 | [rules/security.md](./rules/security.md) | Trust baseline; inventory; SAST; certification |
 | [rules/versioning-and-git.md](./rules/versioning-and-git.md) | Version surfaces; CHANGELOG; commits; AI disclosure |
 | [rules/verification-and-ops.md](./rules/verification-and-ops.md) | Verify table; completion; cadence; anti-patterns; checklist |
+| [rules/ai-docs-workspace.md](./rules/ai-docs-workspace.md) | Root `docs/` AI resource workspace (research, plan, project_build, resources) |
 
 Adopters keep domain modules under **`kit/rules/`**, or fold selected modules into a single `kit/RULES.md`—document the choice in the authority map. See [UPGRADE.md](./UPGRADE.md) merge options.
 
@@ -242,6 +251,7 @@ Copy-paste prompt also on root [README — Upgrade repo-kit](../README.md#upgrad
 
 | Version | Notes |
 |---------|--------|
+| 2.3.0 | AI docs workspace: authority map rows; Must; operator step 4 plan+docs; domain module ai-docs-workspace |
 | 2.2.1 | Operator enforcement checklist + Progress Tracker (request verify, procedure, persona, plan, git/complete, tracker) |
 | 2.2.0 | Instruct utilization: O3 Musts when Instruct in use; OPS authority-map row; When Agent Instruct is in use subsection (kit 2.2.0) |
 | 2.1.1 | Agent Instruct: optional Instruct subsection; agents **not foldable** into hub (description + link only) |

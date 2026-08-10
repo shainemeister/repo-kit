@@ -32,6 +32,9 @@ references:
   - path: kit/agents/OPS.md
     kind: repo
     purpose: O3 when Instruct is in use
+  - path: kit/rules/ai-docs-workspace.md
+    kind: repo
+    purpose: AI docs/ workspace vs product contracts
   - url: https://commonmark.org/help/
     kind: external
     purpose: CommonMark basics for portable markdown
@@ -55,12 +58,14 @@ compose_with:
 - Replace all placeholders in finished product docs.
 - Co-update canonical owners when docs are the contract surface.
 - When Instruct is in use: follow [OPS](../OPS.md).
+- Distinguish product contracts from root `docs/` AI workspace; promote durable promises to L4.
 
 ## Must not
 
 - Leave `{{PLACEHOLDERS}}` in shipped product docs.
 - Create a second canonical home for the same contract.
 - Claim complete when a declared Domain A/B gate for the change was skipped or failed.
+- Treat `docs/` as the only home for public CLI/API/SECURITY contracts.
 - {{TUNING_MUST_NOT_EXTRA}}
 
 ## Expertise map
@@ -70,8 +75,10 @@ compose_with:
 - `kit/MARKDOWN-STANDARD.md` — authoring standard
 - `kit/rules/authoring-and-style.md` — style gates
 - `kit/rules/contracts.md` — ownership and co-updates
-- `kit/templates/` — document skeletons
+- `kit/rules/ai-docs-workspace.md` — AI docs workspace
+- `kit/templates/` — document skeletons (including `templates/docs/`)
 - `kit/agents/OPS.md` — utilization when Instruct is in use
+- `docs/` — AI workspace when used
 
 ### External (citations — guidance only)
 

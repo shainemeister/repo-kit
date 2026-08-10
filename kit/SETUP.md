@@ -6,7 +6,7 @@ Use this file when starting or aligning a repository so **formal markdown guides
 
 This kit ships `SETUP.md` under [`kit/`](./). **Copy standards into the target repository’s `kit/`** (same packaging as this repo). Keep **product code** and **project** `CHANGELOG.md` **outside** `kit/`. Adopting projects remove SETUP after initiation.
 
-**Permanent after initiation:** root `README.md`, root **project** `CHANGELOG.md`, **`kit/RULES.md`** (hub + kit baseline), `kit/MARKDOWN-STANDARD.md` (or link), and `kit/rules/` as needed. **When using Agent Instruct:** keep `kit/agents/` (include [OPS.md](./agents/OPS.md)), root `PLAN.md` Agent models, and track thin `generated/` packs. **Later kit upgrades:** durable [UPGRADE.md](./UPGRADE.md).
+**Permanent after initiation:** root `README.md`, root **project** `CHANGELOG.md`, **`kit/RULES.md`** (hub + kit baseline), `kit/MARKDOWN-STANDARD.md` (or link), and `kit/rules/` as needed. **When using Agent Instruct:** keep `kit/agents/` (include [OPS.md](./agents/OPS.md)), root `PLAN.md` Agent models, and track thin `generated/` packs. **AI workspace:** root **`docs/`** when research/plan/build context is used ([ai-docs-workspace](./rules/ai-docs-workspace.md); templates [templates/docs/](./templates/docs/)). **Later kit upgrades:** durable [UPGRADE.md](./UPGRADE.md).
 
 **Already have a Kit baseline?** Stop and use [UPGRADE.md](./UPGRADE.md).
 
@@ -87,6 +87,8 @@ Follow [Platform-aware examples](./MARKDOWN-STANDARD.md#platform-aware-examples)
 | Project `CHANGELOG.md` | **repo root** | **Yes** | Project history (H2 → H3 → H4); **not** a copy of kit release history |
 | Root `README.md` | **repo root** | Yes | Product landing (no frontmatter) |
 | [templates/](./templates/) | `kit/templates/` or package paths | As needed | Scaffold into **packages** outside `kit/` |
+| [templates/docs/](./templates/docs/) | Project root **`docs/`** | When AI workspace needed | Copy skeletons to root `docs/` (not under kit as live notes) |
+| [rules/ai-docs-workspace.md](./rules/ai-docs-workspace.md) | `kit/rules/` | Recommended | AI docs workspace policy |
 | [agents/](./agents/) | `kit/agents/` | If Agent Instruct | Instruct docs, templates; then BUILD → `generated/` |
 | [configs/pylintrc](./configs/pylintrc) | `kit/configs/` or `.pylintrc` at package/repo | If Python | Developer tooling only |
 | [UPGRADE.md](./UPGRADE.md) | `kit/` | Recommended | Durable upgrade guide—or always open from Kit source |
@@ -232,6 +234,7 @@ On Windows you may use `py -3.x -m pylint …`. Install pylint in the **develope
 - Copy `configs/pylintrc` → `.pylintrc` (package or repo root), set `py-version`, point the verification table at the real package path.  
 - Add root `certification/` + operator README when product code warrants formal self-attestation certificates.  
 - Enable or tune Agent Instruct: PLAN Agent models + [BUILD](./agents/BUILD.md); use [OPS](./agents/OPS.md) each task ([agents/README.md](./agents/README.md)).  
+- Scaffold root **`docs/`** from [templates/docs/](./templates/docs/) when multi-step research/plan/build work starts ([ai-docs-workspace](./rules/ai-docs-workspace.md)).  
 - Read [How overlays work](../README.md#how-overlays-work) so stack-specific rules stay in the project map, not a forked kit.
 
 **Checklists:** [Author checklist](./MARKDOWN-STANDARD.md#author-checklist) · [Contributor checklist](./rules/verification-and-ops.md#contributor-checklist)
@@ -251,6 +254,7 @@ On Windows you may use `py -3.x -m pylint …`. Install pylint in the **develope
 | `kit/agents/generated/` thin packs (if using agents; track recommended) | — |
 | Root `PLAN.md` Agent models (if using agents) | — |
 | Product packages **outside** `kit/` | Unfilled template copies you do not need |
+| Root `docs/` AI workspace (when used) | — |
 | `.pylintrc` / style configs you adopted | — |
 
 Root hygiene / packaging: [rules/hygiene.md](./rules/hygiene.md). Kit upgrades: [UPGRADE.md](./UPGRADE.md) · [README — Upgrade repo-kit](../README.md#upgrade-repo-kit) via https://github.com/shainemeister/repo-kit. Agent Instruct: [agents/README.md](./agents/README.md).

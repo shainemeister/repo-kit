@@ -38,6 +38,7 @@
 | Default config | `my-cli/config.example.yaml` |
 | Golden tests / fixtures | `my-cli/tests/fixtures/` |
 | Agent Instruct (optional) | `kit/agents/README.md`; PLAN **Agent models** if using agents ([PLAN-HOOK](../agents/PLAN-HOOK.md)); BUILD → `kit/agents/generated/` — see [PLAN snippet](../agents/examples/PLAN-agent-models-snippet.md) |
+| AI docs workspace (when used) | Root `docs/README.md` + modules; policy `kit/rules/ai-docs-workspace.md` |
 
 Rows that do not apply (schema, methodology, etc.) are omitted.
 

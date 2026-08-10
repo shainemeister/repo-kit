@@ -1,7 +1,7 @@
 ---
 title: Verification and Operations
 description: Verification before ship, completion rule, maintenance cadence, anti-patterns, and contributor checklist.
-version: "1.3.1"
+version: "1.4.0"
 status: current
 audience:
   - developers
@@ -13,6 +13,7 @@ related:
   - ./authoring-and-style.md
   - ./contracts.md
   - ./versioning-and-git.md
+  - ./ai-docs-workspace.md
   - ../MARKDOWN-STANDARD.md
   - ../UPGRADE.md
   - ../agents/README.md
@@ -26,9 +27,9 @@ last_updated: "2026-08-10"
 
 Ship gates, completion rules, cadence, anti-patterns, and the contributor checklist.
 
-**Document version:** 1.3.1  
+**Document version:** 1.4.0  
 
-**Related:** [RULES.md](../RULES.md) · [security.md](./security.md) · [authoring-and-style.md](./authoring-and-style.md) · [contracts.md](./contracts.md) · [versioning-and-git.md](./versioning-and-git.md) · [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md) · [UPGRADE.md](../UPGRADE.md) · [agents/README.md](../agents/README.md) · [agents/OPS.md](../agents/OPS.md)
+**Related:** [RULES.md](../RULES.md) · [security.md](./security.md) · [authoring-and-style.md](./authoring-and-style.md) · [contracts.md](./contracts.md) · [versioning-and-git.md](./versioning-and-git.md) · [ai-docs-workspace.md](./ai-docs-workspace.md) · [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md) · [UPGRADE.md](../UPGRADE.md) · [agents/README.md](../agents/README.md) · [agents/OPS.md](../agents/OPS.md)
 
 ---
 
@@ -70,6 +71,8 @@ Fill concrete commands for your project from the [language surface inventory](./
 | BUILD regen only | Diff review; no authority path invention; respect PLAN disabled set; expertise filled |
 | New project agent pack | Schema fields complete; expertise map + references; verify[] from inventory/table only; PLAN active_models/overlays updated |
 | Feature / surface / durable task-class growth (Instruct in use) | PLAN Agent models lifecycle + [BUILD](../agents/BUILD.md); co-update canonical L4 ([agents/OPS.md](../agents/OPS.md)) |
+| Research / multi-step plan / non-trivial build context | Maintain relevant root `docs/` modules ([ai-docs-workspace](./ai-docs-workspace.md)); keep `docs/README.md` index honest |
+| Finding becomes public product promise | Promote from `docs/` to authority-map L4 owner ([contracts](./contracts.md)); same change set |
 
 ---
 
@@ -85,16 +88,17 @@ Fill commands for the host OS(es) the team develops on. When multi-platform, eit
 
 Ordered steps for humans and AI agents:
 
-1. Follow [Operator enforcement](../RULES.md#operator-enforcement) (verify request, validate procedure, persona when Instruct, plan when needed).  
+1. Follow [Operator enforcement](../RULES.md#operator-enforcement) (verify request, validate procedure, persona when Instruct, plan + `docs/` when needed).  
 2. **If Agent Instruct is in use:** follow [OPS O3](../agents/OPS.md#order-of-operations-o3)—match **one primary** expert pack, open expertise, co-maintain L4. Bare adopt (no Agent models) skips this step.  
-3. Read **language surface inventory** ([security.md](./security.md#language-surface-inventory); pick only declared rows from the full kit catalog).  
-4. Run **Domain B** gates for every surface touched by the change.  
-5. Run **Domain A** gates for every surface touched (plus Secrets / Semgrep if those rows exist).  
-6. Update canonical docs / `CHANGELOG.md` per the [authority map](../RULES.md#authority-map) and [contracts.md](./contracts.md).  
-7. **If Agent Instruct is in use** and any of the following changed—PLAN Agent models, agent templates, agent-relevant authority paths, pack expertise, or durable feature/surface/task-class growth: re-run [BUILD](../agents/BUILD.md); validate packs per [PARAMS](../agents/PARAMS.md); respect PLAN `disabled`; review generated pack diffs. (Policy + AI convention—not a Domain A/B gate.)  
-8. If `certification/` is maintained: regenerate the certificate pair; confirm OverallPass; leave outputs unstaged.  
-9. End work-advancing replies with a [Progress Tracker](../RULES.md#progress-tracker-minimum-shape) (commit SHA for completed committed tasks).  
-10. Only then state the task is complete.
+3. **If research / multi-step plan / non-trivial build:** ensure root `docs/` modules are scaffolded/updated ([ai-docs-workspace](./ai-docs-workspace.md)).  
+4. Read **language surface inventory** ([security.md](./security.md#language-surface-inventory); pick only declared rows from the full kit catalog).  
+5. Run **Domain B** gates for every surface touched by the change.  
+6. Run **Domain A** gates for every surface touched (plus Secrets / Semgrep if those rows exist).  
+7. Update canonical L4 docs / `CHANGELOG.md` per the [authority map](../RULES.md#authority-map) and [contracts.md](./contracts.md); promote durable findings out of `docs/` when they become promises.  
+8. **If Agent Instruct is in use** and any of the following changed—PLAN Agent models, agent templates, agent-relevant authority paths, pack expertise, or durable feature/surface/task-class growth: re-run [BUILD](../agents/BUILD.md); validate packs per [PARAMS](../agents/PARAMS.md); respect PLAN `disabled`; review generated pack diffs. (Policy + AI convention—not a Domain A/B gate.)  
+9. If `certification/` is maintained: regenerate the certificate pair; confirm OverallPass; leave outputs unstaged.  
+10. End work-advancing replies with a [Progress Tracker](../RULES.md#progress-tracker-minimum-shape) (commit SHA for completed committed tasks).  
+11. Only then state the task is complete.
 
 ---
 
@@ -117,6 +121,8 @@ Ordered steps for humans and AI agents:
 | New durable project agent | Emit pack under `kit/agents/generated/` with expertise map; update PLAN; authority-map row only if durable and needed |
 | New package, public surface, language, or durable task class (Instruct in use) | Update PLAN Agent models as needed; BUILD; co-update L4 contracts ([OPS lifecycle](../agents/OPS.md#lifecycle-features-and-core-tasks)) |
 | Every substantive task when Instruct is in use | Primary pack match per [OPS](../agents/OPS.md); do not skip utilization |
+| Research / multi-step plan / build notes | Update `docs/` modules; keep index accurate ([ai-docs-workspace](./ai-docs-workspace.md)) |
+| First use of AI workspace | Scaffold `docs/README.md` + needed modules from [templates/docs](../templates/docs/) |
 
 ---
 
@@ -157,6 +163,8 @@ Ordered steps for humans and AI agents:
 | Empty expertise / no references on expert packs | Curated authority_paths + references with purpose |
 | External URL as overlay or substitute law | Citations only under references/expertise; L4 wins |
 | Feature ships; packs unchanged (Instruct in use) | PLAN lifecycle + BUILD |
+| Research only in chat; no `docs/` when multi-source work needed | Scaffold/maintain `docs/research/` ([ai-docs-workspace](./ai-docs-workspace.md)) |
+| Public contract only under `docs/` | Promote to L4 package/kit owner |
 | UPGRADE resets PLAN `active_models` | Preserve Agent models + BUILD regen ([UPGRADE](../UPGRADE.md)) |
 | Full persona essays in `kit/RULES.md` | Map description + path only ([OPS](../agents/OPS.md) link) |
 | Inventing pack verify tools not in RULES / inventory | `verify[]` only from declared verification table |
@@ -183,7 +191,8 @@ Before you commit or share a change:
 - [ ] Subject would still make sense years later; one logical surface preferred  
 - [ ] Canonical docs for any behavior change are in the same change set ([contracts.md](./contracts.md))  
 - [ ] If kit pieces changed: [Kit baseline](../RULES.md#kit-baseline) version/date updated and CHANGELOG notes the upgrade ([UPGRADE.md](../UPGRADE.md))  
-- [ ] [Operator enforcement](../RULES.md#operator-enforcement) followed (request verify, procedure, plan when needed)  
+- [ ] [Operator enforcement](../RULES.md#operator-enforcement) followed (request verify, procedure, plan + `docs/` when needed)  
+- [ ] If research/multi-step/build context: relevant `docs/` modules updated; index honest ([ai-docs-workspace](./ai-docs-workspace.md))  
 - [ ] If Agent Instruct used: primary pack matched per [OPS](../agents/OPS.md); expertise opened; L4 co-maintained  
 - [ ] If Agent Instruct used and enablement/templates/authority paths/expertise or feature/surface growth for agents changed: [BUILD](../agents/BUILD.md) regen; thin packs reviewed  
 - [ ] Agent packs do not redefine L4 law; `authority_paths` / expertise / `verify` align with RULES ([agents](../agents/README.md))  
@@ -197,6 +206,7 @@ Before you commit or share a change:
 
 | Version | Notes |
 |---------|--------|
+| 1.4.0 | AI docs workspace verification, cadence, anti-patterns, checklist (kit 2.3.0) |
 | 1.3.1 | Operator enforcement + Progress Tracker in before-complete and checklist (kit 2.2.1) |
 | 1.3.0 | Instruct O3 in before-complete; lifecycle cadence; expertise anti-patterns; checklist OPS (kit 2.2.0) |
 | 1.2.0 | Agent Instruct: verification rows for template/catalog/BUILD; cadence; anti-patterns; before-complete step; contributor checklist (editorial 1.1.0 intermediate folded here—not a separate kit release) |
