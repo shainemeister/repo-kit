@@ -11,7 +11,7 @@ Use this `repo-kit` so AI can load authoritative maintainer files with precision
 **Best results come from a good project plan.**  
 Create a comprehensive `PLAN.md` for *your* target repository (goals, packages, platforms, constraints, desired outcomes) using an AI chat such as Grok, Gemini, ChatGPT, or others. The more specific the plan, the better the kit’s authority-map and templates can be applied.
 
-**Agent Instruct** (`kit/agents/`): build modular agent packs from PLAN + authority map. When using agents, PLAN is **required** and must include an **Agent models** section ([kit/agents/PLAN-HOOK.md](./kit/agents/PLAN-HOOK.md)); run [BUILD](./kit/agents/BUILD.md) to emit thin packs under `kit/agents/generated/`. Packs are **views**—canonical law remains `kit/RULES.md` + `kit/rules/*`. Bare adopt without agents may omit PLAN. Index: [kit/agents/README.md](./kit/agents/README.md).
+**Agent Instruct** (`kit/agents/`): build modular **expert** agent packs from PLAN + authority map. When using agents, PLAN is **required** and must include an **Agent models** section ([kit/agents/PLAN-HOOK.md](./kit/agents/PLAN-HOOK.md)); run [BUILD](./kit/agents/BUILD.md) to emit thin packs under `kit/agents/generated/`. **Utilization:** follow [OPS](./kit/agents/OPS.md) O3 (match one primary pack, open expertise, co-maintain L4 docs/rules, evolve agents with features). Packs are **views**—canonical law remains `kit/RULES.md` + `kit/rules/*`. Bare adopt without agents may omit PLAN. Index: [kit/agents/README.md](./kit/agents/README.md).
 
 **Dependency:** `git`
 
@@ -72,6 +72,7 @@ Maintenance of any adopting repository follows **`kit/RULES.md`** (hub: authorit
 | Run **declared** style + SAST gates before complete | Claim complete when a declared gate failed or was skipped |
 | Fill authority map from project interest at start | Leave contracts empty until “docs later” |
 | Treat Agent Instruct packs as **views** over `kit/RULES.md` + `kit/rules/*` when agents are used | Invent a second RULES tree in packs or embed full persona bodies in the RULES hub |
+| **When Instruct is in use:** match one primary expert pack; follow [OPS](./kit/agents/OPS.md); co-maintain L4; evolve agents with features | Skip pack match; leave packs stale after surface growth; remote overlays |
 
 - **Contracts:** co-update and cross-link rules — [`kit/rules/contracts.md`](./kit/rules/contracts.md)  
 - **Completion:** declared Domain A/B gates — [`kit/rules/verification-and-ops.md`](./kit/rules/verification-and-ops.md#completion-rule)  
@@ -91,7 +92,7 @@ Copy what you need from `kit/`, **initiate from project interest** so formal doc
 | [kit/UPGRADE.md](./kit/UPGRADE.md) | Durable upgrade + 1.x→2.0 migration |
 | [kit/RULES.md](./kit/RULES.md) | Maintenance hub: authority map, kit baseline |
 | [kit/rules/](./kit/rules/) | Domain modules (hygiene, style, architecture, contracts, security, versioning/git, verification) |
-| [kit/agents/](./kit/agents/) | Agent Instruct — personas as views; PLAN Agent models + BUILD |
+| [kit/agents/](./kit/agents/) | Agent Instruct — expert personas as views; PLAN + BUILD + [OPS](./kit/agents/OPS.md) |
 | [kit/MARKDOWN-STANDARD.md](./kit/MARKDOWN-STANDARD.md) | Structure, frontmatter, doc types, platform-aware examples |
 | [kit/CHANGELOG.md](./kit/CHANGELOG.md) | Kit version history under `## repo-kit` |
 | [kit/configs/pylintrc](./kit/configs/pylintrc) | PEP-8 style gate for Python product code |
@@ -103,7 +104,7 @@ Copy what you need from `kit/`, **initiate from project interest** so formal doc
 | Start a project from an interest | [kit/SETUP.md](./kit/SETUP.md) |
 | Align an **existing** repo (first kit adopt) | [kit/SETUP.md — Existing repository](./kit/SETUP.md#existing-repository-first-adopt) |
 | Upgrade repo-kit | [Upgrade repo-kit](#upgrade-repo-kit) · [kit/UPGRADE.md](./kit/UPGRADE.md) |
-| Use Agent Instruct / agent packs | [kit/agents/README.md](./kit/agents/README.md) · [PLAN-HOOK](./kit/agents/PLAN-HOOK.md) · [BUILD](./kit/agents/BUILD.md) |
+| Use Agent Instruct / agent packs | [kit/agents/README.md](./kit/agents/README.md) · [OPS](./kit/agents/OPS.md) · [PLAN-HOOK](./kit/agents/PLAN-HOOK.md) · [BUILD](./kit/agents/BUILD.md) |
 | See a filled authority map | [kit/examples/](./kit/examples/) |
 | Scaffold docs for a new package | [kit/templates/](./kit/templates/) · [kit/MARKDOWN-STANDARD.md](./kit/MARKDOWN-STANDARD.md) |
 | Set maintenance policy | [kit/RULES.md](./kit/RULES.md) |
@@ -124,7 +125,7 @@ Copy what you need from `kit/`, **initiate from project interest** so formal doc
 | **Multi-package monorepo** | Shared standards; per-package README/CLI/security | Templates under each package |
 | **Python product code** | pylint PEP-8 gate; Bandit when declared | `kit/configs/pylintrc` · [SAST](./kit/rules/security.md#security--sast-gates-required-when-declared) |
 | **Docs-only design repo** | Frontmatter, Summary→Contents; empty language inventory | [kit/examples/docs-only.md](./kit/examples/docs-only.md) |
-| **AI agent personas** | PLAN Agent models + generated packs as views over law | [kit/agents/README.md](./kit/agents/README.md) |
+| **AI agent personas** | PLAN Agent models + expert packs as views; OPS utilization | [kit/agents/README.md](./kit/agents/README.md) · [OPS](./kit/agents/OPS.md) |
 | **Pre-ship self-attestation** | Optional `certification/` JSON+TXT schema | [Certification](./kit/rules/security.md#security-and-code-validation-certification) |
 
 ## Quick start
@@ -169,7 +170,7 @@ your-repo/
 |-------|----------|
 | **Standards** (`kit/`) | Portable structure, formatting, git, pylint policy, templates, upgrade guide; project-filled authority map; optional Agent Instruct |
 | **Project RULES hub** | `kit/RULES.md` — real paths (to product outside `kit/`), runtimes, verify commands, domain “must not” |
-| **Agent packs** (optional) | `kit/agents/generated/` views + PLAN Agent models control surface — not a second RULES tree |
+| **Agent packs** (optional) | `kit/agents/generated/` expert views + PLAN control surface + [OPS](./kit/agents/OPS.md) utilization — not a second RULES tree |
 | **Package docs** | Outside `kit/`: CLI contracts, methodology, security matrices for that package |
 
 Do not fork the whole standard for every product fact. Keep shared rules stable under `kit/`; put stack-specific paths and commands in the project authority map and verification table.
@@ -211,7 +212,8 @@ All kit source lives under [`kit/`](./kit/) except this README, LICENSE, and `.g
 | [kit/SETUP.md](./kit/SETUP.md) | One-time adoption (delete after initiation) |
 | [kit/UPGRADE.md](./kit/UPGRADE.md) | Durable upgrade and 1.x→2.0 migration |
 | [kit/RULES.md](./kit/RULES.md) | Maintenance hub: authority map, kit baseline |
-| [kit/agents/README.md](./kit/agents/README.md) | Agent Instruct index (FRAMEWORK, BUILD, PLAN-HOOK, …) |
+| [kit/agents/README.md](./kit/agents/README.md) | Agent Instruct index (OPS, FRAMEWORK, BUILD, PLAN-HOOK, …) |
+| [kit/agents/OPS.md](./kit/agents/OPS.md) | Utilization order of operations when Instruct is in use |
 | [kit/rules/hygiene.md](./kit/rules/hygiene.md) | Root hygiene; unified packaging (standards under kit/); SETUP/UPGRADE lifecycle |
 | [kit/rules/authoring-and-style.md](./kit/rules/authoring-and-style.md) | Docs rules; pylint; non-Python style |
 | [kit/rules/architecture.md](./kit/rules/architecture.md) | Architecture and boundaries |

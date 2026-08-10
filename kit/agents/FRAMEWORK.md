@@ -1,7 +1,7 @@
 ---
 title: Agent Instruct Framework
 description: Layered context system for agent packs as views over canonical law.
-version: "1.0.1"
+version: "1.1.0"
 status: current
 audience:
   - developers
@@ -9,6 +9,7 @@ audience:
 doc_type: other
 related:
   - README.md
+  - OPS.md
   - PARAMS.md
   - CATALOG.md
   - PLAN-HOOK.md
@@ -16,16 +17,18 @@ related:
   - RUNTIME.md
   - ../RULES.md
   - ../rules/contracts.md
-last_updated: "2026-08-05"
+last_updated: "2026-08-10"
 ---
 
 # Agent Instruct Framework
 
-Agent Instruct is a **layered context system**: thin always-on rules, PLAN as control surface, kit Instruct docs as the build/run playbook, generated **AgentPacks** as on-demand views, and **canonical kit/product docs** as the only law.
+Agent Instruct is a **layered context system**: thin always-on rules, PLAN as control surface, kit Instruct docs as the build/run playbook, generated **AgentPacks** as on-demand expert views, and **canonical kit/product docs** as the only law.
 
-**Document version:** 1.0.1  
+**Utilization procedure:** [OPS.md](./OPS.md) (required when Instruct is in use).
 
-**Related:** [README.md](./README.md) · [PARAMS.md](./PARAMS.md) · [CATALOG.md](./CATALOG.md) · [PLAN-HOOK.md](./PLAN-HOOK.md) · [BUILD.md](./BUILD.md) · [RUNTIME.md](./RUNTIME.md) · [RULES.md](../RULES.md)
+**Document version:** 1.1.0  
+
+**Related:** [README.md](./README.md) · [OPS.md](./OPS.md) · [PARAMS.md](./PARAMS.md) · [CATALOG.md](./CATALOG.md) · [PLAN-HOOK.md](./PLAN-HOOK.md) · [BUILD.md](./BUILD.md) · [RUNTIME.md](./RUNTIME.md) · [RULES.md](../RULES.md)
 
 ---
 
@@ -35,12 +38,13 @@ Agent Instruct is a **layered context system**: thin always-on rules, PLAN as co
 |------|----------|
 | Separate layers L0–L4 | Collapse all instructions into one always-on file |
 | Classify packs by **job type** + **portability** | Treat every pack as freeform “persona” with no schema |
-| Load **one primary** pack; compose only when needed | Load every specialist for every task |
+| When Instruct is in use: run [OPS](./OPS.md) O3 (one primary expert pack per task) | Load every specialist for every task |
 | Keep always-on under a size budget | Always-on multi-kB doctrine dumps |
-| Point packs at authority paths | Override RULES with pack prose |
+| Point packs at authority paths + curated expertise (repo + external citations) | Override RULES with pack prose or external URLs |
+| Co-maintain L4 docs/rules; evolve agents with features/core tasks | Leave packs stale after surface growth |
 | Keep RULES as description + link hub | Embed full pack bodies in RULES.md |
 
-**Enforcement (v1):** Convention + AI discipline—not a declared Domain A/B gate.
+**Enforcement:** Policy + AI convention when Instruct is in use—**not** a Domain A/B gate. Bare adopt may skip agents.
 
 ---
 
@@ -151,7 +155,9 @@ Detail: [RUNTIME.md](./RUNTIME.md).
 7. **Product overlays stay out of kit defaults** — Listed in PLAN as **repo-relative** paths only, not CATALOG.  
 8. **Contracts co-update** — Behavior/contract change still updates L4 in the same change set ([contracts.md](../rules/contracts.md)).  
 9. **RULES stays light** — Map row = description + path; procedure lives in the linked file. **Do not fold** full Agent Instruct into the hub.  
-10. **Dynamic agents are first-class for adopters** — New project personas use the same schema and get a map row (when durable) + pack file under `kit/agents/generated/` with `portability: adopter` (or `platform`). BUILD [source load order](./BUILD.md#source-load-order) preserves those packs on kit upgrade.
+10. **Dynamic agents are first-class for adopters** — New project personas use the same schema and get a map row (when durable) + pack file under `kit/agents/generated/` with `portability: adopter` (or `platform`). BUILD [source load order](./BUILD.md#source-load-order) preserves those packs on kit upgrade.  
+11. **O3 when Instruct is in use** — Follow [OPS.md](./OPS.md): match one primary expert pack, open expertise, co-maintain L4, verify, evolve agents with features/core tasks. Bare adopt skips O3.  
+12. **Expert packs** — Document `authority_paths` plus curated `references` / Expertise map (in-repo + trusted external citations). External URLs are guidance only; never overlays or substitute law.
 
 ---
 
@@ -159,13 +165,13 @@ Detail: [RUNTIME.md](./RUNTIME.md).
 
 | Class | Principle |
 |-------|-----------|
-| L0 always-on | Minimal: point to PLAN + `kit/agents/README.md` |
+| L0 always-on | Minimal: point to PLAN + `kit/agents/README.md` (+ OPS when Instruct) |
 | Catalog row | name + description + triggers only |
-| Pack body | Procedure scale (scannable; avoid essay-length law) |
+| Pack body | Procedure + Expertise map (scannable; avoid essay-length law) |
 | RULES map cell | One short phrase + path |
-| Reference | Open only when needed |
+| Reference / expertise | Open on demand; prefer few high-signal links |
 
-Activation modes and budgets: [RUNTIME.md](./RUNTIME.md). Schema: [PARAMS.md](./PARAMS.md).
+Activation modes and budgets: [RUNTIME.md](./RUNTIME.md). Utilization: [OPS.md](./OPS.md). Schema: [PARAMS.md](./PARAMS.md).
 
 ---
 
@@ -173,5 +179,6 @@ Activation modes and budgets: [RUNTIME.md](./RUNTIME.md). Schema: [PARAMS.md](./
 
 | Version | Notes |
 |---------|--------|
+| 1.1.0 | O3 required when Instruct in use; expertise principle; OPS link (kit 2.2.0) |
 | 1.0.1 | STOP on failed gates; overlays repo-relative; preserve adopter packs; RULES not foldable |
 | 1.0.0 | Initial framework (kit 2.1.0) |

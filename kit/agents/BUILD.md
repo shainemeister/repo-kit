@@ -1,7 +1,7 @@
 ---
 title: Agent BUILD Procedure
 description: AI-executable procedure to resolve the active agent set and emit thin AgentPacks.
-version: "1.1.1"
+version: "1.2.0"
 status: current
 audience:
   - developers
@@ -9,6 +9,7 @@ audience:
 doc_type: other
 related:
   - README.md
+  - OPS.md
   - PARAMS.md
   - CATALOG.md
   - PLAN-HOOK.md
@@ -16,16 +17,18 @@ related:
   - RUNTIME.md
   - ../RULES.md
   - ../UPGRADE.md
-last_updated: "2026-08-05"
+last_updated: "2026-08-10"
 ---
 
 # Agent BUILD Procedure
 
-**BUILD** is the AI-executable procedure that **resolves the active agent set** and **emits thin AgentPacks** from templates + PLAN + authority map. Prefer **deterministic template fill** over freeform rewriting of kit law.
+**BUILD** is the AI-executable procedure that **resolves the active agent set** and **emits thin expert AgentPacks** from templates + PLAN + authority map. Prefer **deterministic template fill** over freeform rewriting of kit law.
 
-**Document version:** 1.1.1  
+**After BUILD:** operators use packs via **[OPS.md](./OPS.md)** (match, expertise, co-maintain, lifecycle).
 
-**Related:** [README.md](./README.md) · [PARAMS.md](./PARAMS.md) · [CATALOG.md](./CATALOG.md) · [PLAN-HOOK.md](./PLAN-HOOK.md) · [FRAMEWORK.md](./FRAMEWORK.md) · [RUNTIME.md](./RUNTIME.md) · [RULES.md](../RULES.md) · [UPGRADE.md](../UPGRADE.md)
+**Document version:** 1.2.0  
+
+**Related:** [README.md](./README.md) · [OPS.md](./OPS.md) · [PARAMS.md](./PARAMS.md) · [CATALOG.md](./CATALOG.md) · [PLAN-HOOK.md](./PLAN-HOOK.md) · [FRAMEWORK.md](./FRAMEWORK.md) · [RUNTIME.md](./RUNTIME.md) · [RULES.md](../RULES.md) · [UPGRADE.md](../UPGRADE.md)
 
 ---
 
@@ -35,10 +38,10 @@ last_updated: "2026-08-05"
 |------|----------|
 | Read PLAN Agent models before emit | Emit packs that ignore `disabled` |
 | Fill from authority map real paths | Invent package paths not in the map |
-| Keep pack bodies short; link L4 | Paste full `kit/rules/*.md` into packs |
-| Validate packs per PARAMS rules | Leave packs without verify/authority_paths |
+| Keep pack bodies short; link L4; fill expertise map | Paste full `kit/rules/*.md` into packs |
+| Validate packs per PARAMS rules (including expertise/references) | Leave packs without verify/authority_paths/expertise |
 | Emit only under `kit/agents/generated/` | Scatter default emit paths without PLAN escape hatch |
-| Regen when PLAN/authority/kit templates change | Leave stale packs after enablement changes |
+| Regen when PLAN/authority/kit templates/feature surfaces change | Leave stale packs after enablement or surface growth |
 
 **Prerequisite:** Agent models section present in PLAN.md. If missing and the project uses Agent Instruct, insert from [PLAN-HOOK.md](./PLAN-HOOK.md) first. Bare adopt without Agent models → **skip BUILD**.
 
@@ -100,10 +103,11 @@ last_updated: "2026-08-05"
 5. FOR each id in active set:
    a. Resolve source pack via Source load order (do not invent kits silently)
    b. If preserve (adopter/platform generated) → keep file; skip destructive overwrite
-   c. Else FILL placeholders from PLAN + authority map + inventory
+   c. Else FILL placeholders from PLAN + authority map + inventory + expertise/references
    d. APPLY tuning (emphasize notes, must_not_extra under Must not/Tuning, stage_min)
-   e. VALIDATE (PARAMS validation rules)
-   f. EMIT kit/agents/generated/<id>.md (kit-portability seeds and filled overlays)
+   e. ENSURE Expertise map + references (PARAMS); external entries need purpose
+   f. VALIDATE (PARAMS validation rules including expertise)
+   g. EMIT kit/agents/generated/<id>.md (kit-portability seeds and filled overlays)
 6. FOR each new project agent created this BUILD (explicit PLAN/user action only):
    a. Ensure pack file exists under kit/agents/generated/
    b. Ensure PLAN lists id; durable map note if project maintains extra rows
@@ -197,8 +201,9 @@ For each id in the resolved active set, choose **one** source. Emit path is alwa
 
 | Placeholder class | Fill from |
 |-------------------|-----------|
-| Authority paths | RULES authority map rows relevant to role |
+| Authority paths | RULES authority map rows relevant to role (**repo-relative only**) |
 | Verify commands | RULES verification table + inventory only |
+| Expertise / references | Template defaults + map paths; add project contract paths; keep curated external citations with purpose |
 | Mission must_not | PLAN non-goals / must not invent |
 | Project name | README / PLAN title |
 | Kit paths | Always `kit/...` as adopted |
@@ -215,13 +220,15 @@ For each id in the resolved active set, choose **one** source. Emit path is alwa
 
 **Body rules:**
 
-1. Procedure steps only (ordered).  
+1. Procedure steps only (ordered); include co-maintain L4 + STOP on failed gates.  
 2. Must / Must not bullets (short).  
-3. “Open these docs” list = authority_paths.  
-4. No full reproduction of contracts.md or versioning-and-git.md.  
-5. Source resolution uses [Source load order](#source-load-order) — never silent skeleton invent on unknown id.
+3. **Expertise map** — in-repo + external citations with purpose (align with YAML `references`).  
+4. “Open these docs” list = authority_paths (+ expertise).  
+5. No full reproduction of contracts.md or versioning-and-git.md.  
+6. Source resolution uses [Source load order](#source-load-order) — never silent skeleton invent on unknown id.  
+7. No `http(s)` in `authority_paths`; external only under references/expertise as citations.
 
-**Trust boundary (overlays):** Overlay paths must be **repo-relative** files. BUILD must **not** fetch `http://` or `https://` overlay URLs. PLAN tuning is intentional privileged instruction for that repository, not untrusted external content.
+**Trust boundary (overlays):** Overlay paths must be **repo-relative** files. BUILD must **not** fetch `http://` or `https://` overlay URLs. External citations in `references` are **not** overlays—do not download them into the tree. PLAN tuning is intentional privileged instruction for that repository, not untrusted external content.
 
 ---
 
@@ -240,6 +247,9 @@ For each id in the resolved active set, choose **one** source. Emit path is alwa
 | Overlay is remote URL | Fail that overlay; report trust boundary |
 | Overlay id shadows CATALOG seed | Overlay wins; **warn** in report |
 | Pack fails validation | Do not emit; fix template fill |
+| Missing expertise/references on generated pack | Do not emit; fill from template + map ([PARAMS](./PARAMS.md)) |
+| External reference without purpose | Do not emit; add purpose or drop link |
+| `http(s)` in authority_paths | Fail validation; move to references as citation if appropriate |
 | Conflict must vs must_not_extra | Prefer stricter must_not; surface in report |
 
 ---
@@ -251,11 +261,14 @@ Re-run BUILD when:
 - PLAN Agent models fields change  
 - PLAN mission/stages/non-goals change materially  
 - Authority map or language inventory changes  
-- Kit `templates/` or CATALOG upgrade ([UPGRADE.md](../UPGRADE.md))  
+- Kit `templates/`, CATALOG, or OPS-related pack schema upgrade ([UPGRADE.md](../UPGRADE.md))  
 - New project agent packs added  
+- **New package, public surface, language, or durable task class** (update expertise/active set first)  
 - User explicitly requests “regenerate agents”  
 
 On kit upgrade regen, apply [Source load order](#source-load-order) so adopter packs survive.
+
+Lifecycle context: [OPS.md — features and core tasks](./OPS.md#lifecycle-features-and-core-tasks) · [PLAN-HOOK](./PLAN-HOOK.md).
 
 ---
 
@@ -263,6 +276,7 @@ On kit upgrade regen, apply [Source load order](#source-load-order) so adopter p
 
 | Version | Notes |
 |---------|--------|
+| 1.2.0 | Expertise fill + validation; feature/surface regen triggers; OPS pointer (kit 2.2.0) |
 | 1.1.1 | Note: PLAN markdown-native empty Active models; `[]` is BUILD shorthand only |
 | 1.1.0 | Unset vs empty active_models; source load order; preserve adopter packs; empty placeholder omit; overlay shadow + trust boundary |
 | 1.0.0 | Initial BUILD procedure (kit 2.1.0) |

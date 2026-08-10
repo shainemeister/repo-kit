@@ -19,8 +19,22 @@ negative_triggers:
 authority_paths:
   - PLAN.md
   - kit/agents/PLAN-HOOK.md
+  - kit/agents/OPS.md
   - kit/MARKDOWN-STANDARD.md
   - README.md
+references:
+  - path: kit/agents/PLAN-HOOK.md
+    kind: repo
+    purpose: Agent models field contract and lifecycle
+  - path: kit/agents/OPS.md
+    kind: repo
+    purpose: Utilization O3 after agents exist
+  - path: kit/agents/BUILD.md
+    kind: repo
+    purpose: Regen after enablement changes
+  - path: kit/MARKDOWN-STANDARD.md
+    kind: repo
+    purpose: Structure for durable PLAN docs when applicable
 verify:
   - PLAN has mission-level summary
   - Agent models section present per PLAN-HOOK when using Agent Instruct (omit for bare adopt)
@@ -37,6 +51,7 @@ compose_with:
 - Capture mission, non-goals, and constraints clearly.
 - Include Agent models section (active/disabled/overlays/tuning) when using Agent Instruct.
 - Prefer durable PLAN edits over chat-only intent.
+- When features/core tasks grow: update Agent models regenerate_when and active set as needed.
 
 ## Must not
 
@@ -45,13 +60,29 @@ compose_with:
 - Require Agent models for bare kit adopt (no Instruct).
 - {{TUNING_MUST_NOT_EXTRA}}
 
+## Expertise map
+
+### In-repo
+
+- `PLAN.md` — project plan (this surface)
+- `kit/agents/PLAN-HOOK.md` — Agent models contract
+- `kit/agents/OPS.md` — utilization and lifecycle
+- `kit/agents/BUILD.md` — emit packs after enablement
+- `kit/MARKDOWN-STANDARD.md` — durable doc shape
+- Root `README.md` — product purpose alignment
+
+### External (citations — guidance only)
+
+- Prefer project-specific planning conventions. No required external standard.
+
 ## Procedure
 
 1. Restate project interest in one sentence.
 2. Draft/update mission, non-goals, stages as needed.
-3. If using Agent Instruct: ensure Agent models section matches PLAN-HOOK; link kit/agents/ authority paths; hand off to BUILD after enablement changes.
+3. If using Agent Instruct: ensure Agent models section matches PLAN-HOOK (include OPS in Instruct authority); link kit/agents/; hand off to BUILD after enablement or surface-growth changes.
 4. If bare adopt (no Instruct): omit Agent models and skip BUILD; mission/non-goals verify is enough.
+5. On new durable task classes: document intent to add adopter packs (OPS create persona).
 
 ## Open for law
 
-See authority_paths — do not restate full modules here.
+See authority_paths and Expertise map — do not restate full modules here.

@@ -1,7 +1,7 @@
 ---
 title: Agent Catalog
 description: Default portable seed agents for repo-kit Agent Instruct.
-version: "1.0.1"
+version: "1.1.0"
 status: current
 audience:
   - developers
@@ -9,20 +9,21 @@ audience:
 doc_type: other
 related:
   - README.md
+  - OPS.md
   - PARAMS.md
   - BUILD.md
   - PLAN-HOOK.md
   - templates/
-last_updated: "2026-08-05"
+last_updated: "2026-08-10"
 ---
 
 # Agent Catalog
 
-Upstream repo-kit ships a **small catalog of portable seed agents**. Adopters enable/disable them via PLAN. Product-specific agents are **overlays or project-generated packs**, not rows in this default table.
+Upstream repo-kit ships a **small catalog of portable seed agents**. Adopters enable/disable them via PLAN. Product-specific agents are **overlays or project-generated packs**, not rows in this default table. Seeds ship with **expertise** (in-repo + optional external citations) so BUILD emits expert packs.
 
-**Document version:** 1.0.1  
+**Document version:** 1.1.0  
 
-**Related:** [README.md](./README.md) · [PARAMS.md](./PARAMS.md) · [BUILD.md](./BUILD.md) · [PLAN-HOOK.md](./PLAN-HOOK.md) · [templates/](./templates/)
+**Related:** [README.md](./README.md) · [OPS.md](./OPS.md) · [PARAMS.md](./PARAMS.md) · [BUILD.md](./BUILD.md) · [PLAN-HOOK.md](./PLAN-HOOK.md) · [templates/](./templates/)
 
 ---
 
@@ -31,10 +32,10 @@ Upstream repo-kit ships a **small catalog of portable seed agents**. Adopters en
 | Must | Must not |
 |------|----------|
 | Keep default ids stable | Rename without migration note in kit CHANGELOG |
-| Map each agent to real `kit/` authority paths | Reference product-only paths in kit defaults |
+| Map each agent to real `kit/` authority paths + expertise | Reference product-only paths in kit defaults |
 | Include triggers and negative triggers | Activate every agent always_on by default |
 | Allow PLAN to disable any default | Force all agents on every adopter |
-| Document that AI may generate more project agents | Stuff design/modeling/creative into upstream CATALOG as required defaults |
+| Document that AI may generate more **expert** project agents | Stuff design/modeling/creative into upstream CATALOG as required defaults |
 
 ---
 
@@ -208,8 +209,20 @@ Guidance only—runtime loads **one primary** pack; compose_with only when the t
 | **Listed in PLAN** | `overlays:` path list and/or `active_models` after BUILD |
 | **portability** | `adopter` or `platform` |
 | **Emit path** | `kit/agents/generated/<id>.md` |
+| **Expertise** | Required: `authority_paths` + `references` / Expertise map (in-repo + trusted external citations with purpose) |
 | **RULES** | Durable agents: short map description via project hub if needed; prefer PLAN + generated pack |
-| **BUILD** | Same schema as seed agents; fill authority_paths from project map |
+| **BUILD** | Same schema as seed agents; fill authority_paths and expertise from project map ([PARAMS](./PARAMS.md)) |
+| **Lifecycle** | Create/adjust when new durable task classes appear ([OPS](./OPS.md#creating-a-new-expert-persona)) |
+
+### Expert pack bar (project agents)
+
+| Requirement | Detail |
+|-------------|--------|
+| Tailored use case | Clear `description` + `triggers` / `negative_triggers` |
+| In-repo law | `authority_paths` to real product contracts and kit modules |
+| References | Curated secondary markdown + optional external standards/vendor docs |
+| Verify | Only declared inventory / verification table gates |
+| Co-maintain | Procedure requires same-change-set L4 updates |
 
 ---
 
@@ -221,6 +234,23 @@ Guidance only—runtime loads **one primary** pack; compose_with only when the t
 | **Listed in PLAN** | `overlays:` path list ([PLAN-HOOK.md](./PLAN-HOOK.md)) |
 | **portability** | `adopter` or `platform` |
 | **BUILD** | Merge overlay packs into active set after kit defaults |
+| **Paths** | Repo-relative only—never remote overlay URLs |
+
+---
+
+## Seed expertise (defaults)
+
+Templates under [templates/](./templates/) carry the full Expertise map. Summary of external citation themes (guidance only):
+
+| id | External citation themes (illustrative) |
+|----|----------------------------------------|
+| maintainer | Keep a Changelog; Conventional Commits |
+| implementer | Language style guides per project inventory |
+| security | OWASP guidance (citation); project SAST tool docs |
+| docs-author | CommonMark / project MARKDOWN-STANDARD |
+| reviewer | — (primarily in-repo verification/contracts) |
+| plan-author | — (PLAN-HOOK + project PLAN) |
+| adopter | — (SETUP / hygiene / UPGRADE) |
 
 ---
 
@@ -228,5 +258,6 @@ Guidance only—runtime loads **one primary** pack; compose_with only when the t
 
 | Version | Notes |
 |---------|--------|
+| 1.1.0 | Project expert pack bar; seed expertise themes; OPS lifecycle (kit 2.2.0) |
 | 1.0.1 | plan-author verify dual-path; security Domain A focus |
 | 1.0.0 | Initial seven seed agents (kit 2.1.0) |

@@ -1,7 +1,7 @@
 ---
 title: Repository Maintenance Rules
 description: Maintenance policy hub—authority map, kit baseline, and index to domain rule modules.
-version: "2.1.1"
+version: "2.2.0"
 status: current
 audience:
   - developers
@@ -15,6 +15,7 @@ related:
   - MARKDOWN-STANDARD.md
   - CHANGELOG.md
   - agents/README.md
+  - agents/OPS.md
   - rules/hygiene.md
   - rules/authoring-and-style.md
   - rules/architecture.md
@@ -23,16 +24,16 @@ related:
   - rules/versioning-and-git.md
   - rules/verification-and-ops.md
   - configs/pylintrc
-last_updated: "2026-08-05"
+last_updated: "2026-08-10"
 ---
 
 # Repository Maintenance Rules
 
 Fundamental rules for maintaining a professional, auditable repository. This file is the **hub**: authority map, kit baseline, and Must / Must not. Domain detail lives in [rules/](./rules/). In adopting product repos this hub lives at **`kit/RULES.md`**.
 
-**Document version:** 2.1.1  
+**Document version:** 2.2.0  
 
-**Related:** [README.md](../README.md) · [SETUP.md](./SETUP.md) · [UPGRADE.md](./UPGRADE.md) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) · [CHANGELOG.md](./CHANGELOG.md) · [agents/README.md](./agents/README.md) · [rules/](./rules/) · [configs/pylintrc](./configs/pylintrc)
+**Related:** [README.md](../README.md) · [SETUP.md](./SETUP.md) · [UPGRADE.md](./UPGRADE.md) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) · [CHANGELOG.md](./CHANGELOG.md) · [agents/README.md](./agents/README.md) · [agents/OPS.md](./agents/OPS.md) · [rules/](./rules/) · [configs/pylintrc](./configs/pylintrc)
 
 ---
 
@@ -56,8 +57,11 @@ Copy this hub (and the `rules/` modules you need) into the project’s **`kit/`*
 | Regenerate `certification/` outputs when that folder is maintained | Commit `last_certification.*` or treat certification as a product launcher gate |
 | Fill authority map + verification from project interest at start | Leave contracts empty until “docs later” after behavior ships |
 | Treat Agent Instruct packs as **views** over this hub + domain modules ([agents](./agents/README.md)) | Embed full persona bodies in this hub; invent a second RULES tree in packs |
+| **When Agent Instruct is in use:** match the user task to **one primary** expert pack; follow [OPS](./agents/OPS.md) O3 before substantive work | Ignore active packs and improvise durable policy only in chat |
+| **When Instruct is in use:** open pack expertise (`authority_paths` + references); co-update **canonical L4** docs/rules in the same change set ([contracts](./rules/contracts.md)) | Load all generated packs, or use remote URLs as overlays/law |
+| **When Instruct is in use:** evolve agents (PLAN + [BUILD](./agents/BUILD.md)) when features, packages, surfaces, languages, or durable task classes appear | Leave packs stale after authority map / inventory / enablement change |
 
-**First adopt:** [SETUP.md](./SETUP.md) (then delete or archive). **Later kit upgrades:** [UPGRADE.md](./UPGRADE.md) (durable). **Agent Instruct:** [agents/README.md](./agents/README.md) (description + link only in this hub).
+**First adopt:** [SETUP.md](./SETUP.md) (then delete or archive). **Later kit upgrades:** [UPGRADE.md](./UPGRADE.md) (durable). **Agent Instruct:** [agents/README.md](./agents/README.md) · utilization **[agents/OPS.md](./agents/OPS.md)** (description + link only in this hub).
 
 ---
 
@@ -66,9 +70,10 @@ Copy this hub (and the `rules/` modules you need) into the project’s **`kit/`*
 1. [Summary](#summary)
 2. [Authority map](#authority-map)
 3. [Domain modules](#domain-modules)
-4. [Kit baseline](#kit-baseline)
-5. [Upgrading the kit](#upgrading-the-kit)
-6. [Document history](#document-history)
+4. [When Agent Instruct is in use](#when-agent-instruct-is-in-use)
+5. [Kit baseline](#kit-baseline)
+6. [Upgrading the kit](#upgrading-the-kit)
+7. [Document history](#document-history)
 
 ---
 
@@ -107,9 +112,10 @@ Replace paths below with your project’s real files. Rows that do not apply may
 | Default config | `{{CONFIG_PATH}}` |
 | Golden tests / fixtures | `{{FIXTURES_PATH}}` |
 | Python style / PEP-8 gate | [configs/pylintrc](./configs/pylintrc) (copy as `.pylintrc` at package or repo root, or pass `--rcfile`) |
-| Agent Instruct (framework, catalog, BUILD, runtime) | [agents/README.md](./agents/README.md) — index to FRAMEWORK, PARAMS, CATALOG, PLAN-HOOK, BUILD, RUNTIME |
+| Agent Instruct (framework, catalog, BUILD, runtime, OPS) | [agents/README.md](./agents/README.md) — index to FRAMEWORK, PARAMS, CATALOG, PLAN-HOOK, BUILD, RUNTIME, **OPS** |
+| Agent utilization (order of operations) | [agents/OPS.md](./agents/OPS.md) — required O3 when Instruct is in use |
 | Project agent control surface | Root `PLAN.md` (**Agent models** section) — required when using agents; see [agents/PLAN-HOOK.md](./agents/PLAN-HOOK.md) |
-| Generated agent packs | [agents/generated/](./agents/generated/) — project-filled views; track thin packs recommended |
+| Generated agent packs | [agents/generated/](./agents/generated/) — project-filled expert views; track thin packs recommended |
 
 **Rule:** Adding, removing, or renaming intentional source files should update the inventory (catalog or equivalent) in the same change set when the project maintains one.
 
@@ -134,8 +140,26 @@ Adopters keep domain modules under **`kit/rules/`**, or fold selected modules in
 | Path | Topic |
 |------|--------|
 | [agents/](./agents/) | Agent Instruct — L3 **views** over this hub + `rules/*`; **not** a replacement for domain modules |
+| [agents/OPS.md](./agents/OPS.md) | Utilization O3 when Instruct is in use |
 
-**Do not fold** full Agent Instruct personas, templates, or generated packs into this hub. Keep **description + link only** in the [authority map](#authority-map). See [agents/README.md](./agents/README.md).
+**Do not fold** full Agent Instruct personas, templates, or generated packs into this hub. Keep **description + link only** in the [authority map](#authority-map). See [agents/README.md](./agents/README.md) · [When Agent Instruct is in use](#when-agent-instruct-is-in-use).
+
+---
+
+## When Agent Instruct is in use
+
+**Bare adopt** (no PLAN Agent models, no Instruct packs) skips this section—use this hub and domain modules only.
+
+When Agent Instruct **is** adopted (PLAN **Agent models** present and/or tracked packs under `kit/agents/generated/`):
+
+1. Follow **[agents/OPS.md](./agents/OPS.md)** order of operations (O3): detect → PLAN → L4 map → **match one primary expert pack** → expertise → act → **co-maintain** docs/rules → lifecycle BUILD if needed → verify.  
+2. Packs are **views** over this hub + `rules/*` + product contracts. On conflict, **L4 (this hub and domain modules) wins**.  
+3. Open pack `authority_paths` and curated **expertise** (in-repo + trusted external **citations** only). Remote URLs are never overlays or substitute law.  
+4. Co-update the **canonical** owner document for any behavior/contract change in the **same change set** ([contracts](./rules/contracts.md)).  
+5. When features, packages, public surfaces, languages, or durable task classes appear: update PLAN Agent models and re-run [BUILD](./agents/BUILD.md).  
+6. Do **not** claim complete if a **declared** Domain A/B gate or required pack verify item failed or was skipped ([verification-and-ops](./rules/verification-and-ops.md#completion-rule)).
+
+Index: [agents/README.md](./agents/README.md). Matching detail: [agents/RUNTIME.md](./agents/RUNTIME.md).
 
 ---
 
@@ -181,6 +205,7 @@ Copy-paste prompt also on root [README — Upgrade repo-kit](../README.md#upgrad
 
 | Version | Notes |
 |---------|--------|
+| 2.2.0 | Instruct utilization: O3 Musts when Instruct in use; OPS authority-map row; When Agent Instruct is in use subsection (kit 2.2.0) |
 | 2.1.1 | Agent Instruct: optional Instruct subsection; agents **not foldable** into hub (description + link only) |
 | 2.1.0 | Agent Instruct: authority map rows (agents README, PLAN control surface, generated/); packs are views; domain index line for `kit/agents/` |
 | 2.0.1 | Adopter packaging: standards under `kit/`; project CHANGELOG and product paths outside; hygiene-aligned authority map |

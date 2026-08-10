@@ -1,7 +1,7 @@
 ---
 title: PLAN.md Agent Models Hook
 description: Durable control surface contract for Agent Instruct in adopter PLAN.md.
-version: "1.1.1"
+version: "1.2.0"
 status: current
 audience:
   - developers
@@ -9,22 +9,23 @@ audience:
 doc_type: other
 related:
   - README.md
+  - OPS.md
   - BUILD.md
   - CATALOG.md
   - PARAMS.md
   - examples/PLAN-agent-models-snippet.md
   - ../SETUP.md
   - ../UPGRADE.md
-last_updated: "2026-08-05"
+last_updated: "2026-08-10"
 ---
 
 # PLAN.md Agent Models Hook
 
-When a project uses **Agent Instruct**, root **PLAN.md** is the **durable control surface**. It references the Instruct docs and declares which agent models are active, disabled, overlaid, and tuned. Mid-project adjustments happen here; AI then re-runs BUILD.
+When a project uses **Agent Instruct**, root **PLAN.md** is the **durable control surface**. It references the Instruct docs and declares which agent models are active, disabled, overlaid, and tuned. Mid-project adjustments happen here; AI then re-runs BUILD. Session utilization follows **[OPS.md](./OPS.md)**.
 
-**Document version:** 1.1.1  
+**Document version:** 1.2.0  
 
-**Related:** [README.md](./README.md) · [BUILD.md](./BUILD.md) · [CATALOG.md](./CATALOG.md) · [PARAMS.md](./PARAMS.md) · [examples/PLAN-agent-models-snippet.md](./examples/PLAN-agent-models-snippet.md) · [SETUP.md](../SETUP.md) · [UPGRADE.md](../UPGRADE.md)
+**Related:** [README.md](./README.md) · [OPS.md](./OPS.md) · [BUILD.md](./BUILD.md) · [CATALOG.md](./CATALOG.md) · [PARAMS.md](./PARAMS.md) · [examples/PLAN-agent-models-snippet.md](./examples/PLAN-agent-models-snippet.md) · [SETUP.md](../SETUP.md) · [UPGRADE.md](../UPGRADE.md)
 
 ---
 
@@ -33,10 +34,11 @@ When a project uses **Agent Instruct**, root **PLAN.md** is the **durable contro
 | Must | Must not |
 |------|----------|
 | Include **Agent models** when using Agent Instruct | Leave agent enablement only in chat history |
-| Link to kit Instruct paths (`kit/agents/*`) | Duplicate full FRAMEWORK/BUILD text inside PLAN |
+| Link to kit Instruct paths (`kit/agents/*` including OPS) | Duplicate full FRAMEWORK/BUILD text inside PLAN |
 | List `active_models` / `disabled` / `overlays` explicitly | Imply “all catalog agents always on” without statement |
 | Treat an **empty Active models list** as intentional empty set | Conflate empty list with “unset → enable catalog defaults” |
 | Overlays are **repo-relative** paths only | Remote `http(s)` overlay URLs |
+| Evolve Agent models when features/core tasks grow | Leave enablement stale after new surfaces |
 | Treat PLAN edits as the path for durable user intent | Require kit fork for product emphasis changes |
 
 ### PLAN dual path
@@ -77,7 +79,7 @@ Acceptable aliases if consistent in-repo: `## Agents`, `## Agent Instruct`. Pref
 
 | Field | Required | Description |
 |-------|----------|-------------|
-| **Instruct authority** | yes | Links to FRAMEWORK, BUILD, PARAMS, CATALOG, PLAN-HOOK, RUNTIME |
+| **Instruct authority** | yes | Links to FRAMEWORK, BUILD, PARAMS, CATALOG, PLAN-HOOK, RUNTIME, **OPS** |
 | **active_models** | yes when Instruct in use | List of agent ids under `### Active models` (markdown bullets). **Empty list** (zero bullets, or a single `*(none)*` line) means no agents active (emit nothing). **Unset** after first BUILD is not the same as empty — see BUILD resolution |
 | **disabled** | yes (may be empty) | Ids explicitly off |
 | **overlays** | yes (may be empty) | **Repo-relative** paths to adopter/platform pack sources |
@@ -137,6 +139,7 @@ Do **not** imply “all catalog agents always on” without an explicit list or 
 | PLAN hook | kit/agents/PLAN-HOOK.md |
 | Build | kit/agents/BUILD.md |
 | Runtime | kit/agents/RUNTIME.md |
+| Order of operations | kit/agents/OPS.md |
 
 ### Active models
 
@@ -174,6 +177,8 @@ Do **not** imply “all catalog agents always on” without an explicit list or 
 - active_models / disabled / overlays / tuning change
 - Kit agents templates upgrade (see UPGRADE.md)
 - New project agent packs added
+- New package, public surface, language, or durable task class
+- Material change to pack expertise targets (new contract owners)
 ```
 
 Also: [examples/PLAN-agent-models-snippet.md](./examples/PLAN-agent-models-snippet.md).
@@ -186,7 +191,7 @@ Also: [examples/PLAN-agent-models-snippet.md](./examples/PLAN-agent-models-snipp
 1. User (or AI with user intent) edits PLAN Agent models fields
 2. Confirm durable vs session-only
 3. AI runs BUILD procedure (kit/agents/BUILD.md)
-4. If new project agent: write kit/agents/generated/<id>.md (+ map row if durable and needed)
+4. If new project agent: write kit/agents/generated/<id>.md with expertise map (+ map row if durable and needed)
 5. Review generated packs diff
 6. Commit: PLAN + generated packs (+ CHANGELOG if release-worthy)
 ```
@@ -194,8 +199,23 @@ Also: [examples/PLAN-agent-models-snippet.md](./examples/PLAN-agent-models-snipp
 | Change type | Typical commit type |
 |-------------|---------------------|
 | Enable/disable agents only | `chore(agents):` or `docs(plan):` |
-| New product overlay | `docs(agents):` + pack files |
+| New product overlay / expert persona | `docs(agents):` + pack files |
+| Feature/surface growth → expertise regen | `docs(agents):` or `chore(agents):` after map update |
 | Kit template upgrade regen | `chore(agents):` after UPGRADE |
+
+### Feature and core-task lifecycle
+
+When the product gains durable work shapes, update agents in the same initiative—not only in chat.
+
+| Trigger | PLAN / agent action |
+|---------|---------------------|
+| New package or product area | Ensure authority map paths exist; BUILD so implementer/docs/security expertise covers them |
+| New public CLI/API/behavior | Co-update L4 contracts; BUILD if verify/authority paths change |
+| New language in inventory | Often enable/emphasize `security`; BUILD |
+| New durable task class | New adopter pack or overlay + `active_models` + BUILD ([OPS create persona](./OPS.md#creating-a-new-expert-persona)) |
+| Stage complete / post-adopt | `disabled` += `adopter` when appropriate; adjust `stage_gates` / `emphasize` |
+
+Full utilization and co-maintain: [OPS.md](./OPS.md).
 
 ---
 
@@ -239,6 +259,7 @@ BUILD reads these sections when filling templates; it does not delete them.
 
 | Version | Notes |
 |---------|--------|
+| 1.2.0 | OPS in Instruct authority; feature/core-task lifecycle; regenerate_when surface growth (kit 2.2.0) |
 | 1.1.1 | Markdown-native empty Active models (zero bullets / `*(none)*`); `[]` = BUILD shorthand only |
 | 1.1.0 | active_models unset vs empty; use_catalog_defaults; trust boundary; overlay shadow |
 | 1.0.0 | Initial PLAN hook (kit 2.1.0) |

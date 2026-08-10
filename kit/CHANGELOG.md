@@ -26,6 +26,34 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 
 ## repo-kit
 
+### [2.2.0] - 2026-08-10
+
+#### Added
+
+- **`kit/agents/OPS.md`** — canonical order of operations (O3): detect Instruct, match one primary expert pack, open expertise, co-maintain L4 docs/rules, lifecycle BUILD, verify, report.
+- **RULES hub** subsection **When Agent Instruct is in use** + Must rows for primary-pack match, expertise, co-maintain, and agent lifecycle (Instruct-adopted only; bare adopt still skips).
+- **Expertise schema** in PARAMS: required `references` / body Expertise map for generated packs; external `https://` citations with purpose (guidance only); forbidden remote URLs in `authority_paths` and overlays.
+- Seed template **Expertise maps** and co-maintain procedures for all seven roles; sample generated maintainer pack updated.
+- PLAN-HOOK **feature and core-task lifecycle** + expanded `regenerate_when` defaults.
+- Verification-and-ops before-complete step 1 (OPS O3 when Instruct in use); cadence and anti-patterns for skip-match, empty expertise, stale packs after features.
+- contracts **Instruct bridge**: packs direct owners; L4 still owns text.
+
+#### Changed
+
+- agents README **1.1.0**: OPS-first utilization; expert packs; enforcement wording (policy + AI convention).
+- RUNTIME **1.2.0** / FRAMEWORK **1.1.0** / BUILD **1.2.0** / PLAN-HOOK **1.2.0** / CATALOG **1.1.0** / PARAMS **1.1.0** aligned to O3 and expertise.
+- RULES hub **2.2.0**; verification-and-ops **1.3.0**; contracts **1.1.0**; UPGRADE **1.4.0** (merge OPS; preserve adopter expertise).
+- SETUP Agent Instruct path points at OPS after first BUILD.
+- Root README purpose, governance digest, and index rows for OPS.
+- Anti-patterns expanded for utilization and expertise failures.
+
+#### Notes
+
+- Bare adopt without Agent models still skips O3/BUILD.
+- External citations are not law and are not overlays; L4 wins on conflict.
+- “Automatic” maintenance = mandatory O3 procedure when Instruct is adopted, not a background daemon.
+- Not a Domain A/B gate; real completion gates remain inventory style/SAST.
+
 ### [2.1.1] - 2026-08-05
 
 #### Changed

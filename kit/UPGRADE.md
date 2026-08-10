@@ -1,7 +1,7 @@
 ---
 title: Upgrade repo-kit
 description: Durable guide for upgrading an existing kit baseline, including 1.x to 2.x layout migration (standards under kit/) and merge options.
-version: "1.3.0"
+version: "1.4.0"
 status: current
 audience:
   - developers
@@ -15,18 +15,19 @@ related:
   - rules/versioning-and-git.md
   - rules/hygiene.md
   - agents/README.md
+  - agents/OPS.md
   - agents/BUILD.md
   - agents/PLAN-HOOK.md
-last_updated: "2026-08-05"
+last_updated: "2026-08-10"
 ---
 
 # Upgrade repo-kit
 
 Durable procedure for **repositories that already adopted** the Repository Standards Kit. Not deleted after initiation—keep under project `kit/` or always open this file at Kit source.
 
-**Document version:** 1.3.0  
+**Document version:** 1.4.0  
 
-**Related:** [RULES.md](./RULES.md) · [SETUP.md](./SETUP.md) · [CHANGELOG.md](./CHANGELOG.md) · [README.md](../README.md) · [versioning-and-git.md](./rules/versioning-and-git.md) · [hygiene.md](./rules/hygiene.md) · [agents/README.md](./agents/README.md) · [agents/BUILD.md](./agents/BUILD.md)
+**Related:** [RULES.md](./RULES.md) · [SETUP.md](./SETUP.md) · [CHANGELOG.md](./CHANGELOG.md) · [README.md](../README.md) · [versioning-and-git.md](./rules/versioning-and-git.md) · [hygiene.md](./rules/hygiene.md) · [agents/README.md](./agents/README.md) · [agents/OPS.md](./agents/OPS.md) · [agents/BUILD.md](./agents/BUILD.md)
 
 ---
 
@@ -77,7 +78,7 @@ Durable procedure for **repositories that already adopted** the Repository Stand
 5. **Merge into project `kit/`** — not onto the product root.  
 6. **Preserve** project-specific values — see [Preserve list](#preserve-list).  
 7. Fix relative links (`../README.md`, `../CHANGELOG.md`, `../packages/…`).  
-8. **Agent Instruct (if used):** merge upstream `kit/agents/` core docs + templates; **preserve** PLAN Agent models and adopter/platform generated packs; re-run [BUILD](./agents/BUILD.md) with [source load order](./agents/BUILD.md#source-load-order) (kit seeds regen; do not clobber adopter packs). See [Agent Instruct on upgrade](#agent-instruct-on-upgrade).  
+8. **Agent Instruct (if used):** merge upstream `kit/agents/` core docs (include **OPS.md**) + templates; **preserve** PLAN Agent models, expertise on adopter packs, and adopter/platform generated packs; re-run [BUILD](./agents/BUILD.md) with [source load order](./agents/BUILD.md#source-load-order) (kit seeds regen with expertise; do not clobber adopter packs). See [Agent Instruct on upgrade](#agent-instruct-on-upgrade).  
 9. Update **Adopted kit version** and **Adopted on**; keep Kit source unchanged (unless deliberate fork).  
 10. **Project root** `CHANGELOG.md`: short note (e.g. “Upgraded repo-kit baseline to X.Y.Z”)—**never** paste full kit history.  
 11. Re-run the project verification table / [completion rule](./rules/verification-and-ops.md#completion-rule).  
@@ -158,12 +159,13 @@ When the project uses Agent Instruct (`kit/agents/` present and PLAN has Agent m
 
 | Artifact | Action |
 |----------|--------|
-| Upstream Instruct docs + `templates/` + CATALOG | **Merge** into project `kit/agents/` |
-| Root PLAN **Agent models** | **Always preserve** (`active_models`, `disabled`, `overlays`, `tuning`, etc.) — never reset to kit defaults without user intent |
+| Upstream Instruct docs + `templates/` + CATALOG + **OPS.md** | **Merge** into project `kit/agents/` |
+| Root PLAN **Agent models** | **Always preserve** (`active_models`, `disabled`, `overlays`, `tuning`, etc.) — never reset to kit defaults without user intent; add OPS to Instruct authority table if missing |
 | Overlay source files (PLAN paths) | **Preserve** |
-| Generated packs with `portability: kit` (from seeds) | **Regen** via [BUILD](./agents/BUILD.md) after template merge |
-| Generated packs with `portability: adopter` or `platform` | **Preserve** — do not overwrite unless PLAN/overlay is the emit source **and** user requests refresh for that id |
+| Generated packs with `portability: kit` (from seeds) | **Regen** via [BUILD](./agents/BUILD.md) after template merge (includes expertise map) |
+| Generated packs with `portability: adopter` or `platform` | **Preserve** expertise and body — do not overwrite unless PLAN/overlay is the emit source **and** user requests refresh for that id |
 | BUILD re-run | Required after template/catalog merge; must follow [source load order](./agents/BUILD.md#source-load-order) |
+| Ongoing utilization | After upgrade, operators use [OPS.md](./agents/OPS.md) O3 |
 
 **Conflict resolution:** Preserve and Regen are **not** equal-priority for the same file. Kit-derived seeds regen; adopter/platform packs preserve. BUILD must not invent skeletons for unknown ids on upgrade.
 
@@ -220,6 +222,7 @@ This repository has no repo-kit baseline. Follow kit/SETUP.md selective adoption
 
 | Version | Notes |
 |---------|--------|
+| 1.4.0 | Merge OPS.md; preserve adopter expertise; kit seeds regen with expertise (kit 2.2.0) |
 | 1.3.0 | Agent Instruct: preserve vs regen by portability; source load order; non-clobber BUILD on upgrade |
 | 1.2.0 | Agent Instruct: merge kit/agents/; preserve PLAN Agent models; BUILD regen; preserve list + AI prompt |
 | 1.1.0 | Adopter target is project `kit/`; 1.x/root layout migration moves standards into kit/; product CHANGELOG stays at root |

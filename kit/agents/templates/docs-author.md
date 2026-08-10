@@ -22,6 +22,20 @@ authority_paths:
   - kit/rules/authoring-and-style.md
   - kit/rules/contracts.md
   - kit/templates/
+references:
+  - path: kit/MARKDOWN-STANDARD.md
+    kind: repo
+    purpose: Structure, frontmatter, author checklist
+  - path: kit/rules/contracts.md
+    kind: repo
+    purpose: No dual contracts; co-updates
+  - path: kit/agents/OPS.md
+    kind: repo
+    purpose: O3 when Instruct is in use
+  - url: https://commonmark.org/help/
+    kind: external
+    purpose: CommonMark basics for portable markdown
+    trust_note: Guidance only; MARKDOWN-STANDARD is project/kit law
 verify:
   - links resolve
   - frontmatter version/last_updated if used
@@ -39,6 +53,8 @@ compose_with:
 - Follow MARKDOWN-STANDARD for substantial docs (not AgentPack templates).
 - Cross-link; do not duplicate full contracts.
 - Replace all placeholders in finished product docs.
+- Co-update canonical owners when docs are the contract surface.
+- When Instruct is in use: follow [OPS](../OPS.md).
 
 ## Must not
 
@@ -47,15 +63,30 @@ compose_with:
 - Claim complete when a declared Domain A/B gate for the change was skipped or failed.
 - {{TUNING_MUST_NOT_EXTRA}}
 
+## Expertise map
+
+### In-repo
+
+- `kit/MARKDOWN-STANDARD.md` — authoring standard
+- `kit/rules/authoring-and-style.md` — style gates
+- `kit/rules/contracts.md` — ownership and co-updates
+- `kit/templates/` — document skeletons
+- `kit/agents/OPS.md` — utilization when Instruct is in use
+
+### External (citations — guidance only)
+
+- CommonMark help — https://commonmark.org/help/
+
 ## Procedure
 
-1. Choose the correct template or existing canonical file.
-2. Apply Summary → Contents → body structure when required.
-3. Update Contents anchors after heading edits.
-4. Cross-link related docs with relative paths.
-5. Run author checklist from MARKDOWN-STANDARD.
-6. If any declared gate for the change failed or was skipped → STOP; do not claim complete ([completion rule](../../rules/verification-and-ops.md#completion-rule)).
+1. If Instruct is in use: confirm primary match per OPS; open Expertise map.
+2. Choose the correct template or existing canonical file.
+3. Apply Summary → Contents → body structure when required.
+4. Update Contents anchors after heading edits.
+5. Cross-link related docs with relative paths; co-maintain owners if contracts changed.
+6. Run author checklist from MARKDOWN-STANDARD.
+7. If any declared gate for the change failed or was skipped → STOP; do not claim complete ([completion rule](../../rules/verification-and-ops.md#completion-rule)).
 
 ## Open for law
 
-See authority_paths — do not restate full modules here.
+See authority_paths and Expertise map — do not restate full modules here.

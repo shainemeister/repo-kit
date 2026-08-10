@@ -6,7 +6,7 @@ Use this file when starting or aligning a repository so **formal markdown guides
 
 This kit ships `SETUP.md` under [`kit/`](./). **Copy standards into the target repository’s `kit/`** (same packaging as this repo). Keep **product code** and **project** `CHANGELOG.md` **outside** `kit/`. Adopting projects remove SETUP after initiation.
 
-**Permanent after initiation:** root `README.md`, root **project** `CHANGELOG.md`, **`kit/RULES.md`** (hub + kit baseline), `kit/MARKDOWN-STANDARD.md` (or link), and `kit/rules/` as needed. **When using Agent Instruct:** keep `kit/agents/` and root `PLAN.md` Agent models. **Later kit upgrades:** durable [UPGRADE.md](./UPGRADE.md).
+**Permanent after initiation:** root `README.md`, root **project** `CHANGELOG.md`, **`kit/RULES.md`** (hub + kit baseline), `kit/MARKDOWN-STANDARD.md` (or link), and `kit/rules/` as needed. **When using Agent Instruct:** keep `kit/agents/` (include [OPS.md](./agents/OPS.md)), root `PLAN.md` Agent models, and track thin `generated/` packs. **Later kit upgrades:** durable [UPGRADE.md](./UPGRADE.md).
 
 **Already have a Kit baseline?** Stop and use [UPGRADE.md](./UPGRADE.md).
 
@@ -23,10 +23,10 @@ This kit ships `SETUP.md` under [`kit/`](./). **Copy standards into the target r
 5. [Fill the authority map](#4-fill-the-authority-map) (product paths **outside** `kit/`), [language inventory](./rules/security.md#language-surface-inventory), and verification table.  
 6. [Record kit baseline](#4b-record-kit-baseline) in `kit/RULES.md`.  
 7. [Pick templates](#5-pick-templates-by-interest), scaffold package docs **outside** `kit/`, and [verify](#8-first-verification-commands).  
-8. **If using Agent Instruct:** ensure Agent models section, then run **[BUILD](./agents/BUILD.md)** → `kit/agents/generated/` ([Agent Instruct path](#agent-instruct-path)).  
+8. **If using Agent Instruct:** ensure Agent models section, then run **[BUILD](./agents/BUILD.md)** → `kit/agents/generated/` ([Agent Instruct path](#agent-instruct-path)). Ongoing tasks use **[OPS](./agents/OPS.md)** O3.  
 9. [Delete or archive this file](#after-setup); point maintainers at [UPGRADE.md](./UPGRADE.md). **Keep** `kit/agents/` and PLAN Agent models.
 
-Layout doctrine: [rules/hygiene.md](./rules/hygiene.md). Agent Instruct: [agents/README.md](./agents/README.md).
+Layout doctrine: [rules/hygiene.md](./rules/hygiene.md). Agent Instruct: [agents/README.md](./agents/README.md) · [agents/OPS.md](./agents/OPS.md).
 
 ---
 
@@ -149,13 +149,14 @@ Optional but recommended for AI-maintained repos. Full index: [agents/README.md]
 | 2 | Ensure root **PLAN.md** exists from project interest |
 | 3 | Ensure **`## Agent models`** section exists — insert from [agents/PLAN-HOOK.md](./agents/PLAN-HOOK.md) or [agents/examples/PLAN-agent-models-snippet.md](./agents/examples/PLAN-agent-models-snippet.md) |
 | 4 | Fill authority map + language inventory (existing SETUP steps) |
-| 5 | Run **BUILD** per [agents/BUILD.md](./agents/BUILD.md) → emit `kit/agents/generated/<id>.md` |
+| 5 | Run **BUILD** per [agents/BUILD.md](./agents/BUILD.md) → emit `kit/agents/generated/<id>.md` (expert packs with expertise map) |
 | 6 | Prefer **tracking** thin generated packs in git so clones work offline |
-| 7 | When deleting this SETUP file: **keep** `kit/agents/` and PLAN Agent models |
+| 7 | Point operators at **[OPS.md](./agents/OPS.md)** for task utilization (match primary pack, co-maintain docs/rules, lifecycle) |
+| 8 | When deleting this SETUP file: **keep** `kit/agents/` and PLAN Agent models |
 
 **Bare adopt:** omit Agent models and skip BUILD. You can add Agent Instruct later via PLAN-HOOK + BUILD without re-running full SETUP.
 
-Packs are **views** over L4 law (`kit/RULES.md` + `kit/rules/*` + product contracts). On conflict, law wins.
+Packs are **views** over L4 law (`kit/RULES.md` + `kit/rules/*` + product contracts). On conflict, law wins. When Instruct is in use, [RULES — When Agent Instruct is in use](./RULES.md#when-agent-instruct-is-in-use) and [OPS](./agents/OPS.md) apply.
 
 ---
 
@@ -230,7 +231,7 @@ On Windows you may use `py -3.x -m pylint …`. Install pylint in the **develope
 - Maintain a root `FILE-CATALOG.md` (or similar) and update it on path add/remove/rename.  
 - Copy `configs/pylintrc` → `.pylintrc` (package or repo root), set `py-version`, point the verification table at the real package path.  
 - Add root `certification/` + operator README when product code warrants formal self-attestation certificates.  
-- Enable or tune Agent Instruct: PLAN Agent models + [BUILD](./agents/BUILD.md) ([agents/README.md](./agents/README.md)).  
+- Enable or tune Agent Instruct: PLAN Agent models + [BUILD](./agents/BUILD.md); use [OPS](./agents/OPS.md) each task ([agents/README.md](./agents/README.md)).  
 - Read [How overlays work](../README.md#how-overlays-work) so stack-specific rules stay in the project map, not a forked kit.
 
 **Checklists:** [Author checklist](./MARKDOWN-STANDARD.md#author-checklist) · [Contributor checklist](./rules/verification-and-ops.md#contributor-checklist)
