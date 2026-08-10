@@ -1,7 +1,7 @@
 ---
 title: Verification and Operations
 description: Verification before ship, completion rule, maintenance cadence, anti-patterns, and contributor checklist.
-version: "1.3.0"
+version: "1.3.1"
 status: current
 audience:
   - developers
@@ -26,7 +26,7 @@ last_updated: "2026-08-10"
 
 Ship gates, completion rules, cadence, anti-patterns, and the contributor checklist.
 
-**Document version:** 1.3.0  
+**Document version:** 1.3.1  
 
 **Related:** [RULES.md](../RULES.md) · [security.md](./security.md) · [authoring-and-style.md](./authoring-and-style.md) · [contracts.md](./contracts.md) · [versioning-and-git.md](./versioning-and-git.md) · [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md) · [UPGRADE.md](../UPGRADE.md) · [agents/README.md](../agents/README.md) · [agents/OPS.md](../agents/OPS.md)
 
@@ -85,14 +85,16 @@ Fill commands for the host OS(es) the team develops on. When multi-platform, eit
 
 Ordered steps for humans and AI agents:
 
-1. **If Agent Instruct is in use:** follow [OPS O3](../agents/OPS.md#order-of-operations-o3)—match **one primary** expert pack, open expertise, co-maintain L4. Bare adopt (no Agent models) skips this step.  
-2. Read **language surface inventory** ([security.md](./security.md#language-surface-inventory); pick only declared rows from the full kit catalog).  
-3. Run **Domain B** gates for every surface touched by the change.  
-4. Run **Domain A** gates for every surface touched (plus Secrets / Semgrep if those rows exist).  
-5. Update canonical docs / `CHANGELOG.md` per the [authority map](../RULES.md#authority-map) and [contracts.md](./contracts.md).  
-6. **If Agent Instruct is in use** and any of the following changed—PLAN Agent models, agent templates, agent-relevant authority paths, pack expertise, or durable feature/surface/task-class growth: re-run [BUILD](../agents/BUILD.md); validate packs per [PARAMS](../agents/PARAMS.md); respect PLAN `disabled`; review generated pack diffs. (Policy + AI convention—not a Domain A/B gate.)  
-7. If `certification/` is maintained: regenerate the certificate pair; confirm OverallPass; leave outputs unstaged.  
-8. Only then state the task is complete.
+1. Follow [Operator enforcement](../RULES.md#operator-enforcement) (verify request, validate procedure, persona when Instruct, plan when needed).  
+2. **If Agent Instruct is in use:** follow [OPS O3](../agents/OPS.md#order-of-operations-o3)—match **one primary** expert pack, open expertise, co-maintain L4. Bare adopt (no Agent models) skips this step.  
+3. Read **language surface inventory** ([security.md](./security.md#language-surface-inventory); pick only declared rows from the full kit catalog).  
+4. Run **Domain B** gates for every surface touched by the change.  
+5. Run **Domain A** gates for every surface touched (plus Secrets / Semgrep if those rows exist).  
+6. Update canonical docs / `CHANGELOG.md` per the [authority map](../RULES.md#authority-map) and [contracts.md](./contracts.md).  
+7. **If Agent Instruct is in use** and any of the following changed—PLAN Agent models, agent templates, agent-relevant authority paths, pack expertise, or durable feature/surface/task-class growth: re-run [BUILD](../agents/BUILD.md); validate packs per [PARAMS](../agents/PARAMS.md); respect PLAN `disabled`; review generated pack diffs. (Policy + AI convention—not a Domain A/B gate.)  
+8. If `certification/` is maintained: regenerate the certificate pair; confirm OverallPass; leave outputs unstaged.  
+9. End work-advancing replies with a [Progress Tracker](../RULES.md#progress-tracker-minimum-shape) (commit SHA for completed committed tasks).  
+10. Only then state the task is complete.
 
 ---
 
@@ -181,10 +183,12 @@ Before you commit or share a change:
 - [ ] Subject would still make sense years later; one logical surface preferred  
 - [ ] Canonical docs for any behavior change are in the same change set ([contracts.md](./contracts.md))  
 - [ ] If kit pieces changed: [Kit baseline](../RULES.md#kit-baseline) version/date updated and CHANGELOG notes the upgrade ([UPGRADE.md](../UPGRADE.md))  
+- [ ] [Operator enforcement](../RULES.md#operator-enforcement) followed (request verify, procedure, plan when needed)  
 - [ ] If Agent Instruct used: primary pack matched per [OPS](../agents/OPS.md); expertise opened; L4 co-maintained  
 - [ ] If Agent Instruct used and enablement/templates/authority paths/expertise or feature/surface growth for agents changed: [BUILD](../agents/BUILD.md) regen; thin packs reviewed  
 - [ ] Agent packs do not redefine L4 law; `authority_paths` / expertise / `verify` align with RULES ([agents](../agents/README.md))  
 - [ ] PLAN Agent models preserved across kit upgrade (when agents are in use)  
+- [ ] Progress Tracker included on work-advancing replies ([RULES](../RULES.md#progress-tracker-minimum-shape))  
 - [ ] If AI assisted: commit includes `Assisted-by` / `Compliance` / `Instructed-by`  
 
 ---
@@ -193,6 +197,7 @@ Before you commit or share a change:
 
 | Version | Notes |
 |---------|--------|
+| 1.3.1 | Operator enforcement + Progress Tracker in before-complete and checklist (kit 2.2.1) |
 | 1.3.0 | Instruct O3 in before-complete; lifecycle cadence; expertise anti-patterns; checklist OPS (kit 2.2.0) |
 | 1.2.0 | Agent Instruct: verification rows for template/catalog/BUILD; cadence; anti-patterns; before-complete step; contributor checklist (editorial 1.1.0 intermediate folded here—not a separate kit release) |
 | 1.0.0 | Extracted from RULES 1.4.1 for kit 2.0 |

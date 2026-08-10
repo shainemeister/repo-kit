@@ -1,7 +1,7 @@
 ---
 title: Repository Maintenance Rules
 description: Maintenance policy hub—authority map, kit baseline, and index to domain rule modules.
-version: "2.2.0"
+version: "2.2.1"
 status: current
 audience:
   - developers
@@ -31,7 +31,7 @@ last_updated: "2026-08-10"
 
 Fundamental rules for maintaining a professional, auditable repository. This file is the **hub**: authority map, kit baseline, and Must / Must not. Domain detail lives in [rules/](./rules/). In adopting product repos this hub lives at **`kit/RULES.md`**.
 
-**Document version:** 2.2.0  
+**Document version:** 2.2.1  
 
 **Related:** [README.md](../README.md) · [SETUP.md](./SETUP.md) · [UPGRADE.md](./UPGRADE.md) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) · [CHANGELOG.md](./CHANGELOG.md) · [agents/README.md](./agents/README.md) · [agents/OPS.md](./agents/OPS.md) · [rules/](./rules/) · [configs/pylintrc](./configs/pylintrc)
 
@@ -60,20 +60,57 @@ Copy this hub (and the `rules/` modules you need) into the project’s **`kit/`*
 | **When Agent Instruct is in use:** match the user task to **one primary** expert pack; follow [OPS](./agents/OPS.md) O3 before substantive work | Ignore active packs and improvise durable policy only in chat |
 | **When Instruct is in use:** open pack expertise (`authority_paths` + references); co-update **canonical L4** docs/rules in the same change set ([contracts](./rules/contracts.md)) | Load all generated packs, or use remote URLs as overlays/law |
 | **When Instruct is in use:** evolve agents (PLAN + [BUILD](./agents/BUILD.md)) when features, packages, surfaces, languages, or durable task classes appear | Leave packs stale after authority map / inventory / enablement change |
+| Follow [Operator enforcement](#operator-enforcement) on every maintenance turn | Skip request verify, procedure check, or Progress Tracker when advancing repo work |
 
-**First adopt:** [SETUP.md](./SETUP.md) (then delete or archive). **Later kit upgrades:** [UPGRADE.md](./UPGRADE.md) (durable). **Agent Instruct:** [agents/README.md](./agents/README.md) · utilization **[agents/OPS.md](./agents/OPS.md)** (description + link only in this hub).
+**First adopt:** [SETUP.md](./SETUP.md) (then delete or archive). **Later kit upgrades:** [UPGRADE.md](./UPGRADE.md) (durable). **Agent Instruct:** [agents/README.md](./agents/README.md) · utilization **[agents/OPS.md](./agents/OPS.md)** (description + link only in this hub). **Operator checklist:** [Operator enforcement](#operator-enforcement).
+
+---
+
+## Operator enforcement
+
+Standing checklist for AI and humans **maintaining this repository**. Domain detail stays in linked modules—do **not** treat this list as a second RULES tree or paste full persona bodies here.
+
+| # | Must | Detail / owner |
+|---|------|----------------|
+| 1 | **Verify the user request** and comply with this hub + domain modules | Open the [authority map](#authority-map); do not invent policy outside L4 |
+| 2 | **Validate the procedure** before execution | When Instruct: [OPS O3](./agents/OPS.md). Always: declared gates and completion ([verification-and-ops](./rules/verification-and-ops.md)) |
+| 3 | **Apply the appropriate Agent / Persona** for the task | When Instruct is in use: one primary expert pack ([OPS](./agents/OPS.md), [When Instruct is in use](#when-agent-instruct-is-in-use)). Bare adopt: this hub + domain modules only |
+| 4 | **Ensure or build a plan** when work is multi-step or durable | Prefer root `PLAN.md` / task plan; Agent models when Instruct ([PLAN-HOOK](./agents/PLAN-HOOK.md)). Skip for trivial single-step replies |
+| 5 | **Git format + confirm complete** | Conventional commits match staged files ([versioning-and-git](./rules/versioning-and-git.md)); confirm docs co-updates and declared gates before “done” ([completion rule](./rules/verification-and-ops.md#completion-rule)) |
+| 6 | **Progress Tracker** at the end of each reply that advances work | Ordered tasks with status; **commit SHA** for each completed task that was committed; `—` if not committed |
+
+### Progress Tracker (minimum shape)
+
+End every reply that advances repository work with:
+
+```markdown
+### Progress Tracker
+| # | Task | Status | Commit |
+|---|------|--------|--------|
+| 1 | … | done | `abc1234` |
+| 2 | … | in progress | — |
+```
+
+| Field | Values / rule |
+|-------|----------------|
+| **Status** | `done` · `in progress` · `blocked` · `skipped` |
+| **Commit** | Short or full SHA when that ordered task produced a git commit; otherwise `—` |
+| Pure Q&A (no repo work) | One line is enough: `Progress: no repo changes` |
+
+Do not invent commit SHAs. Do not require a commit for every tracker row.
 
 ---
 
 ## Contents
 
 1. [Summary](#summary)
-2. [Authority map](#authority-map)
-3. [Domain modules](#domain-modules)
-4. [When Agent Instruct is in use](#when-agent-instruct-is-in-use)
-5. [Kit baseline](#kit-baseline)
-6. [Upgrading the kit](#upgrading-the-kit)
-7. [Document history](#document-history)
+2. [Operator enforcement](#operator-enforcement)
+3. [Authority map](#authority-map)
+4. [Domain modules](#domain-modules)
+5. [When Agent Instruct is in use](#when-agent-instruct-is-in-use)
+6. [Kit baseline](#kit-baseline)
+7. [Upgrading the kit](#upgrading-the-kit)
+8. [Document history](#document-history)
 
 ---
 
@@ -205,6 +242,7 @@ Copy-paste prompt also on root [README — Upgrade repo-kit](../README.md#upgrad
 
 | Version | Notes |
 |---------|--------|
+| 2.2.1 | Operator enforcement checklist + Progress Tracker (request verify, procedure, persona, plan, git/complete, tracker) |
 | 2.2.0 | Instruct utilization: O3 Musts when Instruct in use; OPS authority-map row; When Agent Instruct is in use subsection (kit 2.2.0) |
 | 2.1.1 | Agent Instruct: optional Instruct subsection; agents **not foldable** into hub (description + link only) |
 | 2.1.0 | Agent Instruct: authority map rows (agents README, PLAN control surface, generated/); packs are views; domain index line for `kit/agents/` |

@@ -1,7 +1,7 @@
 ---
 title: Agent Instruct Order of Operations
 description: Required utilization procedure when Agent Instruct is adopted—match, expertise, co-maintain docs/rules, lifecycle BUILD.
-version: "1.0.0"
+version: "1.0.1"
 status: current
 audience:
   - developers
@@ -25,7 +25,9 @@ last_updated: "2026-08-10"
 
 Canonical **order of operations (O3)** for AI and humans when **Agent Instruct is in use**. This document is the utilization authority: task → primary expert pack → L4 law → co-maintain docs/rules → verify → evolve agents with features and core tasks.
 
-**Document version:** 1.0.0  
+Standing hub checklist (all maintenance turns): [RULES — Operator enforcement](../RULES.md#operator-enforcement).
+
+**Document version:** 1.0.1  
 
 **Related:** [README.md](./README.md) · [RUNTIME.md](./RUNTIME.md) · [FRAMEWORK.md](./FRAMEWORK.md) · [PARAMS.md](./PARAMS.md) · [BUILD.md](./BUILD.md) · [PLAN-HOOK.md](./PLAN-HOOK.md) · [RULES.md](../RULES.md) · [verification-and-ops](../rules/verification-and-ops.md) · [contracts](../rules/contracts.md)
 
@@ -201,7 +203,7 @@ Do **not** invent kit CATALOG defaults for product-only roles. Do **not** create
 
 ## Report shape
 
-Before claiming a task complete under Instruct, state briefly:
+Before claiming a task complete under Instruct, state briefly (may fold into the [RULES Progress Tracker](../RULES.md#progress-tracker-minimum-shape)):
 
 | Field | Example |
 |-------|---------|
@@ -211,6 +213,8 @@ Before claiming a task complete under Instruct, state briefly:
 | L4 docs updated | e.g. `packages/foo/CLI-GUIDE.md` |
 | BUILD regen | yes/no |
 | Gates | Domain A/B + pack verify result |
+
+**Always (maintenance turns):** end work-advancing replies with the hub [Operator enforcement](../RULES.md#operator-enforcement) **Progress Tracker** (ordered tasks + status + commit SHA when committed).
 
 If any declared gate or required verify item failed or was skipped → **STOP**; do not claim complete ([completion rule](../rules/verification-and-ops.md#completion-rule)).
 
@@ -237,4 +241,5 @@ More: [examples/anti-patterns.md](./examples/anti-patterns.md).
 
 | Version | Notes |
 |---------|--------|
+| 1.0.1 | Report shape ties to RULES Progress Tracker / operator enforcement (kit 2.2.1) |
 | 1.0.0 | Initial O3 utilization authority (kit 2.2.0): match, expertise, co-maintain, lifecycle |

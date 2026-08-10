@@ -26,6 +26,25 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 
 ## repo-kit
 
+### [2.2.1] - 2026-08-10
+
+#### Added
+
+- **RULES Operator enforcement** — concise always-on maintenance checklist: verify request → validate procedure → apply Agent/Persona (when Instruct) → plan when needed → git/complete → Progress Tracker with commit SHA per completed committed task.
+- Progress Tracker minimum shape in `kit/RULES.md` (status + commit columns; pure Q&A one-liner).
+
+#### Changed
+
+- RULES hub **2.2.1**: Summary Must row + Contents entry for operator enforcement.
+- OPS **1.0.1**: report shape ties to Progress Tracker.
+- verification-and-ops **1.3.1**: before-complete and contributor checklist reference operator enforcement / Progress Tracker.
+- Root README governance digest: operator enforcement row.
+
+#### Notes
+
+- Thin hub digest only—detail remains in OPS, PLAN-HOOK, versioning-and-git, and verification modules.
+- Bare adopt still skips persona packs; Progress Tracker still applies when advancing repo work.
+
 ### [2.2.0] - 2026-08-10
 
 #### Added

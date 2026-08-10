@@ -73,6 +73,7 @@ Maintenance of any adopting repository follows **`kit/RULES.md`** (hub: authorit
 | Fill authority map from project interest at start | Leave contracts empty until “docs later” |
 | Treat Agent Instruct packs as **views** over `kit/RULES.md` + `kit/rules/*` when agents are used | Invent a second RULES tree in packs or embed full persona bodies in the RULES hub |
 | **When Instruct is in use:** match one primary expert pack; follow [OPS](./kit/agents/OPS.md); co-maintain L4; evolve agents with features | Skip pack match; leave packs stale after surface growth; remote overlays |
+| Follow [Operator enforcement](./kit/RULES.md#operator-enforcement) (verify request, procedure, persona, plan when needed, git/complete, Progress Tracker) | Skip Progress Tracker or procedure check when advancing repo work |
 
 - **Contracts:** co-update and cross-link rules — [`kit/rules/contracts.md`](./kit/rules/contracts.md)  
 - **Completion:** declared Domain A/B gates — [`kit/rules/verification-and-ops.md`](./kit/rules/verification-and-ops.md#completion-rule)  
