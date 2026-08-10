@@ -26,6 +26,20 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 
 ## repo-kit
 
+### [2.3.1] - 2026-08-10
+
+#### Changed
+
+- **AI disclosure enforcement** — `Instructed-by` is dynamic: `git config user.name` → ask user and record (prefer Git config; else project note) → last resort `User`.
+- versioning-and-git **1.0.3**: resolution cascade; no `Directed-by` trailer; blank line before trailers.
+- RULES hub **2.3.1**: Operator step 5 and Must row name `Assisted-by` / `Compliance` / `Instructed-by` with link to domain module.
+- verification-and-ops **1.4.1**: contributor checklist matches dynamic cascade.
+
+#### Notes
+
+- Full trailer law remains in `kit/rules/versioning-and-git.md` (hub is discoverability only).
+- “Directed by” means `Instructed-by`, not a separate trailer.
+
 ### [2.3.0] - 2026-08-10
 
 #### Added

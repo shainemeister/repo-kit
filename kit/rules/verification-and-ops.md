@@ -1,7 +1,7 @@
 ---
 title: Verification and Operations
 description: Verification before ship, completion rule, maintenance cadence, anti-patterns, and contributor checklist.
-version: "1.4.0"
+version: "1.4.1"
 status: current
 audience:
   - developers
@@ -27,7 +27,7 @@ last_updated: "2026-08-10"
 
 Ship gates, completion rules, cadence, anti-patterns, and the contributor checklist.
 
-**Document version:** 1.4.0  
+**Document version:** 1.4.1  
 
 **Related:** [RULES.md](../RULES.md) · [security.md](./security.md) · [authoring-and-style.md](./authoring-and-style.md) · [contracts.md](./contracts.md) · [versioning-and-git.md](./versioning-and-git.md) · [ai-docs-workspace.md](./ai-docs-workspace.md) · [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md) · [UPGRADE.md](../UPGRADE.md) · [agents/README.md](../agents/README.md) · [agents/OPS.md](../agents/OPS.md)
 
@@ -198,7 +198,7 @@ Before you commit or share a change:
 - [ ] Agent packs do not redefine L4 law; `authority_paths` / expertise / `verify` align with RULES ([agents](../agents/README.md))  
 - [ ] PLAN Agent models preserved across kit upgrade (when agents are in use)  
 - [ ] Progress Tracker included on work-advancing replies ([RULES](../RULES.md#progress-tracker-minimum-shape))  
-- [ ] If AI assisted: commit includes `Assisted-by` / `Compliance` / `Instructed-by`  
+- [ ] If AI assisted: commit includes `Assisted-by` / `Compliance` / `Instructed-by` with `Instructed-by` resolved dynamically (`git config user.name` → ask+record → `User`; no `Directed-by`) ([versioning-and-git](./versioning-and-git.md#ai-assisted-commits-required-disclosure))  
 
 ---
 
@@ -206,6 +206,7 @@ Before you commit or share a change:
 
 | Version | Notes |
 |---------|--------|
+| 1.4.1 | AI disclosure checklist: dynamic Instructed-by cascade; no Directed-by (kit 2.3.1) |
 | 1.4.0 | AI docs workspace verification, cadence, anti-patterns, checklist (kit 2.3.0) |
 | 1.3.1 | Operator enforcement + Progress Tracker in before-complete and checklist (kit 2.2.1) |
 | 1.3.0 | Instruct O3 in before-complete; lifecycle cadence; expertise anti-patterns; checklist OPS (kit 2.2.0) |

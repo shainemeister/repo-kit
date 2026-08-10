@@ -1,7 +1,7 @@
 ---
 title: Repository Maintenance Rules
 description: Maintenance policy hub—authority map, kit baseline, and index to domain rule modules.
-version: "2.3.0"
+version: "2.3.1"
 status: current
 audience:
   - developers
@@ -32,7 +32,7 @@ last_updated: "2026-08-10"
 
 Fundamental rules for maintaining a professional, auditable repository. This file is the **hub**: authority map, kit baseline, and Must / Must not. Domain detail lives in [rules/](./rules/). In adopting product repos this hub lives at **`kit/RULES.md`**.
 
-**Document version:** 2.3.0  
+**Document version:** 2.3.1  
 
 **Related:** [README.md](../README.md) · [SETUP.md](./SETUP.md) · [UPGRADE.md](./UPGRADE.md) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) · [CHANGELOG.md](./CHANGELOG.md) · [agents/README.md](./agents/README.md) · [agents/OPS.md](./agents/OPS.md) · [rules/](./rules/) · [configs/pylintrc](./configs/pylintrc)
 
@@ -50,7 +50,7 @@ Copy this hub (and the `rules/` modules you need) into the project’s **`kit/`*
 | Maintain **project root** `CHANGELOG.md` (Keep a Changelog) | Ship version bumps or release-worthy changes without CHANGELOG |
 | Keep standards under **`kit/`**; product outside | Flatten RULES/standards onto product root as default |
 | Keep [Kit baseline](#kit-baseline) current after adopt/upgrade | Lose track of kit version after deleting SETUP |
-| Use conventional commit messages that match staged files ([versioning-and-git](./rules/versioning-and-git.md)) | Mix unrelated packages or leave CLI/API/security docs stale |
+| Use conventional commit messages that match staged files; when AI assisted include `Assisted-by` / `Compliance` / `Instructed-by` ([versioning-and-git](./rules/versioning-and-git.md#ai-assisted-commits-required-disclosure)) | Mix unrelated packages, omit AI disclosure when assisted, or invent a `Directed-by` trailer |
 | Keep packages composable at the workflow layer ([architecture](./rules/architecture.md)) | Silently rename public APIs, CLI fields, or schema columns |
 | Run **pylint** on Python product code after those edits ([authoring-and-style](./rules/authoring-and-style.md)) | Treat pylint as a product runtime install for end users |
 | Fill [language surface inventory](./rules/security.md#language-surface-inventory); run declared style + SAST before complete | Paste the full multi-language SAST table without inventory evidence |
@@ -78,7 +78,7 @@ Standing checklist for AI and humans **maintaining this repository**. Domain det
 | 2 | **Validate the procedure** before execution | When Instruct: [OPS O3](./agents/OPS.md). Always: declared gates and completion ([verification-and-ops](./rules/verification-and-ops.md)) |
 | 3 | **Apply the appropriate Agent / Persona** for the task | When Instruct is in use: one primary expert pack ([OPS](./agents/OPS.md), [When Instruct is in use](#when-agent-instruct-is-in-use)). Bare adopt: this hub + domain modules only |
 | 4 | **Plan + AI `docs/` workspace** when work is multi-step, research, or durable | Root `PLAN.md` for mission/Agent models; detailed plans → `docs/plan/`; research → `docs/research/`; build context → `docs/project_build/`; curated refs → `docs/resources/` ([ai-docs-workspace](./rules/ai-docs-workspace.md)). Scaffold modules **when needed**. Skip for trivial single-step replies |
-| 5 | **Git format + confirm complete** | Conventional commits match staged files ([versioning-and-git](./rules/versioning-and-git.md)); confirm L4 co-updates and declared gates before “done” ([completion rule](./rules/verification-and-ops.md#completion-rule)); promote durable findings from `docs/` to L4 when they become promises |
+| 5 | **Git format + confirm complete** | Conventional commits match staged files ([versioning-and-git](./rules/versioning-and-git.md)); when AI assisted, end the message with `Assisted-by` / `Compliance` / `Instructed-by` (dynamic `Instructed-by`: git `user.name` → ask+record → `User` — [AI disclosure](./rules/versioning-and-git.md#ai-assisted-commits-required-disclosure)); confirm L4 co-updates and declared gates before “done” ([completion rule](./rules/verification-and-ops.md#completion-rule)); promote durable findings from `docs/` to L4 when they become promises |
 | 6 | **Progress Tracker** at the end of each reply that advances work | Ordered tasks with status; **commit SHA** for each completed task that was committed; `—` if not committed. Durable notes belong in `docs/`, not only the tracker |
 
 ### Progress Tracker (minimum shape)
@@ -251,6 +251,7 @@ Copy-paste prompt also on root [README — Upgrade repo-kit](../README.md#upgrad
 
 | Version | Notes |
 |---------|--------|
+| 2.3.1 | Operator step 5 + Must: name AI disclosure trailers; dynamic Instructed-by (link to versioning-and-git cascade) |
 | 2.3.0 | AI docs workspace: authority map rows; Must; operator step 4 plan+docs; domain module ai-docs-workspace |
 | 2.2.1 | Operator enforcement checklist + Progress Tracker (request verify, procedure, persona, plan, git/complete, tracker) |
 | 2.2.0 | Instruct utilization: O3 Musts when Instruct in use; OPS authority-map row; When Agent Instruct is in use subsection (kit 2.2.0) |

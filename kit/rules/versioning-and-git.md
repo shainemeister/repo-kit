@@ -1,7 +1,7 @@
 ---
 title: Versioning and Git
 description: Three version surfaces, mandatory CHANGELOG, kit baseline pointer, git hygiene, commit format, and AI disclosure.
-version: "1.0.2"
+version: "1.0.3"
 status: current
 audience:
   - developers
@@ -13,14 +13,14 @@ related:
   - ./contracts.md
   - ./verification-and-ops.md
   - ../agents/PLAN-HOOK.md
-last_updated: "2026-08-05"
+last_updated: "2026-08-10"
 ---
 
 # Versioning and Git
 
 Version surfaces, CHANGELOG discipline, and git / commit rules.
 
-**Document version:** 1.0.2  
+**Document version:** 1.0.3  
 
 **Related:** [RULES.md](../RULES.md) · [UPGRADE.md](../UPGRADE.md) · [CHANGELOG.md](../CHANGELOG.md) · [contracts.md](./contracts.md) · [verification-and-ops.md](./verification-and-ops.md) · [PLAN-HOOK.md](../agents/PLAN-HOOK.md)
 
@@ -201,18 +201,20 @@ Useful when needed; **not** mandatory (except the AI disclosure block, which is 
 
 When an AI system meaningfully assists with the **change itself** (code, docs, configuration, or the commit message), the commit **must** include the following footer block. Pure human-only commits omit it.
 
+There is **no** `Directed-by` trailer. “Directed by” means **`Instructed-by`**.
+
 | Trailer | Required content |
 |---------|------------------|
 | `Assisted-by:` | AI make / model (and optional tool) that assisted **this** commit — fill at commit time |
 | `Compliance:` | Explicit reference to maintenance rules (`RULES.md` or this module set) |
-| `Instructed-by:` | Directing human — **value of** `git config user.name` for the committer |
+| `Instructed-by:` | Directing human — **resolved dynamically** (see cascade below); not a hardcoded doc username |
 
 **Template form** (copy structure; resolve fields at commit time):
 
 ```text
 Assisted-by: <AI make / model>
 Compliance: RULES.md
-Instructed-by: <git config user.name>
+Instructed-by: <resolved directing human>
 ```
 
 **How to resolve fields**
@@ -220,11 +222,22 @@ Instructed-by: <git config user.name>
 | Field | Resolution |
 |-------|------------|
 | `Assisted-by` | Name the AI make/model/tool that actually performed the work for this commit. Do not hardcode a vendor from documentation. |
-| `Instructed-by` | Run `git config user.name` and use that exact string. If unset, configure it before committing so disclosure matches Git author identity. |
+| `Compliance` | Usually `RULES.md` (or an explicit path to this module set). |
+| `Instructed-by` | Follow the [Instructed-by resolution cascade](#instructed-by-resolution-cascade) every time—do not copy a name from an old commit when Git identity is available. |
 
 ```text
 git config user.name
 ```
+
+#### Instructed-by resolution cascade
+
+Resolve **in order**. Stop at the first success.
+
+| Priority | Action |
+|----------|--------|
+| **1 — Git config** | Run `git config user.name`. If non-empty, use that **exact** string as `Instructed-by`. |
+| **2 — Ask + record** | If unset or empty: **ask the user** for the directing human’s display name. Then **record** it so future commits do not re-ask: prefer `git config user.name "<Name>"` (local or global). If Git cannot be configured in the environment, write a short project note (e.g. `docs/project_build/git-identity.md` or a line in root `PLAN.md` when PLAN exists) with the display name only—**no** secrets or personal email required for the trailer. Use that recorded name for `Instructed-by`. |
+| **3 — Last resort** | If the AI still cannot obtain a name (user unreachable or refuses): use **`User`**. Do not invent a person. Prefer fixing Git config on the next turn. |
 
 **Example values for `Assisted-by`** (use the one that actually did the work):
 
@@ -238,11 +251,12 @@ git config user.name
 
 **Rules**
 
-1. Place the three lines at the end of the commit message (after any body or other footers).  
+1. Place the three lines at the end of the commit message (after any body or other footers), preceded by a blank line.  
 2. **`Assisted-by` is dynamic:** use the real AI make/model (and tool if useful) that performed the work for **this** commit.  
-3. **`Instructed-by` is dynamic:** set it to the output of `git config user.name`.  
-4. The presence of this block asserts that the human (Git-configured committer) reviewed the result and that the change follows maintenance contracts.  
-5. Do **not** put the AI disclosure in the subject line.
+3. **`Instructed-by` is dynamic:** resolve via the cascade above on every AI-assisted commit.  
+4. The presence of this block asserts that the directing human reviewed the result and that the change follows maintenance contracts.  
+5. Do **not** put the AI disclosure in the subject line.  
+6. Do **not** use a trailer named `Directed-by`.
 
 **When it is required**
 
@@ -253,7 +267,7 @@ git config user.name
 | AI only suggested a one-line fix that the human rewrote | Optional (prefer to include) |
 | Pure human work | Omit |
 
-**Good example** (illustrative; `Instructed-by` must match `git config user.name`):
+**Good example** (illustrative; `Instructed-by` resolved from `git config user.name` when set):
 
 ```text
 docs(rules): require AI disclosure footer on assisted commits
@@ -322,7 +336,7 @@ Commit messages and **what is staged** must stay consistent with the documentati
 7. Were **declared** Domain A/B gates for other touched language surfaces run?  
 8. Would a reviewer find the subject by searching the feature name used in the README?  
 9. Would this subject still make sense **two years** from now?  
-10. If AI assisted: are `Assisted-by` / `Compliance` / `Instructed-by` present?
+10. If AI assisted: are `Assisted-by` / `Compliance` / `Instructed-by` present with `Instructed-by` resolved via the cascade (git user.name → ask+record → `User`)?
 
 ---
 
@@ -352,6 +366,7 @@ A remote is optional. When one exists, do not assume write access to `main`/`mas
 
 | Version | Notes |
 |---------|--------|
+| 1.0.3 | Instructed-by resolution cascade (git user.name → ask+record → `User`); no Directed-by trailer; blank line before trailers |
 | 1.0.2 | Agent Instruct scopes (`agents`, `plan`); pointer to PLAN-HOOK commit guidance |
 | 1.0.1 | Kit baseline path `kit/RULES.md`; standards under kit/; project CHANGELOG at root |
 | 1.0.0 | Extracted from RULES 1.4.1 for kit 2.0; upgrade playbook deferred to UPGRADE.md; kit CHANGELOG path under kit/ |
