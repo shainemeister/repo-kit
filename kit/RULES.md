@@ -1,7 +1,7 @@
 ---
 title: Repository Maintenance Rules
 description: Maintenance policy hub—authority map, kit baseline, and index to domain rule modules.
-version: "2.3.1"
+version: "2.4.0"
 status: current
 audience:
   - developers
@@ -24,17 +24,19 @@ related:
   - rules/versioning-and-git.md
   - rules/verification-and-ops.md
   - rules/ai-docs-workspace.md
+  - rules/workboard.md
+  - rules/continuity.md
   - configs/pylintrc
-last_updated: "2026-08-10"
+last_updated: "2026-08-12"
 ---
 
 # Repository Maintenance Rules
 
 Fundamental rules for maintaining a professional, auditable repository. This file is the **hub**: authority map, kit baseline, and Must / Must not. Domain detail lives in [rules/](./rules/). In adopting product repos this hub lives at **`kit/RULES.md`**.
 
-**Document version:** 2.3.1  
+**Document version:** 2.4.0  
 
-**Related:** [README.md](../README.md) · [SETUP.md](./SETUP.md) · [UPGRADE.md](./UPGRADE.md) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) · [CHANGELOG.md](./CHANGELOG.md) · [agents/README.md](./agents/README.md) · [agents/OPS.md](./agents/OPS.md) · [rules/](./rules/) · [configs/pylintrc](./configs/pylintrc)
+**Related:** [README.md](../README.md) · [SETUP.md](./SETUP.md) · [UPGRADE.md](./UPGRADE.md) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) · [CHANGELOG.md](./CHANGELOG.md) · [agents/README.md](./agents/README.md) · [agents/OPS.md](./agents/OPS.md) · [rules/](./rules/) · [workboard.md](./rules/workboard.md) · [configs/pylintrc](./configs/pylintrc)
 
 ---
 
@@ -63,8 +65,10 @@ Copy this hub (and the `rules/` modules you need) into the project’s **`kit/`*
 | **When Instruct is in use:** evolve agents (PLAN + [BUILD](./agents/BUILD.md)) when features, packages, surfaces, languages, or durable task classes appear | Leave packs stale after authority map / inventory / enablement change |
 | Follow [Operator enforcement](#operator-enforcement) on every maintenance turn | Skip request verify, procedure check, or Progress Tracker when advancing repo work |
 | Dynamically build and maintain root **`docs/`** AI workspace when research/plan/build context is needed ([ai-docs-workspace](./rules/ai-docs-workspace.md)) | Put project research under `kit/`; use `docs/` as dual home for public contracts; abandon stale critical plans without status |
+| Track **multi-phase** work on [docs/WORKBOARD.md](../docs/WORKBOARD.md) ([workboard](./rules/workboard.md)) | Start multi-phase work only in chat or unlinked folders; paste live phase tables into PLAN.md |
+| Prefer surgical edits when a [continuity](./rules/continuity.md) overlay is in use | Full-file rewrite of a named protected surface without an explicit restore ask |
 
-**First adopt:** [SETUP.md](./SETUP.md) (then delete or archive). **Later kit upgrades:** [UPGRADE.md](./UPGRADE.md) (durable). **Agent Instruct:** [agents/README.md](./agents/README.md) · utilization **[agents/OPS.md](./agents/OPS.md)** (description + link only in this hub). **Operator checklist:** [Operator enforcement](#operator-enforcement). **AI workspace:** root [`docs/`](../docs/) · policy [ai-docs-workspace](./rules/ai-docs-workspace.md).
+**First adopt:** [SETUP.md](./SETUP.md) (then delete or archive). **Later kit upgrades:** [UPGRADE.md](./UPGRADE.md) (durable). **Agent Instruct:** [agents/README.md](./agents/README.md) · utilization **[agents/OPS.md](./agents/OPS.md)** (description + link only in this hub). **Operator checklist:** [Operator enforcement](#operator-enforcement). **AI workspace:** root [`docs/`](../docs/) · policy [ai-docs-workspace](./rules/ai-docs-workspace.md). **Multi-phase execution:** [workboard](./rules/workboard.md) · `docs/WORKBOARD.md`.
 
 ---
 
@@ -77,7 +81,7 @@ Standing checklist for AI and humans **maintaining this repository**. Domain det
 | 1 | **Verify the user request** and comply with this hub + domain modules | Open the [authority map](#authority-map); do not invent policy outside L4 |
 | 2 | **Validate the procedure** before execution | When Instruct: [OPS O3](./agents/OPS.md). Always: declared gates and completion ([verification-and-ops](./rules/verification-and-ops.md)) |
 | 3 | **Apply the appropriate Agent / Persona** for the task | When Instruct is in use: one primary expert pack ([OPS](./agents/OPS.md), [When Instruct is in use](#when-agent-instruct-is-in-use)). Bare adopt: this hub + domain modules only |
-| 4 | **Plan + AI `docs/` workspace** when work is multi-step, research, or durable | Root `PLAN.md` for mission/Agent models; detailed plans → `docs/plan/`; research → `docs/research/`; build context → `docs/project_build/`; curated refs → `docs/resources/` ([ai-docs-workspace](./rules/ai-docs-workspace.md)). Scaffold modules **when needed**. Skip for trivial single-step replies |
+| 4 | **Plan + AI `docs/` workspace** when work is multi-step, research, or durable | Root `PLAN.md` for mission/Agent models (not a todo list). **Multi-phase:** register and update **`docs/WORKBOARD.md`** ([workboard](./rules/workboard.md)) before phase code. Deep OOO → optional annex under `docs/plan/<id>/`. Research → `docs/research/`; build context → `docs/project_build/`; curated refs → `docs/resources/` ([ai-docs-workspace](./rules/ai-docs-workspace.md)). Scaffold **when needed**. Skip for trivial single-step replies |
 | 5 | **Git format + confirm complete** | Conventional commits match staged files ([versioning-and-git](./rules/versioning-and-git.md)); when AI assisted, end the message with `Assisted-by` / `Compliance` / `Instructed-by` (dynamic `Instructed-by`: git `user.name` → ask+record → `User` — [AI disclosure](./rules/versioning-and-git.md#ai-assisted-commits-required-disclosure)); confirm L4 co-updates and declared gates before “done” ([completion rule](./rules/verification-and-ops.md#completion-rule)); promote durable findings from `docs/` to L4 when they become promises |
 | 6 | **Progress Tracker** at the end of each reply that advances work | Ordered tasks with status; **commit SHA** for each completed task that was committed; `—` if not committed. Durable notes belong in `docs/`, not only the tracker |
 
@@ -158,7 +162,10 @@ Replace paths below with your project’s real files. Rows that do not apply may
 | AI docs workspace policy | [rules/ai-docs-workspace.md](./rules/ai-docs-workspace.md) |
 | AI docs workspace (index) | Project root `docs/README.md` (**outside** `kit/`) — scaffold when first needed |
 | Research notes (AI) | `docs/research/` |
-| Detailed execution plans (AI) | `docs/plan/` — complements root `PLAN.md` |
+| Detailed execution plans (AI) | `docs/plan/` — complements root `PLAN.md`; optional program annexes |
+| Active multi-phase work / next phase | Project root `docs/WORKBOARD.md` — [workboard](./rules/workboard.md); skip if no multi-phase work |
+| Workboard / annex / archive policy | [rules/workboard.md](./rules/workboard.md) |
+| Code continuity overlay (optional) | Portable policy [rules/continuity.md](./rules/continuity.md); filled overlay from [TEMPLATE-CONTINUITY.md](./templates/TEMPLATE-CONTINUITY.md) at a recorded project path (not this module) |
 | Project build context (AI) | `docs/project_build/` |
 | Curated AI resources | `docs/resources/` |
 
@@ -177,7 +184,9 @@ Replace paths below with your project’s real files. Rows that do not apply may
 | [rules/security.md](./rules/security.md) | Trust baseline; inventory; SAST; certification |
 | [rules/versioning-and-git.md](./rules/versioning-and-git.md) | Version surfaces; CHANGELOG; commits; AI disclosure |
 | [rules/verification-and-ops.md](./rules/verification-and-ops.md) | Verify table; completion; cadence; anti-patterns; checklist |
-| [rules/ai-docs-workspace.md](./rules/ai-docs-workspace.md) | Root `docs/` AI resource workspace (research, plan, project_build, resources) |
+| [rules/ai-docs-workspace.md](./rules/ai-docs-workspace.md) | Root `docs/` AI resource workspace (research, workboard, plan, project_build, resources) |
+| [rules/workboard.md](./rules/workboard.md) | Multi-phase execution: single board, phase ship, annex archive, agent resume |
+| [rules/continuity.md](./rules/continuity.md) | Optional surgical-edit overlay policy (no product paths in kit defaults) |
 
 Adopters keep domain modules under **`kit/rules/`**, or fold selected modules into a single `kit/RULES.md`—document the choice in the authority map. See [UPGRADE.md](./UPGRADE.md) merge options.
 
@@ -251,6 +260,7 @@ Copy-paste prompt also on root [README — Upgrade repo-kit](../README.md#upgrad
 
 | Version | Notes |
 |---------|--------|
+| 2.4.0 | Plan control: workboard + optional continuity; Operator step 4 names the board; authority-map rows (kit 2.4.0) |
 | 2.3.1 | Operator step 5 + Must: name AI disclosure trailers; dynamic Instructed-by (link to versioning-and-git cascade) |
 | 2.3.0 | AI docs workspace: authority map rows; Must; operator step 4 plan+docs; domain module ai-docs-workspace |
 | 2.2.1 | Operator enforcement checklist + Progress Tracker (request verify, procedure, persona, plan, git/complete, tracker) |

@@ -1,7 +1,7 @@
 ---
 title: Root Hygiene
 description: Unified packaging—standards under kit/, repository-specific data outside; SETUP and UPGRADE lifecycles.
-version: "1.3.0"
+version: "1.4.0"
 status: current
 audience:
   - developers
@@ -14,17 +14,18 @@ related:
   - ../CHANGELOG.md
   - ../agents/README.md
   - ./ai-docs-workspace.md
+  - ./workboard.md
   - ../../README.md
-last_updated: "2026-08-10"
+last_updated: "2026-08-12"
 ---
 
 # Root Hygiene
 
 Keep the repository root **scannable**: entry points and project-specific surfaces first; **standards under `kit/`**; product code and AI workspace in purpose directories outside `kit/`.
 
-**Document version:** 1.3.0  
+**Document version:** 1.4.0  
 
-**Related:** [RULES.md](../RULES.md) · [SETUP.md](../SETUP.md) · [UPGRADE.md](../UPGRADE.md) · [CHANGELOG.md](../CHANGELOG.md) · [agents/README.md](../agents/README.md) · [ai-docs-workspace.md](./ai-docs-workspace.md) · [README.md](../../README.md)
+**Related:** [RULES.md](../RULES.md) · [SETUP.md](../SETUP.md) · [UPGRADE.md](../UPGRADE.md) · [CHANGELOG.md](../CHANGELOG.md) · [agents/README.md](../agents/README.md) · [ai-docs-workspace.md](./ai-docs-workspace.md) · [workboard.md](./workboard.md) · [README.md](../../README.md)
 
 ---
 
@@ -80,6 +81,7 @@ Keep the repository root **scannable**: entry points and project-specific surfac
 | `CHANGELOG.md` | **Project** history (**required**) — repository H2 → version H3 → categories; **not** kit release notes |
 | `PLAN.md` | Project plan (repo-specific; not shipped by the kit). **Required when using Agent Instruct** (Agent models section); optional for bare adopt |
 | `docs/` | **AI resource workspace** (research, plan, project_build, resources)—scaffold when needed; outside `kit/` ([ai-docs-workspace](./ai-docs-workspace.md)) |
+| `docs/WORKBOARD.md` | **Multi-phase execution board** when used ([workboard](./workboard.md)) — project data, not kit law |
 | Package or product entry files | Only when they are the natural top-level surface |
 | `.pylintrc` | Optional Python style gate (or package-local / under `kit/configs/`) |
 
@@ -155,6 +157,7 @@ First adopt: [SETUP.md](../SETUP.md). Later kit bumps: [UPGRADE.md](../UPGRADE.m
 
 | Version | Notes |
 |---------|--------|
+| 1.4.0 | `docs/WORKBOARD.md` allowed at docs root (kit 2.4.0) |
 | 1.3.0 | Root `docs/` AI workspace outside kit; separation rules (kit 2.3.0) |
 | 1.2.0 | Agent Instruct: `kit/agents/`; PLAN required when using agents; generated packs are project-filled views under `kit/` |
 | 1.1.0 | Unified packaging: adopters keep standards under `kit/`; product and project CHANGELOG outside; remove “flatten to root” default |
