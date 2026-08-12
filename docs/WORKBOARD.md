@@ -48,7 +48,7 @@ last_updated: "2026-08-12"
 
 ### Progress log (newest first, max ~15 lines)
 
-- 2026-08-12 **plan-control-2.4.0** shipped (P0–P8): workboard + continuity policy, hub/OPS/SETUP/UPGRADE wire, CHANGELOG `2.4.0`. Next: adopter upgrade in consuming repos (not this tree).
+- 2026-08-12 **plan-control-2.4.0** shipped (P0–P8): `5ca9ea7` board · `84a3bd0` rules · `975a379` templates · `4b40af8` SETUP/UPGRADE · `1d2af58` agents · `c5bed29` CHANGELOG `2.4.0`. Next: adopter upgrade in consuming repos (not this tree).
 - 2026-08-12 Registered **plan-control-2.4.0**.
 
 ---
