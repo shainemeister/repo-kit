@@ -1,7 +1,7 @@
 ---
 title: Workboard Lifecycle
 description: Single active multi-phase workboard, phase-ship hygiene, optional annex archive, and agent resume protocol.
-version: "1.0.0"
+version: "1.0.1"
 status: current
 audience:
   - developers
@@ -29,7 +29,7 @@ last_updated: "2026-08-12"
 
 How multi-phase work is **registered, advanced, shipped, and archived** so agents and humans share one continuous execution surface. This module is **domain-agnostic**. Product paths belong in the adopter’s authority map and filled board—not in this file.
 
-**Document version:** 1.0.0
+**Document version:** 1.0.1
 
 **Related:** [RULES.md](../RULES.md) · [ai-docs-workspace.md](./ai-docs-workspace.md) · [continuity.md](./continuity.md) · [contracts.md](./contracts.md) · [OPS.md](../agents/OPS.md) · [PLAN-HOOK.md](../agents/PLAN-HOOK.md) · [templates/docs/WORKBOARD.md](../templates/docs/WORKBOARD.md)
 
@@ -47,7 +47,7 @@ How multi-phase work is **registered, advanced, shipped, and archived** so agent
 | Optional annex only while open and **linked from the board** | Grow unlimited novels on the board (ideal cap ~200 lines) |
 | On program complete: **archive** annex (`git mv` → `docs/plan/archive/`) | Delete archive packs without an explicit project decision |
 | Cap **Recently completed** (~5 one-line rows) | Dump full order-of-operations history onto the board |
-| Point root **`PLAN.md`** at the board in one short subsection | Paste live phase tables into PLAN |
+| When root **`PLAN.md`** exists, point it at the board in one short subsection; if there is no PLAN, the landing README is enough | Paste live phase tables into PLAN |
 
 **Dual path:** trivial / single-step / pure Q&A need **no** board. Multi-phase or multi-session execution **does**. Bare adopt with no multi-phase work may skip this module. **Not** a Domain A/B gate.
 
@@ -267,7 +267,7 @@ Use when the **program** (not a single phase) is complete.
 ### Session start
 
 1. Read **`docs/WORKBOARD.md`** (when it exists or the task is multi-phase).  
-2. Read **`PLAN.md`** for mission, non-goals, and constraints only (not todos).  
+2. If **`PLAN.md`** exists, read it for mission, non-goals, and constraints only (not todos). If it does not, use the repo landing README the same way. Do not create PLAN just to satisfy this step.  
 3. Continue the **`active`** phase unless the user redirects.  
 4. If the board is required but missing, recreate from the template and stop for confirmation if unsure.
 
@@ -347,4 +347,5 @@ Do **not** run two live boards. Do **not** force a rename on upgrade—preserve 
 
 | Version | Notes |
 |---------|--------|
+| 1.0.1 | PLAN optional when absent; session start uses landing README (kit 2.4.0 clarification) |
 | 1.0.0 | Initial portable workboard lifecycle (kit 2.4.0) |
