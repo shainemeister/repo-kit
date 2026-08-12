@@ -6,7 +6,7 @@ Use this file when starting or aligning a repository so **formal markdown guides
 
 This kit ships `SETUP.md` under [`kit/`](./). **Copy standards into the target repository’s `kit/`** (same packaging as this repo). Keep **product code** and **project** `CHANGELOG.md` **outside** `kit/`. Adopting projects remove SETUP after initiation.
 
-**Permanent after initiation:** root `README.md`, root **project** `CHANGELOG.md`, **`kit/RULES.md`** (hub + kit baseline), `kit/MARKDOWN-STANDARD.md` (or link), and `kit/rules/` as needed. **When using Agent Instruct:** keep `kit/agents/` (include [OPS.md](./agents/OPS.md)), root `PLAN.md` Agent models, and track thin `generated/` packs. **AI workspace:** root **`docs/`** when research/plan/build context is used ([ai-docs-workspace](./rules/ai-docs-workspace.md); templates [templates/docs/](./templates/docs/)). **Later kit upgrades:** durable [UPGRADE.md](./UPGRADE.md).
+**Permanent after initiation:** root `README.md`, root **project** `CHANGELOG.md`, **`kit/RULES.md`** (hub + kit baseline), `kit/MARKDOWN-STANDARD.md` (or link), and `kit/rules/` as needed. **When using Agent Instruct:** keep `kit/agents/` (include [OPS.md](./agents/OPS.md)), root `PLAN.md` Agent models, and track thin `generated/` packs. **AI workspace:** root **`docs/`** when research/plan/build context is used ([ai-docs-workspace](./rules/ai-docs-workspace.md); templates [templates/docs/](./templates/docs/)). **Multi-phase execution:** optional `docs/WORKBOARD.md` ([workboard](./rules/workboard.md)). **Later kit upgrades:** durable [UPGRADE.md](./UPGRADE.md).
 
 **Already have a Kit baseline?** Stop and use [UPGRADE.md](./UPGRADE.md).
 
@@ -22,9 +22,10 @@ This kit ships `SETUP.md` under [`kit/`](./). **Copy standards into the target r
    - **Bare adopt (no agents):** `PLAN.md` remains optional; skip BUILD.  
 5. [Fill the authority map](#4-fill-the-authority-map) (product paths **outside** `kit/`), [language inventory](./rules/security.md#language-surface-inventory), and verification table.  
 6. [Record kit baseline](#4b-record-kit-baseline) in `kit/RULES.md`.  
-7. [Pick templates](#5-pick-templates-by-interest), scaffold package docs **outside** `kit/`, and [verify](#8-first-verification-commands).  
-8. **If using Agent Instruct:** ensure Agent models section, then run **[BUILD](./agents/BUILD.md)** → `kit/agents/generated/` ([Agent Instruct path](#agent-instruct-path)). Ongoing tasks use **[OPS](./agents/OPS.md)** O3.  
-9. [Delete or archive this file](#after-setup); point maintainers at [UPGRADE.md](./UPGRADE.md). **Keep** `kit/agents/` and PLAN Agent models.
+7. [Optional workboard](#4c-optional-workboard) if the interest is already multi-phase.  
+8. [Pick templates](#5-pick-templates-by-interest), scaffold package docs **outside** `kit/`, and [verify](#8-first-verification-commands).  
+9. **If using Agent Instruct:** ensure Agent models section, then run **[BUILD](./agents/BUILD.md)** → `kit/agents/generated/` ([Agent Instruct path](#agent-instruct-path)). Ongoing tasks use **[OPS](./agents/OPS.md)** O3.  
+10. [Delete or archive this file](#after-setup); point maintainers at [UPGRADE.md](./UPGRADE.md). **Keep** `kit/agents/` and PLAN Agent models. **Keep** `docs/WORKBOARD.md` if you scaffolded it.
 
 Layout doctrine: [rules/hygiene.md](./rules/hygiene.md). Agent Instruct: [agents/README.md](./agents/README.md) · [agents/OPS.md](./agents/OPS.md).
 
@@ -51,9 +52,10 @@ For a **live codebase** that has never recorded a Kit baseline:
 5. **Add contracts only where surfaces exist** (package CLI guide if a CLI exists; skip empty SECURITY per [modularity](./rules/security.md#security-documentation-modularity)).  
 6. **Adopt contract policy** — keep [rules/contracts.md](./rules/contracts.md) under `kit/rules/`.  
 7. **Optional Agent Instruct** — if using agents: PLAN Agent models + first [BUILD](./agents/BUILD.md); see [Agent Instruct path](#agent-instruct-path).  
-8. **Record Kit baseline** from upstream [CHANGELOG.md](./CHANGELOG.md) under `## repo-kit`.  
-9. **Project root CHANGELOG** adoption entry under the current version.  
-10. **Delete or archive this SETUP** from the project’s `kit/`; keep `kit/agents/` and PLAN Agent models if present; future kit bumps use **[UPGRADE.md](./UPGRADE.md)**.
+8. **Optional workboard** — if the repo already has (or is about to start) multi-phase work: [4c](#4c-optional-workboard). Map any existing planning folder; do not invent a second board.  
+9. **Record Kit baseline** from upstream [CHANGELOG.md](./CHANGELOG.md) under `## repo-kit`.  
+10. **Project root CHANGELOG** adoption entry under the current version.  
+11. **Delete or archive this SETUP** from the project’s `kit/`; keep `kit/agents/` and PLAN Agent models if present; keep `docs/WORKBOARD.md` if scaffolded; future kit bumps use **[UPGRADE.md](./UPGRADE.md)**.
 
 ---
 
@@ -89,6 +91,10 @@ Follow [Platform-aware examples](./MARKDOWN-STANDARD.md#platform-aware-examples)
 | [templates/](./templates/) | `kit/templates/` or package paths | As needed | Scaffold into **packages** outside `kit/` |
 | [templates/docs/](./templates/docs/) | Project root **`docs/`** | When AI workspace needed | Copy skeletons to root `docs/` (not under kit as live notes) |
 | [rules/ai-docs-workspace.md](./rules/ai-docs-workspace.md) | `kit/rules/` | Recommended | AI docs workspace policy |
+| [rules/workboard.md](./rules/workboard.md) | `kit/rules/` | Recommended | Multi-phase board / annex / archive |
+| [rules/continuity.md](./rules/continuity.md) | `kit/rules/` | Optional | Portable surgical-edit policy (empty surface table) |
+| [TEMPLATE-CONTINUITY.md](./templates/TEMPLATE-CONTINUITY.md) | Project overlay (e.g. `docs/project_build/continuity.md`) | If high-blast-radius code | Filled overlay — **not** this kit module; preserve on upgrade |
+| [templates/docs/WORKBOARD.md](./templates/docs/WORKBOARD.md) | Project root **`docs/WORKBOARD.md`** | If multi-phase | Live board — project data; do not leave placeholders |
 | [agents/](./agents/) | `kit/agents/` | If Agent Instruct | Instruct docs, templates; then BUILD → `generated/` |
 | [configs/pylintrc](./configs/pylintrc) | `kit/configs/` or `.pylintrc` at package/repo | If Python | Developer tooling only |
 | [UPGRADE.md](./UPGRADE.md) | `kit/` | Recommended | Durable upgrade guide—or always open from Kit source |
@@ -141,6 +147,22 @@ Upgrades later: [README — Upgrade repo-kit](../README.md#upgrade-repo-kit) · 
 
 ---
 
+## 4c. Optional workboard
+
+Scaffold **only** when the interest is already multi-phase or the first work will span multiple sessions. Trivial / single-task adopt may skip.
+
+1. Copy [templates/docs/WORKBOARD.md](./templates/docs/WORKBOARD.md) → project `docs/WORKBOARD.md`.  
+2. Replace every `{{PLACEHOLDER}}`. Primary program may be `none`.  
+3. Enable the `docs/plan/` module (from [templates/docs/plan/](./templates/docs/plan/)) if an annex will be needed.  
+4. Add authority-map rows: active multi-phase work → `docs/WORKBOARD.md`; policy → `kit/rules/workboard.md`.  
+5. If the repo already has another planning folder (e.g. `docs/planning/`), **map it** — do not invent a second board ([path aliases](./rules/workboard.md#path-aliases)).
+
+Policy: [workboard.md](./rules/workboard.md). The board is **project data**: keep it when you delete this SETUP file.
+
+**Optional continuity overlay:** if the repo has high-blast-radius surfaces, copy [TEMPLATE-CONTINUITY.md](./templates/TEMPLATE-CONTINUITY.md) to a recorded project path (typical: `docs/project_build/continuity.md`). Do **not** fill product paths into portable `kit/rules/continuity.md`.
+
+---
+
 ## Agent Instruct path
 
 Optional but recommended for AI-maintained repos. Full index: [agents/README.md](./agents/README.md).
@@ -171,7 +193,7 @@ Packs are **views** over L4 law (`kit/RULES.md` + `kit/rules/*` + product contra
 | Service / long-running | README + SECURITY (+ CLI if any) | Trust boundary, run/verify |
 | Methodology / scoring / formulas | README + METHODOLOGY | Pipeline, formulas, outputs |
 | Security-sensitive tool | README + SECURITY | Trust boundary before features sprawl |
-| Design / multi-phase concept | CONCEPT | Principles + phases; label implementation status |
+| Design / multi-phase concept | CONCEPT + [workboard](./templates/docs/WORKBOARD.md) | Principles in PLAN/CONCEPT; live phases on `docs/WORKBOARD.md` |
 | Docs-only / standards | GENERIC + root landing | Summary, use cases, history |
 | Monorepo multi-package | Per-package README (+ CLI/SECURITY as needed) | Shared `kit/RULES`; thin per-package overlays |
 
@@ -235,6 +257,8 @@ On Windows you may use `py -3.x -m pylint …`. Install pylint in the **develope
 - Add root `certification/` + operator README when product code warrants formal self-attestation certificates.  
 - Enable or tune Agent Instruct: PLAN Agent models + [BUILD](./agents/BUILD.md); use [OPS](./agents/OPS.md) each task ([agents/README.md](./agents/README.md)).  
 - Scaffold root **`docs/`** from [templates/docs/](./templates/docs/) when multi-step research/plan/build work starts ([ai-docs-workspace](./rules/ai-docs-workspace.md)).  
+- If work is multi-phase: scaffold `docs/WORKBOARD.md` ([4c](#4c-optional-workboard)).  
+- If the codebase has high-blast-radius surfaces: copy [TEMPLATE-CONTINUITY.md](./templates/TEMPLATE-CONTINUITY.md) to a recorded project path (e.g. `docs/project_build/continuity.md`). Do not fill product paths into `kit/rules/continuity.md`.  
 - Read [How overlays work](../README.md#how-overlays-work) so stack-specific rules stay in the project map, not a forked kit.
 
 **Checklists:** [Author checklist](./MARKDOWN-STANDARD.md#author-checklist) · [Contributor checklist](./rules/verification-and-ops.md#contributor-checklist)
@@ -255,6 +279,8 @@ On Windows you may use `py -3.x -m pylint …`. Install pylint in the **develope
 | Root `PLAN.md` Agent models (if using agents) | — |
 | Product packages **outside** `kit/` | Unfilled template copies you do not need |
 | Root `docs/` AI workspace (when used) | — |
+| Root `docs/WORKBOARD.md` (when multi-phase) | — |
+| Filled continuity overlay (when used) | — |
 | `.pylintrc` / style configs you adopted | — |
 
 Root hygiene / packaging: [rules/hygiene.md](./rules/hygiene.md). Kit upgrades: [UPGRADE.md](./UPGRADE.md) · [README — Upgrade repo-kit](../README.md#upgrade-repo-kit) via https://github.com/shainemeister/repo-kit. Agent Instruct: [agents/README.md](./agents/README.md).
