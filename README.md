@@ -51,8 +51,9 @@ Upgrade repo-kit for this repository (Kit baseline already present in kit/RULES.
 3. If baseline is 1.x or standards still sit at project root, follow UPGRADE — Migrate from kit 1.x to 2.x layout; otherwise follow the routine upgrade procedure.
 4. Merge only appropriate kit pieces into this project's kit/; preserve authority-map product paths and verification commands.
 5. If Agent Instruct is in use: merge kit/agents/; preserve PLAN Agent models (active/disabled/overlays/tuning); re-run kit/agents/BUILD.md.
-6. Update Kit baseline (version + date); keep Kit source unchanged unless this repo is a deliberate fork.
-7. Add a short note to the project root CHANGELOG.md. Do not copy the full kit CHANGELOG history into the project CHANGELOG.
+6. Preserve docs/WORKBOARD.md, docs/plan/** (or a recorded alias such as docs/planning/), and any filled continuity overlay. Merge kit/rules/workboard.md; do not overwrite a live board with the empty template.
+7. Update Kit baseline (version + date); keep Kit source unchanged unless this repo is a deliberate fork.
+8. Add a short note to the project root CHANGELOG.md. Do not copy the full kit CHANGELOG history into the project CHANGELOG.
 ```
 
 Then follow [kit/SETUP.md](./kit/SETUP.md) (first adopt) or [kit/UPGRADE.md](./kit/UPGRADE.md) (existing baseline).
@@ -75,12 +76,14 @@ Maintenance of any adopting repository follows **`kit/RULES.md`** (hub: authorit
 | **When Instruct is in use:** match one primary expert pack; follow [OPS](./kit/agents/OPS.md); co-maintain L4; evolve agents with features | Skip pack match; leave packs stale after surface growth; remote overlays |
 | Follow [Operator enforcement](./kit/RULES.md#operator-enforcement) (verify request, procedure, persona, plan when needed, git/complete, Progress Tracker) | Skip Progress Tracker or procedure check when advancing repo work |
 | Dynamically build/maintain root **`docs/`** AI workspace when research/plan/build context is needed ([ai-docs-workspace](./kit/rules/ai-docs-workspace.md)) | Put project research under `kit/`; use `docs/` as sole public contract home |
+| Track **multi-phase** work on `docs/WORKBOARD.md` ([workboard](./kit/rules/workboard.md)) | Start multi-phase work only in chat or unlinked folders; paste live phase tables into PLAN.md |
 
 - **Contracts:** co-update and cross-link rules — [`kit/rules/contracts.md`](./kit/rules/contracts.md)  
 - **Completion:** declared Domain A/B gates — [`kit/rules/verification-and-ops.md`](./kit/rules/verification-and-ops.md#completion-rule)  
 - **First adopt:** [`kit/SETUP.md`](./kit/SETUP.md) (then delete)  
 - **Upgrades:** [`kit/UPGRADE.md`](./kit/UPGRADE.md) (durable)  
-- **Agent Instruct:** [`kit/agents/README.md`](./kit/agents/README.md) (optional; PLAN Agent models + BUILD)
+- **Agent Instruct:** [`kit/agents/README.md`](./kit/agents/README.md) (optional; PLAN Agent models + BUILD)  
+- **Plan control:** [`kit/rules/workboard.md`](./kit/rules/workboard.md) (optional until multi-phase work)
 
 ## Summary
 
@@ -93,8 +96,8 @@ Copy what you need from `kit/`, **initiate from project interest** so formal doc
 | [kit/SETUP.md](./kit/SETUP.md) | One-time adoption (greenfield + existing repo); then delete |
 | [kit/UPGRADE.md](./kit/UPGRADE.md) | Durable upgrade + 1.x→2.0 migration |
 | [kit/RULES.md](./kit/RULES.md) | Maintenance hub: authority map, kit baseline |
-| [kit/rules/](./kit/rules/) | Domain modules (hygiene, style, architecture, contracts, security, versioning/git, verification, **AI docs workspace**) |
-| Root [`docs/`](./docs/) | AI resource workspace (research, plan, project_build, resources)—outside `kit/` |
+| [kit/rules/](./kit/rules/) | Domain modules (hygiene, style, architecture, contracts, security, versioning/git, verification, **AI docs workspace**, **workboard**, **continuity**) |
+| Root [`docs/`](./docs/) | AI resource workspace (research, plan, project_build, resources) + optional **`WORKBOARD.md`**—outside `kit/` |
 | [kit/agents/](./kit/agents/) | Agent Instruct — expert personas as views; PLAN + BUILD + [OPS](./kit/agents/OPS.md) |
 | [kit/MARKDOWN-STANDARD.md](./kit/MARKDOWN-STANDARD.md) | Structure, frontmatter, doc types, platform-aware examples |
 | [kit/CHANGELOG.md](./kit/CHANGELOG.md) | Kit version history under `## repo-kit` |
@@ -108,6 +111,7 @@ Copy what you need from `kit/`, **initiate from project interest** so formal doc
 | Align an **existing** repo (first kit adopt) | [kit/SETUP.md — Existing repository](./kit/SETUP.md#existing-repository-first-adopt) |
 | Upgrade repo-kit | [Upgrade repo-kit](#upgrade-repo-kit) · [kit/UPGRADE.md](./kit/UPGRADE.md) |
 | Use Agent Instruct / agent packs | [kit/agents/README.md](./kit/agents/README.md) · [OPS](./kit/agents/OPS.md) · [PLAN-HOOK](./kit/agents/PLAN-HOOK.md) · [BUILD](./kit/agents/BUILD.md) |
+| Track multi-phase work (workboard) | [kit/rules/workboard.md](./kit/rules/workboard.md) · [SETUP 4c](./kit/SETUP.md#4c-optional-workboard) |
 | See a filled authority map | [kit/examples/](./kit/examples/) |
 | Scaffold docs for a new package | [kit/templates/](./kit/templates/) · [kit/MARKDOWN-STANDARD.md](./kit/MARKDOWN-STANDARD.md) |
 | Set maintenance policy | [kit/RULES.md](./kit/RULES.md) |
@@ -129,6 +133,7 @@ Copy what you need from `kit/`, **initiate from project interest** so formal doc
 | **Python product code** | pylint PEP-8 gate; Bandit when declared | `kit/configs/pylintrc` · [SAST](./kit/rules/security.md#security--sast-gates-required-when-declared) |
 | **Docs-only design repo** | Frontmatter, Summary→Contents; empty language inventory | [kit/examples/docs-only.md](./kit/examples/docs-only.md) |
 | **AI agent personas** | PLAN Agent models + expert packs as views; OPS utilization | [kit/agents/README.md](./kit/agents/README.md) · [OPS](./kit/agents/OPS.md) |
+| **Multi-phase plan control** | Single workboard, optional annex, archive on ship | [kit/rules/workboard.md](./kit/rules/workboard.md) |
 | **Pre-ship self-attestation** | Optional `certification/` JSON+TXT schema | [Certification](./kit/rules/security.md#security-and-code-validation-certification) |
 
 ## Quick start
@@ -147,7 +152,10 @@ your-repo/
   CHANGELOG.md              # PROJECT history (required) — not kit release notes
   PLAN.md                   # project plan; required when using Agent Instruct
   docs/                     # AI resource workspace (scaffold when needed)
+    WORKBOARD.md            # optional — multi-phase execution board
     research/ plan/ project_build/ resources/
+      plan/<program-id>/    # optional annex while open
+      plan/archive/         # shipped OOO archaeology
   kit/                      # standards from repo-kit (filled for this project)
     RULES.md                # hub: authority map + kit baseline
     rules/                  # domain modules from kit/rules/
@@ -176,7 +184,7 @@ your-repo/
 | **Standards** (`kit/`) | Portable structure, formatting, git, pylint policy, templates, upgrade guide; project-filled authority map; optional Agent Instruct |
 | **Project RULES hub** | `kit/RULES.md` — real paths (to product outside `kit/`), runtimes, verify commands, domain “must not” |
 | **Agent packs** (optional) | `kit/agents/generated/` expert views + PLAN control surface + [OPS](./kit/agents/OPS.md) utilization — not a second RULES tree |
-| **AI docs workspace** | Root `docs/` research/plan/project_build/resources — working memory for AI; promote durable promises to L4 ([ai-docs-workspace](./kit/rules/ai-docs-workspace.md)) |
+| **AI docs workspace** | Root `docs/` research/plan/project_build/resources + optional `WORKBOARD.md` — working memory for AI; promote durable promises to L4 ([ai-docs-workspace](./kit/rules/ai-docs-workspace.md) · [workboard](./kit/rules/workboard.md)) |
 | **Package docs** | Outside `kit/`: CLI contracts, methodology, security matrices for that package |
 
 Do not fork the whole standard for every product fact. Keep shared rules stable under `kit/`; put stack-specific paths and commands in the project authority map and verification table.
@@ -221,7 +229,10 @@ All kit source lives under [`kit/`](./kit/) except this README, LICENSE, and `.g
 | [kit/agents/README.md](./kit/agents/README.md) | Agent Instruct index (OPS, FRAMEWORK, BUILD, PLAN-HOOK, …) |
 | [kit/agents/OPS.md](./kit/agents/OPS.md) | Utilization order of operations when Instruct is in use |
 | [kit/rules/ai-docs-workspace.md](./kit/rules/ai-docs-workspace.md) | Root `docs/` AI resource workspace policy |
+| [kit/rules/workboard.md](./kit/rules/workboard.md) | Multi-phase workboard, annex, archive, agent resume |
+| [kit/rules/continuity.md](./kit/rules/continuity.md) | Optional surgical-edit overlay policy |
 | [docs/](./docs/) | This kit’s own AI workspace (pattern for adopters) |
+| [docs/WORKBOARD.md](./docs/WORKBOARD.md) | This kit’s own execution board (dogfood) |
 | [kit/rules/hygiene.md](./kit/rules/hygiene.md) | Root hygiene; unified packaging (standards under kit/); SETUP/UPGRADE lifecycle |
 | [kit/rules/authoring-and-style.md](./kit/rules/authoring-and-style.md) | Docs rules; pylint; non-Python style |
 | [kit/rules/architecture.md](./kit/rules/architecture.md) | Architecture and boundaries |

@@ -26,6 +26,32 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 
 ## repo-kit
 
+### [2.4.0] - 2026-08-12
+
+#### Added
+
+- **Plan control** — three-surface model: root `PLAN.md` (mission / Agent models), `docs/WORKBOARD.md` (live multi-phase execution), optional annex under `docs/plan/<program-id>/` with `docs/plan/archive/` on program complete.
+- Policy module **`kit/rules/workboard.md`**: status vocabulary, board shape, annex/archive checklists, agent resume protocol, path aliases.
+- Optional **`kit/rules/continuity.md`**: surgical-edit overlay policy with **no product paths** in kit defaults. Adopters fill [TEMPLATE-CONTINUITY.md](./templates/TEMPLATE-CONTINUITY.md) at a recorded project path; they do not overwrite this module.
+- Templates: `kit/templates/docs/WORKBOARD.md`, `kit/templates/docs/plan/TEMPLATE-PROGRAM-README.md`, `kit/templates/docs/plan/TEMPLATE-OOO.md`, `kit/templates/TEMPLATE-CONTINUITY.md`.
+- This repository dogfoods the board at root **`docs/WORKBOARD.md`**.
+
+#### Changed
+
+- RULES hub **2.4.0**: Must rows; Operator step 4 names the workboard; authority-map and domain index.
+- ai-docs-workspace **1.1.0**: PLAN dual surface → **triple**; workboard + annex/archive.
+- hygiene **1.4.0**, contracts **1.3.0**, verification-and-ops **1.5.0**.
+- OPS **1.2.0**, PLAN-HOOK **1.3.0**, CATALOG / plan-author / implementer / docs-author: workboard co-maintain.
+- SETUP **4c** optional workboard; UPGRADE **1.6.0** preserve board, annexes, aliases, filled continuity overlay.
+- Root README piece table, layout, overlays, upgrade prompt, source files.
+
+#### Notes
+
+- Workboard is optional until multi-phase work exists (same dual-path idea as Agent Instruct).
+- Not a Domain A/B gate. Enforcement is policy + Operator / OPS procedure.
+- Do not paste live phase tables into PLAN.md. Do not overwrite a filled board on upgrade.
+- Existing `docs/planning/` adopters keep that path via authority-map alias.
+
 ### [2.3.1] - 2026-08-10
 
 #### Changed
