@@ -8,6 +8,7 @@ Curated resources for kit maintainers and AI.
 |------|---------|
 | `kit/RULES.md` | Maintenance hub |
 | `kit/rules/ai-docs-workspace.md` | AI docs workspace policy |
+| `kit/rules/workboard.md` | Multi-phase workboard / annex / archive |
 | `kit/agents/OPS.md` | Agent utilization O3 |
 | `kit/CHANGELOG.md` | Kit version history (`## repo-kit`) |
 | `README.md` | Kit landing |
