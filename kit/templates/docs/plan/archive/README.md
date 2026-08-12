@@ -2,9 +2,9 @@
 
 Shipped program annexes live here after `git mv` from `docs/plan/<program-id>/`.
 
-**Policy:** [workboard — archive annex](../../../rules/workboard.md#archive-annex-checklist)
+**Policy:** [workboard — archive annex](../../../kit/rules/workboard.md#archive-annex-checklist)
 
-This folder is **archaeology only**. It is not the live todo list. Active work is [docs/WORKBOARD.md](../../../docs/WORKBOARD.md) (project path after copy).
+This folder is **archaeology only**. It is not the live todo list. Active work is [docs/WORKBOARD.md](../../WORKBOARD.md) (hrefs assume this file was copied to `docs/plan/archive/`).
 
 ## Index
 

@@ -1,28 +1,28 @@
 ---
 title: "Code Continuity and Quality ({{PROJECT_NAME}})"
 description: Project overlay for surgical changes, named protected surfaces, git continuity, and quality gates.
-version: "1.0.0"
+version: "1.0.1"
 status: draft
 audience:
   - developers
   - maintainers
 doc_type: other
 related:
-  - ../kit/RULES.md
-  - ../kit/rules/continuity.md
-  - ../kit/rules/workboard.md
-  - ../kit/rules/architecture.md
-  - ../kit/rules/contracts.md
-  - ../kit/rules/verification-and-ops.md
-  - ../docs/WORKBOARD.md
+  - ../../kit/RULES.md
+  - ../../kit/rules/continuity.md
+  - ../../kit/rules/workboard.md
+  - ../../kit/rules/architecture.md
+  - ../../kit/rules/contracts.md
+  - ../../kit/rules/verification-and-ops.md
+  - ../WORKBOARD.md
 last_updated: "{{ISO_DATE}}"
 ---
 
 # Code Continuity and Quality ({{PROJECT_NAME}})
 
-Project overlay on repo-kit continuity policy ([kit/rules/continuity.md](../kit/rules/continuity.md)). Generic kit rules still apply. **Fill every `{{PLACEHOLDER}}`.** Typical home after copy: `docs/project_build/continuity.md` (or another recorded path — **not** the portable `kit/rules/continuity.md` module). Fix relative links if you place this file elsewhere. This file is adopter data — preserve it on kit upgrade.
+Project overlay on repo-kit continuity policy ([kit/rules/continuity.md](../../kit/rules/continuity.md)). Generic kit rules still apply. Typical home after copy: `docs/project_build/continuity.md` (or another recorded path — **not** the portable `kit/rules/continuity.md` module). Hrefs in this skeleton are written for **`docs/project_build/continuity.md`**. They will not resolve from `kit/templates/`. After copy, fill every `{{PLACEHOLDER}}`. If you record a different overlay path, fix relative links from that file. This file is adopter data — preserve it on kit upgrade.
 
-**Document version:** 1.0.0
+**Document version:** 1.0.1
 
 ---
 
@@ -65,4 +65,5 @@ Do **not** mark complete if {{PROJECT_SMOKE_FAILURE}} after a product edit.
 
 | Version | Notes |
 |---------|--------|
+| 1.0.1 | Hrefs written for `docs/project_build/continuity.md` after copy |
 | 1.0.0 | Filled from kit TEMPLATE-CONTINUITY |
