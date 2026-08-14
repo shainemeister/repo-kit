@@ -14,7 +14,8 @@
 
 | Template | Becomes |
 |----------|---------|
-| [TEMPLATE-README.md](../templates/TEMPLATE-README.md) | `my_clib/README.md` |
+| [TEMPLATE-LANDING-README.md](../templates/TEMPLATE-LANDING-README.md) | Root `README.md` (Overview + Operator prompts) |
+| [TEMPLATE-README.md](../templates/TEMPLATE-README.md) | `my_clib/README.md` (package; frontmatter) |
 | [TEMPLATE-SECURITY.md](../templates/TEMPLATE-SECURITY.md) | `my_clib/SECURITY.md` **only if** trust boundary matters—otherwise **omit** |
 
 Optional: methodology template if formulas or scoring are part of the contract.

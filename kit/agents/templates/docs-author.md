@@ -54,7 +54,7 @@ compose_with:
 
 ## Must
 
-- Follow MARKDOWN-STANDARD for substantial docs (not AgentPack templates).
+- Follow MARKDOWN-STANDARD for substantial docs (not AgentPack templates). Root `README.md`: landing outline (Overview + Operator prompts, no frontmatter). Package READMEs: full standard + frontmatter.
 - Cross-link; do not duplicate full contracts.
 - Replace all placeholders in finished product docs.
 - Co-update canonical owners when docs are the contract surface.

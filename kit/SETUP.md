@@ -48,7 +48,7 @@ For a **live codebase** that has never recorded a Kit baseline:
 1. **Inventory current state** — languages, packages, existing README/docs, CI, secrets posture.  
 2. **Do not force a directory rewrite** of product code; map reality into the authority map.  
 3. **Add `kit/`** — do **not** place RULES / MARKDOWN-STANDARD / rules modules on the product root as the default.  
-4. **Minimal viable adopt:** `kit/RULES.md` hub + kit baseline + root project `CHANGELOG.md` + `kit/MARKDOWN-STANDARD.md` (or link) + language inventory + verification rows for languages you already ship.  
+4. **Minimal viable adopt:** `kit/RULES.md` hub + kit baseline + root project `CHANGELOG.md` + `kit/MARKDOWN-STANDARD.md` (or link) + language inventory + verification rows for languages you already ship. **Reshape** the existing root `README.md` to **Overview** + **Operator prompts** (load path for *this* repo — do not paste upstream kit adopt fences).  
 5. **Add contracts only where surfaces exist** (package CLI guide if a CLI exists; skip empty SECURITY per [modularity](./rules/security.md#security-documentation-modularity)).  
 6. **Adopt contract policy** — keep [rules/contracts.md](./rules/contracts.md) under `kit/rules/`.  
 7. **Optional L0 habitat** — if a coding agent maintains the repo: copy [HABITAT.md](./agents/HABITAT.md); create root `AGENTS.md` if missing; do not clobber a filled file ([HABITAT](./agents/HABITAT.md)).  
@@ -88,7 +88,7 @@ Follow [Platform-aware examples](./MARKDOWN-STANDARD.md#platform-aware-examples)
 | [RULES.md](./RULES.md) | `kit/` | Yes | Fill authority map and kit baseline |
 | [rules/](./rules/) | `kit/rules/` | Recommended | Domain modules; or fold into single `kit/RULES.md` (document in authority map) |
 | Project `CHANGELOG.md` | **repo root** | **Yes** | Project history (H2 → H3 → H4); **not** a copy of kit release history |
-| Root `README.md` | **repo root** | Yes | Product landing (no frontmatter) |
+| Root `README.md` | **repo root** | Yes | Product landing — **no frontmatter**; **Overview** + **Operator prompts** ([landing](./MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter); [TEMPLATE-LANDING-README](./templates/TEMPLATE-LANDING-README.md)) |
 | [templates/](./templates/) | `kit/templates/` or package paths | As needed | Scaffold into **packages** outside `kit/` |
 | [templates/docs/](./templates/docs/) | Project root **`docs/`** | When AI workspace needed | Copy skeletons to root `docs/` (not under kit as live notes) |
 | [rules/ai-docs-workspace.md](./rules/ai-docs-workspace.md) | `kit/rules/` | Recommended | AI docs workspace policy |
@@ -196,13 +196,14 @@ Packs are **views** over L4 law (`kit/RULES.md` + `kit/rules/*` + product contra
 
 | Project interest | Start with templates | First contracts to write |
 |------------------|----------------------|---------------------------|
-| Library / package API | README | Overview + consume example (**in package**, outside `kit/`) |
+| Root landing (every repo) | [TEMPLATE-LANDING-README](./templates/TEMPLATE-LANDING-README.md) | Overview + Operator prompts (no frontmatter) |
+| Library / package API | [TEMPLATE-README](./templates/TEMPLATE-README.md) | Package overview + consume example (**in package**, outside `kit/`) |
 | CLI / automation | README + CLI | Invocation, exit codes, verbs |
 | Service / long-running | README + SECURITY (+ CLI if any) | Trust boundary, run/verify |
 | Methodology / scoring / formulas | README + METHODOLOGY | Pipeline, formulas, outputs |
 | Security-sensitive tool | README + SECURITY | Trust boundary before features sprawl |
 | Design / multi-phase concept | CONCEPT + [workboard](./templates/docs/WORKBOARD.md) | Principles in PLAN/CONCEPT; live phases on `docs/WORKBOARD.md` |
-| Docs-only / standards | GENERIC + root landing | Summary, use cases, history |
+| Docs-only / standards | [TEMPLATE-LANDING-README](./templates/TEMPLATE-LANDING-README.md) + GENERIC for deep notes | Overview + Operator prompts at root |
 | Monorepo multi-package | Per-package README (+ CLI/SECURITY as needed) | Shared `kit/RULES`; thin per-package overlays |
 
 Templates live under [templates/](./templates/). Scaffold finished docs into **product paths**, not into `kit/` as permanent package docs. Co-update rules: [rules/contracts.md](./rules/contracts.md).
@@ -217,7 +218,7 @@ Scaffold formal docs **before** or **in the same change set as** first code:
 2. Replace every `{{PLACEHOLDER}}`.  
 3. Refresh Contents links.  
 4. Leave frontmatter `status: draft` until the contract matches behavior.  
-5. Root README: follow the [landing pattern](./MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter) (no frontmatter; use cases first).
+5. Root README: **required** [landing pattern](./MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter) — no frontmatter; `## Overview` then `## Operator prompts`. Start from [TEMPLATE-LANDING-README.md](./templates/TEMPLATE-LANDING-README.md) or rewrite the existing root README. Do not copy this kit’s adopt/upgrade fences onto a product landing. Package READMEs still use [TEMPLATE-README.md](./templates/TEMPLATE-README.md).
 
 ---
 

@@ -14,7 +14,7 @@
 
 | Template | Becomes |
 |----------|---------|
-| Root landing pattern | `README.md` (no frontmatter; see MARKDOWN-STANDARD landing rules) |
+| [TEMPLATE-LANDING-README.md](../templates/TEMPLATE-LANDING-README.md) | Root `README.md` — Overview + Operator prompts (empty inventory in the load path) |
 | [TEMPLATE-GENERIC.md](../templates/TEMPLATE-GENERIC.md) | e.g. `DESIGN-NOTES.md` |
 | [TEMPLATE-CONCEPT.md](../templates/TEMPLATE-CONCEPT.md) | e.g. `CONCEPT-v1.md` |
 | [TEMPLATE-METHODOLOGY.md](../templates/TEMPLATE-METHODOLOGY.md) | e.g. `METHODOLOGY.md` when formulas exist |

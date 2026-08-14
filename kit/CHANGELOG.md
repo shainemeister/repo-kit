@@ -26,6 +26,21 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 
 ## repo-kit
 
+### [2.6.2] - 2026-08-14
+
+#### Changed
+
+- **Root README landing is required** for every adopting repo: `## Overview` then `## Operator prompts` (no frontmatter). Package READMEs stay on the full MARKDOWN-STANDARD + [TEMPLATE-README](./templates/TEMPLATE-README.md).
+- MARKDOWN-STANDARD **1.2.0**; [TEMPLATE-LANDING-README.md](./templates/TEMPLATE-LANDING-README.md). Operator prompts = **this repo’s** session load path — not upstream kit adopt fences, not a second RULES tree.
+- RULES hub **2.6.2** Must + map; SETUP; hygiene **1.5.1**; authoring **1.1.2**; contracts **1.3.2**; examples; docs-author seed.
+
+### [2.6.1] - 2026-08-14
+
+#### Changed
+
+- Root README: **Overview** (landing) then **Operator prompts** (load order + pasteable adopt/upgrade). No Human/AI headings. Style-gate chapters and duplicate source inventory removed from the landing.
+- MARKDOWN-STANDARD **1.1.1**: landing may end with Operator prompts; ~120-line budget applies to Overview.
+
 ### [2.6.0] - 2026-08-14
 
 #### Added

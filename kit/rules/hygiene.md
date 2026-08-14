@@ -1,7 +1,7 @@
 ---
 title: Root Hygiene
 description: Unified packaging—standards under kit/, repository-specific data outside; SETUP and UPGRADE lifecycles.
-version: "1.5.0"
+version: "1.5.1"
 status: current
 audience:
   - developers
@@ -23,7 +23,7 @@ last_updated: "2026-08-14"
 
 Keep the repository root **scannable**: entry points and project-specific surfaces first; **standards under `kit/`**; product code and AI workspace in purpose directories outside `kit/`.
 
-**Document version:** 1.5.0  
+**Document version:** 1.5.1  
 
 **Related:** [RULES.md](../RULES.md) · [SETUP.md](../SETUP.md) · [UPGRADE.md](../UPGRADE.md) · [CHANGELOG.md](../CHANGELOG.md) · [agents/README.md](../agents/README.md) · [ai-docs-workspace.md](./ai-docs-workspace.md) · [workboard.md](./workboard.md) · [README.md](../../README.md)
 
@@ -75,7 +75,7 @@ Keep the repository root **scannable**: entry points and project-specific surfac
 
 | File / item | Role |
 |-------------|------|
-| `README.md` | Product / public landing (no frontmatter) |
+| `README.md` | Product / public landing — **no frontmatter**; **Overview** + **Operator prompts** ([landing](../MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter)) |
 | `LICENSE` | License |
 | `.gitignore` | Ignore rules |
 | `CHANGELOG.md` | **Project** history (**required**) — repository H2 → version H3 → categories; **not** kit release notes |
@@ -162,6 +162,7 @@ First adopt: [SETUP.md](../SETUP.md). Later kit bumps: [UPGRADE.md](../UPGRADE.m
 
 | Version | Notes |
 |---------|--------|
+| 1.5.1 | Root README landing shape required (kit 2.6.2) |
 | 1.5.0 | Optional root `AGENTS.md` / thin host alias; regenerable host mirrors (kit 2.6.0) |
 | 1.4.1 | Optional root rustfmt/clippy/clang configs when those languages ship (kit 2.5.0) |
 | 1.4.0 | `docs/WORKBOARD.md` allowed at docs root (kit 2.4.0) |

@@ -14,7 +14,8 @@
 
 | Template | Becomes |
 |----------|---------|
-| [TEMPLATE-README.md](../templates/TEMPLATE-README.md) | `my-cli/README.md` |
+| [TEMPLATE-LANDING-README.md](../templates/TEMPLATE-LANDING-README.md) | Root `README.md` (Overview + Operator prompts) |
+| [TEMPLATE-README.md](../templates/TEMPLATE-README.md) | `my-cli/README.md` (package; frontmatter) |
 | [TEMPLATE-CLI.md](../templates/TEMPLATE-CLI.md) | `my-cli/CLI-GUIDE.md` |
 | [TEMPLATE-SECURITY.md](../templates/TEMPLATE-SECURITY.md) | `my-cli/SECURITY.md` |
 

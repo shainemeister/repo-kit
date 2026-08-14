@@ -1,7 +1,7 @@
 ---
 title: Markdown Documentation Standard
 description: Cross-functional standard for consistent, professional markdown across any repository or project.
-version: "1.1.0"
+version: "1.2.0"
 status: current
 audience:
   - developers
@@ -16,14 +16,15 @@ related:
   - rules/authoring-and-style.md
   - templates/TEMPLATE-GENERIC.md
   - templates/TEMPLATE-README.md
-last_updated: "2026-07-28"
+  - templates/TEMPLATE-LANDING-README.md
+last_updated: "2026-08-14"
 ---
 
 # Markdown Documentation Standard
 
 A repeatable standard for professional, consistent markdown in any repository—usable across packages, CLIs, methodologies, security notes, design concepts, and runbooks.
 
-**Standard version:** 1.1.0  
+**Standard version:** 1.2.0  
 **Location:** `kit/MARKDOWN-STANDARD.md`  
 **Templates:** [`templates/`](./templates/)
 
@@ -83,15 +84,19 @@ Most **substantial** documents use **YAML frontmatter**, a clear **H1**, a short
 
 ## Landing / root README (no frontmatter)
 
-Use this pattern for the **repository root `README.md`** (and any similar **end-user landing page**). Goal: a professional first impression that is easy to scan—not a maintainer catalog, not a CLI contract, not a methodology dump.
+**Required** for every adopting repository’s **root `README.md`**. Do not use this outline for package READMEs.
+
+Two H2s, in this order: **`Overview`** then **`Operator prompts`**. Do not title the halves Human / AI. Skeleton: [TEMPLATE-LANDING-README.md](./templates/TEMPLATE-LANDING-README.md).
+
+Goal: a professional first impression that is easy to scan—not a maintainer catalog, not a CLI contract, not a methodology dump.
 
 ### Purpose
 
 | This page does | This page does not |
 |----------------|--------------------|
-| Explain what the repo is for in plain language | Replace package READMEs or CLI guides |
-| Lead with **Summary** and **Use cases** | Open with RULES, catalogs, or template inventories |
-| Show one **Quick start** path | Paste every flag, formula, or security matrix |
+| Explain what the **product / repo** is for | Replace package READMEs or CLI guides |
+| Lead with **Overview** (use cases, quick start) | Open with RULES, catalogs, or template inventories |
+| End with **Operator prompts** (session load path) | Become a second `kit/RULES.md` or a copy of `AGENTS.md` |
 | Link to deep docs by need | Duplicate another document in full |
 
 ### Required order
@@ -100,18 +105,35 @@ Use this pattern for the **repository root `README.md`** (and any similar **end-
 |---|--------|-----------|--------|
 | 1 | **H1** | Yes | Product-facing title |
 | 2 | **Lead** | Yes | One or two sentences under the H1—no frontmatter above it |
-| 3 | **Summary** | Yes | What it is, for whom, key constraints |
-| 4 | **Use cases** | Yes | Table: goal · outcome · start path |
-| 5 | **What’s included** | Recommended | Compact map of packages and assets—not every source file |
-| 6 | **Prerequisites** | Yes if software is required | Short table only |
-| 7 | **Quick start** | Yes | One realistic end-to-end example; language-tagged fence |
-| 8 | **Your data** (or equivalent) | If a data or config contract exists | Schema vs rows; types in one line |
-| 9 | **Where to go next** | Yes | Links by user need |
-| 10 | **For maintainers** | Optional, last | RULES, catalog, this standard—keep thin |
+| 3 | **`## Overview`** | **Yes** | Landing body (blocks 4–11 live *under* this H2 as `###` or tables) |
+| 4 | Summary | Yes | What it is, for whom, key constraints |
+| 5 | Use cases | Yes | Table: goal · outcome · start path |
+| 6 | What’s included | Recommended | Compact map—not every source file |
+| 7 | Prerequisites | Yes if software is required | Short table only |
+| 8 | Quick start | Yes | One realistic end-to-end example |
+| 9 | Your data (or equivalent) | If a data or config contract exists | Schema vs rows |
+| 10 | Where to go next | Yes | Links by need |
+| 11 | For maintainers | Optional | End of Overview; keep thin |
+| 12 | **`## Operator prompts`** | **Yes** | Last H2 — see below |
 
-**Contents:** optional. Prefer **no** Contents block when there are fewer than about six H2 sections so the landing page stays light.
+**Contents:** omit on the landing page (only two H2s).
 
-**YAML frontmatter:** **omit**. Do not add version/status badges that require frontmatter sync on a landing page; keep identity in the H1 and lead.
+**YAML frontmatter:** **omit**.
+
+### Operator prompts (required)
+
+Session **load path** for *this* repository. Not product API/CLI law.
+
+| Include | Exclude |
+|---------|---------|
+| Open `kit/RULES.md` first (map, inventory, operator checklist) | Full `kit/rules/*` paste |
+| Declared inventory only (empty ⇒ no language gates) | Invented tools or host folder trees |
+| If a coding agent is used: `kit/agents/HABITAT.md` + root `AGENTS.md` (do not clobber) | HABITAT detect/alias essay |
+| If Instruct: `kit/agents/OPS.md` | Pack bodies; spawn-tool names |
+| If multi-phase: `docs/WORKBOARD.md` | Live phase tables |
+| Optional project-specific session notes | Upstream repo-kit **adopt/upgrade fences** (those belong only on *this* kit’s README) |
+
+`AGENTS.md` remains the host auto-load pointer ([HABITAT](./agents/HABITAT.md)). Operator prompts is the landing appendix.
 
 ### Tone and length
 
@@ -119,7 +141,7 @@ Use this pattern for the **repository root `README.md`** (and any similar **end-
 |----------|--------|
 | Voice | Professional, direct, second person (“you”) where natural |
 | Jargon | Pair product terms with a plain phrase the first time |
-| Length | Prefer roughly **under 120 lines**; link out for depth |
+| Length | Prefer roughly **under 120 lines** for the **Overview** (landing) body; an **Operator prompts** appendix may be longer |
 | Tables | Use for use cases, prerequisites, and “start here” maps |
 | Code | One primary workflow example; more examples live in package docs |
 
@@ -127,7 +149,7 @@ Use this pattern for the **repository root `README.md`** (and any similar **end-
 
 1. When a package **entry point or recommended workflow** changes, update **Quick start** and **Use cases** in the **same change set**.  
 2. When a new end-user capability ships, add a **use case row** or a **Where to go next** link—do not only update an inventory catalog.  
-3. Keep **For maintainers** short; never move it above Summary / Use cases.  
+3. Keep **For maintainers** short; never move it above Summary / Use cases. **Operator prompts** is the last H2 on the **root** README.  
 4. Do not list every path in the repo; inventory belongs in a catalog file if you maintain one.  
 5. Relative links only from the file’s directory (root: `./packages/my-service/README.md`).
 
@@ -135,7 +157,7 @@ Use this pattern for the **repository root `README.md`** (and any similar **end-
 
 | Document | Pattern |
 |----------|---------|
-| **Root landing** (`/README.md`) | This section—**no** frontmatter; use cases first |
+| **Root landing** (`/README.md`) | This section—**no** frontmatter; **Overview** then **Operator prompts** |
 | **Package README** (`packages/my-service/README.md`, etc.) | Full standard + frontmatter + `doc_type: readme` · [TEMPLATE-README.md](./templates/TEMPLATE-README.md) |
 
 Do not force the landing outline onto deep package docs, and do not force full frontmatter onto the root landing page.
@@ -428,6 +450,7 @@ Use **Summary → Contents → logical H2s → History**. Prefer `TEMPLATE-GENER
 
 | Template | `doc_type` | Path |
 |----------|------------|------|
+| Root landing README | *(no frontmatter)* | [templates/TEMPLATE-LANDING-README.md](./templates/TEMPLATE-LANDING-README.md) |
 | Product README | `readme` | [templates/TEMPLATE-README.md](./templates/TEMPLATE-README.md) |
 | CLI reference | `cli` | [templates/TEMPLATE-CLI.md](./templates/TEMPLATE-CLI.md) |
 | Methodology | `methodology` | [templates/TEMPLATE-METHODOLOGY.md](./templates/TEMPLATE-METHODOLOGY.md) |
@@ -506,9 +529,11 @@ Before merging or publishing a doc:
 | Walls of prose for option lists | Tables |
 | Emoji-heavy headings | Plain headings for stable anchors |
 | Duplicating another doc in full | Link and summarize |
-| Root README that is only a file dump | Use cases + quick start + “where to go next” |
-| Frontmatter on a deliberately simple landing page | Omit frontmatter; H1 + lead + Summary |
-| Root page that opens with RULES / catalog / templates | Put maintainers last |
+| Root README that is only a file dump | Overview + Operator prompts |
+| Frontmatter on the root landing README | Omit frontmatter; H1 + lead + Overview |
+| Root page that opens with RULES / catalog / templates | Overview first; Operator prompts last |
+| Root README missing `## Operator prompts` | Required load-path H2 |
+| Package README using Overview + Operator prompts | Package docs keep frontmatter + Summary → Contents |
 | Pasting full CLI-GUIDE into the root README | One example + link |
 | Windows-only examples in a multi-OS project | Dual fences or declared primary platform |
 | Unresolved template tokens in shipped docs | Replace every `{{TOKEN}}` |
@@ -519,6 +544,8 @@ Before merging or publishing a doc:
 
 | Version | Notes |
 |---------|--------|
+| 1.2.0 | Root README **must** use Overview + Operator prompts; package READMEs unchanged (kit 2.6.2) |
+| 1.1.1 | Landing may end with Operator prompts; Overview length budget (kit 2.6.1) |
 | 1.1.0 | Cross-linking form section; kit 2.0 paths (`kit/`); links to contracts and verification modules |
 | 1.0.1 | Platform-aware examples; runbook → GENERIC pointer; placeholder completeness note |
 | 1.0.0 | Initial portable standard (generalized for multi-domain repos); root landing pattern; templates under `templates/` |

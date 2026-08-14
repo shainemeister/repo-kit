@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Instructions for **coding agents** working in **repo-kit**. Humans use the root [README.md](./README.md).
+Instructions for **coding agents** working in **repo-kit**. Project entry: root [README.md](./README.md). Adopt/upgrade paste blocks: [Operator prompts](./README.md#operator-prompts).
 
 This repository **is** the Repository Standards Kit. Portable law lives under `kit/`. This file is a **pointer** (L0). It is not a second RULES tree.
 

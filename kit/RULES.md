@@ -1,7 +1,7 @@
 ---
 title: Repository Maintenance Rules
 description: Maintenance policy hub—authority map, kit baseline, and index to domain rule modules.
-version: "2.6.0"
+version: "2.6.2"
 status: current
 audience:
   - developers
@@ -39,7 +39,7 @@ last_updated: "2026-08-14"
 
 Fundamental rules for maintaining a professional, auditable repository. This file is the **hub**: authority map, kit baseline, and Must / Must not. Domain detail lives in [rules/](./rules/). In adopting product repos this hub lives at **`kit/RULES.md`**.
 
-**Document version:** 2.6.0  
+**Document version:** 2.6.2  
 
 **Related:** [README.md](../README.md) · [SETUP.md](./SETUP.md) · [UPGRADE.md](./UPGRADE.md) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) · [CHANGELOG.md](./CHANGELOG.md) · [agents/README.md](./agents/README.md) · [agents/OPS.md](./agents/OPS.md) · [agents/HABITAT.md](./agents/HABITAT.md) · [rules/](./rules/) · [workboard.md](./rules/workboard.md) · [configs/](./configs/)
 
@@ -64,6 +64,7 @@ Copy this hub (and the `rules/` modules you need) into the project’s **`kit/`*
 | Fill [language surface inventory](./rules/security.md#language-surface-inventory); run declared style + SAST before complete | Paste the full multi-language SAST table without inventory evidence |
 | Verify before sharing contract or behavior changes ([verification-and-ops](./rules/verification-and-ops.md)) | Claim complete when a **declared** style or SAST gate was skipped or failed |
 | Regenerate `certification/` outputs when that folder is maintained | Commit `last_certification.*` or treat certification as a product launcher gate |
+| Keep the root `README.md` on the [landing](./MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter) shape: **Overview** then **Operator prompts** (no frontmatter) | Put Overview/Operator prompts on package READMEs; paste `kit/rules/*` or upstream kit adopt fences into a product landing |
 | Fill authority map + verification from project interest at start | Leave contracts empty until “docs later” after behavior ships |
 | Treat Agent Instruct packs as **views** over this hub + domain modules ([agents](./agents/README.md)) | Embed full persona bodies in this hub; invent a second RULES tree in packs |
 | **When Agent Instruct is in use:** match the user task to **one primary** expert pack; follow [OPS](./agents/OPS.md) O3 before substantive work | Ignore active packs and improvise durable policy only in chat |
@@ -134,7 +135,7 @@ Replace paths below with your project’s real files. Rows that do not apply may
 
 | Concern | Canonical source |
 |---------|------------------|
-| Repo purpose and quick start | Project root [README.md](../README.md) |
+| Repo purpose and quick start | Project root [README.md](../README.md) — **shape:** [landing](./MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter) (`Overview` + `Operator prompts`) |
 | One-time adoption (ephemeral) | [SETUP.md](./SETUP.md) — under `kit/`; follow, then delete or archive |
 | Kit upgrade / migration (durable) | [UPGRADE.md](./UPGRADE.md) — under `kit/` |
 | Path-level file inventory (optional) | Root `FILE-CATALOG.md` (or equivalent) |
@@ -273,6 +274,7 @@ Copy-paste prompt also on root [README — Upgrade repo-kit](../README.md#upgrad
 
 | Version | Notes |
 |---------|--------|
+| 2.6.2 | Root README landing shape is required (Overview + Operator prompts) |
 | 2.6.0 | Host L0 habitat (`AGENTS.md`); HABITAT + parent/child protocol; map row |
 | 2.5.1 | One authority-map row for language style configs (inventory-gated copy) |
 | 2.5.0 | Inventory-gated Rust and C/C++ style gates (rustfmt+clippy, clang-format+clang-tidy) + starter configs; Must names declared Domain B only |

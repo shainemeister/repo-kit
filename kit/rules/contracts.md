@@ -1,7 +1,7 @@
 ---
 title: Contracts
 description: What counts as a contract, canonical ownership, co-update rules, fixtures/schema/API, and cross-reference policy.
-version: "1.3.1"
+version: "1.3.2"
 status: current
 audience:
   - developers
@@ -26,7 +26,7 @@ last_updated: "2026-08-14"
 
 Stable promises a repository makes—behavior, shapes, exits, fields—and the rules for keeping them honest.
 
-**Document version:** 1.3.1  
+**Document version:** 1.3.2  
 
 **Related:** [RULES.md](../RULES.md) · [architecture.md](./architecture.md) · [versioning-and-git.md](./versioning-and-git.md) · [verification-and-ops.md](./verification-and-ops.md) · [authoring-and-style.md](./authoring-and-style.md) · [ai-docs-workspace.md](./ai-docs-workspace.md) · [workboard.md](./workboard.md) · [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md) · [agents/README.md](../agents/README.md) · [agents/OPS.md](../agents/OPS.md)
 
@@ -157,6 +157,7 @@ Every substantial markdown file should remain navigable for humans and AI agents
 | Phase marked done only in chat | Same-change-set `docs/WORKBOARD.md` status + SHA ([workboard](./workboard.md)) |
 | Only explanation of shipped behavior lives in an annex | Promote to L4 owner; archive the annex |
 | Full `kit/rules/*` pasted into `AGENTS.md` / `CLAUDE.md` | Thin pointer to `kit/RULES.md` ([HABITAT](../agents/HABITAT.md)) |
+| Only CLI/API matrix lives in root README Operator prompts | Package guide owns the contract; Operator prompts is a load path |
 | Isolated work marked done only in chat (map/board never opened) | Parent updates L4 + workboard; child reports files and gates ([OPS](../agents/OPS.md#parent--child-when-work-is-isolated)) |
 
 ---
@@ -165,6 +166,7 @@ Every substantial markdown file should remain navigable for humans and AI agents
 
 | Version | Notes |
 |---------|--------|
+| 1.3.2 | Operator prompts is not a product contract (kit 2.6.2) |
 | 1.3.1 | Habitat L0 is not a contract; anti-patterns for RULES-in-AGENTS and chat-only done (kit 2.6.0) |
 | 1.3.0 | Workboard is an execution contract; phase-ship same-change-set (kit 2.4.0) |
 | 1.2.0 | AI docs workspace is not a contract; promotion anti-pattern (kit 2.3.0) |
