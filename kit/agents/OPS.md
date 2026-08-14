@@ -1,7 +1,7 @@
 ---
 title: Agent Instruct Order of Operations
 description: Required utilization procedure when Agent Instruct is adopted—match, expertise, co-maintain docs/rules, lifecycle BUILD.
-version: "1.2.0"
+version: "1.3.0"
 status: current
 audience:
   - developers
@@ -20,7 +20,8 @@ related:
   - ../rules/contracts.md
   - ../rules/ai-docs-workspace.md
   - ../rules/workboard.md
-last_updated: "2026-08-12"
+  - HABITAT.md
+last_updated: "2026-08-14"
 ---
 
 # Agent Instruct Order of Operations
@@ -29,9 +30,9 @@ Canonical **order of operations (O3)** for AI and humans when **Agent Instruct i
 
 Standing hub checklist (all maintenance turns): [RULES — Operator enforcement](../RULES.md#operator-enforcement).
 
-**Document version:** 1.2.0  
+**Document version:** 1.3.0  
 
-**Related:** [README.md](./README.md) · [RUNTIME.md](./RUNTIME.md) · [FRAMEWORK.md](./FRAMEWORK.md) · [PARAMS.md](./PARAMS.md) · [BUILD.md](./BUILD.md) · [PLAN-HOOK.md](./PLAN-HOOK.md) · [RULES.md](../RULES.md) · [verification-and-ops](../rules/verification-and-ops.md) · [contracts](../rules/contracts.md)
+**Related:** [README.md](./README.md) · [RUNTIME.md](./RUNTIME.md) · [FRAMEWORK.md](./FRAMEWORK.md) · [PARAMS.md](./PARAMS.md) · [BUILD.md](./BUILD.md) · [PLAN-HOOK.md](./PLAN-HOOK.md) · [HABITAT.md](./HABITAT.md) · [RULES.md](../RULES.md) · [verification-and-ops](../rules/verification-and-ops.md) · [contracts](../rules/contracts.md)
 
 ---
 
@@ -44,6 +45,7 @@ Standing hub checklist (all maintenance turns): [RULES — Operator enforcement]
 | Co-update **canonical L4** docs/rules; maintain root **`docs/`** when research/plan/build context applies | Treat packs or `docs/` as a second RULES tree or as law over L4 |
 | Evolve agents (PLAN + BUILD) when features, packages, surfaces, languages, or durable task classes appear | Leave packs stale after authority map / inventory / enablement change |
 | Prefer in-repo law; use external URLs only as **citations** (guidance) | Use remote URLs as overlays or as substitute law |
+| When isolating work: parent owns complete / board / tracker; one primary child | Children invent law in prose; parent merges chat into a second RULES tree |
 
 **Bare adopt:** no Agent models section and no Instruct packs → **skip O3**; use L4 only ([PLAN dual path](./PLAN-HOOK.md#plan-dual-path)).
 
@@ -62,9 +64,10 @@ Standing hub checklist (all maintenance turns): [RULES — Operator enforcement]
 5. [Co-maintain documents and rules](#co-maintain-documents-and-rules)
 6. [Lifecycle: features and core tasks](#lifecycle-features-and-core-tasks)
 7. [Creating a new expert persona](#creating-a-new-expert-persona)
-8. [Report shape](#report-shape)
-9. [Anti-patterns](#anti-patterns)
-10. [Document history](#document-history)
+8. [Parent / child (when work is isolated)](#parent--child-when-work-is-isolated)
+9. [Report shape](#report-shape)
+10. [Anti-patterns](#anti-patterns)
+11. [Document history](#document-history)
 
 ---
 
@@ -206,6 +209,28 @@ Do **not** invent kit CATALOG defaults for product-only roles. Do **not** create
 
 ---
 
+## Parent / child (when work is isolated)
+
+Optional. Applies only when Instruct is in use **and** the operator isolates a concern (host adapter, second session, or equivalent). Kit names **duties**, not spawn APIs. Habitat discovery: [HABITAT.md](./HABITAT.md).
+
+Bare adopt: skip this section; use L4 + [Operator enforcement](../RULES.md#operator-enforcement).
+
+| Parent | Child |
+|--------|--------|
+| Detect Instruct; match **one** primary pack ([O3](#order-of-operations-o3)) | Receive that pack + listed `authority_paths` only |
+| Open L4 (map, inventory, verify table) **before** isolating work | Do not invent law, tools, or folders; **L4 wins** |
+| Multi-phase: update **`docs/WORKBOARD.md`**; give the child a **phase id** | Execute that phase only; do not mark the program `done` |
+| Own completion, CHANGELOG, Progress Tracker, board SHA | Return: files touched, docs updated, gates run / skip / fail |
+| **Serial** if two children would edit the same authority-map owner | **Parallel** only for independent packages or read-only review/research |
+| `compose_with`: at most **one** extra child, and only if the task clearly needs that concern | Never load the full compose matrix |
+| Isolation **hint** only: `same-tree` / `read-only` / `isolated-tree` | Host maps the hint; this kit does not name APIs |
+
+**Must not:** children write durable policy only in chat; parent “merges” it without opening the authority-map owner. That is a second RULES tree.
+
+The [workboard](../rules/workboard.md) is the DAG for multi-phase work—not the parent transcript.
+
+---
+
 ## Report shape
 
 Before claiming a task complete under Instruct, state briefly (may fold into the [RULES Progress Tracker](../RULES.md#progress-tracker-minimum-shape)):
@@ -231,6 +256,9 @@ If any declared gate or required verify item failed or was skipped → **STOP**;
 |-----|--------|
 | Skip pack match; generic answer only | O3 match → one primary expert pack |
 | Load every pack every turn | One primary; compose only when needed |
+| Child writes policy; parent merges only in chat | Open L4 owner; parent owns complete |
+| Parallel children on the same contract file | Serial when the same map owner would change |
+| Fan-out the full compose matrix | At most one extra child |
 | Empty expertise / no references | Curated authority_paths + references with purpose |
 | External URL as overlay or law | Citation under expertise; L4 wins |
 | Feature ships; packs unchanged | Lifecycle PLAN + BUILD |
@@ -246,6 +274,7 @@ More: [examples/anti-patterns.md](./examples/anti-patterns.md).
 
 | Version | Notes |
 |---------|--------|
+| 1.3.0 | Parent/child duties when work is isolated; workboard as DAG (kit 2.6.0) |
 | 1.2.0 | Co-maintain workboard on multi-phase ship (kit 2.4.0) |
 | 1.1.0 | Co-maintain root docs/ AI workspace when research/plan/build applies (kit 2.3.0) |
 | 1.0.1 | Report shape ties to RULES Progress Tracker / operator enforcement (kit 2.2.1) |

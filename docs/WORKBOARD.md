@@ -11,13 +11,13 @@ related:
   - ../kit/rules/workboard.md
   - ../kit/CHANGELOG.md
   - ./README.md
-last_updated: "2026-08-12"
+last_updated: "2026-08-14"
 ---
 
 # Workboard
 
-**Updated:** 2026-08-12  
-**Primary program:** `none`  
+**Updated:** 2026-08-14  
+**Primary program:** `habitat-l0-2.6.0`  
 **Rules:** [kit/rules/workboard.md](../kit/rules/workboard.md) · kit README (mission) · [docs/plan/](./plan/) (detail)
 
 | Status | Meaning |
@@ -31,23 +31,31 @@ last_updated: "2026-08-12"
 
 ---
 
-## Active program — none
+## Active program — habitat-l0-2.6.0
 
 | Field | Value |
 |-------|--------|
-| **Goal** | — |
-| **L4 docs to update** | — |
+| **Goal** | Thin L0 habitat (`AGENTS.md`) + parent/child protocol; law stays in `kit/` |
+| **L4 docs to update** | HABITAT, OPS, FRAMEWORK, RUNTIME, RULES, hygiene, contracts, workboard, ai-docs-workspace, SETUP, UPGRADE, templates, CHANGELOG |
 | **Optional annex** | — |
-| **Smoke / gates** | Author checklist; relative links; no `{{PLACEHOLDERS}}` in finished policy |
+| **Smoke / gates** | Author checklist; no host trees invented; templates keep placeholders; filled AGENTS.md has none |
 
 ### Phases
 
 | ID | Work | Status | Commit | Notes |
 |----|------|--------|--------|-------|
-| — | — | — | — | Register a program here before multi-phase kit work |
+| P0 | Confirm dual path; no host trees | `done` | — | No `.claude/` / `.cursor/` / copilot-instructions shipped |
+| P1 | Policy modules | `done` | — | HABITAT + hub + OPS/FRAMEWORK/RUNTIME |
+| P2 | Templates | `done` | — | TEMPLATE-AGENTS + HOST-ALIAS |
+| P3 | SETUP / UPGRADE / README / examples | `done` | — | HABITAT copyable without full Instruct |
+| P4 | Dogfood root AGENTS.md | `done` | — | Pointer only; Instruct off |
+| P5 | CHANGELOG 2.6.0 + ship commit | `active` | — | SHA on commit; then archive program |
 
 ### Progress log (newest first, max ~15 lines)
 
+- 2026-08-14 P3: HABITAT copyable on bare+agent path (SETUP/UPGRADE/RULES). P5 remains `active` until ship SHA.
+- 2026-08-14 **habitat-l0-2.6.0** implemented (P0–P4); ship SHA on commit.
+- 2026-08-14 Registered **habitat-l0-2.6.0**.
 - 2026-08-12 **plan-control-2.4.0** shipped (P0–P8): `5ca9ea7` board · `84a3bd0` rules · `975a379` templates · `4b40af8` SETUP/UPGRADE · `1d2af58` agents · `c5bed29` CHANGELOG `2.4.0`. Next: adopter upgrade in consuming repos (not this tree).
 - 2026-08-12 Registered **plan-control-2.4.0**.
 

@@ -1,7 +1,7 @@
 ---
 title: Agent Instruct
 description: Portable agent personas as expert views over repo-kit law—index, decisions, and start paths.
-version: "1.1.0"
+version: "1.2.0"
 status: current
 audience:
   - developers
@@ -15,19 +15,20 @@ related:
   - PLAN-HOOK.md
   - BUILD.md
   - RUNTIME.md
+  - HABITAT.md
   - ../RULES.md
   - ../SETUP.md
   - ../../README.md
-last_updated: "2026-08-10"
+last_updated: "2026-08-14"
 ---
 
 # Agent Instruct
 
 Portable way for AI (and humans) to **build and maintain modular expert agent personas** from project interest, **PLAN.md**, and the filled authority map—without replacing maintenance law or bloating `kit/RULES.md`.
 
-**Document version:** 1.1.0  
+**Document version:** 1.2.0  
 
-**Related:** [OPS.md](./OPS.md) · [FRAMEWORK.md](./FRAMEWORK.md) · [PARAMS.md](./PARAMS.md) · [CATALOG.md](./CATALOG.md) · [PLAN-HOOK.md](./PLAN-HOOK.md) · [BUILD.md](./BUILD.md) · [RUNTIME.md](./RUNTIME.md) · [RULES.md](../RULES.md)
+**Related:** [OPS.md](./OPS.md) · [HABITAT.md](./HABITAT.md) · [FRAMEWORK.md](./FRAMEWORK.md) · [PARAMS.md](./PARAMS.md) · [CATALOG.md](./CATALOG.md) · [PLAN-HOOK.md](./PLAN-HOOK.md) · [BUILD.md](./BUILD.md) · [RUNTIME.md](./RUNTIME.md) · [RULES.md](../RULES.md)
 
 ---
 
@@ -66,6 +67,8 @@ Portable way for AI (and humans) to **build and maintain modular expert agent pe
 | You want to… | Open |
 |--------------|------|
 | **Run a task with agents (utilization)** | **[OPS.md](./OPS.md)** |
+| Make a host find this kit (L0 habitat) | **[HABITAT.md](./HABITAT.md)** · [TEMPLATE-AGENTS](../templates/TEMPLATE-AGENTS.md) |
+| Isolate work (parent / child duties) | [OPS parent/child](./OPS.md#parent--child-when-work-is-isolated) |
 | Track multi-phase work (workboard) | [../rules/workboard.md](../rules/workboard.md) |
 | Understand layers and hard rules | [FRAMEWORK.md](./FRAMEWORK.md) |
 | See AgentPack schema / expertise validation | [PARAMS.md](./PARAMS.md) |
@@ -81,7 +84,7 @@ Portable way for AI (and humans) to **build and maintain modular expert agent pe
 ## Layers (quick map)
 
 ```text
-L0  Thin always-on project rules (point at PLAN + this index + OPS)
+L0  Habitat: root AGENTS.md (thin pointer) — [HABITAT.md](./HABITAT.md)
 L1  PLAN.md — Agent models (active / disabled / overlays / tuning)
 L2  kit/agents/* Instruct (this tree — how to build & run; OPS utilization)
 L3  kit/agents/generated/* AgentPacks (expert views — procedure + expertise + links)
@@ -98,7 +101,8 @@ Detail: [FRAMEWORK.md](./FRAMEWORK.md). Utilization: [OPS.md](./OPS.md).
 
 | Doc | Role |
 |-----|------|
-| **[OPS.md](./OPS.md)** | **Order of operations** — match, expertise, co-maintain, lifecycle |
+| **[OPS.md](./OPS.md)** | **Order of operations** — match, expertise, co-maintain, lifecycle; parent/child when isolated |
+| [HABITAT.md](./HABITAT.md) | L0 host discovery — `AGENTS.md` / thin aliases |
 | [FRAMEWORK.md](./FRAMEWORK.md) | Layers, taxonomy, composition, hard rules |
 | [PARAMS.md](./PARAMS.md) | AgentPack fields, expertise/references, validation, emit shapes |
 | [CATALOG.md](./CATALOG.md) | Default portable seed agents |
@@ -137,5 +141,6 @@ Durable intent (enable security agent, disable adopter, project overlays, new ex
 
 | Version | Notes |
 |---------|--------|
+| 1.2.0 | HABITAT L0 + parent/child start-here (kit 2.6.0) |
 | 1.1.0 | OPS index; expert packs; O3 Musts; lifecycle (kit 2.2.0) |
 | 1.0.0 | Initial Agent Instruct index (kit 2.1.0) |

@@ -6,7 +6,7 @@ Use this file when starting or aligning a repository so **formal markdown guides
 
 This kit ships `SETUP.md` under [`kit/`](./). **Copy standards into the target repository’s `kit/`** (same packaging as this repo). Keep **product code** and **project** `CHANGELOG.md` **outside** `kit/`. Adopting projects remove SETUP after initiation.
 
-**Permanent after initiation:** root `README.md`, root **project** `CHANGELOG.md`, **`kit/RULES.md`** (hub + kit baseline), `kit/MARKDOWN-STANDARD.md` (or link), and `kit/rules/` as needed. **When using Agent Instruct:** keep `kit/agents/` (include [OPS.md](./agents/OPS.md)), root `PLAN.md` Agent models, and track thin `generated/` packs. **AI workspace:** root **`docs/`** when research/plan/build context is used ([ai-docs-workspace](./rules/ai-docs-workspace.md); templates [templates/docs/](./templates/docs/)). **Multi-phase execution:** optional `docs/WORKBOARD.md` ([workboard](./rules/workboard.md)). **Later kit upgrades:** durable [UPGRADE.md](./UPGRADE.md).
+**Permanent after initiation:** root `README.md`, root **project** `CHANGELOG.md`, **`kit/RULES.md`** (hub + kit baseline), `kit/MARKDOWN-STANDARD.md` (or link), and `kit/rules/` as needed. **When a coding agent is used:** keep [HABITAT.md](./agents/HABITAT.md) and a filled root `AGENTS.md` (plus recorded aliases). **When using Agent Instruct:** keep `kit/agents/` (include [OPS.md](./agents/OPS.md)), root `PLAN.md` Agent models, and track thin `generated/` packs. **AI workspace:** root **`docs/`** when research/plan/build context is used ([ai-docs-workspace](./rules/ai-docs-workspace.md); templates [templates/docs/](./templates/docs/)). **Multi-phase execution:** optional `docs/WORKBOARD.md` ([workboard](./rules/workboard.md)). **Later kit upgrades:** durable [UPGRADE.md](./UPGRADE.md).
 
 **Already have a Kit baseline?** Stop and use [UPGRADE.md](./UPGRADE.md).
 
@@ -16,7 +16,7 @@ This kit ships `SETUP.md` under [`kit/`](./). **Copy standards into the target r
 
 1. Choose an [adoption mode](#adoption-modes) (greenfield, existing repo, or reference).  
 2. [State the interest](#1-state-the-interest) and [platform context](#2-set-platform-context).  
-3. [Copy](#3-copy-kit-pieces) pieces **from upstream `kit/` into the target repo’s `kit/`** (include `kit/agents/` when using Agent Instruct).  
+3. [Copy](#3-copy-kit-pieces) pieces **from upstream `kit/` into the target repo’s `kit/`** (include [HABITAT.md](./agents/HABITAT.md) when a coding agent is used; include the rest of `kit/agents/` when using Agent Instruct).  
 4. Ensure **project root** has README, `CHANGELOG.md`, LICENSE, `.gitignore`.  
    - **With Agent Instruct:** root **`PLAN.md` is required** — include an **Agent models** section ([agents/PLAN-HOOK.md](./agents/PLAN-HOOK.md)).  
    - **Bare adopt (no agents):** `PLAN.md` remains optional; skip BUILD.  
@@ -51,11 +51,12 @@ For a **live codebase** that has never recorded a Kit baseline:
 4. **Minimal viable adopt:** `kit/RULES.md` hub + kit baseline + root project `CHANGELOG.md` + `kit/MARKDOWN-STANDARD.md` (or link) + language inventory + verification rows for languages you already ship.  
 5. **Add contracts only where surfaces exist** (package CLI guide if a CLI exists; skip empty SECURITY per [modularity](./rules/security.md#security-documentation-modularity)).  
 6. **Adopt contract policy** — keep [rules/contracts.md](./rules/contracts.md) under `kit/rules/`.  
-7. **Optional Agent Instruct** — if using agents: PLAN Agent models + first [BUILD](./agents/BUILD.md); see [Agent Instruct path](#agent-instruct-path).  
-8. **Optional workboard** — if the repo already has (or is about to start) multi-phase work: [4c](#4c-optional-workboard). Map any existing planning folder; do not invent a second board.  
-9. **Record Kit baseline** from upstream [CHANGELOG.md](./CHANGELOG.md) under `## repo-kit`.  
-10. **Project root CHANGELOG** adoption entry under the current version.  
-11. **Delete or archive this SETUP** from the project’s `kit/`; keep `kit/agents/` and PLAN Agent models if present; keep `docs/WORKBOARD.md` if scaffolded; future kit bumps use **[UPGRADE.md](./UPGRADE.md)**.
+7. **Optional L0 habitat** — if a coding agent maintains the repo: copy [HABITAT.md](./agents/HABITAT.md); create root `AGENTS.md` if missing; do not clobber a filled file ([HABITAT](./agents/HABITAT.md)).  
+8. **Optional Agent Instruct** — if using Instruct: PLAN Agent models + first [BUILD](./agents/BUILD.md); see [Agent Instruct path](#agent-instruct-path). Do not copy the rest of `kit/agents/` for L0 alone.  
+9. **Optional workboard** — if the repo already has (or is about to start) multi-phase work: [4c](#4c-optional-workboard). Map any existing planning folder; do not invent a second board.  
+10. **Record Kit baseline** from upstream [CHANGELOG.md](./CHANGELOG.md) under `## repo-kit`.  
+11. **Project root CHANGELOG** adoption entry under the current version.  
+12. **Delete or archive this SETUP** from the project’s `kit/`; keep HABITAT + filled `AGENTS.md` if a coding agent is used; keep `kit/agents/` and PLAN Agent models if Instruct is used; keep `docs/WORKBOARD.md` if scaffolded; future kit bumps use **[UPGRADE.md](./UPGRADE.md)**.
 
 ---
 
@@ -95,10 +96,13 @@ Follow [Platform-aware examples](./MARKDOWN-STANDARD.md#platform-aware-examples)
 | [rules/continuity.md](./rules/continuity.md) | `kit/rules/` | Optional | Portable surgical-edit policy (empty surface table) |
 | [TEMPLATE-CONTINUITY.md](./templates/TEMPLATE-CONTINUITY.md) | Project overlay (e.g. `docs/project_build/continuity.md`) | If high-blast-radius code | Filled overlay — **not** this kit module; preserve on upgrade |
 | [templates/docs/WORKBOARD.md](./templates/docs/WORKBOARD.md) | Project root **`docs/WORKBOARD.md`** | If multi-phase | Live board — project data; do not leave placeholders |
-| [agents/](./agents/) | `kit/agents/` | If Agent Instruct | Instruct docs, templates; then BUILD → `generated/` |
+| [agents/HABITAT.md](./agents/HABITAT.md) | `kit/agents/HABITAT.md` | **If any coding agent is used** | L0 procedure only — not the rest of Instruct. Keep after SETUP delete |
+| [agents/](./agents/) | `kit/agents/` | If Agent Instruct | Remaining Instruct docs, templates; then BUILD → `generated/` |
 | [configs/pylintrc](./configs/pylintrc) | `kit/configs/` or `.pylintrc` at package/repo | **If Python** | Developer tooling only; dormant until Python is in the inventory |
 | [configs/rustfmt.toml](./configs/rustfmt.toml) · [configs/clippy.toml](./configs/clippy.toml) | `kit/configs/` or crate/repo root | **If Rust** | Developer tooling only; dormant until Rust is in the inventory |
 | [configs/clang-format](./configs/clang-format) · [configs/clang-tidy](./configs/clang-tidy) | `kit/configs/` or `.clang-format` / `.clang-tidy` at package/repo | **If C/C++** | Developer tooling only; dormant until C/C++ is in the inventory |
+| [TEMPLATE-AGENTS.md](./templates/TEMPLATE-AGENTS.md) | Project root **`AGENTS.md`** | **If any coding agent is used** (or user asked) | Thin L0 pointer — [HABITAT](./agents/HABITAT.md). Never Always. Do not clobber a filled file |
+| [TEMPLATE-HOST-ALIAS.md](./templates/TEMPLATE-HOST-ALIAS.md) | Host-native path | **If** a detected host cannot see `AGENTS.md` | 1–3 lines; confirm include syntax in **current** host docs |
 | [UPGRADE.md](./UPGRADE.md) | `kit/` | Recommended | Durable upgrade guide—or always open from Kit source |
 | This `SETUP.md` | `kit/` | Temporary | Follow, then delete or archive |
 
@@ -272,6 +276,8 @@ Docs-only / empty inventory: skip every language block above. Unused files under
 
 **When a language is introduced later:** add **only that** inventory row, copy the matching `kit/configs/*` to the product path, fill Domain B + Domain A verify commands, and update the authority-map style-config row if listed — same change set. Then those gates apply ([security.md](./rules/security.md#language-surface-inventory)).
 
+**When a coding-agent host is introduced later:** same change set — copy [HABITAT.md](./agents/HABITAT.md) if missing; create root `AGENTS.md` if missing (do not clobber a filled file); add a thin alias **only if** that host will not see `AGENTS.md`; map L0 + aliases. Detect existing habitat files first; do not invent unused host trees.
+
 **Security / SAST gates (required when declared):** declare only tools for **surfaces in the language inventory**. Once declared, they must pass before task completion. See [Security / SAST gates](./rules/security.md#security--sast-gates-required-when-declared) and [Completion rule](./rules/verification-and-ops.md#completion-rule).
 
 **Formal certification (optional):** if you maintain `certification/`, regenerate `last_certification.json` / `.txt` after critical gates; never commit those outputs. Schema: [Certification](./rules/security.md#security-and-code-validation-certification).
@@ -284,6 +290,7 @@ Docs-only / empty inventory: skip every language block above. Unused files under
 - If Python: copy `configs/pylintrc` → `.pylintrc` (package or repo root), set `py-version`, point the verification table at the real package path.  
 - If Rust: copy `configs/rustfmt.toml` and `configs/clippy.toml`, set rustfmt `edition`, add `cargo fmt` / clippy / `cargo audit` to the verification table.  
 - If C / C++: copy `configs/clang-format` → `.clang-format` and `configs/clang-tidy` → `.clang-tidy`, set `BasedOnStyle`, arrange `compile_commands.json`, add format / tidy / cppcheck to the verification table.  
+- If a coding agent is used: copy [TEMPLATE-AGENTS.md](./templates/TEMPLATE-AGENTS.md) → root `AGENTS.md`; replace placeholders; detect existing habitat files; alias only if required ([HABITAT](./agents/HABITAT.md)).  
 - Add root `certification/` + operator README when product code warrants formal self-attestation certificates.  
 - Enable or tune Agent Instruct: PLAN Agent models + [BUILD](./agents/BUILD.md); use [OPS](./agents/OPS.md) each task ([agents/README.md](./agents/README.md)).  
 - Scaffold root **`docs/`** from [templates/docs/](./templates/docs/) when multi-step research/plan/build work starts ([ai-docs-workspace](./rules/ai-docs-workspace.md)).  
@@ -304,9 +311,11 @@ Docs-only / empty inventory: skip every language block above. Unused files under
 | `kit/MARKDOWN-STANDARD.md` (or link) | — |
 | `kit/rules/` modules (or folded policy) | — |
 | `kit/UPGRADE.md` path known (local copy optional) | — |
-| `kit/agents/` Instruct + templates (if adopted) | — |
-| `kit/agents/generated/` thin packs (if using agents; track recommended) | — |
-| Root `PLAN.md` Agent models (if using agents) | — |
+| `kit/agents/HABITAT.md` (if a coding agent is used) | — |
+| Root `AGENTS.md` + recorded host aliases (if a coding agent is used) | — |
+| `kit/agents/` Instruct + templates (if Instruct adopted) | — |
+| `kit/agents/generated/` thin packs (if using Instruct; track recommended) | — |
+| Root `PLAN.md` Agent models (if using Instruct) | — |
 | Product packages **outside** `kit/` | Unfilled template copies you do not need |
 | Root `docs/` AI workspace (when used) | — |
 | Root `docs/WORKBOARD.md` (when multi-phase) | — |

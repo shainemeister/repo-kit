@@ -1,7 +1,7 @@
 ---
 title: AI Docs Workspace
 description: Project root docs/ as modular AI resource workspace—research, workboard, plan, project_build, resources; lifecycle and promotion to L4.
-version: "1.1.0"
+version: "1.1.1"
 status: current
 audience:
   - developers
@@ -20,14 +20,14 @@ related:
   - ./workboard.md
   - ./continuity.md
   - ../templates/docs/README.md
-last_updated: "2026-08-12"
+last_updated: "2026-08-14"
 ---
 
 # AI Docs Workspace
 
 Policy for the project **root `docs/`** tree: a **modular AI resource workspace** for research, detailed plans, project build context, and curated resources. Live content is **outside `kit/`**. Portable policy and templates live under `kit/`.
 
-**Document version:** 1.1.0  
+**Document version:** 1.1.1  
 
 **Related:** [RULES.md](../RULES.md) · [hygiene.md](./hygiene.md) · [contracts.md](./contracts.md) · [workboard.md](./workboard.md) · [verification-and-ops.md](./verification-and-ops.md) · [SETUP.md](../SETUP.md) · [OPS.md](../agents/OPS.md) · [templates/docs/](../templates/docs/)
 
@@ -77,7 +77,7 @@ Policy for the project **root `docs/`** tree: a **modular AI resource workspace*
 | Curated in-repo and external pointers | `docs/resources/` |
 | What exists and how to use it | `docs/README.md` |
 
-It is **working memory that survives sessions**—not the Progress Tracker (reply-level) and not kit standards.
+It is **working memory that survives sessions**—not the Progress Tracker (reply-level) and not kit standards. Durable **agent procedure** belongs in root `PLAN.md` or `kit/agents/` — do not grow a second Instruct essay under `docs/`.
 
 ---
 
@@ -232,5 +232,6 @@ External citations follow the same trust idea as Agent Instruct expertise: **gui
 
 | Version | Notes |
 |---------|--------|
+| 1.1.1 | Durable agent procedure promotes to PLAN / kit/agents, not a docs essay (kit 2.6.0) |
 | 1.1.0 | Triple surface: PLAN + workboard + docs/plan annex/archive (kit 2.4.0) |
 | 1.0.0 | Initial AI docs workspace policy (kit 2.3.0) |

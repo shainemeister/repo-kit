@@ -1,7 +1,7 @@
 ---
 title: Agent Instruct Framework
 description: Layered context system for agent packs as views over canonical law.
-version: "1.1.0"
+version: "1.2.0"
 status: current
 audience:
   - developers
@@ -17,7 +17,7 @@ related:
   - RUNTIME.md
   - ../RULES.md
   - ../rules/contracts.md
-last_updated: "2026-08-10"
+last_updated: "2026-08-14"
 ---
 
 # Agent Instruct Framework
@@ -26,7 +26,7 @@ Agent Instruct is a **layered context system**: thin always-on rules, PLAN as co
 
 **Utilization procedure:** [OPS.md](./OPS.md) (required when Instruct is in use).
 
-**Document version:** 1.1.0  
+**Document version:** 1.2.0  
 
 **Related:** [README.md](./README.md) · [OPS.md](./OPS.md) · [PARAMS.md](./PARAMS.md) · [CATALOG.md](./CATALOG.md) · [PLAN-HOOK.md](./PLAN-HOOK.md) · [BUILD.md](./BUILD.md) · [RUNTIME.md](./RUNTIME.md) · [RULES.md](../RULES.md)
 
@@ -64,8 +64,8 @@ Agent Instruct is a **layered context system**: thin always-on rules, PLAN as co
 ## Layers (L0–L4)
 
 ```text
-L0  Always-on project rules (thin)
-    e.g. project rules — environment + “open PLAN / kit/agents”
+L0  Habitat (thin) — root AGENTS.md (or host alias)
+    pointer: kit/RULES.md; PLAN + kit/agents/OPS only if Instruct
          │
 L1  PLAN.md
     mission, stages, non-goals, **Agent models** section (user knob)
@@ -137,7 +137,7 @@ Hub (broad domain or role family)
 ### Compose default (required)
 
 1. Load **one primary** pack by catalog match against the user task.  
-2. Load a `compose_with` pack **only** when the task clearly needs a second concern.  
+2. Load a `compose_with` pack **only** when the task clearly needs a second concern. If work is isolated, that is **at most one extra child** — never the full matrix ([OPS parent/child](./OPS.md#parent--child-when-work-is-isolated)).  
 3. **Never** auto-load the full compose matrix because a hub matched.
 
 Detail: [RUNTIME.md](./RUNTIME.md).
@@ -165,7 +165,7 @@ Detail: [RUNTIME.md](./RUNTIME.md).
 
 | Class | Principle |
 |-------|-----------|
-| L0 always-on | Minimal: point to PLAN + `kit/agents/README.md` (+ OPS when Instruct) |
+| L0 always-on | Root **`AGENTS.md`** (or thin host alias): point to `kit/RULES.md` + PLAN + `kit/agents` / OPS when Instruct. Prefer ≪ 100 lines. See [HABITAT](./HABITAT.md) |
 | Catalog row | name + description + triggers only |
 | Pack body | Procedure + Expertise map (scannable; avoid essay-length law) |
 | RULES map cell | One short phrase + path |
@@ -179,6 +179,7 @@ Activation modes and budgets: [RUNTIME.md](./RUNTIME.md). Utilization: [OPS.md](
 
 | Version | Notes |
 |---------|--------|
+| 1.2.0 | L0 is AGENTS.md (habitat); compose = at most one extra child (kit 2.6.0) |
 | 1.1.0 | O3 required when Instruct in use; expertise principle; OPS link (kit 2.2.0) |
 | 1.0.1 | STOP on failed gates; overlays repo-relative; preserve adopter packs; RULES not foldable |
 | 1.0.0 | Initial framework (kit 2.1.0) |

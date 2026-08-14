@@ -1,7 +1,7 @@
 ---
 title: Root Hygiene
 description: Unified packaging—standards under kit/, repository-specific data outside; SETUP and UPGRADE lifecycles.
-version: "1.4.1"
+version: "1.5.0"
 status: current
 audience:
   - developers
@@ -23,7 +23,7 @@ last_updated: "2026-08-14"
 
 Keep the repository root **scannable**: entry points and project-specific surfaces first; **standards under `kit/`**; product code and AI workspace in purpose directories outside `kit/`.
 
-**Document version:** 1.4.1  
+**Document version:** 1.5.0  
 
 **Related:** [RULES.md](../RULES.md) · [SETUP.md](../SETUP.md) · [UPGRADE.md](../UPGRADE.md) · [CHANGELOG.md](../CHANGELOG.md) · [agents/README.md](../agents/README.md) · [ai-docs-workspace.md](./ai-docs-workspace.md) · [workboard.md](./workboard.md) · [README.md](../../README.md)
 
@@ -86,6 +86,8 @@ Keep the repository root **scannable**: entry points and project-specific surfac
 | `.pylintrc` | Optional Python style gate **if** Python is in the inventory (or package-local / under `kit/configs/`) |
 | `rustfmt.toml` / `clippy.toml` | Optional Rust style gate **if** Rust is in the inventory |
 | `.clang-format` / `.clang-tidy` | Optional C / C++ style gate **if** C / C++ is in the inventory |
+| `AGENTS.md` | Optional L0 habitat **if** a coding agent is used — thin pointer to `kit/RULES.md` ([HABITAT](../agents/HABITAT.md)). Project data, not kit law |
+| Thin host alias (e.g. `CLAUDE.md`) | Only if a **detected** host will not see `AGENTS.md`; 1–3 lines |
 
 ---
 
@@ -101,7 +103,7 @@ Keep the repository root **scannable**: entry points and project-specific surfac
 | `configs/` | Optional local style configs (pylintrc, rustfmt.toml, clippy.toml, clang-format, clang-tidy). Copy to the product root **only** for languages in the inventory; leftover files after a whole-`kit/` copy are dormant catalog |
 | `templates/` | Optional local document skeletons |
 | `examples/` | Optional reference only (usually not required in product repos) |
-| `agents/` | Agent Instruct law, templates, examples; project-filled packs under `agents/generated/` (views, not product code) |
+| `agents/` | Agent Instruct **L2** law, templates, examples; project-filled packs under `agents/generated/` (views). Not the host auto-load file |
 
 **Do not** treat upstream kit `CHANGELOG.md` as the product’s project history. Read Kit source `kit/CHANGELOG.md` under `## repo-kit` when upgrading.
 
@@ -118,6 +120,7 @@ Keep the repository root **scannable**: entry points and project-specific surfac
 | Scripts / helpers | `scripts/` or `tooling/` (keep minimal) |
 | Regenerable output | Never committed |
 | CI workflows | `.github/` (or equivalent) |
+| Regenerable **mirrors** of agent packs in a host skill/rules dir | Prefer gitignore; keep packs under `kit/agents/generated/` |
 
 ---
 
@@ -159,6 +162,7 @@ First adopt: [SETUP.md](../SETUP.md). Later kit bumps: [UPGRADE.md](../UPGRADE.m
 
 | Version | Notes |
 |---------|--------|
+| 1.5.0 | Optional root `AGENTS.md` / thin host alias; regenerable host mirrors (kit 2.6.0) |
 | 1.4.1 | Optional root rustfmt/clippy/clang configs when those languages ship (kit 2.5.0) |
 | 1.4.0 | `docs/WORKBOARD.md` allowed at docs root (kit 2.4.0) |
 | 1.3.0 | Root `docs/` AI workspace outside kit; separation rules (kit 2.3.0) |

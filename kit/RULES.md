@@ -1,7 +1,7 @@
 ---
 title: Repository Maintenance Rules
 description: Maintenance policy hub—authority map, kit baseline, and index to domain rule modules.
-version: "2.5.1"
+version: "2.6.0"
 status: current
 audience:
   - developers
@@ -16,6 +16,7 @@ related:
   - CHANGELOG.md
   - agents/README.md
   - agents/OPS.md
+  - agents/HABITAT.md
   - rules/hygiene.md
   - rules/authoring-and-style.md
   - rules/architecture.md
@@ -38,9 +39,9 @@ last_updated: "2026-08-14"
 
 Fundamental rules for maintaining a professional, auditable repository. This file is the **hub**: authority map, kit baseline, and Must / Must not. Domain detail lives in [rules/](./rules/). In adopting product repos this hub lives at **`kit/RULES.md`**.
 
-**Document version:** 2.5.1  
+**Document version:** 2.6.0  
 
-**Related:** [README.md](../README.md) · [SETUP.md](./SETUP.md) · [UPGRADE.md](./UPGRADE.md) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) · [CHANGELOG.md](./CHANGELOG.md) · [agents/README.md](./agents/README.md) · [agents/OPS.md](./agents/OPS.md) · [rules/](./rules/) · [workboard.md](./rules/workboard.md) · [configs/](./configs/)
+**Related:** [README.md](../README.md) · [SETUP.md](./SETUP.md) · [UPGRADE.md](./UPGRADE.md) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) · [CHANGELOG.md](./CHANGELOG.md) · [agents/README.md](./agents/README.md) · [agents/OPS.md](./agents/OPS.md) · [agents/HABITAT.md](./agents/HABITAT.md) · [rules/](./rules/) · [workboard.md](./rules/workboard.md) · [configs/](./configs/)
 
 ---
 
@@ -59,6 +60,7 @@ Copy this hub (and the `rules/` modules you need) into the project’s **`kit/`*
 | Use conventional commit messages that match staged files; when AI assisted include `Assisted-by` / `Compliance` / `Instructed-by` ([versioning-and-git](./rules/versioning-and-git.md#ai-assisted-commits-required-disclosure)) | Mix unrelated packages, omit AI disclosure when assisted, or invent a `Directed-by` trailer |
 | Keep packages composable at the workflow layer ([architecture](./rules/architecture.md)) | Silently rename public APIs, CLI fields, or schema columns |
 | Run **declared** Domain B style gates after product edits ([authoring-and-style](./rules/authoring-and-style.md): pylint / rustfmt+clippy / clang-format+clang-tidy **as inventory requires**) | Treat pylint, rustfmt, clippy, clang-format, or clang-tidy as a product runtime install for end users |
+| When a coding agent is used: establish thin L0 habitat (`AGENTS.md`) and map it ([HABITAT](./agents/HABITAT.md)) | Invent host folder trees; paste `kit/rules/*` into `AGENTS.md` / `CLAUDE.md` |
 | Fill [language surface inventory](./rules/security.md#language-surface-inventory); run declared style + SAST before complete | Paste the full multi-language SAST table without inventory evidence |
 | Verify before sharing contract or behavior changes ([verification-and-ops](./rules/verification-and-ops.md)) | Claim complete when a **declared** style or SAST gate was skipped or failed |
 | Regenerate `certification/` outputs when that folder is maintained | Commit `last_certification.*` or treat certification as a product launcher gate |
@@ -159,6 +161,7 @@ Replace paths below with your project’s real files. Rows that do not apply may
 | Default config | `{{CONFIG_PATH}}` |
 | Golden tests / fixtures | `{{FIXTURES_PATH}}` |
 | Language style configs | [configs/](./configs/) — copy **only** the file(s) for surfaces in the inventory (`pylintrc`, `rustfmt.toml`, `clippy.toml`, `clang-format`, `clang-tidy`). Docs-only / undeclared languages: leave unused files under `kit/configs/` as dormant catalog |
+| Host always-on / L0 | Project root `AGENTS.md` (thin pointer) + recorded host aliases — [agents/HABITAT.md](./agents/HABITAT.md). Create **only** when a coding agent is used; do not invent host trees |
 | Agent Instruct (framework, catalog, BUILD, runtime, OPS) | [agents/README.md](./agents/README.md) — index to FRAMEWORK, PARAMS, CATALOG, PLAN-HOOK, BUILD, RUNTIME, **OPS** |
 | Agent utilization (order of operations) | [agents/OPS.md](./agents/OPS.md) — required O3 when Instruct is in use |
 | Project agent control surface | Root `PLAN.md` (**Agent models** section) — required when using agents; see [agents/PLAN-HOOK.md](./agents/PLAN-HOOK.md) |
@@ -193,6 +196,12 @@ Replace paths below with your project’s real files. Rows that do not apply may
 | [rules/continuity.md](./rules/continuity.md) | Optional surgical-edit overlay policy (no product paths in kit defaults) |
 
 Adopters keep domain modules under **`kit/rules/`**, or fold selected modules into a single `kit/RULES.md`—document the choice in the authority map. See [UPGRADE.md](./UPGRADE.md) merge options.
+
+### Optional habitat (not foldable)
+
+| Path | Topic |
+|------|--------|
+| [agents/HABITAT.md](./agents/HABITAT.md) | L0 host discovery (`AGENTS.md` / aliases) — when a **coding agent** is used; not Instruct; not foldable into the hub |
 
 ### Optional Instruct (not foldable)
 
@@ -264,6 +273,7 @@ Copy-paste prompt also on root [README — Upgrade repo-kit](../README.md#upgrad
 
 | Version | Notes |
 |---------|--------|
+| 2.6.0 | Host L0 habitat (`AGENTS.md`); HABITAT + parent/child protocol; map row |
 | 2.5.1 | One authority-map row for language style configs (inventory-gated copy) |
 | 2.5.0 | Inventory-gated Rust and C/C++ style gates (rustfmt+clippy, clang-format+clang-tidy) + starter configs; Must names declared Domain B only |
 | 2.4.0 | Plan control: workboard + optional continuity; Operator step 4 names the board; authority-map rows (kit 2.4.0) |

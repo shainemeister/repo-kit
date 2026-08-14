@@ -22,13 +22,13 @@ There is **no traditional install step**. Prefer keeping this kit as a reference
 #### New implementation
 
 ```text
-Review PLAN.md (project plan) and kit/SETUP.md at https://github.com/shainemeister/repo-kit, then initiate the adoption checklist. Place standards under kit/ in the target repo; keep product code and project CHANGELOG outside kit/. Fill kit/RULES.md authority map with real product paths. Optional Agent Instruct: include kit/agents/, PLAN Agent models (kit/agents/PLAN-HOOK.md), run kit/agents/BUILD.md.
+Review PLAN.md (project plan) and kit/SETUP.md at https://github.com/shainemeister/repo-kit, then initiate the adoption checklist. Place standards under kit/ in the target repo; keep product code and project CHANGELOG outside kit/. Fill kit/RULES.md authority map with real product paths. If a coding agent is used: copy kit/agents/HABITAT.md and create root AGENTS.md if missing (do not clobber a filled file). Optional Agent Instruct: include the rest of kit/agents/, PLAN Agent models (kit/agents/PLAN-HOOK.md), run kit/agents/BUILD.md.
 ```
 
 #### Existing repository (first adopt)
 
 ```text
-This repository has no repo-kit Kit baseline yet. Follow kit/SETUP.md selective adoption / Existing repository (first adopt). Add a kit/ standards tree (do not flatten standards onto root). Map real product paths into the authority map; do not force a product directory rewrite. Record Kit baseline in kit/RULES.md; delete kit/SETUP.md. Later upgrades use kit/UPGRADE.md. Optional Agent Instruct: selective kit/agents/ + PLAN Agent models; do not force agents on bare adopt.
+This repository has no repo-kit Kit baseline yet. Follow kit/SETUP.md selective adoption / Existing repository (first adopt). Add a kit/ standards tree (do not flatten standards onto root). Map real product paths into the authority map; do not force a product directory rewrite. Record Kit baseline in kit/RULES.md; delete kit/SETUP.md. Later upgrades use kit/UPGRADE.md. If a coding agent is used: copy kit/agents/HABITAT.md and create root AGENTS.md if missing (do not clobber). Optional Agent Instruct: selective rest of kit/agents/ + PLAN Agent models; do not force Instruct on bare adopt.
 ```
 
 #### Alternative (local clone reference)
@@ -38,7 +38,7 @@ git clone https://github.com/shainemeister/repo-kit ../repo-kit-reference
 ```
 
 ```text
-Review PLAN.md and kit/SETUP.md from ../repo-kit-reference, then initiate the adoption checklist. Standards live under the target repo's kit/; product data stays outside kit/. Optional Agent Instruct: kit/agents/ + PLAN Agent models + BUILD when using agents.
+Review PLAN.md and kit/SETUP.md from ../repo-kit-reference, then initiate the adoption checklist. Standards live under the target repo's kit/; product data stays outside kit/. If a coding agent is used: kit/agents/HABITAT.md + root AGENTS.md if missing. Optional Agent Instruct: rest of kit/agents/ + PLAN Agent models + BUILD when using Instruct.
 ```
 
 #### Upgrade repo-kit
@@ -50,10 +50,11 @@ Upgrade repo-kit for this repository (Kit baseline already present in kit/RULES.
 2. Open the kit at Kit source (canonical: https://github.com/shainemeister/repo-kit) and read kit/UPGRADE.md and kit/CHANGELOG.md under ## repo-kit.
 3. If baseline is 1.x or standards still sit at project root, follow UPGRADE — Migrate from kit 1.x to 2.x layout; otherwise follow the routine upgrade procedure.
 4. Merge only appropriate kit pieces into this project's kit/; preserve authority-map product paths and verification commands.
-5. If Agent Instruct is in use: merge kit/agents/; preserve PLAN Agent models (active/disabled/overlays/tuning); re-run kit/agents/BUILD.md.
-6. Preserve docs/WORKBOARD.md, docs/plan/** (or a recorded alias such as docs/planning/), and any filled continuity overlay. Merge kit/rules/workboard.md; do not overwrite a live board with the empty template.
-7. Update Kit baseline (version + date); keep Kit source unchanged unless this repo is a deliberate fork.
-8. Add a short note to the project root CHANGELOG.md. Do not copy the full kit CHANGELOG history into the project CHANGELOG.
+5. If a coding agent is used (or AGENTS.md exists): merge kit/agents/HABITAT.md; do not overwrite a filled root AGENTS.md or host aliases.
+6. If Agent Instruct is in use: merge the rest of kit/agents/; preserve PLAN Agent models (active/disabled/overlays/tuning); re-run kit/agents/BUILD.md.
+7. Preserve docs/WORKBOARD.md, docs/plan/** (or a recorded alias such as docs/planning/), and any filled continuity overlay. Merge kit/rules/workboard.md; do not overwrite a live board with the empty template.
+8. Update Kit baseline (version + date); keep Kit source unchanged unless this repo is a deliberate fork.
+9. Add a short note to the project root CHANGELOG.md. Do not copy the full kit CHANGELOG history into the project CHANGELOG.
 ```
 
 Then follow [kit/SETUP.md](./kit/SETUP.md) (first adopt) or [kit/UPGRADE.md](./kit/UPGRADE.md) (existing baseline).
@@ -113,6 +114,7 @@ Copy what you need from `kit/`, **initiate from project interest** so formal doc
 | Align an **existing** repo (first kit adopt) | [kit/SETUP.md — Existing repository](./kit/SETUP.md#existing-repository-first-adopt) |
 | Upgrade repo-kit | [Upgrade repo-kit](#upgrade-repo-kit) · [kit/UPGRADE.md](./kit/UPGRADE.md) |
 | Use Agent Instruct / agent packs | [kit/agents/README.md](./kit/agents/README.md) · [OPS](./kit/agents/OPS.md) · [PLAN-HOOK](./kit/agents/PLAN-HOOK.md) · [BUILD](./kit/agents/BUILD.md) |
+| Make a coding agent find this kit | [HABITAT](./kit/agents/HABITAT.md) · [TEMPLATE-AGENTS](./kit/templates/TEMPLATE-AGENTS.md) |
 | Track multi-phase work (workboard) | [kit/rules/workboard.md](./kit/rules/workboard.md) · [SETUP 4c](./kit/SETUP.md#4c-optional-workboard) |
 | See a filled authority map | [kit/examples/](./kit/examples/) |
 | Scaffold docs for a new package | [kit/templates/](./kit/templates/) · [kit/MARKDOWN-STANDARD.md](./kit/MARKDOWN-STANDARD.md) |
@@ -139,6 +141,7 @@ Copy what you need from `kit/`, **initiate from project interest** so formal doc
 | **C / C++ product code** | clang-format + clang-tidy; cppcheck when declared | `kit/configs/clang-format` · [C / C++ style gate](./kit/rules/authoring-and-style.md#c--c-style-gate-clang-format--clang-tidy) · [example](./kit/examples/c-cpp-library.md) |
 | **Docs-only design repo** | Frontmatter, Summary→Contents; empty language inventory | [kit/examples/docs-only.md](./kit/examples/docs-only.md) |
 | **AI agent personas** | PLAN Agent models + expert packs as views; OPS utilization | [kit/agents/README.md](./kit/agents/README.md) · [OPS](./kit/agents/OPS.md) |
+| **Host discovery (L0)** | Thin `AGENTS.md` pointer; no host trees invented | [HABITAT](./kit/agents/HABITAT.md) · [template](./kit/templates/TEMPLATE-AGENTS.md) |
 | **Multi-phase plan control** | Single workboard, optional annex, archive on ship | [kit/rules/workboard.md](./kit/rules/workboard.md) |
 | **Pre-ship self-attestation** | Optional `certification/` JSON+TXT schema | [Certification](./kit/rules/security.md#security-and-code-validation-certification) |
 
@@ -181,6 +184,7 @@ your-repo/
   .pylintrc                 # if Python; or package-local / kit/configs
   rustfmt.toml              # if Rust
   .clang-format             # if C / C++
+  AGENTS.md                 # if a coding agent is used — thin L0 pointer
 ```
 
 **Separation:** do not put product code under `kit/`; do not dump standards onto the project root. Detail: [kit/rules/hygiene.md](./kit/rules/hygiene.md).
@@ -264,7 +268,8 @@ All kit source lives under [`kit/`](./kit/) except this README, LICENSE, and `.g
 | [kit/SETUP.md](./kit/SETUP.md) | One-time adoption (delete after initiation) |
 | [kit/UPGRADE.md](./kit/UPGRADE.md) | Durable upgrade and 1.x→2.0 migration |
 | [kit/RULES.md](./kit/RULES.md) | Maintenance hub: authority map, kit baseline |
-| [kit/agents/README.md](./kit/agents/README.md) | Agent Instruct index (OPS, FRAMEWORK, BUILD, PLAN-HOOK, …) |
+| [kit/agents/README.md](./kit/agents/README.md) | Agent Instruct index (OPS, FRAMEWORK, BUILD, PLAN-HOOK, HABITAT, …) |
+| [kit/agents/HABITAT.md](./kit/agents/HABITAT.md) | L0 host discovery: detect / create `AGENTS.md` / alias |
 | [kit/agents/OPS.md](./kit/agents/OPS.md) | Utilization order of operations when Instruct is in use |
 | [kit/rules/ai-docs-workspace.md](./kit/rules/ai-docs-workspace.md) | Root `docs/` AI resource workspace policy |
 | [kit/rules/workboard.md](./kit/rules/workboard.md) | Multi-phase workboard, annex, archive, agent resume |

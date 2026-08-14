@@ -1,7 +1,7 @@
 ---
 title: Workboard Lifecycle
 description: Single active multi-phase workboard, phase-ship hygiene, optional annex archive, and agent resume protocol.
-version: "1.0.1"
+version: "1.0.2"
 status: current
 audience:
   - developers
@@ -22,14 +22,14 @@ related:
   - ../agents/PLAN-HOOK.md
   - ../templates/docs/WORKBOARD.md
   - ../MARKDOWN-STANDARD.md
-last_updated: "2026-08-12"
+last_updated: "2026-08-14"
 ---
 
 # Workboard Lifecycle
 
 How multi-phase work is **registered, advanced, shipped, and archived** so agents and humans share one continuous execution surface. This module is **domain-agnostic**. Product paths belong in the adopter’s authority map and filled board—not in this file.
 
-**Document version:** 1.0.1
+**Document version:** 1.0.2
 
 **Related:** [RULES.md](../RULES.md) · [ai-docs-workspace.md](./ai-docs-workspace.md) · [continuity.md](./continuity.md) · [contracts.md](./contracts.md) · [OPS.md](../agents/OPS.md) · [PLAN-HOOK.md](../agents/PLAN-HOOK.md) · [templates/docs/WORKBOARD.md](../templates/docs/WORKBOARD.md)
 
@@ -107,6 +107,8 @@ L4 authority-map owners   docs/plan/archive/<program-id>/
 ```
 
 **Rule:** if work is not linked from `docs/WORKBOARD.md`, it is **not** active multi-phase work.
+
+When Agent Instruct **isolates** work ([OPS parent/child](../agents/OPS.md#parent--child-when-work-is-isolated)), the **parent** updates this board (status + SHA). Children execute a named phase; they do not own program status.
 
 ---
 
@@ -347,5 +349,6 @@ Do **not** run two live boards. Do **not** force a rename on upgrade—preserve 
 
 | Version | Notes |
 |---------|--------|
+| 1.0.2 | Parent owns board status when Instruct isolates work (kit 2.6.0) |
 | 1.0.1 | PLAN optional when absent; session start uses landing README (kit 2.4.0 clarification) |
 | 1.0.0 | Initial portable workboard lifecycle (kit 2.4.0) |

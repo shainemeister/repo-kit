@@ -26,6 +26,30 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 
 ## repo-kit
 
+### [2.6.0] - 2026-08-14
+
+#### Added
+
+- **Host habitat (L0)** — [kit/agents/HABITAT.md](./agents/HABITAT.md): detect a coding-agent host, create a thin root `AGENTS.md`, alias only if that host cannot see it, map the path. Law stays under `kit/`.
+- Templates: [TEMPLATE-AGENTS.md](./templates/TEMPLATE-AGENTS.md), [TEMPLATE-HOST-ALIAS.md](./templates/TEMPLATE-HOST-ALIAS.md).
+- **Parent / child protocol** in [OPS](./agents/OPS.md) (duties only: one primary, serial vs parallel, workboard as DAG, parent owns complete). No spawn-tool names.
+- This repository dogfoods a pointer-only root [AGENTS.md](../AGENTS.md) (docs-only; Instruct off).
+
+#### Changed
+
+- RULES hub **2.6.0**: Must + authority-map row for L0.  
+- hygiene **1.5.0**, contracts **1.3.1**, ai-docs-workspace **1.1.1**, workboard **1.0.2**.  
+- FRAMEWORK **1.2.0**, RUNTIME **1.3.0**, OPS **1.3.0**, agents README **1.2.0**.  
+- SETUP **If any coding agent** (never Always); host-introduced-later step. UPGRADE **1.8.0** preserve filled `AGENTS.md`.  
+- README / examples: habitat rows; docs-only omits L0 unless an agent maintains the repo.
+
+#### Notes
+
+- Optional. No evidence of a host ⇒ do not create habitat files.  
+- Prefer one portable L0 (`AGENTS.md`). Do not ship `.claude/`, `.cursor/`, Copilot instruction matrices, or `GEMINI.md` as kit payload.  
+- Host path table in HABITAT is **informative** (dated); confirm current host docs before writing an alias.  
+- Filled `AGENTS.md` is **project data** on upgrade.
+
 ### [2.5.1] - 2026-08-14
 
 #### Changed

@@ -1,7 +1,7 @@
 ---
 title: Agent Runtime
 description: Activation modes, size budgets, and matching guidance for Agent Instruct.
-version: "1.2.0"
+version: "1.3.0"
 status: current
 audience:
   - developers
@@ -17,7 +17,7 @@ related:
   - PLAN-HOOK.md
   - ../RULES.md
   - ../rules/verification-and-ops.md
-last_updated: "2026-08-10"
+last_updated: "2026-08-14"
 ---
 
 # Agent Runtime
@@ -26,7 +26,7 @@ Agent Instruct assumes a **discovery + selective load** runtime: short **catalog
 
 **Full task lifecycle** (match → expertise → co-maintain → verify → agent evolve): **[OPS.md](./OPS.md)** — required when Instruct is in use.
 
-**Document version:** 1.2.0  
+**Document version:** 1.3.0  
 
 **Related:** [README.md](./README.md) · [OPS.md](./OPS.md) · [FRAMEWORK.md](./FRAMEWORK.md) · [PARAMS.md](./PARAMS.md) · [CATALOG.md](./CATALOG.md) · [BUILD.md](./BUILD.md) · [PLAN-HOOK.md](./PLAN-HOOK.md) · [RULES.md](../RULES.md)
 
@@ -116,15 +116,19 @@ If over budget: split doctrine, move text to L4 docs, shorten pack to links.
 
 ## Harness notes (informative)
 
-Agent hosts may discover skills from a skills directory when present on disk. Implications:
+**Discovery (L0):** establish a thin habitat file where the host already looks — prefer root `AGENTS.md`. Procedure: [HABITAT.md](./HABITAT.md). Do not invent host folder trees.
+
+Agent hosts may also discover skills from a host-specific directory when present. Implications:
 
 | Goal | Approach |
 |------|----------|
-| Portable kit-only | Use `kit/agents/generated/` only |
-| Host auto-match | Optionally mirror packs to host skill format |
-| Avoid shipping host skills to remote | gitignore host dir; keep kit/agents tracked |
+| Portable kit-only | Packs under `kit/agents/generated/` only |
+| Host auto-match | Optionally **mirror** packs to the host skill format (adopter opt-in) |
+| Avoid shipping regenerable mirrors | gitignore the host dir; keep `kit/agents` tracked |
 
 Map AgentPack fields to the host’s skill/rule format without changing PARAMS schema. Prefer adapters over forking CATALOG. Kit correctness does **not** depend on any host skill directory.
+
+Isolating a pack as a helper: [OPS parent/child](./OPS.md#parent--child-when-work-is-isolated) (duties only; no spawn-tool names).
 
 ---
 
@@ -151,6 +155,7 @@ Prefer the full **[OPS O3](./OPS.md#order-of-operations-o3)** sequence. Matching
 
 | Version | Notes |
 |---------|--------|
+| 1.3.0 | Harness notes point at HABITAT; parent/child pointer (kit 2.6.0) |
 | 1.2.0 | OPS O3 required when Instruct in use; expertise open; lifecycle pointer (kit 2.2.0) |
 | 1.1.0 | Authority-map-first matching; STOP on failed gates; completion-rule cross-link |
 | 1.0.0 | Initial runtime (kit 2.1.0) |
