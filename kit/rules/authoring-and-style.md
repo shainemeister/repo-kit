@@ -1,7 +1,7 @@
 ---
 title: Authoring and Style
 description: Documentation rules, formatting conventions, inventory-gated style gates for Python, Rust, and C/C++, and other language style gates.
-version: "1.1.0"
+version: "1.1.1"
 status: current
 audience:
   - developers
@@ -24,7 +24,7 @@ last_updated: "2026-08-14"
 
 How to write and structure documentation, and how to gate product code style (Domain B). Named kit style gates (pylint, rustfmt+clippy, clang-format+clang-tidy) apply **only when that language is in the [language surface inventory](./security.md#language-surface-inventory)**. Empty / docs-only inventories declare no language style gates.
 
-**Document version:** 1.1.0  
+**Document version:** 1.1.1  
 
 **Related:** [RULES.md](../RULES.md) · [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md) · [contracts.md](./contracts.md) · [verification-and-ops.md](./verification-and-ops.md) · [pylintrc](../configs/pylintrc) · [rustfmt.toml](../configs/rustfmt.toml) · [clippy.toml](../configs/clippy.toml) · [clang-format](../configs/clang-format) · [clang-tidy](../configs/clang-tidy)
 
@@ -108,12 +108,13 @@ All **product** Python under the packages this project ships must stay **pylint-
 
 If pylint is not installed on a developer machine, install it into the **developer environment** (user/global Python or a dev extra), never into a product runtime path meant only for end users.
 
-**Adopt steps:**
+**Adopt steps** (when Python is declared or first introduced):
 
-1. Copy `configs/pylintrc` (from kit: `kit/configs/pylintrc`) to the package or repo root as `.pylintrc`.  
-2. **Must:** set `py-version` to the project’s supported Python (the file ships a starter default only—change it).  
-3. Point the [verification table](./verification-and-ops.md#verification-before-ship) at the real package path.  
-4. Extend `good-names` only when short identifiers are intentional and repeated.
+1. Add the **Python** inventory row and verification commands in the **same change set** (skip if already declared).  
+2. Copy `configs/pylintrc` (from kit: `kit/configs/pylintrc`) to the package or repo root as `.pylintrc`.  
+3. **Must:** set `py-version` to the project’s supported Python (the file ships a starter default only—change it).  
+4. Point the [verification table](./verification-and-ops.md#verification-before-ship) at the real package path.  
+5. Extend `good-names` only when short identifiers are intentional and repeated.
 
 ---
 
@@ -211,5 +212,6 @@ Language inventory (which surfaces exist) lives in [security.md](./security.md#l
 
 | Version | Notes |
 |---------|--------|
+| 1.1.1 | Python adopt steps start with inventory (parity with Rust/C++); kit 2.5.1 |
 | 1.1.0 | Named Rust and C/C++ style gates + starter configs; inventory is the on/off switch (kit 2.5.0) |
 | 1.0.0 | Extracted from RULES 1.4.1 for kit 2.0 |

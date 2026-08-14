@@ -49,7 +49,7 @@ Declare **only** this row when the repo ships C / C++ product sources. Docs-only
 
 | Surface | Domain B (validation) | Domain A (security) | Notes |
 |---------|----------------------|---------------------|--------|
-| **C / C++** | `clang-format --dry-run --Werror <sources>`; `clang-tidy -p compile_commands.json <sources>` | `cppcheck --error-exitcode=1 --enable=warning,style,performance,portability <src>` | Required when this row is present. Product build emits `compile_commands.json` |
+| **C / C++** | clang-format dry-run + clang-tidy ([style gate](../rules/authoring-and-style.md#c--c-style-gate-clang-format--clang-tidy)) | cppcheck ([SAST catalog](../rules/security.md#security--sast-gates-required-when-declared)) | Required when this row is present. Product build emits `compile_commands.json` |
 
 ### Sample kit baseline
 

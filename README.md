@@ -220,7 +220,7 @@ When a project ships **Rust product code** (Rust **in the inventory**):
 | Tool | **rustfmt** + **clippy** with this kit’s starter configs |
 | Pass | `cargo fmt --check` and kit clippy command exit **0** |
 | Install | Developer tooling only |
-| Command | `cargo fmt --check`; `cargo clippy --all-targets -- -D clippy::correctness -D clippy::suspicious -D clippy::style -A clippy::complexity` |
+| Command | See [Rust style gate](./kit/rules/authoring-and-style.md#rust-style-gate-rustfmt--clippy) **Command** row |
 | Config | Copy [rustfmt.toml](./kit/configs/rustfmt.toml) and [clippy.toml](./kit/configs/clippy.toml); set rustfmt `edition` |
 | Domain A | **cargo-audit** (`cargo audit`) — command only; no kit `audit.toml` |
 
@@ -235,7 +235,7 @@ When a project ships **C / C++ product code** (C / C++ **in the inventory**):
 | Tool | **clang-format** + **clang-tidy** with this kit’s starter configs |
 | Pass | Format dry-run and tidy exit **0** |
 | Install | Developer tooling only |
-| Command | `clang-format --dry-run --Werror <sources>`; `clang-tidy -p compile_commands.json <sources>` |
+| Command | See [C / C++ style gate](./kit/rules/authoring-and-style.md#c--c-style-gate-clang-format--clang-tidy) **Command** row |
 | Config | Copy [clang-format](./kit/configs/clang-format) as `.clang-format` and [clang-tidy](./kit/configs/clang-tidy) as `.clang-tidy`; set `BasedOnStyle` |
 | Domain A | **cppcheck** — command only; no kit `cppcheck.cfg` |
 

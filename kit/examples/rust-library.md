@@ -49,7 +49,7 @@ Declare **only** this row when the repo ships Rust. Docs-only inventories stay e
 
 | Surface | Domain B (validation) | Domain A (security) | Notes |
 |---------|----------------------|---------------------|--------|
-| **Rust** | `cargo fmt --check`; `cargo clippy --all-targets -- -D clippy::correctness -D clippy::suspicious -D clippy::style -A clippy::complexity` | `cargo audit` | Required when this row is present |
+| **Rust** | `cargo fmt --check` + kit clippy command ([style gate](../rules/authoring-and-style.md#rust-style-gate-rustfmt--clippy)) | `cargo audit` | Required when this row is present |
 
 ### Sample kit baseline
 

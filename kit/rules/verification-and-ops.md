@@ -1,7 +1,7 @@
 ---
 title: Verification and Operations
 description: Verification before ship, completion rule, maintenance cadence, anti-patterns, and contributor checklist.
-version: "1.6.0"
+version: "1.6.1"
 status: current
 audience:
   - developers
@@ -28,7 +28,7 @@ last_updated: "2026-08-14"
 
 Ship gates, completion rules, cadence, anti-patterns, and the contributor checklist.
 
-**Document version:** 1.6.0  
+**Document version:** 1.6.1  
 
 **Related:** [RULES.md](../RULES.md) · [security.md](./security.md) · [authoring-and-style.md](./authoring-and-style.md) · [contracts.md](./contracts.md) · [versioning-and-git.md](./versioning-and-git.md) · [ai-docs-workspace.md](./ai-docs-workspace.md) · [workboard.md](./workboard.md) · [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md) · [UPGRADE.md](../UPGRADE.md) · [agents/README.md](../agents/README.md) · [agents/OPS.md](../agents/OPS.md)
 
@@ -55,14 +55,14 @@ Do **not** mark work complete if any **declared** Domain B (style) or Domain A (
 
 ## Verification before ship
 
-Fill concrete commands for your project from the [language surface inventory](./security.md#language-surface-inventory). Rows that do not apply may be removed.
+Fill concrete commands for your project from the [language surface inventory](./security.md#language-surface-inventory). Rows that do not apply may be removed. Docs-only / empty inventory: keep only the **Docs only** row (and any non-language rows that apply). Do **not** copy Python / Rust / C/C++ style rows into a project verify table unless that surface is declared. Canonical Domain B command strings live in [authoring-and-style](./authoring-and-style.md).
 
 | Change type | Minimum verification |
 |-------------|----------------------|
 | Public behavior, scores, exports | Project tests / golden fixtures (define command for each primary platform) |
-| Python product code style | `python -m pylint <package_or_paths>` (must pass **when Python is in inventory**; see [Python style gate](./authoring-and-style.md#python-style-gate-pylint)) |
-| Rust product code style | `cargo fmt --check` and `cargo clippy --all-targets -- -D clippy::correctness -D clippy::suspicious -D clippy::style -A clippy::complexity` (**when Rust is in inventory**; see [Rust style gate](./authoring-and-style.md#rust-style-gate-rustfmt--clippy)) |
-| C / C++ product code style | `clang-format --dry-run --Werror <sources>` and `clang-tidy -p compile_commands.json <sources>` (**when C / C++ is in inventory**; see [C / C++ style gate](./authoring-and-style.md#c--c-style-gate-clang-format--clang-tidy)) |
+| Python product code style | Kit pylint command (**when Python is in inventory**; see [Python style gate](./authoring-and-style.md#python-style-gate-pylint)) |
+| Rust product code style | `cargo fmt --check` + kit clippy command (**when Rust is in inventory**; see [Rust style gate](./authoring-and-style.md#rust-style-gate-rustfmt--clippy)) |
+| C / C++ product code style | clang-format dry-run + clang-tidy (**when C / C++ is in inventory**; see [C / C++ style gate](./authoring-and-style.md#c--c-style-gate-clang-format--clang-tidy)) |
 | Other language product style | Project-declared gate per inventory (see [Other language style gates](./authoring-and-style.md#other-language-style-gates)) |
 | Security / SAST (language-specific) | Only the commands for **surfaces in the inventory** (see [Security / SAST gates](./security.md#security--sast-gates-required-when-declared)); omit entire row if inventory is empty |
 | Formal certification | If `certification/` is maintained: regenerate `last_certification.json` / `.txt` after critical gates; confirm OverallPass; do not stage outputs |
@@ -222,6 +222,7 @@ Before you commit or share a change:
 
 | Version | Notes |
 |---------|--------|
+| 1.6.1 | Verify-table prune sentence; Domain B rows point at style-gate Command cells (kit 2.5.1) |
 | 1.6.0 | Inventory-gated Rust and C/C++ style verify rows, cadence, checklist (kit 2.5.0) |
 | 1.5.0 | Multi-phase workboard before-complete, cadence, anti-pattern, checklist (kit 2.4.0) |
 | 1.4.1 | AI disclosure checklist: dynamic Instructed-by cascade; no Directed-by (kit 2.3.1) |

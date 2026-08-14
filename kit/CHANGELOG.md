@@ -26,6 +26,20 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 
 ## repo-kit
 
+### [2.5.1] - 2026-08-14
+
+#### Changed
+
+- RULES hub **2.5.1**: one authority-map row for language style configs (copy only if declared).
+- authoring-and-style **1.1.1**: Python adopt steps start with the inventory row (parity with Rust/C++).
+- verification-and-ops **1.6.1**: docs-only prune sentence; Domain B verify rows point at style-gate Command cells.
+- SETUP first-verify, README Command cells, and Rust/C++ examples no longer fork the full clippy/cppcheck argv.
+
+#### Notes
+
+- Canonical Domain B command strings stay in [authoring-and-style](./rules/authoring-and-style.md). Security inventory/SAST tables remain the catalog (named tools + typical command).
+- No gate behavior change. Inventory is still the on/off switch.
+
 ### [2.5.0] - 2026-08-14
 
 #### Added

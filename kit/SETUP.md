@@ -250,21 +250,21 @@ On Windows you may use `py -3.x -m pylint …`. Install pylint in the **develope
 
 ```text
 cargo fmt --check
-cargo clippy --all-targets -- -D clippy::correctness -D clippy::suspicious -D clippy::style -A clippy::complexity
+cargo clippy …   # exact flags: Rust style gate Command row
 cargo audit
 ```
 
-Copy `kit/configs/rustfmt.toml` and `kit/configs/clippy.toml`; set rustfmt `edition`. Details: [Rust style gate](./rules/authoring-and-style.md#rust-style-gate-rustfmt--clippy).
+Copy `kit/configs/rustfmt.toml` and `kit/configs/clippy.toml`; set rustfmt `edition`. Canonical Domain B command: [Rust style gate](./rules/authoring-and-style.md#rust-style-gate-rustfmt--clippy).
 
 **C / C++ product code** (if applicable — C / C++ in the inventory)
 
 ```text
 clang-format --dry-run --Werror <sources>
 clang-tidy -p compile_commands.json <sources>
-cppcheck --error-exitcode=1 --enable=warning,style,performance,portability <src>
+cppcheck …      # exact flags: C / C++ style gate Domain A row
 ```
 
-Copy `kit/configs/clang-format` → `.clang-format` and `kit/configs/clang-tidy` → `.clang-tidy`; set `BasedOnStyle`. Product build must emit `compile_commands.json`. Details: [C / C++ style gate](./rules/authoring-and-style.md#c--c-style-gate-clang-format--clang-tidy).
+Copy `kit/configs/clang-format` → `.clang-format` and `kit/configs/clang-tidy` → `.clang-tidy`; set `BasedOnStyle`. Product build must emit `compile_commands.json`. Canonical Domain B command: [C / C++ style gate](./rules/authoring-and-style.md#c--c-style-gate-clang-format--clang-tidy).
 
 **Other languages:** declare a style gate (tool + pass criteria)—see [Other language style gates](./rules/authoring-and-style.md#other-language-style-gates).
 
