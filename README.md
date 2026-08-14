@@ -140,9 +140,10 @@ Upgrade repo-kit for this repository (Kit baseline already present in kit/RULES.
 2. Open the kit at Kit source (canonical: https://github.com/shainemeister/repo-kit) and read kit/UPGRADE.md and kit/CHANGELOG.md under ## repo-kit.
 3. If baseline is 1.x or standards still sit at project root, follow UPGRADE — Migrate from kit 1.x to 2.x layout; otherwise follow the routine upgrade procedure.
 4. Merge only appropriate kit pieces into this project's kit/; preserve authority-map product paths and verification commands.
-5. If a coding agent is used (or AGENTS.md exists): merge kit/agents/HABITAT.md; do not overwrite a filled root AGENTS.md or host aliases.
-6. If Agent Instruct is in use: merge the rest of kit/agents/; preserve PLAN Agent models (active/disabled/overlays/tuning); re-run kit/agents/BUILD.md.
-7. Preserve docs/WORKBOARD.md, docs/plan/** (or a recorded alias such as docs/planning/), and any filled continuity overlay. Merge kit/rules/workboard.md; do not overwrite a live board with the empty template.
-8. Update Kit baseline (version + date); keep Kit source unchanged unless this repo is a deliberate fork.
-9. Add a short note to the project root CHANGELOG.md. Do not copy the full kit CHANGELOG history into the project CHANGELOG.
+5. Reshape root README.md to landing if needed (no frontmatter; ## Overview then ## Operator prompts). Keep this repo's Overview; do not paste upstream kit adopt/upgrade fences. Package READMEs unchanged.
+6. If a coding agent is used (or AGENTS.md exists): merge kit/agents/HABITAT.md; do not overwrite a filled root AGENTS.md or host aliases.
+7. If Agent Instruct is in use: merge the rest of kit/agents/; preserve PLAN Agent models (active/disabled/overlays/tuning); re-run kit/agents/BUILD.md.
+8. Preserve docs/WORKBOARD.md, docs/plan/** (or a recorded alias such as docs/planning/), and any filled continuity overlay. Merge kit/rules/workboard.md; do not overwrite a live board with the empty template.
+9. Update Kit baseline (version + date); keep Kit source unchanged unless this repo is a deliberate fork.
+10. Add a short note to the project root CHANGELOG.md. Do not copy the full kit CHANGELOG history into the project CHANGELOG.
 ```

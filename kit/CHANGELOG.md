@@ -26,6 +26,13 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 
 ## repo-kit
 
+### [2.6.3] - 2026-08-14
+
+#### Changed
+
+- UPGRADE **1.8.1**: routine upgrade (and 1.x checklist) reshapes root `README.md` to the required landing shape; preserve product Overview; do not paste upstream adopt fences.
+- MARKDOWN-STANDARD **1.2.1**: landing checklist requires `## Overview` then `## Operator prompts`; root landing removed from the optional/lighter table.
+
 ### [2.6.2] - 2026-08-14
 
 #### Changed

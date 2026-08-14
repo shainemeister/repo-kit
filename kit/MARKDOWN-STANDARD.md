@@ -1,7 +1,7 @@
 ---
 title: Markdown Documentation Standard
 description: Cross-functional standard for consistent, professional markdown across any repository or project.
-version: "1.2.0"
+version: "1.2.1"
 status: current
 audience:
   - developers
@@ -24,7 +24,7 @@ last_updated: "2026-08-14"
 
 A repeatable standard for professional, consistent markdown in any repository—usable across packages, CLIs, methodologies, security notes, design concepts, and runbooks.
 
-**Standard version:** 1.2.0  
+**Standard version:** 1.2.1  
 **Location:** `kit/MARKDOWN-STANDARD.md`  
 **Templates:** [`templates/`](./templates/)
 
@@ -78,7 +78,6 @@ Most **substantial** documents use **YAML frontmatter**, a clear **H1**, a short
 |------------------------------|----------|
 | Tiny sample folders | Short README without full frontmatter if under ~30 lines |
 | Generated notes | Prefer linking to a curated doc instead of free-form dump |
-| Root landing README | Full pattern in [Landing / root README](#landing--root-readme-no-frontmatter) |
 
 ---
 
@@ -508,10 +507,12 @@ Before merging or publishing a doc:
 ### Landing / root README (no frontmatter)
 
 - [ ] No YAML frontmatter  
-- [ ] Summary and **Use cases** appear near the top  
+- [ ] Exactly two H2s, in order: `## Overview` then `## Operator prompts`  
+- [ ] Summary and **Use cases** appear near the top of Overview  
 - [ ] Quick start shows one end-to-end path  
 - [ ] Does **not** open with maintainer-only inventory (RULES, catalog, templates)  
-- [ ] Maintainer links (if any) stay at the end and stay short  
+- [ ] Maintainer links (if any) stay at the end of Overview and stay short  
+- [ ] Operator prompts is a session load path (not a second RULES tree, not package CLI/API)  
 - [ ] Deep contracts linked, not pasted  
 
 ---
@@ -544,6 +545,7 @@ Before merging or publishing a doc:
 
 | Version | Notes |
 |---------|--------|
+| 1.2.1 | Landing checklist names both H2s; root landing removed from optional/lighter table (kit 2.6.3) |
 | 1.2.0 | Root README **must** use Overview + Operator prompts; package READMEs unchanged (kit 2.6.2) |
 | 1.1.1 | Landing may end with Operator prompts; Overview length budget (kit 2.6.1) |
 | 1.1.0 | Cross-linking form section; kit 2.0 paths (`kit/`); links to contracts and verification modules |

@@ -1,7 +1,7 @@
 ---
 title: Upgrade repo-kit
 description: Durable guide for upgrading an existing kit baseline, including 1.x to 2.x layout migration (standards under kit/) and merge options.
-version: "1.8.0"
+version: "1.8.1"
 status: current
 audience:
   - developers
@@ -28,7 +28,7 @@ last_updated: "2026-08-14"
 
 Durable procedure for **repositories that already adopted** the Repository Standards Kit. Not deleted after initiation—keep under project `kit/` or always open this file at Kit source.
 
-**Document version:** 1.8.0  
+**Document version:** 1.8.1  
 
 **Related:** [RULES.md](./RULES.md) · [SETUP.md](./SETUP.md) · [CHANGELOG.md](./CHANGELOG.md) · [README.md](../README.md) · [versioning-and-git.md](./rules/versioning-and-git.md) · [hygiene.md](./rules/hygiene.md) · [ai-docs-workspace.md](./rules/ai-docs-workspace.md) · [workboard.md](./rules/workboard.md) · [agents/README.md](./agents/README.md) · [agents/OPS.md](./agents/OPS.md) · [agents/BUILD.md](./agents/BUILD.md)
 
@@ -77,15 +77,16 @@ Durable procedure for **repositories that already adopted** the Repository Stand
 1. Read this project’s **Kit baseline** (Adopted kit version, Kit source, Adopted on) in **`kit/RULES.md`**.  
 2. Open **Kit source** (canonical: https://github.com/shainemeister/repo-kit) → [`kit/CHANGELOG.md`](./CHANGELOG.md) → `## repo-kit`.  
 3. List releases **after** your Adopted kit version only.  
-4. Build a **focused merge plan**: only pieces this project uses (hub `RULES.md`, `rules/*` including **ai-docs-workspace**, **workboard**, **continuity** policy, `MARKDOWN-STANDARD.md`, templates including **templates/docs/** and **WORKBOARD.md**, configs, **`kit/agents/HABITAT.md`** if a coding agent is used, remaining **`kit/agents/`** if Instruct is used, `.gitignore` patterns).  
+4. Build a **focused merge plan**: only pieces this project uses (hub `RULES.md`, `rules/*` including **ai-docs-workspace**, **workboard**, **continuity** policy, `MARKDOWN-STANDARD.md`, templates including **TEMPLATE-LANDING-README.md**, **templates/docs/** and **WORKBOARD.md**, configs, **`kit/agents/HABITAT.md`** if a coding agent is used, remaining **`kit/agents/`** if Instruct is used, `.gitignore` patterns).  
 5. **Merge into project `kit/`** — not onto the product root. **Preserve** project root **`docs/`** content (do not overwrite with empty templates). **Never** replace a filled `docs/WORKBOARD.md` with the empty template. Merge new files under `kit/configs/` (pylintrc, rustfmt.toml, clippy.toml, clang-format, clang-tidy) as **catalog**. Do **not** force-copy them onto the product root; copy to `.pylintrc` / `rustfmt.toml` / `.clang-format` only when that language is **in the inventory**. If a coding agent is used (or root `AGENTS.md` exists): merge `kit/agents/HABITAT.md` and L0 templates. **Preserve** a filled root `AGENTS.md` and host aliases — do not overwrite with the empty template.  
-6. **Preserve** project-specific values — see [Preserve list](#preserve-list).  
-7. Fix relative links (`../README.md`, `../CHANGELOG.md`, `../packages/…`).  
-8. **Agent Instruct (if used):** merge upstream `kit/agents/` core docs (include **OPS.md**) + templates; **preserve** PLAN Agent models, expertise on adopter packs, and adopter/platform generated packs; re-run [BUILD](./agents/BUILD.md) with [source load order](./agents/BUILD.md#source-load-order) (kit seeds regen with expertise; do not clobber adopter packs). See [Agent Instruct on upgrade](#agent-instruct-on-upgrade).  
-9. Update **Adopted kit version** and **Adopted on**; keep Kit source unchanged (unless deliberate fork).  
-10. **Project root** `CHANGELOG.md`: short note (e.g. “Upgraded repo-kit baseline to X.Y.Z”)—**never** paste full kit history.  
-11. Re-run the project verification table / [completion rule](./rules/verification-and-ops.md#completion-rule).  
-12. Optional: refresh local `kit/UPGRADE.md` from upstream.
+6. **Root `README.md`:** required [landing](./MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter) — no frontmatter; `## Overview` then `## Operator prompts`. Rewrite in place or start from [TEMPLATE-LANDING-README.md](./templates/TEMPLATE-LANDING-README.md). Keep this repo’s Overview content; Operator prompts is **this** repo’s session load path — do not paste upstream kit adopt/upgrade fences. Package READMEs stay on [TEMPLATE-README.md](./templates/TEMPLATE-README.md).  
+7. **Preserve** project-specific values — see [Preserve list](#preserve-list).  
+8. Fix relative links (`../README.md`, `../CHANGELOG.md`, `../packages/…`).  
+9. **Agent Instruct (if used):** merge upstream `kit/agents/` core docs (include **OPS.md**) + templates; **preserve** PLAN Agent models, expertise on adopter packs, and adopter/platform generated packs; re-run [BUILD](./agents/BUILD.md) with [source load order](./agents/BUILD.md#source-load-order) (kit seeds regen with expertise; do not clobber adopter packs). See [Agent Instruct on upgrade](#agent-instruct-on-upgrade).  
+10. Update **Adopted kit version** and **Adopted on**; keep Kit source unchanged (unless deliberate fork).  
+11. **Project root** `CHANGELOG.md`: short note (e.g. “Upgraded repo-kit baseline to X.Y.Z”)—**never** paste full kit history.  
+12. Re-run the project verification table / [completion rule](./rules/verification-and-ops.md#completion-rule).  
+13. Optional: refresh local `kit/UPGRADE.md` from upstream.
 
 ---
 
@@ -138,6 +139,7 @@ Kit **2.0+** packages standards under `kit/` and splits RULES into a hub plus do
 - [ ] Keep project `CHANGELOG.md` at root; do not replace it with kit CHANGELOG  
 - [ ] Update authority map paths and deep links  
 - [ ] Update agent prompts / internal docs to `kit/…` paths  
+- [ ] Root `README.md` uses landing shape (`## Overview` then `## Operator prompts`; no frontmatter)  
 - [ ] Set baseline to latest 2.x after applying deltas  
 - [ ] Project CHANGELOG note for major kit / layout upgrade  
 
@@ -187,6 +189,7 @@ Never clobber on merge:
 - Unused `kit/configs/*` left as dormant catalog (do not invent inventory rows or product-root copies for languages the repo does not ship)  
 - Filled root **`AGENTS.md`** and recorded host aliases (merge HABITAT policy only; do not reset L0)  
 - Package CLI / SECURITY / METHODOLOGY content  
+- Root README **product** Overview (reshape headings; do not replace with upstream kit landing copy)  
 - Project root CHANGELOG **history**  
 - Project root **`docs/`** content (AI workspace notes—merge policy/templates under `kit/` only)  
 - Project **`docs/WORKBOARD.md`** and `docs/plan/**` (including `archive/`) — merge kit policy only  
@@ -209,17 +212,18 @@ Upgrade repo-kit for this repository (Kit baseline in kit/RULES.md).
 1. Read Kit baseline (Adopted kit version, Kit source).
 2. Open kit/UPGRADE.md and kit/CHANGELOG.md under ## repo-kit at Kit source (https://github.com/shainemeister/repo-kit).
 3. Follow UPGRADE routine procedure; merge only appropriate deltas into this project's kit/; preserve authority map product paths and verification.
-4. If a coding agent is used (or AGENTS.md exists): merge kit/agents/HABITAT.md; do not overwrite a filled root AGENTS.md or host aliases.
-5. If Agent Instruct is in use: merge the rest of kit/agents/ docs+templates; preserve PLAN Agent models and adopter/platform generated packs; re-run kit/agents/BUILD.md (kit seeds regen only; source load order).
-6. Preserve docs/WORKBOARD.md, docs/plan/** (or recorded alias), and any filled continuity overlay. Merge kit/rules/workboard.md policy; do not overwrite a live board with the empty template.
-7. Update Kit baseline; add a short note to project root CHANGELOG.md.
+4. Reshape root README.md to landing if needed (no frontmatter; ## Overview then ## Operator prompts). Keep this repo's Overview; do not paste upstream kit adopt/upgrade fences. Package READMEs unchanged.
+5. If a coding agent is used (or AGENTS.md exists): merge kit/agents/HABITAT.md; do not overwrite a filled root AGENTS.md or host aliases.
+6. If Agent Instruct is in use: merge the rest of kit/agents/ docs+templates; preserve PLAN Agent models and adopter/platform generated packs; re-run kit/agents/BUILD.md (kit seeds regen only; source load order).
+7. Preserve docs/WORKBOARD.md, docs/plan/** (or recorded alias), and any filled continuity overlay. Merge kit/rules/workboard.md policy; do not overwrite a live board with the empty template.
+8. Update Kit baseline; add a short note to project root CHANGELOG.md.
 ```
 
 ### 1.x / root layout → 2.x migration
 
 ```text
 Migrate this repository to repo-kit 2.x packaging using kit/UPGRADE.md (Migrate from kit 1.x / root layout to 2.x).
-Move standards under kit/; keep product code and project CHANGELOG outside kit/. Preserve authority map product paths. Update baseline and project CHANGELOG.
+Move standards under kit/; keep product code and project CHANGELOG outside kit/. Preserve authority map product paths. Reshape root README.md to landing (Overview then Operator prompts) if needed. Update baseline and project CHANGELOG.
 ```
 
 ### First adopt into existing repo (no baseline)
@@ -234,6 +238,7 @@ This repository has no repo-kit baseline. Follow kit/SETUP.md selective adoption
 
 | Version | Notes |
 |---------|--------|
+| 1.8.1 | Routine upgrade reshapes root README to landing (kit 2.6.3) |
 | 1.8.0 | Merge HABITAT; preserve filled AGENTS.md and host aliases (kit 2.6.0) |
 | 1.7.0 | Merge kit/configs as catalog; do not force product-root style copies; preserve adopter edition / BasedOnStyle / py-version (kit 2.5.0) |
 | 1.6.0 | Preserve workboard, plan annexes, path aliases, continuity overlay (kit 2.4.0) |
