@@ -96,7 +96,9 @@ Follow [Platform-aware examples](./MARKDOWN-STANDARD.md#platform-aware-examples)
 | [TEMPLATE-CONTINUITY.md](./templates/TEMPLATE-CONTINUITY.md) | Project overlay (e.g. `docs/project_build/continuity.md`) | If high-blast-radius code | Filled overlay — **not** this kit module; preserve on upgrade |
 | [templates/docs/WORKBOARD.md](./templates/docs/WORKBOARD.md) | Project root **`docs/WORKBOARD.md`** | If multi-phase | Live board — project data; do not leave placeholders |
 | [agents/](./agents/) | `kit/agents/` | If Agent Instruct | Instruct docs, templates; then BUILD → `generated/` |
-| [configs/pylintrc](./configs/pylintrc) | `kit/configs/` or `.pylintrc` at package/repo | If Python | Developer tooling only |
+| [configs/pylintrc](./configs/pylintrc) | `kit/configs/` or `.pylintrc` at package/repo | **If Python** | Developer tooling only; dormant until Python is in the inventory |
+| [configs/rustfmt.toml](./configs/rustfmt.toml) · [configs/clippy.toml](./configs/clippy.toml) | `kit/configs/` or crate/repo root | **If Rust** | Developer tooling only; dormant until Rust is in the inventory |
+| [configs/clang-format](./configs/clang-format) · [configs/clang-tidy](./configs/clang-tidy) | `kit/configs/` or `.clang-format` / `.clang-tidy` at package/repo | **If C/C++** | Developer tooling only; dormant until C/C++ is in the inventory |
 | [UPGRADE.md](./UPGRADE.md) | `kit/` | Recommended | Durable upgrade guide—or always open from Kit source |
 | This `SETUP.md` | `kit/` | Temporary | Follow, then delete or archive |
 
@@ -127,6 +129,8 @@ Also fill:
 |----------|--------------|
 | CLI / automation | [examples/cli-tool.md](./examples/cli-tool.md) |
 | Python library | [examples/python-library.md](./examples/python-library.md) |
+| Rust library | [examples/rust-library.md](./examples/rust-library.md) |
+| C / C++ library | [examples/c-cpp-library.md](./examples/c-cpp-library.md) |
 | Docs-only / standards | [examples/docs-only.md](./examples/docs-only.md) |
 
 ---
@@ -234,7 +238,7 @@ Fill and run the rows in [Verification before ship](./rules/verification-and-ops
 # See kit/MARKDOWN-STANDARD.md#author-checklist
 ```
 
-**Python product code** (if applicable)
+**Python product code** (if applicable — Python in the inventory)
 
 ```text
 python -m pylint <package_or_paths>
@@ -242,7 +246,31 @@ python -m pylint <package_or_paths>
 
 On Windows you may use `py -3.x -m pylint …`. Install pylint in the **developer** environment only—not as a product runtime dependency. Details: [Python style gate](./rules/authoring-and-style.md#python-style-gate-pylint).
 
-**Non-Python languages:** declare a style gate (tool + pass criteria)—see [Non-Python style gates](./rules/authoring-and-style.md#non-python-style-gates).
+**Rust product code** (if applicable — Rust in the inventory)
+
+```text
+cargo fmt --check
+cargo clippy --all-targets -- -D clippy::correctness -D clippy::suspicious -D clippy::style -A clippy::complexity
+cargo audit
+```
+
+Copy `kit/configs/rustfmt.toml` and `kit/configs/clippy.toml`; set rustfmt `edition`. Details: [Rust style gate](./rules/authoring-and-style.md#rust-style-gate-rustfmt--clippy).
+
+**C / C++ product code** (if applicable — C / C++ in the inventory)
+
+```text
+clang-format --dry-run --Werror <sources>
+clang-tidy -p compile_commands.json <sources>
+cppcheck --error-exitcode=1 --enable=warning,style,performance,portability <src>
+```
+
+Copy `kit/configs/clang-format` → `.clang-format` and `kit/configs/clang-tidy` → `.clang-tidy`; set `BasedOnStyle`. Product build must emit `compile_commands.json`. Details: [C / C++ style gate](./rules/authoring-and-style.md#c--c-style-gate-clang-format--clang-tidy).
+
+**Other languages:** declare a style gate (tool + pass criteria)—see [Other language style gates](./rules/authoring-and-style.md#other-language-style-gates).
+
+Docs-only / empty inventory: skip every language block above. Unused files under `kit/configs/` after a whole-tree copy are dormant catalog, not live gates.
+
+**When a language is introduced later:** add **only that** inventory row, copy the matching `kit/configs/*` to the product path, fill Domain B + Domain A verify commands, and update the authority-map style-config row if listed — same change set. Then those gates apply ([security.md](./rules/security.md#language-surface-inventory)).
 
 **Security / SAST gates (required when declared):** declare only tools for **surfaces in the language inventory**. Once declared, they must pass before task completion. See [Security / SAST gates](./rules/security.md#security--sast-gates-required-when-declared) and [Completion rule](./rules/verification-and-ops.md#completion-rule).
 
@@ -253,7 +281,9 @@ On Windows you may use `py -3.x -m pylint …`. Install pylint in the **develope
 ## 9. Optional next steps
 
 - Maintain a root `FILE-CATALOG.md` (or similar) and update it on path add/remove/rename.  
-- Copy `configs/pylintrc` → `.pylintrc` (package or repo root), set `py-version`, point the verification table at the real package path.  
+- If Python: copy `configs/pylintrc` → `.pylintrc` (package or repo root), set `py-version`, point the verification table at the real package path.  
+- If Rust: copy `configs/rustfmt.toml` and `configs/clippy.toml`, set rustfmt `edition`, add `cargo fmt` / clippy / `cargo audit` to the verification table.  
+- If C / C++: copy `configs/clang-format` → `.clang-format` and `configs/clang-tidy` → `.clang-tidy`, set `BasedOnStyle`, arrange `compile_commands.json`, add format / tidy / cppcheck to the verification table.  
 - Add root `certification/` + operator README when product code warrants formal self-attestation certificates.  
 - Enable or tune Agent Instruct: PLAN Agent models + [BUILD](./agents/BUILD.md); use [OPS](./agents/OPS.md) each task ([agents/README.md](./agents/README.md)).  
 - Scaffold root **`docs/`** from [templates/docs/](./templates/docs/) when multi-step research/plan/build work starts ([ai-docs-workspace](./rules/ai-docs-workspace.md)).  

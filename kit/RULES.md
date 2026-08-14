@@ -1,7 +1,7 @@
 ---
 title: Repository Maintenance Rules
 description: Maintenance policy hub—authority map, kit baseline, and index to domain rule modules.
-version: "2.4.0"
+version: "2.5.0"
 status: current
 audience:
   - developers
@@ -27,16 +27,20 @@ related:
   - rules/workboard.md
   - rules/continuity.md
   - configs/pylintrc
-last_updated: "2026-08-12"
+  - configs/rustfmt.toml
+  - configs/clippy.toml
+  - configs/clang-format
+  - configs/clang-tidy
+last_updated: "2026-08-14"
 ---
 
 # Repository Maintenance Rules
 
 Fundamental rules for maintaining a professional, auditable repository. This file is the **hub**: authority map, kit baseline, and Must / Must not. Domain detail lives in [rules/](./rules/). In adopting product repos this hub lives at **`kit/RULES.md`**.
 
-**Document version:** 2.4.0  
+**Document version:** 2.5.0  
 
-**Related:** [README.md](../README.md) · [SETUP.md](./SETUP.md) · [UPGRADE.md](./UPGRADE.md) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) · [CHANGELOG.md](./CHANGELOG.md) · [agents/README.md](./agents/README.md) · [agents/OPS.md](./agents/OPS.md) · [rules/](./rules/) · [workboard.md](./rules/workboard.md) · [configs/pylintrc](./configs/pylintrc)
+**Related:** [README.md](../README.md) · [SETUP.md](./SETUP.md) · [UPGRADE.md](./UPGRADE.md) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) · [CHANGELOG.md](./CHANGELOG.md) · [agents/README.md](./agents/README.md) · [agents/OPS.md](./agents/OPS.md) · [rules/](./rules/) · [workboard.md](./rules/workboard.md) · [configs/](./configs/)
 
 ---
 
@@ -54,7 +58,7 @@ Copy this hub (and the `rules/` modules you need) into the project’s **`kit/`*
 | Keep [Kit baseline](#kit-baseline) current after adopt/upgrade | Lose track of kit version after deleting SETUP |
 | Use conventional commit messages that match staged files; when AI assisted include `Assisted-by` / `Compliance` / `Instructed-by` ([versioning-and-git](./rules/versioning-and-git.md#ai-assisted-commits-required-disclosure)) | Mix unrelated packages, omit AI disclosure when assisted, or invent a `Directed-by` trailer |
 | Keep packages composable at the workflow layer ([architecture](./rules/architecture.md)) | Silently rename public APIs, CLI fields, or schema columns |
-| Run **pylint** on Python product code after those edits ([authoring-and-style](./rules/authoring-and-style.md)) | Treat pylint as a product runtime install for end users |
+| Run **declared** Domain B style gates after product edits ([authoring-and-style](./rules/authoring-and-style.md): pylint / rustfmt+clippy / clang-format+clang-tidy **as inventory requires**) | Treat pylint, rustfmt, clippy, clang-format, or clang-tidy as a product runtime install for end users |
 | Fill [language surface inventory](./rules/security.md#language-surface-inventory); run declared style + SAST before complete | Paste the full multi-language SAST table without inventory evidence |
 | Verify before sharing contract or behavior changes ([verification-and-ops](./rules/verification-and-ops.md)) | Claim complete when a **declared** style or SAST gate was skipped or failed |
 | Regenerate `certification/` outputs when that folder is maintained | Commit `last_certification.*` or treat certification as a product launcher gate |
@@ -154,7 +158,9 @@ Replace paths below with your project’s real files. Rows that do not apply may
 | Data or schema definitions | `{{SCHEMA_PATH}}` (outside `kit/` unless pure standards) |
 | Default config | `{{CONFIG_PATH}}` |
 | Golden tests / fixtures | `{{FIXTURES_PATH}}` |
-| Python style / PEP-8 gate | [configs/pylintrc](./configs/pylintrc) (copy as `.pylintrc` at package or repo root, or pass `--rcfile`) |
+| Python style / PEP-8 gate | [configs/pylintrc](./configs/pylintrc) — copy as `.pylintrc` **if** Python is in the inventory |
+| Rust style gate | [configs/rustfmt.toml](./configs/rustfmt.toml) · [configs/clippy.toml](./configs/clippy.toml) — copy **if** Rust is in the inventory |
+| C / C++ style gate | [configs/clang-format](./configs/clang-format) · [configs/clang-tidy](./configs/clang-tidy) — copy as `.clang-format` / `.clang-tidy` **if** C / C++ is in the inventory |
 | Agent Instruct (framework, catalog, BUILD, runtime, OPS) | [agents/README.md](./agents/README.md) — index to FRAMEWORK, PARAMS, CATALOG, PLAN-HOOK, BUILD, RUNTIME, **OPS** |
 | Agent utilization (order of operations) | [agents/OPS.md](./agents/OPS.md) — required O3 when Instruct is in use |
 | Project agent control surface | Root `PLAN.md` (**Agent models** section) — required when using agents; see [agents/PLAN-HOOK.md](./agents/PLAN-HOOK.md) |
@@ -260,6 +266,7 @@ Copy-paste prompt also on root [README — Upgrade repo-kit](../README.md#upgrad
 
 | Version | Notes |
 |---------|--------|
+| 2.5.0 | Inventory-gated Rust and C/C++ style gates (rustfmt+clippy, clang-format+clang-tidy) + starter configs; Must names declared Domain B only |
 | 2.4.0 | Plan control: workboard + optional continuity; Operator step 4 names the board; authority-map rows (kit 2.4.0) |
 | 2.3.1 | Operator step 5 + Must: name AI disclosure trailers; dynamic Instructed-by (link to versioning-and-git cascade) |
 | 2.3.0 | AI docs workspace: authority map rows; Must; operator step 4 plan+docs; domain module ai-docs-workspace |

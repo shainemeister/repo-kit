@@ -1,7 +1,7 @@
 ---
 title: Security Baseline
 description: Trust baseline, security doc modularity, language surface inventory, SAST gates, and certification schema.
-version: "1.0.0"
+version: "1.1.0"
 status: current
 audience:
   - developers
@@ -11,17 +11,20 @@ related:
   - ../RULES.md
   - ./contracts.md
   - ./authoring-and-style.md
+  - ../configs/pylintrc
+  - ../configs/rustfmt.toml
+  - ../configs/clang-format
   - ./verification-and-ops.md
   - ../templates/TEMPLATE-CERTIFICATION-README.md
   - ../templates/TEMPLATE-SECURITY.md
-last_updated: "2026-07-28"
+last_updated: "2026-08-14"
 ---
 
 # Security Baseline
 
 Hard rules for product code and launchers, inventory-driven SAST, and optional formal certification.
 
-**Document version:** 1.0.0  
+**Document version:** 1.1.0  
 
 **Related:** [RULES.md](../RULES.md) · [contracts.md](./contracts.md) · [authoring-and-style.md](./authoring-and-style.md) · [verification-and-ops.md](./verification-and-ops.md) · [TEMPLATE-SECURITY](../templates/TEMPLATE-SECURITY.md) · [TEMPLATE-CERTIFICATION-README](../templates/TEMPLATE-CERTIFICATION-README.md)
 
@@ -90,12 +93,13 @@ Fill a project table (examples: [examples/](../examples/)). Kit catalog of surfa
 | Surface | Evidence it exists | Domain B — style / validation | Domain A — security / SAST | Typical pass | Omit when… |
 |---------|-------------------|-------------------------------|----------------------------|--------------|------------|
 | *(none — docs-only)* | No product code | — | — | Author checklist | Standards / design repos |
-| **Python** product code | Product `*.py` packages | **pylint** (exit 0, score **10.00/10**) | **Bandit** (`python -m bandit -r <package>`) | Style + SAST clean | No product Python |
+| **Python** product code | Product `*.py` packages | **pylint** (exit 0, score **10.00/10**; [style gate](./authoring-and-style.md#python-style-gate-pylint)) | **Bandit** (`python -m bandit -r <package>`) | Style + SAST clean | No product Python |
 | **Python** dependencies | Third-party deps (not stdlib-only) | — | **pip-audit** | Exit 0 / clean | No Python deps / pure docs / stdlib-only |
 | **PowerShell** | Product `*.ps1` / modules | Project primary (e.g. PS AST parse, BOM policy) | **PSScriptAnalyzer** (`-Severity Error`); optional security-rules subset | Zero Error findings | No PowerShell surface |
 | **JavaScript / TypeScript** (Node) | `package.json` / Node surface | **eslint**, **prettier** (or project primary) | **npm audit** (`--audit-level=moderate`); secondary: eslint-plugin-security | Lint/format clean; audit clean | No Node surface |
 | **Go** | Go modules | **gofmt** / `go fmt`, **golangci-lint** | **govulncheck** (`govulncheck ./...`) | Format + lint clean; SAST clean | No Go modules |
-| **Rust** | `Cargo.toml` | **rustfmt**, **clippy** | **cargo-audit** (`cargo audit`) | Format + clippy clean; audit clean | No `Cargo.toml` |
+| **Rust** | `Cargo.toml` | **rustfmt**, **clippy** ([style gate](./authoring-and-style.md#rust-style-gate-rustfmt--clippy)) | **cargo-audit** (`cargo audit`) | Format + clippy clean; audit clean | No `Cargo.toml` / no product Rust |
+| **C / C++** | Product `*.c` / `*.h` / `*.cc` / `*.cpp` / `*.cxx` / `*.hpp` | **clang-format**, **clang-tidy** ([style gate](./authoring-and-style.md#c--c-style-gate-clang-format--clang-tidy)) | **cppcheck** (`cppcheck --error-exitcode=1 --enable=warning,style,performance,portability <src>`) | Format + tidy clean; cppcheck exit 0 | No C/C++ product sources |
 | **Shell** (bash/sh product) | Product shell scripts | **shellcheck** | **ShellCheck** (same tool may cover both domains—one declaration is enough) | No errors (or project severity) | No shell product scripts |
 | **Other / mixed** | Other product languages | Document tool + command | Language-appropriate tool, or **Semgrep** | Exit 0 / project-defined | No other product languages |
 | **Secrets** (whole repo) | Team chooses to scan | — | **Gitleaks** (preferred); secondary TruffleHog | No leaks | Explicit opt-out (e.g. pure public docs) |
@@ -105,7 +109,7 @@ Fill a project table (examples: [examples/](../examples/)). Kit catalog of surfa
 
 1. Inventory drives the [verification table](./verification-and-ops.md#verification-before-ship)—each declared surface needs named commands and pass criteria.  
 2. Adding a language later updates inventory, verification, authority map (if needed), and certification checks in the **same change set**.  
-3. **Python product** and **Python dependencies** are separate rows (Bandit vs pip-audit).  
+3. **Python product** and **Python dependencies** are separate rows (Bandit vs pip-audit). Rust Domain A is **cargo-audit** (crate graph). C / C++ has **no** separate dependencies row (no standard lockfile analog).  
 4. **Secrets** and **Semgrep** are inventory surfaces even though they are not programming languages.  
 5. Prefer declared inventory over heuristic filesystem scans. At initiation, derive rows from [project interest](../SETUP.md) and planned layout.
 
@@ -130,12 +134,13 @@ Prefer official or near-official tools with a small install footprint. All work 
 | **PowerShell** (`*.ps1`, modules) | **PSScriptAnalyzer** (Microsoft) | `Invoke-ScriptAnalyzer -Path . -Severity Error` | Security rules subset only | No PowerShell surface |
 | **JavaScript / Node.js / TypeScript** | **npm audit** | `npm audit --audit-level=moderate` | eslint-plugin-security | No `package.json` / Node surface |
 | **Go** | **govulncheck** (Go team) | `govulncheck ./...` | — | No Go modules |
-| **Rust** | **cargo-audit** (RustSec) | `cargo audit` | — | No `Cargo.toml` |
+| **Rust** | **cargo-audit** (RustSec) | `cargo audit` | — | No `Cargo.toml` / no product Rust |
+| **C / C++** | **cppcheck** | `cppcheck --error-exitcode=1 --enable=warning,style,performance,portability <src>` | Semgrep C/C++ rules | No C/C++ product sources |
 | **Shell** (bash/sh as product surface) | **ShellCheck** | `shellcheck *.sh` | — | No shell product scripts *(also a common style gate—one declaration is enough)* |
 | **Secrets** (whole repo) | **Gitleaks** (preferred) | `gitleaks detect` | TruffleHog | Team chooses not to scan (e.g. pure public docs with no secret risk) |
 | **Multi-language / custom rules** | **Semgrep** | `semgrep --config=auto` | — | Language-specific tools already cover the surface |
 
-**Product dependency:** **No.** Bandit, pip-audit, npm audit, govulncheck, cargo-audit, ShellCheck, Gitleaks, Semgrep, and similar tools are **developer tooling** only. Do **not** add them as required installs for end users of the product.
+**Product dependency:** **No.** Bandit, pip-audit, npm audit, govulncheck, cargo-audit, cppcheck, ShellCheck, Gitleaks, Semgrep, and similar tools are **developer tooling** only. Do **not** add them as required installs for end users of the product.
 
 **Rules:**
 
@@ -189,8 +194,8 @@ OverallPass = AND of domains that apply for declared inventory surfaces
 
 | Domain | Covers |
 |--------|--------|
-| **Security** | Declared Domain A tools from the inventory (Bandit, pip-audit, PSScriptAnalyzer Error, npm audit, govulncheck, cargo-audit, ShellCheck, Gitleaks, Semgrep, …) |
-| **Code validation** | Declared Domain B style gates (pylint, eslint, gofmt, …) plus project contract checks (tests, probes, parse) listed in verification |
+| **Security** | Declared Domain A tools from the inventory (Bandit, pip-audit, PSScriptAnalyzer Error, npm audit, govulncheck, cargo-audit, cppcheck, ShellCheck, Gitleaks, Semgrep, …) |
+| **Code validation** | Declared Domain B style gates (pylint, rustfmt, clippy, clang-format, clang-tidy, eslint, gofmt, …) plus project contract checks (tests, probes, parse) listed in verification |
 
 ### Certificate shape (illustrative)
 
@@ -199,7 +204,7 @@ OverallPass = AND of domains that apply for declared inventory surfaces
 - `CertificateType`: `SecurityAndCodeValidationCertification`
 - `OverallPass`, `Success`, timestamps, `RepoRoot`
 - `GitCommit`, `GitBranch`, `GitDirty`
-- `LanguageSurfaces[]` (from inventory; e.g. Python, PythonDeps, PowerShell, JavaScriptTypeScript, Go, Rust, Shell, Other, Secrets, Semgrep)
+- `LanguageSurfaces[]` (from inventory; e.g. Python, PythonDeps, PowerShell, JavaScriptTypeScript, Go, Rust, CCpp, Shell, Other, Secrets, Semgrep)
 - `PackageVersions`, `ToolVersions`, `PassCriteria`
 - `Domains.Security` / `Domains.CodeValidation` with `OverallPass`, `CriticalFailed`
 - `Checks[]`: `Name`, `Domain`, `Language` (optional), `Passed`, `Severity`, `Detail`, optional `DurationMs`
@@ -223,4 +228,5 @@ Operator skeleton: [TEMPLATE-CERTIFICATION-README.md](../templates/TEMPLATE-CERT
 
 | Version | Notes |
 |---------|--------|
+| 1.1.0 | Named C/C++ surface (clang-format + clang-tidy / cppcheck); Rust Domain B points at style-gate chapter (kit 2.5.0) |
 | 1.0.0 | Extracted from RULES 1.4.1 for kit 2.0 |

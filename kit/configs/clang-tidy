@@ -1,0 +1,51 @@
+# Developer tooling only — not a product runtime dependency.
+# Copy this file to your package or repo root as `.clang-tidy`.
+#
+# PURPOSE: clang-tidy style + correctness gate for C / C++ product code when
+# C / C++ is in the language surface inventory. Dormant otherwise — do not
+# run clang-tidy as a completion gate on docs-only or non-C/C++ inventories.
+#   Pass criteria: clang-tidy exits 0 under this file.
+#   Do NOT add clang-tidy as a product runtime dependency for end users.
+#
+# *** ADOPTER ACTION REQUIRED ***
+#   Product build must provide compile_commands.json (CMake
+#   CMAKE_EXPORT_COMPILE_COMMANDS, Bear, or equivalent). The kit does not
+#   ship a compilation database or a CMake/Meson/Bazel template.
+#   Missing compile_commands.json when C / C++ is declared is a failed gate
+#   (same as a missing tool), unless the project documents a header-only
+#   `--` compile-flag fallback. Activate only if inventory lists C / C++.
+#
+# Domain A (SAST) for C / C++ is cppcheck — command only; no kit cppcheck.cfg
+# (same pattern as Bandit: no shipped SAST config).
+#
+# Example:
+#   clang-tidy -p compile_commands.json <sources>
+
+Checks: >
+  -*,
+  clang-diagnostic-error,
+  clang-analyzer-core.*,
+  clang-analyzer-cplusplus.*,
+  bugprone-argument-comment,
+  bugprone-assert-side-effect,
+  bugprone-bool-pointer-implicit-conversion,
+  bugprone-copy-constructor-init,
+  bugprone-dangling-handle,
+  bugprone-infinite-loop,
+  bugprone-macro-parentheses,
+  bugprone-move-forwarding-reference,
+  bugprone-string-constructor,
+  bugprone-undefined-memory-manipulation,
+  bugprone-use-after-move,
+  readability-braces-around-statements,
+  readability-misleading-indentation,
+  readability-redundant-control-flow,
+  readability-redundant-string-cstr,
+  modernize-use-nullptr,
+  modernize-use-override
+
+# Design/refactor metrics (too-many-*, huge modernize rewrites) stay out of
+# this starter list — do not "fix" them by silent public API rewrites.
+WarningsAsErrors: '*'
+HeaderFilterRegex: '.*'
+FormatStyle: file

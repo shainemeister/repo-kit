@@ -26,6 +26,29 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 
 ## repo-kit
 
+### [2.5.0] - 2026-08-14
+
+#### Added
+
+- **Named Rust and C / C++ style + SAST path** (Python-parity of *surfaces*, not pylint 10.00/10): inventory rows, style-gate chapters, starter configs, filled examples.
+- Domain B configs: `kit/configs/rustfmt.toml`, `kit/configs/clippy.toml`, `kit/configs/clang-format`, `kit/configs/clang-tidy`.
+- Domain A (Bandit pattern — command only, no kit SAST config): **cargo-audit** (already catalogued) and **cppcheck** for C / C++.
+- Examples: [rust-library.md](./examples/rust-library.md), [c-cpp-library.md](./examples/c-cpp-library.md).
+
+#### Changed
+
+- RULES hub **2.5.0**: Must names **declared** Domain B gates (pylint / rustfmt+clippy / clang-format+clang-tidy as inventory requires).
+- authoring-and-style **1.1.0**, security **1.1.0**, verification-and-ops **1.6.0**, hygiene **1.4.1**, versioning-and-git **1.0.4**, UPGRADE **1.7.0**.
+- SETUP copy table: rustfmt/clippy **If Rust**, clang-format/clang-tidy **If C/C++** (never Always). First-verify blocks labeled if applicable.
+- Root README piece table, use cases, and style-gate sections.
+
+#### Notes
+
+- **Inventory is the on/off switch.** Docs-only and empty inventories do not run rustfmt, clippy, clang-format, clang-tidy, cargo-audit, or cppcheck. Unused files under `kit/configs/` after a whole-tree copy are dormant catalog (same as unused `pylintrc` today).
+- This repository remains **docs-only** — no Rust/C++ product code and no new Domain A/B gates on repo-kit itself.
+- Only pylint keeps the **10.00/10** score rule. Rust/C++ pass is exit 0 / check-mode clean under the starter configs.
+- clang-tidy requires a product `compile_commands.json` when C / C++ is declared; missing DB is a failed gate unless a header-only fallback is documented.
+
 ### [2.4.0] - 2026-08-12
 
 #### Added

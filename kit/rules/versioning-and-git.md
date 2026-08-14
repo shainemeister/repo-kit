@@ -1,7 +1,7 @@
 ---
 title: Versioning and Git
 description: Three version surfaces, mandatory CHANGELOG, kit baseline pointer, git hygiene, commit format, and AI disclosure.
-version: "1.0.3"
+version: "1.0.4"
 status: current
 audience:
   - developers
@@ -13,14 +13,14 @@ related:
   - ./contracts.md
   - ./verification-and-ops.md
   - ../agents/PLAN-HOOK.md
-last_updated: "2026-08-10"
+last_updated: "2026-08-14"
 ---
 
 # Versioning and Git
 
 Version surfaces, CHANGELOG discipline, and git / commit rules.
 
-**Document version:** 1.0.3  
+**Document version:** 1.0.4  
 
 **Related:** [RULES.md](../RULES.md) · [UPGRADE.md](../UPGRADE.md) · [CHANGELOG.md](../CHANGELOG.md) · [contracts.md](./contracts.md) · [verification-and-ops.md](./verification-and-ops.md) · [PLAN-HOOK.md](../agents/PLAN-HOOK.md)
 
@@ -332,7 +332,7 @@ Commit messages and **what is staged** must stay consistent with the documentati
 3. If CLI/API shapes changed, is the matching guide updated?  
 4. If trust/execution model changed, is the matching security doc updated?  
 5. If formulas or public output fields changed, are methodology + fixtures updated?  
-6. If product Python changed, will the pylint gate pass? Bandit if Python is in inventory?  
+6. If product Python / Rust / C++ changed **and that surface is in inventory**, will the declared Domain B + Domain A gates pass?  
 7. Were **declared** Domain A/B gates for other touched language surfaces run?  
 8. Would a reviewer find the subject by searching the feature name used in the README?  
 9. Would this subject still make sense **two years** from now?  
@@ -366,6 +366,7 @@ A remote is optional. When one exists, do not assume write access to `main`/`mas
 
 | Version | Notes |
 |---------|--------|
+| 1.0.4 | Pre-commit check names inventory-gated Python / Rust / C++ Domain A/B (kit 2.5.0) |
 | 1.0.3 | Instructed-by resolution cascade (git user.name → ask+record → `User`); no Directed-by trailer; blank line before trailers |
 | 1.0.2 | Agent Instruct scopes (`agents`, `plan`); pointer to PLAN-HOOK commit guidance |
 | 1.0.1 | Kit baseline path `kit/RULES.md`; standards under kit/; project CHANGELOG at root |

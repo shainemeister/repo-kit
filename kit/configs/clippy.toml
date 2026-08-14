@@ -1,0 +1,24 @@
+# Developer tooling only — not a product runtime dependency.
+# Place next to Cargo.toml (or pass clippy's --config) when Rust is in the
+# language surface inventory. Dormant otherwise — do not run cargo clippy as a
+# completion gate on docs-only or non-Rust inventories.
+#
+# PURPOSE: clippy style + correctness gate (pylint analog). Complexity /
+# "too-many-*" design metrics stay out of the gate (see command in
+# kit/rules/authoring-and-style.md — Rust style gate).
+#   Pass criteria: cargo clippy exits 0 under the documented deny/allow set.
+#   Do NOT add clippy as a product runtime dependency for end users.
+#
+# Domain A (SAST) for Rust is cargo-audit — command only; no kit audit.toml
+# (same pattern as Bandit: no shipped SAST config).
+#
+# Example:
+#   cargo clippy --all-targets -- -D clippy::correctness -D clippy::suspicious -D clippy::style -A clippy::complexity
+
+# Thresholds apply only if a complexity lint is re-enabled. Defaults keep
+# design/refactor metrics from becoming a silent-API-rewrite hammer.
+cognitive-complexity-threshold = 40
+too-many-arguments-threshold = 8
+too-many-lines-threshold = 200
+too-many-statements-threshold = 120
+type-complexity-threshold = 500

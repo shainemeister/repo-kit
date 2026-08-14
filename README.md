@@ -1,6 +1,6 @@
 # Repository Standards Kit
 
-Portable standards for **consistent repositories and projects**—markdown structure, maintenance contracts, and copy-ready templates—plus a **pylint** config for PEP-8 Python product code and **Agent Instruct** (`kit/agents/`) for modular AI personas as views over law. The kit is structured so **AI agents can dynamically build reliable context** for any repository that adopts it.
+Portable standards for **consistent repositories and projects**—markdown structure, maintenance contracts, and copy-ready templates—plus **inventory-gated** style configs for **Python** (pylint), **Rust** (rustfmt + clippy), and **C / C++** (clang-format + clang-tidy), and **Agent Instruct** (`kit/agents/`) for modular AI personas as views over law. The kit is structured so **AI agents can dynamically build reliable context** for any repository that adopts it. Unused language configs stay **dormant** until that surface is declared.
 
 All kit source lives under [`kit/`](./kit/) except this README, [LICENSE](./LICENSE), and [`.gitignore`](./.gitignore).
 
@@ -101,7 +101,9 @@ Copy what you need from `kit/`, **initiate from project interest** so formal doc
 | [kit/agents/](./kit/agents/) | Agent Instruct — expert personas as views; PLAN + BUILD + [OPS](./kit/agents/OPS.md) |
 | [kit/MARKDOWN-STANDARD.md](./kit/MARKDOWN-STANDARD.md) | Structure, frontmatter, doc types, platform-aware examples |
 | [kit/CHANGELOG.md](./kit/CHANGELOG.md) | Kit version history under `## repo-kit` |
-| [kit/configs/pylintrc](./kit/configs/pylintrc) | PEP-8 style gate for Python product code |
+| [kit/configs/pylintrc](./kit/configs/pylintrc) | PEP-8 style gate for Python product code (**if** Python is in the inventory) |
+| [kit/configs/rustfmt.toml](./kit/configs/rustfmt.toml) · [clippy.toml](./kit/configs/clippy.toml) | Rust style gate (**if** Rust is in the inventory) |
+| [kit/configs/clang-format](./kit/configs/clang-format) · [clang-tidy](./kit/configs/clang-tidy) | C / C++ style gate (**if** C / C++ is in the inventory) |
 | [kit/templates/](./kit/templates/) | Document skeletons |
 | [kit/examples/](./kit/examples/) | Filled authority-map skeletons |
 
@@ -117,6 +119,8 @@ Copy what you need from `kit/`, **initiate from project interest** so formal doc
 | Set maintenance policy | [kit/RULES.md](./kit/RULES.md) |
 | Contract co-updates / cross-links | [kit/rules/contracts.md](./kit/rules/contracts.md) |
 | Gate Python style (PEP-8) | [kit/configs/pylintrc](./kit/configs/pylintrc) · [pylint](./kit/rules/authoring-and-style.md#python-style-gate-pylint) |
+| Gate Rust style | [rustfmt.toml](./kit/configs/rustfmt.toml) · [clippy.toml](./kit/configs/clippy.toml) · [Rust style gate](./kit/rules/authoring-and-style.md#rust-style-gate-rustfmt--clippy) |
+| Gate C / C++ style | [clang-format](./kit/configs/clang-format) · [clang-tidy](./kit/configs/clang-tidy) · [C / C++ style gate](./kit/rules/authoring-and-style.md#c--c-style-gate-clang-format--clang-tidy) |
 | Language inventory + SAST | [inventory](./kit/rules/security.md#language-surface-inventory) · [SAST](./kit/rules/security.md#security--sast-gates-required-when-declared) |
 | Formal certificates | [Certification](./kit/rules/security.md#security-and-code-validation-certification) · [TEMPLATE-CERTIFICATION-README](./kit/templates/TEMPLATE-CERTIFICATION-README.md) |
 | Write a root landing README | [Landing / root README](./kit/MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter) |
@@ -131,6 +135,8 @@ Copy what you need from `kit/`, **initiate from project interest** so formal doc
 | **Migrate from kit 1.x** | Path migration + modular RULES | [kit/UPGRADE.md — 1.x→2.0](./kit/UPGRADE.md#migrate-from-kit-1x-to-20) |
 | **Multi-package monorepo** | Shared standards; per-package README/CLI/security | Templates under each package |
 | **Python product code** | pylint PEP-8 gate; Bandit when declared | `kit/configs/pylintrc` · [SAST](./kit/rules/security.md#security--sast-gates-required-when-declared) |
+| **Rust product code** | rustfmt + clippy; cargo-audit when declared | `kit/configs/rustfmt.toml` · [Rust style gate](./kit/rules/authoring-and-style.md#rust-style-gate-rustfmt--clippy) · [example](./kit/examples/rust-library.md) |
+| **C / C++ product code** | clang-format + clang-tidy; cppcheck when declared | `kit/configs/clang-format` · [C / C++ style gate](./kit/rules/authoring-and-style.md#c--c-style-gate-clang-format--clang-tidy) · [example](./kit/examples/c-cpp-library.md) |
 | **Docs-only design repo** | Frontmatter, Summary→Contents; empty language inventory | [kit/examples/docs-only.md](./kit/examples/docs-only.md) |
 | **AI agent personas** | PLAN Agent models + expert packs as views; OPS utilization | [kit/agents/README.md](./kit/agents/README.md) · [OPS](./kit/agents/OPS.md) |
 | **Multi-phase plan control** | Single workboard, optional annex, archive on ship | [kit/rules/workboard.md](./kit/rules/workboard.md) |
@@ -138,7 +144,7 @@ Copy what you need from `kit/`, **initiate from project interest** so formal doc
 
 ## Quick start
 
-Adopt via **[kit/SETUP.md](./kit/SETUP.md)** (adoption mode, platform, copy upstream standards **into the target repo’s `kit/`**, fill authority map, kit baseline, templates, pylint, delete SETUP). Prefer loading context from your project `PLAN.md` first ([How to use](#how-to-use-quick-path)).
+Adopt via **[kit/SETUP.md](./kit/SETUP.md)** (adoption mode, platform, copy upstream standards **into the target repo’s `kit/`**, fill authority map, kit baseline, templates, declared style configs if the inventory lists those languages, delete SETUP). Prefer loading context from your project `PLAN.md` first ([How to use](#how-to-use-quick-path)).
 
 ### Suggested root layout after adopt (product repo)
 
@@ -164,7 +170,7 @@ your-repo/
     MARKDOWN-STANDARD.md
     UPGRADE.md              # durable (or open from Kit source only)
     SETUP.md                # temporary — delete after initiation
-    configs/                # optional local copy of pylintrc etc.
+    configs/                # optional local copy of pylintrc / rustfmt / clang-* (dormant until declared)
     templates/              # optional local skeletons
   packages/                 # or src/ / your product layout — repo-specific
     my-service/
@@ -173,6 +179,8 @@ your-repo/
       SECURITY.md
   certification/            # optional self-attestation
   .pylintrc                 # if Python; or package-local / kit/configs
+  rustfmt.toml              # if Rust
+  .clang-format             # if C / C++
 ```
 
 **Separation:** do not put product code under `kit/`; do not dump standards onto the project root. Detail: [kit/rules/hygiene.md](./kit/rules/hygiene.md).
@@ -191,7 +199,7 @@ Do not fork the whole standard for every product fact. Keep shared rules stable 
 
 ## Python style gate (pylint)
 
-When a project ships **Python product code**:
+When a project ships **Python product code** (Python **in the inventory**):
 
 | Item | Expectation |
 |------|-------------|
@@ -201,7 +209,37 @@ When a project ships **Python product code**:
 | Command | `python -m pylint <package_or_paths>` |
 | Config | Copy [kit/configs/pylintrc](./kit/configs/pylintrc) as `.pylintrc` |
 
-Details: [Python style gate](./kit/rules/authoring-and-style.md#python-style-gate-pylint). Other languages: [Non-Python style gates](./kit/rules/authoring-and-style.md#non-python-style-gates).
+Details: [Python style gate](./kit/rules/authoring-and-style.md#python-style-gate-pylint). Other languages: [Other language style gates](./kit/rules/authoring-and-style.md#other-language-style-gates). Docs-only inventories skip this section.
+
+## Rust style gate (rustfmt + clippy)
+
+When a project ships **Rust product code** (Rust **in the inventory**):
+
+| Item | Expectation |
+|------|-------------|
+| Tool | **rustfmt** + **clippy** with this kit’s starter configs |
+| Pass | `cargo fmt --check` and kit clippy command exit **0** |
+| Install | Developer tooling only |
+| Command | `cargo fmt --check`; `cargo clippy --all-targets -- -D clippy::correctness -D clippy::suspicious -D clippy::style -A clippy::complexity` |
+| Config | Copy [rustfmt.toml](./kit/configs/rustfmt.toml) and [clippy.toml](./kit/configs/clippy.toml); set rustfmt `edition` |
+| Domain A | **cargo-audit** (`cargo audit`) — command only; no kit `audit.toml` |
+
+Details: [Rust style gate](./kit/rules/authoring-and-style.md#rust-style-gate-rustfmt--clippy). Example: [rust-library.md](./kit/examples/rust-library.md).
+
+## C / C++ style gate (clang-format + clang-tidy)
+
+When a project ships **C / C++ product code** (C / C++ **in the inventory**):
+
+| Item | Expectation |
+|------|-------------|
+| Tool | **clang-format** + **clang-tidy** with this kit’s starter configs |
+| Pass | Format dry-run and tidy exit **0** |
+| Install | Developer tooling only |
+| Command | `clang-format --dry-run --Werror <sources>`; `clang-tidy -p compile_commands.json <sources>` |
+| Config | Copy [clang-format](./kit/configs/clang-format) as `.clang-format` and [clang-tidy](./kit/configs/clang-tidy) as `.clang-tidy`; set `BasedOnStyle` |
+| Domain A | **cppcheck** — command only; no kit `cppcheck.cfg` |
+
+The product build must emit `compile_commands.json`. Details: [C / C++ style gate](./kit/rules/authoring-and-style.md#c--c-style-gate-clang-format--clang-tidy). Example: [c-cpp-library.md](./kit/examples/c-cpp-library.md).
 
 ## Language inventory, SAST, and certification
 
@@ -234,7 +272,7 @@ All kit source lives under [`kit/`](./kit/) except this README, LICENSE, and `.g
 | [docs/](./docs/) | This kit’s own AI workspace (pattern for adopters) |
 | [docs/WORKBOARD.md](./docs/WORKBOARD.md) | This kit’s own execution board (dogfood) |
 | [kit/rules/hygiene.md](./kit/rules/hygiene.md) | Root hygiene; unified packaging (standards under kit/); SETUP/UPGRADE lifecycle |
-| [kit/rules/authoring-and-style.md](./kit/rules/authoring-and-style.md) | Docs rules; pylint; non-Python style |
+| [kit/rules/authoring-and-style.md](./kit/rules/authoring-and-style.md) | Docs rules; pylint / rustfmt+clippy / clang-format+clang-tidy (inventory-gated) |
 | [kit/rules/architecture.md](./kit/rules/architecture.md) | Architecture and boundaries |
 | [kit/rules/contracts.md](./kit/rules/contracts.md) | Contract policy; co-updates; cross-links |
 | [kit/rules/security.md](./kit/rules/security.md) | Inventory, SAST, certification |
@@ -242,7 +280,9 @@ All kit source lives under [`kit/`](./kit/) except this README, LICENSE, and `.g
 | [kit/rules/verification-and-ops.md](./kit/rules/verification-and-ops.md) | Verification, completion, checklist |
 | [kit/MARKDOWN-STANDARD.md](./kit/MARKDOWN-STANDARD.md) | Authoring standard |
 | [kit/CHANGELOG.md](./kit/CHANGELOG.md) | Kit version history (`## repo-kit`) |
-| [kit/configs/pylintrc](./kit/configs/pylintrc) | Python pylint gate config |
+| [kit/configs/pylintrc](./kit/configs/pylintrc) | Python pylint gate config (if Python) |
+| [kit/configs/rustfmt.toml](./kit/configs/rustfmt.toml) · [clippy.toml](./kit/configs/clippy.toml) | Rust style configs (if Rust) |
+| [kit/configs/clang-format](./kit/configs/clang-format) · [clang-tidy](./kit/configs/clang-tidy) | C / C++ style configs (if C / C++) |
 | [kit/templates/](./kit/templates/) | Document skeletons |
 | [kit/examples/](./kit/examples/) | Filled authority-map examples |
 | [LICENSE](./LICENSE) | MIT |

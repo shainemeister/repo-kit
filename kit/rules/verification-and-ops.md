@@ -1,7 +1,7 @@
 ---
 title: Verification and Operations
 description: Verification before ship, completion rule, maintenance cadence, anti-patterns, and contributor checklist.
-version: "1.5.0"
+version: "1.6.0"
 status: current
 audience:
   - developers
@@ -21,14 +21,14 @@ related:
   - ../agents/OPS.md
   - ../agents/BUILD.md
   - ../agents/PARAMS.md
-last_updated: "2026-08-10"
+last_updated: "2026-08-14"
 ---
 
 # Verification and Operations
 
 Ship gates, completion rules, cadence, anti-patterns, and the contributor checklist.
 
-**Document version:** 1.5.0  
+**Document version:** 1.6.0  
 
 **Related:** [RULES.md](../RULES.md) · [security.md](./security.md) · [authoring-and-style.md](./authoring-and-style.md) · [contracts.md](./contracts.md) · [versioning-and-git.md](./versioning-and-git.md) · [ai-docs-workspace.md](./ai-docs-workspace.md) · [workboard.md](./workboard.md) · [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md) · [UPGRADE.md](../UPGRADE.md) · [agents/README.md](../agents/README.md) · [agents/OPS.md](../agents/OPS.md)
 
@@ -60,8 +60,10 @@ Fill concrete commands for your project from the [language surface inventory](./
 | Change type | Minimum verification |
 |-------------|----------------------|
 | Public behavior, scores, exports | Project tests / golden fixtures (define command for each primary platform) |
-| Python product code style | `python -m pylint <package_or_paths>` (must pass; see [Python style gate](./authoring-and-style.md#python-style-gate-pylint)) |
-| Other language product style | Project-declared gate per inventory (see [Non-Python style gates](./authoring-and-style.md#non-python-style-gates)) |
+| Python product code style | `python -m pylint <package_or_paths>` (must pass **when Python is in inventory**; see [Python style gate](./authoring-and-style.md#python-style-gate-pylint)) |
+| Rust product code style | `cargo fmt --check` and `cargo clippy --all-targets -- -D clippy::correctness -D clippy::suspicious -D clippy::style -A clippy::complexity` (**when Rust is in inventory**; see [Rust style gate](./authoring-and-style.md#rust-style-gate-rustfmt--clippy)) |
+| C / C++ product code style | `clang-format --dry-run --Werror <sources>` and `clang-tidy -p compile_commands.json <sources>` (**when C / C++ is in inventory**; see [C / C++ style gate](./authoring-and-style.md#c--c-style-gate-clang-format--clang-tidy)) |
+| Other language product style | Project-declared gate per inventory (see [Other language style gates](./authoring-and-style.md#other-language-style-gates)) |
 | Security / SAST (language-specific) | Only the commands for **surfaces in the inventory** (see [Security / SAST gates](./security.md#security--sast-gates-required-when-declared)); omit entire row if inventory is empty |
 | Formal certification | If `certification/` is maintained: regenerate `last_certification.json` / `.txt` after critical gates; confirm OverallPass; do not stage outputs |
 | Environment / packaging | Project probe or smoke script (define command; list Windows and Unix forms if both are supported) |
@@ -112,6 +114,8 @@ Ordered steps for humans and AI agents:
 | Language surface added or removed | Update [language surface inventory](./security.md#language-surface-inventory) + verification rows (+ certification checks if maintained) |
 | Every release-worthy package behavior change | Bump code version; refresh CLI/API guide and status blocks; update `CHANGELOG.md` |
 | Every product Python edit | Run pylint gate; keep exit 0 / 10.00 score; run Bandit if Python is in inventory |
+| Every product Rust edit | Run rustfmt + clippy gates; run cargo-audit if Rust is in inventory |
+| Every product C / C++ edit | Run clang-format + clang-tidy gates; run cppcheck if C / C++ is in inventory |
 | Every product edit in another declared language | Run that surface’s Domain B + Domain A gates |
 | Security-relevant change | Update matching security doc; re-run declared SAST; CHANGELOG entry |
 | Formal certification maintained | Regenerate `last_certification.*` after critical gates; do not commit outputs |
@@ -135,6 +139,10 @@ Ordered steps for humans and AI agents:
 |-------|--------|
 | Shipping pylint as a product runtime dependency | Keep pylint developer-only |
 | Skipping pylint after Python product edits | Run `python -m pylint <package_or_paths>` |
+| Shipping rustfmt, clippy, clang-format, or clang-tidy as product runtime deps | Keep style tools developer-only |
+| Skipping rustfmt/clippy after Rust product edits (Rust in inventory) | Run `cargo fmt --check` and the kit clippy command |
+| Skipping clang-format/clang-tidy after C/C++ product edits (C/C++ in inventory) | Run the kit format + tidy commands; missing compile DB is a failed gate |
+| Forcing Rust/C++ gates on a docs-only or empty inventory | Leave those rows off the verify table; unused `kit/configs/*` stay dormant catalog |
 | Committing regenerable outputs “for convenience” | Document regenerate commands in README / catalog |
 | Silent public field or API rename | Coordinated contract bump + fixtures + docs ([contracts.md](./contracts.md)) |
 | Long docs without Summary | MARKDOWN-STANDARD order |
@@ -147,7 +155,7 @@ Ordered steps for humans and AI agents:
 | Empty `SECURITY.md` for docs-only or pure libraries with no side effects | Omit the file and the authority-map row |
 | Pasting the full multi-language SAST table into every project | Declare only tools for languages the repo ships |
 | Claiming complete while skipping a **declared** style or SAST gate | Run inventory gates; see [Completion rule](#completion-rule) |
-| Shipping Bandit / npm audit / Gitleaks / etc. as product runtime deps | Keep security / SAST tools developer-only |
+| Shipping Bandit / cargo-audit / cppcheck / npm audit / Gitleaks / etc. as product runtime deps | Keep security / SAST tools developer-only |
 | Committing `certification/last_certification.*` | Gitignore regenerable cert outputs; regenerate locally |
 | Treating certification as a product launcher / diagnostics gate | Certification attests **source tree** policy only |
 | Empty language inventory while shipping product code | Fill inventory when product languages exist |
@@ -188,6 +196,8 @@ Before you commit or share a change:
 - [ ] **CHANGELOG.md** updated when required (release-worthy behavior, version bump, security, kit adopt/upgrade)  
 - [ ] Required **verification** from the table above has been run ([Completion rule](#completion-rule))  
 - [ ] If product Python changed: **pylint** passed; **Bandit** passed when Python is in inventory  
+- [ ] If product Rust changed: **rustfmt** + **clippy** passed; **cargo-audit** passed when Rust is in inventory  
+- [ ] If product C / C++ changed: **clang-format** + **clang-tidy** passed; **cppcheck** passed when C / C++ is in inventory  
 - [ ] Other declared language surfaces: Domain B + Domain A gates passed for surfaces touched  
 - [ ] If `certification/` is maintained: certificate regenerated; OverallPass true; outputs not staged  
 - [ ] No secrets, sensitive production data, regenerable outputs, or caches staged  
@@ -212,6 +222,7 @@ Before you commit or share a change:
 
 | Version | Notes |
 |---------|--------|
+| 1.6.0 | Inventory-gated Rust and C/C++ style verify rows, cadence, checklist (kit 2.5.0) |
 | 1.5.0 | Multi-phase workboard before-complete, cadence, anti-pattern, checklist (kit 2.4.0) |
 | 1.4.1 | AI disclosure checklist: dynamic Instructed-by cascade; no Directed-by (kit 2.3.1) |
 | 1.4.0 | AI docs workspace verification, cadence, anti-patterns, checklist (kit 2.3.0) |

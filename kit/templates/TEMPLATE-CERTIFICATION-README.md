@@ -66,7 +66,7 @@ Do not mark the task complete if a **declared** gate was skipped or failed.
 
 ## Declared surfaces
 
-> List **only** surfaces this repository ships. Kit catalog (do not paste unused rows): Python, Python deps, PowerShell, JavaScript/TypeScript/Node, Go, Rust, Shell, Other/mixed, Secrets, Semgrep.
+> List **only** surfaces this repository ships. Kit catalog (do not paste unused rows): Python, Python deps, PowerShell, JavaScript/TypeScript/Node, Go, Rust, C/C++, Shell, Other/mixed, Secrets, Semgrep.
 
 | Surface | Domain B command | Domain A command | Pass criteria |
 |---------|------------------|------------------|---------------|

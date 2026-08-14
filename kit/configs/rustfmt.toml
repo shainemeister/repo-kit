@@ -1,0 +1,22 @@
+# Developer tooling only — not a product runtime dependency.
+# Copy this file to your crate or repo root as `rustfmt.toml` (or `.rustfmt.toml`).
+#
+# PURPOSE: rustfmt style gate for Rust product code when Rust is in the
+# language surface inventory. Dormant otherwise — do not run cargo fmt as a
+# completion gate on docs-only or non-Rust inventories.
+#   Pass criteria: `cargo fmt --check` exits 0 under this file.
+#   Do NOT add rustfmt/clippy as a product runtime dependency for end users.
+#
+# *** ADOPTER ACTION REQUIRED ***
+#   Set edition below to YOUR crate's rustc edition (2018, 2021, or 2024).
+#   The value 2021 is a starter default only — it is NOT a kit lock-in.
+#   Change it before relying on the gate. Activate only if inventory lists Rust.
+#
+# Example:
+#   cargo fmt --check
+
+# CHANGE ME: set to the crate edition in Cargo.toml.
+edition = "2021"
+max_width = 100
+use_small_heuristics = "Default"
+newline_style = "Unix"

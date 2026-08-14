@@ -1,7 +1,7 @@
 ---
 title: Root Hygiene
 description: Unified packaging—standards under kit/, repository-specific data outside; SETUP and UPGRADE lifecycles.
-version: "1.4.0"
+version: "1.4.1"
 status: current
 audience:
   - developers
@@ -16,14 +16,14 @@ related:
   - ./ai-docs-workspace.md
   - ./workboard.md
   - ../../README.md
-last_updated: "2026-08-12"
+last_updated: "2026-08-14"
 ---
 
 # Root Hygiene
 
 Keep the repository root **scannable**: entry points and project-specific surfaces first; **standards under `kit/`**; product code and AI workspace in purpose directories outside `kit/`.
 
-**Document version:** 1.4.0  
+**Document version:** 1.4.1  
 
 **Related:** [RULES.md](../RULES.md) · [SETUP.md](../SETUP.md) · [UPGRADE.md](../UPGRADE.md) · [CHANGELOG.md](../CHANGELOG.md) · [agents/README.md](../agents/README.md) · [ai-docs-workspace.md](./ai-docs-workspace.md) · [workboard.md](./workboard.md) · [README.md](../../README.md)
 
@@ -83,7 +83,9 @@ Keep the repository root **scannable**: entry points and project-specific surfac
 | `docs/` | **AI resource workspace** (research, plan, project_build, resources)—scaffold when needed; outside `kit/` ([ai-docs-workspace](./ai-docs-workspace.md)) |
 | `docs/WORKBOARD.md` | **Multi-phase execution board** when used ([workboard](./workboard.md)) — project data, not kit law |
 | Package or product entry files | Only when they are the natural top-level surface |
-| `.pylintrc` | Optional Python style gate (or package-local / under `kit/configs/`) |
+| `.pylintrc` | Optional Python style gate **if** Python is in the inventory (or package-local / under `kit/configs/`) |
+| `rustfmt.toml` / `clippy.toml` | Optional Rust style gate **if** Rust is in the inventory |
+| `.clang-format` / `.clang-tidy` | Optional C / C++ style gate **if** C / C++ is in the inventory |
 
 ---
 
@@ -96,7 +98,7 @@ Keep the repository root **scannable**: entry points and project-specific surfac
 | `MARKDOWN-STANDARD.md` | Authoring standard (or link to upstream) |
 | `UPGRADE.md` | Durable upgrade guide (local copy optional; may always open from Kit source) |
 | `SETUP.md` | One-time only — **delete or archive after initiation** |
-| `configs/` | Optional local style configs (e.g. pylintrc) |
+| `configs/` | Optional local style configs (pylintrc, rustfmt.toml, clippy.toml, clang-format, clang-tidy). Copy to the product root **only** for languages in the inventory; leftover files after a whole-`kit/` copy are dormant catalog |
 | `templates/` | Optional local document skeletons |
 | `examples/` | Optional reference only (usually not required in product repos) |
 | `agents/` | Agent Instruct law, templates, examples; project-filled packs under `agents/generated/` (views, not product code) |
@@ -157,6 +159,7 @@ First adopt: [SETUP.md](../SETUP.md). Later kit bumps: [UPGRADE.md](../UPGRADE.m
 
 | Version | Notes |
 |---------|--------|
+| 1.4.1 | Optional root rustfmt/clippy/clang configs when those languages ship (kit 2.5.0) |
 | 1.4.0 | `docs/WORKBOARD.md` allowed at docs root (kit 2.4.0) |
 | 1.3.0 | Root `docs/` AI workspace outside kit; separation rules (kit 2.3.0) |
 | 1.2.0 | Agent Instruct: `kit/agents/`; PLAN required when using agents; generated packs are project-filled views under `kit/` |

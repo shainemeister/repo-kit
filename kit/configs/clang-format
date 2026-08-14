@@ -1,0 +1,31 @@
+# Developer tooling only — not a product runtime dependency.
+# Copy this file to your package or repo root as `.clang-format`.
+#
+# PURPOSE: clang-format style gate for C / C++ product code when C / C++ is
+# in the language surface inventory. Dormant otherwise — do not run
+# clang-format as a completion gate on docs-only or non-C/C++ inventories.
+#   Pass criteria: clang-format --dry-run --Werror exits 0.
+#   Do NOT add clang-format/clang-tidy as a product runtime dependency.
+#
+# *** ADOPTER ACTION REQUIRED ***
+#   Set BasedOnStyle to YOUR project's house style (LLVM, Google, WebKit,
+#   Mozilla, Chromium, Microsoft, GNU). LLVM is a starter default only —
+#   it is NOT a kit lock-in. Change it before relying on the gate.
+#   Activate only if inventory lists C / C++.
+#
+# Example:
+#   clang-format --dry-run --Werror <sources>
+
+# CHANGE ME: LLVM is a starter; pick the style your tree already uses.
+BasedOnStyle: LLVM
+ColumnLimit: 100
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+AccessModifierOffset: -4
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+BreakBeforeBraces: Attach
+PointerAlignment: Left
+SortIncludes: true
