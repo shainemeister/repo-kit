@@ -46,8 +46,8 @@ last_updated: "2026-08-19"
 | ID | Work | Status | Commit | Notes |
 |----|------|--------|--------|-------|
 | P0 | Register board + annex | `done` | `6329c20` | Annex on disk; P1 active |
-| P1 | Doctrine (standard, contracts, authoring, verify, hub Must, CHANGELOG open) | `active` | — | Surgical; no template/pilot yet |
-| P2 | Min-core templates + docs-author + SETUP/UPGRADE notes | `open` | — | |
+| P1 | Doctrine (standard, contracts, authoring, verify, hub Must, CHANGELOG open) | `done` | `9e8bd60` | Citations kept; 2.7.0 in progress |
+| P2 | Min-core templates + docs-author + SETUP/UPGRADE notes | `active` | — | |
 | P3 | Pilot restyle hygiene.md + architecture.md + ledger audit | `open` | — | Then HARD GATE |
 | GATE | User accepts P3 pilot shape | `blocked` | — | User decision; no wave 2 until accepted |
 | P4 | Hub Must digest trim (optional) | `open` | — | Wave 2 / after gate |
@@ -58,6 +58,7 @@ last_updated: "2026-08-19"
 
 ### Progress log (newest first, max ~15 lines)
 
+- 2026-08-19 **P1** doctrine shipped: `9e8bd60` MARKDOWN-STANDARD 1.3.0, contracts 1.4.0, authoring 1.2.0, verification 1.7.0, RULES 2.7.0. Next: P2 templates.
 - 2026-08-19 Registered **md-density-2.7.0**. Annex: docs/plan/md-density-2.7.0/. Next: P1 doctrine.
 - 2026-08-14 **habitat-l0-2.6.0** shipped: `12e0b4b` HABITAT + L0 + SETUP/UPGRADE dual path. Next: adopter upgrades (not this tree).
 - 2026-08-14 Registered **habitat-l0-2.6.0**.
