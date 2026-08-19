@@ -45,7 +45,7 @@ last_updated: "2026-08-19"
 
 | ID | Work | Status | Commit | Notes |
 |----|------|--------|--------|-------|
-| P0 | Register board + annex | `done` | `97a5d58` | Annex on disk; P1 active |
+| P0 | Register board + annex | `done` | `6329c20` | Annex on disk; P1 active |
 | P1 | Doctrine (standard, contracts, authoring, verify, hub Must, CHANGELOG open) | `active` | — | Surgical; no template/pilot yet |
 | P2 | Min-core templates + docs-author + SETUP/UPGRADE notes | `open` | — | |
 | P3 | Pilot restyle hygiene.md + architecture.md + ledger audit | `open` | — | Then HARD GATE |
