@@ -24,7 +24,7 @@ Standards and portable law remain under **`kit/`**. Product-style contracts for 
 |--------|------|---------|---------|
 | Research | [research/](./research/) | on demand | Kit design investigations, comparisons |
 | Workboard | [WORKBOARD.md](./WORKBOARD.md) | **on** | Multi-phase kit execution (dogfood) |
-| Plan | [plan/](./plan/) | on demand | Detailed execution plans for kit releases/features |
+| Plan | [plan/](./plan/) | **on** | Detailed execution plans for kit releases/features — live annex: [md-density-2.7.0](./plan/md-density-2.7.0/) |
 | Project build | [project_build/](./project_build/) | on demand | Implementation notes while shipping kit changes |
 | Resources | [resources/](./resources/) | on demand | Curated pointers for kit maintainers |
 

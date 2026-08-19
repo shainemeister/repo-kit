@@ -6,4 +6,4 @@ Detailed execution plans for kit work. Durable kit version history remains in `k
 
 | Plan | Status | Summary |
 |------|--------|---------|
-| *(none yet)* | — | Add plans for multi-step kit initiatives; prefer board-only unless an annex is required |
+| [md-density-2.7.0](./md-density-2.7.0/) | active | Binding density + incorporation doctrine (wave 1 kit 2.7.0; restyles after P3 gate) |

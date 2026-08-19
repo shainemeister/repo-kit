@@ -11,13 +11,14 @@ related:
   - ../kit/rules/workboard.md
   - ../kit/CHANGELOG.md
   - ./README.md
-last_updated: "2026-08-14"
+  - ./plan/md-density-2.7.0/README.md
+last_updated: "2026-08-19"
 ---
 
 # Workboard
 
-**Updated:** 2026-08-14  
-**Primary program:** `none`  
+**Updated:** 2026-08-19  
+**Primary program:** `md-density-2.7.0`  
 **Rules:** [kit/rules/workboard.md](../kit/rules/workboard.md) · kit README (mission) · [docs/plan/](./plan/) (detail)
 
 | Status | Meaning |
@@ -31,23 +32,33 @@ last_updated: "2026-08-14"
 
 ---
 
-## Active program — none
+## Active program — Markdown density
 
 | Field | Value |
 |-------|--------|
-| **Goal** | — |
-| **L4 docs to update** | — |
-| **Optional annex** | — |
-| **Smoke / gates** | Author checklist; relative links; no `{{PLACEHOLDERS}}` in finished policy |
+| **Goal** | Binding density + incorporation doctrine; keep types; keep citations; slim templates; pilot hygiene+architecture; restyles only after human gate |
+| **L4 docs to update** | MARKDOWN-STANDARD, contracts, authoring-and-style, verification-and-ops, RULES (one Must), templates, docs-author seed, hygiene, architecture, kit CHANGELOG |
+| **Optional annex** | [docs/plan/md-density-2.7.0/](./plan/md-density-2.7.0/) |
+| **Smoke / gates** | Author checklist; relative links; no `{{PLACEHOLDERS}}` in finished policy; unique-rule ledger on restyles; last citation remains |
 
 ### Phases
 
 | ID | Work | Status | Commit | Notes |
 |----|------|--------|--------|-------|
-| — | — | — | — | Register a program here before multi-phase kit work |
+| P0 | Register board + annex | `done` | `97a5d58` | Annex on disk; P1 active |
+| P1 | Doctrine (standard, contracts, authoring, verify, hub Must, CHANGELOG open) | `active` | — | Surgical; no template/pilot yet |
+| P2 | Min-core templates + docs-author + SETUP/UPGRADE notes | `open` | — | |
+| P3 | Pilot restyle hygiene.md + architecture.md + ledger audit | `open` | — | Then HARD GATE |
+| GATE | User accepts P3 pilot shape | `blocked` | — | User decision; no wave 2 until accepted |
+| P4 | Hub Must digest trim (optional) | `open` | — | Wave 2 / after gate |
+| P5 | Restyle remaining kit/rules/* (contracts last) | `open` | — | Wave 2 |
+| P6 | Restyle kit/agents/*.md Instruct docs | `open` | — | Wave 2 |
+| P7 | SETUP / UPGRADE / examples polish | `open` | — | |
+| P8 | CHANGELOG 2.8.0 + archive annex | `open` | — | Program complete |
 
 ### Progress log (newest first, max ~15 lines)
 
+- 2026-08-19 Registered **md-density-2.7.0**. Annex: docs/plan/md-density-2.7.0/. Next: P1 doctrine.
 - 2026-08-14 **habitat-l0-2.6.0** shipped: `12e0b4b` HABITAT + L0 + SETUP/UPGRADE dual path. Next: adopter upgrades (not this tree).
 - 2026-08-14 Registered **habitat-l0-2.6.0**.
 - 2026-08-12 **plan-control-2.4.0** shipped (P0–P8): `5ca9ea7` board · `84a3bd0` rules · `975a379` templates · `4b40af8` SETUP/UPGRADE · `1d2af58` agents · `c5bed29` CHANGELOG `2.4.0`. Next: adopter upgrade in consuming repos (not this tree).
