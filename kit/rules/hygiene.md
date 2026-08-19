@@ -1,7 +1,7 @@
 ---
 title: Root Hygiene
 description: Unified packaging—standards under kit/, repository-specific data outside; SETUP and UPGRADE lifecycles.
-version: "1.5.1"
+version: "1.6.0"
 status: current
 audience:
   - developers
@@ -12,49 +12,42 @@ related:
   - ../SETUP.md
   - ../UPGRADE.md
   - ../CHANGELOG.md
-  - ../agents/README.md
   - ./ai-docs-workspace.md
   - ./workboard.md
   - ../../README.md
-last_updated: "2026-08-14"
+last_updated: "2026-08-19"
 ---
 
 # Root Hygiene
 
 Keep the repository root **scannable**: entry points and project-specific surfaces first; **standards under `kit/`**; product code and AI workspace in purpose directories outside `kit/`.
 
-**Document version:** 1.5.1  
-
-**Related:** [RULES.md](../RULES.md) · [SETUP.md](../SETUP.md) · [UPGRADE.md](../UPGRADE.md) · [CHANGELOG.md](../CHANGELOG.md) · [agents/README.md](../agents/README.md) · [ai-docs-workspace.md](./ai-docs-workspace.md) · [workboard.md](./workboard.md) · [README.md](../../README.md)
+**Related:** [RULES.md](../RULES.md) · [SETUP.md](../SETUP.md) · [UPGRADE.md](../UPGRADE.md) · [CHANGELOG.md](../CHANGELOG.md) · [ai-docs-workspace.md](./ai-docs-workspace.md) · [workboard.md](./workboard.md) · [README.md](../../README.md)
 
 ---
 
 ## Summary
 
-**Unified packaging:** this kit repository and **adopting product repositories** both keep standards under `kit/`. Repository-specific data (product code, project CHANGELOG, PLAN, **`docs/` AI workspace**) stays **outside** `kit/`.
-
-| Must | Must not |
-|------|----------|
-| Keep adopted standards under `kit/` | Dump RULES / MARKDOWN-STANDARD / rules modules onto product root as the default |
-| Keep product code outside `kit/` | Put packages, services, or app source under `kit/` |
-| Keep AI resource workspace at root **`docs/`** when used ([ai-docs-workspace](./ai-docs-workspace.md)) | Put project research/build notes under `kit/` or as root-file sprawl |
-| Prefer purpose directories over extra root files | Accumulate ephemeral SETUP after initiation |
-| Update the authority map when listed paths change | Force-add regenerable artifacts |
-| Keep UPGRADE durable (or re-fetch from Kit source) | Mix kit release history into project CHANGELOG |
+| Must |
+|------|
+| Keep adopted standards under `kit/`; product code, project CHANGELOG, PLAN, and live `docs/` stay **outside** `kit/` |
+| Greenfield default: `kit/RULES.md` + `kit/rules/*`, not root `RULES.md` |
+| Treat [SETUP](../SETUP.md) as ephemeral; keep [UPGRADE](../UPGRADE.md) and [Kit baseline](../RULES.md#kit-baseline) durable |
+| Update the [authority map](../RULES.md#authority-map) in the same change set when listed paths change |
+| Existing 1.x adoptions may migrate gradually; greenfield **must** use this layout ([UPGRADE](../UPGRADE.md)) |
 
 ---
 
 ## Contents
 
-1. [Summary](#summary)
-2. [Unified packaging](#unified-packaging)
-3. [What belongs at project root](#what-belongs-at-project-root)
-4. [What belongs under kit/](#what-belongs-under-kit)
-5. [What does not belong at root or under kit/](#what-does-not-belong-at-root-or-under-kit)
-6. [Separation rules](#separation-rules)
-7. [Supporting practices](#supporting-practices)
-8. [SETUP and UPGRADE lifecycles](#setup-and-upgrade-lifecycles)
-9. [Document history](#document-history)
+1. [Unified packaging](#unified-packaging)
+2. [What belongs at project root](#what-belongs-at-project-root)
+3. [What belongs under kit/](#what-belongs-under-kit)
+4. [What does not belong at root or under kit/](#what-does-not-belong-at-root-or-under-kit)
+5. [Separation rules](#separation-rules)
+6. [Supporting practices](#supporting-practices)
+7. [SETUP and UPGRADE lifecycles](#setup-and-upgrade-lifecycles)
+8. [Document history](#document-history)
 
 ---
 
@@ -75,19 +68,19 @@ Keep the repository root **scannable**: entry points and project-specific surfac
 
 | File / item | Role |
 |-------------|------|
-| `README.md` | Product / public landing — **no frontmatter**; **Overview** + **Operator prompts** ([landing](../MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter)) |
+| `README.md` | Product / public landing ([landing](../MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter)) |
 | `LICENSE` | License |
 | `.gitignore` | Ignore rules |
-| `CHANGELOG.md` | **Project** history (**required**) — repository H2 → version H3 → categories; **not** kit release notes |
-| `PLAN.md` | Project plan (repo-specific; not shipped by the kit). **Required when using Agent Instruct** (Agent models section); optional for bare adopt |
-| `docs/` | **AI resource workspace** (research, plan, project_build, resources)—scaffold when needed; outside `kit/` ([ai-docs-workspace](./ai-docs-workspace.md)) |
-| `docs/WORKBOARD.md` | **Multi-phase execution board** when used ([workboard](./workboard.md)) — project data, not kit law |
+| `CHANGELOG.md` | **Project** history (**required**) — **not** kit release notes ([versioning](./versioning-and-git.md#mandatory-project-changelog)) |
+| `PLAN.md` | Project plan (not shipped by the kit). **Required if Instruct**; optional for bare adopt ([PLAN-HOOK](../agents/PLAN-HOOK.md#plan-dual-path)) |
+| `docs/` | **AI resource workspace** when used — outside `kit/` ([ai-docs-workspace](./ai-docs-workspace.md)) |
+| `docs/WORKBOARD.md` | **Multi-phase execution board** when used — project data, not kit law ([workboard](./workboard.md)) |
 | Package or product entry files | Only when they are the natural top-level surface |
-| `.pylintrc` | Optional Python style gate **if** Python is in the inventory (or package-local / under `kit/configs/`) |
-| `rustfmt.toml` / `clippy.toml` | Optional Rust style gate **if** Rust is in the inventory |
-| `.clang-format` / `.clang-tidy` | Optional C / C++ style gate **if** C / C++ is in the inventory |
-| `AGENTS.md` | Optional L0 habitat **if** a coding agent is used — thin pointer to `kit/RULES.md` ([HABITAT](../agents/HABITAT.md)). Project data, not kit law |
-| Thin host alias (e.g. `CLAUDE.md`) | Only if a **detected** host will not see `AGENTS.md`; 1–3 lines |
+| `.pylintrc` | Optional at root **if** Python is in the [inventory](./security.md#language-surface-inventory) (or package-local / under `kit/configs/`) |
+| `rustfmt.toml` / `clippy.toml` | Optional at root **if** Rust is in the [inventory](./security.md#language-surface-inventory) |
+| `.clang-format` / `.clang-tidy` | Optional at root **if** C / C++ is in the [inventory](./security.md#language-surface-inventory) |
+| `AGENTS.md` | L0 pointer **only if** a coding agent is used — thin pointer to `kit/RULES.md` ([HABITAT](../agents/HABITAT.md)); not kit law |
+| Thin host alias (e.g. `CLAUDE.md`) | Only if a **detected** host will not see `AGENTS.md`; 1–3 lines ([HABITAT](../agents/HABITAT.md)) |
 
 ---
 
@@ -100,12 +93,12 @@ Keep the repository root **scannable**: entry points and project-specific surfac
 | `MARKDOWN-STANDARD.md` | Authoring standard (or link to upstream) |
 | `UPGRADE.md` | Durable upgrade guide (local copy optional; may always open from Kit source) |
 | `SETUP.md` | One-time only — **delete or archive after initiation** |
-| `configs/` | Optional local style configs (pylintrc, rustfmt.toml, clippy.toml, clang-format, clang-tidy). Copy to the product root **only** for languages in the inventory; leftover files after a whole-`kit/` copy are dormant catalog |
+| `configs/` | Optional local style configs (pylintrc, rustfmt.toml, clippy.toml, clang-format, clang-tidy). Copy to the product root **only** for languages in the [inventory](./security.md#language-surface-inventory); leftover files after a whole-`kit/` copy are dormant catalog |
 | `templates/` | Optional local document skeletons |
 | `examples/` | Optional reference only (usually not required in product repos) |
-| `agents/` | Agent Instruct **L2** law, templates, examples; project-filled packs under `agents/generated/` (views). Not the host auto-load file |
+| `agents/` | Agent Instruct **L2** law, templates, examples; project-filled packs under `agents/generated/` (views). Not the host auto-load file ([HABITAT](../agents/HABITAT.md)) |
 
-**Do not** treat upstream kit `CHANGELOG.md` as the product’s project history. Read Kit source `kit/CHANGELOG.md` under `## repo-kit` when upgrading.
+**Do not** treat kit `CHANGELOG.md` as the product’s project history. Read Kit source `kit/CHANGELOG.md` under `## repo-kit` when upgrading.
 
 ---
 
@@ -116,7 +109,7 @@ Keep the repository root **scannable**: entry points and project-specific surfac
 | Product packages / services | `packages/`, `src/`, or project-chosen layout **outside** `kit/` |
 | Package-level contracts (CLI, SECURITY, methodology) | Inside the package |
 | Formal security + code-validation certificates | `certification/` at repo root (or documented path); regenerable outputs gitignored |
-| AI research / detailed plans / build notes | Root **`docs/`** modules—not under `kit/` and not as ad-hoc root `notes.md` sprawl |
+| AI research / detailed plans / build notes | Root **`docs/`** — not under `kit/` and not as ad-hoc root `notes.md` sprawl ([ai-docs-workspace](./ai-docs-workspace.md)) |
 | Scripts / helpers | `scripts/` or `tooling/` (keep minimal) |
 | Regenerable output | Never committed |
 | CI workflows | `.github/` (or equivalent) |
@@ -142,7 +135,7 @@ Keep the repository root **scannable**: entry points and project-specific surfac
 2. Prefer purpose directories over additional root files.  
 3. Mark ephemeral files clearly (e.g. SETUP header) so they do not accumulate.  
 4. Respect `.gitignore`; never force-add regenerable artifacts.  
-5. Prefer [contracts.md](./contracts.md) cross-link rules when docs move.
+5. When docs move, apply [contracts](./contracts.md#cross-reference-rules) (one sentence + deep link; retarget inbound links).
 
 ---
 
@@ -154,14 +147,13 @@ Keep the repository root **scannable**: entry points and project-specific surfac
 | [UPGRADE.md](../UPGRADE.md) | **Durable** — keep under `kit/` or always open from Kit source | Already adopted; routine upgrades and 1.x → 2.x layout migration |
 | [Kit baseline](../RULES.md#kit-baseline) | **Durable** in project `kit/RULES.md` | Survives SETUP removal; required for upgrades |
 
-First adopt: [SETUP.md](../SETUP.md). Later kit bumps: [UPGRADE.md](../UPGRADE.md).
-
 ---
 
 ## Document history
 
 | Version | Notes |
 |---------|--------|
+| 1.6.0 | Restyle to density shape (kit 2.7.0 in progress); unique packaging rules unchanged |
 | 1.5.1 | Root README landing shape required (kit 2.6.2) |
 | 1.5.0 | Optional root `AGENTS.md` / thin host alias; regenerable host mirrors (kit 2.6.0) |
 | 1.4.1 | Optional root rustfmt/clippy/clang configs when those languages ship (kit 2.5.0) |

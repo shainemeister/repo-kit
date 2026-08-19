@@ -40,6 +40,7 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 - SETUP: refresh Contents **if present**; new docs use required core (omit-if extras).
 - UPGRADE **1.8.2**: preserve filled package README / CLI / SECURITY / methodology; 2.8.0+ `rules/*` restyles editorial.
 - agents README **1.2.1** / RUNTIME **1.3.1**: density pointer; L0/pack budgets unchanged.
+- hygiene **1.6.0** / architecture **1.1.0**: density restyle (P3 pilots); unique packaging and architecture rules unchanged.
 
 #### Notes
 
