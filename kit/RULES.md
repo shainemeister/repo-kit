@@ -1,7 +1,7 @@
 ---
 title: Repository Maintenance Rules
 description: Maintenance policy hub—authority map, kit baseline, and index to domain rule modules.
-version: "2.6.2"
+version: "2.7.0"
 status: current
 audience:
   - developers
@@ -32,14 +32,14 @@ related:
   - configs/clippy.toml
   - configs/clang-format
   - configs/clang-tidy
-last_updated: "2026-08-14"
+last_updated: "2026-08-19"
 ---
 
 # Repository Maintenance Rules
 
 Fundamental rules for maintaining a professional, auditable repository. This file is the **hub**: authority map, kit baseline, and Must / Must not. Domain detail lives in [rules/](./rules/). In adopting product repos this hub lives at **`kit/RULES.md`**.
 
-**Document version:** 2.6.2  
+**Document version:** 2.7.0  
 
 **Related:** [README.md](../README.md) · [SETUP.md](./SETUP.md) · [UPGRADE.md](./UPGRADE.md) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) · [CHANGELOG.md](./CHANGELOG.md) · [agents/README.md](./agents/README.md) · [agents/OPS.md](./agents/OPS.md) · [agents/HABITAT.md](./agents/HABITAT.md) · [rules/](./rules/) · [workboard.md](./rules/workboard.md) · [configs/](./configs/)
 
@@ -65,6 +65,7 @@ Copy this hub (and the `rules/` modules you need) into the project’s **`kit/`*
 | Verify before sharing contract or behavior changes ([verification-and-ops](./rules/verification-and-ops.md)) | Claim complete when a **declared** style or SAST gate was skipped or failed |
 | Regenerate `certification/` outputs when that folder is maintained | Commit `last_certification.*` or treat certification as a product launcher gate |
 | Keep the root `README.md` on the [landing](./MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter) shape: **Overview** then **Operator prompts** (no frontmatter) | Put Overview/Operator prompts on package READMEs; paste `kit/rules/*` or upstream kit adopt fences into a product landing |
+| Unique rules only; cite, don’t reprint; last citation remains; `doc_type` set stays ([density](./MARKDOWN-STANDARD.md#density-force-and-incorporation) · [contracts](./rules/contracts.md#incorporation)) | Delete the last citation of an owner; fork a second full statement of an owned rule |
 | Fill authority map + verification from project interest at start | Leave contracts empty until “docs later” after behavior ships |
 | Treat Agent Instruct packs as **views** over this hub + domain modules ([agents](./agents/README.md)) | Embed full persona bodies in this hub; invent a second RULES tree in packs |
 | **When Agent Instruct is in use:** match the user task to **one primary** expert pack; follow [OPS](./agents/OPS.md) O3 before substantive work | Ignore active packs and improvise durable policy only in chat |
@@ -274,6 +275,7 @@ Copy-paste prompt also on root [README — Upgrade repo-kit](../README.md#upgrad
 
 | Version | Notes |
 |---------|--------|
+| 2.7.0 | Density + incorporation: unique rules only; cite don’t reprint; last citation remains (kit 2.7.0 in progress) |
 | 2.6.2 | Root README landing shape is required (Overview + Operator prompts) |
 | 2.6.0 | Host L0 habitat (`AGENTS.md`); HABITAT + parent/child protocol; map row |
 | 2.5.1 | One authority-map row for language style configs (inventory-gated copy) |

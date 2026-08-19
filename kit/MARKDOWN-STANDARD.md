@@ -1,7 +1,7 @@
 ---
 title: Markdown Documentation Standard
 description: Cross-functional standard for consistent, professional markdown across any repository or project.
-version: "1.2.1"
+version: "1.3.0"
 status: current
 audience:
   - developers
@@ -17,14 +17,14 @@ related:
   - templates/TEMPLATE-GENERIC.md
   - templates/TEMPLATE-README.md
   - templates/TEMPLATE-LANDING-README.md
-last_updated: "2026-08-14"
+last_updated: "2026-08-19"
 ---
 
 # Markdown Documentation Standard
 
 A repeatable standard for professional, consistent markdown in any repository—usable across packages, CLIs, methodologies, security notes, design concepts, and runbooks.
 
-**Standard version:** 1.2.1  
+**Standard version:** 1.3.0  
 **Location:** `kit/MARKDOWN-STANDARD.md`  
 **Templates:** [`templates/`](./templates/)
 
@@ -36,7 +36,7 @@ A repeatable standard for professional, consistent markdown in any repository—
 
 This document defines **how we structure and write markdown** so docs stay scannable, professional, and easy to maintain. It is **product-agnostic**: the same rules apply to libraries, services, CLIs, data tools, monorepos, and docs-only projects.
 
-Most **substantial** documents use **YAML frontmatter**, a clear **H1**, a short **lead**, a **status block**, a **Summary**, a linked **Contents** list, then the **body** in a type-appropriate order. Copy-paste skeletons live in [`templates/`](./templates/).
+Most **substantial** documents use **YAML frontmatter**, a clear **H1**, a short **lead**, a **status block**, then the **required core** for the type ([Density](#density-force-and-incorporation)). Copy-paste skeletons live in [`templates/`](./templates/).
 
 **Exception:** the **repository root landing README** (and similar end-user entry pages) intentionally **omit frontmatter** and follow a lighter outline focused on summary and use cases—see [Landing / root README](#landing--root-readme-no-frontmatter).
 
@@ -44,14 +44,14 @@ Most **substantial** documents use **YAML frontmatter**, a clear **H1**, a short
 
 ## Contents
 
-1. [Summary](#summary)
-2. [When to use this standard](#when-to-use-this-standard)
-3. [Landing / root README (no frontmatter)](#landing--root-readme-no-frontmatter)
-4. [Canonical document order](#canonical-document-order)
-5. [YAML frontmatter](#yaml-frontmatter)
-6. [Headings and anchors](#headings-and-anchors)
-7. [Writing conventions](#writing-conventions)
-8. [Cross-linking form](#cross-linking-form)
+1. [When to use this standard](#when-to-use-this-standard)
+2. [Landing / root README (no frontmatter)](#landing--root-readme-no-frontmatter)
+3. [Canonical document order](#canonical-document-order)
+4. [YAML frontmatter](#yaml-frontmatter)
+5. [Headings and anchors](#headings-and-anchors)
+6. [Writing conventions](#writing-conventions)
+7. [Cross-linking form](#cross-linking-form)
+8. [Density, force, and incorporation](#density-force-and-incorporation)
 9. [Tables, code, and links](#tables-code-and-links)
 10. [Platform-aware examples](#platform-aware-examples)
 11. [Document types and body outlines](#document-types-and-body-outlines)
@@ -172,20 +172,21 @@ Use this order unless a template of a specific `doc_type` omits an optional bloc
 | 1 | **YAML frontmatter** | Yes (for standard docs) | Machine-readable metadata |
 | 2 | **H1 title** | Yes | Single document title |
 | 3 | **Lead** | Yes | One or two sentences: what this doc is |
-| 4 | **Status / identity block** | Recommended | Version, path, related links, key facts |
-| 5 | **Summary** | Yes if body is long | Orientation before navigation |
-| 6 | **Contents** | Yes if ≥ ~3 H2 sections | Numbered in-document hyperlinks |
-| 7 | **Body** | Yes | Type-specific sections (see below) |
-| 8 | **Related files** | Optional | Paths and roles |
+| 4 | **Status / identity block** | Recommended | Version, path; **Related** line **or** lead citations (3–7 peers; humans must see peers—not YAML-only) |
+| 5 | **Summary** | Policy: decision table ≤ 5 Must rows; **omit** if body ≲ 60 lines. Procedure: omit-if | Orientation before navigation |
+| 6 | **Contents** | Yes if ≥ 5 H2s **or** ≳ 150 lines. Never list Summary as item 1 | Jump navigation |
+| 7 | **Body** | Yes | Required core for the type; extra outline items are omit-if |
+| 8 | **Related files** | Optional | Paths and roles (omit if peers already in Related/lead) |
 | 9 | **Out of scope** | Optional | Explicit non-goals |
-| 10 | **Document history** | Recommended for versioned methodology/security | Version / notes table |
+| 10 | **Document history** | Required for standalone CLI, methodology, SECURITY. Kit-internal modules: frontmatter + kit CHANGELOG | Version / notes table |
 
 ### Why this order
 
 1. **Frontmatter + title** establish identity for humans and tools.  
-2. **Summary first** answers “is this the right doc?” without scrolling past a TOC.  
-3. **Contents next** supports jump navigation once the reader commits.  
-4. **Body** goes deep; **history / out of scope** stay at the end so they never bury the main path.
+2. **Summary** (when required) answers “is this the right doc?” without a TOC.  
+3. **Contents** only when the threshold is met—chrome, not a joint.  
+4. **Body** is the required core for the type; extra outline items are omit-if ([Density](#density-force-and-incorporation)).  
+5. **History** stays at the end on standalone contracts; kit-internal modules use frontmatter + kit CHANGELOG.
 
 Separate major blocks with a horizontal rule (`---`) when it improves scanability (after Summary, after Contents, before History).
 
@@ -220,7 +221,7 @@ last_updated: "2026-07-22"
 | `version` | **Yes** | Semver or doc version string; keep in sync with status block |
 | `status` | **Yes** | `draft` · `current` · `deprecated` |
 | `audience` | **Yes** | YAML list, e.g. `users`, `developers`, `security`, `it`, `analysts`, `automation` |
-| `related` | Recommended | Sibling or root-relative filenames |
+| `related` | Substantial docs: **yes** (3–7) | Purpose-labeled peer paths (not the entire tree). Humans also see them via Related line or lead citations |
 | `doc_type` | Recommended | See [Document types](#document-types-and-body-outlines) |
 | `last_updated` | **Yes** | ISO date `YYYY-MM-DD` |
 
@@ -231,23 +232,22 @@ last_updated: "2026-07-22"
 | Rule | Guidance |
 |------|----------|
 | One H1 | Only the document title |
-| H2 | Major sections (appear in Contents) |
+| H2 | Major sections (listed in Contents when present) |
 | H3 | Subsections only when needed |
 | Numbered H2 | Optional for long methodology/security (`## 1. Title`); README often unnumbered |
 | Anchors | Prefer plain ASCII titles so GitHub-style anchors stay stable |
-| Contents | Numbered list of `[Label](#anchor)` links matching H2s |
+| Contents | Numbered `[Label](#anchor)` matching H2s; omit unless ≥ 5 H2s or ≳ 150 lines; never list Summary as item 1 |
 
 ### Contents pattern
 
 ```markdown
 ## Contents
 
-1. [Summary](#summary)
-2. [Section name](#section-name)
-3. [Another section](#another-section)
+1. [Section name](#section-name)
+2. [Another section](#another-section)
 ```
 
-Include **Summary** as item 1 when Summary exists as an H2.
+Omit Contents unless the threshold in [Canonical document order](#canonical-document-order) is met. Never list Summary as item 1.
 
 ---
 
@@ -273,13 +273,125 @@ How to wire documents so humans and AI agents can navigate without duplicating f
 
 | Mechanism | Guidance |
 |-----------|----------|
-| Frontmatter **`related:`** | List true peer paths (not the entire tree) |
-| Visible **Related:** line | Mirror peers under the lead for scannability |
+| Frontmatter **`related:`** | 3–7 purpose-labeled peer paths (not the entire tree) |
+| Visible **Related:** line **or** lead citations | Same peers, human-scannable (not YAML-only) |
 | Relative links | Always from *this file’s* directory |
-| Deep anchors | Prefer linking a specific heading when citing a rule |
-| Summary + link | Prefer over pasting another document’s full table |
+| Deep anchors | Link a specific heading when citing a foreign rule |
+| One sentence + link | Local consequence + deep link ([contracts](./rules/contracts.md#incorporation)); do not paste the owner’s full table |
 
-Substantial docs should keep `related:` and Related lines current when peers move. Authority-map **owners** live in [RULES.md](./RULES.md#authority-map).
+Keep `related:` and the human peer list current when peers move. Floor/ceiling and last-cite: [Density](#density-force-and-incorporation). Policy: [contracts.md](./rules/contracts.md). Owners: [RULES.md](./RULES.md#authority-map).
+
+---
+
+## Density, force, and incorporation
+
+How much chrome a file may carry, what force a sentence has, and how to cite an owner instead of reprinting it. **Form** of links: [Cross-linking form](#cross-linking-form). **When to co-update:** [contracts.md](./rules/contracts.md).
+
+### Density classes
+
+| Class | Chrome | Target |
+|-------|--------|--------|
+| **landing** | No frontmatter; Overview then Operator prompts | Overview ≪ 120 ([Landing](#landing--root-readme-no-frontmatter)) |
+| **pointer** | Thin discovery (e.g. `AGENTS.md`) | ≪ 80 |
+| **hub** | Map + short Must index | One line + link per row, not a reprint |
+| **policy** | Frontmatter + lead + tight Summary | First unique rule by ~line 40; ~80–150 |
+| **procedure** | Steps | No Must table required |
+| **contract** | As long as the surface | CLI / methodology / SECURITY matrices stay |
+| **working memory** | Thin `docs/` notes | Promote durable law to the owner |
+
+Classes describe **shape**, not new `doc_type` values. Keep the existing type set.
+
+### Over-documentation test
+
+Any one of these is too much:
+
+| Defect | Meaning |
+|--------|---------|
+| Second home | Full restatement of a rule another file owns |
+| Standalone padding | Sections that exist only so the file “stands alone” |
+| Inverse pair | A Must not that is only ¬Must |
+| Chrome without navigation | Contents, peer dumps, or empty H2s that do not help a jump |
+| Empty type fulfillment | Headings kept only to “keep the type” |
+
+### Force layers
+
+| Layer | Force | Required reading? |
+|-------|-------|-------------------|
+| **Normative** | Must / Must not / Should / May stated here | Yes |
+| **Incorporated** | Foreign rule applied by citation | Yes — cite at point of use |
+| **Informative** | Rationale, one example, mapping | No |
+| **Historical** | Document history / CHANGELOG | No for kit-internal modules |
+| **Dicta** | Asides, restated background | No |
+
+### Required core vs omit-if
+
+Do not add `doc_type` values. Extra outline items after the core are **omit-if**.
+
+| Type | Required core |
+|------|----------------|
+| **landing** | What it is, use cases, one quick start, where next, Operator prompts |
+| **readme** | Who it’s for, one workflow, links to contracts |
+| **cli** | Invocation, verbs/flags, exits, stable output |
+| **methodology** | Definitions, formulas, output columns |
+| **security** | Trust boundary (privilege, network, secrets) |
+| **concept** | Principles + current shape |
+| **runbook** | When, steps, verify |
+| **other** / policy | Unique Musts for this concern |
+
+Landing requirements in [Landing / root README](#landing--root-readme-no-frontmatter) are unchanged. CLI / methodology / SECURITY **never** drop unique surface facts to hit a line count.
+
+### Section recipe
+
+Inside a body H2: **general rule → exceptions → special rules → relation to other law.** An exception is a narrower case. It is not a Must not that is only ¬Must.
+
+### Compression operators (ordered)
+
+**Replace, don’t erase.** Apply in this order:
+
+1. **Owner** — one canonical statement; others cite.  
+2. **Switch** — restated here only if this file owns that dual-path; else one local sentence + link.  
+3. **Invert** — drop Must not rows that only negate a Must.  
+4. **Chrome** — drop Contents, empty H2s, and triple identity unless they navigate.  
+5. **Template** — extra sections labeled omit-if.  
+6. **Budget** — if still over, **split or annex**; never delete unique law.
+
+A reprint may go only if a one-sentence citation + deep link to the owner remains.
+
+### Citation floor and ceiling
+
+- YAML `related:` lists **3–7** purpose-labeled peers (co-update or open to apply this file)—not the whole tree.  
+- Humans must see those peers: **Related line or lead citations** (not YAML-only).  
+- Never zero peers on a substantial file. **Do not drop all Related / `related:`.**  
+- Foreign rule at **point of use:** one sentence of local consequence + deep link.  
+- Deleting the **last citation** of an owner is context loss ([contracts](./rules/contracts.md)).
+
+### Living vs frozen incorporation
+
+Default: **undated** relative cite (living). Copy owner text into this file only to **freeze**, and mark that copy **dated**. Prefer living cites.
+
+### Budgets
+
+| Class | Budget | Do not |
+|-------|--------|--------|
+| Policy | ~80–150 lines; first unique rule ~line 40 | Hide the unique Must behind chrome |
+| CLI / methodology / SECURITY | Length of the unique surface | Shrink verbs, formulas, or columns to hit a count |
+| Over budget | Split or annex | Delete unique law |
+
+Hub Must index is a **map** (one line + link), not a second home.
+
+### Informative vocabulary mapping
+
+Kit law uses **Must / owner / cite / omit-if**. Other vocabularies appear **only** in this table.
+
+| Foreign term | Kit term |
+|--------------|----------|
+| Black letter | Must / Must not |
+| Comment | omit-if rationale |
+| Illustration | One example |
+| Reporter’s notes | `docs/` working memory |
+| Citator | Inbound-link duty |
+| Normative / informative | Force layers |
+| shall / should / may | Must / Should / May |
 
 ---
 
@@ -364,7 +476,7 @@ Templates for README, CLI, and security already show this pattern where shell ma
 
 ## Document types and body outlines
 
-Set `doc_type` in frontmatter. After **Summary** and **Contents**, use the body flow for that type.
+Set `doc_type` in frontmatter. After the **required core** for the type ([Density](#density-force-and-incorporation)), use the body flow below. Extra outline items are **omit-if**.
 
 ### `readme` — product or package overview
 
@@ -441,7 +553,7 @@ Use for **package** READMEs (with frontmatter). For the **repository root** land
 
 ### `other` / generic
 
-Use **Summary → Contents → logical H2s → History**. Prefer `TEMPLATE-GENERIC.md`.
+Use **Summary (if needed) → body**. Contents only if the threshold is met; History only if this file is a standalone contract. Prefer `TEMPLATE-GENERIC.md`.
 
 ---
 
@@ -465,7 +577,7 @@ There is no dedicated runbook file. For `runbook`, copy [TEMPLATE-GENERIC.md](./
 2. Replace all `{{PLACEHOLDERS}}`.  
 3. Delete sections that do not apply; do not leave placeholder prose.  
 4. Keep dual-path shell blocks when the project is multi-platform; drop the unused OS when primary platform is single and declared.  
-5. Refresh **Contents** links to match final headings.  
+5. Refresh **Contents** if present (threshold in [Canonical document order](#canonical-document-order)).  
 6. Run through the [Author checklist](#author-checklist).  
 
 ### Common placeholders
@@ -489,13 +601,24 @@ Before merging or publishing a doc:
 
 ### All docs
 
-- [ ] Single H1; Summary present if the body is non-trivial  
+- [ ] Single H1; Summary only when required (policy decision table ≤ 5 rows; omit if body ≲ 60 lines)  
 - [ ] Relative links work from the file’s directory  
 - [ ] Code fences have language tags  
 - [ ] Shell/path examples match [platform-aware rules](#platform-aware-examples) (primary platform declared when OS-specific)  
 - [ ] No unresolved `{{PLACEHOLDERS}}`  
 - [ ] Tables render (header separator present)  
 - [ ] “Out of scope” or “Not in this doc” used instead of silent omissions when helpful  
+
+### Density (all substantial docs)
+
+- [ ] First unique rule within ~40 lines of H1 (policy class)  
+- [ ] No fact in frontmatter **and** lead **and** Summary **and** body  
+- [ ] Contents omitted unless ≥ 5 H2s or ≳ 150 lines  
+- [ ] Must table ≤ 5 rows on policy files  
+- [ ] Last citation to each used owner remains  
+- [ ] Empty template headings gone  
+- [ ] Over budget ⇒ split or justify; never delete unique law  
+- [ ] Dual-path restated only if this file owns that switch  
 
 ### Standard docs (frontmatter required)
 
@@ -521,20 +644,23 @@ Before merging or publishing a doc:
 
 | Avoid | Prefer |
 |-------|--------|
-| No Summary on a long doc | Add Summary before Contents |
-| Contents without Summary on long docs | Summary → Contents → body |
+| Long policy docs without a decision table | ≤ 5 Must rows, **or** omit Summary (body ≲ 60 lines) |
+| Contents listed when under threshold; Summary as Contents item 1 | Contents only if ≥ 5 H2s or ≳ 150 lines; never list Summary first |
 | Multiple H1s | One H1, then H2+ |
 | Frontmatter `version` ≠ badge line | Keep them identical |
 | TOC entries that don’t exist | Regenerate Contents after edits |
 | Only absolute machine paths | Placeholders + one concrete example |
 | Walls of prose for option lists | Tables |
 | Emoji-heavy headings | Plain headings for stable anchors |
-| Duplicating another doc in full | Link and summarize |
+| Duplicating another doc in full; second home of an owned rule | Cite the owner (one sentence + deep link) |
+| Deleting the last citation of an owner | Keep at least one citation; then drop the reprint |
+| Empty headings to “keep the type” | Delete unused outline items (omit-if) |
+| Must not that is only ¬Must | State the Must; drop the inverse row |
 | Root README that is only a file dump | Overview + Operator prompts |
 | Frontmatter on the root landing README | Omit frontmatter; H1 + lead + Overview |
 | Root page that opens with RULES / catalog / templates | Overview first; Operator prompts last |
 | Root README missing `## Operator prompts` | Required load-path H2 |
-| Package README using Overview + Operator prompts | Package docs keep frontmatter + Summary → Contents |
+| Package README using Overview + Operator prompts | Package docs keep frontmatter + required core for `readme` |
 | Pasting full CLI-GUIDE into the root README | One example + link |
 | Windows-only examples in a multi-OS project | Dual fences or declared primary platform |
 | Unresolved template tokens in shipped docs | Replace every `{{TOKEN}}` |
@@ -545,6 +671,7 @@ Before merging or publishing a doc:
 
 | Version | Notes |
 |---------|--------|
+| 1.3.0 | Density, force, incorporation, Contents threshold, citation cap (kit 2.7.0 in progress) |
 | 1.2.1 | Landing checklist names both H2s; root landing removed from optional/lighter table (kit 2.6.3) |
 | 1.2.0 | Root README **must** use Overview + Operator prompts; package READMEs unchanged (kit 2.6.2) |
 | 1.1.1 | Landing may end with Operator prompts; Overview length budget (kit 2.6.1) |

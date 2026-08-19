@@ -26,6 +26,20 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 
 ## repo-kit
 
+### [2.7.0] - 2026-08-19
+
+#### Added
+
+- Density, force, and incorporation doctrine (MARKDOWN-STANDARD 1.3.0; contracts 1.4.0).
+
+#### Changed
+
+- Contents threshold; citation cap 3–7; author checklist; authoring 1.2.0; verification 1.7.0; RULES hub 2.7.0 one Must.
+
+#### Notes
+
+- Wave 1 **in progress**. Not an adopter upgrade target until the P3 pilot gate. Do not treat this heading as a completed 2.7.0 ship.
+
 ### [2.6.3] - 2026-08-14
 
 #### Changed

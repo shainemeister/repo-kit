@@ -1,7 +1,7 @@
 ---
 title: Verification and Operations
 description: Verification before ship, completion rule, maintenance cadence, anti-patterns, and contributor checklist.
-version: "1.6.1"
+version: "1.7.0"
 status: current
 audience:
   - developers
@@ -21,14 +21,14 @@ related:
   - ../agents/OPS.md
   - ../agents/BUILD.md
   - ../agents/PARAMS.md
-last_updated: "2026-08-14"
+last_updated: "2026-08-19"
 ---
 
 # Verification and Operations
 
 Ship gates, completion rules, cadence, anti-patterns, and the contributor checklist.
 
-**Document version:** 1.6.1  
+**Document version:** 1.7.0  
 
 **Related:** [RULES.md](../RULES.md) · [security.md](./security.md) · [authoring-and-style.md](./authoring-and-style.md) · [contracts.md](./contracts.md) · [versioning-and-git.md](./versioning-and-git.md) · [ai-docs-workspace.md](./ai-docs-workspace.md) · [workboard.md](./workboard.md) · [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md) · [UPGRADE.md](../UPGRADE.md) · [agents/README.md](../agents/README.md) · [agents/OPS.md](../agents/OPS.md)
 
@@ -68,7 +68,7 @@ Fill concrete commands for your project from the [language surface inventory](./
 | Formal certification | If `certification/` is maintained: regenerate `last_certification.json` / `.txt` after critical gates; confirm OverallPass; do not stage outputs |
 | Environment / packaging | Project probe or smoke script (define command; list Windows and Unix forms if both are supported) |
 | Schema or sample data | Headers/fields match schema; consumers still load samples |
-| Docs only | [Author checklist](../MARKDOWN-STANDARD.md#author-checklist); relative links resolve; platform examples consistent |
+| Docs only | [Author checklist](../MARKDOWN-STANDARD.md#author-checklist) (including [density](../MARKDOWN-STANDARD.md#density-force-and-incorporation) items); relative links resolve; last citations of used owners remain; platform examples consistent |
 | New/removed source files | Inventory/catalog updated (if maintained); language surface inventory if languages added/removed |
 | Agent template / catalog change | Pack samples validate ([agents/PARAMS.md](../agents/PARAMS.md)); expertise/references present; PLAN-HOOK fields still accurate; examples updated |
 | BUILD regen only | Diff review; no authority path invention; respect PLAN disabled set; expertise filled |
@@ -145,7 +145,7 @@ Ordered steps for humans and AI agents:
 | Forcing Rust/C++ gates on a docs-only or empty inventory | Leave those rows off the verify table; unused `kit/configs/*` stay dormant catalog |
 | Committing regenerable outputs “for convenience” | Document regenerate commands in README / catalog |
 | Silent public field or API rename | Coordinated contract bump + fixtures + docs ([contracts.md](./contracts.md)) |
-| Long docs without Summary | MARKDOWN-STANDARD order |
+| Long **policy** docs without a decision table **unless** they meet omit-Summary conditions | ≤ 5 Must rows, or omit Summary when body ≲ 60 lines ([density](../MARKDOWN-STANDARD.md#density-force-and-incorporation)) |
 | Duplicating security matrices into README | Link to security doc |
 | Merging unrelated runtimes into one process without design | Keep boundaries ([architecture.md](./architecture.md)) |
 | Absolute machine-only paths as the only example | Placeholder + one repo-relative example |
@@ -202,6 +202,8 @@ Before you commit or share a change:
 - [ ] If `certification/` is maintained: certificate regenerated; OverallPass true; outputs not staged  
 - [ ] No secrets, sensitive production data, regenerable outputs, or caches staged  
 - [ ] Markdown follows [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md) when docs were edited  
+- [ ] Last citation to each used owner remains; no second-home reprint of an owned rule ([contracts](./contracts.md#incorporation))  
+- [ ] Contents only if ≥ 5 H2s or ≳ 150 lines ([canonical order](../MARKDOWN-STANDARD.md#canonical-document-order))  
 - [ ] Commit message uses `type(scope):` format and matches the staged files  
 - [ ] Subject would still make sense years later; one logical surface preferred  
 - [ ] Canonical docs for any behavior change are in the same change set ([contracts.md](./contracts.md))  
@@ -222,6 +224,7 @@ Before you commit or share a change:
 
 | Version | Notes |
 |---------|--------|
+| 1.7.0 | Docs-only verify includes density checklist + last citations; omit-Summary anti-pattern (kit 2.7.0 in progress) |
 | 1.6.1 | Verify-table prune sentence; Domain B rows point at style-gate Command cells (kit 2.5.1) |
 | 1.6.0 | Inventory-gated Rust and C/C++ style verify rows, cadence, checklist (kit 2.5.0) |
 | 1.5.0 | Multi-phase workboard before-complete, cadence, anti-pattern, checklist (kit 2.4.0) |

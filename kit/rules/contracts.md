@@ -1,7 +1,7 @@
 ---
 title: Contracts
 description: What counts as a contract, canonical ownership, co-update rules, fixtures/schema/API, and cross-reference policy.
-version: "1.3.2"
+version: "1.4.0"
 status: current
 audience:
   - developers
@@ -19,14 +19,14 @@ related:
   - ../MARKDOWN-STANDARD.md
   - ../agents/README.md
   - ../agents/OPS.md
-last_updated: "2026-08-14"
+last_updated: "2026-08-19"
 ---
 
 # Contracts
 
 Stable promises a repository makes—behavior, shapes, exits, fields—and the rules for keeping them honest.
 
-**Document version:** 1.3.2  
+**Document version:** 1.4.0  
 
 **Related:** [RULES.md](../RULES.md) · [architecture.md](./architecture.md) · [versioning-and-git.md](./versioning-and-git.md) · [verification-and-ops.md](./verification-and-ops.md) · [authoring-and-style.md](./authoring-and-style.md) · [ai-docs-workspace.md](./ai-docs-workspace.md) · [workboard.md](./workboard.md) · [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md) · [agents/README.md](../agents/README.md) · [agents/OPS.md](../agents/OPS.md)
 
@@ -36,9 +36,10 @@ Stable promises a repository makes—behavior, shapes, exits, fields—and the r
 
 | Must | Must not |
 |------|----------|
-| Give every contract one **canonical** owner (authority map) | Duplicate full contracts across README / guides |
-| Update canonical docs with behavior in the **same change set** | Silently rename public APIs, CLI fields, or schema columns |
-| Cross-link with relative paths and deep anchors | Leave contracts empty until “docs later” after behavior ships |
+| Give every contract one **canonical** owner (authority map) | Duplicate full contracts across README / guides; fork a second full statement of an owned rule |
+| Update canonical docs with behavior in the **same change set**; retarget inbound links if an owned heading/path moves | Silently rename public APIs, CLI fields, or schema columns |
+| Cross-link with relative paths and deep anchors; at point of use: one sentence + deep link | Leave contracts empty until “docs later” after behavior ships |
+| Keep 3–7 purpose-labeled peers (`related:` + Related line or lead citations); last citation remains | Delete the last citation of an owner |
 
 **Authority map** answers: *which file owns this concern?*  
 **This file** answers: *what counts as a contract, when it breaks, and what must move together?*
@@ -121,18 +122,26 @@ Every substantial markdown file should remain navigable for humans and AI agents
 | Mechanism | Use when |
 |-----------|----------|
 | **Authority map** ([hub](../RULES.md#authority-map)) | Establishing *owner path* for a concern |
-| Frontmatter **`related:`** | Peer docs (not the entire tree) |
-| In-body **Related:** line under the lead | Same peers, human-scannable |
+| Frontmatter **`related:`** | Peers to **co-update** or **open to apply this file** (3–7), not the entire tree |
+| In-body **Related:** line **or** lead citations | Same peers, human-scannable (not YAML-only) |
 | **Relative links** | Always from *this file’s* directory (`./`, `../`) |
 | **Deep anchors** | Point at a specific rule (e.g. `#same-change-set-rule`) |
-| **One-sentence summary + link** | Prefer over pasting another document’s full table |
+| **One-sentence summary + link** | **Must** at point of use (local consequence + deep link); do not paste another document’s full table |
 
 ### Form vs policy
 
 | Doc | Role |
 |-----|------|
-| **This file** | Policy: when/why to cross-link; what must co-update |
-| [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md) | Form: frontmatter fields, Related line pattern, relative link style |
+| **This file** | Policy: when/why to cross-link; what must co-update; incorporation |
+| [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md#density-force-and-incorporation) | Form + density: chrome, force, citation floor |
+
+### Incorporation
+
+- A **second full statement** of a rule another file owns is **drift**. Cite the owner; do not reprint.  
+- Removing the **last citation** of an owner is **context loss**. A reprint may go only if a one-sentence citation + deep link remains.  
+- **Inbound same-change-set:** if this file’s owned heading, anchor, or path changes, grep inbound links and retarget in the **same change set**.  
+- Frontmatter `related:` lists peers you must **co-update** or **open to apply this file** (3–7), not the whole tree. Humans see the same peers via a **Related** line **or** lead citations ([density](../MARKDOWN-STANDARD.md#density-force-and-incorporation)).  
+- **Point of use (Must):** when a foreign rule applies, write one sentence of local consequence and a **deep link** to the owner.
 
 ### Do not
 
@@ -150,7 +159,8 @@ Every substantial markdown file should remain navigable for humans and AI agents
 | Empty `SECURITY.md` “for the template” | Omit when [security modularity](./security.md#security-documentation-modularity) allows |
 | Code ships, guide “later” | Same change set as the canonical doc |
 | Silent public field or API rename | Coordinated contract bump + fixtures + docs + CHANGELOG |
-| Duplicating full matrices into every doc | Link + short summary |
+| Duplicating full matrices into every doc; second-home reprint of an owned rule | Link + short summary (one sentence + deep link) |
+| Deleting the last citation of an owner | Keep at least one citation; then drop the reprint |
 | Pack redefines CHANGELOG, SAST, hygiene, or public API law | Short procedure + `authority_paths` to L4; fix pack/BUILD if conflict ([agents](../agents/README.md)) |
 | Instruct in use but contracts updated without consulting pack authority_paths | Open primary pack expertise first ([OPS](../agents/OPS.md)); still edit L4 owners |
 | Public API/CLI matrix lives only under `docs/` | Promote to package contract; leave pointer in docs if useful ([ai-docs-workspace](./ai-docs-workspace.md)) |
@@ -166,6 +176,7 @@ Every substantial markdown file should remain navigable for humans and AI agents
 
 | Version | Notes |
 |---------|--------|
+| 1.4.0 | Incorporation + inbound-link duty (kit 2.7.0 in progress) |
 | 1.3.2 | Operator prompts is not a product contract (kit 2.6.2) |
 | 1.3.1 | Habitat L0 is not a contract; anti-patterns for RULES-in-AGENTS and chat-only done (kit 2.6.0) |
 | 1.3.0 | Workboard is an execution contract; phase-ship same-change-set (kit 2.4.0) |

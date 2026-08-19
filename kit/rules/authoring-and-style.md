@@ -1,7 +1,7 @@
 ---
 title: Authoring and Style
 description: Documentation rules, formatting conventions, inventory-gated style gates for Python, Rust, and C/C++, and other language style gates.
-version: "1.1.2"
+version: "1.2.0"
 status: current
 audience:
   - developers
@@ -17,14 +17,14 @@ related:
   - ../configs/clippy.toml
   - ../configs/clang-format
   - ../configs/clang-tidy
-last_updated: "2026-08-14"
+last_updated: "2026-08-19"
 ---
 
 # Authoring and Style
 
 How to write and structure documentation, and how to gate product code style (Domain B). Named kit style gates (pylint, rustfmt+clippy, clang-format+clang-tidy) apply **only when that language is in the [language surface inventory](./security.md#language-surface-inventory)**. Empty / docs-only inventories declare no language style gates.
 
-**Document version:** 1.1.2  
+**Document version:** 1.2.0  
 
 **Related:** [RULES.md](../RULES.md) · [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md) · [contracts.md](./contracts.md) · [verification-and-ops.md](./verification-and-ops.md) · [pylintrc](../configs/pylintrc) · [rustfmt.toml](../configs/rustfmt.toml) · [clippy.toml](../configs/clippy.toml) · [clang-format](../configs/clang-format) · [clang-tidy](../configs/clang-tidy)
 
@@ -37,6 +37,7 @@ How to write and structure documentation, and how to gate product code style (Do
 | Follow MARKDOWN-STANDARD for substantial docs | Leave `{{PLACEHOLDERS}}` in finished docs |
 | Update canonical docs with behavior changes | Use README as the only deep contract |
 | Run **declared** style gates before complete (inventory switch) | Ship pylint, rustfmt, clippy, clang-format, or clang-tidy as a product runtime dependency |
+| Say each fact once; cite, don’t reprint ([density](../MARKDOWN-STANDARD.md#density-force-and-incorporation)) | Fork a second home of an owned rule; delete the last citation of an owner |
 
 Canonical owner policy: [contracts.md](./contracts.md). Document shape: [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md).
 
@@ -57,13 +58,13 @@ Canonical owner policy: [contracts.md](./contracts.md). Document shape: [MARKDOW
 
 ## Documentation rules
 
-1. **Substantial documents** follow [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md): YAML frontmatter, single H1, lead, Summary before Contents, body, history when versioned. **Root `README.md`** uses the [landing](../MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter) outline only: no frontmatter; **Overview** then **Operator prompts**.  
+1. **Substantial documents** follow [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md): YAML frontmatter, single H1, lead, then the **required core** for the type ([density](../MARKDOWN-STANDARD.md#density-force-and-incorporation)). Summary and Contents only when those rules require them. **Root `README.md`** uses the [landing](../MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter) outline only: no frontmatter; **Overview** then **Operator prompts**.  
 2. **New docs** start from [templates/](../templates/); leave no unresolved `{{PLACEHOLDERS}}`. Pick templates from [project interest](../SETUP.md#5-pick-templates-by-interest) so contracts exist before or with first code.  
 3. **Behavior change ⇒ doc change** in the same commit or PR — see [contracts.md](./contracts.md):  
    - CLI verbs, flags, exit codes, JSON shapes → matching CLI / API guide  
    - Formulas, output columns, validation → methodology (+ fixtures if contract shifts)  
    - Trust boundary or execution model → matching security doc  
-4. **Prefer link + short summary** over pasting another document in full.  
+4. **Cite, don’t reprint:** one sentence + deep link ([contracts](./contracts.md#incorporation)); do not paste another document in full.  
 5. **Root README** stays an overview; deep contracts stay in package docs.  
 6. **Status honesty:** set frontmatter `status` to `draft` / `current` / `deprecated` accurately.  
 7. **Platform-aware examples** follow [MARKDOWN-STANDARD — Platform-aware examples](../MARKDOWN-STANDARD.md#platform-aware-examples): declare primary OS when examples are OS-specific; dual fences when multi-platform.
@@ -212,6 +213,7 @@ Language inventory (which surfaces exist) lives in [security.md](./security.md#l
 
 | Version | Notes |
 |---------|--------|
+| 1.2.0 | Cite, don’t reprint; density + required core pointer (kit 2.7.0 in progress) |
 | 1.1.2 | Root README landing shape required (kit 2.6.2) |
 | 1.1.1 | Python adopt steps start with inventory (parity with Rust/C++); kit 2.5.1 |
 | 1.1.0 | Named Rust and C/C++ style gates + starter configs; inventory is the on/off switch (kit 2.5.0) |
