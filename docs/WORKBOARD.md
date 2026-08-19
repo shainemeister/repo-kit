@@ -48,7 +48,7 @@ last_updated: "2026-08-19"
 | P0 | Register board + annex | `done` | `6329c20` | Annex on disk; P1 active |
 | P1 | Doctrine (standard, contracts, authoring, verify, hub Must, CHANGELOG open) | `done` | `9e8bd60` | Citations kept; 2.7.0 in progress |
 | P2 | Min-core templates + docs-author + SETUP/UPGRADE notes | `done` | `84f56ae` | omit-if templates; docs-author verify |
-| P3 | Pilot restyle hygiene.md + architecture.md + ledger audit | `active` | — | Then HARD GATE |
+| P3 | Pilot restyle hygiene.md + architecture.md + ledger audit | `done` | `b27ecff` | Ledger passed; HARD GATE |
 | GATE | User accepts P3 pilot shape | `blocked` | — | User decision; no wave 2 until accepted |
 | P4 | Hub Must digest trim (optional) | `open` | — | Wave 2 / after gate |
 | P5 | Restyle remaining kit/rules/* (contracts last) | `open` | — | Wave 2 |
@@ -58,6 +58,7 @@ last_updated: "2026-08-19"
 
 ### Progress log (newest first, max ~15 lines)
 
+- 2026-08-19 **P3** pilots shipped: `b27ecff` hygiene 1.6.0 / architecture 1.1.0. **HARD GATE** — user accepts shape before wave 2.
 - 2026-08-19 **P2** templates shipped: `84f56ae` min-core + docs-author verify. Next: P3 pilot.
 - 2026-08-19 **P1** doctrine shipped: `9e8bd60` MARKDOWN-STANDARD 1.3.0, contracts 1.4.0, authoring 1.2.0, verification 1.7.0, RULES 2.7.0. Next: P2 templates.
 - 2026-08-19 Registered **md-density-2.7.0**. Annex: docs/plan/md-density-2.7.0/. Next: P1 doctrine.
