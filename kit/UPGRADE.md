@@ -1,7 +1,7 @@
 ---
 title: Upgrade repo-kit
 description: Durable guide for upgrading an existing kit baseline, including 1.x to 2.x layout migration (standards under kit/) and merge options.
-version: "1.8.1"
+version: "1.8.2"
 status: current
 audience:
   - developers
@@ -21,14 +21,14 @@ related:
   - agents/OPS.md
   - agents/BUILD.md
   - agents/PLAN-HOOK.md
-last_updated: "2026-08-14"
+last_updated: "2026-08-19"
 ---
 
 # Upgrade repo-kit
 
 Durable procedure for **repositories that already adopted** the Repository Standards Kit. Not deleted after initiation—keep under project `kit/` or always open this file at Kit source.
 
-**Document version:** 1.8.1  
+**Document version:** 1.8.2  
 
 **Related:** [RULES.md](./RULES.md) · [SETUP.md](./SETUP.md) · [CHANGELOG.md](./CHANGELOG.md) · [README.md](../README.md) · [versioning-and-git.md](./rules/versioning-and-git.md) · [hygiene.md](./rules/hygiene.md) · [ai-docs-workspace.md](./rules/ai-docs-workspace.md) · [workboard.md](./rules/workboard.md) · [agents/README.md](./agents/README.md) · [agents/OPS.md](./agents/OPS.md) · [agents/BUILD.md](./agents/BUILD.md)
 
@@ -78,7 +78,7 @@ Durable procedure for **repositories that already adopted** the Repository Stand
 2. Open **Kit source** (canonical: https://github.com/shainemeister/repo-kit) → [`kit/CHANGELOG.md`](./CHANGELOG.md) → `## repo-kit`.  
 3. List releases **after** your Adopted kit version only.  
 4. Build a **focused merge plan**: only pieces this project uses (hub `RULES.md`, `rules/*` including **ai-docs-workspace**, **workboard**, **continuity** policy, `MARKDOWN-STANDARD.md`, templates including **TEMPLATE-LANDING-README.md**, **templates/docs/** and **WORKBOARD.md**, configs, **`kit/agents/HABITAT.md`** if a coding agent is used, remaining **`kit/agents/`** if Instruct is used, `.gitignore` patterns).  
-5. **Merge into project `kit/`** — not onto the product root. **Preserve** project root **`docs/`** content (do not overwrite with empty templates). **Never** replace a filled `docs/WORKBOARD.md` with the empty template. Merge new files under `kit/configs/` (pylintrc, rustfmt.toml, clippy.toml, clang-format, clang-tidy) as **catalog**. Do **not** force-copy them onto the product root; copy to `.pylintrc` / `rustfmt.toml` / `.clang-format` only when that language is **in the inventory**. If a coding agent is used (or root `AGENTS.md` exists): merge `kit/agents/HABITAT.md` and L0 templates. **Preserve** a filled root `AGENTS.md` and host aliases — do not overwrite with the empty template.  
+5. **Merge into project `kit/`** — not onto the product root. **Preserve** project root **`docs/`** content (do not overwrite with empty templates). **Never** replace a filled `docs/WORKBOARD.md` with the empty template. Merge new files under `kit/configs/` (pylintrc, rustfmt.toml, clippy.toml, clang-format, clang-tidy) as **catalog**. Do **not** force-copy them onto the product root; copy to `.pylintrc` / `rustfmt.toml` / `.clang-format` only when that language is **in the inventory**. If a coding agent is used (or root `AGENTS.md` exists): merge `kit/agents/HABITAT.md` and L0 templates. **Preserve** a filled root `AGENTS.md` and host aliases — do not overwrite with the empty template. Kit **2.7.0** density and templates are the contract; later module restyles are editorial — preserve local additions.  
 6. **Root `README.md`:** required [landing](./MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter) — no frontmatter; `## Overview` then `## Operator prompts`. Rewrite in place or start from [TEMPLATE-LANDING-README.md](./templates/TEMPLATE-LANDING-README.md). Keep this repo’s Overview content; Operator prompts is **this** repo’s session load path — do not paste upstream kit adopt/upgrade fences. Package READMEs stay on [TEMPLATE-README.md](./templates/TEMPLATE-README.md).  
 7. **Preserve** project-specific values — see [Preserve list](#preserve-list).  
 8. Fix relative links (`../README.md`, `../CHANGELOG.md`, `../packages/…`).  
@@ -188,7 +188,8 @@ Never clobber on merge:
 - Adopter-edited values in **already copied** product style files (`py-version` in `.pylintrc`, rustfmt `edition`, clang-format `BasedOnStyle`) — merge new kit starter comments into `kit/configs/` only  
 - Unused `kit/configs/*` left as dormant catalog (do not invent inventory rows or product-root copies for languages the repo does not ship)  
 - Filled root **`AGENTS.md`** and recorded host aliases (merge HABITAT policy only; do not reset L0)  
-- Package CLI / SECURITY / METHODOLOGY content  
+- Filled **package README / CLI / SECURITY / methodology** bodies — merge kit templates for *new* files only; **do not restyle** adopter filled product docs on upgrade  
+- Kit `rules/*` **editorial restyles** in 2.8.0+ are optional/editorial; preserve local additions  
 - Root README **product** Overview (reshape headings; do not replace with upstream kit landing copy)  
 - Project root CHANGELOG **history**  
 - Project root **`docs/`** content (AI workspace notes—merge policy/templates under `kit/` only)  
@@ -238,6 +239,7 @@ This repository has no repo-kit baseline. Follow kit/SETUP.md selective adoption
 
 | Version | Notes |
 |---------|--------|
+| 1.8.2 | Preserve filled product docs; 2.8.0+ rules restyles editorial (kit 2.7.0 in progress) |
 | 1.8.1 | Routine upgrade reshapes root README to landing (kit 2.6.3) |
 | 1.8.0 | Merge HABITAT; preserve filled AGENTS.md and host aliases (kit 2.6.0) |
 | 1.7.0 | Merge kit/configs as catalog; do not force product-root style copies; preserve adopter edition / BasedOnStyle / py-version (kit 2.5.0) |

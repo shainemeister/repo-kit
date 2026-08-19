@@ -206,7 +206,7 @@ Packs are **views** over L4 law (`kit/RULES.md` + `kit/rules/*` + product contra
 | Docs-only / standards | [TEMPLATE-LANDING-README](./templates/TEMPLATE-LANDING-README.md) + GENERIC for deep notes | Overview + Operator prompts at root |
 | Monorepo multi-package | Per-package README (+ CLI/SECURITY as needed) | Shared `kit/RULES`; thin per-package overlays |
 
-Templates live under [templates/](./templates/). Scaffold finished docs into **product paths**, not into `kit/` as permanent package docs. Co-update rules: [rules/contracts.md](./rules/contracts.md).
+Templates live under [templates/](./templates/). Scaffold finished docs into **product paths**, not into `kit/` as permanent package docs. New docs use the **required core** for the type; extra template sections are **omit-if** ([density](./MARKDOWN-STANDARD.md#density-force-and-incorporation)). Co-update rules: [rules/contracts.md](./rules/contracts.md).
 
 ---
 
@@ -214,9 +214,9 @@ Templates live under [templates/](./templates/). Scaffold finished docs into **p
 
 Scaffold formal docs **before** or **in the same change set as** first code:
 
-1. Copy the chosen template(s) into the **package** path (outside `kit/`).  
+1. Copy the chosen template(s) into the **package** path (outside `kit/`). Keep the required core; delete omit-if sections that do not apply.  
 2. Replace every `{{PLACEHOLDER}}`.  
-3. Refresh Contents links.  
+3. Refresh Contents **if present** (only if ≥ 5 H2s or ≳ 150 lines).  
 4. Leave frontmatter `status: draft` until the contract matches behavior.  
 5. Root README: **required** [landing pattern](./MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter) — no frontmatter; `## Overview` then `## Operator prompts`. Start from [TEMPLATE-LANDING-README.md](./templates/TEMPLATE-LANDING-README.md) or rewrite the existing root README. Do not copy this kit’s adopt/upgrade fences onto a product landing. Package READMEs still use [TEMPLATE-README.md](./templates/TEMPLATE-README.md).
 

@@ -22,39 +22,11 @@ last_updated: "{{LAST_UPDATED}}"
 
 **Related docs:** [CLI-GUIDE.md](./CLI-GUIDE.md) · [SECURITY.md](./SECURITY.md)
 
----
-
-## Summary
-
-{{SUMMARY_PARAGRAPH}}
-
-| You want… | Start here |
-|-----------|------------|
-| Quick start | [Recommended workflow](#recommended-workflow) |
-| Commands | [CLI-GUIDE.md](./CLI-GUIDE.md) |
-| Security | [SECURITY.md](./SECURITY.md) |
+<!-- Contents only if ≥ 5 H2s or ≳ 150 lines. Never list Summary as item 1. -->
 
 ---
 
-## Contents
-
-1. [Summary](#summary)
-2. [Who should use what](#who-should-use-what)
-3. [Recommended workflow](#recommended-workflow)
-4. [What it produces](#what-it-produces)
-5. [Prerequisites](#prerequisites)
-6. [Data and configuration](#data-and-configuration)
-7. [Layout and architecture](#layout-and-architecture)
-8. [Using from other code](#using-from-other-code)
-9. [CLI quick reference](#cli-quick-reference)
-10. [Validation](#validation)
-11. [Security notes](#security-notes)
-12. [Troubleshooting](#troubleshooting)
-13. [Out of scope](#out-of-scope)
-
----
-
-## Who should use what
+## Who should use this
 
 | Audience | Entry point |
 |----------|-------------|
@@ -84,7 +56,18 @@ cd /path/to/{{FOLDER_NAME}}
 
 ---
 
+## Where to go next
+
+| You want… | Open |
+|-----------|------|
+| Commands, exits, stable output | [CLI-GUIDE.md](./CLI-GUIDE.md) |
+| Trust boundary | [SECURITY.md](./SECURITY.md) |
+
+---
+
 ## What it produces
+
+omit if: no distinct outputs to enumerate (link the CLI or methodology contract instead).
 
 | Output | Description |
 |--------|-------------|
@@ -94,6 +77,8 @@ cd /path/to/{{FOLDER_NAME}}
 
 ## Prerequisites
 
+omit if: no extra tooling beyond what the workflow already shows.
+
 | Need | Notes |
 |------|--------|
 | {{PREREQ}} | {{PREREQ_NOTES}} |
@@ -102,6 +87,8 @@ cd /path/to/{{FOLDER_NAME}}
 
 ## Data and configuration
 
+omit if: no data or config contract (or it lives only in the CLI/methodology owner).
+
 | Input | Role |
 |-------|------|
 | {{INPUT}} | {{INPUT_ROLE}} |
@@ -109,6 +96,8 @@ cd /path/to/{{FOLDER_NAME}}
 ---
 
 ## Layout and architecture
+
+omit if: layout is obvious from the package folder or owned by architecture.md.
 
 ```text
 {{FOLDER_NAME}}/
@@ -124,6 +113,8 @@ cd /path/to/{{FOLDER_NAME}}
 
 ## Using from other code
 
+omit if: not a library, or the consume example is the workflow above.
+
 ```{{CODE_LANG}}
 {{CODE_EXAMPLE}}
 ```
@@ -132,19 +123,17 @@ cd /path/to/{{FOLDER_NAME}}
 
 ## CLI quick reference
 
+omit if: a CLI-GUIDE exists (full verbs, flags, and exits belong there — do not fork a matrix here).
+
 | Command | Purpose |
 |---------|---------|
 | {{CMD}} | {{CMD_PURPOSE}} |
 
-| Exit code | Meaning |
-|-----------|---------|
-| 0 | Success |
-| 1 | Validation / usage |
-| 2 | Runtime (if applicable) |
-
 ---
 
 ## Validation
+
+omit if: no package-specific checks beyond the project verification table.
 
 {{VALIDATION_NOTES}}
 
@@ -152,16 +141,15 @@ cd /path/to/{{FOLDER_NAME}}
 
 ## Security notes
 
-| Topic | Behavior |
-|-------|----------|
-| Elevation | {{ELEVATION}} |
-| Network | {{NETWORK}} |
+omit if: no local consequence beyond linking SECURITY.md (do not reprint the trust-boundary table).
 
 Full write-up: [SECURITY.md](./SECURITY.md).
 
 ---
 
 ## Troubleshooting
+
+omit if: no recurring operator failures unique to this package.
 
 | Symptom | What to try |
 |---------|-------------|
@@ -170,5 +158,7 @@ Full write-up: [SECURITY.md](./SECURITY.md).
 ---
 
 ## Out of scope
+
+omit if: non-goals are already clear from the lead or Who should use this.
 
 - {{OUT_OF_SCOPE_ITEM}}

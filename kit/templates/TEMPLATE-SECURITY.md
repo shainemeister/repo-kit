@@ -24,56 +24,33 @@ last_updated: "{{LAST_UPDATED}}"
 
 **Related docs:** [README.md](./README.md) · [CLI-GUIDE.md](./CLI-GUIDE.md)
 
----
+> **Modularity:** Omit **this file** when the package has no execution surface, network access, elevated privilege, or secrets/identity handling. Docs-only or pure libraries with no runtime side effects should not create an empty `SECURITY.md` — see [Security documentation modularity](../rules/security.md#security-documentation-modularity).
 
-## Summary
-
-{{SUMMARY_PARAGRAPH}}
+<!-- Contents only if ≥ 5 H2s or ≳ 150 lines. Never list Summary as item 1. -->
 
 ---
 
-## Contents
-
-1. [Summary](#summary)
-2. [Purpose of this document](#1-purpose-of-this-document)
-3. [Trust boundary](#2-trust-boundary)
-4. [Unacceptable patterns](#3-unacceptable-patterns)
-5. [Required allowances](#4-required-allowances)
-6. [Runtime restrictions](#5-runtime-restrictions)
-7. [Recommended validation](#6-recommended-validation)
-8. [Audit snapshot](#7-audit-snapshot)
-9. [Statement for reviewers](#8-statement-for-reviewers)
-10. [Related files](#9-related-files)
-11. [Document history](#10-document-history)
-
----
-
-## 1. Purpose of this document
-
-> **Modularity:** Create this file only when the package has an execution surface, network access, elevated privilege, or handles secrets. Docs-only or pure libraries with no runtime side effects may omit `SECURITY.md` entirely—see [Security documentation modularity](../rules/security.md#security-documentation-modularity).
-
-Summarize:
-
-1. What the product **does** from a security perspective  
-2. Patterns treated as **unacceptable** (and status here)  
-3. Capabilities that still require **enterprise or IT allowance**  
-4. How to **validate** on a controlled machine  
-
----
-
-## 2. Trust boundary
+## Trust boundary
 
 | Area | Behavior |
 |------|----------|
 | **Privilege** | {{PRIVILEGE}} |
 | **Network** | {{NETWORK}} |
-| **Identity** | {{IDENTITY}} |
-| **Scope of files** | {{FILE_SCOPE}} |
-| **Dependencies** | {{DEPENDENCIES}} |
+| **Secrets / identity** | {{IDENTITY}} |
 
 ---
 
-## 3. Unacceptable patterns
+## Purpose of this document
+
+omit if: the lead plus Trust boundary already state the security posture.
+
+Summarize what the product does from a security perspective. Do not reprint the trust-boundary table.
+
+---
+
+## Unacceptable patterns
+
+omit if: the project has no listed anti-patterns beyond the trust boundary.
 
 | Pattern | Why sensitive | Status here |
 |---------|---------------|-------------|
@@ -81,9 +58,9 @@ Summarize:
 
 ---
 
-## 4. Required allowances
+## Required allowances
 
-> **Delete this section** if the product needs no enterprise or IT allowances beyond normal user privileges.
+omit if: no enterprise or IT allowances beyond normal user privileges.
 
 | Capability | Used for | Typical gate |
 |------------|----------|--------------|
@@ -91,26 +68,24 @@ Summarize:
 
 ---
 
-## 5. Runtime restrictions
+## Runtime restrictions
 
-> **Shorten or delete** subsections that do not apply (e.g. no allowlists, single runtime only).
-
-### 5.1 Supported runtime
+omit if: runtime is a single declared host with no allowlists.
 
 | Item | Expectation |
 |------|-------------|
 | **Version / host** | {{RUNTIME}} |
 | **Libraries** | {{LIBRARIES}} |
 
-### 5.2 Controls (policy / allowlists)
-
 {{CONTROLS_NOTES}}
 
 ---
 
-## 6. Recommended validation
+## Recommended validation
 
-> **Delete unused OS blocks.** Keep both when multi-platform; drop the unused OS when primary platform is single and declared. Prefer language-specific developer gates from the project [language surface inventory](../rules/security.md#language-surface-inventory) and [Security / SAST gates](../rules/security.md#security--sast-gates-required-when-declared) only for languages this package ships. Declared Domain A/B gates are **required** before task completion. For formal self-attestation certificates (optional), see [Certification](../rules/security.md#security-and-code-validation-certification) and [TEMPLATE-CERTIFICATION-README.md](./TEMPLATE-CERTIFICATION-README.md).
+omit if: validation lives only in the project verification table (link that table instead of a second command list).
+
+Keep both OS blocks when multi-platform; drop the unused OS when primary platform is single and declared. Prefer language-specific developer gates from the project [language surface inventory](../rules/security.md#language-surface-inventory) and [Security / SAST gates](../rules/security.md#security--sast-gates-required-when-declared) only for languages this package ships.
 
 **Windows**
 
@@ -126,7 +101,9 @@ Summarize:
 
 ---
 
-## 7. Audit snapshot
+## Audit snapshot
+
+omit if: no extra decisions beyond the trust-boundary table.
 
 | Decision | Rationale |
 |----------|-----------|
@@ -134,15 +111,17 @@ Summarize:
 
 ---
 
-## 8. Statement for reviewers
+## Statement for reviewers
+
+omit if: reviewers only need the trust-boundary table.
 
 > {{REVIEWER_STATEMENT}}
 
 ---
 
-## 9. Related files
+## Related files
 
-> **Delete this section** if related paths are already clear from the authority map and Related docs line.
+omit if: peers are already in Related docs / `related:`.
 
 | Path | Role |
 |------|------|
@@ -150,7 +129,7 @@ Summarize:
 
 ---
 
-## 10. Document history
+## Document history
 
 | Version | Notes |
 |---------|--------|

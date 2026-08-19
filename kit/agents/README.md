@@ -1,7 +1,7 @@
 ---
 title: Agent Instruct
 description: Portable agent personas as expert views over repo-kit law—index, decisions, and start paths.
-version: "1.2.0"
+version: "1.2.1"
 status: current
 audience:
   - developers
@@ -19,14 +19,14 @@ related:
   - ../RULES.md
   - ../SETUP.md
   - ../../README.md
-last_updated: "2026-08-14"
+last_updated: "2026-08-19"
 ---
 
 # Agent Instruct
 
 Portable way for AI (and humans) to **build and maintain modular expert agent personas** from project interest, **PLAN.md**, and the filled authority map—without replacing maintenance law or bloating `kit/RULES.md`.
 
-**Document version:** 1.2.0  
+**Document version:** 1.2.1  
 
 **Related:** [OPS.md](./OPS.md) · [HABITAT.md](./HABITAT.md) · [FRAMEWORK.md](./FRAMEWORK.md) · [PARAMS.md](./PARAMS.md) · [CATALOG.md](./CATALOG.md) · [PLAN-HOOK.md](./PLAN-HOOK.md) · [BUILD.md](./BUILD.md) · [RUNTIME.md](./RUNTIME.md) · [RULES.md](../RULES.md)
 
@@ -119,7 +119,7 @@ Detail: [FRAMEWORK.md](./FRAMEWORK.md). Utilization: [OPS.md](./OPS.md).
 
 | Artifact | Format |
 |----------|--------|
-| Instruct law docs (this README, FRAMEWORK, OPS, BUILD, …) | [MARKDOWN-STANDARD](../MARKDOWN-STANDARD.md) — frontmatter, Summary, Contents |
+| Instruct law docs (this README, FRAMEWORK, OPS, BUILD, …) | [MARKDOWN-STANDARD](../MARKDOWN-STANDARD.md) **including density** — Summary/Contents only when required |
 | Templates and generated packs | **AgentPack** YAML frontmatter per [PARAMS.md](./PARAMS.md) + short markdown body (Must / Must not / Expertise map / Procedure) |
 
 Do not force full MARKDOWN-STANDARD `doc_type` package shape onto every generated pack.
@@ -141,6 +141,7 @@ Durable intent (enable security agent, disable adopter, project overlays, new ex
 
 | Version | Notes |
 |---------|--------|
+| 1.2.1 | Instruct law docs follow density (Summary/Contents when required); packs stay AgentPack (kit 2.7.0 in progress) |
 | 1.2.0 | HABITAT L0 + parent/child start-here (kit 2.6.0) |
 | 1.1.0 | OPS index; expert packs; O3 Musts; lifecycle (kit 2.2.0) |
 | 1.0.0 | Initial Agent Instruct index (kit 2.1.0) |

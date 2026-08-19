@@ -9,6 +9,7 @@ audience:
 doc_type: methodology
 related:
   - README.md
+  - {{RELATED_DOC}}
 last_updated: "{{LAST_UPDATED}}"
 ---
 
@@ -17,53 +18,15 @@ last_updated: "{{LAST_UPDATED}}"
 {{ONE_LINE_PURPOSE}}
 
 **Document version:** {{VERSION}}  
-**Related:** [README.md](./README.md)
+**Related:** [README.md](./README.md) · [{{RELATED_DOC}}](./{{RELATED_DOC}})
+
+<!-- Contents only if ≥ 5 H2s or ≳ 150 lines. Never list Summary as item 1. -->
 
 ---
 
-## Summary
+## Definitions and formulas
 
-{{SUMMARY_PARAGRAPH}}
-
----
-
-## Contents
-
-1. [Summary](#summary)
-2. [Purpose and scope](#1-purpose-and-scope)
-3. [Pipeline overview](#2-pipeline-overview)
-4. [Definitions and formulas](#3-definitions-and-formulas)
-5. [Worked example](#4-worked-example)
-6. [Outputs / column contracts](#5-outputs--column-contracts)
-7. [Validation](#6-validation)
-8. [Common false alarms](#7-common-false-alarms)
-9. [Out of scope](#8-out-of-scope)
-10. [Document history](#9-document-history)
-
----
-
-## 1. Purpose and scope
-
-| Item | Detail |
-|------|--------|
-| **Goal** | {{GOAL}} |
-| **Inputs** | {{INPUTS}} |
-| **Outputs** | {{OUTPUTS}} |
-| **Non-goals** | {{NON_GOALS}} |
-
----
-
-## 2. Pipeline overview
-
-```text
-{{PIPELINE_DIAGRAM}}
-```
-
----
-
-## 3. Definitions and formulas
-
-### 3.1 {{METRIC_OR_CONCEPT}}
+### {{METRIC_OR_CONCEPT}}
 
 | Symbol / field | Meaning |
 |----------------|---------|
@@ -75,15 +38,9 @@ last_updated: "{{LAST_UPDATED}}"
 
 ---
 
-## 4. Worked example
+## Outputs / column contracts
 
-| Case | Input | Result |
-|------|-------|--------|
-| {{CASE}} | {{INPUT}} | {{RESULT}} |
-
----
-
-## 5. Outputs / column contracts
+Do not drop unique columns to shorten this file.
 
 | Column / artifact | Description |
 |-------------------|-------------|
@@ -91,7 +48,42 @@ last_updated: "{{LAST_UPDATED}}"
 
 ---
 
-## 6. Validation
+## Purpose and scope
+
+omit if: the lead already states goal, inputs, and non-goals.
+
+| Item | Detail |
+|------|--------|
+| **Goal** | {{GOAL}} |
+| **Inputs** | {{INPUTS}} |
+| **Outputs** | {{OUTPUTS}} |
+| **Non-goals** | {{NON_GOALS}} |
+
+---
+
+## Pipeline overview
+
+omit if: the formula plus output columns are the whole method.
+
+```text
+{{PIPELINE_DIAGRAM}}
+```
+
+---
+
+## Worked example
+
+omit if: the method is a single obvious formula (one row in Definitions is enough).
+
+| Case | Input | Result |
+|------|-------|--------|
+| {{CASE}} | {{INPUT}} | {{RESULT}} |
+
+---
+
+## Validation
+
+omit if: pass criteria live only in fixtures or the project verification table.
 
 | Check | Pass criteria |
 |-------|----------------|
@@ -99,7 +91,9 @@ last_updated: "{{LAST_UPDATED}}"
 
 ---
 
-## 7. Common false alarms
+## Common false alarms
+
+omit if: no recurring misreads of the outputs.
 
 | Observation | Explanation |
 |-------------|-------------|
@@ -107,13 +101,15 @@ last_updated: "{{LAST_UPDATED}}"
 
 ---
 
-## 8. Out of scope
+## Out of scope
+
+omit if: non-goals are already in the lead or Purpose.
 
 - {{OUT_OF_SCOPE_ITEM}}
 
 ---
 
-## 9. Document history
+## Document history
 
 | Version | Notes |
 |---------|--------|

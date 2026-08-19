@@ -27,53 +27,13 @@ last_updated: "{{LAST_UPDATED}}"
 | **CLI entry** | `{{CLI_ENTRY}}` |
 | **Library** | `{{LIBRARY_ENTRY}}` |
 
----
-
-## Summary
-
-{{SUMMARY_PARAGRAPH}}
-
-| Command | Produces |
-|---------|----------|
-| `{{COMMAND}}` | {{COMMAND_OUTPUT}} |
-
----
-
-## Contents
-
-1. [Summary](#summary)
-2. [Architecture](#architecture)
-3. [When to use the CLI vs the library](#when-to-use-the-cli-vs-the-library)
-4. [Invocation](#invocation)
-5. [Exit codes](#exit-codes)
-6. [Global options](#global-options)
-7. [Commands](#commands)
-8. [Example use cases](#example-use-cases)
-9. [Data contract](#data-contract)
-10. [Constraints](#constraints)
-11. [Troubleshooting](#troubleshooting)
-12. [Version](#version)
-
----
-
-## Architecture
-
-```text
-{{ARCHITECTURE_FLOW}}
-```
-
----
-
-## When to use the CLI vs the library
-
-| Caller | Recommended API |
-|--------|-----------------|
-| Same-process scripts | {{LIBRARY_ENTRY}} |
-| Task Scheduler / cmd / other languages | CLI |
+<!-- Contents only if ≥ 5 H2s or ≳ 150 lines. Never list Summary as item 1. -->
 
 ---
 
 ## Invocation
+
+Keep both OS blocks when multi-platform; drop the unused OS when primary platform is single and declared.
 
 ### Windows
 
@@ -95,7 +55,23 @@ cd /path/to/{{FOLDER_NAME}}
 {{CLI_ENTRY}} <command> [options]
 ```
 
-Keep both OS blocks when multi-platform; drop the unused OS when primary platform is single and declared. If the product detects the host OS and adapts paths or launchers, document that under Constraints or Security.
+---
+
+## Commands
+
+| Verb | Purpose |
+|------|---------|
+| `{{COMMAND}}` | {{COMMAND_DESCRIPTION}} |
+
+### `{{COMMAND}}`
+
+```text
+{{CLI_ENTRY}} {{COMMAND}} [options]
+```
+
+| Option | Required | Default | Description |
+|--------|----------|---------|-------------|
+| `{{OPTION}}` | No | {{DEFAULT}} | {{OPTION_DESC}} |
 
 ---
 
@@ -111,39 +87,21 @@ Keep both OS blocks when multi-platform; drop the unused OS when primary platfor
 
 ## Global options
 
+omit if: no flags apply to every verb.
+
 | Option | Description |
 |--------|-------------|
 | `{{GLOBAL_OPTION}}` | {{GLOBAL_OPTION_DESC}} |
 
 ---
 
-## Commands
+## Data contract
 
-### `{{COMMAND}}`
+Stable stdout / file output. Do not drop unique columns to shorten this file.
 
-{{COMMAND_DESCRIPTION}}
-
-```text
-{{CLI_ENTRY}} {{COMMAND}} [options]
-```
-
-| Option | Required | Default | Description |
-|--------|----------|---------|-------------|
-| `{{OPTION}}` | No | {{DEFAULT}} | {{OPTION_DESC}} |
-
-**Example (Windows)**
-
-```bat
-{{EXAMPLE_INVOCATION}}
-```
-
-**Example (Linux / macOS)**
-
-```bash
-{{EXAMPLE_INVOCATION}}
-```
-
-**JSON shape (illustrative)**
+| Input / output | Role |
+|----------------|------|
+| {{IO_NAME}} | {{IO_ROLE}} |
 
 ```json
 {
@@ -155,7 +113,30 @@ Keep both OS blocks when multi-platform; drop the unused OS when primary platfor
 
 ---
 
+## Architecture
+
+omit if: no multi-stage pipeline unique to this CLI (do not reprint architecture.md).
+
+```text
+{{ARCHITECTURE_FLOW}}
+```
+
+---
+
+## When to use the CLI vs the library
+
+omit if: CLI-only, or the choice is already in the README workflow.
+
+| Caller | Recommended API |
+|--------|-----------------|
+| Same-process scripts | {{LIBRARY_ENTRY}} |
+| Task Scheduler / cmd / other languages | CLI |
+
+---
+
 ## Example use cases
+
+omit if: Invocation plus Commands already show the realistic path (no novel scenario).
 
 ### {{USE_CASE_TITLE}}
 
@@ -173,25 +154,19 @@ Keep both OS blocks when multi-platform; drop the unused OS when primary platfor
 
 ---
 
-## Data contract
-
-| Input / output | Role |
-|----------------|------|
-| {{IO_NAME}} | {{IO_ROLE}} |
-
----
-
 ## Constraints
+
+omit if: no extra limits beyond [SECURITY.md](./SECURITY.md) and the data contract.
 
 | Topic | Behavior |
 |-------|----------|
 | {{CONSTRAINT}} | {{CONSTRAINT_BEHAVIOR}} |
 
-See [SECURITY.md](./SECURITY.md).
-
 ---
 
 ## Troubleshooting
+
+omit if: no recurring invocation failures unique to this CLI.
 
 | Symptom | What to check |
 |---------|----------------|
@@ -199,6 +174,16 @@ See [SECURITY.md](./SECURITY.md).
 
 ---
 
-## Version
+## Version policy
+
+omit if: versioning is only “bump this file with the verbs” (then record the bump in Document history).
 
 CLI and product version are aligned at **{{VERSION}}**. Bump when changing verbs, exit codes, or machine-readable field names.
+
+---
+
+## Document history
+
+| Version | Notes |
+|---------|--------|
+| {{VERSION}} | Initial CLI contract |

@@ -31,10 +31,15 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 #### Added
 
 - Density, force, and incorporation doctrine (MARKDOWN-STANDARD 1.3.0; contracts 1.4.0).
+- Minimum-core templates (GENERIC, README, CLI, SECURITY, METHODOLOGY, CONCEPT): extra sections labeled omit-if.
 
 #### Changed
 
 - Contents threshold; citation cap 3–7; author checklist; authoring 1.2.0; verification 1.7.0; RULES hub 2.7.0 one Must.
+- docs-author seed + CATALOG **1.2.1** verify: required core / density operators; no Summary→Contents mandate; second-home and last-cite checks; Contents only if threshold.
+- SETUP: refresh Contents **if present**; new docs use required core (omit-if extras).
+- UPGRADE **1.8.2**: preserve filled package README / CLI / SECURITY / methodology; 2.8.0+ `rules/*` restyles editorial.
+- agents README **1.2.1** / RUNTIME **1.3.1**: density pointer; L0/pack budgets unchanged.
 
 #### Notes
 

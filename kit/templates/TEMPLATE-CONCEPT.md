@@ -9,6 +9,7 @@ audience:
 doc_type: concept
 related:
   - README.md
+  - {{RELATED_DOC}}
 last_updated: "{{LAST_UPDATED}}"
 ---
 
@@ -17,30 +18,9 @@ last_updated: "{{LAST_UPDATED}}"
 {{ONE_LINE_PURPOSE}}
 
 **Document version:** {{VERSION}}  
-**Related:** [README.md](./README.md)
+**Related:** [README.md](./README.md) · [{{RELATED_DOC}}](./{{RELATED_DOC}})
 
----
-
-## Summary
-
-{{SUMMARY_PARAGRAPH}}
-
----
-
-## Contents
-
-1. [Summary](#summary)
-2. [Overview](#overview)
-3. [Shared principles](#shared-principles)
-4. [Version or phase design](#version-or-phase-design)
-5. [Implementation notes](#implementation-notes)
-6. [Document control](#document-control)
-
----
-
-## Overview
-
-{{OVERVIEW}}
+<!-- Contents only if ≥ 5 H2s or ≳ 150 lines. Never list Summary as item 1. -->
 
 ---
 
@@ -52,9 +32,7 @@ last_updated: "{{LAST_UPDATED}}"
 
 ---
 
-## Version or phase design
-
-### Version / Phase 1 — {{PHASE_1_NAME}}
+## Current shape
 
 **Goal:** {{PHASE_1_GOAL}}
 
@@ -62,7 +40,23 @@ last_updated: "{{LAST_UPDATED}}"
 |------|--------|
 | {{ITEM}} | {{NOTES}} |
 
-### Version / Phase 2 — {{PHASE_2_NAME}}
+Current implementation target: **{{CURRENT_TARGET}}**.
+
+---
+
+## Overview
+
+omit if: it only restates the lead.
+
+{{OVERVIEW}}
+
+---
+
+## Earlier versions
+
+omit if: no version archaeology (one current shape is enough).
+
+### Version / Phase — {{PHASE_2_NAME}}
 
 **Goal:** {{PHASE_2_GOAL}}
 
@@ -74,14 +68,17 @@ last_updated: "{{LAST_UPDATED}}"
 
 ## Implementation notes
 
+omit if: implementation belongs in code comments or a package README.
+
 - {{IMPLEMENTATION_NOTE}}
 
 ---
 
 ## Document control
 
-- This document is updated as formulas, thresholds, and scope are refined.  
-- Current implementation target: **{{CURRENT_TARGET}}**.
+omit if: not a standalone CLI / methodology / SECURITY contract (use frontmatter + CHANGELOG).
+
+- This document is updated as formulas, thresholds, and scope are refined.
 
 | Version | Notes |
 |---------|--------|

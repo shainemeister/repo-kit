@@ -8,6 +8,7 @@ audience:
 doc_type: other
 related:
   - README.md
+  - {{RELATED_DOC}}
 last_updated: "{{LAST_UPDATED}}"
 ---
 
@@ -16,29 +17,17 @@ last_updated: "{{LAST_UPDATED}}"
 {{ONE_LINE_PURPOSE}}
 
 **Version:** {{VERSION}}  
-**Related:** [README.md](./README.md)
+**Related:** [README.md](./README.md) · [{{RELATED_DOC}}](./{{RELATED_DOC}})
+
+<!-- Contents only if ≥ 5 H2s or ≳ 150 lines. Never list Summary as item 1. -->
 
 ---
 
 ## Summary
 
+omit if: body ≲ 60 lines (no decision table required).
+
 {{SUMMARY_PARAGRAPH}}
-
----
-
-## Contents
-
-1. [Summary](#summary)
-2. [Background](#background)
-3. [Details](#details)
-4. [Next steps](#next-steps)
-5. [Document history](#document-history)
-
----
-
-## Background
-
-{{BACKGROUND}}
 
 ---
 
@@ -54,11 +43,15 @@ last_updated: "{{LAST_UPDATED}}"
 
 ## Next steps
 
+omit if: no follow-up actions.
+
 - {{NEXT_STEP}}
 
 ---
 
 ## Document history
+
+omit if: kit-internal module (use frontmatter `version`/`last_updated` + project or kit CHANGELOG). Keep this table on standalone contracts (CLI, methodology, SECURITY).
 
 | Version | Notes |
 |---------|--------|

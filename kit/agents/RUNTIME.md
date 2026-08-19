@@ -1,7 +1,7 @@
 ---
 title: Agent Runtime
 description: Activation modes, size budgets, and matching guidance for Agent Instruct.
-version: "1.3.0"
+version: "1.3.1"
 status: current
 audience:
   - developers
@@ -17,7 +17,7 @@ related:
   - PLAN-HOOK.md
   - ../RULES.md
   - ../rules/verification-and-ops.md
-last_updated: "2026-08-14"
+last_updated: "2026-08-19"
 ---
 
 # Agent Runtime
@@ -26,7 +26,7 @@ Agent Instruct assumes a **discovery + selective load** runtime: short **catalog
 
 **Full task lifecycle** (match → expertise → co-maintain → verify → agent evolve): **[OPS.md](./OPS.md)** — required when Instruct is in use.
 
-**Document version:** 1.3.0  
+**Document version:** 1.3.1  
 
 **Related:** [README.md](./README.md) · [OPS.md](./OPS.md) · [FRAMEWORK.md](./FRAMEWORK.md) · [PARAMS.md](./PARAMS.md) · [CATALOG.md](./CATALOG.md) · [BUILD.md](./BUILD.md) · [PLAN-HOOK.md](./PLAN-HOOK.md) · [RULES.md](../RULES.md)
 
@@ -96,6 +96,7 @@ Full ordered lifecycle: [OPS.md](./OPS.md).
 | RULES map row | One short description + path |
 | always_on_extra in PLAN | Few bullets only |
 | Reference / expertise dumps | Not in always-on; open on demand |
+| Markdown class budgets | Live in [MARKDOWN-STANDARD density](../MARKDOWN-STANDARD.md#density-force-and-incorporation); **L0 and pack budgets in this table stay unchanged** |
 
 If over budget: split doctrine, move text to L4 docs, shorten pack to links.
 
@@ -155,6 +156,7 @@ Prefer the full **[OPS O3](./OPS.md#order-of-operations-o3)** sequence. Matching
 
 | Version | Notes |
 |---------|--------|
+| 1.3.1 | Markdown class budgets live in MARKDOWN-STANDARD; L0/pack budgets unchanged (kit 2.7.0 in progress) |
 | 1.3.0 | Harness notes point at HABITAT; parent/child pointer (kit 2.6.0) |
 | 1.2.0 | OPS O3 required when Instruct in use; expertise open; lifecycle pointer (kit 2.2.0) |
 | 1.1.0 | Authority-map-first matching; STOP on failed gates; completion-rule cross-link |

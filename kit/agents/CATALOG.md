@@ -1,7 +1,7 @@
 ---
 title: Agent Catalog
 description: Default portable seed agents for repo-kit Agent Instruct.
-version: "1.2.0"
+version: "1.2.1"
 status: current
 audience:
   - developers
@@ -14,14 +14,14 @@ related:
   - BUILD.md
   - PLAN-HOOK.md
   - templates/
-last_updated: "2026-08-12"
+last_updated: "2026-08-19"
 ---
 
 # Agent Catalog
 
 Upstream repo-kit ships a **small catalog of portable seed agents**. Adopters enable/disable them via PLAN. Product-specific agents are **overlays or project-generated packs**, not rows in this default table. Seeds ship with **expertise** (in-repo + optional external citations) so BUILD emits expert packs.
 
-**Document version:** 1.2.0  
+**Document version:** 1.2.1  
 
 **Related:** [README.md](./README.md) · [OPS.md](./OPS.md) · [PARAMS.md](./PARAMS.md) · [BUILD.md](./BUILD.md) · [PLAN-HOOK.md](./PLAN-HOOK.md) · [templates/](./templates/)
 
@@ -143,12 +143,12 @@ Exact enablement is filled by BUILD from PLAN + inventory ([BUILD.md](./BUILD.md
 | **layer** | role |
 | **portability** | kit |
 | **activation** | catalog_match |
-| **description** | Author kit-shaped and product docs: frontmatter, Summary→Contents, cross-links, no dual contracts. |
+| **description** | Author kit-shaped and product docs: required core per type, density operators, cite don't reprint, no leftover placeholders. |
 | **triggers** | documentation, README, guide, markdown, frontmatter, docs |
 | **negative_triggers** | binary asset work; pure runtime debug |
 | **authority_paths** | `kit/MARKDOWN-STANDARD.md`, `kit/rules/authoring-and-style.md`, `kit/rules/contracts.md`, `kit/templates/` |
 | **compose_with** | `maintainer`, `plan-author` |
-| **verify** | links resolve; frontmatter version/last_updated if used; no template placeholders left in finished docs |
+| **verify** | links resolve; frontmatter version/last_updated if used; no leftover placeholders in finished docs; no second-home reprint; last citation remains; Contents only if ≥ 5 H2s or ≳ 150 lines; under class budget or split/justified |
 | **template** | [templates/docs-author.md](./templates/docs-author.md) |
 
 ### `security`
@@ -258,6 +258,7 @@ Templates under [templates/](./templates/) carry the full Expertise map. Summary
 
 | Version | Notes |
 |---------|--------|
+| 1.2.1 | docs-author required-core / density verify (kit 2.7.0 in progress) |
 | 1.2.0 | plan-author workboard triggers, authority, verify (kit 2.4.0) |
 | 1.1.0 | Project expert pack bar; seed expertise themes; OPS lifecycle (kit 2.2.0) |
 | 1.0.1 | plan-author verify dual-path; security Domain A focus |
