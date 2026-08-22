@@ -50,31 +50,21 @@ last_updated: "2026-08-22"
 | P0 | Register board + thin annex | `done` | `1e6a003` | |
 | P1 | Restore workboard Must-not + SHA/dup/archive + OPS related: | `done` | `ba79d28` | Verbatim `12e0b4b`; drop hygiene from YAML, body-cite it |
 | P2 | ai-docs + PLAN-HOOK unique Must nots | `done` | `6b8d01e` | Unique only; skip inverses |
-| P3 | TEMPLATE-OOO allow/deny + exit criteria | `done` | — | Placeholders remain |
-| P4 | Trim board progress log | `active` | — | Do not clear this program |
-| P5 | Ship 2.8.2 + archive | `open` | — | Dated CHANGELOG; primary `none` |
+| P3 | TEMPLATE-OOO allow/deny + exit criteria | `done` | `ee8114e` | Placeholders remain |
+| P4 | Trim board progress log | `done` | — | Do not clear this program |
+| P5 | Ship 2.8.2 + archive | `active` | — | Dated CHANGELOG; primary `none` |
 
 ### Progress log (newest first, max ~15 lines)
 
-- 2026-08-22 **P3** OOO templates: `—`. Next: P4 trim board log.
+- 2026-08-22 **P4** trimmed progress log: `—`. Next: P5 ship 2.8.2.
+- 2026-08-22 **P3** OOO templates: `ee8114e`. Next: P4 trim board log.
 - 2026-08-22 **P2** ai-docs + PLAN-HOOK Must nots: `6b8d01e`. Next: P3 OOO templates.
 - 2026-08-22 **P1** workboard Must-not digest: `ba79d28`. Next: P2 ai-docs + PLAN-HOOK.
 - 2026-08-22 Registered **workboard-rigidity-2.8.2**: `1e6a003`. Next: P1 workboard Must-not digest.
-- 2026-08-21 **density-fixups-2.8.1** complete: `a48324b` kit `2.8.1`. P1 `8695236` · P2 `aaf45f6` · P3 `0c60b1d` · P4 `97763cb`. Annex archived.
-- 2026-08-21 **P1** RUNTIME citation cap: `8695236`. Next: P2 echoes.
-- 2026-08-21 Registered **density-fixups-2.8.1**. Next: P1 RUNTIME citation cap.
-- 2026-08-21 **md-density-2.7.0** complete: `2a01b2f` kit `2.7.0` + `2.8.0`. Annex archived. Next: adopter upgrades (not this tree).
-- 2026-08-21 **P7** `28db706` UPGRADE chrome · **P6** `5a8eca7` Instruct docs.
-- 2026-08-21 **P5** rules restyles: `d96110d` P5a · `27570f4` P5b · `9fbad5d` contracts last. Next: P6 Instruct docs.
-- 2026-08-21 **GATE** + **P4** + kit **2.7.0** ship: `97ee1db`. Next: P5 restyle remaining rules (contracts last).
-- 2026-08-19 **P3** pilots shipped: `b27ecff` hygiene 1.6.0 / architecture 1.1.0. **HARD GATE** — user accepts shape before wave 2.
-- 2026-08-19 **P2** templates shipped: `84f56ae` min-core + docs-author verify. Next: P3 pilot.
-- 2026-08-19 **P1** doctrine shipped: `9e8bd60` MARKDOWN-STANDARD 1.3.0, contracts 1.4.0, authoring 1.2.0, verification 1.7.0, RULES 2.7.0. Next: P2 templates.
-- 2026-08-19 Registered **md-density-2.7.0**. Annex: docs/plan/md-density-2.7.0/. Next: P1 doctrine.
-- 2026-08-14 **habitat-l0-2.6.0** shipped: `12e0b4b` HABITAT + L0 + SETUP/UPGRADE dual path. Next: adopter upgrades (not this tree).
-- 2026-08-14 Registered **habitat-l0-2.6.0**.
-- 2026-08-12 **plan-control-2.4.0** shipped (P0–P8): `5ca9ea7` board · `84a3bd0` rules · `975a379` templates · `4b40af8` SETUP/UPGRADE · `1d2af58` agents · `c5bed29` CHANGELOG `2.4.0`. Next: adopter upgrade in consuming repos (not this tree).
-- 2026-08-12 Registered **plan-control-2.4.0**.
+- 2026-08-21 **density-fixups-2.8.1** complete: `a48324b` kit `2.8.1`. Annex archived.
+- 2026-08-21 **md-density-2.7.0** complete: `2a01b2f` kit `2.7.0` + `2.8.0`. Annex archived.
+- 2026-08-14 **habitat-l0-2.6.0** shipped: `12e0b4b` HABITAT + L0 + SETUP/UPGRADE dual path.
+- 2026-08-12 **plan-control-2.4.0** shipped (P0–P8): `c5bed29` CHANGELOG `2.4.0`.
 
 ---
 
