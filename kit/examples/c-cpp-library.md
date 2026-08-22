@@ -84,7 +84,7 @@ Declare **only** this row when the repo ships C / C++ product sources. Docs-only
 | Security / SAST (C / C++ only) | `cppcheck …` — **required** when declared |
 | Formal certification | If `certification/` maintained: regenerate `last_certification.*`; do not stage outputs |
 | Schema or sample data | Headers/fields match schema; consumers still load samples |
-| Docs only | Author checklist; consume example in README still runs |
+| Docs only | Author checklist (including [density](../MARKDOWN-STANDARD.md#density-force-and-incorporation)); relative links resolve; last citations remain; consume example in README still runs |
 
 **Adopt clang-format + clang-tidy:** copy `kit/configs/clang-format` → `.clang-format` and `kit/configs/clang-tidy` → `.clang-tidy`; set `BasedOnStyle` if the tree already has a house style; generate `compile_commands.json` from the **product** build (the kit does not ship CMake/Meson/Bazel). Keep clang-format, clang-tidy, and cppcheck **developer-only**. Do not add these rows on a docs-only adopt. Missing compile DB when C / C++ is declared is a failed gate unless a header-only `--` fallback is documented. Declared gates must pass before task completion ([Completion rule](../rules/verification-and-ops.md#completion-rule)). Style chapter: [C / C++ style gate](../rules/authoring-and-style.md#c--c-style-gate-clang-format--clang-tidy). Upgrades: [UPGRADE.md](../UPGRADE.md).
 

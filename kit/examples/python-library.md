@@ -83,7 +83,7 @@ Optional: methodology template if formulas or scoring are part of the contract.
 | Security / SAST (Python only) | `python -m bandit -r my_library` — **required** when declared; `pip-audit` when deps row exists |
 | Formal certification | If `certification/` maintained: regenerate `last_certification.*`; do not stage outputs |
 | Schema or sample data | Headers/fields match schema; consumers still load samples |
-| Docs only | Author checklist; consume example in README still runs |
+| Docs only | Author checklist (including [density](../MARKDOWN-STANDARD.md#density-force-and-incorporation)); relative links resolve; last citations remain; consume example in README still runs |
 
 **Adopt pylint:** copy `kit/configs/pylintrc` to package or repo root as `.pylintrc`; set `py-version`; keep pylint **developer-only**. Declared gates must pass before task completion ([Completion rule](../rules/verification-and-ops.md#completion-rule)). Upgrades: [UPGRADE.md](../UPGRADE.md).
 

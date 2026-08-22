@@ -85,7 +85,7 @@ Declare **only** surfaces this CLI ships. Never paste the full kit language tabl
 | Product style (Domain B) | Gate for the CLI’s language—**required** when in inventory |
 | Security / SAST (Domain A) | Language-specific SAST for declared surfaces—**required** when declared |
 | Formal certification | If `certification/` maintained: regenerate `last_certification.*`; do not stage outputs |
-| Docs only | Author checklist; relative links from `my-cli/` resolve |
+| Docs only | Author checklist (including [density](../MARKDOWN-STANDARD.md#density-force-and-incorporation)); relative links from `my-cli/` resolve; last citations remain |
 | New/removed source files | Inventory/catalog updated (if maintained) |
 
 **SECURITY.md** is required here because the package is an execution surface. Declared gates must pass before task completion ([Completion rule](../rules/verification-and-ops.md#completion-rule)). Upgrades: [UPGRADE.md](../UPGRADE.md).

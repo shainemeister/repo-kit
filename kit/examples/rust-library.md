@@ -84,7 +84,7 @@ Declare **only** this row when the repo ships Rust. Docs-only inventories stay e
 | Security / SAST (Rust only) | `cargo audit` — **required** when declared |
 | Formal certification | If `certification/` maintained: regenerate `last_certification.*`; do not stage outputs |
 | Schema or sample data | Headers/fields match schema; consumers still load samples |
-| Docs only | Author checklist; consume example in README still runs |
+| Docs only | Author checklist (including [density](../MARKDOWN-STANDARD.md#density-force-and-incorporation)); relative links resolve; last citations remain; consume example in README still runs |
 
 **Adopt rustfmt + clippy:** copy `kit/configs/rustfmt.toml` and `kit/configs/clippy.toml` to the crate or repo root; set rustfmt `edition`; keep rustfmt, clippy, and cargo-audit **developer-only**. Do not add these rows on a docs-only adopt. Declared gates must pass before task completion ([Completion rule](../rules/verification-and-ops.md#completion-rule)). Style chapter: [Rust style gate](../rules/authoring-and-style.md#rust-style-gate-rustfmt--clippy). Upgrades: [UPGRADE.md](../UPGRADE.md).
 
