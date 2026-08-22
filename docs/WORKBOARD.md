@@ -50,7 +50,7 @@ last_updated: "2026-08-21"
 
 ### Progress log (newest first, max ~15 lines)
 
-- 2026-08-21 **density-fixups-2.8.1** complete: kit `2.8.1`. P1 `8695236` · P2 `aaf45f6` · P3 `0c60b1d` · P4 `97763cb`. Annex archived.
+- 2026-08-21 **density-fixups-2.8.1** complete: `a48324b` kit `2.8.1`. P1 `8695236` · P2 `aaf45f6` · P3 `0c60b1d` · P4 `97763cb`. Annex archived.
 - 2026-08-21 **P1** RUNTIME citation cap: `8695236`. Next: P2 echoes.
 - 2026-08-21 Registered **density-fixups-2.8.1**. Next: P1 RUNTIME citation cap.
 - 2026-08-21 **md-density-2.7.0** complete: `2a01b2f` kit `2.7.0` + `2.8.0`. Annex archived. Next: adopter upgrades (not this tree).
