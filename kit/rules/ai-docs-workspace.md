@@ -1,7 +1,7 @@
 ---
 title: AI Docs Workspace
 description: Project root docs/ as modular AI resource workspace—research, workboard, plan, project_build, resources; lifecycle and promotion to L4.
-version: "1.1.1"
+version: "1.1.2"
 status: current
 audience:
   - developers
@@ -12,37 +12,30 @@ related:
   - ../RULES.md
   - ./hygiene.md
   - ./contracts.md
-  - ./verification-and-ops.md
-  - ../SETUP.md
-  - ../UPGRADE.md
-  - ../agents/OPS.md
-  - ../agents/PLAN-HOOK.md
   - ./workboard.md
-  - ./continuity.md
+  - ../agents/PLAN-HOOK.md
+  - ../UPGRADE.md
   - ../templates/docs/README.md
-last_updated: "2026-08-14"
+last_updated: "2026-08-21"
 ---
 
 # AI Docs Workspace
 
 Policy for the project **root `docs/`** tree: a **modular AI resource workspace** for research, detailed plans, project build context, and curated resources. Live content is **outside `kit/`**. Portable policy and templates live under `kit/`.
 
-**Document version:** 1.1.1  
-
-**Related:** [RULES.md](../RULES.md) · [hygiene.md](./hygiene.md) · [contracts.md](./contracts.md) · [workboard.md](./workboard.md) · [verification-and-ops.md](./verification-and-ops.md) · [SETUP.md](../SETUP.md) · [OPS.md](../agents/OPS.md) · [templates/docs/](../templates/docs/)
+**Related:** [RULES.md](../RULES.md) · [hygiene.md](./hygiene.md) · [contracts.md](./contracts.md) · [workboard.md](./workboard.md) · [PLAN-HOOK.md](../agents/PLAN-HOOK.md) · [UPGRADE.md](../UPGRADE.md) · [templates/docs/README.md](../templates/docs/README.md)
 
 ---
 
 ## Summary
 
-| Must | Must not |
-|------|----------|
-| Keep live AI workspace at **project root `docs/`** (outside `kit/`) | Put project research/build notes under `kit/` or replace L4 contracts |
-| Scaffold modules **when needed**; maintain modules **when used** | Force empty four-module trees on trivial Q&A or bare day-one ceremony |
-| Keep `docs/README.md` accurate when `docs/` exists | Abandon stale critical plans without status/archive |
-| **Promote** durable product promises to canonical L4 owners ([contracts](./contracts.md)) | Dual-own public API/CLI/SECURITY/CHANGELOG law inside `docs/` |
-| Complement root **`PLAN.md`** with `docs/WORKBOARD.md` + `docs/plan/` detail | Move Agent models out of PLAN into docs-only storage; paste live phase tables into PLAN |
-| Prefer thin markdown + links | Paste full `kit/rules/*` or secrets into the workspace |
+| Must |
+|------|
+| Keep live AI workspace at **project root `docs/`** (outside `kit/`) |
+| Scaffold modules **when needed**; maintain modules **when used**; keep `docs/README.md` accurate when `docs/` exists |
+| **Promote** durable product promises to canonical L4 owners ([contracts](./contracts.md)); `docs/` is not a dual home for API/CLI/SECURITY/CHANGELOG |
+| Complement root **`PLAN.md`** with `docs/WORKBOARD.md` + `docs/plan/` detail; **Agent models stay in PLAN** ([PLAN-HOOK](../agents/PLAN-HOOK.md)) |
+| Prefer thin markdown + links; do not paste full `kit/rules/*` or secrets into the workspace |
 
 **Enforcement:** Policy + operator checklist ([RULES — Operator enforcement](../RULES.md#operator-enforcement)). **Not** a Domain A/B gate.
 
@@ -50,34 +43,22 @@ Policy for the project **root `docs/`** tree: a **modular AI resource workspace*
 
 ## Contents
 
-1. [Summary](#summary)
-2. [Purpose](#purpose)
-3. [Separation from other surfaces](#separation-from-other-surfaces)
-4. [Default modular layout](#default-modular-layout)
-5. [Lifecycle (dynamic)](#lifecycle-dynamic)
-6. [Promotion to L4](#promotion-to-l4)
-7. [PLAN.md triple surface](#planmd-triple-surface)
-8. [Enforcement triggers](#enforcement-triggers)
-9. [Authoring and trust](#authoring-and-trust)
-10. [Anti-patterns](#anti-patterns)
-11. [Document history](#document-history)
+1. [Purpose](#purpose)
+2. [Separation from other surfaces](#separation-from-other-surfaces)
+3. [Default modular layout](#default-modular-layout)
+4. [Lifecycle (dynamic)](#lifecycle-dynamic)
+5. [Promotion to L4](#promotion-to-l4)
+6. [PLAN.md triple surface](#planmd-triple-surface)
+7. [Enforcement triggers](#enforcement-triggers)
+8. [Authoring and trust](#authoring-and-trust)
+9. [Anti-patterns](#anti-patterns)
+10. [Document history](#document-history)
 
 ---
 
 ## Purpose
 
-`docs/` is designed as a **resource for AI** (and humans) maintaining the repository:
-
-| Need | Module |
-|------|--------|
-| Investigations, spikes, findings | `docs/research/` |
-| What multi-phase work is open | `docs/WORKBOARD.md` |
-| Detailed execution / phased build plans | `docs/plan/` |
-| Implementation context, ADRs-lite, build notes | `docs/project_build/` |
-| Curated in-repo and external pointers | `docs/resources/` |
-| What exists and how to use it | `docs/README.md` |
-
-It is **working memory that survives sessions**—not the Progress Tracker (reply-level) and not kit standards. Durable **agent procedure** belongs in root `PLAN.md` or `kit/agents/` — do not grow a second Instruct essay under `docs/`.
+`docs/` is **working memory that survives sessions**—a resource for AI and humans maintaining the repository—not the Progress Tracker (reply-level) and not kit standards. Module paths: [Default modular layout](#default-modular-layout). Durable **agent procedure** belongs in root `PLAN.md` or `kit/agents/` — do not grow a second Instruct essay under `docs/`.
 
 ---
 
@@ -85,7 +66,7 @@ It is **working memory that survives sessions**—not the Progress Tracker (repl
 
 | Surface | Role | Relationship to `docs/` |
 |---------|------|-------------------------|
-| **`kit/`** | Portable standards / law | Policy + templates only; no project research dumps |
+| **`kit/`** | Portable standards / law | Policy + templates only; no project research dumps ([hygiene](./hygiene.md)) |
 | **Package docs** (README, CLI, SECURITY, …) | **L4 product contracts** | Promote findings here when they become promises |
 | **Root `PLAN.md`** | Durable mission, stages, Agent models | Control surface; not a todo list |
 | **`docs/WORKBOARD.md`** | Live multi-phase execution | What is open / next / SHA ([workboard](./workboard.md)) |
@@ -147,7 +128,7 @@ Templates: [templates/docs/](../templates/docs/).
 | **Maintain** | Update active module(s) in the same initiative |
 | **Index** | Whenever modules add/remove/rename or purpose shifts |
 | **Archive** | Prefer `status: archived` / `archive/` over silent delete of still-referenced plans |
-| **UPGRADE** | Preserve project `docs/**` content; merge kit policy/templates only |
+| **UPGRADE** | Preserve project `docs/**` content; merge kit policy/templates only ([UPGRADE](../UPGRADE.md#preserve-list)) |
 
 ---
 
@@ -232,6 +213,7 @@ External citations follow the same trust idea as Agent Instruct expertise: **gui
 
 | Version | Notes |
 |---------|--------|
+| 1.1.2 | Density restyle (kit 2.8.0 in progress); unique rules unchanged |
 | 1.1.1 | Durable agent procedure promotes to PLAN / kit/agents, not a docs essay (kit 2.6.0) |
 | 1.1.0 | Triple surface: PLAN + workboard + docs/plan annex/archive (kit 2.4.0) |
 | 1.0.0 | Initial AI docs workspace policy (kit 2.3.0) |

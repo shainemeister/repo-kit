@@ -1,7 +1,7 @@
 ---
 title: Versioning and Git
 description: Three version surfaces, mandatory CHANGELOG, kit baseline pointer, git hygiene, commit format, and AI disclosure.
-version: "1.0.4"
+version: "1.0.5"
 status: current
 audience:
   - developers
@@ -12,47 +12,45 @@ related:
   - ../CHANGELOG.md
   - ./contracts.md
   - ./verification-and-ops.md
+  - ./hygiene.md
   - ../agents/PLAN-HOOK.md
-last_updated: "2026-08-14"
+last_updated: "2026-08-21"
 ---
 
 # Versioning and Git
 
 Version surfaces, CHANGELOG discipline, and git / commit rules.
 
-**Document version:** 1.0.4  
-
-**Related:** [RULES.md](../RULES.md) · [UPGRADE.md](../UPGRADE.md) · [CHANGELOG.md](../CHANGELOG.md) · [contracts.md](./contracts.md) · [verification-and-ops.md](./verification-and-ops.md) · [PLAN-HOOK.md](../agents/PLAN-HOOK.md)
+**Related:** [RULES.md](../RULES.md) · [UPGRADE.md](../UPGRADE.md) · [CHANGELOG.md](../CHANGELOG.md) · [contracts.md](./contracts.md) · [verification-and-ops.md](./verification-and-ops.md) · [hygiene.md](./hygiene.md) · [PLAN-HOOK.md](../agents/PLAN-HOOK.md)
 
 ---
 
 ## Summary
 
-| Must | Must not |
-|------|----------|
-| Maintain **project root** `CHANGELOG.md` (Keep a Changelog) | Ship version bumps without CHANGELOG |
-| Keep [Kit baseline](../RULES.md#kit-baseline) current in `kit/RULES.md` | Paste full kit history into project CHANGELOG |
-| Keep standards under `kit/` ([hygiene](./hygiene.md)) | Flatten standards onto product root as default |
-| Use conventional commits that match staged files | Vague subjects (`update stuff`, `wip`) |
-| Disclose AI assistance when applicable | Rewrite shared published history without coordination |
+| Must |
+|------|
+| Maintain **project root** `CHANGELOG.md` (Keep a Changelog); ship version bumps with a matching version section |
+| Keep [Kit baseline](../RULES.md#kit-baseline) current in `kit/RULES.md`; do not paste full kit history into project CHANGELOG |
+| Use conventional commits that match staged files; avoid vague subjects (`update stuff`, `wip`) |
+| Disclose AI assistance when applicable (`Assisted-by` / `Compliance` / `Instructed-by`; no `Directed-by`) |
+| Do not rewrite shared published history without coordination |
 
-**Kit upgrades:** follow durable [UPGRADE.md](../UPGRADE.md)—not SETUP after initiation.
+Standards stay under `kit/` ([hygiene](./hygiene.md)). **Kit upgrades:** follow durable [UPGRADE.md](../UPGRADE.md)—not SETUP after initiation.
 
 ---
 
 ## Contents
 
-1. [Summary](#summary)
-2. [Three version surfaces](#three-version-surfaces)
-3. [Mandatory project CHANGELOG](#mandatory-project-changelog)
-4. [Kit baseline and upgrades](#kit-baseline-and-upgrades)
-5. [Consistency rules](#consistency-rules)
-6. [Git rules](#git-rules)
-7. [Commit message format](#commit-message-format)
-8. [Documentation consistency in commits](#documentation-consistency-in-commits)
-9. [Suggested commit workflow](#suggested-commit-workflow)
-10. [Remotes](#remotes)
-11. [Document history](#document-history)
+1. [Three version surfaces](#three-version-surfaces)
+2. [Mandatory project CHANGELOG](#mandatory-project-changelog)
+3. [Kit baseline and upgrades](#kit-baseline-and-upgrades)
+4. [Consistency rules](#consistency-rules)
+5. [Git rules](#git-rules)
+6. [Commit message format](#commit-message-format)
+7. [Documentation consistency in commits](#documentation-consistency-in-commits)
+8. [Suggested commit workflow](#suggested-commit-workflow)
+9. [Remotes](#remotes)
+10. [Document history](#document-history)
 
 ---
 
@@ -108,7 +106,7 @@ Fill and keep the [Kit baseline](../RULES.md#kit-baseline) table in every adopti
 
 **Procedure (do not duplicate here):** [UPGRADE.md](../UPGRADE.md) — routine upgrade, 1.x → 2.0 migration, merge options, AI prompts.
 
-After initiation, `SETUP.md` is gone. Kit baseline + UPGRADE keep upgrades trackable.
+After initiation, SETUP is gone ([hygiene](./hygiene.md#setup-and-upgrade-lifecycles)). Kit baseline + [UPGRADE](../UPGRADE.md) keep upgrades trackable.
 
 ---
 
@@ -366,6 +364,7 @@ A remote is optional. When one exists, do not assume write access to `main`/`mas
 
 | Version | Notes |
 |---------|--------|
+| 1.0.5 | Density restyle (kit 2.8.0 in progress); unique rules unchanged |
 | 1.0.4 | Pre-commit check names inventory-gated Python / Rust / C++ Domain A/B (kit 2.5.0) |
 | 1.0.3 | Instructed-by resolution cascade (git user.name → ask+record → `User`); no Directed-by trailer; blank line before trailers |
 | 1.0.2 | Agent Instruct scopes (`agents`, `plan`); pointer to PLAN-HOOK commit guidance |

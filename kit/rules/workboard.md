@@ -1,7 +1,7 @@
 ---
 title: Workboard Lifecycle
 description: Single active multi-phase workboard, phase-ship hygiene, optional annex archive, and agent resume protocol.
-version: "1.0.2"
+version: "1.0.3"
 status: current
 audience:
   - developers
@@ -10,71 +10,57 @@ audience:
 doc_type: other
 related:
   - ../RULES.md
-  - ./continuity.md
   - ./contracts.md
   - ./hygiene.md
   - ./ai-docs-workspace.md
-  - ./verification-and-ops.md
-  - ./versioning-and-git.md
-  - ../SETUP.md
-  - ../UPGRADE.md
-  - ../agents/OPS.md
+  - ./continuity.md
   - ../agents/PLAN-HOOK.md
   - ../templates/docs/WORKBOARD.md
-  - ../MARKDOWN-STANDARD.md
-last_updated: "2026-08-14"
+last_updated: "2026-08-21"
 ---
 
 # Workboard Lifecycle
 
 How multi-phase work is **registered, advanced, shipped, and archived** so agents and humans share one continuous execution surface. This module is **domain-agnostic**. Product paths belong in the adopter’s authority map and filled board—not in this file.
 
-**Document version:** 1.0.2
-
-**Related:** [RULES.md](../RULES.md) · [ai-docs-workspace.md](./ai-docs-workspace.md) · [continuity.md](./continuity.md) · [contracts.md](./contracts.md) · [OPS.md](../agents/OPS.md) · [PLAN-HOOK.md](../agents/PLAN-HOOK.md) · [templates/docs/WORKBOARD.md](../templates/docs/WORKBOARD.md)
+**Related:** [RULES.md](../RULES.md) · [contracts.md](./contracts.md) · [hygiene.md](./hygiene.md) · [ai-docs-workspace.md](./ai-docs-workspace.md) · [continuity.md](./continuity.md) · [PLAN-HOOK.md](../agents/PLAN-HOOK.md) · [templates/docs/WORKBOARD.md](../templates/docs/WORKBOARD.md)
 
 ---
 
 ## Summary
 
-| Must | Must not |
-|------|----------|
-| Keep **one** active board at **`docs/WORKBOARD.md`** when multi-phase work exists | Start multi-phase work only in chat or only in an unlinked folder |
-| **Register** a program on the board **before** phase code | Leave “open” planning packs with no workboard row |
-| Update the board in the **same change set** as phase ship | Claim a phase `done` without board status + commit SHA |
-| Prefer **exactly one** `active` phase | Parallel silent programs with no primary |
-| On ship: declared gates + **L4 owners** + **CHANGELOG** when contracts/behavior change | Leave L4 docs saying “active planning” after archive |
-| Optional annex only while open and **linked from the board** | Grow unlimited novels on the board (ideal cap ~200 lines) |
-| On program complete: **archive** annex (`git mv` → `docs/plan/archive/`) | Delete archive packs without an explicit project decision |
-| Cap **Recently completed** (~5 one-line rows) | Dump full order-of-operations history onto the board |
-| When root **`PLAN.md`** exists, point it at the board in one short subsection; if there is no PLAN, the landing README is enough | Paste live phase tables into PLAN |
+| Must |
+|------|
+| Keep **one** board at **`docs/WORKBOARD.md`**; **register** a program **before** phase code; update status + SHA in the **same change set** as phase ship |
+| Prefer **exactly one** `active` phase |
+| Optional annex only while open and **linked from the board**; on program complete **archive** (`git mv` → `docs/plan/archive/`); cap **Recently completed** (~5 one-line rows) |
+| On ship: declared gates + **L4 owners** + **CHANGELOG** when contracts/behavior change ([contracts](./contracts.md#same-change-set-rule)) |
+| When root **`PLAN.md`** exists, point it at the board in one short subsection (do not paste live phase tables); if there is no PLAN, the landing README is enough |
 
-**Dual path:** trivial / single-step / pure Q&A need **no** board. Multi-phase or multi-session execution **does**. Bare adopt with no multi-phase work may skip this module. **Not** a Domain A/B gate.
+Trivial / single-step / pure Q&A need **no** board. Multi-phase or multi-session execution **does**. Bare adopt with no multi-phase work may skip this module. **Not** a Domain A/B gate.
 
-**Execution contract** (what is open / next) lives on the board.  
-**Product / maintenance promises** live on **L4** owners from the [authority map](../RULES.md#authority-map).
+**Execution contract** (what is open / next) lives on the board. **Product / maintenance promises** live on **L4** owners from the [authority map](../RULES.md#authority-map).
 
 ---
 
 ## Contents
 
-1. [Summary](#summary)
-2. [When this module applies](#when-this-module-applies)
-3. [Three surfaces](#three-surfaces)
-4. [Authority](#authority)
-5. [Status vocabulary](#status-vocabulary)
-6. [Status channel mapping](#status-channel-mapping)
-7. [Lifecycle](#lifecycle)
-8. [Board shape](#board-shape)
-9. [Optional annex](#optional-annex)
-10. [Create annex checklist](#create-annex-checklist)
-11. [Archive annex checklist](#archive-annex-checklist)
-12. [Agent protocol](#agent-protocol)
-13. [Phase ship checklist](#phase-ship-checklist)
-14. [Program complete checklist](#program-complete-checklist)
-15. [Relationship to PLAN, docs/, and Progress Tracker](#relationship-to-plan-docs-and-progress-tracker)
-16. [Path aliases](#path-aliases)
-17. [Document history](#document-history)
+1. [When this module applies](#when-this-module-applies)
+2. [Three surfaces](#three-surfaces)
+3. [Authority](#authority)
+4. [Status vocabulary](#status-vocabulary)
+5. [Status channel mapping](#status-channel-mapping)
+6. [Lifecycle](#lifecycle)
+7. [Board shape](#board-shape)
+8. [Optional annex](#optional-annex)
+9. [Create annex checklist](#create-annex-checklist)
+10. [Archive annex checklist](#archive-annex-checklist)
+11. [Agent protocol](#agent-protocol)
+12. [Phase ship checklist](#phase-ship-checklist)
+13. [Program complete checklist](#program-complete-checklist)
+14. [Relationship to PLAN, docs/, and Progress Tracker](#relationship-to-plan-docs-and-progress-tracker)
+15. [Path aliases](#path-aliases)
+16. [Document history](#document-history)
 
 ---
 
@@ -181,7 +167,7 @@ Archive optional annex · prune board · L4 owners remain
 
 ## Board shape
 
-Keep `docs/WORKBOARD.md` scannable. Required sections:
+Keep `docs/WORKBOARD.md` scannable (ideal cap ~200 lines). Required sections:
 
 1. **Header** — Updated date · Primary program id · Link to this rule  
 2. **Status legend** — table above (short form OK)  
@@ -301,7 +287,7 @@ Use when the **program** (not a single phase) is complete.
 - [ ] Canonical L4 docs updated if contract/behavior changed  
 - [ ] `CHANGELOG.md` entry if release-worthy  
 - [ ] Workboard: status `done` · commit SHA · progress log  
-- [ ] Conventional commit message matches staged files  
+- [ ] Conventional commit message matches staged files ([versioning](./versioning-and-git.md#commit-message-format))  
 
 ---
 
@@ -349,6 +335,7 @@ Do **not** run two live boards. Do **not** force a rename on upgrade—preserve 
 
 | Version | Notes |
 |---------|--------|
+| 1.0.3 | Density restyle (kit 2.8.0 in progress); unique rules unchanged |
 | 1.0.2 | Parent owns board status when Instruct isolates work (kit 2.6.0) |
 | 1.0.1 | PLAN optional when absent; session start uses landing README (kit 2.4.0 clarification) |
 | 1.0.0 | Initial portable workboard lifecycle (kit 2.4.0) |
