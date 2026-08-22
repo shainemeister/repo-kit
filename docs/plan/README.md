@@ -6,5 +6,5 @@ Detailed execution plans for kit work. Durable kit version history remains in `k
 
 | Plan | Status | Summary |
 |------|--------|---------|
-| [density-fixups-2.8.1](./density-fixups-2.8.1/) | active | Surgical citation/chrome patch on shipped 2.8.0 |
+| [density-fixups-2.8.1](./archive/density-fixups-2.8.1/) | archived | Surgical citation/chrome patch (kit 2.8.1) |
 | [md-density-2.7.0](./archive/md-density-2.7.0/) | archived | Density + incorporation (kit 2.7.0 / 2.8.0) — read L4, not this pack |

@@ -37,7 +37,7 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 
 #### Notes
 
-- Patch on **2.8.0**. Wave-1/wave-2 density law unchanged. Not complete until remaining fixup phases ship.
+- Patch on **2.8.0**. Citation ceiling self-applied (RUNTIME); leftover Instruct chrome removed; hub `related:` exception recorded. No inventory, SAST, verify-table, or trailer changes.
 
 ### [2.8.0] - 2026-08-21
 

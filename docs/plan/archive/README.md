@@ -10,4 +10,5 @@ This folder is **archaeology only**. It is not the live todo list. Active work i
 
 | Pack | Ended | Read instead (L4) |
 |------|-------|-------------------|
+| [density-fixups-2.8.1](./density-fixups-2.8.1/) | 2026-08-21 | [density](../../../kit/MARKDOWN-STANDARD.md#density-force-and-incorporation) · [CHANGELOG](../../../kit/CHANGELOG.md) `### [2.8.1]` |
 | [md-density-2.7.0](./md-density-2.7.0/) | 2026-08-21 | [MARKDOWN-STANDARD density](../../../kit/MARKDOWN-STANDARD.md#density-force-and-incorporation) · [contracts incorporation](../../../kit/rules/contracts.md#incorporation) · [kit CHANGELOG](../../../kit/CHANGELOG.md) `### [2.7.0]` / `### [2.8.0]` |
