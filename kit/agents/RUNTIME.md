@@ -1,7 +1,7 @@
 ---
 title: Agent Runtime
 description: Activation modes, size budgets, and matching guidance for Agent Instruct.
-version: "1.3.1"
+version: "1.3.2"
 status: current
 audience:
   - developers
@@ -12,12 +12,10 @@ related:
   - OPS.md
   - FRAMEWORK.md
   - PARAMS.md
-  - CATALOG.md
   - BUILD.md
   - PLAN-HOOK.md
   - ../RULES.md
-  - ../rules/verification-and-ops.md
-last_updated: "2026-08-19"
+last_updated: "2026-08-21"
 ---
 
 # Agent Runtime
@@ -26,9 +24,7 @@ Agent Instruct assumes a **discovery + selective load** runtime: short **catalog
 
 **Full task lifecycle** (match → expertise → co-maintain → verify → agent evolve): **[OPS.md](./OPS.md)** — required when Instruct is in use.
 
-**Document version:** 1.3.1  
-
-**Related:** [README.md](./README.md) · [OPS.md](./OPS.md) · [FRAMEWORK.md](./FRAMEWORK.md) · [PARAMS.md](./PARAMS.md) · [CATALOG.md](./CATALOG.md) · [BUILD.md](./BUILD.md) · [PLAN-HOOK.md](./PLAN-HOOK.md) · [RULES.md](../RULES.md)
+**Related:** [README.md](./README.md) · [OPS.md](./OPS.md) · [FRAMEWORK.md](./FRAMEWORK.md) · [PARAMS.md](./PARAMS.md) · [BUILD.md](./BUILD.md) · [PLAN-HOOK.md](./PLAN-HOOK.md) · [RULES.md](../RULES.md)
 
 ---
 
@@ -50,14 +46,13 @@ Agent Instruct assumes a **discovery + selective load** runtime: short **catalog
 
 ## Contents
 
-1. [Summary](#summary)
-2. [Activation modes](#activation-modes)
-3. [Compose default](#compose-default)
-4. [Size budgets](#size-budgets)
-5. [Default paths](#default-paths)
-6. [Harness notes (informative)](#harness-notes-informative)
-7. [Matching guidance for AI](#matching-guidance-for-ai)
-8. [Document history](#document-history)
+1. [Activation modes](#activation-modes)
+2. [Compose default](#compose-default)
+3. [Size budgets](#size-budgets)
+4. [Default paths](#default-paths)
+5. [Harness notes (informative)](#harness-notes-informative)
+6. [Matching guidance for AI](#matching-guidance-for-ai)
+7. [Document history](#document-history)
 
 ---
 
@@ -139,7 +134,7 @@ Prefer the full **[OPS O3](./OPS.md#order-of-operations-o3)** sequence. Matching
 
 1. **If Agent Instruct is in use:** read PLAN Agent models (active / disabled / overlays / tuning) first. If bare adopt → skip packs; use L4 only.  
 2. **Open L4 early:** `kit/RULES.md` authority map + language surface inventory + verification table (before inventing product paths or verify tools). L4 wins on conflict with pack text ([FRAMEWORK](./FRAMEWORK.md)).  
-3. Score catalog descriptions against the user task.  
+3. Score [CATALOG](./CATALOG.md) descriptions against the user task.  
 4. Load **one primary** pack; add `compose_with` only if needed.  
 5. Open pack **Expertise map** (`authority_paths` + `references`); external URLs are citations only.  
 6. Follow pack Procedure; open `authority_paths` when making contract decisions; **co-maintain** L4 in the same change set.  
@@ -156,6 +151,7 @@ Prefer the full **[OPS O3](./OPS.md#order-of-operations-o3)** sequence. Matching
 
 | Version | Notes |
 |---------|--------|
+| 1.3.2 | Citation cap 3–7; CATALOG and completion-rule remain body cites (kit 2.8.1) |
 | 1.3.1 | Markdown class budgets live in MARKDOWN-STANDARD; L0/pack budgets unchanged (kit 2.7.0) |
 | 1.3.0 | Harness notes point at HABITAT; parent/child pointer (kit 2.6.0) |
 | 1.2.0 | OPS O3 required when Instruct in use; expertise open; lifecycle pointer (kit 2.2.0) |

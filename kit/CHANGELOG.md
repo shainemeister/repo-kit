@@ -26,6 +26,16 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 
 ## repo-kit
 
+### [2.8.1] - 2026-08-21
+
+#### Changed
+
+- RUNTIME **1.3.2**: `related:` capped at 7; CATALOG matching and [completion rule](./rules/verification-and-ops.md#completion-rule) stay as body cites.
+
+#### Notes
+
+- Patch on **2.8.0**. Wave-1/wave-2 density law unchanged. Not complete until remaining fixup phases ship.
+
 ### [2.8.0] - 2026-08-21
 
 #### Changed
