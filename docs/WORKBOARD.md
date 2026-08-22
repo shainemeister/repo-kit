@@ -11,7 +11,7 @@ related:
   - ../kit/rules/workboard.md
   - ../kit/CHANGELOG.md
   - ./README.md
-  - ./plan/workboard-rigidity-2.8.2/README.md
+  - ./plan/archive/workboard-rigidity-2.8.2/README.md
   - ./plan/archive/density-fixups-2.8.1/README.md
   - ./plan/archive/md-density-2.7.0/README.md
 last_updated: "2026-08-22"
@@ -20,7 +20,7 @@ last_updated: "2026-08-22"
 # Workboard
 
 **Updated:** 2026-08-22  
-**Primary program:** `workboard-rigidity-2.8.2`  
+**Primary program:** `none`  
 **Rules:** [kit/rules/workboard.md](../kit/rules/workboard.md) · kit README (mission) · [docs/plan/](./plan/) (detail)
 
 | Status | Meaning |
@@ -34,29 +34,25 @@ last_updated: "2026-08-22"
 
 ---
 
-## Active program — workboard rigidity 2.8.2
+## Active program — none
 
 | Field | Value |
 |-------|--------|
-| **Goal** | Restore unique workboard Must nots; tighten OOO templates; ship kit 2.8.2 |
-| **L4 docs to update** | [workboard.md](../kit/rules/workboard.md) · [ai-docs-workspace.md](../kit/rules/ai-docs-workspace.md) · [PLAN-HOOK.md](../kit/agents/PLAN-HOOK.md) · [TEMPLATE-OOO.md](../kit/templates/docs/plan/TEMPLATE-OOO.md) · [TEMPLATE-PROGRAM-README.md](../kit/templates/docs/plan/TEMPLATE-PROGRAM-README.md) · [CHANGELOG](../kit/CHANGELOG.md) |
-| **Optional annex** | [docs/plan/workboard-rigidity-2.8.2/](./plan/workboard-rigidity-2.8.2/) |
-| **Smoke / gates** | Author checklist; relative links; no `{{PLACEHOLDERS}}` in finished policy; status vocab unchanged |
+| **Goal** | — |
+| **L4 docs to update** | — |
+| **Optional annex** | — |
+| **Smoke / gates** | Author checklist; relative links; no `{{PLACEHOLDERS}}` in finished policy |
 
 ### Phases
 
 | ID | Work | Status | Commit | Notes |
 |----|------|--------|--------|-------|
-| P0 | Register board + thin annex | `done` | `1e6a003` | |
-| P1 | Restore workboard Must-not + SHA/dup/archive + OPS related: | `done` | `ba79d28` | Verbatim `12e0b4b`; drop hygiene from YAML, body-cite it |
-| P2 | ai-docs + PLAN-HOOK unique Must nots | `done` | `6b8d01e` | Unique only; skip inverses |
-| P3 | TEMPLATE-OOO allow/deny + exit criteria | `done` | `ee8114e` | Placeholders remain |
-| P4 | Trim board progress log | `done` | — | Do not clear this program |
-| P5 | Ship 2.8.2 + archive | `active` | — | Dated CHANGELOG; primary `none` |
+| — | — | — | — | Register a program here before multi-phase kit work |
 
 ### Progress log (newest first, max ~15 lines)
 
-- 2026-08-22 **P4** trimmed progress log: `—`. Next: P5 ship 2.8.2.
+- 2026-08-22 **workboard-rigidity-2.8.2** complete: kit `2.8.2`. P0 `1e6a003` · P1 `ba79d28` · P2 `6b8d01e` · P3 `ee8114e` · P4 `ff54cef`. Annex archived.
+- 2026-08-22 **P4** trimmed progress log: `ff54cef`. Next: P5 ship 2.8.2.
 - 2026-08-22 **P3** OOO templates: `ee8114e`. Next: P4 trim board log.
 - 2026-08-22 **P2** ai-docs + PLAN-HOOK Must nots: `6b8d01e`. Next: P3 OOO templates.
 - 2026-08-22 **P1** workboard Must-not digest: `ba79d28`. Next: P2 ai-docs + PLAN-HOOK.
@@ -80,6 +76,7 @@ last_updated: "2026-08-22"
 
 | Program | Ended | L4 pointer |
 |---------|-------|------------|
+| workboard-rigidity-2.8.2 | 2026-08-22 | [workboard](../kit/rules/workboard.md) · [CHANGELOG](../kit/CHANGELOG.md) `### [2.8.2]` |
 | density-fixups-2.8.1 | 2026-08-21 | [density hub exception](../kit/MARKDOWN-STANDARD.md#citation-floor-and-ceiling) · [CHANGELOG](../kit/CHANGELOG.md) `### [2.8.1]` |
 | md-density-2.7.0 | 2026-08-21 | [density](../kit/MARKDOWN-STANDARD.md#density-force-and-incorporation) · [incorporation](../kit/rules/contracts.md#incorporation) · [CHANGELOG](../kit/CHANGELOG.md) `### [2.7.0]` / `### [2.8.0]` |
 | habitat-l0-2.6.0 | 2026-08-14 | [kit/agents/HABITAT.md](../kit/agents/HABITAT.md) · [kit/CHANGELOG.md](../kit/CHANGELOG.md) `### [2.6.0]` |

@@ -26,13 +26,17 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 
 ## repo-kit
 
-### [2.8.2] - 2026-08-22 (in progress)
+### [2.8.2] - 2026-08-22
 
 #### Changed
 
 - workboard **1.1.0**: restore unique Must-not digest; OPS on `related:`; SHA / duplicate-id / archive path substitutions.
 - ai-docs-workspace **1.1.3** / PLAN-HOOK **1.3.3**: restore unique Must-not digests (chat-only enablement; empty four-module trees; Agent models stay in PLAN).
 - OOO templates **1.1.0**: allow/deny, exit criterion, active-phase brief omit-if; program README points at `OOO.md`.
+
+#### Notes
+
+- Patch on **2.8.1**. Planning-contract restore + OOO template tighten. No inventory, SAST, verify-table, trailer, or hub Must-map changes.
 
 ### [2.8.1] - 2026-08-21
 

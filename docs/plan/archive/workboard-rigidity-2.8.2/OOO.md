@@ -2,21 +2,21 @@
 title: "workboard-rigidity-2.8.2 — order of operations"
 description: Goals, constraints, phased OOO, and verify for restoring workboard rigidity.
 version: "1.0.0"
-status: active
+status: archived
 audience:
   - ai-agents
   - maintainers
 doc_type: plan
 related:
   - ./README.md
-  - ../../WORKBOARD.md
-  - ../../../kit/rules/workboard.md
+  - ../../../WORKBOARD.md
+  - ../../../../kit/rules/workboard.md
 last_updated: "2026-08-22"
 ---
 
 # Workboard rigidity 2.8.2 — order of operations
 
-**Board:** [docs/WORKBOARD.md](../../WORKBOARD.md)  
+**Board:** [docs/WORKBOARD.md](../../../WORKBOARD.md)  
 **Annex index:** [README.md](./README.md)
 
 Program-level OOO only. Per-phase file patches live with the parent until that phase is `active`. Restore text is verbatim from `git show 12e0b4b` Summaries — do not paraphrase.
