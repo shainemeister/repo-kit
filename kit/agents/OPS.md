@@ -264,7 +264,7 @@ More: [examples/anti-patterns.md](./examples/anti-patterns.md).
 
 | Version | Notes |
 |---------|--------|
-| 1.3.1 | Density restyle (kit 2.8.0 in progress); unique O3, parent/child duties, and Instruct procedure unchanged |
+| 1.3.1 | Density restyle (kit 2.8.0); unique O3, parent/child duties, and Instruct procedure unchanged |
 | 1.3.0 | Parent/child duties when work is isolated; workboard as DAG (kit 2.6.0) |
 | 1.2.0 | Co-maintain workboard on multi-phase ship (kit 2.4.0) |
 | 1.1.0 | Co-maintain root docs/ AI workspace when research/plan/build applies (kit 2.3.0) |

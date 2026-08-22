@@ -230,7 +230,7 @@ This repository has no repo-kit baseline. Follow kit/SETUP.md selective adoption
 
 | Version | Notes |
 |---------|--------|
-| 1.8.3 | Density chrome (kit 2.8.0 in progress); preserve list and upgrade steps unchanged |
+| 1.8.3 | Density chrome (kit 2.8.0); preserve list and upgrade steps unchanged |
 | 1.8.2 | Preserve filled product docs; 2.8.0+ rules restyles editorial (kit 2.7.0) |
 | 1.8.1 | Routine upgrade reshapes root README to landing (kit 2.6.3) |
 | 1.8.0 | Merge HABITAT; preserve filled AGENTS.md and host aliases (kit 2.6.0) |

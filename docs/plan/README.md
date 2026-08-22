@@ -6,4 +6,4 @@ Detailed execution plans for kit work. Durable kit version history remains in `k
 
 | Plan | Status | Summary |
 |------|--------|---------|
-| [md-density-2.7.0](./md-density-2.7.0/) | active | Binding density + incorporation doctrine (wave 1 kit 2.7.0; restyles after P3 gate) |
+| [md-density-2.7.0](./archive/md-density-2.7.0/) | archived | Density + incorporation (kit 2.7.0 / 2.8.0) — read L4, not this pack |

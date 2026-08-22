@@ -2,27 +2,27 @@
 title: "md-density-2.7.0 — order of operations"
 description: Goals, constraints, phased OOO, verification, and risks for Markdown density.
 version: "1.0.0"
-status: active
+status: archived
 audience:
   - ai-agents
   - maintainers
 doc_type: plan
 related:
   - ./README.md
-  - ../../WORKBOARD.md
-  - ../../../kit/rules/workboard.md
-  - ../../../README.md
-  - ../../../kit/MARKDOWN-STANDARD.md
-  - ../../../kit/rules/contracts.md
+  - ../../../WORKBOARD.md
+  - ../../../../kit/rules/workboard.md
+  - ../../../../README.md
+  - ../../../../kit/MARKDOWN-STANDARD.md
+  - ../../../../kit/rules/contracts.md
 last_updated: "2026-08-19"
 ---
 
 # Markdown density — order of operations
 
-**Board:** [docs/WORKBOARD.md](../../WORKBOARD.md)  
+**Board:** [docs/WORKBOARD.md](../../../WORKBOARD.md)  
 **Annex index:** [README.md](./README.md)  
-**Mission:** root [README.md](../../../README.md) (this repo has no `PLAN.md`; Instruct is off).  
-**Policy:** [kit/rules/workboard.md](../../../kit/rules/workboard.md)
+**Mission:** root [README.md](../../../../README.md) (this repo has no `PLAN.md`; Instruct is off).  
+**Policy:** [kit/rules/workboard.md](../../../../kit/rules/workboard.md)
 
 Editorial / density law so authors and agents produce comprehensive documentation **as a corpus**, not as standalone reprints — without deleting unique rules, without removing the last pointer to an owner, and without forcing adopter product docs to be rewritten on upgrade.
 

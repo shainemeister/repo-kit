@@ -180,5 +180,5 @@ Kit correctness does **not** depend on any host skill directory ([RUNTIME](./RUN
 
 | Version | Notes |
 |---------|--------|
-| 1.0.1 | Density restyle (kit 2.8.0 in progress); unique L0 pointer, evidence, and host catalog unchanged |
+| 1.0.1 | Density restyle (kit 2.8.0); unique L0 pointer, evidence, and host catalog unchanged |
 | 1.0.0 | Initial habitat module (kit 2.6.0) |

@@ -272,7 +272,7 @@ Lifecycle context: [OPS.md — features and core tasks](./OPS.md#lifecycle-featu
 
 | Version | Notes |
 |---------|--------|
-| 1.2.1 | Density restyle (kit 2.8.0 in progress); unique fill rules, source load order, and regen triggers unchanged |
+| 1.2.1 | Density restyle (kit 2.8.0); unique fill rules, source load order, and regen triggers unchanged |
 | 1.2.0 | Expertise fill + validation; feature/surface regen triggers; OPS pointer (kit 2.2.0) |
 | 1.1.1 | Note: PLAN markdown-native empty Active models; `[]` is BUILD shorthand only |
 | 1.1.0 | Unset vs empty active_models; source load order; preserve adopter packs; empty placeholder omit; overlay shadow + trust boundary |

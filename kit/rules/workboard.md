@@ -335,7 +335,7 @@ Do **not** run two live boards. Do **not** force a rename on upgrade—preserve 
 
 | Version | Notes |
 |---------|--------|
-| 1.0.3 | Density restyle (kit 2.8.0 in progress); unique rules unchanged |
+| 1.0.3 | Density restyle (kit 2.8.0); unique rules unchanged |
 | 1.0.2 | Parent owns board status when Instruct isolates work (kit 2.6.0) |
 | 1.0.1 | PLAN optional when absent; session start uses landing README (kit 2.4.0 clarification) |
 | 1.0.0 | Initial portable workboard lifecycle (kit 2.4.0) |

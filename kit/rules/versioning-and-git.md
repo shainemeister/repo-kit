@@ -364,7 +364,7 @@ A remote is optional. When one exists, do not assume write access to `main`/`mas
 
 | Version | Notes |
 |---------|--------|
-| 1.0.5 | Density restyle (kit 2.8.0 in progress); unique rules unchanged |
+| 1.0.5 | Density restyle (kit 2.8.0); unique rules unchanged |
 | 1.0.4 | Pre-commit check names inventory-gated Python / Rust / C++ Domain A/B (kit 2.5.0) |
 | 1.0.3 | Instructed-by resolution cascade (git user.name → ask+record → `User`); no Directed-by trailer; blank line before trailers |
 | 1.0.2 | Agent Instruct scopes (`agents`, `plan`); pointer to PLAN-HOOK commit guidance |

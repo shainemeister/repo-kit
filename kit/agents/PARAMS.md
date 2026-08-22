@@ -272,7 +272,7 @@ Kit **templates** should pre-fill expertise so emit succeeds without freeform in
 
 | Version | Notes |
 |---------|--------|
-| 1.1.1 | Density restyle (kit 2.8.0 in progress); unique AgentPack field schema and validation unchanged |
+| 1.1.1 | Density restyle (kit 2.8.0); unique AgentPack field schema and validation unchanged |
 | 1.1.0 | Expertise/references required for generated packs; external citation rules; validation 11–14 (kit 2.2.0) |
 | 1.0.3 | PLAN delta table: `tuning.must_not_extra` (aligned with PLAN-HOOK/BUILD) |
 | 1.0.2 | Validation: forbid raw placeholders in generated packs; unknown id vs adopter packs |

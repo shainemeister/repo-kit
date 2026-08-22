@@ -256,7 +256,7 @@ BUILD reads these sections when filling templates; it does not delete them.
 
 | Version | Notes |
 |---------|--------|
-| 1.3.1 | Density restyle (kit 2.8.0 in progress); unique Agent models fields, dual path, and required section unchanged |
+| 1.3.1 | Density restyle (kit 2.8.0); unique Agent models fields, dual path, and required section unchanged |
 | 1.3.0 | PLAN is not the todo board; point at workboard (kit 2.4.0) |
 | 1.2.0 | OPS in Instruct authority; feature/core-task lifecycle; regenerate_when surface growth (kit 2.2.0) |
 | 1.1.1 | Markdown-native empty Active models (zero bullets / `*(none)*`); `[]` = BUILD shorthand only |

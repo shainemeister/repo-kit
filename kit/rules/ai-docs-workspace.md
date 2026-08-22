@@ -213,7 +213,7 @@ External citations follow the same trust idea as Agent Instruct expertise: **gui
 
 | Version | Notes |
 |---------|--------|
-| 1.1.2 | Density restyle (kit 2.8.0 in progress); unique rules unchanged |
+| 1.1.2 | Density restyle (kit 2.8.0); unique rules unchanged |
 | 1.1.1 | Durable agent procedure promotes to PLAN / kit/agents, not a docs essay (kit 2.6.0) |
 | 1.1.0 | Triple surface: PLAN + workboard + docs/plan annex/archive (kit 2.4.0) |
 | 1.0.0 | Initial AI docs workspace policy (kit 2.3.0) |

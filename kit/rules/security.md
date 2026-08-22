@@ -221,6 +221,6 @@ Operator skeleton: [TEMPLATE-CERTIFICATION-README.md](../templates/TEMPLATE-CERT
 
 | Version | Notes |
 |---------|--------|
-| 1.1.1 | Density restyle (kit 2.8.0 in progress); inventory, SAST, and certification catalogs unchanged |
+| 1.1.1 | Density restyle (kit 2.8.0); inventory, SAST, and certification catalogs unchanged |
 | 1.1.0 | Named C/C++ surface (clang-format + clang-tidy / cppcheck); Rust Domain B points at style-gate chapter (kit 2.5.0) |
 | 1.0.0 | Extracted from RULES 1.4.1 for kit 2.0 |

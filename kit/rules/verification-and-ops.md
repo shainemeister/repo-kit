@@ -215,7 +215,7 @@ Before you commit or share a change:
 
 | Version | Notes |
 |---------|--------|
-| 1.7.1 | Density restyle (kit 2.8.0 in progress); verify table, completion, cadence, and checklist unchanged |
+| 1.7.1 | Density restyle (kit 2.8.0); verify table, completion, cadence, and checklist unchanged |
 | 1.7.0 | Docs-only verify includes density checklist + last citations; omit-Summary anti-pattern (kit 2.7.0) |
 | 1.6.1 | Verify-table prune sentence; Domain B rows point at style-gate Command cells (kit 2.5.1) |
 | 1.6.0 | Inventory-gated Rust and C/C++ style verify rows, cadence, checklist (kit 2.5.0) |

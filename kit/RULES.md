@@ -272,7 +272,7 @@ Copy-paste prompt also on root [README — Upgrade repo-kit](../README.md#upgrad
 
 | Version | Notes |
 |---------|--------|
-| 2.7.1 | Hub chrome (identity echo, Contents); Must index unchanged so the map stays complete (kit 2.8.0 in progress) |
+| 2.7.1 | Hub chrome (identity echo, Contents); Must index unchanged so the map stays complete (kit 2.8.0) |
 | 2.7.0 | Density + incorporation: unique rules only; cite don’t reprint; last citation remains (kit 2.7.0) |
 | 2.6.2 | Root README landing shape is required (Overview + Operator prompts) |
 | 2.6.0 | Host L0 habitat (`AGENTS.md`); HABITAT + parent/child protocol; map row |

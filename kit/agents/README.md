@@ -129,7 +129,7 @@ Do not force full MARKDOWN-STANDARD `doc_type` package shape onto every generate
 
 | Version | Notes |
 |---------|--------|
-| 1.2.2 | Density restyle (kit 2.8.0 in progress); index, layers map, and AgentPack format note unchanged |
+| 1.2.2 | Density restyle (kit 2.8.0); index, layers map, and AgentPack format note unchanged |
 | 1.2.1 | Instruct law docs follow density (Summary/Contents when required); packs stay AgentPack (kit 2.7.0) |
 | 1.2.0 | HABITAT L0 + parent/child start-here (kit 2.6.0) |
 | 1.1.0 | OPS index; expert packs; O3 Musts; lifecycle (kit 2.2.0) |

@@ -193,7 +193,7 @@ Advisory starting points for other surfaces (choose what the team will actually 
 
 | Version | Notes |
 |---------|--------|
-| 1.2.1 | Density restyle (kit 2.8.0 in progress); gate catalogs unchanged |
+| 1.2.1 | Density restyle (kit 2.8.0); gate catalogs unchanged |
 | 1.2.0 | Cite, don’t reprint; density + required core pointer (kit 2.7.0) |
 | 1.1.2 | Root README landing shape required (kit 2.6.2) |
 | 1.1.1 | Python adopt steps start with inventory (parity with Rust/C++); kit 2.5.1 |

@@ -129,5 +129,5 @@ Continuity is **how** to change code. The [workboard](./workboard.md) is **what*
 
 | Version | Notes |
 |---------|--------|
-| 1.0.1 | Density restyle (kit 2.8.0 in progress); unique rules unchanged |
+| 1.0.1 | Density restyle (kit 2.8.0); unique rules unchanged |
 | 1.0.0 | Initial optional continuity policy + overlay contract (kit 2.4.0) |

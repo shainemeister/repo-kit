@@ -11,14 +11,14 @@ related:
   - ../kit/rules/workboard.md
   - ../kit/CHANGELOG.md
   - ./README.md
-  - ./plan/md-density-2.7.0/README.md
+  - ./plan/archive/md-density-2.7.0/README.md
 last_updated: "2026-08-21"
 ---
 
 # Workboard
 
 **Updated:** 2026-08-21  
-**Primary program:** `md-density-2.7.0`  
+**Primary program:** `none`  
 **Rules:** [kit/rules/workboard.md](../kit/rules/workboard.md) · kit README (mission) · [docs/plan/](./plan/) (detail)
 
 | Status | Meaning |
@@ -32,33 +32,25 @@ last_updated: "2026-08-21"
 
 ---
 
-## Active program — Markdown density
+## Active program — none
 
 | Field | Value |
 |-------|--------|
-| **Goal** | Binding density + incorporation doctrine; keep types; keep citations; slim templates; pilot hygiene+architecture; restyles only after human gate |
-| **L4 docs to update** | MARKDOWN-STANDARD, contracts, authoring-and-style, verification-and-ops, RULES (one Must), templates, docs-author seed, hygiene, architecture, kit CHANGELOG |
-| **Optional annex** | [docs/plan/md-density-2.7.0/](./plan/md-density-2.7.0/) |
-| **Smoke / gates** | Author checklist; relative links; no `{{PLACEHOLDERS}}` in finished policy; unique-rule ledger on restyles; last citation remains |
+| **Goal** | — |
+| **L4 docs to update** | — |
+| **Optional annex** | — |
+| **Smoke / gates** | Author checklist; relative links; no `{{PLACEHOLDERS}}` in finished policy |
 
 ### Phases
 
 | ID | Work | Status | Commit | Notes |
 |----|------|--------|--------|-------|
-| P0 | Register board + annex | `done` | `6329c20` | Annex on disk; P1 active |
-| P1 | Doctrine (standard, contracts, authoring, verify, hub Must, CHANGELOG open) | `done` | `9e8bd60` | Citations kept; 2.7.0 shipped |
-| P2 | Min-core templates + docs-author + SETUP/UPGRADE notes | `done` | `84f56ae` | omit-if templates; docs-author verify |
-| P3 | Pilot restyle hygiene.md + architecture.md + ledger audit | `done` | `b27ecff` | Ledger passed; HARD GATE |
-| GATE | User accepts P3 pilot shape | `done` | `97ee1db` | Accepted 2026-08-21; 2.7.0 shipped |
-| P4 | Hub Must digest trim (optional) | `done` | `97ee1db` | Chrome only; Must map stays complete |
-| P5 | Restyle remaining kit/rules/* (contracts last) | `done` | `9fbad5d` | P5a `d96110d` · P5b `27570f4` · P5c `9fbad5d` |
-| P6 | Restyle kit/agents/*.md Instruct docs | `done` | `5a8eca7` | O3, parent/child, L0–L4 kept |
-| P7 | SETUP / UPGRADE / examples polish | `active` | — | |
-| P7 | SETUP / UPGRADE / examples polish | `open` | — | |
-| P8 | CHANGELOG 2.8.0 + archive annex | `open` | — | Program complete |
+| — | — | — | — | Register a program here before multi-phase kit work |
 
 ### Progress log (newest first, max ~15 lines)
 
+- 2026-08-21 **md-density-2.7.0** complete: kit `2.7.0` + `2.8.0`. Annex archived. Next: adopter upgrades (not this tree).
+- 2026-08-21 **P7** `28db706` UPGRADE chrome · **P6** `5a8eca7` Instruct docs.
 - 2026-08-21 **P5** rules restyles: `d96110d` P5a · `27570f4` P5b · `9fbad5d` contracts last. Next: P6 Instruct docs.
 - 2026-08-21 **GATE** + **P4** + kit **2.7.0** ship: `97ee1db`. Next: P5 restyle remaining rules (contracts last).
 - 2026-08-19 **P3** pilots shipped: `b27ecff` hygiene 1.6.0 / architecture 1.1.0. **HARD GATE** — user accepts shape before wave 2.
@@ -84,6 +76,7 @@ last_updated: "2026-08-21"
 
 | Program | Ended | L4 pointer |
 |---------|-------|------------|
+| md-density-2.7.0 | 2026-08-21 | [density](../kit/MARKDOWN-STANDARD.md#density-force-and-incorporation) · [incorporation](../kit/rules/contracts.md#incorporation) · [CHANGELOG](../kit/CHANGELOG.md) `### [2.7.0]` / `### [2.8.0]` |
 | habitat-l0-2.6.0 | 2026-08-14 | [kit/agents/HABITAT.md](../kit/agents/HABITAT.md) · [kit/CHANGELOG.md](../kit/CHANGELOG.md) `### [2.6.0]` |
 | plan-control-2.4.0 | 2026-08-12 | [kit/rules/workboard.md](../kit/rules/workboard.md) · [kit/CHANGELOG.md](../kit/CHANGELOG.md) `### [2.4.0]` |
 

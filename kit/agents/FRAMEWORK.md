@@ -174,7 +174,7 @@ Activation modes and budgets: [RUNTIME.md](./RUNTIME.md). Utilization: [OPS.md](
 
 | Version | Notes |
 |---------|--------|
-| 1.2.1 | Density restyle (kit 2.8.0 in progress); unique L0–L4 layers, L4-wins, and size/activation principles unchanged |
+| 1.2.1 | Density restyle (kit 2.8.0); unique L0–L4 layers, L4-wins, and size/activation principles unchanged |
 | 1.2.0 | L0 is AGENTS.md (habitat); compose = at most one extra child (kit 2.6.0) |
 | 1.1.0 | O3 required when Instruct in use; expertise principle; OPS link (kit 2.2.0) |
 | 1.0.1 | STOP on failed gates; overlays repo-relative; preserve adopter packs; RULES not foldable |
