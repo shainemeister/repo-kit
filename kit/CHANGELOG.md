@@ -31,6 +31,7 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 #### Changed
 
 - RUNTIME **1.3.2**: `related:` capped at 7; CATALOG matching and [completion rule](./rules/verification-and-ops.md#completion-rule) stay as body cites.
+- Instruct docs: drop in-body document-version echo; CATALOG Contents no longer lists Summary first.
 
 #### Notes
 

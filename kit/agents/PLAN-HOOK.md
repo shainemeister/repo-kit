@@ -1,7 +1,7 @@
 ---
 title: PLAN.md Agent Models Hook
 description: Durable control surface contract for Agent Instruct in adopter PLAN.md.
-version: "1.3.1"
+version: "1.3.2"
 status: current
 audience:
   - developers
@@ -21,8 +21,6 @@ last_updated: "2026-08-21"
 # PLAN.md Agent Models Hook
 
 When a project uses **Agent Instruct**, root **PLAN.md** is the **durable control surface**. It references the Instruct docs and declares which agent models are active, disabled, overlaid, and tuned. Mid-project adjustments happen here; AI then re-runs BUILD. Session utilization follows **[OPS.md](./OPS.md)**.
-
-**Document version:** 1.3.1  
 
 **Related:** [README.md](./README.md) · [OPS.md](./OPS.md) · [BUILD.md](./BUILD.md) · [CATALOG.md](./CATALOG.md) · [PARAMS.md](./PARAMS.md) · [SETUP.md](../SETUP.md) · [UPGRADE.md](../UPGRADE.md)
 
@@ -256,6 +254,7 @@ BUILD reads these sections when filling templates; it does not delete them.
 
 | Version | Notes |
 |---------|--------|
+| 1.3.2 | Drop in-body document-version echo (kit 2.8.1) |
 | 1.3.1 | Density restyle (kit 2.8.0); unique Agent models fields, dual path, and required section unchanged |
 | 1.3.0 | PLAN is not the todo board; point at workboard (kit 2.4.0) |
 | 1.2.0 | OPS in Instruct authority; feature/core-task lifecycle; regenerate_when surface growth (kit 2.2.0) |

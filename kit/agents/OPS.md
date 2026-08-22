@@ -1,7 +1,7 @@
 ---
 title: Agent Instruct Order of Operations
 description: Required utilization procedure when Agent Instruct is adopted—match, expertise, co-maintain docs/rules, lifecycle BUILD.
-version: "1.3.1"
+version: "1.3.2"
 status: current
 audience:
   - developers
@@ -23,8 +23,6 @@ last_updated: "2026-08-21"
 Canonical **order of operations (O3)** for AI and humans when **Agent Instruct is in use**. This document is the utilization authority: task → primary expert pack → L4 law → co-maintain docs/rules → verify → evolve agents with features and core tasks.
 
 Standing hub checklist (all maintenance turns): [RULES — Operator enforcement](../RULES.md#operator-enforcement).
-
-**Document version:** 1.3.1  
 
 **Related:** [README.md](./README.md) · [FRAMEWORK.md](./FRAMEWORK.md) · [PARAMS.md](./PARAMS.md) · [BUILD.md](./BUILD.md) · [PLAN-HOOK.md](./PLAN-HOOK.md) · [HABITAT.md](./HABITAT.md) · [contracts](../rules/contracts.md)
 
@@ -264,6 +262,7 @@ More: [examples/anti-patterns.md](./examples/anti-patterns.md).
 
 | Version | Notes |
 |---------|--------|
+| 1.3.2 | Drop in-body document-version echo (kit 2.8.1) |
 | 1.3.1 | Density restyle (kit 2.8.0); unique O3, parent/child duties, and Instruct procedure unchanged |
 | 1.3.0 | Parent/child duties when work is isolated; workboard as DAG (kit 2.6.0) |
 | 1.2.0 | Co-maintain workboard on multi-phase ship (kit 2.4.0) |

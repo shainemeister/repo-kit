@@ -1,7 +1,7 @@
 ---
 title: AgentPack Parameters
 description: Schema, enums, validation, and emit shapes for Agent Instruct packs.
-version: "1.1.1"
+version: "1.1.2"
 status: current
 audience:
   - developers
@@ -21,8 +21,6 @@ last_updated: "2026-08-21"
 # AgentPack Parameters
 
 Every agent model is an **AgentPack**: a structured record with catalog fields (for match), a short body (procedure + expertise), and **authority_paths** / **verify** linking to canonical law. Packs are **expert views**—not freeform chat personas.
-
-**Document version:** 1.1.1  
 
 **Related:** [README.md](./README.md) · [OPS.md](./OPS.md) · [FRAMEWORK.md](./FRAMEWORK.md) · [CATALOG.md](./CATALOG.md) · [BUILD.md](./BUILD.md) · [PLAN-HOOK.md](./PLAN-HOOK.md) · [RUNTIME.md](./RUNTIME.md)
 
@@ -272,6 +270,7 @@ Kit **templates** should pre-fill expertise so emit succeeds without freeform in
 
 | Version | Notes |
 |---------|--------|
+| 1.1.2 | Drop in-body document-version echo (kit 2.8.1) |
 | 1.1.1 | Density restyle (kit 2.8.0); unique AgentPack field schema and validation unchanged |
 | 1.1.0 | Expertise/references required for generated packs; external citation rules; validation 11–14 (kit 2.2.0) |
 | 1.0.3 | PLAN delta table: `tuning.must_not_extra` (aligned with PLAN-HOOK/BUILD) |

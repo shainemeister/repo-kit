@@ -1,7 +1,7 @@
 ---
 title: Agent Instruct Framework
 description: Layered context system for agent packs as views over canonical law.
-version: "1.2.1"
+version: "1.2.2"
 status: current
 audience:
   - developers
@@ -23,8 +23,6 @@ last_updated: "2026-08-21"
 Agent Instruct is a **layered context system**: thin always-on rules, PLAN as control surface, kit Instruct docs as the build/run playbook, generated **AgentPacks** as on-demand expert views, and **canonical kit/product docs** as the only law.
 
 **Utilization procedure:** [OPS.md](./OPS.md) (required when Instruct is in use).
-
-**Document version:** 1.2.1  
 
 **Related:** [README.md](./README.md) · [OPS.md](./OPS.md) · [PARAMS.md](./PARAMS.md) · [CATALOG.md](./CATALOG.md) · [PLAN-HOOK.md](./PLAN-HOOK.md) · [BUILD.md](./BUILD.md) · [RUNTIME.md](./RUNTIME.md)
 
@@ -174,6 +172,7 @@ Activation modes and budgets: [RUNTIME.md](./RUNTIME.md). Utilization: [OPS.md](
 
 | Version | Notes |
 |---------|--------|
+| 1.2.2 | Drop in-body document-version echo (kit 2.8.1) |
 | 1.2.1 | Density restyle (kit 2.8.0); unique L0–L4 layers, L4-wins, and size/activation principles unchanged |
 | 1.2.0 | L0 is AGENTS.md (habitat); compose = at most one extra child (kit 2.6.0) |
 | 1.1.0 | O3 required when Instruct in use; expertise principle; OPS link (kit 2.2.0) |

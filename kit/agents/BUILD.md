@@ -1,7 +1,7 @@
 ---
 title: Agent BUILD Procedure
 description: AI-executable procedure to resolve the active agent set and emit thin AgentPacks.
-version: "1.2.1"
+version: "1.2.2"
 status: current
 audience:
   - developers
@@ -23,8 +23,6 @@ last_updated: "2026-08-21"
 **BUILD** is the AI-executable procedure that **resolves the active agent set** and **emits thin expert AgentPacks** from templates + PLAN + authority map. Prefer **deterministic template fill** over freeform rewriting of kit law.
 
 **After BUILD:** operators use packs via **[OPS.md](./OPS.md)** (match, expertise, co-maintain, lifecycle).
-
-**Document version:** 1.2.1  
 
 **Related:** [README.md](./README.md) · [OPS.md](./OPS.md) · [PARAMS.md](./PARAMS.md) · [CATALOG.md](./CATALOG.md) · [PLAN-HOOK.md](./PLAN-HOOK.md) · [FRAMEWORK.md](./FRAMEWORK.md) · [UPGRADE.md](../UPGRADE.md)
 
@@ -272,6 +270,7 @@ Lifecycle context: [OPS.md — features and core tasks](./OPS.md#lifecycle-featu
 
 | Version | Notes |
 |---------|--------|
+| 1.2.2 | Drop in-body document-version echo (kit 2.8.1) |
 | 1.2.1 | Density restyle (kit 2.8.0); unique fill rules, source load order, and regen triggers unchanged |
 | 1.2.0 | Expertise fill + validation; feature/surface regen triggers; OPS pointer (kit 2.2.0) |
 | 1.1.1 | Note: PLAN markdown-native empty Active models; `[]` is BUILD shorthand only |

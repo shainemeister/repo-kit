@@ -1,7 +1,7 @@
 ---
 title: Host Habitat (L0)
 description: Detect and create thin always-on discovery files in each coding-agent host’s natural path; portable law stays under kit/.
-version: "1.0.1"
+version: "1.0.2"
 status: current
 audience:
   - developers
@@ -21,8 +21,6 @@ last_updated: "2026-08-21"
 # Host Habitat (L0)
 
 How AI and humans **establish thin discovery files where a coding-agent host already looks**, without moving law out of `kit/` or inventing host folder trees. `kit/agents/` is **L2** (how to match, build, and run). It is not the file most hosts auto-load.
-
-**Document version:** 1.0.1  
 
 **Related:** [README.md](./README.md) · [OPS.md](./OPS.md) · [FRAMEWORK.md](./FRAMEWORK.md) · [RULES.md](../RULES.md) · [SETUP.md](../SETUP.md) · [TEMPLATE-AGENTS](../templates/TEMPLATE-AGENTS.md) · [hygiene](../rules/hygiene.md)
 
@@ -180,5 +178,6 @@ Kit correctness does **not** depend on any host skill directory ([RUNTIME](./RUN
 
 | Version | Notes |
 |---------|--------|
+| 1.0.2 | Drop in-body document-version echo (kit 2.8.1) |
 | 1.0.1 | Density restyle (kit 2.8.0); unique L0 pointer, evidence, and host catalog unchanged |
 | 1.0.0 | Initial habitat module (kit 2.6.0) |

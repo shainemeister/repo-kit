@@ -1,7 +1,7 @@
 ---
 title: Agent Catalog
 description: Default portable seed agents for repo-kit Agent Instruct.
-version: "1.2.1"
+version: "1.2.2"
 status: current
 audience:
   - developers
@@ -14,14 +14,12 @@ related:
   - BUILD.md
   - PLAN-HOOK.md
   - templates/
-last_updated: "2026-08-19"
+last_updated: "2026-08-21"
 ---
 
 # Agent Catalog
 
 Upstream repo-kit ships a **small catalog of portable seed agents**. Adopters enable/disable them via PLAN. Product-specific agents are **overlays or project-generated packs**, not rows in this default table. Seeds ship with **expertise** (in-repo + optional external citations) so BUILD emits expert packs.
-
-**Document version:** 1.2.1  
 
 **Related:** [README.md](./README.md) · [OPS.md](./OPS.md) · [PARAMS.md](./PARAMS.md) · [BUILD.md](./BUILD.md) · [PLAN-HOOK.md](./PLAN-HOOK.md) · [templates/](./templates/)
 
@@ -41,13 +39,12 @@ Upstream repo-kit ships a **small catalog of portable seed agents**. Adopters en
 
 ## Contents
 
-1. [Summary](#summary)
-2. [Default active set (suggested)](#default-active-set-suggested)
-3. [Catalog entries](#catalog-entries)
-4. [Compose matrix (suggested)](#compose-matrix-suggested)
-5. [Project-generated agents](#project-generated-agents)
-6. [Adopter overlays](#adopter-overlays)
-7. [Document history](#document-history)
+1. [Default active set (suggested)](#default-active-set-suggested)
+2. [Catalog entries](#catalog-entries)
+3. [Compose matrix (suggested)](#compose-matrix-suggested)
+4. [Project-generated agents](#project-generated-agents)
+5. [Adopter overlays](#adopter-overlays)
+6. [Document history](#document-history)
 
 ---
 
@@ -258,6 +255,7 @@ Templates under [templates/](./templates/) carry the full Expertise map. Summary
 
 | Version | Notes |
 |---------|--------|
+| 1.2.2 | Drop in-body document-version echo (kit 2.8.1) |
 | 1.2.1 | docs-author required-core / density verify (kit 2.7.0) |
 | 1.2.0 | plan-author workboard triggers, authority, verify (kit 2.4.0) |
 | 1.1.0 | Project expert pack bar; seed expertise themes; OPS lifecycle (kit 2.2.0) |

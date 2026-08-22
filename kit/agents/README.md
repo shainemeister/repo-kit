@@ -1,7 +1,7 @@
 ---
 title: Agent Instruct
 description: Portable agent personas as expert views over repo-kit law—index, decisions, and start paths.
-version: "1.2.2"
+version: "1.2.3"
 status: current
 audience:
   - developers
@@ -21,8 +21,6 @@ last_updated: "2026-08-21"
 # Agent Instruct
 
 Portable way for AI (and humans) to **build and maintain modular expert agent personas** from project interest, **PLAN.md**, and the filled authority map—without replacing maintenance law or bloating `kit/RULES.md`.
-
-**Document version:** 1.2.2  
 
 **Related:** [OPS.md](./OPS.md) · [HABITAT.md](./HABITAT.md) · [FRAMEWORK.md](./FRAMEWORK.md) · [PARAMS.md](./PARAMS.md) · [CATALOG.md](./CATALOG.md) · [PLAN-HOOK.md](./PLAN-HOOK.md) · [BUILD.md](./BUILD.md)
 
@@ -129,6 +127,7 @@ Do not force full MARKDOWN-STANDARD `doc_type` package shape onto every generate
 
 | Version | Notes |
 |---------|--------|
+| 1.2.3 | Drop in-body document-version echo (kit 2.8.1) |
 | 1.2.2 | Density restyle (kit 2.8.0); index, layers map, and AgentPack format note unchanged |
 | 1.2.1 | Instruct law docs follow density (Summary/Contents when required); packs stay AgentPack (kit 2.7.0) |
 | 1.2.0 | HABITAT L0 + parent/child start-here (kit 2.6.0) |
