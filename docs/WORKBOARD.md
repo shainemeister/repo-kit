@@ -11,6 +11,7 @@ related:
   - ../kit/rules/workboard.md
   - ../kit/CHANGELOG.md
   - ./README.md
+  - ./plan/density-fixups-2.8.1/README.md
   - ./plan/archive/md-density-2.7.0/README.md
 last_updated: "2026-08-21"
 ---
@@ -18,7 +19,7 @@ last_updated: "2026-08-21"
 # Workboard
 
 **Updated:** 2026-08-21  
-**Primary program:** `none`  
+**Primary program:** `density-fixups-2.8.1`  
 **Rules:** [kit/rules/workboard.md](../kit/rules/workboard.md) · kit README (mission) · [docs/plan/](./plan/) (detail)
 
 | Status | Meaning |
@@ -32,23 +33,29 @@ last_updated: "2026-08-21"
 
 ---
 
-## Active program — none
+## Active program — Density fixups
 
 | Field | Value |
 |-------|--------|
-| **Goal** | — |
-| **L4 docs to update** | — |
-| **Optional annex** | — |
-| **Smoke / gates** | Author checklist; relative links; no `{{PLACEHOLDERS}}` in finished policy |
+| **Goal** | Surgical 2.8.1: RUNTIME citation cap, leftover Instruct chrome, hub related: exception, example verify cells |
+| **L4 docs to update** | RUNTIME, Instruct docs (echo only), CATALOG Contents, MARKDOWN-STANDARD density sentence, four examples’ Docs-only verify, CHANGELOG |
+| **Optional annex** | [docs/plan/density-fixups-2.8.1/](./plan/density-fixups-2.8.1/) |
+| **Smoke / gates** | Author checklist; relative links; `related:` 3–7 except hub; no unique catalog edits |
 
 ### Phases
 
 | ID | Work | Status | Commit | Notes |
 |----|------|--------|--------|-------|
-| — | — | — | — | Register a program here before multi-phase kit work |
+| P0 | Register board + annex | `done` | — | SHA after commit |
+| P1 | RUNTIME related: 9→7 + leftover chrome | `active` | — | Body-cite CATALOG + verification |
+| P2 | Drop Instruct Document-version echoes; CATALOG Contents | `open` | — | |
+| P3 | Hub related: exception in density chapter | `open` | — | Do not trim RULES YAML map |
+| P4 | Example verify cells (four files) | `open` | — | Maps unchanged |
+| P5 | CHANGELOG 2.8.1 + close | `open` | — | |
 
 ### Progress log (newest first, max ~15 lines)
 
+- 2026-08-21 Registered **density-fixups-2.8.1**. Next: P1 RUNTIME citation cap.
 - 2026-08-21 **md-density-2.7.0** complete: `2a01b2f` kit `2.7.0` + `2.8.0`. Annex archived. Next: adopter upgrades (not this tree).
 - 2026-08-21 **P7** `28db706` UPGRADE chrome · **P6** `5a8eca7` Instruct docs.
 - 2026-08-21 **P5** rules restyles: `d96110d` P5a · `27570f4` P5b · `9fbad5d` contracts last. Next: P6 Instruct docs.
