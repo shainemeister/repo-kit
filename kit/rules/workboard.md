@@ -1,7 +1,7 @@
 ---
 title: Workboard Lifecycle
 description: Single active multi-phase workboard, phase-ship hygiene, optional annex archive, and agent resume protocol.
-version: "1.0.3"
+version: "1.1.0"
 status: current
 audience:
   - developers
@@ -11,19 +11,19 @@ doc_type: other
 related:
   - ../RULES.md
   - ./contracts.md
-  - ./hygiene.md
   - ./ai-docs-workspace.md
   - ./continuity.md
   - ../agents/PLAN-HOOK.md
+  - ../agents/OPS.md
   - ../templates/docs/WORKBOARD.md
-last_updated: "2026-08-21"
+last_updated: "2026-08-22"
 ---
 
 # Workboard Lifecycle
 
 How multi-phase work is **registered, advanced, shipped, and archived** so agents and humans share one continuous execution surface. This module is **domain-agnostic**. Product paths belong in the adopter’s authority map and filled board—not in this file.
 
-**Related:** [RULES.md](../RULES.md) · [contracts.md](./contracts.md) · [hygiene.md](./hygiene.md) · [ai-docs-workspace.md](./ai-docs-workspace.md) · [continuity.md](./continuity.md) · [PLAN-HOOK.md](../agents/PLAN-HOOK.md) · [templates/docs/WORKBOARD.md](../templates/docs/WORKBOARD.md)
+**Related:** [RULES.md](../RULES.md) · [contracts.md](./contracts.md) · [ai-docs-workspace.md](./ai-docs-workspace.md) · [continuity.md](./continuity.md) · [OPS.md](../agents/OPS.md) · [PLAN-HOOK.md](../agents/PLAN-HOOK.md) · [templates/docs/WORKBOARD.md](../templates/docs/WORKBOARD.md)
 
 ---
 
@@ -36,6 +36,18 @@ How multi-phase work is **registered, advanced, shipped, and archived** so agent
 | Optional annex only while open and **linked from the board**; on program complete **archive** (`git mv` → `docs/plan/archive/`); cap **Recently completed** (~5 one-line rows) |
 | On ship: declared gates + **L4 owners** + **CHANGELOG** when contracts/behavior change ([contracts](./contracts.md#same-change-set-rule)) |
 | When root **`PLAN.md`** exists, point it at the board in one short subsection (do not paste live phase tables); if there is no PLAN, the landing README is enough |
+
+| Must not |
+|----------|
+| Start multi-phase work only in chat or only in an unlinked folder |
+| Leave “open” planning packs with no workboard row |
+| Claim a phase `done` without board status + commit SHA |
+| Parallel silent programs with no primary |
+| Leave L4 docs saying “active planning” after archive |
+| Grow unlimited novels on the board (ideal cap ~200 lines) |
+| Delete archive packs without an explicit project decision |
+| Dump full order-of-operations history onto the board |
+| Paste live phase tables into PLAN |
 
 Trivial / single-step / pure Q&A need **no** board. Multi-phase or multi-session execution **does**. Bare adopt with no multi-phase work may skip this module. **Not** a Domain A/B gate.
 
@@ -180,6 +192,14 @@ Keep `docs/WORKBOARD.md` scannable (ideal cap ~200 lines). Required sections:
 
 Copy [templates/docs/WORKBOARD.md](../templates/docs/WORKBOARD.md). Prefer copying a healthy existing board over inventing a new outline.
 
+The filled board is **project data** outside `kit/` ([hygiene](./hygiene.md)).
+
+### Phase table hygiene
+
+- Prefer **exactly one** `active` row. **Do not** add a second row with the same phase ID; replace the existing row.
+- User or external wait is status `blocked` on that phase. Do **not** invent phase ids such as `GATE`.
+- SHA: the phase **work** commit may record Commit as `—`. The **parent** fills the SHA on the next board edit (often a one-line commit). Do not amend a published work commit solely to inject SHA. Do not invent SHAs.
+
 ---
 
 ## Optional annex
@@ -229,6 +249,13 @@ Use when the **program** (not a single phase) is complete.
 2. **Move**  
    - [ ] `git mv docs/plan/<program-id> docs/plan/archive/<program-id>`  
    - [ ] Prefer `git mv` over copy+delete (preserves history)  
+   - [ ] After `git mv`, retarget **annex README + OOO frontmatter / Board lines only** (not every body path if they use repo-root mentions):
+
+| In `docs/plan/<id>/` | After archive (`docs/plan/archive/<id>/`) |
+|----------------------|-------------------------------------------|
+| `../../WORKBOARD.md` | `../../../WORKBOARD.md` |
+| `../../../kit/` | `../../../../kit/` |
+| `../../../README.md` / `../../../PLAN.md` | `../../../../README.md` / `../../../../PLAN.md` |
 
 3. **Indexes**  
    - [ ] Plan-module index / `docs/README.md` — remove from open annex; add archive row  
@@ -335,6 +362,7 @@ Do **not** run two live boards. Do **not** force a rename on upgrade—preserve 
 
 | Version | Notes |
 |---------|--------|
+| 1.1.0 | Restore unique Must-not digest; OPS on related:; SHA / duplicate-id / archive path substitutions (kit 2.8.2). Invert does not delete unique prohibitions; Must not is a separate list (not a second 5-row Must table). |
 | 1.0.3 | Density restyle (kit 2.8.0); unique rules unchanged |
 | 1.0.2 | Parent owns board status when Instruct isolates work (kit 2.6.0) |
 | 1.0.1 | PLAN optional when absent; session start uses landing README (kit 2.4.0 clarification) |
