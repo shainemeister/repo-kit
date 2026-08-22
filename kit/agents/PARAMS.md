@@ -1,7 +1,7 @@
 ---
 title: AgentPack Parameters
 description: Schema, enums, validation, and emit shapes for Agent Instruct packs.
-version: "1.1.0"
+version: "1.1.1"
 status: current
 audience:
   - developers
@@ -15,14 +15,14 @@ related:
   - BUILD.md
   - PLAN-HOOK.md
   - RUNTIME.md
-last_updated: "2026-08-10"
+last_updated: "2026-08-21"
 ---
 
 # AgentPack Parameters
 
 Every agent model is an **AgentPack**: a structured record with catalog fields (for match), a short body (procedure + expertise), and **authority_paths** / **verify** linking to canonical law. Packs are **expert views**—not freeform chat personas.
 
-**Document version:** 1.1.0  
+**Document version:** 1.1.1  
 
 **Related:** [README.md](./README.md) · [OPS.md](./OPS.md) · [FRAMEWORK.md](./FRAMEWORK.md) · [CATALOG.md](./CATALOG.md) · [BUILD.md](./BUILD.md) · [PLAN-HOOK.md](./PLAN-HOOK.md) · [RUNTIME.md](./RUNTIME.md)
 
@@ -30,30 +30,27 @@ Every agent model is an **AgentPack**: a structured record with catalog fields (
 
 ## Summary
 
-| Must | Must not |
-|------|----------|
-| Use stable `id` values from CATALOG or PLAN overlays | Rename ids casually without PLAN/BUILD update |
-| Include `authority_paths` and `verify` in **YAML frontmatter** | Ship packs with only vibe text |
-| Document **expertise** (YAML `references` and/or body **Expertise map**) | Ship generated packs with empty expertise and no justification |
-| Put Must / Must not / Procedure / Expertise map in the **markdown body** | Require `must:` / `must_not:` / `body:` as YAML keys |
-| Map user freeform requests into PLAN deltas | Silently invent durable policy only in chat |
-| Keep enums constrained | Open-ended free strings for `layer` / `activation` |
-| External URLs only as **citations** under references/expertise | Remote overlays or external URLs as substitute law |
+| Must |
+|------|
+| Use stable `id` values from CATALOG or PLAN overlays; keep enums constrained (`layer` / `activation` / `portability`) |
+| Include `authority_paths` and `verify` in **YAML frontmatter**; document **expertise** (`references` and/or body **Expertise map**) |
+| Put Must / Must not / Procedure / Expertise map in the **markdown body** (not required as YAML keys) |
+| Map user freeform requests into PLAN deltas; do not silently invent durable policy only in chat |
+| External URLs only as **citations** under references/expertise — never remote overlays or substitute law |
 
 ---
 
 ## Contents
 
-1. [Summary](#summary)
-2. [Pack format doctrine](#pack-format-doctrine)
-3. [Field location](#field-location)
-4. [AgentPack fields](#agentpack-fields)
-5. [Expertise and references](#expertise-and-references)
-6. [Enums](#enums)
-7. [User instruction → PLAN deltas](#user-instruction--plan-deltas)
-8. [Emit shapes](#emit-shapes)
-9. [Validation rules](#validation-rules)
-10. [Document history](#document-history)
+1. [Pack format doctrine](#pack-format-doctrine)
+2. [Field location](#field-location)
+3. [AgentPack fields](#agentpack-fields)
+4. [Expertise and references](#expertise-and-references)
+5. [Enums](#enums)
+6. [User instruction → PLAN deltas](#user-instruction--plan-deltas)
+7. [Emit shapes](#emit-shapes)
+8. [Validation rules](#validation-rules)
+9. [Document history](#document-history)
 
 ---
 
@@ -275,6 +272,7 @@ Kit **templates** should pre-fill expertise so emit succeeds without freeform in
 
 | Version | Notes |
 |---------|--------|
+| 1.1.1 | Density restyle (kit 2.8.0 in progress); unique AgentPack field schema and validation unchanged |
 | 1.1.0 | Expertise/references required for generated packs; external citation rules; validation 11–14 (kit 2.2.0) |
 | 1.0.3 | PLAN delta table: `tuning.must_not_extra` (aligned with PLAN-HOOK/BUILD) |
 | 1.0.2 | Validation: forbid raw placeholders in generated packs; unknown id vs adopter packs |

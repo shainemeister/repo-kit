@@ -1,7 +1,7 @@
 ---
 title: Agent Instruct Order of Operations
 description: Required utilization procedure when Agent Instruct is adopted—match, expertise, co-maintain docs/rules, lifecycle BUILD.
-version: "1.3.0"
+version: "1.3.1"
 status: current
 audience:
   - developers
@@ -9,19 +9,13 @@ audience:
 doc_type: other
 related:
   - README.md
-  - RUNTIME.md
   - FRAMEWORK.md
   - PARAMS.md
   - BUILD.md
   - PLAN-HOOK.md
-  - CATALOG.md
-  - ../RULES.md
-  - ../rules/verification-and-ops.md
-  - ../rules/contracts.md
-  - ../rules/ai-docs-workspace.md
-  - ../rules/workboard.md
   - HABITAT.md
-last_updated: "2026-08-14"
+  - ../rules/contracts.md
+last_updated: "2026-08-21"
 ---
 
 # Agent Instruct Order of Operations
@@ -30,22 +24,21 @@ Canonical **order of operations (O3)** for AI and humans when **Agent Instruct i
 
 Standing hub checklist (all maintenance turns): [RULES — Operator enforcement](../RULES.md#operator-enforcement).
 
-**Document version:** 1.3.0  
+**Document version:** 1.3.1  
 
-**Related:** [README.md](./README.md) · [RUNTIME.md](./RUNTIME.md) · [FRAMEWORK.md](./FRAMEWORK.md) · [PARAMS.md](./PARAMS.md) · [BUILD.md](./BUILD.md) · [PLAN-HOOK.md](./PLAN-HOOK.md) · [HABITAT.md](./HABITAT.md) · [RULES.md](../RULES.md) · [verification-and-ops](../rules/verification-and-ops.md) · [contracts](../rules/contracts.md)
+**Related:** [README.md](./README.md) · [FRAMEWORK.md](./FRAMEWORK.md) · [PARAMS.md](./PARAMS.md) · [BUILD.md](./BUILD.md) · [PLAN-HOOK.md](./PLAN-HOOK.md) · [HABITAT.md](./HABITAT.md) · [contracts](../rules/contracts.md)
 
 ---
 
 ## Summary
 
-| Must | Must not |
-|------|----------|
-| Run O3 steps **when Instruct is adopted** (PLAN Agent models present and/or tracked packs under `kit/agents/generated/`) | Skip primary-pack match and improvise durable policy only in chat |
-| Load **one primary** expert pack; open expertise map before inventing paths/tools | Auto-load the full compose matrix or all generated packs |
-| Co-update **canonical L4** docs/rules; maintain root **`docs/`** when research/plan/build context applies | Treat packs or `docs/` as a second RULES tree or as law over L4 |
-| Evolve agents (PLAN + BUILD) when features, packages, surfaces, languages, or durable task classes appear | Leave packs stale after authority map / inventory / enablement change |
-| Prefer in-repo law; use external URLs only as **citations** (guidance) | Use remote URLs as overlays or as substitute law |
-| When isolating work: parent owns complete / board / tracker; one primary child | Children invent law in prose; parent merges chat into a second RULES tree |
+| Must |
+|------|
+| Run O3 **when Instruct is adopted** (PLAN Agent models and/or tracked packs under `kit/agents/generated/`); load **one primary** expert pack and open the expertise map before inventing paths/tools |
+| Co-update **canonical L4** docs/rules; maintain root **`docs/`** when research/plan/build applies; update `docs/WORKBOARD.md` when multi-phase work advances |
+| Evolve agents (PLAN + BUILD) when features, packages, surfaces, languages, or durable task classes appear |
+| Prefer in-repo law; external URLs are **citations** (guidance) only — never overlays or substitute law |
+| When isolating work: parent owns complete / board / tracker; one primary child; children do not invent law in prose |
 
 **Bare adopt:** no Agent models section and no Instruct packs → **skip O3**; use L4 only ([PLAN dual path](./PLAN-HOOK.md#plan-dual-path)).
 
@@ -57,17 +50,16 @@ Standing hub checklist (all maintenance turns): [RULES — Operator enforcement]
 
 ## Contents
 
-1. [Summary](#summary)
-2. [When O3 applies](#when-o3-applies)
-3. [Order of operations (O3)](#order-of-operations-o3)
-4. [Expertise and trust](#expertise-and-trust)
-5. [Co-maintain documents and rules](#co-maintain-documents-and-rules)
-6. [Lifecycle: features and core tasks](#lifecycle-features-and-core-tasks)
-7. [Creating a new expert persona](#creating-a-new-expert-persona)
-8. [Parent / child (when work is isolated)](#parent--child-when-work-is-isolated)
-9. [Report shape](#report-shape)
-10. [Anti-patterns](#anti-patterns)
-11. [Document history](#document-history)
+1. [When O3 applies](#when-o3-applies)
+2. [Order of operations (O3)](#order-of-operations-o3)
+3. [Expertise and trust](#expertise-and-trust)
+4. [Co-maintain documents and rules](#co-maintain-documents-and-rules)
+5. [Lifecycle: features and core tasks](#lifecycle-features-and-core-tasks)
+6. [Creating a new expert persona](#creating-a-new-expert-persona)
+7. [Parent / child (when work is isolated)](#parent--child-when-work-is-isolated)
+8. [Report shape](#report-shape)
+9. [Anti-patterns](#anti-patterns)
+10. [Document history](#document-history)
 
 ---
 
@@ -77,7 +69,7 @@ Standing hub checklist (all maintenance turns): [RULES — Operator enforcement]
 |-----------|--------|
 | Root `PLAN.md` has **Agent models** (Instruct in use) | **Run O3** |
 | Tracked packs under `kit/agents/generated/` and project uses agents | **Run O3** |
-| Bare kit adopt: no Agent models, no agent packs | **Skip O3**; open L4 (`kit/RULES.md`) only |
+| Bare kit adopt: no Agent models, no agent packs | **Skip O3**; open L4 (`kit/RULES.md`) only ([PLAN dual path](./PLAN-HOOK.md#plan-dual-path)) |
 | First adopt with agents intended but no packs yet | Run [BUILD](./BUILD.md) first, then O3 |
 
 Detect Instruct early (step 0). Do not force O3 on bare adopters.
@@ -125,7 +117,7 @@ Matching detail (activation modes, budgets, negative triggers): [RUNTIME.md](./R
 
 ## Expertise and trust
 
-Every pack is an **expert view** for a tailored job—not a freeform chat persona. Expertise is documented, not improvised.
+Every pack is an **expert view** for a tailored job—not a freeform chat persona. Expertise is documented, not improvised. Schema: [PARAMS.md](./PARAMS.md).
 
 | Surface | Role | Trust |
 |---------|------|--------|
@@ -142,8 +134,6 @@ Every pack is an **expert view** for a tailored job—not a freeform chat person
 | No remote fetch into tree | BUILD does not download external pages into the repository |
 | Prefer stable URLs | Versioned or long-lived standards docs when possible |
 | Curated, not exhaustive | Few high-signal links beat large link dumps |
-
-Schema and validation: [PARAMS.md](./PARAMS.md).
 
 ---
 
@@ -213,7 +203,7 @@ Do **not** invent kit CATALOG defaults for product-only roles. Do **not** create
 
 Optional. Applies only when Instruct is in use **and** the operator isolates a concern (host adapter, second session, or equivalent). Kit names **duties**, not spawn APIs. Habitat discovery: [HABITAT.md](./HABITAT.md).
 
-Bare adopt: skip this section; use L4 + [Operator enforcement](../RULES.md#operator-enforcement).
+Bare adopt: skip this section; use L4 + [Operator enforcement](../RULES.md#operator-enforcement) ([PLAN dual path](./PLAN-HOOK.md#plan-dual-path)).
 
 | Parent | Child |
 |--------|--------|
@@ -274,6 +264,7 @@ More: [examples/anti-patterns.md](./examples/anti-patterns.md).
 
 | Version | Notes |
 |---------|--------|
+| 1.3.1 | Density restyle (kit 2.8.0 in progress); unique O3, parent/child duties, and Instruct procedure unchanged |
 | 1.3.0 | Parent/child duties when work is isolated; workboard as DAG (kit 2.6.0) |
 | 1.2.0 | Co-maintain workboard on multi-phase ship (kit 2.4.0) |
 | 1.1.0 | Co-maintain root docs/ AI workspace when research/plan/build applies (kit 2.3.0) |

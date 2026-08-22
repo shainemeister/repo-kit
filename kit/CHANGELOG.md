@@ -34,6 +34,7 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 - continuity **1.0.1** / versioning-and-git **1.0.5** / workboard **1.0.3** / ai-docs-workspace **1.1.2**: density restyle (P5a); unique overlay, CHANGELOG/trailer, status/checklist, and workspace rules unchanged.
 - authoring-and-style **1.2.1** / verification-and-ops **1.7.1** / security **1.1.1**: density restyle (P5b); style-gate, verify, and inventory/SAST catalogs unchanged.
 - contracts **1.4.1**: density restyle (P5c); ownership, same-change-set, and incorporation unchanged.
+- HABITAT **1.0.1** / OPS **1.3.1** / FRAMEWORK **1.2.1** / PARAMS **1.1.1** / BUILD **1.2.1** / PLAN-HOOK **1.3.1** / agents README **1.2.2**: density restyle (P6); unique Instruct procedure, O3, schema, fill rules, and host catalog unchanged.
 
 #### Notes
 

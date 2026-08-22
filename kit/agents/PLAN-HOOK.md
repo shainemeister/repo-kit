@@ -1,7 +1,7 @@
 ---
 title: PLAN.md Agent Models Hook
 description: Durable control surface contract for Agent Instruct in adopter PLAN.md.
-version: "1.3.0"
+version: "1.3.1"
 status: current
 audience:
   - developers
@@ -13,33 +13,30 @@ related:
   - BUILD.md
   - CATALOG.md
   - PARAMS.md
-  - examples/PLAN-agent-models-snippet.md
   - ../SETUP.md
   - ../UPGRADE.md
-last_updated: "2026-08-12"
+last_updated: "2026-08-21"
 ---
 
 # PLAN.md Agent Models Hook
 
 When a project uses **Agent Instruct**, root **PLAN.md** is the **durable control surface**. It references the Instruct docs and declares which agent models are active, disabled, overlaid, and tuned. Mid-project adjustments happen here; AI then re-runs BUILD. Session utilization follows **[OPS.md](./OPS.md)**.
 
-**Document version:** 1.3.0  
+**Document version:** 1.3.1  
 
-**Related:** [README.md](./README.md) · [OPS.md](./OPS.md) · [BUILD.md](./BUILD.md) · [CATALOG.md](./CATALOG.md) · [PARAMS.md](./PARAMS.md) · [examples/PLAN-agent-models-snippet.md](./examples/PLAN-agent-models-snippet.md) · [SETUP.md](../SETUP.md) · [UPGRADE.md](../UPGRADE.md)
+**Related:** [README.md](./README.md) · [OPS.md](./OPS.md) · [BUILD.md](./BUILD.md) · [CATALOG.md](./CATALOG.md) · [PARAMS.md](./PARAMS.md) · [SETUP.md](../SETUP.md) · [UPGRADE.md](../UPGRADE.md)
 
 ---
 
 ## Summary
 
-| Must | Must not |
-|------|----------|
-| Include **Agent models** when using Agent Instruct | Leave agent enablement only in chat history |
-| Link to kit Instruct paths (`kit/agents/*` including OPS) | Duplicate full FRAMEWORK/BUILD text inside PLAN |
-| List `active_models` / `disabled` / `overlays` explicitly | Imply “all catalog agents always on” without statement |
-| Treat an **empty Active models list** as intentional empty set | Conflate empty list with “unset → enable catalog defaults” |
-| Overlays are **repo-relative** paths only | Remote `http(s)` overlay URLs |
-| Evolve Agent models when features/core tasks grow | Leave enablement stale after new surfaces |
-| Treat PLAN edits as the path for durable user intent | Require kit fork for product emphasis changes |
+| Must |
+|------|
+| Include **Agent models** when using Agent Instruct; link to kit Instruct paths (`kit/agents/*` including OPS) |
+| List `active_models` / `disabled` / `overlays` explicitly; an **empty** Active models list is an intentional empty set (not “unset → catalog defaults”) |
+| Overlays are **repo-relative** paths only — never remote `http(s)` overlay URLs |
+| Evolve Agent models when features/core tasks grow |
+| Treat PLAN edits as the path for durable user intent; do not require a kit fork for product emphasis changes |
 
 ### PLAN dual path
 
@@ -52,16 +49,15 @@ When a project uses **Agent Instruct**, root **PLAN.md** is the **durable contro
 
 ## Contents
 
-1. [Summary](#summary)
-2. [Required section](#required-section)
-3. [Field contract](#field-contract)
-4. [Trust boundary](#trust-boundary)
-5. [Minimal template](#minimal-template)
-6. [Mid-project adjustment procedure](#mid-project-adjustment-procedure)
-7. [Durable vs session-only](#durable-vs-session-only)
-8. [Interaction with other PLAN sections](#interaction-with-other-plan-sections)
-9. [SETUP and UPGRADE](#setup-and-upgrade)
-10. [Document history](#document-history)
+1. [Required section](#required-section)
+2. [Field contract](#field-contract)
+3. [Trust boundary](#trust-boundary)
+4. [Minimal template](#minimal-template)
+5. [Mid-project adjustment procedure](#mid-project-adjustment-procedure)
+6. [Durable vs session-only](#durable-vs-session-only)
+7. [Interaction with other PLAN sections](#interaction-with-other-plan-sections)
+8. [SETUP and UPGRADE](#setup-and-upgrade)
+9. [Document history](#document-history)
 
 ---
 
@@ -260,6 +256,7 @@ BUILD reads these sections when filling templates; it does not delete them.
 
 | Version | Notes |
 |---------|--------|
+| 1.3.1 | Density restyle (kit 2.8.0 in progress); unique Agent models fields, dual path, and required section unchanged |
 | 1.3.0 | PLAN is not the todo board; point at workboard (kit 2.4.0) |
 | 1.2.0 | OPS in Instruct authority; feature/core-task lifecycle; regenerate_when surface growth (kit 2.2.0) |
 | 1.1.1 | Markdown-native empty Active models (zero bullets / `*(none)*`); `[]` = BUILD shorthand only |

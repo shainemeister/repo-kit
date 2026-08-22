@@ -1,7 +1,7 @@
 ---
 title: Agent Instruct Framework
 description: Layered context system for agent packs as views over canonical law.
-version: "1.2.0"
+version: "1.2.1"
 status: current
 audience:
   - developers
@@ -15,9 +15,7 @@ related:
   - PLAN-HOOK.md
   - BUILD.md
   - RUNTIME.md
-  - ../RULES.md
-  - ../rules/contracts.md
-last_updated: "2026-08-14"
+last_updated: "2026-08-21"
 ---
 
 # Agent Instruct Framework
@@ -26,38 +24,35 @@ Agent Instruct is a **layered context system**: thin always-on rules, PLAN as co
 
 **Utilization procedure:** [OPS.md](./OPS.md) (required when Instruct is in use).
 
-**Document version:** 1.2.0  
+**Document version:** 1.2.1  
 
-**Related:** [README.md](./README.md) · [OPS.md](./OPS.md) · [PARAMS.md](./PARAMS.md) · [CATALOG.md](./CATALOG.md) · [PLAN-HOOK.md](./PLAN-HOOK.md) · [BUILD.md](./BUILD.md) · [RUNTIME.md](./RUNTIME.md) · [RULES.md](../RULES.md)
+**Related:** [README.md](./README.md) · [OPS.md](./OPS.md) · [PARAMS.md](./PARAMS.md) · [CATALOG.md](./CATALOG.md) · [PLAN-HOOK.md](./PLAN-HOOK.md) · [BUILD.md](./BUILD.md) · [RUNTIME.md](./RUNTIME.md)
 
 ---
 
 ## Summary
 
-| Must | Must not |
-|------|----------|
-| Separate layers L0–L4 | Collapse all instructions into one always-on file |
-| Classify packs by **job type** + **portability** | Treat every pack as freeform “persona” with no schema |
-| When Instruct is in use: run [OPS](./OPS.md) O3 (one primary expert pack per task) | Load every specialist for every task |
-| Keep always-on under a size budget | Always-on multi-kB doctrine dumps |
-| Point packs at authority paths + curated expertise (repo + external citations) | Override RULES with pack prose or external URLs |
-| Co-maintain L4 docs/rules; evolve agents with features/core tasks | Leave packs stale after surface growth |
-| Keep RULES as description + link hub | Embed full pack bodies in RULES.md |
+| Must |
+|------|
+| Separate layers **L0–L4**; if L3 and L4 conflict, **L4 wins** |
+| Classify packs by **job type** + **portability**; when Instruct is in use run [OPS](./OPS.md) O3 (**one primary** pack per task) |
+| Keep always-on under a size budget; point packs at `authority_paths` + curated expertise (external URLs are citations only) |
+| Co-maintain L4 docs/rules; evolve agents with features/core tasks ([OPS](./OPS.md)) |
+| Keep [RULES.md](../RULES.md) as description + link hub; do not embed full pack bodies in the hub |
 
-**Enforcement:** Policy + AI convention when Instruct is in use—**not** a Domain A/B gate. Bare adopt may skip agents.
+**Enforcement:** Policy + AI convention when Instruct is in use—**not** a Domain A/B gate. Bare adopt may skip agents ([PLAN dual path](./PLAN-HOOK.md#plan-dual-path)).
 
 ---
 
 ## Contents
 
-1. [Summary](#summary)
-2. [Layers (L0–L4)](#layers-l0l4)
-3. [Job types (taxonomy)](#job-types-taxonomy)
-4. [Portability](#portability)
-5. [Composition pattern](#composition-pattern)
-6. [Hard rules](#hard-rules)
-7. [Size and activation principles](#size-and-activation-principles)
-8. [Document history](#document-history)
+1. [Layers (L0–L4)](#layers-l0l4)
+2. [Job types (taxonomy)](#job-types-taxonomy)
+3. [Portability](#portability)
+4. [Composition pattern](#composition-pattern)
+5. [Hard rules](#hard-rules)
+6. [Size and activation principles](#size-and-activation-principles)
+7. [Document history](#document-history)
 
 ---
 
@@ -154,7 +149,7 @@ Detail: [RUNTIME.md](./RUNTIME.md).
 6. **Verify before done** — Packs list `verify[]` aligned with RULES verification table / inventory. If any **declared** Domain A/B gate or required verify item fails or is skipped → **STOP**; do not claim complete ([completion rule](../rules/verification-and-ops.md#completion-rule)).  
 7. **Product overlays stay out of kit defaults** — Listed in PLAN as **repo-relative** paths only, not CATALOG.  
 8. **Contracts co-update** — Behavior/contract change still updates L4 in the same change set ([contracts.md](../rules/contracts.md)).  
-9. **RULES stays light** — Map row = description + path; procedure lives in the linked file. **Do not fold** full Agent Instruct into the hub.  
+9. **RULES stays light** — Map row = description + path; procedure lives in the linked file. **Do not fold** full Agent Instruct into the [hub](../RULES.md).  
 10. **Dynamic agents are first-class for adopters** — New project personas use the same schema and get a map row (when durable) + pack file under `kit/agents/generated/` with `portability: adopter` (or `platform`). BUILD [source load order](./BUILD.md#source-load-order) preserves those packs on kit upgrade.  
 11. **O3 when Instruct is in use** — Follow [OPS.md](./OPS.md): match one primary expert pack, open expertise, co-maintain L4, verify, evolve agents with features/core tasks. Bare adopt skips O3.  
 12. **Expert packs** — Document `authority_paths` plus curated `references` / Expertise map (in-repo + trusted external citations). External URLs are guidance only; never overlays or substitute law.
@@ -179,6 +174,7 @@ Activation modes and budgets: [RUNTIME.md](./RUNTIME.md). Utilization: [OPS.md](
 
 | Version | Notes |
 |---------|--------|
+| 1.2.1 | Density restyle (kit 2.8.0 in progress); unique L0–L4 layers, L4-wins, and size/activation principles unchanged |
 | 1.2.0 | L0 is AGENTS.md (habitat); compose = at most one extra child (kit 2.6.0) |
 | 1.1.0 | O3 required when Instruct in use; expertise principle; OPS link (kit 2.2.0) |
 | 1.0.1 | STOP on failed gates; overlays repo-relative; preserve adopter packs; RULES not foldable |

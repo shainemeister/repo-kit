@@ -1,7 +1,7 @@
 ---
 title: Host Habitat (L0)
 description: Detect and create thin always-on discovery files in each coding-agent host’s natural path; portable law stays under kit/.
-version: "1.0.0"
+version: "1.0.1"
 status: current
 audience:
   - developers
@@ -11,37 +11,34 @@ related:
   - README.md
   - OPS.md
   - FRAMEWORK.md
-  - RUNTIME.md
   - ../RULES.md
   - ../SETUP.md
-  - ../UPGRADE.md
-  - ../rules/hygiene.md
   - ../templates/TEMPLATE-AGENTS.md
-last_updated: "2026-08-14"
+  - ../rules/hygiene.md
+last_updated: "2026-08-21"
 ---
 
 # Host Habitat (L0)
 
 How AI and humans **establish thin discovery files where a coding-agent host already looks**, without moving law out of `kit/` or inventing host folder trees. `kit/agents/` is **L2** (how to match, build, and run). It is not the file most hosts auto-load.
 
-**Document version:** 1.0.0  
+**Document version:** 1.0.1  
 
-**Related:** [README.md](./README.md) · [OPS.md](./OPS.md) · [FRAMEWORK.md](./FRAMEWORK.md) · [RUNTIME.md](./RUNTIME.md) · [RULES.md](../RULES.md) · [SETUP.md](../SETUP.md) · [hygiene](../rules/hygiene.md) · [TEMPLATE-AGENTS](../templates/TEMPLATE-AGENTS.md)
+**Related:** [README.md](./README.md) · [OPS.md](./OPS.md) · [FRAMEWORK.md](./FRAMEWORK.md) · [RULES.md](../RULES.md) · [SETUP.md](../SETUP.md) · [TEMPLATE-AGENTS](../templates/TEMPLATE-AGENTS.md) · [hygiene](../rules/hygiene.md)
 
 ---
 
 ## Summary
 
-| Must | Must not |
-|------|----------|
-| Prefer one portable L0 body: root **`AGENTS.md`** | Maintain full forks of kit law per host |
-| Create habitat files **only with evidence** (host in use, existing file, or user asked) | Always-copy CLAUDE + Cursor + Copilot + Gemini trees |
-| Keep L0 a **pointer** (prefer ≪ 100 lines) | Paste `kit/rules/*`, inventory tables, or pack bodies into habitat files |
-| Record L0 + aliases in the [authority map](../RULES.md#authority-map) same change set | Dual-own CHANGELOG, SAST, or completion in `AGENTS.md` |
-| Confirm alias/include syntax against **that host’s current docs** | Invent `.claude/agents`, skill matrices, or spawn APIs |
-| Treat filled `AGENTS.md` as **project data** on upgrade | Overwrite a filled L0 with the empty template |
+| Must |
+|------|
+| Prefer one portable L0 body: root **`AGENTS.md`**; create habitat files **only with evidence** (host in use, existing file, or user asked) |
+| Keep L0 a **pointer** (prefer ≪ 100 lines); do not paste `kit/rules/*`, inventory tables, or pack bodies into habitat files |
+| Record L0 + aliases in the [authority map](../RULES.md#authority-map) same change set; confirm alias syntax against **that host’s current docs** |
+| Treat filled `AGENTS.md` as **project data** on upgrade ([UPGRADE](../UPGRADE.md)); do not overwrite with the empty template |
+| Do **not** invent host trees (`.claude/agents`, skill matrices, spawn APIs) or dual-own CHANGELOG, SAST, or completion in `AGENTS.md` |
 
-**No coding agent and user did not ask:** skip this module. Docs-only repos that *are* agent-maintained still get a thin `AGENTS.md`. Same dual path as style configs.
+No coding agent and the user did not ask: **skip this module**. Docs-only repos that *are* agent-maintained still get a thin `AGENTS.md`. Habitat vs skip follows the same evidence dual path as style configs. Instruct vs bare: [PLAN dual path](./PLAN-HOOK.md#plan-dual-path).
 
 **Enforcement:** Policy + operator / SETUP procedure. **Not** a Domain A/B gate.
 
@@ -49,17 +46,16 @@ How AI and humans **establish thin discovery files where a coding-agent host alr
 
 ## Contents
 
-1. [Summary](#summary)
-2. [Three habitats](#three-habitats)
-3. [When this module applies](#when-this-module-applies)
-4. [Detection](#detection)
-5. [Create and alias](#create-and-alias)
-6. [What L0 may say](#what-l0-may-say)
-7. [Informative host catalog](#informative-host-catalog)
-8. [Adopter order of operations](#adopter-order-of-operations)
-9. [Host introduced later](#host-introduced-later)
-10. [Mirrors vs law](#mirrors-vs-law)
-11. [Document history](#document-history)
+1. [Three habitats](#three-habitats)
+2. [When this module applies](#when-this-module-applies)
+3. [Detection](#detection)
+4. [Create and alias](#create-and-alias)
+5. [What L0 may say](#what-l0-may-say)
+6. [Informative host catalog](#informative-host-catalog)
+7. [Adopter order of operations](#adopter-order-of-operations)
+8. [Host introduced later](#host-introduced-later)
+9. [Mirrors vs law](#mirrors-vs-law)
+10. [Document history](#document-history)
 
 ---
 
@@ -85,7 +81,7 @@ Do **not** add a fourth home for agent essays. Durable procedure belongs in PLAN
 | Some agent will maintain the repo | If root `AGENTS.md` is **missing**, copy [TEMPLATE-AGENTS](../templates/TEMPLATE-AGENTS.md) and fill placeholders. If it already exists, do **not** replace the body; add a one-line pointer to `kit/RULES.md` only if that pointer is absent |
 | Host already has a native file (`CLAUDE.md`, `.github/copilot-instructions.md`, …) | Do **not** clobber. Add a thin alias **only if** that host will not see `AGENTS.md` |
 | Instruct in use (PLAN Agent models / generated packs) | L0 points at [OPS](./OPS.md); parent/child protocol when work is isolated |
-| Bare adopt (no Instruct) | L0 still points at `kit/RULES.md`; skip OPS / packs |
+| Bare adopt (no Instruct) | L0 still points at `kit/RULES.md`; skip OPS / packs ([PLAN dual path](./PLAN-HOOK.md#plan-dual-path)) |
 
 ---
 
@@ -155,11 +151,9 @@ Preferred portable file: **`AGENTS.md`**. Host-native files are **aliases**, not
 
 1. Evidence of a coding agent? If no and the user did not ask → **stop**.  
 2. Open `kit/RULES.md` and the language inventory (always).  
-3. If `AGENTS.md` is missing, copy the template and fill placeholders. If present, leave the body; ensure it points at `kit/RULES.md`.  
-4. Detect existing habitat files; alias only if required and documented.  
-5. Map L0 + aliases.  
-6. If Instruct: PLAN Agent models + [BUILD](./BUILD.md); [OPS](./OPS.md) O3; [parent/child](./OPS.md#parent--child-when-work-is-isolated) when isolating work.  
-7. Do not paste `kit/rules/*` into L0. Do not invent unused host trees.
+3. Follow [Create and alias](#create-and-alias) (template if missing; do not replace a filled body; alias only if required; map L0).  
+4. If Instruct: PLAN Agent models + [BUILD](./BUILD.md); [OPS](./OPS.md) O3; [parent/child](./OPS.md#parent--child-when-work-is-isolated) when isolating work.  
+5. Do not paste `kit/rules/*` into L0. Do not invent unused host trees.
 
 ---
 
@@ -186,4 +180,5 @@ Kit correctness does **not** depend on any host skill directory ([RUNTIME](./RUN
 
 | Version | Notes |
 |---------|--------|
+| 1.0.1 | Density restyle (kit 2.8.0 in progress); unique L0 pointer, evidence, and host catalog unchanged |
 | 1.0.0 | Initial habitat module (kit 2.6.0) |

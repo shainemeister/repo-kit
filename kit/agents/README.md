@@ -1,7 +1,7 @@
 ---
 title: Agent Instruct
 description: Portable agent personas as expert views over repo-kit law—index, decisions, and start paths.
-version: "1.2.1"
+version: "1.2.2"
 status: current
 audience:
   - developers
@@ -9,42 +9,36 @@ audience:
 doc_type: other
 related:
   - OPS.md
+  - HABITAT.md
   - FRAMEWORK.md
   - PARAMS.md
   - CATALOG.md
   - PLAN-HOOK.md
   - BUILD.md
-  - RUNTIME.md
-  - HABITAT.md
-  - ../RULES.md
-  - ../SETUP.md
-  - ../../README.md
-last_updated: "2026-08-19"
+last_updated: "2026-08-21"
 ---
 
 # Agent Instruct
 
 Portable way for AI (and humans) to **build and maintain modular expert agent personas** from project interest, **PLAN.md**, and the filled authority map—without replacing maintenance law or bloating `kit/RULES.md`.
 
-**Document version:** 1.2.1  
+**Document version:** 1.2.2  
 
-**Related:** [OPS.md](./OPS.md) · [HABITAT.md](./HABITAT.md) · [FRAMEWORK.md](./FRAMEWORK.md) · [PARAMS.md](./PARAMS.md) · [CATALOG.md](./CATALOG.md) · [PLAN-HOOK.md](./PLAN-HOOK.md) · [BUILD.md](./BUILD.md) · [RUNTIME.md](./RUNTIME.md) · [RULES.md](../RULES.md)
+**Related:** [OPS.md](./OPS.md) · [HABITAT.md](./HABITAT.md) · [FRAMEWORK.md](./FRAMEWORK.md) · [PARAMS.md](./PARAMS.md) · [CATALOG.md](./CATALOG.md) · [PLAN-HOOK.md](./PLAN-HOOK.md) · [BUILD.md](./BUILD.md)
 
 ---
 
 ## Summary
 
-| Must | Must not |
-|------|----------|
-| Treat packs as **views** over L4 law (`kit/RULES.md` + `kit/rules/*` + product contracts) | Invent a second RULES tree inside packs |
-| Use root **PLAN.md** Agent models as the durable control surface when using agents | Hide enablement only in chat memory |
-| When Instruct is in use: follow **[OPS](./OPS.md)** O3 (one primary expert pack, expertise, co-maintain, lifecycle) | Skip match; improvise durable policy only in chat |
-| Prefer thin packs that **link** to authority paths + curated expertise | Paste multi-thousand-line rule modules into every pack |
-| Load **one primary** pack by catalog match | Auto-load the full compose matrix |
-| Evolve agents when features/core tasks grow (PLAN + BUILD) | Leave packs stale after surface growth |
-| Ship kit-default **portable seed roles** only | Ship product/game/CAD pipelines as kit defaults |
+| Must |
+|------|
+| Treat packs as **views** over L4 law (`kit/RULES.md` + `kit/rules/*` + product contracts); do not invent a second RULES tree inside packs |
+| Use root **PLAN.md** Agent models as the durable control surface when using agents |
+| When Instruct is in use: follow **[OPS](./OPS.md)** O3 (one primary expert pack, expertise, co-maintain, lifecycle) |
+| Prefer thin packs that **link** to authority paths + curated expertise; load **one primary** pack by catalog match |
+| Evolve agents when features/core tasks grow (PLAN + BUILD); ship kit-default **portable seed roles** only |
 
-**Enforcement:** Policy + AI convention when Instruct is in use ([RULES](../RULES.md) Musts, [OPS](./OPS.md), completion steps). **Not** a Domain A/B style or SAST gate. Bare adopt may skip agents. Real completion gates: [verification-and-ops](../rules/verification-and-ops.md).
+**Enforcement:** Policy + AI convention when Instruct is in use ([RULES](../RULES.md) Musts, [OPS](./OPS.md), completion steps). **Not** a Domain A/B style or SAST gate. Bare adopt may skip agents ([PLAN dual path](./PLAN-HOOK.md#plan-dual-path)). Real completion gates: [verification-and-ops](../rules/verification-and-ops.md).
 
 **“Automatic” doc/rule maintenance** means mandatory O3 procedure (not a background daemon).
 
@@ -52,13 +46,12 @@ Portable way for AI (and humans) to **build and maintain modular expert agent pe
 
 ## Contents
 
-1. [Summary](#summary)
-2. [Start here](#start-here)
-3. [Layers (quick map)](#layers-quick-map)
-4. [Document index](#document-index)
-5. [Pack format note](#pack-format-note)
-6. [When to use PLAN](#when-to-use-plan)
-7. [Document history](#document-history)
+1. [Start here](#start-here)
+2. [Layers (quick map)](#layers-quick-map)
+3. [Document index](#document-index)
+4. [Pack format note](#pack-format-note)
+5. [When to use PLAN](#when-to-use-plan)
+6. [Document history](#document-history)
 
 ---
 
@@ -128,12 +121,7 @@ Do not force full MARKDOWN-STANDARD `doc_type` package shape onto every generate
 
 ## When to use PLAN
 
-| Path | PLAN.md | BUILD | OPS O3 |
-|------|---------|--------|--------|
-| **With Agent Instruct** | **Required** — include `## Agent models` | Run after adopt and when enablement/surface growth | **Required** each task |
-| **Bare kit adopt** | Optional | Skip if no Agent models section | Skip |
-
-Durable intent (enable security agent, disable adopter, project overlays, new expert personas) belongs in PLAN—not only in session chat. See [PLAN-HOOK.md](./PLAN-HOOK.md).
+**Instruct vs bare:** [PLAN dual path](./PLAN-HOOK.md#plan-dual-path). Durable intent (enable security agent, disable adopter, project overlays, new expert personas) belongs in PLAN—not only in session chat.
 
 ---
 
@@ -141,6 +129,7 @@ Durable intent (enable security agent, disable adopter, project overlays, new ex
 
 | Version | Notes |
 |---------|--------|
+| 1.2.2 | Density restyle (kit 2.8.0 in progress); index, layers map, and AgentPack format note unchanged |
 | 1.2.1 | Instruct law docs follow density (Summary/Contents when required); packs stay AgentPack (kit 2.7.0) |
 | 1.2.0 | HABITAT L0 + parent/child start-here (kit 2.6.0) |
 | 1.1.0 | OPS index; expert packs; O3 Musts; lifecycle (kit 2.2.0) |

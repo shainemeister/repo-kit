@@ -1,7 +1,7 @@
 ---
 title: Agent BUILD Procedure
 description: AI-executable procedure to resolve the active agent set and emit thin AgentPacks.
-version: "1.2.0"
+version: "1.2.1"
 status: current
 audience:
   - developers
@@ -14,10 +14,8 @@ related:
   - CATALOG.md
   - PLAN-HOOK.md
   - FRAMEWORK.md
-  - RUNTIME.md
-  - ../RULES.md
   - ../UPGRADE.md
-last_updated: "2026-08-10"
+last_updated: "2026-08-21"
 ---
 
 # Agent BUILD Procedure
@@ -26,39 +24,37 @@ last_updated: "2026-08-10"
 
 **After BUILD:** operators use packs via **[OPS.md](./OPS.md)** (match, expertise, co-maintain, lifecycle).
 
-**Document version:** 1.2.0  
+**Document version:** 1.2.1  
 
-**Related:** [README.md](./README.md) · [OPS.md](./OPS.md) · [PARAMS.md](./PARAMS.md) · [CATALOG.md](./CATALOG.md) · [PLAN-HOOK.md](./PLAN-HOOK.md) · [FRAMEWORK.md](./FRAMEWORK.md) · [RUNTIME.md](./RUNTIME.md) · [RULES.md](../RULES.md) · [UPGRADE.md](../UPGRADE.md)
+**Related:** [README.md](./README.md) · [OPS.md](./OPS.md) · [PARAMS.md](./PARAMS.md) · [CATALOG.md](./CATALOG.md) · [PLAN-HOOK.md](./PLAN-HOOK.md) · [FRAMEWORK.md](./FRAMEWORK.md) · [UPGRADE.md](../UPGRADE.md)
 
 ---
 
 ## Summary
 
-| Must | Must not |
-|------|----------|
-| Read PLAN Agent models before emit | Emit packs that ignore `disabled` |
-| Fill from authority map real paths | Invent package paths not in the map |
-| Keep pack bodies short; link L4; fill expertise map | Paste full `kit/rules/*.md` into packs |
-| Validate packs per PARAMS rules (including expertise/references) | Leave packs without verify/authority_paths/expertise |
-| Emit only under `kit/agents/generated/` | Scatter default emit paths without PLAN escape hatch |
-| Regen when PLAN/authority/kit templates/feature surfaces change | Leave stale packs after enablement or surface growth |
+| Must |
+|------|
+| Read PLAN Agent models before emit; do not emit packs that ignore `disabled` |
+| Fill from authority map real paths; keep pack bodies short; link L4; fill expertise map (do not paste full `kit/rules/*.md`) |
+| Validate packs per [PARAMS](./PARAMS.md) (including expertise/references) |
+| Emit only under `kit/agents/generated/` |
+| Regen when PLAN / authority / kit templates / feature surfaces change |
 
-**Prerequisite:** Agent models section present in PLAN.md. If missing and the project uses Agent Instruct, insert from [PLAN-HOOK.md](./PLAN-HOOK.md) first. Bare adopt without Agent models → **skip BUILD**.
+**Prerequisite:** Agent models section present in PLAN.md. If missing and the project uses Agent Instruct, insert from [PLAN-HOOK.md](./PLAN-HOOK.md) first. Bare adopt without Agent models → **skip BUILD** ([PLAN dual path](./PLAN-HOOK.md#plan-dual-path)).
 
 ---
 
 ## Contents
 
-1. [Summary](#summary)
-2. [Inputs](#inputs)
-3. [Outputs](#outputs)
-4. [Algorithm](#algorithm)
-5. [Resolution rules](#resolution-rules)
-6. [Source load order](#source-load-order)
-7. [Template fill rules](#template-fill-rules)
-8. [Failure modes](#failure-modes)
-9. [Regen triggers](#regen-triggers)
-10. [Document history](#document-history)
+1. [Inputs](#inputs)
+2. [Outputs](#outputs)
+3. [Algorithm](#algorithm)
+4. [Resolution rules](#resolution-rules)
+5. [Source load order](#source-load-order)
+6. [Template fill rules](#template-fill-rules)
+7. [Failure modes](#failure-modes)
+8. [Regen triggers](#regen-triggers)
+9. [Document history](#document-history)
 
 ---
 
@@ -71,7 +67,7 @@ last_updated: "2026-08-10"
 | Default catalog | `kit/agents/CATALOG.md` |
 | Schema | `kit/agents/PARAMS.md` |
 | Role templates | `kit/agents/templates/<id>.md` |
-| Authority map + inventory + verify table | `kit/RULES.md` (+ domain modules) |
+| Authority map + inventory + verify table | [RULES.md](../RULES.md) (+ domain modules) |
 | Domain modules | `kit/rules/*` (link targets, not paste sources) |
 | Overlays | Paths listed in PLAN |
 | Optional this-turn instruction | User message (ephemeral unless written to PLAN) |
@@ -276,6 +272,7 @@ Lifecycle context: [OPS.md — features and core tasks](./OPS.md#lifecycle-featu
 
 | Version | Notes |
 |---------|--------|
+| 1.2.1 | Density restyle (kit 2.8.0 in progress); unique fill rules, source load order, and regen triggers unchanged |
 | 1.2.0 | Expertise fill + validation; feature/surface regen triggers; OPS pointer (kit 2.2.0) |
 | 1.1.1 | Note: PLAN markdown-native empty Active models; `[]` is BUILD shorthand only |
 | 1.1.0 | Unset vs empty active_models; source load order; preserve adopter packs; empty placeholder omit; overlay shadow + trust boundary |
