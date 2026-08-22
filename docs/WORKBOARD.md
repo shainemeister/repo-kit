@@ -52,7 +52,8 @@ last_updated: "2026-08-21"
 | GATE | User accepts P3 pilot shape | `done` | `97ee1db` | Accepted 2026-08-21; 2.7.0 shipped |
 | P4 | Hub Must digest trim (optional) | `done` | `97ee1db` | Chrome only; Must map stays complete |
 | P5 | Restyle remaining kit/rules/* (contracts last) | `done` | `9fbad5d` | P5a `d96110d` · P5b `27570f4` · P5c `9fbad5d` |
-| P6 | Restyle kit/agents/*.md Instruct docs | `active` | — | Wave 2 |
+| P6 | Restyle kit/agents/*.md Instruct docs | `done` | `5a8eca7` | O3, parent/child, L0–L4 kept |
+| P7 | SETUP / UPGRADE / examples polish | `active` | — | |
 | P7 | SETUP / UPGRADE / examples polish | `open` | — | |
 | P8 | CHANGELOG 2.8.0 + archive annex | `open` | — | Program complete |
 

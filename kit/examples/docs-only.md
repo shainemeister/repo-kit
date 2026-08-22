@@ -78,7 +78,7 @@ Empty inventory: no language gates. No `certification/` folder required.
 
 | Change type | Minimum verification |
 |-------------|----------------------|
-| Docs only | Author checklist; relative links resolve; platform examples consistent |
+| Docs only | Author checklist (including [density](../MARKDOWN-STANDARD.md#density-force-and-incorporation)); relative links resolve; last citations remain |
 | New/removed source files | `FILE-CATALOG.md` updated (if maintained) |
 | Methodology interpretation change | Document history row + status honesty |
 

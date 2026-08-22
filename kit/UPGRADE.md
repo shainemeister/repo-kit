@@ -1,7 +1,7 @@
 ---
 title: Upgrade repo-kit
 description: Durable guide for upgrading an existing kit baseline, including 1.x to 2.x layout migration (standards under kit/) and merge options.
-version: "1.8.2"
+version: "1.8.3"
 status: current
 audience:
   - developers
@@ -14,23 +14,15 @@ related:
   - ../README.md
   - rules/versioning-and-git.md
   - rules/hygiene.md
-  - rules/ai-docs-workspace.md
   - rules/workboard.md
-  - rules/continuity.md
-  - agents/README.md
-  - agents/OPS.md
-  - agents/BUILD.md
-  - agents/PLAN-HOOK.md
-last_updated: "2026-08-19"
+last_updated: "2026-08-21"
 ---
 
 # Upgrade repo-kit
 
 Durable procedure for **repositories that already adopted** the Repository Standards Kit. Not deleted after initiation—keep under project `kit/` or always open this file at Kit source.
 
-**Document version:** 1.8.2  
-
-**Related:** [RULES.md](./RULES.md) · [SETUP.md](./SETUP.md) · [CHANGELOG.md](./CHANGELOG.md) · [README.md](../README.md) · [versioning-and-git.md](./rules/versioning-and-git.md) · [hygiene.md](./rules/hygiene.md) · [ai-docs-workspace.md](./rules/ai-docs-workspace.md) · [workboard.md](./rules/workboard.md) · [agents/README.md](./agents/README.md) · [agents/OPS.md](./agents/OPS.md) · [agents/BUILD.md](./agents/BUILD.md)
+**Related:** [RULES.md](./RULES.md) · [SETUP.md](./SETUP.md) · [CHANGELOG.md](./CHANGELOG.md) · [README.md](../README.md) · [versioning-and-git.md](./rules/versioning-and-git.md) · [hygiene.md](./rules/hygiene.md) · [workboard.md](./rules/workboard.md)
 
 ---
 
@@ -50,15 +42,14 @@ Durable procedure for **repositories that already adopted** the Repository Stand
 
 ## Contents
 
-1. [Summary](#summary)
-2. [Choose your path](#choose-your-path)
-3. [Routine upgrade procedure](#routine-upgrade-procedure)
-4. [Migrate from kit 1.x / root layout to 2.x](#migrate-from-kit-1x--root-layout-to-2x)
-5. [Merge strategy options](#merge-strategy-options)
-6. [Agent Instruct on upgrade](#agent-instruct-on-upgrade)
-7. [Preserve list](#preserve-list)
-8. [Copy-paste AI prompts](#copy-paste-ai-prompts)
-9. [Document history](#document-history)
+1. [Choose your path](#choose-your-path)
+2. [Routine upgrade procedure](#routine-upgrade-procedure)
+3. [Migrate from kit 1.x / root layout to 2.x](#migrate-from-kit-1x--root-layout-to-2x)
+4. [Merge strategy options](#merge-strategy-options)
+5. [Agent Instruct on upgrade](#agent-instruct-on-upgrade)
+6. [Preserve list](#preserve-list)
+7. [Copy-paste AI prompts](#copy-paste-ai-prompts)
+8. [Document history](#document-history)
 
 ---
 
@@ -239,6 +230,7 @@ This repository has no repo-kit baseline. Follow kit/SETUP.md selective adoption
 
 | Version | Notes |
 |---------|--------|
+| 1.8.3 | Density chrome (kit 2.8.0 in progress); preserve list and upgrade steps unchanged |
 | 1.8.2 | Preserve filled product docs; 2.8.0+ rules restyles editorial (kit 2.7.0) |
 | 1.8.1 | Routine upgrade reshapes root README to landing (kit 2.6.3) |
 | 1.8.0 | Merge HABITAT; preserve filled AGENTS.md and host aliases (kit 2.6.0) |
