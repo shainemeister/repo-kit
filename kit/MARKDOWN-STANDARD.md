@@ -1,7 +1,7 @@
 ---
 title: Markdown Documentation Standard
 description: Cross-functional standard for consistent, professional markdown across any repository or project.
-version: "1.3.0"
+version: "1.3.1"
 status: current
 audience:
   - developers
@@ -17,14 +17,14 @@ related:
   - templates/TEMPLATE-GENERIC.md
   - templates/TEMPLATE-README.md
   - templates/TEMPLATE-LANDING-README.md
-last_updated: "2026-08-19"
+last_updated: "2026-08-21"
 ---
 
 # Markdown Documentation Standard
 
 A repeatable standard for professional, consistent markdown in any repository—usable across packages, CLIs, methodologies, security notes, design concepts, and runbooks.
 
-**Standard version:** 1.3.0  
+**Standard version:** 1.3.1  
 **Location:** `kit/MARKDOWN-STANDARD.md`  
 **Templates:** [`templates/`](./templates/)
 
@@ -360,6 +360,7 @@ A reprint may go only if a one-sentence citation + deep link to the owner remain
 ### Citation floor and ceiling
 
 - YAML `related:` lists **3–7** purpose-labeled peers (co-update or open to apply this file)—not the whole tree.  
+- **Hub exception:** `kit/RULES.md` `related:` may list the domain-module / config index (more than 7). That list is the **map**, not a peer dump. Other files stay 3–7.  
 - Humans must see those peers: **Related line or lead citations** (not YAML-only).  
 - Never zero peers on a substantial file. **Do not drop all Related / `related:`.**  
 - Foreign rule at **point of use:** one sentence of local consequence + deep link.  
@@ -671,6 +672,7 @@ Before merging or publishing a doc:
 
 | Version | Notes |
 |---------|--------|
+| 1.3.1 | Hub `related:` may be the module index (kit 2.8.1) |
 | 1.3.0 | Density, force, incorporation, Contents threshold, citation cap (kit 2.7.0) |
 | 1.2.1 | Landing checklist names both H2s; root landing removed from optional/lighter table (kit 2.6.3) |
 | 1.2.0 | Root README **must** use Overview + Operator prompts; package READMEs unchanged (kit 2.6.2) |
