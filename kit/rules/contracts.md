@@ -1,7 +1,7 @@
 ---
 title: Contracts
 description: What counts as a contract, canonical ownership, co-update rules, fixtures/schema/API, and cross-reference policy.
-version: "1.4.0"
+version: "1.4.1"
 status: current
 audience:
   - developers
@@ -13,22 +13,17 @@ related:
   - ./architecture.md
   - ./versioning-and-git.md
   - ./verification-and-ops.md
-  - ./authoring-and-style.md
   - ./ai-docs-workspace.md
   - ./workboard.md
   - ../MARKDOWN-STANDARD.md
-  - ../agents/README.md
-  - ../agents/OPS.md
-last_updated: "2026-08-19"
+last_updated: "2026-08-21"
 ---
 
 # Contracts
 
 Stable promises a repository makes—behavior, shapes, exits, fields—and the rules for keeping them honest.
 
-**Document version:** 1.4.0  
-
-**Related:** [RULES.md](../RULES.md) · [architecture.md](./architecture.md) · [versioning-and-git.md](./versioning-and-git.md) · [verification-and-ops.md](./verification-and-ops.md) · [authoring-and-style.md](./authoring-and-style.md) · [ai-docs-workspace.md](./ai-docs-workspace.md) · [workboard.md](./workboard.md) · [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md) · [agents/README.md](../agents/README.md) · [agents/OPS.md](../agents/OPS.md)
+**Related:** [RULES.md](../RULES.md) · [architecture.md](./architecture.md) · [versioning-and-git.md](./versioning-and-git.md) · [verification-and-ops.md](./verification-and-ops.md) · [ai-docs-workspace.md](./ai-docs-workspace.md) · [workboard.md](./workboard.md) · [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md)
 
 ---
 
@@ -48,13 +43,12 @@ Stable promises a repository makes—behavior, shapes, exits, fields—and the r
 
 ## Contents
 
-1. [Summary](#summary)
-2. [What counts as a contract](#what-counts-as-a-contract)
-3. [Ownership rules](#ownership-rules)
-4. [Same-change-set rule](#same-change-set-rule)
-5. [Cross-reference rules](#cross-reference-rules)
-6. [Anti-patterns](#anti-patterns)
-7. [Document history](#document-history)
+1. [What counts as a contract](#what-counts-as-a-contract)
+2. [Ownership rules](#ownership-rules)
+3. [Same-change-set rule](#same-change-set-rule)
+4. [Cross-reference rules](#cross-reference-rules)
+5. [Anti-patterns](#anti-patterns)
+6. [Document history](#document-history)
 
 ---
 
@@ -176,6 +170,7 @@ Every substantial markdown file should remain navigable for humans and AI agents
 
 | Version | Notes |
 |---------|--------|
+| 1.4.1 | Density restyle (kit 2.8.0 in progress); unique ownership, same-change-set, and incorporation rules unchanged |
 | 1.4.0 | Incorporation + inbound-link duty (kit 2.7.0) |
 | 1.3.2 | Operator prompts is not a product contract (kit 2.6.2) |
 | 1.3.1 | Habitat L0 is not a contract; anti-patterns for RULES-in-AGENTS and chat-only done (kit 2.6.0) |

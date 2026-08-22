@@ -33,6 +33,7 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 - RULES hub **2.7.1**: chrome only (identity echo, Contents). Must index unchanged (complete map).
 - continuity **1.0.1** / versioning-and-git **1.0.5** / workboard **1.0.3** / ai-docs-workspace **1.1.2**: density restyle (P5a); unique overlay, CHANGELOG/trailer, status/checklist, and workspace rules unchanged.
 - authoring-and-style **1.2.1** / verification-and-ops **1.7.1** / security **1.1.1**: density restyle (P5b); style-gate, verify, and inventory/SAST catalogs unchanged.
+- contracts **1.4.1**: density restyle (P5c); ownership, same-change-set, and incorporation unchanged.
 
 #### Notes
 
