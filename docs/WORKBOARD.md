@@ -51,14 +51,14 @@ last_updated: "2026-08-21"
 | P3 | Pilot restyle hygiene.md + architecture.md + ledger audit | `done` | `b27ecff` | Ledger passed; HARD GATE |
 | GATE | User accepts P3 pilot shape | `done` | `97ee1db` | Accepted 2026-08-21; 2.7.0 shipped |
 | P4 | Hub Must digest trim (optional) | `done` | `97ee1db` | Chrome only; Must map stays complete |
-| P5 | Restyle remaining kit/rules/* (contracts last) | `active` | — | Wave 2 |
-| P5 | Restyle remaining kit/rules/* (contracts last) | `open` | — | Wave 2 |
-| P6 | Restyle kit/agents/*.md Instruct docs | `open` | — | Wave 2 |
+| P5 | Restyle remaining kit/rules/* (contracts last) | `done` | `9fbad5d` | P5a `d96110d` · P5b `27570f4` · P5c `9fbad5d` |
+| P6 | Restyle kit/agents/*.md Instruct docs | `active` | — | Wave 2 |
 | P7 | SETUP / UPGRADE / examples polish | `open` | — | |
 | P8 | CHANGELOG 2.8.0 + archive annex | `open` | — | Program complete |
 
 ### Progress log (newest first, max ~15 lines)
 
+- 2026-08-21 **P5** rules restyles: `d96110d` P5a · `27570f4` P5b · `9fbad5d` contracts last. Next: P6 Instruct docs.
 - 2026-08-21 **GATE** + **P4** + kit **2.7.0** ship: `97ee1db`. Next: P5 restyle remaining rules (contracts last).
 - 2026-08-19 **P3** pilots shipped: `b27ecff` hygiene 1.6.0 / architecture 1.1.0. **HARD GATE** — user accepts shape before wave 2.
 - 2026-08-19 **P2** templates shipped: `84f56ae` min-core + docs-author verify. Next: P3 pilot.
