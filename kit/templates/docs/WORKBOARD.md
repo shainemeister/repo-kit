@@ -80,4 +80,4 @@ last_updated: "{{ISO_DATE}}"
 
 ---
 
-*Agents: register multi-phase work here before coding. Deep phase OOO only when that phase is activated. Replace every `{{PLACEHOLDER}}`.*
+*Agents: register multi-phase work here before coding. Deep phase OOO only when that phase is activated. Replace an existing phase row; do not insert a duplicate phase ID. Replace every `{{PLACEHOLDER}}`.*

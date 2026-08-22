@@ -1,7 +1,7 @@
 ---
 title: "{{PROGRAM_ID}} — program annex"
 description: Optional deep order-of-operations pack. Not active unless linked from the workboard.
-version: "1.0.0"
+version: "1.1.0"
 status: draft
 audience:
   - ai-agents
@@ -17,8 +17,9 @@ last_updated: "{{ISO_DATE}}"
 # {{PROGRAM_NAME}}
 
 **Board:** [docs/WORKBOARD.md](../../WORKBOARD.md) — this pack is active **only** while that board’s **Optional annex** field points here.  
+Depth is `docs/plan/<id>/`; after archive, apply the substitution table in the [workboard archive checklist](../../../kit/rules/workboard.md#archive-annex-checklist).  
 **Policy:** [kit/rules/workboard.md](../../../kit/rules/workboard.md)  
-**Mission (not todos):** [PLAN.md](../../../PLAN.md)
+**Mission (not todos):** [PLAN.md](../../../PLAN.md) *(omit-if no root PLAN.md)*
 
 | Field | Value |
 |-------|--------|
@@ -32,7 +33,7 @@ last_updated: "{{ISO_DATE}}"
 | File | Role |
 |------|------|
 | This README | Status, next phase, link **back** to the board |
-| [TEMPLATE-OOO.md](./TEMPLATE-OOO.md) *(rename)* | Goals, non-goals, master OOO, verify, risks |
+| [OOO.md](./OOO.md) *(copy-rename from TEMPLATE-OOO.md)* | Goals, non-goals, master OOO, verify, risks |
 
 ## Rules
 

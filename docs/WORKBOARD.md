@@ -49,14 +49,15 @@ last_updated: "2026-08-22"
 |----|------|--------|--------|-------|
 | P0 | Register board + thin annex | `done` | `1e6a003` | |
 | P1 | Restore workboard Must-not + SHA/dup/archive + OPS related: | `done` | `ba79d28` | Verbatim `12e0b4b`; drop hygiene from YAML, body-cite it |
-| P2 | ai-docs + PLAN-HOOK unique Must nots | `done` | — | Unique only; skip inverses |
-| P3 | TEMPLATE-OOO allow/deny + exit criteria | `active` | — | Placeholders remain |
-| P4 | Trim board progress log | `open` | — | Do not clear this program |
+| P2 | ai-docs + PLAN-HOOK unique Must nots | `done` | `6b8d01e` | Unique only; skip inverses |
+| P3 | TEMPLATE-OOO allow/deny + exit criteria | `done` | — | Placeholders remain |
+| P4 | Trim board progress log | `active` | — | Do not clear this program |
 | P5 | Ship 2.8.2 + archive | `open` | — | Dated CHANGELOG; primary `none` |
 
 ### Progress log (newest first, max ~15 lines)
 
-- 2026-08-22 **P2** ai-docs + PLAN-HOOK Must nots: `—`. Next: P3 OOO templates.
+- 2026-08-22 **P3** OOO templates: `—`. Next: P4 trim board log.
+- 2026-08-22 **P2** ai-docs + PLAN-HOOK Must nots: `6b8d01e`. Next: P3 OOO templates.
 - 2026-08-22 **P1** workboard Must-not digest: `ba79d28`. Next: P2 ai-docs + PLAN-HOOK.
 - 2026-08-22 Registered **workboard-rigidity-2.8.2**: `1e6a003`. Next: P1 workboard Must-not digest.
 - 2026-08-21 **density-fixups-2.8.1** complete: `a48324b` kit `2.8.1`. P1 `8695236` · P2 `aaf45f6` · P3 `0c60b1d` · P4 `97763cb`. Annex archived.

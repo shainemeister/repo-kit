@@ -1,7 +1,7 @@
 ---
 title: "{{PROGRAM_ID}} — order of operations"
 description: Goals, constraints, phased OOO, verification, and risks for one program.
-version: "1.0.0"
+version: "1.1.0"
 status: draft
 audience:
   - ai-agents
@@ -18,7 +18,8 @@ last_updated: "{{ISO_DATE}}"
 # {{PROGRAM_NAME}} — order of operations
 
 **Board:** [docs/WORKBOARD.md](../../WORKBOARD.md)  
-**Annex index:** [README.md](./README.md)
+**Annex index:** [README.md](./README.md)  
+**PLAN.md peer:** omit-if the repo has no root `PLAN.md` (keep 3–4 other `related:` peers).
 
 ---
 
@@ -58,6 +59,12 @@ Facts that **bound** the OOO (current architecture, not a wish list).
 |---------|----------------------------|
 | {{SURFACE}} | {{PATHS}} |
 
+### Allow / deny
+
+| Phase | Allow | Deny |
+|-------|--------|------|
+| **{{P0}}** | {{ALLOW_PATHS}} | {{DENY_PATHS}} |
+
 ---
 
 ## 3. Master order of operations
@@ -70,11 +77,19 @@ Facts that **bound** the OOO (current architecture, not a wish list).
 {{P1}} …
 ```
 
-| Phase | Theme | Why this order |
-|-------|--------|----------------|
-| **{{P0}}** | {{THEME}} | {{DEPENDENCY}} |
+| Phase | Theme | Why this order | Exit criterion |
+|-------|--------|----------------|----------------|
+| **{{P0}}** | {{THEME}} | {{DEPENDENCY}} | {{EXIT_CRITERION}} |
 
 Defer per-phase implementation detail until that phase is `active` on the board.
+
+### Active phase brief *(omit-if board-only program)*
+
+Fill **only** the phase that is `active` on the board, plus the next `open` if needed to start it. Later phases: omit until activated.
+
+### {{ACTIVE_PHASE_ID}}
+
+{{ACTIVE_PHASE_BRIEF}}
 
 ---
 
