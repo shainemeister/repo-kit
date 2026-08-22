@@ -1,7 +1,7 @@
 ---
 title: Security Baseline
 description: Trust baseline, security doc modularity, language surface inventory, SAST gates, and certification schema.
-version: "1.1.0"
+version: "1.1.1"
 status: current
 audience:
   - developers
@@ -11,20 +11,15 @@ related:
   - ../RULES.md
   - ./contracts.md
   - ./authoring-and-style.md
-  - ../configs/pylintrc
-  - ../configs/rustfmt.toml
-  - ../configs/clang-format
   - ./verification-and-ops.md
-  - ../templates/TEMPLATE-CERTIFICATION-README.md
   - ../templates/TEMPLATE-SECURITY.md
-last_updated: "2026-08-14"
+  - ../templates/TEMPLATE-CERTIFICATION-README.md
+last_updated: "2026-08-21"
 ---
 
 # Security Baseline
 
-Hard rules for product code and launchers, inventory-driven SAST, and optional formal certification.
-
-**Document version:** 1.1.0  
+Hard rules for product code and launchers, inventory-driven SAST, and optional formal certification. This file owns the inventory on/off switch for Domain A and Domain B.
 
 **Related:** [RULES.md](../RULES.md) · [contracts.md](./contracts.md) · [authoring-and-style.md](./authoring-and-style.md) · [verification-and-ops.md](./verification-and-ops.md) · [TEMPLATE-SECURITY](../templates/TEMPLATE-SECURITY.md) · [TEMPLATE-CERTIFICATION-README](../templates/TEMPLATE-CERTIFICATION-README.md)
 
@@ -32,29 +27,29 @@ Hard rules for product code and launchers, inventory-driven SAST, and optional f
 
 ## Summary
 
-| Must | Must not |
-|------|----------|
-| Fill language surface inventory for shipped surfaces | Paste the full multi-language SAST table without inventory evidence |
-| Run **declared** Domain A (SAST) gates before complete | Treat SAST tools as product runtime dependencies |
-| Omit empty SECURITY docs when modularity allows | Commit `last_certification.*` or treat certification as a product launcher gate |
+| Must |
+|------|
+| Fill [language surface inventory](#language-surface-inventory) for shipped surfaces; do not paste the full SAST catalog without inventory evidence |
+| Run **declared** Domain A (SAST) gates before complete ([completion](./verification-and-ops.md#completion-rule)); SAST tools are **not** product runtime dependencies |
+| Omit empty SECURITY docs when [modularity](#security-documentation-modularity) allows |
+| Gitignore `last_certification.*`; certification is **not** a product launcher / diagnostics gate |
 
 ---
 
 ## Contents
 
-1. [Summary](#summary)
-2. [Security baseline](#security-baseline)
-3. [Security documentation modularity](#security-documentation-modularity)
-4. [Language surface inventory](#language-surface-inventory)
-5. [Security / SAST gates (required when declared)](#security--sast-gates-required-when-declared)
-6. [Security and code-validation certification](#security-and-code-validation-certification)
-7. [Document history](#document-history)
+1. [Security baseline](#security-baseline)
+2. [Security documentation modularity](#security-documentation-modularity)
+3. [Language surface inventory](#language-surface-inventory)
+4. [Security / SAST gates (required when declared)](#security--sast-gates-required-when-declared)
+5. [Security and code-validation certification](#security-and-code-validation-certification)
+6. [Document history](#document-history)
 
 ---
 
 ## Security baseline
 
-Hard rules for product code and launchers. Full matrices live in the project security doc when one is required.
+When a package security doc is required, it owns full matrices ([authority map](../RULES.md#authority-map)).
 
 | Rule | Guidance |
 |------|----------|
@@ -63,8 +58,6 @@ Hard rules for product code and launchers. Full matrices live in the project sec
 | Secrets | Never commit secrets; rotate if leaked; treat history cleanup as an incident |
 | Dependencies | Match the declared dependency policy; no silent download-and-run |
 | Host policy | Do not permanently weaken host security policy in product install steps without explicit, documented need |
-
-Canonical detail (when applicable): the package `SECURITY.md` / `ENTERPRISE-SECURITY.md` (or equivalent) listed in the [authority map](../RULES.md#authority-map).
 
 ---
 
@@ -107,13 +100,13 @@ Fill a project table (examples: [examples/](../examples/)). Kit catalog of surfa
 
 **Rules:**
 
-1. Inventory drives the [verification table](./verification-and-ops.md#verification-before-ship)—each declared surface needs named commands and pass criteria.  
-2. Adding a language later updates inventory, verification, authority map (if needed), and certification checks in the **same change set**.  
-3. **Python product** and **Python dependencies** are separate rows (Bandit vs pip-audit). Rust Domain A is **cargo-audit** (crate graph). C / C++ has **no** separate dependencies row (no standard lockfile analog).  
-4. **Secrets** and **Semgrep** are inventory surfaces even though they are not programming languages.  
+1. Inventory drives the [verification table](./verification-and-ops.md#verification-before-ship)—each declared surface needs named commands and pass criteria.
+2. Adding a language later updates inventory, verification, authority map (if needed), and certification checks in the **same change set**.
+3. **Python product** and **Python dependencies** are separate rows (Bandit vs pip-audit). Rust Domain A is **cargo-audit** (crate graph). C / C++ has **no** separate dependencies row (no standard lockfile analog).
+4. **Secrets** and **Semgrep** are inventory surfaces even though they are not programming languages.
 5. Prefer declared inventory over heuristic filesystem scans. At initiation, derive rows from [project interest](../SETUP.md) and planned layout.
 
-Domain B tool detail: [authoring-and-style.md](./authoring-and-style.md).
+Domain B tool detail and starter configs: [authoring-and-style.md](./authoring-and-style.md) ([pylintrc](../configs/pylintrc) · [rustfmt.toml](../configs/rustfmt.toml) · [clang-format](../configs/clang-format) as inventory requires).
 
 ---
 
@@ -144,10 +137,10 @@ Prefer official or near-official tools with a small install footprint. All work 
 
 **Rules:**
 
-1. Name the tool and pass criteria in the verification table—do not leave “we scan somehow” implied.  
-2. Install tools in the **developer** environment only. Missing required tools fail the gate (install hints)—do not silently skip.  
-3. Docs-only repositories may omit every security / SAST gate.  
-4. Do not treat the full table above as a checklist for every project.  
+1. Name the tool and pass criteria in the verification table—do not leave “we scan somehow” implied.
+2. Install tools in the **developer** environment only. Missing required tools fail the gate (install hints)—do not silently skip.
+3. Docs-only repositories may omit every security / SAST gate.
+4. Do not treat the full table above as a checklist for every project.
 5. Warning-level findings (e.g. PSScriptAnalyzer **Warning**) stay advisory unless the project promotes them to critical.
 
 ---
@@ -228,5 +221,6 @@ Operator skeleton: [TEMPLATE-CERTIFICATION-README.md](../templates/TEMPLATE-CERT
 
 | Version | Notes |
 |---------|--------|
+| 1.1.1 | Density restyle (kit 2.8.0 in progress); inventory, SAST, and certification catalogs unchanged |
 | 1.1.0 | Named C/C++ surface (clang-format + clang-tidy / cppcheck); Rust Domain B points at style-gate chapter (kit 2.5.0) |
 | 1.0.0 | Extracted from RULES 1.4.1 for kit 2.0 |

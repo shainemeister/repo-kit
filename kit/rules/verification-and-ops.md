@@ -1,7 +1,7 @@
 ---
 title: Verification and Operations
 description: Verification before ship, completion rule, maintenance cadence, anti-patterns, and contributor checklist.
-version: "1.7.0"
+version: "1.7.1"
 status: current
 audience:
   - developers
@@ -13,43 +13,38 @@ related:
   - ./authoring-and-style.md
   - ./contracts.md
   - ./versioning-and-git.md
-  - ./ai-docs-workspace.md
   - ./workboard.md
   - ../MARKDOWN-STANDARD.md
-  - ../UPGRADE.md
-  - ../agents/README.md
-  - ../agents/OPS.md
-  - ../agents/BUILD.md
-  - ../agents/PARAMS.md
-last_updated: "2026-08-19"
+last_updated: "2026-08-21"
 ---
 
 # Verification and Operations
 
 Ship gates, completion rules, cadence, anti-patterns, and the contributor checklist.
 
-**Document version:** 1.7.0  
-
-**Related:** [RULES.md](../RULES.md) · [security.md](./security.md) · [authoring-and-style.md](./authoring-and-style.md) · [contracts.md](./contracts.md) · [versioning-and-git.md](./versioning-and-git.md) · [ai-docs-workspace.md](./ai-docs-workspace.md) · [workboard.md](./workboard.md) · [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md) · [UPGRADE.md](../UPGRADE.md) · [agents/README.md](../agents/README.md) · [agents/OPS.md](../agents/OPS.md)
+**Related:** [RULES.md](../RULES.md) · [security.md](./security.md) · [authoring-and-style.md](./authoring-and-style.md) · [contracts.md](./contracts.md) · [versioning-and-git.md](./versioning-and-git.md) · [workboard.md](./workboard.md) · [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md)
 
 ---
 
 ## Summary
 
-Do **not** mark work complete if any **declared** Domain B (style) or Domain A (SAST) gate for a surface in the inventory was skipped or failed. Docs-only inventories declare no language gates.
+| Must |
+|------|
+| Do **not** mark complete if any **declared** Domain B (style) or Domain A (SAST) gate for an inventory surface was skipped or failed; missing required tools is a **fail** |
+| Docs-only: [author checklist](../MARKDOWN-STANDARD.md#author-checklist) (including [density](../MARKDOWN-STANDARD.md#density-force-and-incorporation)) + resolving links + last citations; no language gates unless the [inventory](./security.md#language-surface-inventory) lists them |
+| Fill [Verification before ship](#verification-before-ship) from inventory; Domain B command strings from [authoring-and-style](./authoring-and-style.md) |
 
 ---
 
 ## Contents
 
-1. [Summary](#summary)
-2. [Verification before ship](#verification-before-ship)
-3. [Completion rule](#completion-rule)
-4. [Before marking work complete](#before-marking-work-complete)
-5. [Maintenance cadence](#maintenance-cadence)
-6. [Anti-patterns](#anti-patterns)
-7. [Contributor checklist](#contributor-checklist)
-8. [Document history](#document-history)
+1. [Verification before ship](#verification-before-ship)
+2. [Completion rule](#completion-rule)
+3. [Before marking work complete](#before-marking-work-complete)
+4. [Maintenance cadence](#maintenance-cadence)
+5. [Anti-patterns](#anti-patterns)
+6. [Contributor checklist](#contributor-checklist)
+7. [Document history](#document-history)
 
 ---
 
@@ -82,7 +77,9 @@ Fill concrete commands for your project from the [language surface inventory](./
 
 ## Completion rule
 
-Do **not** mark a change complete, and do **not** claim ship readiness, if any **declared** Domain B (code validation / style) or Domain A (security / SAST) gate for a **surface present in the inventory** was skipped or failed. Docs-only inventories declare no language gates. Missing required developer tools is a **failed** gate, not a skip.
+Do **not** mark a change complete, and do **not** claim ship readiness, if any **declared** Domain B (code validation / style) or Domain A (security / SAST) gate for a **surface present in the inventory** was skipped or failed. Missing required developer tools is a **failed** gate, not a skip.
+
+Docs-only inventories declare no language gates. Completing a docs-only change still requires the [author checklist](../MARKDOWN-STANDARD.md#author-checklist) (including [density](../MARKDOWN-STANDARD.md#density-force-and-incorporation)), resolving relative links, and last citations of used owners.
 
 Fill commands for the host OS(es) the team develops on. When multi-platform, either one portable command or one row/note per OS.
 
@@ -92,16 +89,16 @@ Fill commands for the host OS(es) the team develops on. When multi-platform, eit
 
 Ordered steps for humans and AI agents:
 
-1. Follow [Operator enforcement](../RULES.md#operator-enforcement) (verify request, validate procedure, persona when Instruct, plan + `docs/` when needed).  
-2. **If Agent Instruct is in use:** follow [OPS O3](../agents/OPS.md#order-of-operations-o3)—match **one primary** expert pack, open expertise, co-maintain L4. Bare adopt (no Agent models) skips this step.  
-3. **If research / multi-step plan / non-trivial build:** ensure root `docs/` modules are scaffolded/updated ([ai-docs-workspace](./ai-docs-workspace.md)). **If a multi-phase phase shipped:** `docs/WORKBOARD.md` status `done` + commit SHA ([workboard](./workboard.md)).  
-4. Read **language surface inventory** ([security.md](./security.md#language-surface-inventory); pick only declared rows from the full kit catalog).  
-5. Run **Domain B** gates for every surface touched by the change.  
-6. Run **Domain A** gates for every surface touched (plus Secrets / Semgrep if those rows exist).  
-7. Update canonical L4 docs / `CHANGELOG.md` per the [authority map](../RULES.md#authority-map) and [contracts.md](./contracts.md); promote durable findings out of `docs/` when they become promises.  
-8. **If Agent Instruct is in use** and any of the following changed—PLAN Agent models, agent templates, agent-relevant authority paths, pack expertise, or durable feature/surface/task-class growth: re-run [BUILD](../agents/BUILD.md); validate packs per [PARAMS](../agents/PARAMS.md); respect PLAN `disabled`; review generated pack diffs. (Policy + AI convention—not a Domain A/B gate.)  
-9. If `certification/` is maintained: regenerate the certificate pair; confirm OverallPass; leave outputs unstaged.  
-10. End work-advancing replies with a [Progress Tracker](../RULES.md#progress-tracker-minimum-shape) (commit SHA for completed committed tasks).  
+1. Follow [Operator enforcement](../RULES.md#operator-enforcement) (verify request, validate procedure, persona when Instruct, plan + `docs/` when needed).
+2. **If Agent Instruct is in use:** follow [OPS O3](../agents/OPS.md#order-of-operations-o3)—match **one primary** expert pack, open expertise, co-maintain L4. Bare adopt (no Agent models) skips this step.
+3. **If research / multi-step plan / non-trivial build:** ensure root `docs/` modules are scaffolded/updated ([ai-docs-workspace](./ai-docs-workspace.md)). **If a multi-phase phase shipped:** `docs/WORKBOARD.md` status `done` + commit SHA ([workboard](./workboard.md)).
+4. Read **language surface inventory** ([security.md](./security.md#language-surface-inventory); pick only declared rows from the full kit catalog).
+5. Run **Domain B** gates for every surface touched by the change.
+6. Run **Domain A** gates for every surface touched (plus Secrets / Semgrep if those rows exist).
+7. Update canonical L4 docs / `CHANGELOG.md` per the [authority map](../RULES.md#authority-map) and [contracts.md](./contracts.md); promote durable findings out of `docs/` when they become promises.
+8. **If Agent Instruct is in use** and any of the following changed—PLAN Agent models, agent templates, agent-relevant authority paths, pack expertise, or durable feature/surface/task-class growth: re-run [BUILD](../agents/BUILD.md); validate packs per [PARAMS](../agents/PARAMS.md); respect PLAN `disabled`; review generated pack diffs. (Policy + AI convention—not a Domain A/B gate.)
+9. If `certification/` is maintained: regenerate the certificate pair; confirm OverallPass; leave outputs unstaged.
+10. End work-advancing replies with a [Progress Tracker](../RULES.md#progress-tracker-minimum-shape) (commit SHA for completed committed tasks).
 11. Only then state the task is complete.
 
 ---
@@ -137,11 +134,7 @@ Ordered steps for humans and AI agents:
 
 | Avoid | Prefer |
 |-------|--------|
-| Shipping pylint as a product runtime dependency | Keep pylint developer-only |
-| Skipping pylint after Python product edits | Run `python -m pylint <package_or_paths>` |
-| Shipping rustfmt, clippy, clang-format, or clang-tidy as product runtime deps | Keep style tools developer-only |
-| Skipping rustfmt/clippy after Rust product edits (Rust in inventory) | Run `cargo fmt --check` and the kit clippy command |
-| Skipping clang-format/clang-tidy after C/C++ product edits (C/C++ in inventory) | Run the kit format + tidy commands; missing compile DB is a failed gate |
+| Shipping Domain B or Domain A tools as product runtime deps | Keep them developer-only ([authoring](./authoring-and-style.md) · [SAST](./security.md#security--sast-gates-required-when-declared)) |
 | Forcing Rust/C++ gates on a docs-only or empty inventory | Leave those rows off the verify table; unused `kit/configs/*` stay dormant catalog |
 | Committing regenerable outputs “for convenience” | Document regenerate commands in README / catalog |
 | Silent public field or API rename | Coordinated contract bump + fixtures + docs ([contracts.md](./contracts.md)) |
@@ -154,8 +147,6 @@ Ordered steps for humans and AI agents:
 | Code without CLI/methodology/security docs when those contracts apply | Same change set as the canonical doc; omit security when [modularity](./security.md#security-documentation-modularity) allows |
 | Empty `SECURITY.md` for docs-only or pure libraries with no side effects | Omit the file and the authority-map row |
 | Pasting the full multi-language SAST table into every project | Declare only tools for languages the repo ships |
-| Claiming complete while skipping a **declared** style or SAST gate | Run inventory gates; see [Completion rule](#completion-rule) |
-| Shipping Bandit / cargo-audit / cppcheck / npm audit / Gitleaks / etc. as product runtime deps | Keep security / SAST tools developer-only |
 | Committing `certification/last_certification.*` | Gitignore regenerable cert outputs; regenerate locally |
 | Treating certification as a product launcher / diagnostics gate | Certification attests **source tree** policy only |
 | Empty language inventory while shipping product code | Fill inventory when product languages exist |
@@ -189,34 +180,34 @@ Ordered steps for humans and AI agents:
 
 Before you commit or share a change:
 
-- [ ] Behavior matches the **canonical** doc for that surface (CLI / API / methodology / security / README)  
-- [ ] Inventory/catalog updated if paths changed (when maintained)  
-- [ ] [Language surface inventory](./security.md#language-surface-inventory) still matches languages the repo ships  
-- [ ] Versions and `last_updated` bumped where contracts changed  
-- [ ] **CHANGELOG.md** updated when required (release-worthy behavior, version bump, security, kit adopt/upgrade)  
-- [ ] Required **verification** from the table above has been run ([Completion rule](#completion-rule))  
-- [ ] If product Python changed: **pylint** passed; **Bandit** passed when Python is in inventory  
-- [ ] If product Rust changed: **rustfmt** + **clippy** passed; **cargo-audit** passed when Rust is in inventory  
-- [ ] If product C / C++ changed: **clang-format** + **clang-tidy** passed; **cppcheck** passed when C / C++ is in inventory  
-- [ ] Other declared language surfaces: Domain B + Domain A gates passed for surfaces touched  
-- [ ] If `certification/` is maintained: certificate regenerated; OverallPass true; outputs not staged  
-- [ ] No secrets, sensitive production data, regenerable outputs, or caches staged  
-- [ ] Markdown follows [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md) when docs were edited  
-- [ ] Last citation to each used owner remains; no second-home reprint of an owned rule ([contracts](./contracts.md#incorporation))  
-- [ ] Contents only if ≥ 5 H2s or ≳ 150 lines ([canonical order](../MARKDOWN-STANDARD.md#canonical-document-order))  
-- [ ] Commit message uses `type(scope):` format and matches the staged files  
-- [ ] Subject would still make sense years later; one logical surface preferred  
-- [ ] Canonical docs for any behavior change are in the same change set ([contracts.md](./contracts.md))  
-- [ ] If kit pieces changed: [Kit baseline](../RULES.md#kit-baseline) version/date updated and CHANGELOG notes the upgrade ([UPGRADE.md](../UPGRADE.md))  
-- [ ] [Operator enforcement](../RULES.md#operator-enforcement) followed (request verify, procedure, plan + `docs/` when needed)  
-- [ ] If research/multi-step/build context: relevant `docs/` modules updated; index honest ([ai-docs-workspace](./ai-docs-workspace.md))  
-- [ ] If a multi-phase phase shipped: workboard updated (status + SHA) in the same change set ([workboard](./workboard.md))  
-- [ ] If Agent Instruct used: primary pack matched per [OPS](../agents/OPS.md); expertise opened; L4 co-maintained  
-- [ ] If Agent Instruct used and enablement/templates/authority paths/expertise or feature/surface growth for agents changed: [BUILD](../agents/BUILD.md) regen; thin packs reviewed  
-- [ ] Agent packs do not redefine L4 law; `authority_paths` / expertise / `verify` align with RULES ([agents](../agents/README.md))  
-- [ ] PLAN Agent models preserved across kit upgrade (when agents are in use)  
-- [ ] Progress Tracker included on work-advancing replies ([RULES](../RULES.md#progress-tracker-minimum-shape))  
-- [ ] If AI assisted: commit includes `Assisted-by` / `Compliance` / `Instructed-by` with `Instructed-by` resolved dynamically (`git config user.name` → ask+record → `User`; no `Directed-by`) ([versioning-and-git](./versioning-and-git.md#ai-assisted-commits-required-disclosure))  
+- [ ] Behavior matches the **canonical** doc for that surface (CLI / API / methodology / security / README)
+- [ ] Inventory/catalog updated if paths changed (when maintained)
+- [ ] [Language surface inventory](./security.md#language-surface-inventory) still matches languages the repo ships
+- [ ] Versions and `last_updated` bumped where contracts changed
+- [ ] **CHANGELOG.md** updated when required (release-worthy behavior, version bump, security, kit adopt/upgrade)
+- [ ] Required **verification** from the table above has been run ([Completion rule](#completion-rule))
+- [ ] If product Python changed: **pylint** passed; **Bandit** passed when Python is in inventory
+- [ ] If product Rust changed: **rustfmt** + **clippy** passed; **cargo-audit** passed when Rust is in inventory
+- [ ] If product C / C++ changed: **clang-format** + **clang-tidy** passed; **cppcheck** passed when C / C++ is in inventory
+- [ ] Other declared language surfaces: Domain B + Domain A gates passed for surfaces touched
+- [ ] If `certification/` is maintained: certificate regenerated; OverallPass true; outputs not staged
+- [ ] No secrets, sensitive production data, regenerable outputs, or caches staged
+- [ ] Markdown follows [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md) when docs were edited
+- [ ] Last citation to each used owner remains; no second-home reprint of an owned rule ([contracts](./contracts.md#incorporation))
+- [ ] Contents only if ≥ 5 H2s or ≳ 150 lines ([canonical order](../MARKDOWN-STANDARD.md#canonical-document-order))
+- [ ] Commit message uses `type(scope):` format and matches the staged files
+- [ ] Subject would still make sense years later; one logical surface preferred
+- [ ] Canonical docs for any behavior change are in the same change set ([contracts.md](./contracts.md))
+- [ ] If kit pieces changed: [Kit baseline](../RULES.md#kit-baseline) version/date updated and CHANGELOG notes the upgrade ([UPGRADE.md](../UPGRADE.md))
+- [ ] [Operator enforcement](../RULES.md#operator-enforcement) followed (request verify, procedure, plan + `docs/` when needed)
+- [ ] If research/multi-step/build context: relevant `docs/` modules updated; index honest ([ai-docs-workspace](./ai-docs-workspace.md))
+- [ ] If a multi-phase phase shipped: workboard updated (status + SHA) in the same change set ([workboard](./workboard.md))
+- [ ] If Agent Instruct used: primary pack matched per [OPS](../agents/OPS.md); expertise opened; L4 co-maintained
+- [ ] If Agent Instruct used and enablement/templates/authority paths/expertise or feature/surface growth for agents changed: [BUILD](../agents/BUILD.md) regen; thin packs reviewed
+- [ ] Agent packs do not redefine L4 law; `authority_paths` / expertise / `verify` align with RULES ([agents](../agents/README.md))
+- [ ] PLAN Agent models preserved across kit upgrade (when agents are in use)
+- [ ] Progress Tracker included on work-advancing replies ([RULES](../RULES.md#progress-tracker-minimum-shape))
+- [ ] If AI assisted: commit includes `Assisted-by` / `Compliance` / `Instructed-by` with `Instructed-by` resolved dynamically (`git config user.name` → ask+record → `User`; no `Directed-by`) ([versioning-and-git](./versioning-and-git.md#ai-assisted-commits-required-disclosure))
 
 ---
 
@@ -224,6 +215,7 @@ Before you commit or share a change:
 
 | Version | Notes |
 |---------|--------|
+| 1.7.1 | Density restyle (kit 2.8.0 in progress); verify table, completion, cadence, and checklist unchanged |
 | 1.7.0 | Docs-only verify includes density checklist + last citations; omit-Summary anti-pattern (kit 2.7.0) |
 | 1.6.1 | Verify-table prune sentence; Domain B rows point at style-gate Command cells (kit 2.5.1) |
 | 1.6.0 | Inventory-gated Rust and C/C++ style verify rows, cadence, checklist (kit 2.5.0) |
