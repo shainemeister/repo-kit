@@ -51,7 +51,7 @@ last_updated: "2026-08-22"
 
 ### Progress log (newest first, max ~15 lines)
 
-- 2026-08-22 **workboard-rigidity-2.8.2** complete: kit `2.8.2`. P0 `1e6a003` · P1 `ba79d28` · P2 `6b8d01e` · P3 `ee8114e` · P4 `ff54cef`. Annex archived.
+- 2026-08-22 **workboard-rigidity-2.8.2** complete: `22311d4` kit `2.8.2`. P0 `1e6a003` · P1 `ba79d28` · P2 `6b8d01e` · P3 `ee8114e` · P4 `ff54cef`. Annex archived.
 - 2026-08-22 **P4** trimmed progress log: `ff54cef`. Next: P5 ship 2.8.2.
 - 2026-08-22 **P3** OOO templates: `ee8114e`. Next: P4 trim board log.
 - 2026-08-22 **P2** ai-docs + PLAN-HOOK Must nots: `6b8d01e`. Next: P3 OOO templates.
