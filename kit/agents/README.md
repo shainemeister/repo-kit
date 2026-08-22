@@ -141,7 +141,7 @@ Durable intent (enable security agent, disable adopter, project overlays, new ex
 
 | Version | Notes |
 |---------|--------|
-| 1.2.1 | Instruct law docs follow density (Summary/Contents when required); packs stay AgentPack (kit 2.7.0 in progress) |
+| 1.2.1 | Instruct law docs follow density (Summary/Contents when required); packs stay AgentPack (kit 2.7.0) |
 | 1.2.0 | HABITAT L0 + parent/child start-here (kit 2.6.0) |
 | 1.1.0 | OPS index; expert packs; O3 Musts; lifecycle (kit 2.2.0) |
 | 1.0.0 | Initial Agent Instruct index (kit 2.1.0) |

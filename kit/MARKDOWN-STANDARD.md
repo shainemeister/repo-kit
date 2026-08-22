@@ -671,7 +671,7 @@ Before merging or publishing a doc:
 
 | Version | Notes |
 |---------|--------|
-| 1.3.0 | Density, force, incorporation, Contents threshold, citation cap (kit 2.7.0 in progress) |
+| 1.3.0 | Density, force, incorporation, Contents threshold, citation cap (kit 2.7.0) |
 | 1.2.1 | Landing checklist names both H2s; root landing removed from optional/lighter table (kit 2.6.3) |
 | 1.2.0 | Root README **must** use Overview + Operator prompts; package READMEs unchanged (kit 2.6.2) |
 | 1.1.1 | Landing may end with Operator prompts; Overview length budget (kit 2.6.1) |

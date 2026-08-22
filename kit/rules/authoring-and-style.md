@@ -213,7 +213,7 @@ Language inventory (which surfaces exist) lives in [security.md](./security.md#l
 
 | Version | Notes |
 |---------|--------|
-| 1.2.0 | Cite, don’t reprint; density + required core pointer (kit 2.7.0 in progress) |
+| 1.2.0 | Cite, don’t reprint; density + required core pointer (kit 2.7.0) |
 | 1.1.2 | Root README landing shape required (kit 2.6.2) |
 | 1.1.1 | Python adopt steps start with inventory (parity with Rust/C++); kit 2.5.1 |
 | 1.1.0 | Named Rust and C/C++ style gates + starter configs; inventory is the on/off switch (kit 2.5.0) |

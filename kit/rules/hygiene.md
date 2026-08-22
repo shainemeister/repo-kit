@@ -153,7 +153,7 @@ Keep the repository root **scannable**: entry points and project-specific surfac
 
 | Version | Notes |
 |---------|--------|
-| 1.6.0 | Restyle to density shape (kit 2.7.0 in progress); unique packaging rules unchanged |
+| 1.6.0 | Restyle to density shape (kit 2.7.0); unique packaging rules unchanged |
 | 1.5.1 | Root README landing shape required (kit 2.6.2) |
 | 1.5.0 | Optional root `AGENTS.md` / thin host alias; regenerable host mirrors (kit 2.6.0) |
 | 1.4.1 | Optional root rustfmt/clippy/clang configs when those languages ship (kit 2.5.0) |

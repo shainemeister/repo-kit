@@ -1,7 +1,7 @@
 ---
 title: Repository Maintenance Rules
 description: Maintenance policy hub—authority map, kit baseline, and index to domain rule modules.
-version: "2.7.0"
+version: "2.7.1"
 status: current
 audience:
   - developers
@@ -32,16 +32,14 @@ related:
   - configs/clippy.toml
   - configs/clang-format
   - configs/clang-tidy
-last_updated: "2026-08-19"
+last_updated: "2026-08-21"
 ---
 
 # Repository Maintenance Rules
 
 Fundamental rules for maintaining a professional, auditable repository. This file is the **hub**: authority map, kit baseline, and Must / Must not. Domain detail lives in [rules/](./rules/). In adopting product repos this hub lives at **`kit/RULES.md`**.
 
-**Document version:** 2.7.0  
-
-**Related:** [README.md](../README.md) · [SETUP.md](./SETUP.md) · [UPGRADE.md](./UPGRADE.md) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) · [CHANGELOG.md](./CHANGELOG.md) · [agents/README.md](./agents/README.md) · [agents/OPS.md](./agents/OPS.md) · [agents/HABITAT.md](./agents/HABITAT.md) · [rules/](./rules/) · [workboard.md](./rules/workboard.md) · [configs/](./configs/)
+**Related:** [README.md](../README.md) · [SETUP.md](./SETUP.md) · [UPGRADE.md](./UPGRADE.md) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) · [CHANGELOG.md](./CHANGELOG.md) · [HABITAT](./agents/HABITAT.md) · [rules/](./rules/) · [workboard.md](./rules/workboard.md)
 
 ---
 
@@ -117,14 +115,13 @@ Do not invent commit SHAs. Do not require a commit for every tracker row.
 
 ## Contents
 
-1. [Summary](#summary)
-2. [Operator enforcement](#operator-enforcement)
-3. [Authority map](#authority-map)
-4. [Domain modules](#domain-modules)
-5. [When Agent Instruct is in use](#when-agent-instruct-is-in-use)
-6. [Kit baseline](#kit-baseline)
-7. [Upgrading the kit](#upgrading-the-kit)
-8. [Document history](#document-history)
+1. [Operator enforcement](#operator-enforcement)
+2. [Authority map](#authority-map)
+3. [Domain modules](#domain-modules)
+4. [When Agent Instruct is in use](#when-agent-instruct-is-in-use)
+5. [Kit baseline](#kit-baseline)
+6. [Upgrading the kit](#upgrading-the-kit)
+7. [Document history](#document-history)
 
 ---
 
@@ -275,7 +272,8 @@ Copy-paste prompt also on root [README — Upgrade repo-kit](../README.md#upgrad
 
 | Version | Notes |
 |---------|--------|
-| 2.7.0 | Density + incorporation: unique rules only; cite don’t reprint; last citation remains (kit 2.7.0 in progress) |
+| 2.7.1 | Hub chrome (identity echo, Contents); Must index unchanged so the map stays complete (kit 2.8.0 in progress) |
+| 2.7.0 | Density + incorporation: unique rules only; cite don’t reprint; last citation remains (kit 2.7.0) |
 | 2.6.2 | Root README landing shape is required (Overview + Operator prompts) |
 | 2.6.0 | Host L0 habitat (`AGENTS.md`); HABITAT + parent/child protocol; map row |
 | 2.5.1 | One authority-map row for language style configs (inventory-gated copy) |

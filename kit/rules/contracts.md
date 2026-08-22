@@ -176,7 +176,7 @@ Every substantial markdown file should remain navigable for humans and AI agents
 
 | Version | Notes |
 |---------|--------|
-| 1.4.0 | Incorporation + inbound-link duty (kit 2.7.0 in progress) |
+| 1.4.0 | Incorporation + inbound-link duty (kit 2.7.0) |
 | 1.3.2 | Operator prompts is not a product contract (kit 2.6.2) |
 | 1.3.1 | Habitat L0 is not a contract; anti-patterns for RULES-in-AGENTS and chat-only done (kit 2.6.0) |
 | 1.3.0 | Workboard is an execution contract; phase-ship same-change-set (kit 2.4.0) |

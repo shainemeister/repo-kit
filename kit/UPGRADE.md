@@ -239,7 +239,7 @@ This repository has no repo-kit baseline. Follow kit/SETUP.md selective adoption
 
 | Version | Notes |
 |---------|--------|
-| 1.8.2 | Preserve filled product docs; 2.8.0+ rules restyles editorial (kit 2.7.0 in progress) |
+| 1.8.2 | Preserve filled product docs; 2.8.0+ rules restyles editorial (kit 2.7.0) |
 | 1.8.1 | Routine upgrade reshapes root README to landing (kit 2.6.3) |
 | 1.8.0 | Merge HABITAT; preserve filled AGENTS.md and host aliases (kit 2.6.0) |
 | 1.7.0 | Merge kit/configs as catalog; do not force product-root style copies; preserve adopter edition / BasedOnStyle / py-version (kit 2.5.0) |

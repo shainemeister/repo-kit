@@ -26,7 +26,17 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 
 ## repo-kit
 
-### [2.7.0] - 2026-08-19
+### [2.8.0] - 2026-08-21
+
+#### Changed
+
+- RULES hub **2.7.1**: chrome only (identity echo, Contents). Must index unchanged (complete map).
+
+#### Notes
+
+- Wave 2 **in progress**. Editorial restyles of remaining `kit/rules/*` and Instruct docs. Not an adopter-required upgrade until this heading is closed.
+
+### [2.7.0] - 2026-08-21
 
 #### Added
 
@@ -44,7 +54,8 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 
 #### Notes
 
-- Wave 1 **in progress**. Not an adopter upgrade target until the P3 pilot gate. Do not treat this heading as a completed 2.7.0 ship.
+- Wave 1 **shipped** after the P3 pilot gate (2026-08-21). Adopter upgrade target for density doctrine, min-core templates, and the two pilot restyles.
+- Remaining `kit/rules/*` and Instruct-doc restyles are **kit 2.8.0**, editorial on upgrade (preserve local additions).
 
 ### [2.6.3] - 2026-08-14
 

@@ -258,7 +258,7 @@ Templates under [templates/](./templates/) carry the full Expertise map. Summary
 
 | Version | Notes |
 |---------|--------|
-| 1.2.1 | docs-author required-core / density verify (kit 2.7.0 in progress) |
+| 1.2.1 | docs-author required-core / density verify (kit 2.7.0) |
 | 1.2.0 | plan-author workboard triggers, authority, verify (kit 2.4.0) |
 | 1.1.0 | Project expert pack bar; seed expertise themes; OPS lifecycle (kit 2.2.0) |
 | 1.0.1 | plan-author verify dual-path; security Domain A focus |
