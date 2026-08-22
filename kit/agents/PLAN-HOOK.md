@@ -1,7 +1,7 @@
 ---
 title: PLAN.md Agent Models Hook
 description: Durable control surface contract for Agent Instruct in adopter PLAN.md.
-version: "1.3.2"
+version: "1.3.3"
 status: current
 audience:
   - developers
@@ -15,7 +15,7 @@ related:
   - PARAMS.md
   - ../SETUP.md
   - ../UPGRADE.md
-last_updated: "2026-08-21"
+last_updated: "2026-08-22"
 ---
 
 # PLAN.md Agent Models Hook
@@ -35,6 +35,12 @@ When a project uses **Agent Instruct**, root **PLAN.md** is the **durable contro
 | Overlays are **repo-relative** paths only — never remote `http(s)` overlay URLs |
 | Evolve Agent models when features/core tasks grow |
 | Treat PLAN edits as the path for durable user intent; do not require a kit fork for product emphasis changes |
+
+| Must not |
+|----------|
+| Leave agent enablement only in chat history |
+| Duplicate full FRAMEWORK/BUILD text inside PLAN |
+| Imply “all catalog agents always on” without statement |
 
 ### PLAN dual path
 
@@ -254,6 +260,7 @@ BUILD reads these sections when filling templates; it does not delete them.
 
 | Version | Notes |
 |---------|--------|
+| 1.3.3 | Restore unique Must-not digest (kit 2.8.2) |
 | 1.3.2 | Drop in-body document-version echo (kit 2.8.1) |
 | 1.3.1 | Density restyle (kit 2.8.0); unique Agent models fields, dual path, and required section unchanged |
 | 1.3.0 | PLAN is not the todo board; point at workboard (kit 2.4.0) |

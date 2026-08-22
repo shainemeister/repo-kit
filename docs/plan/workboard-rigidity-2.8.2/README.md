@@ -26,7 +26,7 @@ last_updated: "2026-08-22"
 |-------|--------|
 | **Program id** | `workboard-rigidity-2.8.2` |
 | **Status** | `active` |
-| **Next phase** | `P2` |
+| **Next phase** | `P3` |
 | **Kit target** | `2.8.2` |
 | **L4 owners on ship** | [workboard.md](../../../kit/rules/workboard.md) · [ai-docs-workspace.md](../../../kit/rules/ai-docs-workspace.md) · [PLAN-HOOK.md](../../../kit/agents/PLAN-HOOK.md) · [TEMPLATE-OOO.md](../../../kit/templates/docs/plan/TEMPLATE-OOO.md) · [TEMPLATE-PROGRAM-README.md](../../../kit/templates/docs/plan/TEMPLATE-PROGRAM-README.md) · [CHANGELOG](../../../kit/CHANGELOG.md) |
 

@@ -1,7 +1,7 @@
 ---
 title: AI Docs Workspace
 description: Project root docs/ as modular AI resource workspace—research, workboard, plan, project_build, resources; lifecycle and promotion to L4.
-version: "1.1.2"
+version: "1.1.3"
 status: current
 audience:
   - developers
@@ -16,7 +16,7 @@ related:
   - ../agents/PLAN-HOOK.md
   - ../UPGRADE.md
   - ../templates/docs/README.md
-last_updated: "2026-08-21"
+last_updated: "2026-08-22"
 ---
 
 # AI Docs Workspace
@@ -36,6 +36,12 @@ Policy for the project **root `docs/`** tree: a **modular AI resource workspace*
 | **Promote** durable product promises to canonical L4 owners ([contracts](./contracts.md)); `docs/` is not a dual home for API/CLI/SECURITY/CHANGELOG |
 | Complement root **`PLAN.md`** with `docs/WORKBOARD.md` + `docs/plan/` detail; **Agent models stay in PLAN** ([PLAN-HOOK](../agents/PLAN-HOOK.md)) |
 | Prefer thin markdown + links; do not paste full `kit/rules/*` or secrets into the workspace |
+
+| Must not |
+|----------|
+| Force empty four-module trees on trivial Q&A or bare day-one ceremony |
+| Abandon stale critical plans without status/archive |
+| Move Agent models out of PLAN into docs-only storage; paste live phase tables into PLAN |
 
 **Enforcement:** Policy + operator checklist ([RULES — Operator enforcement](../RULES.md#operator-enforcement)). **Not** a Domain A/B gate.
 
@@ -213,6 +219,7 @@ External citations follow the same trust idea as Agent Instruct expertise: **gui
 
 | Version | Notes |
 |---------|--------|
+| 1.1.3 | Restore unique Must-not digest (kit 2.8.2) |
 | 1.1.2 | Density restyle (kit 2.8.0); unique rules unchanged |
 | 1.1.1 | Durable agent procedure promotes to PLAN / kit/agents, not a docs essay (kit 2.6.0) |
 | 1.1.0 | Triple surface: PLAN + workboard + docs/plan annex/archive (kit 2.4.0) |

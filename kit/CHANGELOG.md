@@ -31,6 +31,7 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 #### Changed
 
 - workboard **1.1.0**: restore unique Must-not digest; OPS on `related:`; SHA / duplicate-id / archive path substitutions.
+- ai-docs-workspace **1.1.3** / PLAN-HOOK **1.3.3**: restore unique Must-not digests (chat-only enablement; empty four-module trees; Agent models stay in PLAN).
 
 ### [2.8.1] - 2026-08-21
 
