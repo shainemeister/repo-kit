@@ -49,7 +49,7 @@ last_updated: "2026-08-21"
 
 ### Progress log (newest first, max ~15 lines)
 
-- 2026-08-21 **md-density-2.7.0** complete: kit `2.7.0` + `2.8.0`. Annex archived. Next: adopter upgrades (not this tree).
+- 2026-08-21 **md-density-2.7.0** complete: `2a01b2f` kit `2.7.0` + `2.8.0`. Annex archived. Next: adopter upgrades (not this tree).
 - 2026-08-21 **P7** `28db706` UPGRADE chrome · **P6** `5a8eca7` Instruct docs.
 - 2026-08-21 **P5** rules restyles: `d96110d` P5a · `27570f4` P5b · `9fbad5d` contracts last. Next: P6 Instruct docs.
 - 2026-08-21 **GATE** + **P4** + kit **2.7.0** ship: `97ee1db`. Next: P5 restyle remaining rules (contracts last).
