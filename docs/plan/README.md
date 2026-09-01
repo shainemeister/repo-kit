@@ -6,6 +6,7 @@ Detailed execution plans for kit work. Durable kit version history remains in `k
 
 | Plan | Status | Summary |
 |------|--------|---------|
+| [frontmatter-2.10.0](./frontmatter-2.10.0/) | **open** (board annex) | YAML identity, one-home description, optional keywords (kit 2.10.0) |
 | [files-law-2.9.0](./archive/files-law-2.9.0/) | archived | File creation, placement, and naming (kit 2.9.0) — read L4, not this pack |
 | [workboard-rigidity-2.8.2](./archive/workboard-rigidity-2.8.2/) | archived | Restore workboard Must-not digest; OOO template tighten (kit 2.8.2) |
 | [density-fixups-2.8.1](./archive/density-fixups-2.8.1/) | archived | Surgical citation/chrome patch (kit 2.8.1) |

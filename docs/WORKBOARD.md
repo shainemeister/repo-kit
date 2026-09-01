@@ -11,16 +11,16 @@ related:
   - ../kit/rules/workboard.md
   - ../kit/CHANGELOG.md
   - ./README.md
+  - ./plan/frontmatter-2.10.0/README.md
   - ./plan/archive/files-law-2.9.0/README.md
   - ./plan/archive/workboard-rigidity-2.8.2/README.md
-  - ./plan/archive/density-fixups-2.8.1/README.md
 last_updated: "2026-08-31"
 ---
 
 # Workboard
 
 **Updated:** 2026-08-31  
-**Primary program:** `none`  
+**Primary program:** `frontmatter-2.10.0`  
 **Rules:** [kit/rules/workboard.md](../kit/rules/workboard.md) · kit README (mission) · [docs/plan/](./plan/) (detail)
 
 | Status | Meaning |
@@ -34,23 +34,30 @@ last_updated: "2026-08-31"
 
 ---
 
-## Active program — none
+## Active program — Frontmatter 2.10.0
 
 | Field | Value |
 |-------|--------|
-| **Goal** | — |
-| **L4 docs to update** | — |
-| **Optional annex** | — |
-| **Smoke / gates** | Author checklist; relative links; no `{{PLACEHOLDERS}}` in finished policy |
+| **Goal** | Durable markdown YAML except a closed omit list; one-home description; optional keywords; descriptive language — without over-prescription |
+| **L4 docs to update** | `kit/MARKDOWN-STANDARD.md` · files.md/authoring cites · templates · SETUP · UPGRADE · examples · docs-author · CHANGELOG `2.10.0` |
+| **Optional annex** | [docs/plan/frontmatter-2.10.0/](./plan/frontmatter-2.10.0/) |
+| **Smoke / gates** | Author checklist; relative links; no `{{PLACEHOLDERS}}` in finished policy; **not** Domain A/B; no YAML complete-fail on old docs |
 
 ### Phases
 
 | ID | Work | Status | Commit | Notes |
 |----|------|--------|--------|-------|
-| — | — | — | — | Register a program here before multi-phase kit work |
+| P0 | Register annex; freeze omit list and under-prescription | `done` | — | SHA on next board edit |
+| P1 | `kit/MARKDOWN-STANDARD.md` (unique owner) | `open` | — | Start only after user confirms OOO |
+| P2 | Cite `files.md` + authoring (no reprint) | `open` | — | Do not reopen adopt-mode matrix |
+| P3 | Templates (`description`; keywords omit-if) | `open` | — | Landing/alias/AGENTS templates stay omit |
+| P4 | SETUP / UPGRADE / examples + this-kit index YAML | `open` | — | Forward-only; closed dogfood list |
+| P5 | Instruct docs-author seed | `open` | — | No BUILD |
+| P6 | Ship kit 2.10.0; archive annex | `open` | — | |
 
 ### Progress log (newest first, max ~15 lines)
 
+- 2026-08-31 Registered **frontmatter-2.10.0**. P0 annex + OOO. Next: user confirms OOO, then P1 MARKDOWN-STANDARD.
 - 2026-08-31 **files-law-2.9.0** complete: `7823f20` kit `2.9.0`. P0 `752c8a5` · P1 `66b7687` · P2 `9fc97a1` · P3 `5ea9c49` · P4 `c90efc5` · P5 `3d8212c`. Annex archived.
 - 2026-08-22 **workboard-rigidity-2.8.2** complete: `22311d4` kit `2.8.2`. P0 `1e6a003` · P1 `ba79d28` · P2 `6b8d01e` · P3 `ee8114e` · P4 `ff54cef`. Annex archived.
 - 2026-08-21 **density-fixups-2.8.1** complete: `a48324b` kit `2.8.1`. Annex archived.
