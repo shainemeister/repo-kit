@@ -19,6 +19,7 @@ authority_paths:
   - kit/RULES.md
   - kit/rules/versioning-and-git.md
   - kit/rules/hygiene.md
+  - kit/rules/files.md
   - CHANGELOG.md
 references:
   - path: kit/rules/versioning-and-git.md
@@ -42,6 +43,7 @@ verify:
   - conventional commit subject matches staged files
   - CHANGELOG updated when release-worthy
   - no secrets or regenerable dumps staged
+  - new paths follow files.md
 compose_with:
   - security
   - docs-author
@@ -56,6 +58,7 @@ compose_with:
 - Maintain project root CHANGELOG.md (Keep a Changelog).
 - Include AI disclosure trailers when AI assisted (versioning-and-git).
 - Co-update canonical L4 docs when this change set touches contracts.
+- When adding a path, follow [files.md](../../rules/files.md).
 - When Instruct is in use: follow [OPS](../OPS.md) (one primary pack; do not skip match).
 
 ## Must not

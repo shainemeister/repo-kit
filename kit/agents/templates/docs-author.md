@@ -22,6 +22,7 @@ authority_paths:
   - kit/rules/authoring-and-style.md
   - kit/rules/contracts.md
   - kit/rules/workboard.md
+  - kit/rules/files.md
   - kit/templates/
 references:
   - path: kit/MARKDOWN-STANDARD.md
@@ -48,6 +49,7 @@ verify:
   - last citation remains
   - Contents only if ≥ 5 H2s or ≳ 150 lines
   - under class budget or split/justified
+  - directory-index README is not landing shape
 compose_with:
   - maintainer
   - plan-author
@@ -65,6 +67,7 @@ compose_with:
 - When Instruct is in use: follow [OPS](../OPS.md).
 - Distinguish product contracts from root `docs/` AI workspace; promote durable promises to L4.
 - Keep workboard / annex / archive indexes honest when multi-phase docs change ([workboard](../../rules/workboard.md)).
+- When adding a path, follow [files.md](../../rules/files.md).
 
 ## Must not
 

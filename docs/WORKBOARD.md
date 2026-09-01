@@ -51,13 +51,14 @@ last_updated: "2026-08-31"
 | P1 | Draft `kit/rules/files.md` (unique owner only) | `done` | `66b7687` | Unique owner; parent tightened L0 Must for bare adopt |
 | P2 | Wire `kit/RULES.md` (map + domain index + cite) | `done` | `9fc97a1` | Map + domain index; Must index unchanged |
 | P3 | Incorporate peers (hygiene, security, ai-docs, HABITAT, contracts) | `done` | `5ea9c49` | Cite; last citations remain |
-| P4 | SETUP / UPGRADE / templates / examples | `done` | — | Forward-only directory index |
-| P5 | Instruct seeds (`CATALOG` + templates) | `active` | — | No BUILD in this repo |
-| P6 | Ship kit 2.9.0; archive annex | `open` | — | |
+| P4 | SETUP / UPGRADE / templates / examples | `done` | `c90efc5` | Forward-only directory index |
+| P5 | Instruct seeds (`CATALOG` + templates) | `done` | — | No BUILD in this repo |
+| P6 | Ship kit 2.9.0; archive annex | `active` | — | |
 
 ### Progress log (newest first, max ~15 lines)
 
-- 2026-08-31 **P4** SETUP/UPGRADE/templates/examples. Next: P5 Instruct seeds.
+- 2026-08-31 **P5** Instruct seeds cite files.md (no BUILD). Next: P6 ship 2.9.0.
+- 2026-08-31 **P4** SETUP/UPGRADE/templates/examples: `c90efc5`. Next: P5 Instruct seeds.
 - 2026-08-31 **P3** peer cites to files.md: `5ea9c49`. Next: P4 SETUP/UPGRADE/templates/examples.
 - 2026-08-31 **P2** hub map + domain index: `9fc97a1`. Next: P3 peer cites.
 - 2026-08-31 **P1** `kit/rules/files.md` unique owner: `66b7687`. Next: P2 hub map + cite.

@@ -20,6 +20,7 @@ authority_paths:
   - kit/SETUP.md
   - kit/RULES.md
   - kit/rules/hygiene.md
+  - kit/rules/files.md
   - kit/UPGRADE.md
   - kit/agents/PLAN-HOOK.md
   - kit/agents/BUILD.md
@@ -43,6 +44,7 @@ verify:
   - SETUP removed or archived
   - project root CHANGELOG exists
   - Agent models section present and first BUILD run when using agents
+  - map real paths; directory index from adopt date forward (files.md)
 compose_with:
   - plan-author
   - maintainer
@@ -55,6 +57,7 @@ compose_with:
 
 - Keep standards under kit/; product outside.
 - Fill authority map with real or planned paths.
+- When adding a path, follow kit/rules/files.md.
 - Record kit baseline before deleting SETUP.
 - When using Agent Instruct: ensure PLAN Agent models + first BUILD; point operators at OPS for ongoing utilization.
 

@@ -24,6 +24,7 @@ authority_paths:
   - kit/rules/verification-and-ops.md
   - kit/rules/workboard.md
   - kit/rules/continuity.md
+  - kit/rules/files.md
   - PLAN.md
 references:
   - path: kit/rules/architecture.md
@@ -47,6 +48,7 @@ references:
 verify:
   - declared Domain A/B gates for touched languages (from inventory)
   - contracts updated if behavior changed
+  - new source files are noun-named modules; new navigable dirs indexed forward-only
   - "{{VERIFY_COMMANDS}}"
 compose_with:
   - reviewer
@@ -60,6 +62,7 @@ compose_with:
 ## Must
 
 - Respect architecture boundaries and public contracts.
+- When adding a path, follow [files.md](../../rules/files.md).
 - Run declared verification gates for touched surfaces.
 - Co-update canonical docs when behavior changes (same change set).
 - When Instruct is in use: follow [OPS](../OPS.md); open expertise before inventing paths/tools.

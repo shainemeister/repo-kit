@@ -1,7 +1,7 @@
 ---
 title: Agent Catalog
 description: Default portable seed agents for repo-kit Agent Instruct.
-version: "1.2.2"
+version: "1.2.3"
 status: current
 audience:
   - developers
@@ -14,7 +14,7 @@ related:
   - BUILD.md
   - PLAN-HOOK.md
   - templates/
-last_updated: "2026-08-21"
+last_updated: "2026-08-31"
 ---
 
 # Agent Catalog
@@ -95,9 +95,9 @@ Exact enablement is filled by BUILD from PLAN + inventory ([BUILD.md](./BUILD.md
 | **description** | First-time repo-kit adoption: SETUP checklist, kit/ layout, authority map, kit baseline, delete SETUP. |
 | **triggers** | adopt repo-kit, SETUP, first kit, authority map, kit baseline |
 | **negative_triggers** | kit already adopted (baseline present); routine feature work |
-| **authority_paths** | `kit/SETUP.md`, `kit/RULES.md`, `kit/rules/hygiene.md`, `kit/UPGRADE.md`, `kit/agents/PLAN-HOOK.md`, `kit/agents/BUILD.md` |
+| **authority_paths** | `kit/SETUP.md`, `kit/RULES.md`, `kit/rules/hygiene.md`, `kit/rules/files.md`, `kit/UPGRADE.md`, `kit/agents/PLAN-HOOK.md`, `kit/agents/BUILD.md` |
 | **compose_with** | `plan-author`, `maintainer` |
-| **verify** | kit/ present; baseline filled; SETUP removed or archived; project CHANGELOG exists; Agent models + first BUILD when using agents |
+| **verify** | kit/ present; baseline filled; SETUP removed or archived; project CHANGELOG exists; Agent models + first BUILD when using agents; new navigable dirs get directory-index README per files.md (forward-only; not a historical gate) |
 | **template** | [templates/adopter.md](./templates/adopter.md) |
 
 ### `maintainer`
@@ -111,9 +111,9 @@ Exact enablement is filled by BUILD from PLAN + inventory ([BUILD.md](./BUILD.md
 | **description** | Repository maintenance: conventional commits, CHANGELOG, hygiene, AI disclosure, version surfaces. |
 | **triggers** | commit, changelog, release, version bump, git hygiene, tag |
 | **negative_triggers** | greenfield product design with no repo metadata change |
-| **authority_paths** | `kit/RULES.md`, `kit/rules/versioning-and-git.md`, `kit/rules/hygiene.md`, `CHANGELOG.md` |
+| **authority_paths** | `kit/RULES.md`, `kit/rules/versioning-and-git.md`, `kit/rules/hygiene.md`, `kit/rules/files.md`, `CHANGELOG.md` |
 | **compose_with** | `security`, `docs-author` |
-| **verify** | commit type matches staged files; CHANGELOG if release-worthy; no secrets staged |
+| **verify** | commit type matches staged files; CHANGELOG if release-worthy; no secrets staged; new navigable dirs get directory-index README per files.md (forward-only; not a historical gate) |
 | **template** | [templates/maintainer.md](./templates/maintainer.md) |
 
 ### `implementer`
@@ -127,9 +127,9 @@ Exact enablement is filled by BUILD from PLAN + inventory ([BUILD.md](./BUILD.md
 | **description** | Implement product changes within architecture boundaries; run declared verification; co-update contracts. |
 | **triggers** | implement, feature, fix, refactor, code, build |
 | **negative_triggers** | docs-only policy edit with no code; pure kit adoption |
-| **authority_paths** | `kit/rules/architecture.md`, `kit/rules/contracts.md`, `kit/rules/verification-and-ops.md`, `kit/RULES.md`, product PLAN |
+| **authority_paths** | `kit/rules/architecture.md`, `kit/rules/contracts.md`, `kit/rules/verification-and-ops.md`, `kit/RULES.md`, `kit/rules/files.md`, product PLAN |
 | **compose_with** | `reviewer`, `docs-author`, `security` |
-| **verify** | declared Domain A/B gates for touched languages; contracts updated if behavior changed |
+| **verify** | declared Domain A/B gates for touched languages; contracts updated if behavior changed; new navigable dirs get directory-index README per files.md (forward-only; not a historical gate) |
 | **template** | [templates/implementer.md](./templates/implementer.md) |
 
 ### `docs-author`
@@ -143,9 +143,9 @@ Exact enablement is filled by BUILD from PLAN + inventory ([BUILD.md](./BUILD.md
 | **description** | Author kit-shaped and product docs: required core per type, density operators, cite don't reprint, no leftover placeholders. |
 | **triggers** | documentation, README, guide, markdown, frontmatter, docs |
 | **negative_triggers** | binary asset work; pure runtime debug |
-| **authority_paths** | `kit/MARKDOWN-STANDARD.md`, `kit/rules/authoring-and-style.md`, `kit/rules/contracts.md`, `kit/templates/` |
+| **authority_paths** | `kit/MARKDOWN-STANDARD.md`, `kit/rules/authoring-and-style.md`, `kit/rules/contracts.md`, `kit/rules/files.md`, `kit/templates/` |
 | **compose_with** | `maintainer`, `plan-author` |
-| **verify** | links resolve; frontmatter version/last_updated if used; no leftover placeholders in finished docs; no second-home reprint; last citation remains; Contents only if ≥ 5 H2s or ≳ 150 lines; under class budget or split/justified |
+| **verify** | links resolve; frontmatter version/last_updated if used; no leftover placeholders in finished docs; no second-home reprint; last citation remains; Contents only if ≥ 5 H2s or ≳ 150 lines; under class budget or split/justified; new navigable dirs get directory-index README per files.md (forward-only; not a historical gate) |
 | **template** | [templates/docs-author.md](./templates/docs-author.md) |
 
 ### `security`
@@ -255,6 +255,7 @@ Templates under [templates/](./templates/) carry the full Expertise map. Summary
 
 | Version | Notes |
 |---------|--------|
+| 1.2.3 | Seed `authority_paths` + verify cite [files.md](../rules/files.md) (adopter, maintainer, docs-author, implementer); directory-index forward-only |
 | 1.2.2 | Drop in-body document-version echo (kit 2.8.1) |
 | 1.2.1 | docs-author required-core / density verify (kit 2.7.0) |
 | 1.2.0 | plan-author workboard triggers, authority, verify (kit 2.4.0) |
