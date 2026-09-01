@@ -11,16 +11,16 @@ related:
   - ../kit/rules/workboard.md
   - ../kit/CHANGELOG.md
   - ./README.md
+  - ./plan/files-law-2.9.0/README.md
   - ./plan/archive/workboard-rigidity-2.8.2/README.md
   - ./plan/archive/density-fixups-2.8.1/README.md
-  - ./plan/archive/md-density-2.7.0/README.md
-last_updated: "2026-08-22"
+last_updated: "2026-08-31"
 ---
 
 # Workboard
 
-**Updated:** 2026-08-22  
-**Primary program:** `none`  
+**Updated:** 2026-08-31  
+**Primary program:** `files-law-2.9.0`  
 **Rules:** [kit/rules/workboard.md](../kit/rules/workboard.md) · kit README (mission) · [docs/plan/](./plan/) (detail)
 
 | Status | Meaning |
@@ -34,29 +34,31 @@ last_updated: "2026-08-22"
 
 ---
 
-## Active program — none
+## Active program — File law 2.9.0
 
 | Field | Value |
 |-------|--------|
-| **Goal** | — |
-| **L4 docs to update** | — |
-| **Optional annex** | — |
-| **Smoke / gates** | Author checklist; relative links; no `{{PLACEHOLDERS}}` in finished policy |
+| **Goal** | Add `kit/rules/files.md` (create / place / name) without breaking greenfield, existing-adopt, or prior-kit upgrade |
+| **L4 docs to update** | `kit/rules/files.md` (new) · `kit/RULES.md` · hygiene · SETUP · UPGRADE · CHANGELOG `2.9.0` · citation peers in annex OOO |
+| **Optional annex** | [docs/plan/files-law-2.9.0/](./plan/files-law-2.9.0/) |
+| **Smoke / gates** | Author checklist; relative links; no `{{PLACEHOLDERS}}` in finished policy; **not** Domain A/B; no directory-README backfill gate |
 
 ### Phases
 
 | ID | Work | Status | Commit | Notes |
 |----|------|--------|--------|-------|
-| — | — | — | — | Register a program here before multi-phase kit work |
+| P0 | Register annex; freeze adoptability invariants | `done` | — | SHA on next board edit |
+| P1 | Draft `kit/rules/files.md` (unique owner only) | `open` | — | Start only after user confirms OOO |
+| P2 | Wire `kit/RULES.md` (map + domain index + cite) | `open` | — | No reprint of files.md tables |
+| P3 | Incorporate peers (hygiene, security, ai-docs, HABITAT, contracts) | `open` | — | Cite; last citations remain |
+| P4 | SETUP / UPGRADE / templates / examples | `open` | — | Forward-only directory index |
+| P5 | Instruct seeds (`CATALOG` + templates) | `open` | — | No BUILD in this repo |
+| P6 | Ship kit 2.9.0; archive annex | `open` | — | |
 
 ### Progress log (newest first, max ~15 lines)
 
+- 2026-08-31 Registered **files-law-2.9.0**. P0 annex + OOO. Next: user confirms OOO, then P1 `kit/rules/files.md`.
 - 2026-08-22 **workboard-rigidity-2.8.2** complete: `22311d4` kit `2.8.2`. P0 `1e6a003` · P1 `ba79d28` · P2 `6b8d01e` · P3 `ee8114e` · P4 `ff54cef`. Annex archived.
-- 2026-08-22 **P4** trimmed progress log: `ff54cef`. Next: P5 ship 2.8.2.
-- 2026-08-22 **P3** OOO templates: `ee8114e`. Next: P4 trim board log.
-- 2026-08-22 **P2** ai-docs + PLAN-HOOK Must nots: `6b8d01e`. Next: P3 OOO templates.
-- 2026-08-22 **P1** workboard Must-not digest: `ba79d28`. Next: P2 ai-docs + PLAN-HOOK.
-- 2026-08-22 Registered **workboard-rigidity-2.8.2**: `1e6a003`. Next: P1 workboard Must-not digest.
 - 2026-08-21 **density-fixups-2.8.1** complete: `a48324b` kit `2.8.1`. Annex archived.
 - 2026-08-21 **md-density-2.7.0** complete: `2a01b2f` kit `2.7.0` + `2.8.0`. Annex archived.
 - 2026-08-14 **habitat-l0-2.6.0** shipped: `12e0b4b` HABITAT + L0 + SETUP/UPGRADE dual path.

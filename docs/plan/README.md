@@ -6,6 +6,7 @@ Detailed execution plans for kit work. Durable kit version history remains in `k
 
 | Plan | Status | Summary |
 |------|--------|---------|
+| [files-law-2.9.0](./files-law-2.9.0/) | **open** (board annex) | File creation, placement, and naming law (kit 2.9.0) |
 | [workboard-rigidity-2.8.2](./archive/workboard-rigidity-2.8.2/) | archived | Restore workboard Must-not digest; OOO template tighten (kit 2.8.2) |
 | [density-fixups-2.8.1](./archive/density-fixups-2.8.1/) | archived | Surgical citation/chrome patch (kit 2.8.1) |
 | [md-density-2.7.0](./archive/md-density-2.7.0/) | archived | Density + incorporation (kit 2.7.0 / 2.8.0) — read L4, not this pack |
