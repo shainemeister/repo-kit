@@ -48,8 +48,8 @@ last_updated: "2026-08-31"
 | ID | Work | Status | Commit | Notes |
 |----|------|--------|--------|-------|
 | P0 | Register annex; freeze omit list and under-prescription | `done` | `1fee91e` | Annex + OOO; no kit/ edits |
-| P1 | `kit/MARKDOWN-STANDARD.md` (unique owner) | `open` | — | Start only after user confirms OOO |
-| P2 | Cite `files.md` + authoring (no reprint) | `open` | — | Do not reopen adopt-mode matrix |
+| P1 | `kit/MARKDOWN-STANDARD.md` (unique owner) | `done` | — | 1.4.0 omit list + description job |
+| P2 | Cite `files.md` + authoring (no reprint) | `active` | — | Do not reopen adopt-mode matrix |
 | P3 | Templates (`description`; keywords omit-if) | `open` | — | Landing/alias/AGENTS templates stay omit |
 | P4 | SETUP / UPGRADE / examples + this-kit index YAML | `open` | — | Forward-only; closed dogfood list |
 | P5 | Instruct docs-author seed | `open` | — | No BUILD |
@@ -57,6 +57,7 @@ last_updated: "2026-08-31"
 
 ### Progress log (newest first, max ~15 lines)
 
+- 2026-08-31 **P1** MARKDOWN-STANDARD 1.4.0. Next: P2 files.md + authoring cites.
 - 2026-08-31 **P0** registered **frontmatter-2.10.0**: `1fee91e`. Next: user confirms OOO, then P1 MARKDOWN-STANDARD.
 - 2026-08-31 **files-law-2.9.0** complete: `7823f20` kit `2.9.0`. P0 `752c8a5` · P1 `66b7687` · P2 `9fc97a1` · P3 `5ea9c49` · P4 `c90efc5` · P5 `3d8212c`. Annex archived.
 - 2026-08-22 **workboard-rigidity-2.8.2** complete: `22311d4` kit `2.8.2`. P0 `1e6a003` · P1 `ba79d28` · P2 `6b8d01e` · P3 `ee8114e` · P4 `ff54cef`. Annex archived.

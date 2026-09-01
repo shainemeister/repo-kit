@@ -1,7 +1,7 @@
 ---
 title: Markdown Documentation Standard
-description: Cross-functional standard for consistent, professional markdown across any repository or project.
-version: "1.3.2"
+description: Owns markdown structure, YAML identity except the closed omit list, and writing form. Open when adding or editing durable markdown.
+version: "1.4.0"
 status: current
 audience:
   - developers
@@ -22,9 +22,9 @@ last_updated: "2026-08-31"
 
 # Markdown Documentation Standard
 
-A repeatable standard for professional, consistent markdown in any repository—usable across packages, CLIs, methodologies, security notes, design concepts, and runbooks.
+Owns markdown structure, YAML identity except the closed omit list, and writing form.
 
-**Standard version:** 1.3.2  
+**Standard version:** 1.4.0  
 **Location:** `kit/MARKDOWN-STANDARD.md`  
 **Templates:** [`templates/`](./templates/)
 
@@ -34,11 +34,9 @@ A repeatable standard for professional, consistent markdown in any repository—
 
 ## Summary
 
-This document defines **how we structure and write markdown** so docs stay scannable, professional, and easy to maintain. It is **product-agnostic**: the same rules apply to libraries, services, CLIs, data tools, monorepos, and docs-only projects.
+This standard is **product-agnostic**: the same rules apply to libraries, services, CLIs, data tools, monorepos, and docs-only projects.
 
-Most **substantial** documents use **YAML frontmatter**, a clear **H1**, a short **lead**, a **status block**, then the **required core** for the type ([Density](#density-force-and-incorporation)). Copy-paste skeletons live in [`templates/`](./templates/).
-
-**Exception:** the **repository root landing README** (and similar end-user entry pages) intentionally **omit frontmatter** and follow a lighter outline focused on summary and use cases—see [Landing / root README](#landing--root-readme-no-frontmatter).
+Canonical order, field jobs, and the YAML omit list live in the sections below. Copy-paste skeletons: [`templates/`](./templates/).
 
 ---
 
@@ -74,10 +72,15 @@ Most **substantial** documents use **YAML frontmatter**, a clear **H1**, a short
 | Operational runbooks | Deploy, validate, recover | **Yes** |
 | **Repo landing / root entry** | Root [README.md](../README.md) | **No** (by design) |
 
-| Optional / lighter treatment | Examples |
-|------------------------------|----------|
-| Tiny sample folders | Short README without full frontmatter if under ~30 lines |
-| Generated notes | Prefer linking to a curated doc instead of free-form dump |
+| Omit YAML | Why |
+|-----------|-----|
+| Root landing README.md | Landing shape; Overview + Operator prompts |
+| Host aliases (1–3 lines) | HABITAT (host discovery) size cap |
+| Regenerable dumps | Output a command can recreate (`dist/`, coverage, `last_certification.*`, host mirrors of packs)—not authored docs |
+| Keep a Changelog files | H2 → H3 → H4 is the identity |
+| Root AGENTS.md | L0 pointer; hosts load in full |
+
+**Must:** Durable markdown **not** on that omit list **has** YAML. New files: fence in the same change set as create. Existing files: fence when already editing; missing fences on old notes are not a failed complete.
 
 ---
 
@@ -169,9 +172,9 @@ Use this order unless a template of a specific `doc_type` omits an optional bloc
 
 | # | Block | Required? | Purpose |
 |---|--------|-----------|---------|
-| 1 | **YAML frontmatter** | Yes (for standard docs) | Machine-readable metadata |
+| 1 | **YAML frontmatter** | Yes except [omit list](#when-to-use-this-standard) | Identity metadata |
 | 2 | **H1 title** | Yes | Single document title |
-| 3 | **Lead** | Yes | One or two sentences: what this doc is |
+| 3 | **Lead** | Yes | At most one sentence (Should match `description` sentence 1) |
 | 4 | **Status / identity block** | Recommended | Version, path; **Related** line **or** lead citations (3–7 peers; humans must see peers—not YAML-only) |
 | 5 | **Summary** | Policy: decision table ≤ 5 Must rows; **omit** if body ≲ 60 lines. Procedure: omit-if | Orientation before navigation |
 | 6 | **Contents** | Yes if ≥ 5 H2s **or** ≳ 150 lines. Never list Summary as item 1 | Jump navigation |
@@ -182,7 +185,7 @@ Use this order unless a template of a specific `doc_type` omits an optional bloc
 
 ### Why this order
 
-1. **Frontmatter + title** establish identity for humans and tools.  
+1. **Frontmatter + title** establish identity for humans and tools (YAML except the [omit list](#when-to-use-this-standard)).  
 2. **Summary** (when required) answers “is this the right doc?” without a TOC.  
 3. **Contents** only when the threshold is met—chrome, not a joint.  
 4. **Body** is the required core for the type; extra outline items are omit-if ([Density](#density-force-and-incorporation)).  
@@ -199,7 +202,7 @@ Place at the very top of the file, between `---` fences.
 ```yaml
 ---
 title: "Human-readable title"
-description: "One-line description of what this document covers."
+description: "What this document owns and when to open it."
 version: "1.0.0"
 status: current
 audience:
@@ -209,21 +212,26 @@ related:
   - CLI-GUIDE.md
 doc_type: readme
 last_updated: "2026-07-22"
+# keywords:          # optional; omit-if
+#   - alias-not-in-title
 ---
 ```
+
+`description` may be that one sentence or a folded scalar (`>`) when more is needed. Do not pad to a sentence count.
 
 ### Field reference
 
 | Field | Required | Allowed values / notes |
 |-------|----------|-------------------------|
 | `title` | **Yes** | Short title (may match H1 without decoration) |
-| `description` | **Yes** | Single sentence; no marketing fluff |
+| `description` | **Yes** | Canonical blurb (owns + when to open). One sentence is legal; more only if needed; no marketing fluff. Do not reprint the whole blurb in the lead or in `## Summary` |
 | `version` | **Yes** | Semver or doc version string; keep in sync with status block |
 | `status` | **Yes** | `draft` · `current` · `deprecated` |
-| `audience` | **Yes** | YAML list, e.g. `users`, `developers`, `security`, `it`, `analysts`, `automation` |
-| `related` | Substantial docs: **yes** (3–7) | Purpose-labeled peer paths (not the entire tree). Humans also see them via Related line or lead citations |
-| `doc_type` | Recommended | See [Document types](#document-types-and-body-outlines) |
+| `audience` | Yes on substantial docs; omit-if on thin indexes | YAML list, e.g. `users`, `developers`, `security`, `it`, `analysts`, `automation` |
+| `related` | Substantial docs: **yes** (3–7); omit-if on thin files | Purpose-labeled peer paths (not the entire tree; do not fake a peer dump). Humans also see them via Related line or lead citations |
+| `doc_type` | **Yes** | Required identity. See [Document types](#document-types-and-body-outlines) |
 | `last_updated` | **Yes** | ISO date `YYYY-MM-DD` |
+| `keywords` | **No** (optional) | YAML list. If present: small cap (~5–12); user-language aliases not already in `title`/`description`; replace a weak token, don’t grow; never a per-turn tag log |
 
 ---
 
@@ -256,6 +264,8 @@ Omit Contents unless the threshold in [Canonical document order](#canonical-docu
 | Topic | Guidance |
 |-------|----------|
 | Voice | Complete sentences; direct and professional |
+| Language (Must) | Prefer nouns and verbs a stranger would search; gloss kit terms at first use (HABITAT; Domain A = SAST inventory), then reuse |
+| Language (Must not) | Cryptic metaphor, unexplained letter-codes, or in-jokes as the **only** name |
 | Length | Prefer short paragraphs; put parallel facts in tables |
 | Emphasis | **Bold** for critical terms and UI labels |
 | Code | `` `inline` `` for paths, flags, identifiers, column names |
@@ -623,7 +633,7 @@ Before merging or publishing a doc:
 ### Density (all substantial docs)
 
 - [ ] First unique rule within ~40 lines of H1 (policy class)  
-- [ ] No fact in frontmatter **and** lead **and** Summary **and** body  
+- [ ] No fact in frontmatter **and** lead **and** Summary **and** body (`description` owns the blurb)  
 - [ ] Contents omitted unless ≥ 5 H2s or ≳ 150 lines  
 - [ ] Must table ≤ 5 rows on policy files  
 - [ ] Last citation to each used owner remains  
@@ -631,12 +641,13 @@ Before merging or publishing a doc:
 - [ ] Over budget ⇒ split or justify; never delete unique law  
 - [ ] Dual-path restated only if this file owns that switch  
 
-### Standard docs (frontmatter required)
+### Standard docs (frontmatter except omit list)
 
-- [ ] Frontmatter complete; `status` accurate  
+- [ ] Identity fields present (`title`, `description`, `status`, `last_updated`, `doc_type`) except [omit list](#when-to-use-this-standard); `status` accurate  
+- [ ] `description` is the blurb (owns + when to open); lead does not reprint all of it  
+- [ ] `keywords` omit-if; not a dump or per-turn log  
 - [ ] Contents links resolve and match H2 titles (if Contents present)  
 - [ ] Version in frontmatter matches status block (if both exist)  
-- [ ] `last_updated` set  
 
 ### Landing / root README (no frontmatter)
 
@@ -668,6 +679,10 @@ Before merging or publishing a doc:
 | Empty headings to “keep the type” | Delete unused outline items (omit-if) |
 | Must not that is only ¬Must | State the Must; drop the inverse row |
 | Root README that is only a file dump | Overview + Operator prompts |
+| YAML on [omit-list](#when-to-use-this-standard) files | Omit the fence; landing, host aliases, dumps, CHANGELOG, and root `AGENTS.md` stay unfenced |
+| Appending `keywords` each chat | Replace a weak token or omit; never a per-turn tag log |
+| Padding `description` to a sentence quota | One sentence is legal; more only if needed |
+| Third prose recap in `## Summary` | Must table or omit-if; `description` already owns the blurb |
 | Frontmatter on the root landing README | Omit frontmatter; H1 + lead + Overview |
 | Root page that opens with RULES / catalog / templates | Overview first; Operator prompts last |
 | Root README missing `## Operator prompts` | Required load-path H2 |
@@ -683,6 +698,7 @@ Before merging or publishing a doc:
 
 | Version | Notes |
 |---------|--------|
+| 1.4.0 | YAML except omit list; description is the one blurb; optional keywords; descriptive language (kit 2.10.0) |
 | 1.3.2 | Directory-index type (omit-if); TEMPLATE-DIR-README; forward-only checklist (kit 2.9.0) |
 | 1.3.1 | Hub `related:` may be the module index (kit 2.8.1) |
 | 1.3.0 | Density, force, incorporation, Contents threshold, citation cap (kit 2.7.0) |
