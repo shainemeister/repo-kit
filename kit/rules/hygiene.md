@@ -1,7 +1,7 @@
 ---
 title: Root Hygiene
 description: Unified packaging—standards under kit/, repository-specific data outside; SETUP and UPGRADE lifecycles.
-version: "1.6.0"
+version: "1.6.1"
 status: current
 audience:
   - developers
@@ -11,18 +11,18 @@ related:
   - ../RULES.md
   - ../SETUP.md
   - ../UPGRADE.md
-  - ../CHANGELOG.md
+  - ./files.md
   - ./ai-docs-workspace.md
   - ./workboard.md
   - ../../README.md
-last_updated: "2026-08-19"
+last_updated: "2026-08-31"
 ---
 
 # Root Hygiene
 
 Keep the repository root **scannable**: entry points and project-specific surfaces first; **standards under `kit/`**; product code and AI workspace in purpose directories outside `kit/`.
 
-**Related:** [RULES.md](../RULES.md) · [SETUP.md](../SETUP.md) · [UPGRADE.md](../UPGRADE.md) · [CHANGELOG.md](../CHANGELOG.md) · [ai-docs-workspace.md](./ai-docs-workspace.md) · [workboard.md](./workboard.md) · [README.md](../../README.md)
+**Related:** [RULES.md](../RULES.md) · [SETUP.md](../SETUP.md) · [UPGRADE.md](../UPGRADE.md) · [files.md](./files.md) · [ai-docs-workspace.md](./ai-docs-workspace.md) · [workboard.md](./workboard.md) · [README.md](../../README.md)
 
 ---
 
@@ -65,6 +65,8 @@ Keep the repository root **scannable**: entry points and project-specific surfac
 ---
 
 ## What belongs at project root
+
+When to create a path, how to name it, and when a directory needs an index README: [files.md](./files.md) (this table catalogs homes).
 
 | File / item | Role |
 |-------------|------|
@@ -153,6 +155,7 @@ Keep the repository root **scannable**: entry points and project-specific surfac
 
 | Version | Notes |
 |---------|--------|
+| 1.6.1 | Cite files.md for create/place/name/index; packaging Musts unchanged |
 | 1.6.0 | Restyle to density shape (kit 2.7.0); unique packaging rules unchanged |
 | 1.5.1 | Root README landing shape required (kit 2.6.2) |
 | 1.5.0 | Optional root `AGENTS.md` / thin host alias; regenerable host mirrors (kit 2.6.0) |

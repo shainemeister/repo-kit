@@ -1,7 +1,7 @@
 ---
 title: Security Baseline
 description: Trust baseline, security doc modularity, language surface inventory, SAST gates, and certification schema.
-version: "1.1.1"
+version: "1.1.2"
 status: current
 audience:
   - developers
@@ -12,16 +12,17 @@ related:
   - ./contracts.md
   - ./authoring-and-style.md
   - ./verification-and-ops.md
+  - ./files.md
   - ../templates/TEMPLATE-SECURITY.md
   - ../templates/TEMPLATE-CERTIFICATION-README.md
-last_updated: "2026-08-21"
+last_updated: "2026-08-31"
 ---
 
 # Security Baseline
 
 Hard rules for product code and launchers, inventory-driven SAST, and optional formal certification. This file owns the inventory on/off switch for Domain A and Domain B.
 
-**Related:** [RULES.md](../RULES.md) · [contracts.md](./contracts.md) · [authoring-and-style.md](./authoring-and-style.md) · [verification-and-ops.md](./verification-and-ops.md) · [TEMPLATE-SECURITY](../templates/TEMPLATE-SECURITY.md) · [TEMPLATE-CERTIFICATION-README](../templates/TEMPLATE-CERTIFICATION-README.md)
+**Related:** [RULES.md](../RULES.md) · [contracts.md](./contracts.md) · [authoring-and-style.md](./authoring-and-style.md) · [verification-and-ops.md](./verification-and-ops.md) · [files.md](./files.md) · [TEMPLATE-SECURITY](../templates/TEMPLATE-SECURITY.md) · [TEMPLATE-CERTIFICATION-README](../templates/TEMPLATE-CERTIFICATION-README.md)
 
 ---
 
@@ -63,7 +64,7 @@ When a package security doc is required, it owns full matrices ([authority map](
 
 ## Security documentation modularity
 
-Create or maintain a package `SECURITY.md` (or equivalent) **only when** the package has an **execution surface**, **network access**, **elevated privilege**, or **handles secrets**. Pure documentation packages and pure libraries with **no runtime side effects** may **omit** security documentation entirely—do not create empty files to satisfy a template habit.
+Create or maintain a package `SECURITY.md` (or equivalent) **only when** the package has an **execution surface**, **network access**, **elevated privilege**, or **handles secrets**. Pure documentation packages and pure libraries with **no runtime side effects** may **omit** security documentation entirely—do not create empty files to satisfy a template habit. Where the file lives, and whether to create an empty `SECURITY.md`: [files.md](./files.md) (placement); this section still owns the **trigger**.
 
 | Situation | `SECURITY.md` |
 |-----------|---------------|
@@ -221,6 +222,7 @@ Operator skeleton: [TEMPLATE-CERTIFICATION-README.md](../templates/TEMPLATE-CERT
 
 | Version | Notes |
 |---------|--------|
+| 1.1.2 | Cite files.md for SECURITY.md placement; modularity trigger unchanged |
 | 1.1.1 | Density restyle (kit 2.8.0); inventory, SAST, and certification catalogs unchanged |
 | 1.1.0 | Named C/C++ surface (clang-format + clang-tidy / cppcheck); Rust Domain B points at style-gate chapter (kit 2.5.0) |
 | 1.0.0 | Extracted from RULES 1.4.1 for kit 2.0 |

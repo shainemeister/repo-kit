@@ -1,7 +1,7 @@
 ---
 title: Host Habitat (L0)
 description: Detect and create thin always-on discovery files in each coding-agent host’s natural path; portable law stays under kit/.
-version: "1.0.2"
+version: "1.0.3"
 status: current
 audience:
   - developers
@@ -12,17 +12,17 @@ related:
   - OPS.md
   - FRAMEWORK.md
   - ../RULES.md
-  - ../SETUP.md
   - ../templates/TEMPLATE-AGENTS.md
   - ../rules/hygiene.md
-last_updated: "2026-08-21"
+  - ../rules/files.md
+last_updated: "2026-08-31"
 ---
 
 # Host Habitat (L0)
 
 How AI and humans **establish thin discovery files where a coding-agent host already looks**, without moving law out of `kit/` or inventing host folder trees. `kit/agents/` is **L2** (how to match, build, and run). It is not the file most hosts auto-load.
 
-**Related:** [README.md](./README.md) · [OPS.md](./OPS.md) · [FRAMEWORK.md](./FRAMEWORK.md) · [RULES.md](../RULES.md) · [SETUP.md](../SETUP.md) · [TEMPLATE-AGENTS](../templates/TEMPLATE-AGENTS.md) · [hygiene](../rules/hygiene.md)
+**Related:** [README.md](./README.md) · [OPS.md](./OPS.md) · [FRAMEWORK.md](./FRAMEWORK.md) · [RULES.md](../RULES.md) · [TEMPLATE-AGENTS](../templates/TEMPLATE-AGENTS.md) · [hygiene](../rules/hygiene.md) · [files.md](../rules/files.md)
 
 ---
 
@@ -38,7 +38,7 @@ How AI and humans **establish thin discovery files where a coding-agent host alr
 
 No coding agent and the user did not ask: **skip this module**. Docs-only repos that *are* agent-maintained still get a thin `AGENTS.md`. Habitat vs skip follows the same evidence dual path as style configs. Instruct vs bare: [PLAN dual path](./PLAN-HOOK.md#plan-dual-path).
 
-**Enforcement:** Policy + operator / SETUP procedure. **Not** a Domain A/B gate.
+**Enforcement:** Policy + operator / [SETUP](../SETUP.md) procedure. **Not** a Domain A/B gate.
 
 ---
 
@@ -99,6 +99,8 @@ Do not treat “the kit *could* support N hosts” as evidence for N trees.
 ---
 
 ## Create and alias
+
+Whether to create `AGENTS.md` remains this file; the habitat path category is [files.md](../rules/files.md) (do not add root `./rules/`).
 
 1. If root `AGENTS.md` is missing, copy [TEMPLATE-AGENTS.md](../templates/TEMPLATE-AGENTS.md) and replace placeholders.  
 2. List existing habitat files. Leave them in place.  
@@ -178,6 +180,7 @@ Kit correctness does **not** depend on any host skill directory ([RUNTIME](./RUN
 
 | Version | Notes |
 |---------|--------|
+| 1.0.3 | Cite files.md for habitat path category; L0 pointer and evidence rules unchanged |
 | 1.0.2 | Drop in-body document-version echo (kit 2.8.1) |
 | 1.0.1 | Density restyle (kit 2.8.0); unique L0 pointer, evidence, and host catalog unchanged |
 | 1.0.0 | Initial habitat module (kit 2.6.0) |

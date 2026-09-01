@@ -1,7 +1,7 @@
 ---
 title: Contracts
 description: What counts as a contract, canonical ownership, co-update rules, fixtures/schema/API, and cross-reference policy.
-version: "1.4.1"
+version: "1.4.2"
 status: current
 audience:
   - developers
@@ -13,17 +13,17 @@ related:
   - ./architecture.md
   - ./versioning-and-git.md
   - ./verification-and-ops.md
-  - ./ai-docs-workspace.md
+  - ./files.md
   - ./workboard.md
   - ../MARKDOWN-STANDARD.md
-last_updated: "2026-08-21"
+last_updated: "2026-08-31"
 ---
 
 # Contracts
 
 Stable promises a repository makes—behavior, shapes, exits, fields—and the rules for keeping them honest.
 
-**Related:** [RULES.md](../RULES.md) · [architecture.md](./architecture.md) · [versioning-and-git.md](./versioning-and-git.md) · [verification-and-ops.md](./verification-and-ops.md) · [ai-docs-workspace.md](./ai-docs-workspace.md) · [workboard.md](./workboard.md) · [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md)
+**Related:** [RULES.md](../RULES.md) · [architecture.md](./architecture.md) · [versioning-and-git.md](./versioning-and-git.md) · [verification-and-ops.md](./verification-and-ops.md) · [files.md](./files.md) · [workboard.md](./workboard.md) · [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md)
 
 ---
 
@@ -103,7 +103,7 @@ When behavior or a public contract changes, ship together (as applicable):
 3. Version bump when a public surface changes  
 4. Project `CHANGELOG.md` when the change is release-worthy  
 
-Details: [versioning-and-git.md](./versioning-and-git.md). Proof before “done”: [verification-and-ops.md](./verification-and-ops.md).
+A new path or name follows [files.md](./files.md); this file still owns what is a contract. Details: [versioning-and-git.md](./versioning-and-git.md). Proof before “done”: [verification-and-ops.md](./verification-and-ops.md).
 
 ---
 
@@ -170,6 +170,7 @@ Every substantial markdown file should remain navigable for humans and AI agents
 
 | Version | Notes |
 |---------|--------|
+| 1.4.2 | Cite files.md for new path/name; ownership and same-change-set unchanged |
 | 1.4.1 | Density restyle (kit 2.8.0); unique ownership, same-change-set, and incorporation rules unchanged |
 | 1.4.0 | Incorporation + inbound-link duty (kit 2.7.0) |
 | 1.3.2 | Operator prompts is not a product contract (kit 2.6.2) |

@@ -1,7 +1,7 @@
 ---
 title: AI Docs Workspace
 description: Project root docs/ as modular AI resource workspace—research, workboard, plan, project_build, resources; lifecycle and promotion to L4.
-version: "1.1.3"
+version: "1.1.4"
 status: current
 audience:
   - developers
@@ -14,16 +14,16 @@ related:
   - ./contracts.md
   - ./workboard.md
   - ../agents/PLAN-HOOK.md
-  - ../UPGRADE.md
+  - ./files.md
   - ../templates/docs/README.md
-last_updated: "2026-08-22"
+last_updated: "2026-08-31"
 ---
 
 # AI Docs Workspace
 
 Policy for the project **root `docs/`** tree: a **modular AI resource workspace** for research, detailed plans, project build context, and curated resources. Live content is **outside `kit/`**. Portable policy and templates live under `kit/`.
 
-**Related:** [RULES.md](../RULES.md) · [hygiene.md](./hygiene.md) · [contracts.md](./contracts.md) · [workboard.md](./workboard.md) · [PLAN-HOOK.md](../agents/PLAN-HOOK.md) · [UPGRADE.md](../UPGRADE.md) · [templates/docs/README.md](../templates/docs/README.md)
+**Related:** [RULES.md](../RULES.md) · [hygiene.md](./hygiene.md) · [contracts.md](./contracts.md) · [workboard.md](./workboard.md) · [PLAN-HOOK.md](../agents/PLAN-HOOK.md) · [files.md](./files.md) · [templates/docs/README.md](../templates/docs/README.md)
 
 ---
 
@@ -115,6 +115,8 @@ Templates: [templates/docs/](../templates/docs/).
 ---
 
 ## Lifecycle (dynamic)
+
+When to `mkdir` a `docs/` module: [files.md](./files.md) (evidence); this file still owns the module list and promotion.
 
 ```text
 1. Trigger (research / multi-step plan / non-trivial build / user asks for workspace)
@@ -219,6 +221,7 @@ External citations follow the same trust idea as Agent Instruct expertise: **gui
 
 | Version | Notes |
 |---------|--------|
+| 1.1.4 | Cite files.md for docs/ mkdir evidence; module list and promotion unchanged |
 | 1.1.3 | Restore unique Must-not digest (kit 2.8.2) |
 | 1.1.2 | Density restyle (kit 2.8.0); unique rules unchanged |
 | 1.1.1 | Durable agent procedure promotes to PLAN / kit/agents, not a docs essay (kit 2.6.0) |
