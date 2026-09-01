@@ -1,7 +1,7 @@
 ---
 title: Repository Maintenance Rules
 description: Maintenance policy hub—authority map, kit baseline, and index to domain rule modules.
-version: "2.7.1"
+version: "2.7.2"
 status: current
 audience:
   - developers
@@ -18,6 +18,7 @@ related:
   - agents/OPS.md
   - agents/HABITAT.md
   - rules/hygiene.md
+  - rules/files.md
   - rules/authoring-and-style.md
   - rules/architecture.md
   - rules/contracts.md
@@ -32,14 +33,14 @@ related:
   - configs/clippy.toml
   - configs/clang-format
   - configs/clang-tidy
-last_updated: "2026-08-21"
+last_updated: "2026-08-31"
 ---
 
 # Repository Maintenance Rules
 
 Fundamental rules for maintaining a professional, auditable repository. This file is the **hub**: authority map, kit baseline, and Must / Must not. Domain detail lives in [rules/](./rules/). In adopting product repos this hub lives at **`kit/RULES.md`**.
 
-**Related:** [README.md](../README.md) · [SETUP.md](./SETUP.md) · [UPGRADE.md](./UPGRADE.md) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) · [CHANGELOG.md](./CHANGELOG.md) · [HABITAT](./agents/HABITAT.md) · [rules/](./rules/) · [workboard.md](./rules/workboard.md)
+**Related:** [README.md](../README.md) · [SETUP.md](./SETUP.md) · [UPGRADE.md](./UPGRADE.md) · [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) · [CHANGELOG.md](./CHANGELOG.md) · [HABITAT](./agents/HABITAT.md) · [rules/](./rules/) · file placement [files.md](./rules/files.md) · [workboard.md](./rules/workboard.md)
 
 ---
 
@@ -141,6 +142,7 @@ Replace paths below with your project’s real files. Rows that do not apply may
 | Maintenance policy hub (this file) | **`kit/RULES.md`** ([RULES.md](./RULES.md)) |
 | Contract policy (breaking changes, co-updates, cross-links) | [rules/contracts.md](./rules/contracts.md) |
 | Root hygiene / packaging (`kit/` vs product) | [rules/hygiene.md](./rules/hygiene.md) |
+| File placement / creation / naming | [rules/files.md](./rules/files.md) — create, category, path shape, directory index (forward-only; not Domain A/B) |
 | Authoring + style gates | [rules/authoring-and-style.md](./rules/authoring-and-style.md) |
 | Architecture boundaries | [rules/architecture.md](./rules/architecture.md) |
 | Security, inventory, SAST, certification | [rules/security.md](./rules/security.md) |
@@ -184,6 +186,7 @@ Replace paths below with your project’s real files. Rows that do not apply may
 | Module | Topic |
 |--------|--------|
 | [rules/hygiene.md](./rules/hygiene.md) | Packaging: standards under `kit/`; product outside; SETUP/UPGRADE lifecycle |
+| [rules/files.md](./rules/files.md) | File creation, placement, naming; directory index; adopt-mode matrix |
 | [rules/authoring-and-style.md](./rules/authoring-and-style.md) | Docs rules; formatting; pylint; non-Python style |
 | [rules/architecture.md](./rules/architecture.md) | Entry points, composition, runtime separation, dependencies |
 | [rules/contracts.md](./rules/contracts.md) | What is a contract; co-updates; cross-reference policy |
@@ -272,6 +275,7 @@ Copy-paste prompt also on root [README — Upgrade repo-kit](../README.md#upgrad
 
 | Version | Notes |
 |---------|--------|
+| 2.7.2 | Authority-map + domain-index row for files.md (kit 2.9.0); Must index unchanged |
 | 2.7.1 | Hub chrome (identity echo, Contents); Must index unchanged so the map stays complete (kit 2.8.0) |
 | 2.7.0 | Density + incorporation: unique rules only; cite don’t reprint; last citation remains (kit 2.7.0) |
 | 2.6.2 | Root README landing shape is required (Overview + Operator prompts) |
