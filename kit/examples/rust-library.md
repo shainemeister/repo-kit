@@ -1,3 +1,20 @@
+---
+title: "Example: Rust library crate"
+description: Illustrative filled authority map and verification for a Rust crate. Open when the interest is a Rust library.
+status: current
+audience:
+  - developers
+  - maintainers
+doc_type: other
+related:
+  - ../SETUP.md
+  - ../RULES.md
+  - ../MARKDOWN-STANDARD.md
+  - ../rules/files.md
+  - ../rules/hygiene.md
+last_updated: "2026-08-31"
+---
+
 # Example: Rust library crate
 
 **Illustrative only** — copy the *pattern* of a filled authority map and verification table. Replace names and commands with your project’s. Use this file when the interest is a **Rust** crate. Docs-only adopters use [docs-only.md](./docs-only.md) and skip these configs.

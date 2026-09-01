@@ -1,3 +1,20 @@
+---
+title: "Example: CLI / automation tool"
+description: Illustrative filled authority map and verification for a CLI or automation tool. Open when the interest is a command-line product.
+status: current
+audience:
+  - developers
+  - maintainers
+doc_type: other
+related:
+  - ../SETUP.md
+  - ../RULES.md
+  - ../MARKDOWN-STANDARD.md
+  - ../rules/files.md
+  - ../rules/hygiene.md
+last_updated: "2026-08-31"
+---
+
 # Example: CLI / automation tool
 
 **Illustrative only** — copy the *pattern* of a filled authority map and verification table. Replace names and commands with your project’s.

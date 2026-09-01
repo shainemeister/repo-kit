@@ -1,3 +1,11 @@
+---
+title: "docs/plan/ (repo-kit)"
+description: Index of detailed execution plans and program annexes. Open when adding a plan or checking whether an annex is live on the workboard.
+status: current
+doc_type: other
+last_updated: "2026-08-31"
+---
+
 # docs/plan/ (repo-kit)
 
 Detailed execution plans for kit work. Durable kit version history remains in `kit/CHANGELOG.md`.

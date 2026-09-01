@@ -1,3 +1,22 @@
+---
+title: Setup — One-time adoption guide
+description: Owns first kit adopt, including copy/fill of durable markdown YAML except the omit list. Open when starting or aligning a repository with no Kit baseline; delete or archive after initiation.
+status: current
+audience:
+  - developers
+  - maintainers
+doc_type: other
+related:
+  - RULES.md
+  - UPGRADE.md
+  - MARKDOWN-STANDARD.md
+  - CHANGELOG.md
+  - ../README.md
+  - rules/files.md
+  - rules/hygiene.md
+last_updated: "2026-08-31"
+---
+
 # Setup — One-time adoption guide
 
 > **One-time adoption guide — follow, then delete or archive.**
@@ -46,7 +65,7 @@ Layout doctrine: [rules/hygiene.md](./rules/hygiene.md). Agent Instruct: [agents
 For a **live codebase** that has never recorded a Kit baseline:
 
 1. **Inventory current state** — languages, packages, existing README/docs, CI, secrets posture.  
-2. **Do not force a directory rewrite** of product code; map **real** paths into the authority map. Directory index applies **from the adopt date forward** ([files.md](./rules/files.md)) — do not backfill historical folders.  
+2. **Do not force a directory rewrite** of product code; map **real** paths into the authority map. Directory index applies **from the adopt date forward** ([files.md](./rules/files.md)) — do not backfill historical folders. Do **not** rewrite product trees to inject YAML. New durable markdown gets a fence except the [omit list](./MARKDOWN-STANDARD.md#when-to-use-this-standard); existing files when already editing.  
 3. **Add `kit/`** — do **not** place RULES / MARKDOWN-STANDARD / rules modules on the product root as the default.  
 4. **Minimal viable adopt:** `kit/RULES.md` hub + kit baseline + root project `CHANGELOG.md` + `kit/MARKDOWN-STANDARD.md` (or link) + language inventory + verification rows for languages you already ship. **Reshape** the existing root `README.md` to **Overview** + **Operator prompts** (load path for *this* repo — do not paste upstream kit adopt fences).  
 5. **Add contracts only where surfaces exist** (package CLI guide if a CLI exists; skip empty SECURITY per [modularity](./rules/security.md#security-documentation-modularity)).  
@@ -84,7 +103,7 @@ Follow [Platform-aware examples](./MARKDOWN-STANDARD.md#platform-aware-examples)
 
 | Piece | Target | Always? | Notes |
 |-------|--------|---------|--------|
-| [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) | `kit/` | Yes (or link) | Authoring rules |
+| [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) | `kit/` | Yes (or link) | Authoring rules; copy/fill durable markdown YAML except the [omit list](./MARKDOWN-STANDARD.md#when-to-use-this-standard) |
 | [RULES.md](./RULES.md) | `kit/` | Yes | Fill authority map and kit baseline |
 | [rules/](./rules/) | `kit/rules/` | Recommended | Domain modules; or fold into single `kit/RULES.md` (document in authority map) |
 | [rules/files.md](./rules/files.md) | `kit/rules/` | Recommended (with rules/) | Create/place/name; directory index forward-only |
@@ -219,7 +238,7 @@ Scaffold formal docs **before** or **in the same change set as** first code:
 1. Copy the chosen template(s) into the **package** path (outside `kit/`). Keep the required core; delete omit-if sections that do not apply.  
 2. Replace every `{{PLACEHOLDER}}`.  
 3. Refresh Contents **if present** (only if ≥ 5 H2s or ≳ 150 lines).  
-4. Leave frontmatter `status: draft` until the contract matches behavior.  
+4. Leave frontmatter `status: draft` until the contract matches behavior. Durable markdown not on the [omit list](./MARKDOWN-STANDARD.md#when-to-use-this-standard) gets YAML in the same change set as create.  
 5. Root README: **required** [landing pattern](./MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter) — no frontmatter; `## Overview` then `## Operator prompts`. Start from [TEMPLATE-LANDING-README.md](./templates/TEMPLATE-LANDING-README.md) or rewrite the existing root README. Do not copy this kit’s adopt/upgrade fences onto a product landing. Package READMEs still use [TEMPLATE-README.md](./templates/TEMPLATE-README.md).
 
 ---

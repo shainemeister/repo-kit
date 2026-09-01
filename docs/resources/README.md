@@ -1,3 +1,11 @@
+---
+title: "docs/resources/ (repo-kit)"
+description: Index of curated in-repo and external resources for kit maintainers. Open when adding or finding high-signal citations.
+status: current
+doc_type: other
+last_updated: "2026-08-31"
+---
+
 # docs/resources/ (repo-kit)
 
 Curated resources for kit maintainers and AI.

@@ -1,3 +1,20 @@
+---
+title: "Example: Docs-only / standards repository"
+description: Illustrative filled authority map and verification for a docs-only or standards repo. Open when adopting the kit with no product code.
+status: current
+audience:
+  - developers
+  - maintainers
+doc_type: other
+related:
+  - ../SETUP.md
+  - ../RULES.md
+  - ../MARKDOWN-STANDARD.md
+  - ../rules/files.md
+  - ../rules/hygiene.md
+last_updated: "2026-08-31"
+---
+
 # Example: Docs-only / standards repository
 
 **Illustrative only** — copy the *pattern* of a filled authority map and verification table. Replace names and paths with your project’s.

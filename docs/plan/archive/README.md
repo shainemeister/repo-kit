@@ -1,3 +1,11 @@
+---
+title: "docs/plan/archive/"
+description: Index of shipped program annexes after archive. Open when reading historical kit programs; not the live todo list.
+status: current
+doc_type: other
+last_updated: "2026-08-31"
+---
+
 # docs/plan/archive/
 
 Shipped program annexes live here after `git mv` from `docs/plan/<program-id>/`.

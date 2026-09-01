@@ -1,7 +1,7 @@
 ---
 title: Upgrade repo-kit
 description: Durable guide for upgrading an existing kit baseline, including 1.x to 2.x layout migration (standards under kit/) and merge options.
-version: "1.8.4"
+version: "1.8.5"
 status: current
 audience:
   - developers
@@ -68,7 +68,7 @@ Durable procedure for **repositories that already adopted** the Repository Stand
 1. Read this project’s **Kit baseline** (Adopted kit version, Kit source, Adopted on) in **`kit/RULES.md`**.  
 2. Open **Kit source** (canonical: https://github.com/shainemeister/repo-kit) → [`kit/CHANGELOG.md`](./CHANGELOG.md) → `## repo-kit`.  
 3. List releases **after** your Adopted kit version only.  
-4. Build a **focused merge plan**: only pieces this project uses (hub `RULES.md`, `rules/*` including **ai-docs-workspace**, **workboard**, **continuity** policy, **files.md**, `MARKDOWN-STANDARD.md`, templates including **TEMPLATE-LANDING-README.md**, **templates/docs/** and **WORKBOARD.md**, configs, **`kit/agents/HABITAT.md`** if a coding agent is used, remaining **`kit/agents/`** if Instruct is used, `.gitignore` patterns).  
+4. Build a **focused merge plan**: only pieces this project uses (hub `RULES.md`, `rules/*` including **ai-docs-workspace**, **workboard**, **continuity** policy, **files.md**, `MARKDOWN-STANDARD.md` (**1.4.0** — YAML except omit list; do not sweep product trees for historical fences), templates including **TEMPLATE-LANDING-README.md**, **templates/docs/** and **WORKBOARD.md**, configs, **`kit/agents/HABITAT.md`** if a coding agent is used, remaining **`kit/agents/`** if Instruct is used, `.gitignore` patterns).  
 5. **Merge into project `kit/`** — not onto the product root. **Preserve** project root **`docs/`** content (do not overwrite with empty templates). **Never** replace a filled `docs/WORKBOARD.md` with the empty template. Merge new files under `kit/configs/` (pylintrc, rustfmt.toml, clippy.toml, clang-format, clang-tidy) as **catalog**. Do **not** force-copy them onto the product root; copy to `.pylintrc` / `rustfmt.toml` / `.clang-format` only when that language is **in the inventory**. If a coding agent is used (or root `AGENTS.md` exists): merge `kit/agents/HABITAT.md` and L0 templates. **Preserve** a filled root `AGENTS.md` and host aliases — do not overwrite with the empty template. Kit **2.7.0** density and templates are the contract; later module restyles are editorial — preserve local additions.  
 6. **Root `README.md`:** required [landing](./MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter) — no frontmatter; `## Overview` then `## Operator prompts`. Rewrite in place or start from [TEMPLATE-LANDING-README.md](./templates/TEMPLATE-LANDING-README.md). Keep this repo’s Overview content; Operator prompts is **this** repo’s session load path — do not paste upstream kit adopt/upgrade fences. Package READMEs stay on [TEMPLATE-README.md](./templates/TEMPLATE-README.md).  
 7. **Preserve** project-specific values — see [Preserve list](#preserve-list).  
@@ -193,6 +193,7 @@ Never clobber on merge:
 - Custom `kit/agents/generated/` packs with `portability: adopter` or `platform`  
 - PLAN overlay source files (repo-relative paths)  
 - Do **not** backfill directory-index READMEs for historical folders ([files.md](./rules/files.md) is **forward-only**; not a failed complete)  
+- Do **not** treat historical missing YAML fences as a failed complete ([MARKDOWN-STANDARD](./MARKDOWN-STANDARD.md#when-to-use-this-standard) is **forward-only** / on-edit; same spirit as directory-index)  
 - Do **not** create root `./rules/` as a compat tree; law stays under `kit/`  
 - Folded-hub adopters: port [files.md](./rules/files.md) into the hub **or** keep `kit/rules/files.md`; record in the map  
 
@@ -234,6 +235,7 @@ This repository has no repo-kit baseline. Follow kit/SETUP.md selective adoption
 
 | Version | Notes |
 |---------|--------|
+| 1.8.5 | Merge MARKDOWN-STANDARD 1.4.0; no complete-fail for historical missing YAML fences (forward-only / on-edit) (kit 2.10.0) |
 | 1.8.4 | Merge files.md with rules/*; no directory-index backfill; no root `./rules/` compat tree (kit 2.9.0) |
 | 1.8.3 | Density chrome (kit 2.8.0); preserve list and upgrade steps unchanged |
 | 1.8.2 | Preserve filled product docs; 2.8.0+ rules restyles editorial (kit 2.7.0) |

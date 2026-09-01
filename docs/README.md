@@ -1,3 +1,11 @@
+---
+title: "docs/ — AI resource workspace (repo-kit)"
+description: Index of this kit’s AI docs workspace. Open when scaffolding or updating research, plan, workboard, build, or resource modules.
+status: current
+doc_type: other
+last_updated: "2026-08-31"
+---
+
 # docs/ — AI resource workspace (repo-kit)
 
 This repository’s **AI resource workspace** (outside `kit/`). Live project notes for maintaining **repo-kit** itself.

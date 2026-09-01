@@ -1,3 +1,20 @@
+---
+title: "Example: C / C++ library"
+description: Illustrative filled authority map and verification for a C or C++ library. Open when the interest is a C or C++ package.
+status: current
+audience:
+  - developers
+  - maintainers
+doc_type: other
+related:
+  - ../SETUP.md
+  - ../RULES.md
+  - ../MARKDOWN-STANDARD.md
+  - ../rules/files.md
+  - ../rules/hygiene.md
+last_updated: "2026-08-31"
+---
+
 # Example: C / C++ library
 
 **Illustrative only** — copy the *pattern* of a filled authority map and verification table. Replace names and commands with your project’s. Use this file when the interest is a **C or C++** library. Docs-only adopters use [docs-only.md](./docs-only.md) and skip these configs.
