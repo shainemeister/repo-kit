@@ -30,6 +30,7 @@ Optional: methodology template if formulas or scoring are part of the contract.
 | Markdown structure | `kit/MARKDOWN-STANDARD.md` |
 | Maintenance policy | `kit/RULES.md` + `kit/rules/` |
 | Contract policy | `kit/rules/contracts.md` |
+| File placement / creation / naming | `kit/rules/files.md` |
 | Project history (**required**) | Root `CHANGELOG.md` |
 | Standards kit baseline | `kit/RULES.md` — Kit baseline |
 | Package overview | `my_library/README.md` |
@@ -84,6 +85,7 @@ Optional: methodology template if formulas or scoring are part of the contract.
 | Formal certification | If `certification/` maintained: regenerate `last_certification.*`; do not stage outputs |
 | Schema or sample data | Headers/fields match schema; consumers still load samples |
 | Docs only | Author checklist (including [density](../MARKDOWN-STANDARD.md#density-force-and-incorporation)); relative links resolve; last citations remain; consume example in README still runs |
+| New navigable directory | Directory-index `README.md` (file → function) for **new** dirs ([files.md](../rules/files.md)); **forward-only** — not a gate for historical folders |
 
 **Adopt pylint:** copy `kit/configs/pylintrc` to package or repo root as `.pylintrc`; set `py-version`; keep pylint **developer-only**. Declared gates must pass before task completion ([Completion rule](../rules/verification-and-ops.md#completion-rule)). Upgrades: [UPGRADE.md](../UPGRADE.md).
 

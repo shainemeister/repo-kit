@@ -13,7 +13,8 @@ This project uses **repo-kit**. Portable law is under `kit/`. This file is a **p
 ## Working memory
 
 - Multi-phase work: `docs/WORKBOARD.md` **if that file exists**. Do not keep the only plan in chat.  
-- Research / build notes: root `docs/` when needed (`kit/rules/ai-docs-workspace.md`). Promote durable promises to L4 owners.
+- Research / build notes: root `docs/` when needed (`kit/rules/ai-docs-workspace.md`). Promote durable promises to L4 owners.  
+- When adding, moving, or splitting a path, follow `kit/rules/files.md` (do not paste that module here).
 
 ## Agent Instruct (only if present)
 

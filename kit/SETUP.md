@@ -46,7 +46,7 @@ Layout doctrine: [rules/hygiene.md](./rules/hygiene.md). Agent Instruct: [agents
 For a **live codebase** that has never recorded a Kit baseline:
 
 1. **Inventory current state** — languages, packages, existing README/docs, CI, secrets posture.  
-2. **Do not force a directory rewrite** of product code; map reality into the authority map.  
+2. **Do not force a directory rewrite** of product code; map **real** paths into the authority map. Directory index applies **from the adopt date forward** ([files.md](./rules/files.md)) — do not backfill historical folders.  
 3. **Add `kit/`** — do **not** place RULES / MARKDOWN-STANDARD / rules modules on the product root as the default.  
 4. **Minimal viable adopt:** `kit/RULES.md` hub + kit baseline + root project `CHANGELOG.md` + `kit/MARKDOWN-STANDARD.md` (or link) + language inventory + verification rows for languages you already ship. **Reshape** the existing root `README.md` to **Overview** + **Operator prompts** (load path for *this* repo — do not paste upstream kit adopt fences).  
 5. **Add contracts only where surfaces exist** (package CLI guide if a CLI exists; skip empty SECURITY per [modularity](./rules/security.md#security-documentation-modularity)).  
@@ -87,6 +87,7 @@ Follow [Platform-aware examples](./MARKDOWN-STANDARD.md#platform-aware-examples)
 | [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) | `kit/` | Yes (or link) | Authoring rules |
 | [RULES.md](./RULES.md) | `kit/` | Yes | Fill authority map and kit baseline |
 | [rules/](./rules/) | `kit/rules/` | Recommended | Domain modules; or fold into single `kit/RULES.md` (document in authority map) |
+| [rules/files.md](./rules/files.md) | `kit/rules/` | Recommended (with rules/) | Create/place/name; directory index forward-only |
 | Project `CHANGELOG.md` | **repo root** | **Yes** | Project history (H2 → H3 → H4); **not** a copy of kit release history |
 | Root `README.md` | **repo root** | Yes | Product landing — **no frontmatter**; **Overview** + **Operator prompts** ([landing](./MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter); [TEMPLATE-LANDING-README](./templates/TEMPLATE-LANDING-README.md)) |
 | [templates/](./templates/) | `kit/templates/` or package paths | As needed | Scaffold into **packages** outside `kit/` |
@@ -114,7 +115,7 @@ Follow [Platform-aware examples](./MARKDOWN-STANDARD.md#platform-aware-examples)
 
 In [RULES.md — Authority map](./RULES.md#authority-map), replace placeholders with **real or planned** paths—even before code exists—so every concern has a canonical home.
 
-- Standards owners: under `kit/` (e.g. `./rules/contracts.md`).  
+- Standards owners: under `kit/` (e.g. `./rules/contracts.md`; create/place sibling [files.md](./rules/files.md)).  
 - Product owners: **outside** `kit/` (e.g. `../packages/my-service/CLI-GUIDE.md` from files inside `kit/`).  
 - Project history: root `../CHANGELOG.md`.
 
@@ -125,7 +126,8 @@ Also fill:
 1. **[Language surface inventory](./rules/security.md#language-surface-inventory)** — copy **only** rows for languages this project will ship. Docs-only → empty inventory.  
 2. **[Verification before ship](./rules/verification-and-ops.md#verification-before-ship)** — commands for each declared surface. Declared gates are **required** before task completion.  
 3. **Contract policy** — [rules/contracts.md](./rules/contracts.md).  
-4. **Optional `certification/`** at **repo root** (not under product packages by default)—see [templates/TEMPLATE-CERTIFICATION-README.md](./templates/TEMPLATE-CERTIFICATION-README.md) and [certification policy](./rules/security.md#security-and-code-validation-certification).
+4. **File placement / creation / naming** — [rules/files.md](./rules/files.md) (create/place; sibling of contract policy).  
+5. **Optional `certification/`** at **repo root** (not under product packages by default)—see [templates/TEMPLATE-CERTIFICATION-README.md](./templates/TEMPLATE-CERTIFICATION-README.md) and [certification policy](./rules/security.md#security-and-code-validation-certification).
 
 **Filled examples (copy the pattern, not the product names):**
 

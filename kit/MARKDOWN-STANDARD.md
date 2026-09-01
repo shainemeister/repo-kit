@@ -1,7 +1,7 @@
 ---
 title: Markdown Documentation Standard
 description: Cross-functional standard for consistent, professional markdown across any repository or project.
-version: "1.3.1"
+version: "1.3.2"
 status: current
 audience:
   - developers
@@ -14,21 +14,21 @@ related:
   - RULES.md
   - rules/contracts.md
   - rules/authoring-and-style.md
-  - templates/TEMPLATE-GENERIC.md
+  - rules/files.md
   - templates/TEMPLATE-README.md
   - templates/TEMPLATE-LANDING-README.md
-last_updated: "2026-08-21"
+last_updated: "2026-08-31"
 ---
 
 # Markdown Documentation Standard
 
 A repeatable standard for professional, consistent markdown in any repository—usable across packages, CLIs, methodologies, security notes, design concepts, and runbooks.
 
-**Standard version:** 1.3.1  
+**Standard version:** 1.3.2  
 **Location:** `kit/MARKDOWN-STANDARD.md`  
 **Templates:** [`templates/`](./templates/)
 
-**Related:** [README.md](../README.md) · [RULES.md](./RULES.md) · [contracts.md](./rules/contracts.md) · [authoring-and-style.md](./rules/authoring-and-style.md) · [templates/TEMPLATE-GENERIC.md](./templates/TEMPLATE-GENERIC.md) · [templates/TEMPLATE-README.md](./templates/TEMPLATE-README.md)
+**Related:** [README.md](../README.md) · [RULES.md](./RULES.md) · [contracts.md](./rules/contracts.md) · [authoring-and-style.md](./rules/authoring-and-style.md) · [files.md](./rules/files.md) · [templates/TEMPLATE-README.md](./templates/TEMPLATE-README.md) · [templates/TEMPLATE-LANDING-README.md](./templates/TEMPLATE-LANDING-README.md)
 
 ---
 
@@ -554,7 +554,13 @@ Use for **package** READMEs (with frontmatter). For the **repository root** land
 
 ### `other` / generic
 
-Use **Summary (if needed) → body**. Contents only if the threshold is met; History only if this file is a standalone contract. Prefer `TEMPLATE-GENERIC.md`.
+Use **Summary (if needed) → body**. Contents only if the threshold is met; History only if this file is a standalone contract. Prefer [TEMPLATE-GENERIC.md](./templates/TEMPLATE-GENERIC.md).
+
+### Directory index (omit-if; `doc_type: other`)
+
+When [files.md](./rules/files.md) requires a directory-index `README.md` (a **new** navigable, versioned directory that holds other intentional files): table **File → Function**. Extra outline items are omit-if.
+
+**Not** a [landing](#landing--root-readme-no-frontmatter) page (no Overview, no Operator prompts). **Not** a package `readme`. Skeleton: [TEMPLATE-DIR-README.md](./templates/TEMPLATE-DIR-README.md). Forward-only — missing historical indexes are not a failed gate.
 
 ---
 
@@ -569,6 +575,7 @@ Use **Summary (if needed) → body**. Contents only if the threshold is met; His
 | Security | `security` | [templates/TEMPLATE-SECURITY.md](./templates/TEMPLATE-SECURITY.md) |
 | Concept / design | `concept` | [templates/TEMPLATE-CONCEPT.md](./templates/TEMPLATE-CONCEPT.md) |
 | Minimal / any | `other` | [templates/TEMPLATE-GENERIC.md](./templates/TEMPLATE-GENERIC.md) |
+| Directory index | `other` | [templates/TEMPLATE-DIR-README.md](./templates/TEMPLATE-DIR-README.md) |
 
 There is no dedicated runbook file. For `runbook`, copy [TEMPLATE-GENERIC.md](./templates/TEMPLATE-GENERIC.md) and follow the [runbook body outline](#runbook--operational-procedure) (or freeform H2s that match When to use → Preconditions → Steps → Verification → Failure / recovery → Escalation).
 
@@ -591,6 +598,8 @@ There is no dedicated runbook file. For `runbook`, copy [TEMPLATE-GENERIC.md](./
 | `{{ONE_LINE_PURPOSE}}` | Single-sentence purpose |
 | `{{LAST_UPDATED}}` | `YYYY-MM-DD` |
 | `{{RELATED_DOC}}` | Sibling doc filename |
+| `{{FILE_NAME}}` | Directory-index table: a file in this folder |
+| `{{FILE_FUNCTION}}` | Directory-index table: what that file does |
 
 Templates may use additional `{{TOKENS}}` beyond this table. Replace every token in the copied file—do not leave unresolved placeholders.
 
@@ -609,6 +618,7 @@ Before merging or publishing a doc:
 - [ ] No unresolved `{{PLACEHOLDERS}}`  
 - [ ] Tables render (header separator present)  
 - [ ] “Out of scope” or “Not in this doc” used instead of silent omissions when helpful  
+- [ ] New navigable directory with intentional files: directory-index README (file → function) per [files.md](./rules/files.md) (**forward-only**; not a retrofit of historical folders)  
 
 ### Density (all substantial docs)
 
@@ -662,6 +672,7 @@ Before merging or publishing a doc:
 | Root page that opens with RULES / catalog / templates | Overview first; Operator prompts last |
 | Root README missing `## Operator prompts` | Required load-path H2 |
 | Package README using Overview + Operator prompts | Package docs keep frontmatter + required core for `readme` |
+| Directory index README with Overview / Operator prompts | File → function table; not landing ([files.md](./rules/files.md)) |
 | Pasting full CLI-GUIDE into the root README | One example + link |
 | Windows-only examples in a multi-OS project | Dual fences or declared primary platform |
 | Unresolved template tokens in shipped docs | Replace every `{{TOKEN}}` |
@@ -672,6 +683,7 @@ Before merging or publishing a doc:
 
 | Version | Notes |
 |---------|--------|
+| 1.3.2 | Directory-index type (omit-if); TEMPLATE-DIR-README; forward-only checklist (kit 2.9.0) |
 | 1.3.1 | Hub `related:` may be the module index (kit 2.8.1) |
 | 1.3.0 | Density, force, incorporation, Contents threshold, citation cap (kit 2.7.0) |
 | 1.2.1 | Landing checklist names both H2s; root landing removed from optional/lighter table (kit 2.6.3) |

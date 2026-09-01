@@ -1,7 +1,7 @@
 ---
 title: Verification and Operations
 description: Verification before ship, completion rule, maintenance cadence, anti-patterns, and contributor checklist.
-version: "1.7.1"
+version: "1.7.2"
 status: current
 audience:
   - developers
@@ -13,16 +13,16 @@ related:
   - ./authoring-and-style.md
   - ./contracts.md
   - ./versioning-and-git.md
-  - ./workboard.md
+  - ./files.md
   - ../MARKDOWN-STANDARD.md
-last_updated: "2026-08-21"
+last_updated: "2026-08-31"
 ---
 
 # Verification and Operations
 
 Ship gates, completion rules, cadence, anti-patterns, and the contributor checklist.
 
-**Related:** [RULES.md](../RULES.md) · [security.md](./security.md) · [authoring-and-style.md](./authoring-and-style.md) · [contracts.md](./contracts.md) · [versioning-and-git.md](./versioning-and-git.md) · [workboard.md](./workboard.md) · [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md)
+**Related:** [RULES.md](../RULES.md) · [security.md](./security.md) · [authoring-and-style.md](./authoring-and-style.md) · [contracts.md](./contracts.md) · [versioning-and-git.md](./versioning-and-git.md) · [files.md](./files.md) · [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md)
 
 ---
 
@@ -64,6 +64,7 @@ Fill concrete commands for your project from the [language surface inventory](./
 | Environment / packaging | Project probe or smoke script (define command; list Windows and Unix forms if both are supported) |
 | Schema or sample data | Headers/fields match schema; consumers still load samples |
 | Docs only | [Author checklist](../MARKDOWN-STANDARD.md#author-checklist) (including [density](../MARKDOWN-STANDARD.md#density-force-and-incorporation) items); relative links resolve; last citations of used owners remain; platform examples consistent |
+| New navigable directory (intentional files) | Directory-index `README.md` (file → function) in the same change set ([files.md](./files.md)); **forward-only** — missing historical indexes are not a failed gate; **not** Domain A/B |
 | New/removed source files | Inventory/catalog updated (if maintained); language surface inventory if languages added/removed |
 | Agent template / catalog change | Pack samples validate ([agents/PARAMS.md](../agents/PARAMS.md)); expertise/references present; PLAN-HOOK fields still accurate; examples updated |
 | BUILD regen only | Diff review; no authority path invention; respect PLAN disabled set; expertise filled |
@@ -215,6 +216,7 @@ Before you commit or share a change:
 
 | Version | Notes |
 |---------|--------|
+| 1.7.2 | New navigable directory → directory-index README (forward-only; not Domain A/B) (kit 2.9.0) |
 | 1.7.1 | Density restyle (kit 2.8.0); verify table, completion, cadence, and checklist unchanged |
 | 1.7.0 | Docs-only verify includes density checklist + last citations; omit-Summary anti-pattern (kit 2.7.0) |
 | 1.6.1 | Verify-table prune sentence; Domain B rows point at style-gate Command cells (kit 2.5.1) |

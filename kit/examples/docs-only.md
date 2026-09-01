@@ -32,6 +32,7 @@ Copy [RULES.md](../RULES.md) and [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md)
 | Markdown structure | `kit/MARKDOWN-STANDARD.md` |
 | Maintenance policy | `kit/RULES.md` + `kit/rules/` |
 | Contract policy | `kit/rules/contracts.md` |
+| File placement / creation / naming | `kit/rules/files.md` |
 | Project history (**required**) | Root `CHANGELOG.md` |
 | Standards kit baseline | `kit/RULES.md` — Kit baseline |
 | Design / concept notes | `CONCEPT-v1.md` (outside `kit/`) |
@@ -80,6 +81,7 @@ Empty inventory: no language gates. No `certification/` folder required.
 |-------------|----------------------|
 | Docs only | Author checklist (including [density](../MARKDOWN-STANDARD.md#density-force-and-incorporation)); relative links resolve; last citations remain |
 | New/removed source files | `FILE-CATALOG.md` updated (if maintained) |
+| New navigable directory | Directory-index `README.md` (file → function) for **new** dirs ([files.md](../rules/files.md)); **forward-only** — not a gate for historical folders |
 | Methodology interpretation change | Document history row + status honesty |
 
 No product language gates unless code is later added. Upgrades: [UPGRADE.md](../UPGRADE.md).

@@ -30,6 +30,7 @@ Optional: methodology template if formulas or scoring are part of the contract.
 | Markdown structure | `kit/MARKDOWN-STANDARD.md` |
 | Maintenance policy | `kit/RULES.md` + `kit/rules/` |
 | Contract policy | `kit/rules/contracts.md` |
+| File placement / creation / naming | `kit/rules/files.md` |
 | Project history (**required**) | Root `CHANGELOG.md` |
 | Standards kit baseline | `kit/RULES.md` — Kit baseline |
 | Package overview | `my_crate/README.md` |
@@ -85,6 +86,7 @@ Declare **only** this row when the repo ships Rust. Docs-only inventories stay e
 | Formal certification | If `certification/` maintained: regenerate `last_certification.*`; do not stage outputs |
 | Schema or sample data | Headers/fields match schema; consumers still load samples |
 | Docs only | Author checklist (including [density](../MARKDOWN-STANDARD.md#density-force-and-incorporation)); relative links resolve; last citations remain; consume example in README still runs |
+| New navigable directory | Directory-index `README.md` (file → function) for **new** dirs ([files.md](../rules/files.md)); **forward-only** — not a gate for historical folders |
 
 **Adopt rustfmt + clippy:** copy `kit/configs/rustfmt.toml` and `kit/configs/clippy.toml` to the crate or repo root; set rustfmt `edition`; keep rustfmt, clippy, and cargo-audit **developer-only**. Do not add these rows on a docs-only adopt. Declared gates must pass before task completion ([Completion rule](../rules/verification-and-ops.md#completion-rule)). Style chapter: [Rust style gate](../rules/authoring-and-style.md#rust-style-gate-rustfmt--clippy). Upgrades: [UPGRADE.md](../UPGRADE.md).
 

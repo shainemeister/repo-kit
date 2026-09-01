@@ -29,6 +29,7 @@
 | Markdown structure | `kit/MARKDOWN-STANDARD.md` |
 | Maintenance policy | `kit/RULES.md` + `kit/rules/` |
 | Contract policy | `kit/rules/contracts.md` |
+| File placement / creation / naming | `kit/rules/files.md` |
 | Project history (**required**) | Root `CHANGELOG.md` |
 | Standards kit baseline | `kit/RULES.md` — Kit baseline |
 | Package overview | `my-cli/README.md` |
@@ -87,6 +88,7 @@ Declare **only** surfaces this CLI ships. Never paste the full kit language tabl
 | Formal certification | If `certification/` maintained: regenerate `last_certification.*`; do not stage outputs |
 | Docs only | Author checklist (including [density](../MARKDOWN-STANDARD.md#density-force-and-incorporation)); relative links from `my-cli/` resolve; last citations remain |
 | New/removed source files | Inventory/catalog updated (if maintained) |
+| New navigable directory | Directory-index `README.md` (file → function) for **new** dirs ([files.md](../rules/files.md)); **forward-only** — not a gate for historical folders |
 
 **SECURITY.md** is required here because the package is an execution surface. Declared gates must pass before task completion ([Completion rule](../rules/verification-and-ops.md#completion-rule)). Upgrades: [UPGRADE.md](../UPGRADE.md).
 
