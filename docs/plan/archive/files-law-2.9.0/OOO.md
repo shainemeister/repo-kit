@@ -2,25 +2,25 @@
 title: "files-law-2.9.0 — order of operations"
 description: Goals, adoptability invariants, phased OOO, verification, and risks for file-management law.
 version: "1.0.0"
-status: current
+status: archived
 audience:
   - ai-agents
   - maintainers
 doc_type: plan
 related:
   - ./README.md
-  - ../../WORKBOARD.md
-  - ../../../kit/rules/workboard.md
-  - ../../../kit/rules/hygiene.md
-  - ../../../kit/rules/contracts.md
-  - ../../../kit/SETUP.md
-  - ../../../kit/UPGRADE.md
+  - ../../../WORKBOARD.md
+  - ../../../../kit/rules/workboard.md
+  - ../../../../kit/rules/hygiene.md
+  - ../../../../kit/rules/contracts.md
+  - ../../../../kit/SETUP.md
+  - ../../../../kit/UPGRADE.md
 last_updated: "2026-08-31"
 ---
 
 # File law 2.9.0 — order of operations
 
-**Board:** [docs/WORKBOARD.md](../../WORKBOARD.md)  
+**Board:** [docs/WORKBOARD.md](../../../WORKBOARD.md)  
 **Annex index:** [README.md](./README.md)
 
 Program-level OOO. Per-phase file patches wait until that phase is `active`. Law ships as kit **2.9.0** (new domain module). Current baseline: **2.8.2**.

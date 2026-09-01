@@ -26,6 +26,24 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 
 ## repo-kit
 
+### [2.9.0] - 2026-08-31
+
+#### Added
+
+- [files.md](./rules/files.md) **1.0.0**: file creation, placement, and naming; category-first paths; noun code leaves; same names by path; directory-index `README.md` **forward-only** (not Domain A/B).
+- [TEMPLATE-DIR-README.md](./templates/TEMPLATE-DIR-README.md): directory index skeleton (file → function; not landing).
+
+#### Changed
+
+- RULES hub **2.7.2**: authority-map + domain-index row for `files.md`; Must index unchanged.
+- hygiene **1.6.1** / security **1.1.2** / ai-docs-workspace **1.1.4** / HABITAT **1.0.3** / contracts **1.4.2** / authoring-and-style **1.2.2**: cite `files.md`; unique peer rules unchanged.
+- SETUP: copy-table + existing-adopt forward-only index. UPGRADE **1.8.4**: merge `files.md`; no historical directory-README backfill; no root `./rules/` compat tree; folded hub port-or-keep.
+- MARKDOWN-STANDARD **1.3.2**; verification-and-ops **1.7.2**; examples map rows; CATALOG **1.2.3** + seed templates `authority_paths`. TEMPLATE-AGENTS: one line when adding a path.
+
+#### Notes
+
+- Minor on **2.8.2**. New domain module. Adopt/upgrade do **not** require directory-README backfill. No inventory, SAST, trailer, or hub Must-map rewrite. No layout migration.
+
 ### [2.8.2] - 2026-08-22
 
 #### Changed
