@@ -48,7 +48,7 @@ last_updated: "2026-08-31"
 | ID | Work | Status | Commit | Notes |
 |----|------|--------|--------|-------|
 | P0 | Register annex; freeze adoptability invariants | `done` | `752c8a5` | Annex + OOO; no kit/ edits |
-| P1 | Draft `kit/rules/files.md` (unique owner only) | `done` | — | Unique owner; parent tightened L0 Must for bare adopt |
+| P1 | Draft `kit/rules/files.md` (unique owner only) | `done` | `66b7687` | Unique owner; parent tightened L0 Must for bare adopt |
 | P2 | Wire `kit/RULES.md` (map + domain index + cite) | `active` | — | No reprint of files.md tables |
 | P3 | Incorporate peers (hygiene, security, ai-docs, HABITAT, contracts) | `open` | — | Cite; last citations remain |
 | P4 | SETUP / UPGRADE / templates / examples | `open` | — | Forward-only directory index |
@@ -57,7 +57,7 @@ last_updated: "2026-08-31"
 
 ### Progress log (newest first, max ~15 lines)
 
-- 2026-08-31 **P1** `kit/rules/files.md` unique owner. Next: P2 hub map + cite.
+- 2026-08-31 **P1** `kit/rules/files.md` unique owner: `66b7687`. Next: P2 hub map + cite.
 - 2026-08-31 **P0** registered **files-law-2.9.0**: `752c8a5`. Next: user confirms OOO, then P1 `kit/rules/files.md`.
 - 2026-08-22 **workboard-rigidity-2.8.2** complete: `22311d4` kit `2.8.2`. P0 `1e6a003` · P1 `ba79d28` · P2 `6b8d01e` · P3 `ee8114e` · P4 `ff54cef`. Annex archived.
 - 2026-08-21 **density-fixups-2.8.1** complete: `a48324b` kit `2.8.1`. Annex archived.
