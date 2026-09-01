@@ -51,13 +51,14 @@ last_updated: "2026-08-31"
 | P1 | `kit/MARKDOWN-STANDARD.md` (unique owner) | `done` | `1854ae6` | 1.4.0 omit list + description job |
 | P2 | Cite `files.md` + authoring (no reprint) | `done` | `4f2c5cc` | Do not reopen adopt-mode matrix |
 | P3 | Templates (`description`; keywords omit-if) | `done` | `52393a8` | Landing/alias/AGENTS templates stay omit |
-| P4 | SETUP / UPGRADE / examples + this-kit index YAML | `done` | — | Forward-only; closed dogfood list |
-| P5 | Instruct docs-author seed | `active` | — | No BUILD |
-| P6 | Ship kit 2.10.0; archive annex | `open` | — | |
+| P4 | SETUP / UPGRADE / examples + this-kit index YAML | `done` | `1e374ea` | Forward-only; closed dogfood list |
+| P5 | Instruct docs-author seed | `done` | — | No BUILD |
+| P6 | Ship kit 2.10.0; archive annex | `active` | — | |
 
 ### Progress log (newest first, max ~15 lines)
 
-- 2026-08-31 **P4** SETUP/UPGRADE dogfood YAML. Next: P5 docs-author seed.
+- 2026-08-31 **P5** docs-author seed YAML verify. Next: P6 ship 2.10.0.
+- 2026-08-31 **P4** SETUP/UPGRADE dogfood YAML: `1e374ea`. Next: P5 docs-author seed.
 - 2026-08-31 **P3** YAML templates; landing/alias/AGENTS stay omit: `52393a8`. Next: P4 SETUP/UPGRADE/dogfood.
 - 2026-08-31 **P2** files.md + authoring cite YAML omit list: `4f2c5cc`. Next: P3 templates.
 - 2026-08-31 **P1** MARKDOWN-STANDARD 1.4.0: `1854ae6`. Next: P2 files.md + authoring cites.
