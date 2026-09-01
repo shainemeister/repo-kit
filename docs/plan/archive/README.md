@@ -18,6 +18,7 @@ This folder is **archaeology only**. It is not the live todo list. Active work i
 
 | Pack | Ended | Read instead (L4) |
 |------|-------|-------------------|
+| [frontmatter-2.10.0](./frontmatter-2.10.0/) | 2026-08-31 | [MARKDOWN-STANDARD](../../../kit/MARKDOWN-STANDARD.md) **1.4.0** · [CHANGELOG](../../../kit/CHANGELOG.md) `### [2.10.0]` |
 | [files-law-2.9.0](./files-law-2.9.0/) | 2026-08-31 | [files.md](../../../kit/rules/files.md) · [CHANGELOG](../../../kit/CHANGELOG.md) `### [2.9.0]` |
 | [workboard-rigidity-2.8.2](./workboard-rigidity-2.8.2/) | 2026-08-22 | [workboard](../../../kit/rules/workboard.md) · [CHANGELOG](../../../kit/CHANGELOG.md) `### [2.8.2]` |
 | [density-fixups-2.8.1](./density-fixups-2.8.1/) | 2026-08-21 | [density](../../../kit/MARKDOWN-STANDARD.md#density-force-and-incorporation) · [CHANGELOG](../../../kit/CHANGELOG.md) `### [2.8.1]` |

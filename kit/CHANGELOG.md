@@ -26,6 +26,24 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 
 ## repo-kit
 
+### [2.10.0] - 2026-08-31
+
+#### Added
+
+- Optional YAML `keywords` (omit-if; replace, don’t append).
+
+#### Changed
+
+- MARKDOWN-STANDARD **1.4.0**: durable markdown has YAML except a closed omit list (landing README, host aliases, regenerable dumps, Keep a Changelog files, root `AGENTS.md`). `description` is the one prose blurb (one sentence is legal). Descriptive language Must in writing conventions.
+- files.md **1.0.1** / authoring-and-style **1.2.3**: cite omit list; adopt-mode matrix unchanged.
+- Templates: `description` blurb; landing / host-alias / AGENTS templates stay unfenced.
+- SETUP dogfood fence; UPGRADE **1.8.5**: no complete-fail for historical missing YAML. Examples and `docs/` indexes fenced.
+- CATALOG **1.2.4** docs-author verify.
+
+#### Notes
+
+- Minor on **2.9.0**. No inventory, SAST, hub Must-map, or layout migration. No external CLI contract. Directory-index and YAML backfill remain forward-only / on-edit.
+
 ### [2.9.0] - 2026-08-31
 
 #### Added

@@ -2,25 +2,25 @@
 title: "frontmatter-2.10.0 — order of operations"
 description: Goals, omit list, under-prescription bounds, phased OOO, verification, and risks for markdown identity YAML.
 version: "1.0.0"
-status: current
+status: archived
 audience:
   - ai-agents
   - maintainers
 doc_type: plan
 related:
   - ./README.md
-  - ../../WORKBOARD.md
-  - ../../../kit/rules/workboard.md
-  - ../../../kit/MARKDOWN-STANDARD.md
-  - ../../../kit/rules/files.md
-  - ../../../kit/rules/authoring-and-style.md
-  - ../../../kit/UPGRADE.md
+  - ../../../WORKBOARD.md
+  - ../../../../kit/rules/workboard.md
+  - ../../../../kit/MARKDOWN-STANDARD.md
+  - ../../../../kit/rules/files.md
+  - ../../../../kit/rules/authoring-and-style.md
+  - ../../../../kit/UPGRADE.md
 last_updated: "2026-08-31"
 ---
 
 # Frontmatter 2.10.0 — order of operations
 
-**Board:** [docs/WORKBOARD.md](../../WORKBOARD.md)  
+**Board:** [docs/WORKBOARD.md](../../../WORKBOARD.md)  
 **Annex index:** [README.md](./README.md)
 
 Program-level OOO. Per-phase file patches wait until that phase is `active`. Law ships as kit **2.10.0**. Current baseline: **2.9.0**. Instruct off. No root `PLAN.md`.
