@@ -47,7 +47,7 @@ last_updated: "2026-08-31"
 
 | ID | Work | Status | Commit | Notes |
 |----|------|--------|--------|-------|
-| P0 | Register annex; freeze adoptability invariants | `done` | — | SHA on next board edit |
+| P0 | Register annex; freeze adoptability invariants | `done` | `752c8a5` | Annex + OOO; no kit/ edits |
 | P1 | Draft `kit/rules/files.md` (unique owner only) | `open` | — | Start only after user confirms OOO |
 | P2 | Wire `kit/RULES.md` (map + domain index + cite) | `open` | — | No reprint of files.md tables |
 | P3 | Incorporate peers (hygiene, security, ai-docs, HABITAT, contracts) | `open` | — | Cite; last citations remain |
@@ -57,7 +57,7 @@ last_updated: "2026-08-31"
 
 ### Progress log (newest first, max ~15 lines)
 
-- 2026-08-31 Registered **files-law-2.9.0**. P0 annex + OOO. Next: user confirms OOO, then P1 `kit/rules/files.md`.
+- 2026-08-31 **P0** registered **files-law-2.9.0**: `752c8a5`. Next: user confirms OOO, then P1 `kit/rules/files.md`.
 - 2026-08-22 **workboard-rigidity-2.8.2** complete: `22311d4` kit `2.8.2`. P0 `1e6a003` · P1 `ba79d28` · P2 `6b8d01e` · P3 `ee8114e` · P4 `ff54cef`. Annex archived.
 - 2026-08-21 **density-fixups-2.8.1** complete: `a48324b` kit `2.8.1`. Annex archived.
 - 2026-08-21 **md-density-2.7.0** complete: `2a01b2f` kit `2.7.0` + `2.8.0`. Annex archived.
