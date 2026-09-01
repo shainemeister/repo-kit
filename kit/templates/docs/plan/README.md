@@ -1,3 +1,13 @@
+---
+title: "docs/plan/"
+description: Index of detailed execution plans and program annexes. Open when adding a plan or checking whether an annex is live on the workboard.
+status: current
+doc_type: other
+last_updated: "{{LAST_UPDATED}}"
+# keywords:          # omit-if
+#   - {{KEYWORD}}
+---
+
 # docs/plan/
 
 Detailed execution and build-out plans for AI and humans.
@@ -21,3 +31,5 @@ Detailed execution and build-out plans for AI and humans.
 | Plan | Status | Summary |
 |------|--------|---------|
 | *(add rows as plans appear)* | draft / active / done / archived | |
+
+Replace `{{LAST_UPDATED}}`. Delete commented `keywords` if unused.

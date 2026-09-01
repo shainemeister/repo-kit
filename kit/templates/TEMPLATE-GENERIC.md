@@ -1,6 +1,6 @@
 ---
 title: "{{DOCUMENT_TITLE}}"
-description: "{{ONE_LINE_PURPOSE}}"
+description: "{{DESCRIPTION}}"
 version: "{{VERSION}}"
 status: draft
 audience:
@@ -10,6 +10,8 @@ related:
   - README.md
   - {{RELATED_DOC}}
 last_updated: "{{LAST_UPDATED}}"
+# keywords:          # omit-if
+#   - {{KEYWORD}}
 ---
 
 # {{DOCUMENT_TITLE}}
@@ -19,7 +21,7 @@ last_updated: "{{LAST_UPDATED}}"
 **Version:** {{VERSION}}  
 **Related:** [README.md](./README.md) · [{{RELATED_DOC}}](./{{RELATED_DOC}})
 
-<!-- Contents only if ≥ 5 H2s or ≳ 150 lines. Never list Summary as item 1. -->
+<!-- Replace {{PLACEHOLDERS}}. Delete commented `keywords` if unused. Contents only if ≥ 5 H2s or ≳ 150 lines. Never list Summary as item 1. -->
 
 ---
 

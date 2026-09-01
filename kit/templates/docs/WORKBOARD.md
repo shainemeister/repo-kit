@@ -1,6 +1,6 @@
 ---
 title: "{{PROJECT_NAME}} — Active Workboard"
-description: Single source of truth for open multi-phase work. Product vision stays in PLAN.md; shipped contracts stay on L4 owners.
+description: Owns the live multi-phase workboard (open it to start or advance a program). Product vision stays in PLAN.md; shipped contracts stay on L4 owners.
 version: "1.0.0"
 status: current
 audience:
@@ -12,6 +12,8 @@ related:
   - ../kit/rules/workboard.md
   - ../CHANGELOG.md
 last_updated: "{{ISO_DATE}}"
+# keywords:          # omit-if
+#   - {{KEYWORD}}
 ---
 
 # Workboard
@@ -80,4 +82,4 @@ last_updated: "{{ISO_DATE}}"
 
 ---
 
-*Agents: register multi-phase work here before coding. Deep phase OOO only when that phase is activated. Replace an existing phase row; do not insert a duplicate phase ID. Replace every `{{PLACEHOLDER}}`.*
+*Agents: register multi-phase work here before coding. Deep phase OOO only when that phase is activated. Replace an existing phase row; do not insert a duplicate phase ID. Replace every `{{PLACEHOLDER}}`. Delete commented `keywords` if unused.*

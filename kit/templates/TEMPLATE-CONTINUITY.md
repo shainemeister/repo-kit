@@ -1,6 +1,6 @@
 ---
 title: "Code Continuity and Quality ({{PROJECT_NAME}})"
-description: Project overlay for surgical changes, named protected surfaces, git continuity, and quality gates.
+description: Project overlay for surgical changes, named protected surfaces, git continuity, and quality gates. Open before editing a named protected surface.
 version: "1.0.1"
 status: draft
 audience:
@@ -16,11 +16,13 @@ related:
   - ../../kit/rules/verification-and-ops.md
   - ../WORKBOARD.md
 last_updated: "{{ISO_DATE}}"
+# keywords:          # omit-if
+#   - {{KEYWORD}}
 ---
 
 # Code Continuity and Quality ({{PROJECT_NAME}})
 
-Project overlay on repo-kit continuity policy ([kit/rules/continuity.md](../../kit/rules/continuity.md)). Generic kit rules still apply. Typical home after copy: `docs/project_build/continuity.md` (or another recorded path — **not** the portable `kit/rules/continuity.md` module). Hrefs in this skeleton are written for **`docs/project_build/continuity.md`**. They will not resolve from `kit/templates/`. After copy, fill every `{{PLACEHOLDER}}`. If you record a different overlay path, fix relative links from that file. This file is adopter data — preserve it on kit upgrade.
+Project overlay on repo-kit continuity policy ([kit/rules/continuity.md](../../kit/rules/continuity.md)). Generic kit rules still apply. Typical home after copy: `docs/project_build/continuity.md` (or another recorded path — **not** the portable `kit/rules/continuity.md` module). Hrefs in this skeleton are written for **`docs/project_build/continuity.md`**. They will not resolve from `kit/templates/`. After copy, fill every `{{PLACEHOLDER}}`. Delete commented `keywords` if unused. If you record a different overlay path, fix relative links from that file. This file is adopter data — preserve it on kit upgrade.
 
 **Document version:** 1.0.1
 

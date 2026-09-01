@@ -1,6 +1,6 @@
 ---
 title: "{{PROGRAM_ID}} — order of operations"
-description: Goals, constraints, phased OOO, verification, and risks for one program.
+description: Owns goals, constraints, phased order of operations, verification, and risks for one program. Open while that program is active on the workboard.
 version: "1.1.0"
 status: draft
 audience:
@@ -13,6 +13,8 @@ related:
   - ../../../PLAN.md
   - ../../../kit/rules/workboard.md
 last_updated: "{{ISO_DATE}}"
+# keywords:          # omit-if
+#   - {{KEYWORD}}
 ---
 
 # {{PROGRAM_NAME}} — order of operations
@@ -117,4 +119,4 @@ Do not invent gates that are not in the project inventory / verification table.
 |------|------------|
 | {{RISK}} | {{REVERT_OR_GATE}} |
 
-Replace every `{{PLACEHOLDER}}`.
+Replace every `{{PLACEHOLDER}}`. Delete commented `keywords` if unused.

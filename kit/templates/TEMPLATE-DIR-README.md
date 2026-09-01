@@ -1,6 +1,6 @@
 ---
 title: "{{FOLDER_NAME}}"
-description: "Index of files in this directory."
+description: "Index of files in this directory. Open when adding, moving, or finding a file here."
 version: "1.0.0"
 status: current
 audience:
@@ -12,6 +12,8 @@ related:
   - ../RULES.md
   - ../MARKDOWN-STANDARD.md
 last_updated: "{{LAST_UPDATED}}"
+# keywords:          # omit-if
+#   - {{KEYWORD}}
 ---
 
 # {{FOLDER_NAME}}
@@ -38,4 +40,4 @@ Add or remove rows so the table matches this directory. Omit regenerable outputs
 
 When adding, moving, or splitting a path here, follow [files.md](../rules/files.md).
 
-Replace every `{{PLACEHOLDER}}`. This skeleton is a **directory index** (file → function), not [landing](../MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter). Forward-only: do not backfill historical folders.
+Replace every `{{PLACEHOLDER}}`. Delete commented `keywords` if unused. This skeleton is a **directory index** (file → function), not [landing](../MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter). Forward-only: do not backfill historical folders.

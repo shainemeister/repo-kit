@@ -1,6 +1,6 @@
 ---
 title: "{{PRODUCT_NAME}} CLI Reference"
-description: "{{ONE_LINE_PURPOSE}}"
+description: "{{DESCRIPTION}}"
 version: "{{VERSION}}"
 status: draft
 audience:
@@ -11,6 +11,8 @@ related:
   - README.md
   - SECURITY.md
 last_updated: "{{LAST_UPDATED}}"
+# keywords:          # omit-if
+#   - {{KEYWORD}}
 ---
 
 # {{PRODUCT_NAME}} — CLI Reference
@@ -27,7 +29,7 @@ last_updated: "{{LAST_UPDATED}}"
 | **CLI entry** | `{{CLI_ENTRY}}` |
 | **Library** | `{{LIBRARY_ENTRY}}` |
 
-<!-- Contents only if ≥ 5 H2s or ≳ 150 lines. Never list Summary as item 1. -->
+<!-- Replace {{PLACEHOLDERS}}. Delete commented `keywords` if unused. Contents only if ≥ 5 H2s or ≳ 150 lines. Never list Summary as item 1. -->
 
 ---
 

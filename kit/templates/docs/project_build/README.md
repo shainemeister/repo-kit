@@ -1,8 +1,19 @@
+---
+title: "docs/project_build/"
+description: Index of project build and implementation notes. Open when adding or finding phased build context.
+status: current
+doc_type: other
+last_updated: "{{LAST_UPDATED}}"
+# keywords:          # omit-if
+#   - {{KEYWORD}}
+---
+
 # docs/project_build/
 
 Project build and implementation context for AI: phased notes, ADRs-lite, integration context.
 
-**Policy:** [ai-docs-workspace](../../../rules/ai-docs-workspace.md)
+**Policy:** [ai-docs-workspace](../../../rules/ai-docs-workspace.md)  
+Replace `{{LAST_UPDATED}}`. Delete commented `keywords` if unused.
 
 ## Conventions
 

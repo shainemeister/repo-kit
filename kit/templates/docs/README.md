@@ -1,3 +1,13 @@
+---
+title: "docs/ — AI resource workspace"
+description: Index of the AI docs workspace. Open when scaffolding or updating research, plan, workboard, build, or resource modules.
+status: current
+doc_type: other
+last_updated: "{{LAST_UPDATED}}"
+# keywords:          # omit-if
+#   - {{KEYWORD}}
+---
+
 # docs/ — AI resource workspace
 
 **Scaffold target:** project root `docs/README.md` (outside `kit/`).  
@@ -18,7 +28,7 @@ This tree is a **resource for AI** (and humans) maintaining the repository: rese
 | Project build | `docs/project_build/` | {{ENABLED_PROJECT_BUILD}} | Implementation / build context for AI |
 | Resources | `docs/resources/` | {{ENABLED_RESOURCES}} | Curated repo + external pointers |
 
-Replace `{{ENABLED_*}}` with `yes` / `no` / `on demand`. Omit unused module rows or mark disabled.
+Replace `{{ENABLED_*}}` and `{{LAST_UPDATED}}`. Delete commented `keywords` if unused. Use `yes` / `no` / `on demand` for enabled. Omit unused module rows or mark disabled.
 
 ---
 

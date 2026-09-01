@@ -26,7 +26,7 @@ No root `PLAN.md` (Instruct off).
 |-------|--------|
 | **Program id** | `frontmatter-2.10.0` |
 | **Status** | `active` |
-| **Next phase** | `P3` |
+| **Next phase** | `P4` |
 | **L4 owners to update on ship** | `kit/MARKDOWN-STANDARD.md` · cites in `files.md` / authoring · templates · SETUP · UPGRADE · examples · docs-author seed · `kit/CHANGELOG.md` `### [2.10.0]` |
 
 ## Contents of this annex

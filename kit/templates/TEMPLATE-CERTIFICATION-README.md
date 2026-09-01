@@ -1,6 +1,6 @@
 ---
 title: "{{PRODUCT_OR_REPO_NAME}} — Security and code-validation certification"
-description: "Operator guide for regenerable self-attestation certificates (security static analysis and code validation)."
+description: "Operator guide for regenerable self-attestation certificates (security static analysis and code validation). Open when regenerating or interpreting certification outputs."
 version: "{{VERSION}}"
 status: draft
 audience:
@@ -13,6 +13,8 @@ related:
   - ../rules/security.md
   - ../CHANGELOG.md
 last_updated: "{{LAST_UPDATED}}"
+# keywords:          # omit-if
+#   - {{KEYWORD}}
 ---
 
 # {{PRODUCT_OR_REPO_NAME}} — Certification
@@ -23,6 +25,8 @@ Operator guide for the **formal, regenerable** security and code-validation cert
 **Status:** draft  
 
 **Related:** [Security and code-validation certification](../rules/security.md#security-and-code-validation-certification) · [Language surface inventory](../rules/security.md#language-surface-inventory) · [RULES.md](../RULES.md)
+
+Replace every `{{PLACEHOLDER}}`. Delete commented `keywords` if unused.
 
 ---
 

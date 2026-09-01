@@ -1,8 +1,19 @@
+---
+title: "docs/resources/"
+description: Index of curated in-repo and external resources. Open when adding or finding high-signal citations.
+status: current
+doc_type: other
+last_updated: "{{LAST_UPDATED}}"
+# keywords:          # omit-if
+#   - {{KEYWORD}}
+---
+
 # docs/resources/
 
 Curated resources for AI: in-repo paths and external citations with purpose.
 
-**Policy:** [ai-docs-workspace](../../../rules/ai-docs-workspace.md)
+**Policy:** [ai-docs-workspace](../../../rules/ai-docs-workspace.md)  
+Replace `{{LAST_UPDATED}}`. Delete commented `keywords` if unused.
 
 ## Conventions
 

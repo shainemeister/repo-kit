@@ -1,6 +1,6 @@
 ---
 title: "{{PRODUCT_NAME}} Security"
-description: "{{ONE_LINE_PURPOSE}}"
+description: "{{DESCRIPTION}}"
 version: "{{VERSION}}"
 status: draft
 audience:
@@ -12,6 +12,8 @@ related:
   - README.md
   - CLI-GUIDE.md
 last_updated: "{{LAST_UPDATED}}"
+# keywords:          # omit-if
+#   - {{KEYWORD}}
 ---
 
 # {{PRODUCT_NAME}} — Security & Execution Notes
@@ -26,7 +28,7 @@ last_updated: "{{LAST_UPDATED}}"
 
 > **Modularity:** Omit **this file** when the package has no execution surface, network access, elevated privilege, or secrets/identity handling. Docs-only or pure libraries with no runtime side effects should not create an empty `SECURITY.md` — see [Security documentation modularity](../rules/security.md#security-documentation-modularity).
 
-<!-- Contents only if ≥ 5 H2s or ≳ 150 lines. Never list Summary as item 1. -->
+<!-- Replace {{PLACEHOLDERS}}. Delete commented `keywords` if unused. Contents only if ≥ 5 H2s or ≳ 150 lines. Never list Summary as item 1. -->
 
 ---
 

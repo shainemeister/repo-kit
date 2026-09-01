@@ -1,8 +1,19 @@
+---
+title: "docs/research/"
+description: Index of AI research notes. Open when adding or finding investigations, spikes, or findings.
+status: current
+doc_type: other
+last_updated: "{{LAST_UPDATED}}"
+# keywords:          # omit-if
+#   - {{KEYWORD}}
+---
+
 # docs/research/
 
 AI research notes: investigations, spikes, comparisons, findings.
 
-**Policy:** [ai-docs-workspace](../../../rules/ai-docs-workspace.md)
+**Policy:** [ai-docs-workspace](../../../rules/ai-docs-workspace.md)  
+Replace `{{LAST_UPDATED}}`. Delete commented `keywords` if unused.
 
 ## Conventions
 

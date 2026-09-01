@@ -1,6 +1,6 @@
 ---
 title: "{{PRODUCT_NAME}}"
-description: "{{ONE_LINE_PURPOSE}}"
+description: "{{DESCRIPTION}}"
 version: "{{VERSION}}"
 status: draft
 audience:
@@ -11,6 +11,8 @@ related:
   - CLI-GUIDE.md
   - SECURITY.md
 last_updated: "{{LAST_UPDATED}}"
+# keywords:          # omit-if
+#   - {{KEYWORD}}
 ---
 
 # {{PRODUCT_NAME}} (`{{FOLDER_NAME}}`)
@@ -22,7 +24,7 @@ last_updated: "{{LAST_UPDATED}}"
 
 **Related docs:** [CLI-GUIDE.md](./CLI-GUIDE.md) · [SECURITY.md](./SECURITY.md)
 
-<!-- Contents only if ≥ 5 H2s or ≳ 150 lines. Never list Summary as item 1. -->
+<!-- Replace {{PLACEHOLDERS}}. Delete commented `keywords` if unused. Contents only if ≥ 5 H2s or ≳ 150 lines. Never list Summary as item 1. -->
 
 ---
 
