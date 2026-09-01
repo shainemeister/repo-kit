@@ -1,7 +1,7 @@
 ---
 title: File creation, placement, and naming
 description: When to create a path, which category it belongs in, how to name it, and when a directory needs an index README.
-version: "1.0.0"
+version: "1.0.1"
 status: current
 audience:
   - developers
@@ -72,6 +72,8 @@ Create a file or directory only when at least one row holds:
 | Inventory row | Language or path listed on the map or inventory |
 | User asked | Explicit request for the path |
 | Module needed | Domain, contract, or `docs/` module the work requires ([ai-docs-workspace](./ai-docs-workspace.md)) |
+
+New durable markdown (not on the MARKDOWN-STANDARD omit list) gets YAML in the same change set ([MARKDOWN-STANDARD when to use](../MARKDOWN-STANDARD.md#when-to-use-this-standard)); this file still owns create/place/name.
 
 ## Categories
 
@@ -145,4 +147,5 @@ Hygiene keeps kit-vs-product and SETUP/UPGRADE lifecycle ([hygiene](./hygiene.md
 
 | Version | Notes |
 |---------|--------|
+| 1.0.1 | New durable markdown gets YAML except omit list (cite); this file owns create/place/name |
 | 1.0.0 | Initial (kit 2.9.0) |
