@@ -3,7 +3,7 @@ title: "docs/ — AI resource workspace (repo-kit)"
 description: Index of this kit’s AI docs workspace. Open when scaffolding or updating research, plan, workboard, build, or resource modules.
 status: current
 doc_type: other
-last_updated: "2026-08-31"
+last_updated: "2026-09-01"
 ---
 
 # docs/ — AI resource workspace (repo-kit)
@@ -32,7 +32,7 @@ Standards and portable law remain under **`kit/`**. Product-style contracts for 
 |--------|------|---------|---------|
 | Research | [research/](./research/) | on demand | Kit design investigations, comparisons |
 | Workboard | [WORKBOARD.md](./WORKBOARD.md) | **on** | Multi-phase kit execution (dogfood) |
-| Plan | [plan/](./plan/) | **on** | Shipped annexes under [plan/archive/](./plan/archive/) |
+| Plan | [plan/](./plan/) | **on** | Live annex [definitional-identity-2.11.0](./plan/definitional-identity-2.11.0/) (board-linked); shipped packs under [plan/archive/](./plan/archive/) |
 | Project build | [project_build/](./project_build/) | on demand | Implementation notes while shipping kit changes |
 | Resources | [resources/](./resources/) | on demand | Curated pointers for kit maintainers |
 
