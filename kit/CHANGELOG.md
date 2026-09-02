@@ -26,6 +26,25 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 
 ## repo-kit
 
+### [2.11.0] - 2026-09-01
+
+#### Added
+
+- Description **identity test** (MARKDOWN-STANDARD **1.5.0**): `description` must add a claim not already in `title` / filename / `doc_type`, and would be wrong if swapped onto a sibling. When-to-open only if the definition does not already imply it. One sentence remains legal. No sentence quota.
+
+#### Changed
+
+- Directory-index **Function** cells use the same test at one-line resolution (unique role in this folder; not a paste of YAML `description`). Column name stays **Function**.
+- files.md **1.0.2** / authoring-and-style **1.2.4**: cite the identity test. Adopt-mode matrix and files.md Must table unchanged.
+- TEMPLATE-DIR-README **1.1.0**: catalog blurb + example-only Function rows. YAML templates hint the test. Landing / host-alias / AGENTS templates stay unfenced.
+- SETUP: fill `description` per the identity test on new files and when already editing. UPGRADE **1.8.6**: no complete-fail for historical tautological blurbs (forward-only / on-edit).
+- RULES hub **2.7.3**: authority-map concern label names description identity. Must index unchanged.
+- CATALOG **1.2.5** docs-author verify: identity test (new/on-edit; not a historical gate).
+
+#### Notes
+
+- Minor on **2.10.0**. No inventory, SAST, hub Must-map, or layout migration. No directory-index backfill. No external CLI contract. Identity test is new/on-edit; historical tautological blurbs are not a failed complete.
+
 ### [2.10.0] - 2026-08-31
 
 #### Added

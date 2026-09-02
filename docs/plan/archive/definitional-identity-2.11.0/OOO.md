@@ -1,26 +1,26 @@
 ---
 title: "definitional-identity-2.11.0 — order of operations"
-description: Goals, identity-test freeze, phased OOO, verification, and risks for a definitional floor on YAML description and directory-index Function cells. Open while this program is workboard primary.
+description: Goals, identity-test freeze, phased OOO, verification, and risks for the definitional-identity floor. Archived; read L4 MARKDOWN-STANDARD 1.5.0.
 version: "1.0.0"
-status: draft
+status: archived
 audience:
   - ai-agents
   - maintainers
 doc_type: plan
 related:
   - ./README.md
-  - ../../WORKBOARD.md
-  - ../../../kit/rules/workboard.md
-  - ../../../kit/MARKDOWN-STANDARD.md
-  - ../../../kit/rules/files.md
-  - ../../../kit/rules/authoring-and-style.md
-  - ../../../kit/UPGRADE.md
+  - ../../../WORKBOARD.md
+  - ../../../../kit/rules/workboard.md
+  - ../../../../kit/MARKDOWN-STANDARD.md
+  - ../../../../kit/rules/files.md
+  - ../../../../kit/rules/authoring-and-style.md
+  - ../../../../kit/UPGRADE.md
 last_updated: "2026-09-01"
 ---
 
 # Definitional identity 2.11.0 — order of operations
 
-**Board:** [docs/WORKBOARD.md](../../WORKBOARD.md)  
+**Board:** [docs/WORKBOARD.md](../../../WORKBOARD.md)  
 **Annex index:** [README.md](./README.md)
 
 Program-level OOO. Per-phase file patches wait until that phase is `active`. Law ships as kit **2.11.0**. Current baseline: **2.10.0**. Instruct off. No root `PLAN.md`.
@@ -46,7 +46,7 @@ If P0 review prefers patch numbering, retarget the ship version to **2.10.1** **
 
 | ID | Goal |
 |----|------|
-| D1 | Unique owner: [MARKDOWN-STANDARD](../../../kit/MARKDOWN-STANDARD.md) owns a **definitional identity test** for YAML `description` (no sentence quota). |
+| D1 | Unique owner: [MARKDOWN-STANDARD](../../../../kit/MARKDOWN-STANDARD.md) owns a **definitional identity test** for YAML `description` (no sentence quota). |
 | D2 | Same test at one-line resolution for directory-index **Function** cells. Column name stays **Function**. `files.md` **cites**; it does not reprint the test or absorb a field table. |
 | D3 | Three resolutions, no second home: YAML `description` = full identity; lead = sentence 1; Function = unique role in that folder (not a paste of the blurb). |
 | D4 | Templates actually teach the pattern (YAML sample + `TEMPLATE-DIR-README` + placeholder hint). Agents copy skeletons, not field tables. |
@@ -58,12 +58,12 @@ If P0 review prefers patch numbering, retarget the ship version to **2.10.1** **
 
 | Item | Why |
 |------|-----|
-| Sentence quota, mandatory 3–4 sentence `description`, named “full vs thin” profiles | Rejected in [frontmatter-2.10.0](../archive/frontmatter-2.10.0/OOO.md); omit-if |
+| Sentence quota, mandatory 3–4 sentence `description`, named “full vs thin” profiles | Rejected in [frontmatter-2.10.0](../frontmatter-2.10.0/OOO.md); omit-if |
 | Mandatory `keywords`, `language.md`, or a new domain module | 2.10.0 non-goal; files.md still owns paths; MARKDOWN-STANDARD owns prose identity |
-| Requiring Function cell = full `description` | Second home ([density](../../../kit/MARKDOWN-STANDARD.md#density-force-and-incorporation)) |
+| Requiring Function cell = full `description` | Second home ([density](../../../../kit/MARKDOWN-STANDARD.md#density-force-and-incorporation)) |
 | Hub Must, Operator-prompts step, or new map row for “description” | Map already names MARKDOWN-STANDARD (frontmatter) and files.md (placement) |
 | Reopen `files.md` adopt-mode matrix, categories, or path-shape rules | Cite only |
-| Backfill directory-index READMEs (`kit/rules/`, `kit/templates/`, `kit/configs/`, `kit/examples/`, `kit/agents/`, historical product dirs) | [files-law-2.9.0](../archive/files-law-2.9.0/OOO.md) forward-only; not a gate |
+| Backfill directory-index READMEs (`kit/rules/`, `kit/templates/`, `kit/configs/`, `kit/examples/`, `kit/agents/`, historical product dirs) | [files-law-2.9.0](../files-law-2.9.0/OOO.md) forward-only; not a gate |
 | Universe sweep of every existing `description:` | On-edit only, same as YAML fences |
 | YAML on landing `README.md`, host aliases, regenerable dumps, Keep a Changelog files, root `AGENTS.md` | Closed omit list (2.10.0) |
 | Rename Function → Role/Purpose; change annex **Role** column on `TEMPLATE-PROGRAM-README` | files.md already shipped Function; program-README Role is workboard |
@@ -228,7 +228,7 @@ Register this annex and freeze the tables above. No `kit/` law edits. Exit: boar
 
 Edit `kit/MARKDOWN-STANDARD.md` only.
 
-1. No new H2 (Contents already lists 15). Put the identity test **inside** [YAML frontmatter](../../../kit/MARKDOWN-STANDARD.md#yaml-frontmatter) after the field reference (H3 allowed).  
+1. No new H2 (Contents already lists 15). Put the identity test **inside** [YAML frontmatter](../../../../kit/MARKDOWN-STANDARD.md#yaml-frontmatter) after the field reference (H3 allowed).  
 2. Replace the sample `description` with the frozen illustrative line. Keep “one sentence is legal; do not pad to a sentence count.”  
 3. Rewrite the `description` field-reference cell: canonical blurb; identity test (1)–(3); one sentence legal; no reprint in lead/Summary.  
 4. Canonical-order lead row: keep “Should match `description` sentence 1.”  
