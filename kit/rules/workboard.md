@@ -1,7 +1,7 @@
 ---
 title: Workboard Lifecycle
-description: Single active multi-phase workboard, phase-ship hygiene, optional annex archive, and agent resume protocol.
-version: "1.1.0"
+description: Single live multi-phase board, annex archive, and parent/child phase packet. Open when registering or advancing multi-phase work; not the Progress Tracker and not product API law.
+version: "1.2.0"
 status: current
 audience:
   - developers
@@ -16,12 +16,14 @@ related:
   - ../agents/PLAN-HOOK.md
   - ../agents/OPS.md
   - ../templates/docs/WORKBOARD.md
-last_updated: "2026-08-22"
+last_updated: "2026-09-01"
 ---
 
 # Workboard Lifecycle
 
-How multi-phase work is **registered, advanced, shipped, and archived** so agents and humans share one continuous execution surface. This module is **domain-agnostic**. Product paths belong in the adopter’s authority map and filled board—not in this file.
+Single live multi-phase board, annex archive, and parent/child phase packet.
+
+This module is **domain-agnostic**. Product paths belong in the adopter’s authority map and filled board—not in this file.
 
 **Related:** [RULES.md](../RULES.md) · [contracts.md](./contracts.md) · [ai-docs-workspace.md](./ai-docs-workspace.md) · [continuity.md](./continuity.md) · [OPS.md](../agents/OPS.md) · [PLAN-HOOK.md](../agents/PLAN-HOOK.md) · [templates/docs/WORKBOARD.md](../templates/docs/WORKBOARD.md)
 
@@ -48,6 +50,9 @@ How multi-phase work is **registered, advanced, shipped, and archived** so agent
 | Delete archive packs without an explicit project decision |
 | Dump full order-of-operations history onto the board |
 | Paste live phase tables into PLAN |
+| Collapse the Progress Tracker to one row because a board exists |
+| Isolate or spawn a phase when an annex exists without a filled brief (current state · issue · fix · allow/deny · exit) |
+| Leave progress-log lines that still call a phase `active` after its table row is `done` with a SHA |
 
 Trivial / single-step / pure Q&A need **no** board. Multi-phase or multi-session execution **does**. Bare adopt with no multi-phase work may skip this module. **Not** a Domain A/B gate.
 
@@ -185,7 +190,7 @@ Keep `docs/WORKBOARD.md` scannable (ideal cap ~200 lines). Required sections:
 2. **Status legend** — table above (short form OK)  
 3. **Active program** — goal · L4 docs to update · annex path · gates  
 4. **Phases table** — ID · Work · Status · Commit · Notes  
-5. **Progress log** — newest first; trim to ~15 lines  
+5. **Progress log** — newest first; trim to ~15 lines. Log register, blocked/unblocked, and program complete. Drop lines that still call a phase `active` after its table row is `done` with a SHA  
 6. **Deferred** — optional  
 7. **Recently completed** — max ~5 programs, **one line** each  
 8. **Not on this board** — pointers to PLAN / L4 / archive / CHANGELOG  
@@ -198,7 +203,9 @@ The filled board is **project data** outside `kit/` ([hygiene](./hygiene.md)).
 
 - Prefer **exactly one** `active` row. **Do not** add a second row with the same phase ID; replace the existing row.
 - User or external wait is status `blocked` on that phase. Do **not** invent phase ids such as `GATE`.
-- SHA: the phase **work** commit may record Commit as `—`. The **parent** fills the SHA on the next board edit (often a one-line commit). Do not amend a published work commit solely to inject SHA. Do not invent SHAs.
+- **Notes:** one line — exit criterion or allow-path hint for a child. Not a second OOO.
+- One phase = one allow list + one exit. Do not merge unrelated owners into one phase to go faster.
+- SHA: the phase **work** commit may record Commit as `—`. The **parent** fills the SHA on the next board edit (often the next phase’s board update). Do not amend a published work commit solely to inject SHA. Do not invent SHAs. Do not require a SHA-only commit.
 
 ---
 
@@ -229,7 +236,7 @@ Use when a multi-file OOO is required.
 - [ ] Program already registered on **`docs/WORKBOARD.md`** (or register first)  
 - [ ] Program id chosen (kebab-case); matches board primary / annex field  
 - [ ] Folder created: `docs/plan/<program-id>/` (or recorded alias)  
-- [ ] `README.md` includes: status · next phase · link to **WORKBOARD** · link to this rule  
+- [ ] `README.md` includes: status · next phase · link to **WORKBOARD** · link to this rule. **Next phase** matches the board `active` or `blocked` row (same change set)  
 - [ ] Detailed OOO (if any) lives under the annex, not duplicated into PLAN.md  
 - [ ] Board **Optional annex** field set to the folder path  
 - [ ] `docs/plan/` index (or `docs/README.md`) mentions the open annex (same change set)  
@@ -249,7 +256,7 @@ Use when the **program** (not a single phase) is complete.
 2. **Move**  
    - [ ] `git mv docs/plan/<program-id> docs/plan/archive/<program-id>`  
    - [ ] Prefer `git mv` over copy+delete (preserves history)  
-   - [ ] After `git mv`, retarget **annex README + OOO frontmatter / Board lines only** (not every body path if they use repo-root mentions):
+   - [ ] After `git mv`, retarget **annex README + OOO frontmatter / Board lines only**. OOO **body** prefers repo-root `kit/…` (or product L4) so those cites survive the extra `../`. Do not rewrite every body relative path:
 
 | In `docs/plan/<id>/` | After archive (`docs/plan/archive/<id>/`) |
 |----------------------|-------------------------------------------|
@@ -284,20 +291,36 @@ Use when the **program** (not a single phase) is complete.
 1. Read **`docs/WORKBOARD.md`** (when it exists or the task is multi-phase).  
 2. If **`PLAN.md`** exists, read it for mission, non-goals, and constraints only (not todos). If it does not, use the repo landing README the same way. Do not create PLAN just to satisfy this step.  
 3. Continue the **`active`** phase unless the user redirects.  
-4. If the board is required but missing, recreate from the template and stop for confirmation if unsure.
+4. If the board is required but missing, recreate from the template and stop for confirmation if unsure.  
+5. If **Optional annex** is set: open the **active phase brief** (current state · issue · fix · allow/deny · exit). Do not require a child to load the full OOO.
 
 ### During a phase
 
 1. Surgical edits when a [continuity](./continuity.md) overlay is in use.  
 2. Do not open a second primary program without user direction.  
-3. Keep chat Progress Tracker **aligned** with the board; **board wins** on conflict.
+3. Keep the **full** chat Progress Tracker **aligned** with the board (same phase IDs); **board wins** on conflict for “what is open.” Do not collapse the tracker to one row.  
+4. When isolating work and an annex exists: the **parent fills the brief** for the `active` phase **before** spawn. The child receives the board row + that brief + listed paths. The child does **not** edit the board or the Progress Tracker.
+
+### Sub-agent packet
+
+When an annex exists, the parent hands the child **only**:
+
+| Piece | Content |
+|-------|---------|
+| Board row | Phase ID, status, Notes (exit / allow hint) |
+| Active phase brief | Current state · issue · fix · allow/deny · exit |
+| Paths | The phase **Allow** list |
+
+Parent owns board SHA, CHANGELOG, and the **full** Progress Tracker. Child returns files touched, docs updated, gates run / skip / fail. One child per `active` phase. [OPS parent/child](../agents/OPS.md#parent--child-when-work-is-isolated) when Instruct isolates work.
+
+Board-only programs (no annex): the phase row **Notes** plus listed L4 paths are the packet.
 
 ### Phase complete
 
 1. Run declared verification ([verification-and-ops.md](./verification-and-ops.md)).  
 2. Update L4 owners + CHANGELOG when behavior/contracts change ([contracts.md](./contracts.md)).  
 3. Set phase `done`, record **short commit SHA**, move `active` to the next phase (or clear).  
-4. Append one progress-log line.  
+4. Progress log: do not leave a line that still calls this phase `active`. A program-complete line may list SHAs.  
 5. Commit includes **`docs/WORKBOARD.md`** in the same change set as the phase ship when practical.
 
 ### Program complete
@@ -338,7 +361,7 @@ Use when the **program** (not a single phase) is complete.
 | Put deep OOO in an optional annex under `docs/plan/` | Treat every file in `docs/plan/` as active work |
 | Keep archive packs for archaeology | Treat archive as the live todo list |
 | Promote shipped behavior to L4 owners | Leave the only explanation inside a chat or annex |
-| Use Progress Tracker at end of a reply | Use the tracker as the durable board |
+| Use the **full** Progress Tracker at end of a reply (ordered tasks · status · SHA) | Collapse the tracker to one row because a board exists; use the tracker as the durable board |
 
 Workspace policy: [ai-docs-workspace.md](./ai-docs-workspace.md). Agent models stay in PLAN ([PLAN-HOOK](../agents/PLAN-HOOK.md)).
 
@@ -362,6 +385,7 @@ Do **not** run two live boards. Do **not** force a rename on upgrade—preserve 
 
 | Version | Notes |
 |---------|--------|
+| 1.2.0 | Sub-agent phase packet; keep full Progress Tracker; stale-log drop; archive body prefers `kit/` cites; Notes / one-allow-list (kit 2.11.1). Must index unchanged |
 | 1.1.0 | Restore unique Must-not digest; OPS on related:; SHA / duplicate-id / archive path substitutions (kit 2.8.2). Invert does not delete unique prohibitions; Must not is a separate list (not a second 5-row Must table). |
 | 1.0.3 | Density restyle (kit 2.8.0); unique rules unchanged |
 | 1.0.2 | Parent owns board status when Instruct isolates work (kit 2.6.0) |
