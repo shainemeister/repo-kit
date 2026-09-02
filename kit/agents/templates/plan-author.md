@@ -56,6 +56,7 @@ verify:
   - stages consistent if used
   - multi-step execution detail in docs/plan/ when used (not only chat)
   - multi-phase work registered on docs/WORKBOARD.md when applicable
+  - when an annex exists, active phase brief filled before isolating work
   - PLAN does not contain a live phase-status table
 compose_with:
   - docs-author
@@ -71,7 +72,7 @@ compose_with:
 - Prefer durable PLAN edits over chat-only intent.
 - When features/core tasks grow: update Agent models regenerate_when and active set as needed.
 - Put detailed multi-step execution plans in `docs/plan/` when needed; keep Agent models in root PLAN.md.
-- When work is multi-phase: register `docs/WORKBOARD.md` before phase code; annex only if the board cannot hold the OOO.
+- When work is multi-phase: register `docs/WORKBOARD.md` before phase code; annex only if the board cannot hold the OOO. When an annex exists, fill the [phase brief](../../rules/workboard.md#sub-agent-packet) before isolating work.
 
 ## Must not
 

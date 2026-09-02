@@ -1,7 +1,7 @@
 ---
 title: Agent Catalog
 description: Default portable seed agents for repo-kit Agent Instruct.
-version: "1.2.5"
+version: "1.2.6"
 status: current
 audience:
   - developers
@@ -81,7 +81,7 @@ Exact enablement is filled by BUILD from PLAN + inventory ([BUILD.md](./BUILD.md
 | **negative_triggers** | pure code bugfix with no plan impact |
 | **authority_paths** | `PLAN.md`, `kit/agents/PLAN-HOOK.md`, `kit/rules/workboard.md`, `kit/MARKDOWN-STANDARD.md`, root README |
 | **compose_with** | `docs-author` |
-| **verify** | PLAN has mission-level summary; Agent models section present per PLAN-HOOK **when using Agent Instruct** (omit for bare adopt); stages consistent if used; multi-phase work on `docs/WORKBOARD.md` when applicable |
+| **verify** | PLAN has mission-level summary; Agent models section present per PLAN-HOOK **when using Agent Instruct** (omit for bare adopt); stages consistent if used; multi-phase work on `docs/WORKBOARD.md` when applicable; when an annex exists, the active phase brief is filled before isolating work |
 | **template** | [templates/plan-author.md](./templates/plan-author.md) |
 
 ### `adopter`
@@ -255,6 +255,7 @@ Templates under [templates/](./templates/) carry the full Expertise map. Summary
 
 | Version | Notes |
 |---------|--------|
+| 1.2.6 | plan-author verify: fill workboard phase brief before isolating work when an annex exists (kit 2.11.1) |
 | 1.2.5 | docs-author verify: description passes identity test (new/on-edit; not a historical gate) (kit 2.11.0) |
 | 1.2.4 | docs-author verify: durable YAML except omit list; description is the blurb; keywords optional, not a dump |
 | 1.2.3 | Seed `authority_paths` + verify cite [files.md](../rules/files.md) (adopter, maintainer, docs-author, implementer); directory-index forward-only |
