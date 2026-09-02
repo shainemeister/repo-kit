@@ -47,7 +47,7 @@ last_updated: "2026-09-01"
 
 | ID | Work | Status | Commit | Notes |
 |----|------|--------|--------|-------|
-| P0 | Register annex; freeze identity test | `done` | — | SHA on next board edit |
+| P0 | Register annex; freeze identity test | `done` | `de1aa08` | Annex + freeze; no `kit/` edits |
 | P1 | MARKDOWN-STANDARD identity test | `blocked` | — | Confirm OOO before any `kit/` edits |
 | P2 | Cite files.md + authoring | `open` | — | One sentence each; adopt matrix untouched |
 | P3 | Templates (DIR-README + `{{DESCRIPTION}}` hint) | `open` | — | No landing/alias/AGENTS YAML |
@@ -57,7 +57,7 @@ last_updated: "2026-09-01"
 
 ### Progress log (newest first, max ~15 lines)
 
-- 2026-09-01 Registered **definitional-identity-2.11.0**. P0 annex + freeze. P1 `blocked` on OOO confirm.
+- 2026-09-01 Registered **definitional-identity-2.11.0** P0 `de1aa08`. P1 `blocked` on OOO confirm.
 - 2026-08-31 **frontmatter-2.10.0** complete: `5a7a486` kit `2.10.0`. P0 `1fee91e` · P1 `1854ae6` · P2 `4f2c5cc` · P3 `52393a8` · P4 `1e374ea` · P5 `e602c1c`. Annex archived.
 - 2026-08-31 **files-law-2.9.0** complete: `7823f20` kit `2.9.0`. P0 `752c8a5` · P1 `66b7687` · P2 `9fc97a1` · P3 `5ea9c49` · P4 `c90efc5` · P5 `3d8212c`. Annex archived.
 - 2026-08-22 **workboard-rigidity-2.8.2** complete: `22311d4` kit `2.8.2`. P0 `1e6a003` · P1 `ba79d28` · P2 `6b8d01e` · P3 `ee8114e` · P4 `ff54cef`. Annex archived.
