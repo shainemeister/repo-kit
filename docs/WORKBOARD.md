@@ -11,16 +11,16 @@ related:
   - ../kit/rules/workboard.md
   - ../kit/CHANGELOG.md
   - ./README.md
+  - ./plan/workboard-packet-2.11.1/README.md
   - ./plan/archive/definitional-identity-2.11.0/README.md
   - ./plan/archive/frontmatter-2.10.0/README.md
-  - ./plan/archive/files-law-2.9.0/README.md
 last_updated: "2026-09-01"
 ---
 
 # Workboard
 
 **Updated:** 2026-09-01  
-**Primary program:** `none`  
+**Primary program:** `workboard-packet-2.11.1`  
 **Rules:** [kit/rules/workboard.md](../kit/rules/workboard.md) · kit README (mission) · [docs/plan/](./plan/) (detail)
 
 | Status | Meaning |
@@ -34,29 +34,31 @@ last_updated: "2026-09-01"
 
 ---
 
-## Active program — none
+## Active program — workboard-packet-2.11.1
 
 | Field | Value |
 |-------|--------|
-| **Goal** | — |
-| **L4 docs to update** | — |
-| **Optional annex** | — |
+| **Goal** | Sub-agent phase packet + execution precision; keep full Progress Tracker |
+| **L4 docs to update** | workboard **1.2.0**; OOO/program-README/board templates; OPS cite; UPGRADE; CHANGELOG `### [2.11.1]` |
+| **Optional annex** | [docs/plan/workboard-packet-2.11.1/](./plan/workboard-packet-2.11.1/) |
 | **Smoke / gates** | Author checklist; relative links; no `{{PLACEHOLDERS}}` in finished policy |
 
 ### Phases
 
 | ID | Work | Status | Commit | Notes |
 |----|------|--------|--------|-------|
-| — | — | — | — | Register a program here before multi-phase kit work |
+| P0 | Register annex; freeze packet; trim stale log | `done` | — | Allow: this board + annex + plan index |
+| P1 | `kit/rules/workboard.md` packet + precision | `active` | — | Exit: 1.2.0; Must still 5 |
+| P2 | OOO / program-README / board templates | `open` | — | Allow: three templates only |
+| P3 | OPS + ai-docs-workspace cites | `open` | — | One sentence each |
+| P4 | SETUP 4c + UPGRADE forward-only | `open` | — | Preserve live boards |
+| P5 | plan-author verify | `open` | — | No BUILD |
+| P6 | CHANGELOG 2.11.1 + archive | `open` | — | |
 
 ### Progress log (newest first, max ~15 lines)
 
+- 2026-09-01 Registered **workboard-packet-2.11.1**. P0 freeze; P1 `active` (implement). Stale 2.11.0 `Pn active` log lines dropped.
 - 2026-09-01 **definitional-identity-2.11.0** complete: `580ffd9` kit `2.11.0`. P0 `de1aa08` · P1 `d10b8a6` · P2 `6096529` · P3 `580749b` · P4 `3b46f8f` · P5 `3a597ed`. Annex archived.
-- 2026-09-01 P4 `3b46f8f` SETUP/UPGRADE forward-only; hub label. P5 `active`.
-- 2026-09-01 P3 `580749b` templates teach identity test. P4 `active`.
-- 2026-09-01 P2 `6096529` files.md + authoring cite identity test. P3 `active`.
-- 2026-09-01 P1 `d10b8a6` MARKDOWN-STANDARD **1.5.0** identity test. P2 `active`.
-- 2026-09-01 Registered **definitional-identity-2.11.0** P0 `de1aa08`. P1 `blocked` on OOO confirm.
 - 2026-08-31 **frontmatter-2.10.0** complete: `5a7a486` kit `2.10.0`. P0 `1fee91e` · P1 `1854ae6` · P2 `4f2c5cc` · P3 `52393a8` · P4 `1e374ea` · P5 `e602c1c`. Annex archived.
 - 2026-08-31 **files-law-2.9.0** complete: `7823f20` kit `2.9.0`. P0 `752c8a5` · P1 `66b7687` · P2 `9fc97a1` · P3 `5ea9c49` · P4 `c90efc5` · P5 `3d8212c`. Annex archived.
 - 2026-08-22 **workboard-rigidity-2.8.2** complete: `22311d4` kit `2.8.2`. P0 `1e6a003` · P1 `ba79d28` · P2 `6b8d01e` · P3 `ee8114e` · P4 `ff54cef`. Annex archived.
