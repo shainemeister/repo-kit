@@ -1,7 +1,7 @@
 ---
 title: "{{FOLDER_NAME}}"
-description: "Index of files in this directory. Open when adding, moving, or finding a file here."
-version: "1.0.0"
+description: "Catalog of intentional files in this folder (file → unique role). Open when adding, moving, or finding a path here; not a landing page or package README."
+version: "1.1.0"
 status: current
 audience:
   - developers
@@ -18,7 +18,7 @@ last_updated: "{{LAST_UPDATED}}"
 
 # {{FOLDER_NAME}}
 
-Index of files in this directory. **Not** a landing page: do **not** use Overview or Operator prompts.
+Catalog of intentional files in this folder (file → unique role).
 
 **Related:** [files.md](../rules/files.md) · [RULES.md](../RULES.md) · [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md)
 
@@ -32,7 +32,15 @@ Index of files in this directory. **Not** a landing page: do **not** use Overvie
 |------|----------|
 | {{FILE_NAME}} | {{FILE_FUNCTION}} |
 
-Add or remove rows so the table matches this directory. Omit regenerable outputs, vendor, `.git/`, secrets, host trees this repo did not create, and language leaves already listed in the parent package README ([directory index](../rules/files.md#directory-index)).
+Add or remove rows so the table matches this directory. Function cells pass the [identity test](../MARKDOWN-STANDARD.md#description-identity) at one line (unique role in this folder; not a filename restatement). Omit regenerable outputs, vendor, `.git/`, secrets, host trees this repo did not create, and language leaves already listed in the parent package README ([directory index](../rules/files.md#directory-index)).
+
+<!-- Example only — do not copy these kit paths into a product folder.
+| File | Function |
+|------|----------|
+| SETUP.md | First adopt; delete after initiation (not later upgrades) |
+| UPGRADE.md | Later kit bumps and 1.x→2.x migrate |
+| RULES.md | Hub: authority map, baseline, Must index |
+-->
 
 ---
 

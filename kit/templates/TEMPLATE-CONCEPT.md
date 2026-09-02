@@ -22,7 +22,7 @@ last_updated: "{{LAST_UPDATED}}"
 **Document version:** {{VERSION}}  
 **Related:** [README.md](./README.md) · [{{RELATED_DOC}}](./{{RELATED_DOC}})
 
-<!-- Replace {{PLACEHOLDERS}}. Delete commented `keywords` if unused. Contents only if ≥ 5 H2s or ≳ 150 lines. Never list Summary as item 1. -->
+<!-- Replace {{PLACEHOLDERS}}. {{DESCRIPTION}} must pass MARKDOWN-STANDARD identity test (claim not in title/filename/doc_type; wrong if swapped onto a sibling). One sentence is legal; not a sentence count. Delete commented `keywords` if unused. Contents only if ≥ 5 H2s or ≳ 150 lines. Never list Summary as item 1. -->
 
 ---
 
