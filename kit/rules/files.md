@@ -1,7 +1,7 @@
 ---
 title: File creation, placement, and naming
-description: When to create a path, which category it belongs in, how to name it, and when a directory needs an index README.
-version: "1.0.1"
+description: Evidence, category, path shape, and forward-only directory indexes for versioned paths. Open when adding, moving, splitting, or naming a path; kit-vs-product packaging stays in hygiene.
+version: "1.0.2"
 status: current
 audience:
   - developers
@@ -15,12 +15,12 @@ related:
   - ../MARKDOWN-STANDARD.md
   - ../agents/HABITAT.md
   - ./ai-docs-workspace.md
-last_updated: "2026-08-31"
+last_updated: "2026-09-01"
 ---
 
 # File creation, placement, and naming
 
-Rules for **creating**, **placing**, and **naming** versioned paths. Kit-vs-product layout remains [hygiene](./hygiene.md).
+Evidence, category, path shape, and forward-only directory indexes for versioned paths.
 
 **Related:** [RULES.md](../RULES.md) · [hygiene.md](./hygiene.md) · [contracts.md](./contracts.md) · [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md) · [HABITAT](../agents/HABITAT.md) · [ai-docs-workspace.md](./ai-docs-workspace.md)
 
@@ -108,7 +108,7 @@ New durable markdown (not on the MARKDOWN-STANDARD omit list) gets YAML in the s
 
 ## Directory index
 
-A **navigable, versioned** directory that contains other **intentional** files gets `README.md` in the **same change set** as adding that directory or an intentional file it contains ([contracts](./contracts.md#same-change-set-rule)). Shape: table **file → function**. Not [landing](../MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter) (no Overview / Operator prompts).
+A **navigable, versioned** directory that contains other **intentional** files gets `README.md` in the **same change set** as adding that directory or an intentional file it contains ([contracts](./contracts.md#same-change-set-rule)). Shape: table **file → function**. Function cells use the [identity test](../MARKDOWN-STANDARD.md#description-identity) at one-line resolution (unique role in this folder; not a paste of YAML `description`). Not [landing](../MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter) (no Overview / Operator prompts).
 
 **Exclude:** regenerable outputs, vendor, `.git/`, secrets, host trees this repo did not create, language leaves already listed in the parent **package** README.
 
@@ -147,5 +147,6 @@ Hygiene keeps kit-vs-product and SETUP/UPGRADE lifecycle ([hygiene](./hygiene.md
 
 | Version | Notes |
 |---------|--------|
+| 1.0.2 | Function cells cite the description identity test (one line; not a reprint) (kit 2.11.0) |
 | 1.0.1 | New durable markdown gets YAML except omit list (cite); this file owns create/place/name |
 | 1.0.0 | Initial (kit 2.9.0) |

@@ -1,7 +1,7 @@
 ---
 title: Authoring and Style
 description: Documentation rules, formatting conventions, inventory-gated style gates for Python, Rust, and C/C++, and other language style gates.
-version: "1.2.3"
+version: "1.2.4"
 status: current
 audience:
   - developers
@@ -14,7 +14,7 @@ related:
   - ./verification-and-ops.md
   - ./security.md
   - ./files.md
-last_updated: "2026-08-31"
+last_updated: "2026-09-01"
 ---
 
 # Authoring and Style
@@ -51,7 +51,7 @@ How to write documentation and how to gate product code style (Domain B). **Decl
 ## Documentation rules
 
 1. **Substantial documents** follow [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md): YAML frontmatter, single H1, lead, then the **required core** for the type ([density](../MARKDOWN-STANDARD.md#density-force-and-incorporation)). Summary and Contents only when those rules require them. **Root `README.md`** uses the [landing](../MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter) outline only: no frontmatter; **Overview** then **Operator prompts**.
-2. **New docs** start from [templates/](../templates/); leave no unresolved `{{PLACEHOLDERS}}`. Pick templates from [project interest](../SETUP.md#5-pick-templates-by-interest) so contracts exist before or with first code. Durable markdown has YAML except the omit list; `description` is the blurb ([field reference](../MARKDOWN-STANDARD.md#field-reference)). Directory-index `README.md` for a new navigable directory follows [files.md](./files.md) (file → function; not [landing](../MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter) shape).
+2. **New docs** start from [templates/](../templates/); leave no unresolved `{{PLACEHOLDERS}}`. Pick templates from [project interest](../SETUP.md#5-pick-templates-by-interest) so contracts exist before or with first code. Durable markdown has YAML except the omit list; `description` passes the [identity test](../MARKDOWN-STANDARD.md#description-identity). Directory-index `README.md` for a new navigable directory follows [files.md](./files.md) (file → function; not [landing](../MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter) shape).
 3. **Behavior change ⇒ doc change** in the same commit or PR ([contracts](./contracts.md#same-change-set-rule)):
    - CLI verbs, flags, exit codes, JSON shapes → matching CLI / API guide
    - Formulas, output columns, validation → methodology (+ fixtures if contract shifts)
@@ -194,6 +194,7 @@ Advisory starting points for other surfaces (choose what the team will actually 
 
 | Version | Notes |
 |---------|--------|
+| 1.2.4 | Description cite retargets the identity test (kit 2.11.0) |
 | 1.2.3 | Durable markdown YAML except omit list; description is the blurb |
 | 1.2.2 | Cite files.md for directory-index README (not landing shape) |
 | 1.2.1 | Density restyle (kit 2.8.0); gate catalogs unchanged |
