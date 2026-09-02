@@ -26,6 +26,24 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 
 ## repo-kit
 
+### [2.11.1] - 2026-09-01
+
+#### Added
+
+- Workboard **sub-agent packet** (`kit/rules/workboard.md` **1.2.0**): when an annex exists, fill current state · issue · fix · allow/deny · exit **before** spawn. Child gets board row + brief + listed paths; does not edit the board or Progress Tracker.
+
+#### Changed
+
+- **Keep** the full Progress Tracker (ordered tasks · status · SHA). Do not collapse it because a board exists. Board still wins “what is open.”
+- Progress log: drop stale `active` lines after the phase row is `done` with a SHA. Board Notes: one-line exit/allow hint. One phase = one allow list.
+- Archive: OOO body prefers repo-root `kit/…` cites; retarget `related:` + Board lines only. Annex **Next phase** matches the board `active`/`blocked` row.
+- TEMPLATE-OOO **1.2.0** brief table; program-README next-phase match; board template Notes/log hints.
+- OPS **1.3.3** / ai-docs-workspace **1.1.5** / SETUP 4c / UPGRADE **1.8.7** / CATALOG **1.2.6** plan-author: cite only. Preserve live boards; no complete-fail for historical annexes without the six-field brief.
+
+#### Notes
+
+- Patch on **2.11.0**. No hub Must-map, inventory, SAST, or layout migration. Default annex remains optional (packet applies when an annex exists). RULES tracker shape unchanged.
+
 ### [2.11.0] - 2026-09-01
 
 #### Added

@@ -14,7 +14,7 @@ Detailed execution plans for kit work. Durable kit version history remains in `k
 
 | Plan | Status | Summary |
 |------|--------|---------|
-| [workboard-packet-2.11.1](./workboard-packet-2.11.1/) | open | Sub-agent phase packet + execution precision (kit 2.11.1) — live only while the board annex field points here |
+| [workboard-packet-2.11.1](./archive/workboard-packet-2.11.1/) | archived | Sub-agent phase packet + execution precision (kit 2.11.1) — read L4, not this pack |
 | [definitional-identity-2.11.0](./archive/definitional-identity-2.11.0/) | archived | Definitional floor for YAML `description` and Function cells (kit 2.11.0) — read L4, not this pack |
 | [frontmatter-2.10.0](./archive/frontmatter-2.10.0/) | archived | YAML identity except omit list (kit 2.10.0) — read L4, not this pack |
 | [files-law-2.9.0](./archive/files-law-2.9.0/) | archived | File creation, placement, and naming (kit 2.9.0) — read L4, not this pack |

@@ -11,7 +11,7 @@ related:
   - ../kit/rules/workboard.md
   - ../kit/CHANGELOG.md
   - ./README.md
-  - ./plan/workboard-packet-2.11.1/README.md
+  - ./plan/archive/workboard-packet-2.11.1/README.md
   - ./plan/archive/definitional-identity-2.11.0/README.md
   - ./plan/archive/frontmatter-2.10.0/README.md
 last_updated: "2026-09-01"
@@ -20,7 +20,7 @@ last_updated: "2026-09-01"
 # Workboard
 
 **Updated:** 2026-09-01  
-**Primary program:** `workboard-packet-2.11.1`  
+**Primary program:** `none`  
 **Rules:** [kit/rules/workboard.md](../kit/rules/workboard.md) · kit README (mission) · [docs/plan/](./plan/) (detail)
 
 | Status | Meaning |
@@ -34,30 +34,24 @@ last_updated: "2026-09-01"
 
 ---
 
-## Active program — workboard-packet-2.11.1
+## Active program — none
 
 | Field | Value |
 |-------|--------|
-| **Goal** | Sub-agent phase packet + execution precision; keep full Progress Tracker |
-| **L4 docs to update** | workboard **1.2.0**; OOO/program-README/board templates; OPS cite; UPGRADE; CHANGELOG `### [2.11.1]` |
-| **Optional annex** | [docs/plan/workboard-packet-2.11.1/](./plan/workboard-packet-2.11.1/) |
+| **Goal** | — |
+| **L4 docs to update** | — |
+| **Optional annex** | — |
 | **Smoke / gates** | Author checklist; relative links; no `{{PLACEHOLDERS}}` in finished policy |
 
 ### Phases
 
 | ID | Work | Status | Commit | Notes |
 |----|------|--------|--------|-------|
-| P0 | Register annex; freeze packet; trim stale log | `done` | — | Allow: this board + annex + plan index |
-| P1 | `kit/rules/workboard.md` packet + precision | `active` | — | Exit: 1.2.0; Must still 5 |
-| P2 | OOO / program-README / board templates | `open` | — | Allow: three templates only |
-| P3 | OPS + ai-docs-workspace cites | `open` | — | One sentence each |
-| P4 | SETUP 4c + UPGRADE forward-only | `open` | — | Preserve live boards |
-| P5 | plan-author verify | `open` | — | No BUILD |
-| P6 | CHANGELOG 2.11.1 + archive | `open` | — | |
+| — | — | — | — | Register a program here before multi-phase kit work |
 
 ### Progress log (newest first, max ~15 lines)
 
-- 2026-09-01 Registered **workboard-packet-2.11.1**. P0 freeze; P1 `active` (implement). Stale 2.11.0 `Pn active` log lines dropped.
+- 2026-09-01 **workboard-packet-2.11.1** complete: kit `2.11.1`. P0 `09fdb3e` · P1 `9240842` · P2 `705742f` · P3 `8b4fcae` · P4 `804e508` · P5 `ce44edb`. Annex archived. P6 SHA on next board edit.
 - 2026-09-01 **definitional-identity-2.11.0** complete: `580ffd9` kit `2.11.0`. P0 `de1aa08` · P1 `d10b8a6` · P2 `6096529` · P3 `580749b` · P4 `3b46f8f` · P5 `3a597ed`. Annex archived.
 - 2026-08-31 **frontmatter-2.10.0** complete: `5a7a486` kit `2.10.0`. P0 `1fee91e` · P1 `1854ae6` · P2 `4f2c5cc` · P3 `52393a8` · P4 `1e374ea` · P5 `e602c1c`. Annex archived.
 - 2026-08-31 **files-law-2.9.0** complete: `7823f20` kit `2.9.0`. P0 `752c8a5` · P1 `66b7687` · P2 `9fc97a1` · P3 `5ea9c49` · P4 `c90efc5` · P5 `3d8212c`. Annex archived.
@@ -81,11 +75,11 @@ last_updated: "2026-09-01"
 
 | Program | Ended | L4 pointer |
 |---------|-------|------------|
+| workboard-packet-2.11.1 | 2026-09-01 | [workboard](../kit/rules/workboard.md) **1.2.0** · [CHANGELOG](../kit/CHANGELOG.md) `### [2.11.1]` |
 | definitional-identity-2.11.0 | 2026-09-01 | [MARKDOWN-STANDARD](../kit/MARKDOWN-STANDARD.md) **1.5.0** · [CHANGELOG](../kit/CHANGELOG.md) `### [2.11.0]` |
 | frontmatter-2.10.0 | 2026-08-31 | [MARKDOWN-STANDARD](../kit/MARKDOWN-STANDARD.md) **1.4.0** · [CHANGELOG](../kit/CHANGELOG.md) `### [2.10.0]` |
 | files-law-2.9.0 | 2026-08-31 | [files.md](../kit/rules/files.md) · [CHANGELOG](../kit/CHANGELOG.md) `### [2.9.0]` |
 | workboard-rigidity-2.8.2 | 2026-08-22 | [workboard](../kit/rules/workboard.md) · [CHANGELOG](../kit/CHANGELOG.md) `### [2.8.2]` |
-| density-fixups-2.8.1 | 2026-08-21 | [density hub exception](../kit/MARKDOWN-STANDARD.md#citation-floor-and-ceiling) · [CHANGELOG](../kit/CHANGELOG.md) `### [2.8.1]` |
 
 ---
 

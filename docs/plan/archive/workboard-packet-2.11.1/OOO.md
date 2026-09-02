@@ -1,25 +1,25 @@
 ---
 title: "workboard-packet-2.11.1 — order of operations"
-description: Goals, freeze, phased OOO, verification, and risks for a sub-agent phase packet and execution-precision tighten. Open while this program is workboard primary; not a second workboard module.
+description: Goals, freeze, phased OOO, verification, and risks for the workboard sub-agent packet. Archived; read L4 workboard 1.2.0.
 version: "1.0.0"
-status: draft
+status: archived
 audience:
   - ai-agents
   - maintainers
 doc_type: plan
 related:
   - ./README.md
-  - ../../WORKBOARD.md
-  - ../../../kit/rules/workboard.md
-  - ../../../kit/templates/docs/plan/TEMPLATE-OOO.md
-  - ../../../kit/agents/OPS.md
-  - ../../../kit/UPGRADE.md
+  - ../../../WORKBOARD.md
+  - ../../../../kit/rules/workboard.md
+  - ../../../../kit/templates/docs/plan/TEMPLATE-OOO.md
+  - ../../../../kit/agents/OPS.md
+  - ../../../../kit/UPGRADE.md
 last_updated: "2026-09-01"
 ---
 
 # Workboard packet 2.11.1 — order of operations
 
-**Board:** [docs/WORKBOARD.md](../../WORKBOARD.md)  
+**Board:** [docs/WORKBOARD.md](../../../WORKBOARD.md)  
 **Annex index:** [README.md](./README.md)
 
 Program-level OOO. Per-phase file patches wait until that phase is `active`. Law ships as kit **2.11.1**. Current baseline: **2.11.0**. Instruct off. No root `PLAN.md`.
