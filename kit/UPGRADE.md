@@ -1,7 +1,7 @@
 ---
 title: Upgrade repo-kit
 description: Durable guide for upgrading an existing kit baseline, including 1.x to 2.x layout migration (standards under kit/) and merge options.
-version: "1.8.6"
+version: "1.8.7"
 status: current
 audience:
   - developers
@@ -185,7 +185,7 @@ Never clobber on merge:
 - Root README **product** Overview (reshape headings; do not replace with upstream kit landing copy)  
 - Project root CHANGELOG **history**  
 - Project root **`docs/`** content (AI workspace notes—merge policy/templates under `kit/` only)  
-- Project **`docs/WORKBOARD.md`** and `docs/plan/**` (including `archive/`) — merge kit policy only  
+- Project **`docs/WORKBOARD.md`** and `docs/plan/**` (including `archive/`) — merge kit policy only; do **not** restyle a filled board or fail complete for historical annexes that lack a six-field phase brief ([workboard](./rules/workboard.md) **1.2.0** is forward-only / on-edit)  
 - Recorded path **aliases** (e.g. `docs/planning/` instead of `docs/plan/`) — do not force rename  
 - Filled **continuity overlay** (adopter protected-surface table at the recorded project path — **not** a rewrite of portable `kit/rules/continuity.md`)  
 - Kit baseline **Kit source** URL (unless deliberate fork)  
@@ -236,6 +236,7 @@ This repository has no repo-kit baseline. Follow kit/SETUP.md selective adoption
 
 | Version | Notes |
 |---------|--------|
+| 1.8.7 | Merge workboard 1.2.0; no complete-fail for historical annexes without a phase brief (kit 2.11.1) |
 | 1.8.6 | Merge MARKDOWN-STANDARD 1.5.0; no complete-fail for historical tautological descriptions (kit 2.11.0) |
 | 1.8.5 | Merge MARKDOWN-STANDARD 1.4.0; no complete-fail for historical missing YAML fences (forward-only / on-edit) (kit 2.10.0) |
 | 1.8.4 | Merge files.md with rules/*; no directory-index backfill; no root `./rules/` compat tree (kit 2.9.0) |

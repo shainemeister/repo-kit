@@ -182,7 +182,7 @@ Scaffold **only** when the interest is already multi-phase or the first work wil
 
 1. Copy [templates/docs/WORKBOARD.md](./templates/docs/WORKBOARD.md) → project `docs/WORKBOARD.md`.  
 2. Replace every `{{PLACEHOLDER}}`. Primary program may be `none`.  
-3. Enable the `docs/plan/` module (from [templates/docs/plan/](./templates/docs/plan/)) if an annex will be needed.  
+3. Enable the `docs/plan/` module (from [templates/docs/plan/](./templates/docs/plan/)) if an annex will be needed. When an annex exists, fill the active-phase brief (current state · issue · fix · allow/deny · exit) before isolating work ([workboard](./rules/workboard.md#sub-agent-packet)).  
 4. Add authority-map rows: active multi-phase work → `docs/WORKBOARD.md`; policy → `kit/rules/workboard.md`.  
 5. If the repo already has another planning folder (e.g. `docs/planning/`), **map it** — do not invent a second board ([path aliases](./rules/workboard.md#path-aliases)).
 
