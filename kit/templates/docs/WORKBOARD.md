@@ -52,8 +52,6 @@ last_updated: "{{ISO_DATE}}"
 
 - {{ISO_DATE}} Registered **{{PROGRAM_ID}}**.
 
-Log register, blocked/unblocked, and program complete. Drop lines that still call a phase `active` after its table row is `done` with a SHA.
-
 ---
 
 ## Deferred
@@ -84,4 +82,4 @@ Log register, blocked/unblocked, and program complete. Drop lines that still cal
 
 ---
 
-*Agents: register multi-phase work here before coding. Deep phase OOO only when that phase is activated. Replace an existing phase row; do not insert a duplicate phase ID. Replace every `{{PLACEHOLDER}}`. Delete commented `keywords` if unused.*
+*Agents: register multi-phase work here before coding. Deep phase OOO only when that phase is activated. Replace an existing phase row; do not insert a duplicate phase ID. Progress log: register, blocked/unblocked, program complete — drop lines that still call a phase `active` after its row is `done` with a SHA. Replace every `{{PLACEHOLDER}}`. Delete commented `keywords` if unused.*

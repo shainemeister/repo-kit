@@ -56,7 +56,7 @@ Body cites below use repo-root `kit/…` so they survive archive. `related:` and
 
 | Item | Why |
 |------|-----|
-| Collapse Progress Tracker to one row | User-rejected; tracker is continuity ([RULES](../../../kit/RULES.md) operator step 6) |
+| Collapse Progress Tracker to one row | User-rejected; tracker is continuity (`kit/RULES.md` operator step 6) |
 | New hub Must, new map row, or `docs/context/` tree | Map already names workboard; no second module |
 | Require an annex for every two-phase edit | Default remains **board-only** when the phase table can hold the OOO |
 | Change status vocabularies or merge tracker/board enums | Channels stay distinct; board wins “what is open” |

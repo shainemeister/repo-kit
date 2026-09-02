@@ -26,6 +26,20 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 
 ## repo-kit
 
+### [2.11.2] - 2026-09-01
+
+#### Changed
+
+- Board template: progress-log hygiene lives in the copy footer, not a live paragraph adopters would ship on their board.
+- OOO template: archive-stable `kit/` cite hint is an HTML comment, not annex body law.
+- YAML templates: `{{DESCRIPTION}}` hint **cites** the identity test (does not reprint the sibling/title claims).
+- DIR-README example Function rows are product-shaped (`CLI-GUIDE` / `SECURITY` / `METHODOLOGY`), not kit `SETUP`/`UPGRADE`/`RULES` paths.
+- SETUP 4c: fill the phase brief before **delegating** a phase (not Instruct-only “isolate”).
+
+#### Notes
+
+- Patch on **2.11.1**. No hub Must-map, inventory, SAST, or layout change. Workboard unique rules unchanged.
+
 ### [2.11.1] - 2026-09-01
 
 #### Added

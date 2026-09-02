@@ -29,7 +29,7 @@ last_updated: "{{LAST_UPDATED}}"
 | **CLI entry** | `{{CLI_ENTRY}}` |
 | **Library** | `{{LIBRARY_ENTRY}}` |
 
-<!-- Replace {{PLACEHOLDERS}}. {{DESCRIPTION}} must pass MARKDOWN-STANDARD identity test (claim not in title/filename/doc_type; wrong if swapped onto a sibling). One sentence is legal; not a sentence count. Delete commented `keywords` if unused. Contents only if ≥ 5 H2s or ≳ 150 lines. Never list Summary as item 1. -->
+<!-- Replace {{PLACEHOLDERS}}. {{DESCRIPTION}} must pass MARKDOWN-STANDARD identity test (cite; not a sentence count). Delete commented `keywords` if unused. Contents only if ≥ 5 H2s or ≳ 150 lines. Never list Summary as item 1. -->
 
 ---
 

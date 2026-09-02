@@ -85,11 +85,11 @@ Facts that **bound** the OOO (current architecture, not a wish list).
 
 Defer per-phase implementation detail until that phase is `active` on the board.
 
-OOO **body** prefers repo-root `kit/…` (or product L4) so cites survive archive. Keep `related:` and the Board line relative.
+<!-- Body cites: prefer repo-root `kit/…` (or product L4) so they survive archive. Keep `related:` and the Board line relative. -->
 
 ### Active phase brief *(omit-if board-only program)*
 
-Fill **only** the phase that is `active` on the board, plus the next `open` if needed to start it. Later phases: omit until activated. Fill this table **before** isolating or spawning the phase ([workboard](../../../kit/rules/workboard.md#sub-agent-packet)).
+Fill **only** the phase that is `active` on the board, plus the next `open` if needed to start it. Later phases: omit until activated. Fill this table **before** isolating or spawning the phase ([workboard — sub-agent packet](../../../kit/rules/workboard.md#sub-agent-packet)).
 
 ### {{ACTIVE_PHASE_ID}}
 

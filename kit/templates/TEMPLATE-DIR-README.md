@@ -34,12 +34,12 @@ Catalog of intentional files in this folder (file → unique role).
 
 Add or remove rows so the table matches this directory. Function cells pass the [identity test](../MARKDOWN-STANDARD.md#description-identity) at one line (unique role in this folder; not a filename restatement). Omit regenerable outputs, vendor, `.git/`, secrets, host trees this repo did not create, and language leaves already listed in the parent package README ([directory index](../rules/files.md#directory-index)).
 
-<!-- Example only — do not copy these kit paths into a product folder.
+<!-- Example only — replace with this folder’s files; do not ship these sample names.
 | File | Function |
 |------|----------|
-| SETUP.md | First adopt; delete after initiation (not later upgrades) |
-| UPGRADE.md | Later kit bumps and 1.x→2.x migrate |
-| RULES.md | Hub: authority map, baseline, Must index |
+| CLI-GUIDE.md | Verbs, flags, exits, and stable stdout (not the library API) |
+| SECURITY.md | Trust boundary when the package has an execution surface |
+| METHODOLOGY.md | Formulas and output columns (not the CLI contract) |
 -->
 
 ---
