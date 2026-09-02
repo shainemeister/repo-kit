@@ -1,7 +1,7 @@
 ---
 title: "{{PROGRAM_ID}} — order of operations"
 description: Owns goals, constraints, phased order of operations, verification, and risks for one program. Open while that program is active on the workboard.
-version: "1.1.0"
+version: "1.2.0"
 status: draft
 audience:
   - ai-agents
@@ -85,13 +85,22 @@ Facts that **bound** the OOO (current architecture, not a wish list).
 
 Defer per-phase implementation detail until that phase is `active` on the board.
 
+OOO **body** prefers repo-root `kit/…` (or product L4) so cites survive archive. Keep `related:` and the Board line relative.
+
 ### Active phase brief *(omit-if board-only program)*
 
-Fill **only** the phase that is `active` on the board, plus the next `open` if needed to start it. Later phases: omit until activated.
+Fill **only** the phase that is `active` on the board, plus the next `open` if needed to start it. Later phases: omit until activated. Fill this table **before** isolating or spawning the phase ([workboard](../../../kit/rules/workboard.md#sub-agent-packet)).
 
 ### {{ACTIVE_PHASE_ID}}
 
-{{ACTIVE_PHASE_BRIEF}}
+| Field | Value |
+|-------|--------|
+| **Current state** | {{CURRENT_STATE}} |
+| **Issue** | {{ISSUE}} |
+| **Fix** | {{FIX}} |
+| **Allow** | {{ALLOW_PATHS}} |
+| **Deny** | {{DENY_PATHS}} |
+| **Exit** | {{EXIT_CRITERION}} |
 
 ---
 

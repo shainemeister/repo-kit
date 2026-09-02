@@ -1,7 +1,7 @@
 ---
 title: "{{PROJECT_NAME}} — Active Workboard"
 description: Owns the live multi-phase workboard (open it to start or advance a program). Product vision stays in PLAN.md; shipped contracts stay on L4 owners.
-version: "1.0.0"
+version: "1.1.0"
 status: current
 audience:
   - ai-agents
@@ -46,11 +46,13 @@ last_updated: "{{ISO_DATE}}"
 
 | ID | Work | Status | Commit | Notes |
 |----|------|--------|--------|-------|
-| {{P0}} | {{PHASE_WORK}} | `open` | — | |
+| {{P0}} | {{PHASE_WORK}} | `open` | — | {{EXIT_OR_ALLOW}} |
 
 ### Progress log (newest first, max ~15 lines)
 
 - {{ISO_DATE}} Registered **{{PROGRAM_ID}}**.
+
+Log register, blocked/unblocked, and program complete. Drop lines that still call a phase `active` after its table row is `done` with a SHA.
 
 ---
 

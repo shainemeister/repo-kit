@@ -1,7 +1,7 @@
 ---
 title: "{{PROGRAM_ID}} — program annex"
 description: Owns the program annex index. Open only while the workboard Optional annex field points here.
-version: "1.1.0"
+version: "1.2.0"
 status: draft
 audience:
   - ai-agents
@@ -27,7 +27,7 @@ Depth is `docs/plan/<id>/`; after archive, apply the substitution table in the [
 |-------|--------|
 | **Program id** | {{PROGRAM_ID}} |
 | **Status** | `draft` / `active` / `done` / `archived` |
-| **Next phase** | {{PHASE_ID}} |
+| **Next phase** | {{PHASE_ID}} — must match the board `active` or `blocked` row (same change set) |
 | **L4 owners to update on ship** | {{AUTHORITY_MAP_PATHS}} |
 
 ## Contents of this annex
@@ -41,6 +41,7 @@ Depth is `docs/plan/<id>/`; after archive, apply the substitution table in the [
 
 1. Do not duplicate the live phase table into `PLAN.md`.  
 2. Do not write implementation OOOs for later phases until that phase is `active` on the board.  
-3. On program complete: `git mv` this folder to `docs/plan/archive/{{PROGRAM_ID}}/` and promote promises to L4.
+3. Keep **Next phase** matched to the board `active` or `blocked` row.  
+4. On program complete: `git mv` this folder to `docs/plan/archive/{{PROGRAM_ID}}/` and promote promises to L4.
 
 Replace every `{{PLACEHOLDER}}`. Delete commented `keywords` if unused.
