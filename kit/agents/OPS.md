@@ -1,7 +1,7 @@
 ---
 title: Agent Instruct Order of Operations
 description: Required utilization procedure when Agent Instruct is adopted—match, expertise, co-maintain docs/rules, lifecycle BUILD.
-version: "1.3.2"
+version: "1.3.3"
 status: current
 audience:
   - developers
@@ -15,7 +15,7 @@ related:
   - PLAN-HOOK.md
   - HABITAT.md
   - ../rules/contracts.md
-last_updated: "2026-08-21"
+last_updated: "2026-09-01"
 ---
 
 # Agent Instruct Order of Operations
@@ -207,7 +207,7 @@ Bare adopt: skip this section; use L4 + [Operator enforcement](../RULES.md#opera
 |--------|--------|
 | Detect Instruct; match **one** primary pack ([O3](#order-of-operations-o3)) | Receive that pack + listed `authority_paths` only |
 | Open L4 (map, inventory, verify table) **before** isolating work | Do not invent law, tools, or folders; **L4 wins** |
-| Multi-phase: update **`docs/WORKBOARD.md`**; give the child a **phase id** | Execute that phase only; do not mark the program `done` |
+| Multi-phase: update **`docs/WORKBOARD.md`**; give the child a **phase id** and, when an annex exists, the filled [phase brief](../rules/workboard.md#sub-agent-packet) | Execute that phase only; do not mark the program `done`; do not edit the board or Progress Tracker |
 | Own completion, CHANGELOG, Progress Tracker, board SHA | Return: files touched, docs updated, gates run / skip / fail |
 | **Serial** if two children would edit the same authority-map owner | **Parallel** only for independent packages or read-only review/research |
 | `compose_with`: at most **one** extra child, and only if the task clearly needs that concern | Never load the full compose matrix |
@@ -262,6 +262,7 @@ More: [examples/anti-patterns.md](./examples/anti-patterns.md).
 
 | Version | Notes |
 |---------|--------|
+| 1.3.3 | Parent gives the workboard phase brief when an annex exists (kit 2.11.1) |
 | 1.3.2 | Drop in-body document-version echo (kit 2.8.1) |
 | 1.3.1 | Density restyle (kit 2.8.0); unique O3, parent/child duties, and Instruct procedure unchanged |
 | 1.3.0 | Parent/child duties when work is isolated; workboard as DAG (kit 2.6.0) |

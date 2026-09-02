@@ -1,7 +1,7 @@
 ---
 title: AI Docs Workspace
 description: Project root docs/ as modular AI resource workspace—research, workboard, plan, project_build, resources; lifecycle and promotion to L4.
-version: "1.1.4"
+version: "1.1.5"
 status: current
 audience:
   - developers
@@ -16,7 +16,7 @@ related:
   - ../agents/PLAN-HOOK.md
   - ./files.md
   - ../templates/docs/README.md
-last_updated: "2026-08-31"
+last_updated: "2026-09-01"
 ---
 
 # AI Docs Workspace
@@ -165,7 +165,7 @@ Leave a short pointer in `docs/` if helpful. Do **not** leave the only copy of a
 | Long execution plan, options, research synthesis, program annex | **`docs/plan/`** (annex = `docs/plan/<id>/` while open) |
 | Session-only scratch | Chat / Progress Tracker—optional later write to docs |
 
-**Rule:** Agent Instruct enablement stays in PLAN ([PLAN-HOOK](../agents/PLAN-HOOK.md)). Do **not** paste live phase tables into PLAN. Detailed plans may live under `docs/plan/` and must be linked from the workboard when they are active multi-phase work. Alternate folder names (e.g. `docs/planning/`) are allowed if the authority map and `docs/README.md` record them.
+**Rule:** Agent Instruct enablement stays in PLAN ([PLAN-HOOK](../agents/PLAN-HOOK.md)). Do **not** paste live phase tables into PLAN. `docs/plan/README.md` and `docs/README.md` list open vs archived annexes; they do **not** reprint the live phase table ([workboard](./workboard.md)). Detailed plans may live under `docs/plan/` and must be linked from the workboard when they are active multi-phase work. Alternate folder names (e.g. `docs/planning/`) are allowed if the authority map and `docs/README.md` record them.
 
 ---
 
@@ -221,6 +221,7 @@ External citations follow the same trust idea as Agent Instruct expertise: **gui
 
 | Version | Notes |
 |---------|--------|
+| 1.1.5 | Workspace indexes do not reprint the live phase table (kit 2.11.1) |
 | 1.1.4 | Cite files.md for docs/ mkdir evidence; module list and promotion unchanged |
 | 1.1.3 | Restore unique Must-not digest (kit 2.8.2) |
 | 1.1.2 | Density restyle (kit 2.8.0); unique rules unchanged |
