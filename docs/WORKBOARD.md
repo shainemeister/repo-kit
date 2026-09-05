@@ -51,13 +51,14 @@ last_updated: "2026-09-04"
 | P1 | MARKDOWN-STANDARD current-content test | `done` | `39302a8` | Allow: `kit/MARKDOWN-STANDARD.md` only |
 | P2 | Cite files.md + authoring | `done` | `01ab89a` | Cite only; Must table still 5 |
 | P3 | Templates | `done` | `aee00fd` | `{{DESCRIPTION}}` hint; DIR-README Function uniqueness |
-| P4 | SETUP / UPGRADE / hub label | `active` | — | No complete-fail for historical stale blurbs |
-| P5 | CATALOG docs-author verify | `open` | — | No BUILD |
+| P4 | SETUP / UPGRADE / hub label | `done` | `797748a` | No complete-fail for historical stale blurbs |
+| P5 | CATALOG docs-author verify | `active` | — | No BUILD |
 | P6 | Ship 2.12.0 + archive | `open` | — | CHANGELOG; annex archive; primary `none` |
 
 ### Progress log (newest first, max ~15 lines)
 
-- 2026-09-04 P3 `done` `aee00fd`. P4 `active`.
+- 2026-09-04 P4 `done` `797748a`. P5 `active`.
+- 2026-09-04 P3 `done` `aee00fd`.
 - 2026-09-04 P2 `done` `01ab89a`.
 - 2026-09-04 P1 `done` `39302a8` — identity test 1 is current-content summary.
 - 2026-09-04 P0 `done` `d7bdd4c`.
