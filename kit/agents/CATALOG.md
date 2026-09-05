@@ -1,7 +1,7 @@
 ---
 title: Agent Catalog
 description: Default portable seed agents for repo-kit Agent Instruct.
-version: "1.2.7"
+version: "1.2.8"
 status: current
 audience:
   - developers
@@ -113,7 +113,7 @@ Exact enablement is filled by BUILD from PLAN + inventory ([BUILD.md](./BUILD.md
 | **negative_triggers** | greenfield product design with no repo metadata change |
 | **authority_paths** | `kit/RULES.md`, `kit/rules/versioning-and-git.md`, `kit/rules/hygiene.md`, `kit/rules/files.md`, `CHANGELOG.md` |
 | **compose_with** | `security`, `docs-author` |
-| **verify** | commit type matches staged files; CHANGELOG if release-worthy; no secrets staged; new navigable dirs get directory-index README per files.md (forward-only; not a historical gate) |
+| **verify** | commit type matches staged files; subject and body name the staged change (not the completed objective) per versioning-and-git commit-note identity; CHANGELOG if release-worthy; no secrets staged; new navigable dirs get directory-index README per files.md (forward-only; not a historical gate) |
 | **template** | [templates/maintainer.md](./templates/maintainer.md) |
 
 ### `implementer`
@@ -255,6 +255,7 @@ Templates under [templates/](./templates/) carry the full Expertise map. Summary
 
 | Version | Notes |
 |---------|--------|
+| 1.2.8 | maintainer verify: commit notes name the staged change (not the completed objective) (kit 2.13.0) |
 | 1.2.7 | docs-author verify: description current-content summary + uniqueness (new/on-edit; not a historical gate) (kit 2.12.0) |
 | 1.2.6 | plan-author verify: fill workboard phase brief before isolating work when an annex exists (kit 2.11.1) |
 | 1.2.5 | docs-author verify: description passes identity test (new/on-edit; not a historical gate) (kit 2.11.0) |

@@ -41,6 +41,7 @@ references:
     trust_note: Community standard; project rules win on conflict
 verify:
   - conventional commit subject matches staged files
+  - subject and body name the staged change (not the completed objective)
   - CHANGELOG updated when release-worthy
   - no secrets or regenerable dumps staged
   - new paths follow files.md
@@ -54,7 +55,7 @@ compose_with:
 
 ## Must
 
-- Use conventional commits that match what is staged.
+- Use conventional commits that match what is staged and name the staged change (not the completed objective) ([commit-note identity](../../rules/versioning-and-git.md#commit-note-identity)).
 - Maintain project root CHANGELOG.md (Keep a Changelog).
 - Include AI disclosure trailers when AI assisted (versioning-and-git).
 - Co-update canonical L4 docs when this change set touches contracts.
@@ -90,7 +91,7 @@ compose_with:
 1. If Instruct is in use: confirm this pack is appropriate primary (or compose) per OPS.
 2. Review `git status` and `git diff`.
 3. Stage one logical surface (or intentional code+docs pair).
-4. Write commit subject `type(scope): summary`.
+4. Write commit subject `type(scope): summary` of the staged change; add a body that states what changed unless the subject alone names the actions ([commit-note identity](../../rules/versioning-and-git.md#commit-note-identity)).
 5. If release-worthy, update CHANGELOG under the version section.
 6. If AI-assisted, add disclosure trailers per versioning-and-git.
 7. Confirm hygiene: no force-add of ignored artifacts.

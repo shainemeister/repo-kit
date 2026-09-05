@@ -79,7 +79,7 @@ compose_with:
 2. Open authority map + inventory + verification table; identify surfaces touched.
 3. Confirm Domain A/B gates for those surfaces.
 4. Confirm canonical docs updated if behavior changed.
-5. Check commit/CHANGELOG hygiene for the change set.
+5. Check commit/CHANGELOG hygiene for the change set, including [commit-note identity](../../rules/versioning-and-git.md#commit-note-identity).
 6. If agents/templates/enablement changed: confirm BUILD regen and expertise present.
 7. Report pass/fail and open risks.
 8. If any declared gate or required verify item failed or was skipped → report **fail**; do not endorse “complete”; list remediation ([completion rule](../../rules/verification-and-ops.md#completion-rule)).
