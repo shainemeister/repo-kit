@@ -26,7 +26,7 @@ No root `PLAN.md` (Instruct off).
 |-------|--------|
 | **Program id** | `description-summary-2.12.0` |
 | **Status** | `active` |
-| **Next phase** | P2 |
+| **Next phase** | P3 |
 | **L4 owners to update on ship** | [MARKDOWN-STANDARD](../../../kit/MARKDOWN-STANDARD.md) · [files.md](../../../kit/rules/files.md) · [CHANGELOG](../../../kit/CHANGELOG.md) `### [2.12.0]` |
 
 ## Contents of this annex
