@@ -1,7 +1,7 @@
 ---
 title: Repository Maintenance Rules
 description: Maintenance policy hub—authority map, kit baseline, and index to domain rule modules.
-version: "2.7.4"
+version: "2.7.5"
 status: current
 audience:
   - developers
@@ -56,7 +56,7 @@ Copy this hub (and the `rules/` modules you need) into the project’s **`kit/`*
 | Maintain **project root** `CHANGELOG.md` (Keep a Changelog) | Ship version bumps or release-worthy changes without CHANGELOG |
 | Keep standards under **`kit/`**; product outside | Flatten RULES/standards onto product root as default |
 | Keep [Kit baseline](#kit-baseline) current after adopt/upgrade | Lose track of kit version after deleting SETUP |
-| Use conventional commit messages that match staged files; when AI assisted include `Assisted-by` / `Compliance` / `Instructed-by` ([versioning-and-git](./rules/versioning-and-git.md#ai-assisted-commits-required-disclosure)) | Mix unrelated packages, omit AI disclosure when assisted, or invent a `Directed-by` trailer |
+| Use conventional commit messages that match staged files and name the staged change (not the completed objective); when AI assisted include `Assisted-by` / `Compliance` / `Instructed-by` ([versioning-and-git](./rules/versioning-and-git.md#commit-note-identity)) | Mix unrelated packages, omit AI disclosure when assisted, or invent a `Directed-by` trailer |
 | Keep packages composable at the workflow layer ([architecture](./rules/architecture.md)) | Silently rename public APIs, CLI fields, or schema columns |
 | Run **declared** Domain B style gates after product edits ([authoring-and-style](./rules/authoring-and-style.md): pylint / rustfmt+clippy / clang-format+clang-tidy **as inventory requires**) | Treat pylint, rustfmt, clippy, clang-format, or clang-tidy as a product runtime install for end users |
 | When a coding agent is used: establish thin L0 habitat (`AGENTS.md`) and map it ([HABITAT](./agents/HABITAT.md)) | Invent host folder trees; paste `kit/rules/*` into `AGENTS.md` / `CLAUDE.md` |
@@ -89,7 +89,7 @@ Standing checklist for AI and humans **maintaining this repository**. Domain det
 | 2 | **Validate the procedure** before execution | When Instruct: [OPS O3](./agents/OPS.md). Always: declared gates and completion ([verification-and-ops](./rules/verification-and-ops.md)) |
 | 3 | **Apply the appropriate Agent / Persona** for the task | When Instruct is in use: one primary expert pack ([OPS](./agents/OPS.md), [When Instruct is in use](#when-agent-instruct-is-in-use)). Bare adopt: this hub + domain modules only |
 | 4 | **Plan + AI `docs/` workspace** when work is multi-step, research, or durable | Root `PLAN.md` for mission/Agent models (not a todo list). **Multi-phase:** register and update **`docs/WORKBOARD.md`** ([workboard](./rules/workboard.md)) before phase code. Deep OOO → optional annex under `docs/plan/<id>/`. Research → `docs/research/`; build context → `docs/project_build/`; curated refs → `docs/resources/` ([ai-docs-workspace](./rules/ai-docs-workspace.md)). Scaffold **when needed**. Skip for trivial single-step replies |
-| 5 | **Git format + confirm complete** | Conventional commits match staged files ([versioning-and-git](./rules/versioning-and-git.md)); when AI assisted, end the message with `Assisted-by` / `Compliance` / `Instructed-by` (dynamic `Instructed-by`: git `user.name` → ask+record → `User` — [AI disclosure](./rules/versioning-and-git.md#ai-assisted-commits-required-disclosure)); confirm L4 co-updates and declared gates before “done” ([completion rule](./rules/verification-and-ops.md#completion-rule)); promote durable findings from `docs/` to L4 when they become promises |
+| 5 | **Git format + confirm complete** | Conventional commits match staged files and name the staged change ([commit-note identity](./rules/versioning-and-git.md#commit-note-identity)); when AI assisted, end the message with `Assisted-by` / `Compliance` / `Instructed-by` (dynamic `Instructed-by`: git `user.name` → ask+record → `User` — [AI disclosure](./rules/versioning-and-git.md#ai-assisted-commits-required-disclosure)); confirm L4 co-updates and declared gates before “done” ([completion rule](./rules/verification-and-ops.md#completion-rule)); promote durable findings from `docs/` to L4 when they become promises |
 | 6 | **Progress Tracker** at the end of each reply that advances work | Ordered tasks with status; **commit SHA** for each completed task that was committed; `—` if not committed. Durable notes belong in `docs/`, not only the tracker |
 
 ### Progress Tracker (minimum shape)
@@ -275,6 +275,7 @@ Copy-paste prompt also on root [README — Upgrade repo-kit](../README.md#upgrad
 
 | Version | Notes |
 |---------|--------|
+| 2.7.5 | Commit Must + Operator step 5 name staged-change notes (kit 2.13.0); Must index unchanged |
 | 2.7.4 | Authority-map concern label names current-content summary (kit 2.12.0); Must index unchanged |
 | 2.7.3 | Authority-map concern label names description identity (kit 2.11.0); Must index unchanged |
 | 2.7.2 | Authority-map + domain-index row for files.md (kit 2.9.0); Must index unchanged |

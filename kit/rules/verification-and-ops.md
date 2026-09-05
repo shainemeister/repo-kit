@@ -1,7 +1,7 @@
 ---
 title: Verification and Operations
 description: Verification before ship, completion rule, maintenance cadence, anti-patterns, and contributor checklist.
-version: "1.7.2"
+version: "1.7.3"
 status: current
 audience:
   - developers
@@ -15,7 +15,7 @@ related:
   - ./versioning-and-git.md
   - ./files.md
   - ../MARKDOWN-STANDARD.md
-last_updated: "2026-08-31"
+last_updated: "2026-09-04"
 ---
 
 # Verification and Operations
@@ -144,7 +144,7 @@ Ordered steps for humans and AI agents:
 | Merging unrelated runtimes into one process without design | Keep boundaries ([architecture.md](./architecture.md)) |
 | Absolute machine-only paths as the only example | Placeholder + one repo-relative example |
 | Orphan files missing from the inventory | Update catalog in the same change |
-| Vague commits (`update stuff`, `wip`) | Conventional `type(scope):` subject ([versioning-and-git.md](./versioning-and-git.md)) |
+| Vague or objective-only commits (`update stuff`, `wip`, `ship 2.12.0`, `complete P1`) | Conventional subject that names the staged change ([commit-note identity](./versioning-and-git.md#commit-note-identity)) |
 | Code without CLI/methodology/security docs when those contracts apply | Same change set as the canonical doc; omit security when [modularity](./security.md#security-documentation-modularity) allows |
 | Empty `SECURITY.md` for docs-only or pure libraries with no side effects | Omit the file and the authority-map row |
 | Pasting the full multi-language SAST table into every project | Declare only tools for languages the repo ships |
@@ -196,8 +196,8 @@ Before you commit or share a change:
 - [ ] Markdown follows [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md) when docs were edited
 - [ ] Last citation to each used owner remains; no second-home reprint of an owned rule ([contracts](./contracts.md#incorporation))
 - [ ] Contents only if ≥ 5 H2s or ≳ 150 lines ([canonical order](../MARKDOWN-STANDARD.md#canonical-document-order))
-- [ ] Commit message uses `type(scope):` format and matches the staged files
-- [ ] Subject would still make sense years later; one logical surface preferred
+- [ ] Commit message uses `type(scope):` format, matches the staged files, and names the staged change (not the completed objective) ([commit-note identity](./versioning-and-git.md#commit-note-identity))
+- [ ] Subject would still make sense years later; one logical surface preferred; body (when required) states what changed
 - [ ] Canonical docs for any behavior change are in the same change set ([contracts.md](./contracts.md))
 - [ ] If kit pieces changed: [Kit baseline](../RULES.md#kit-baseline) version/date updated and CHANGELOG notes the upgrade ([UPGRADE.md](../UPGRADE.md))
 - [ ] [Operator enforcement](../RULES.md#operator-enforcement) followed (request verify, procedure, plan + `docs/` when needed)
@@ -216,6 +216,7 @@ Before you commit or share a change:
 
 | Version | Notes |
 |---------|--------|
+| 1.7.3 | Contributor checklist + anti-pattern cite commit-note identity (kit 2.13.0) |
 | 1.7.2 | New navigable directory → directory-index README (forward-only; not Domain A/B) (kit 2.9.0) |
 | 1.7.1 | Density restyle (kit 2.8.0); verify table, completion, cadence, and checklist unchanged |
 | 1.7.0 | Docs-only verify includes density checklist + last citations; omit-Summary anti-pattern (kit 2.7.0) |
