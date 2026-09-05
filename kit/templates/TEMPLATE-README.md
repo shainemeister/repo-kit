@@ -24,7 +24,7 @@ last_updated: "{{LAST_UPDATED}}"
 
 **Related docs:** [CLI-GUIDE.md](./CLI-GUIDE.md) · [SECURITY.md](./SECURITY.md)
 
-<!-- Replace {{PLACEHOLDERS}}. {{DESCRIPTION}} must pass MARKDOWN-STANDARD identity test (cite; not a sentence count). Delete commented `keywords` if unused. Contents only if ≥ 5 H2s or ≳ 150 lines. Never list Summary as item 1. -->
+<!-- Replace {{PLACEHOLDERS}}. {{DESCRIPTION}} must pass MARKDOWN-STANDARD identity test (current-content summary + uniqueness; not a sentence count). Delete commented `keywords` if unused. Contents only if ≥ 5 H2s or ≳ 150 lines. Never list Summary as item 1. -->
 
 ---
 

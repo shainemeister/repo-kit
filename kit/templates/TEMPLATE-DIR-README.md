@@ -1,7 +1,7 @@
 ---
 title: "{{FOLDER_NAME}}"
 description: "Catalog of intentional files in this folder (file → unique role). Open when adding, moving, or finding a path here; not a landing page or package README."
-version: "1.1.0"
+version: "1.1.1"
 status: current
 audience:
   - developers
@@ -32,7 +32,7 @@ Catalog of intentional files in this folder (file → unique role).
 |------|----------|
 | {{FILE_NAME}} | {{FILE_FUNCTION}} |
 
-Add or remove rows so the table matches this directory. Function cells pass the [identity test](../MARKDOWN-STANDARD.md#description-identity) at one line (unique role in this folder; not a filename restatement). Omit regenerable outputs, vendor, `.git/`, secrets, host trees this repo did not create, and language leaves already listed in the parent package README ([directory index](../rules/files.md#directory-index)).
+Add or remove rows so the table matches this directory. Function cells pass the [identity test](../MARKDOWN-STANDARD.md#description-identity) uniqueness checks (tests 2–3) at one line (unique role in this folder; not a filename restatement). YAML `description` still needs test 1 (current-content summary). Omit regenerable outputs, vendor, `.git/`, secrets, host trees this repo did not create, and language leaves already listed in the parent package README ([directory index](../rules/files.md#directory-index)).
 
 <!-- Example only — replace with this folder’s files; do not ship these sample names.
 | File | Function |

@@ -28,7 +28,7 @@ last_updated: "{{LAST_UPDATED}}"
 
 > **Modularity:** Omit **this file** when the package has no execution surface, network access, elevated privilege, or secrets/identity handling. Docs-only or pure libraries with no runtime side effects should not create an empty `SECURITY.md` — see [Security documentation modularity](../rules/security.md#security-documentation-modularity).
 
-<!-- Replace {{PLACEHOLDERS}}. {{DESCRIPTION}} must pass MARKDOWN-STANDARD identity test (cite; not a sentence count). Delete commented `keywords` if unused. Contents only if ≥ 5 H2s or ≳ 150 lines. Never list Summary as item 1. -->
+<!-- Replace {{PLACEHOLDERS}}. {{DESCRIPTION}} must pass MARKDOWN-STANDARD identity test (current-content summary + uniqueness; not a sentence count). Delete commented `keywords` if unused. Contents only if ≥ 5 H2s or ≳ 150 lines. Never list Summary as item 1. -->
 
 ---
 
