@@ -44,7 +44,7 @@ references:
 verify:
   - links resolve
   - durable markdown YAML except MARKDOWN-STANDARD omit list (new/on-edit; not a historical gate)
-  - description passes MARKDOWN-STANDARD identity test (new/on-edit; not a historical gate)
+  - description passes MARKDOWN-STANDARD identity test (current-content summary + uniqueness; new/on-edit; not a historical gate)
   - keywords optional; not a dump
   - no leftover placeholders in finished docs
   - no second-home reprint
@@ -63,7 +63,7 @@ compose_with:
 ## Must
 
 - Follow MARKDOWN-STANDARD **required core** for the `doc_type` and the [density](../../MARKDOWN-STANDARD.md#density-force-and-incorporation) operators (owner, switch, invert, chrome, template, budget). Root `README.md`: landing outline (Overview + Operator prompts, no frontmatter). Package READMEs: frontmatter + readme core.
-- Durable markdown has YAML except the [omit list](../../MARKDOWN-STANDARD.md#when-to-use-this-standard); `description` passes the [identity test](../../MARKDOWN-STANDARD.md#description-identity) (new/on-edit; not a historical gate); `keywords` optional, not a dump.
+- Durable markdown has YAML except the [omit list](../../MARKDOWN-STANDARD.md#when-to-use-this-standard); `description` passes the [identity test](../../MARKDOWN-STANDARD.md#description-identity) (current-content summary + uniqueness; new/on-edit; not a historical gate); `keywords` optional, not a dump.
 - Cite, don’t reprint; the last citation of each used owner remains.
 - Replace all placeholders in finished product docs.
 - Co-update canonical owners when docs are the contract surface.

@@ -1,7 +1,7 @@
 ---
 title: Agent Catalog
 description: Default portable seed agents for repo-kit Agent Instruct.
-version: "1.2.6"
+version: "1.2.7"
 status: current
 audience:
   - developers
@@ -14,7 +14,7 @@ related:
   - BUILD.md
   - PLAN-HOOK.md
   - templates/
-last_updated: "2026-09-01"
+last_updated: "2026-09-04"
 ---
 
 # Agent Catalog
@@ -145,7 +145,7 @@ Exact enablement is filled by BUILD from PLAN + inventory ([BUILD.md](./BUILD.md
 | **negative_triggers** | binary asset work; pure runtime debug |
 | **authority_paths** | `kit/MARKDOWN-STANDARD.md`, `kit/rules/authoring-and-style.md`, `kit/rules/contracts.md`, `kit/rules/files.md`, `kit/templates/` |
 | **compose_with** | `maintainer`, `plan-author` |
-| **verify** | links resolve; durable markdown YAML except MARKDOWN-STANDARD omit list (new/on-edit; not a historical gate); description passes MARKDOWN-STANDARD identity test (new/on-edit; not a historical gate); keywords optional, not a dump; no leftover placeholders in finished docs; no second-home reprint; last citation remains; Contents only if ≥ 5 H2s or ≳ 150 lines; under class budget or split/justified; new navigable dirs get directory-index README per files.md (forward-only; not a historical gate) |
+| **verify** | links resolve; durable markdown YAML except MARKDOWN-STANDARD omit list (new/on-edit; not a historical gate); description passes MARKDOWN-STANDARD identity test (current-content summary + uniqueness; new/on-edit; not a historical gate); keywords optional, not a dump; no leftover placeholders in finished docs; no second-home reprint; last citation remains; Contents only if ≥ 5 H2s or ≳ 150 lines; under class budget or split/justified; new navigable dirs get directory-index README per files.md (forward-only; not a historical gate) |
 | **template** | [templates/docs-author.md](./templates/docs-author.md) |
 
 ### `security`
@@ -255,6 +255,7 @@ Templates under [templates/](./templates/) carry the full Expertise map. Summary
 
 | Version | Notes |
 |---------|--------|
+| 1.2.7 | docs-author verify: description current-content summary + uniqueness (new/on-edit; not a historical gate) (kit 2.12.0) |
 | 1.2.6 | plan-author verify: fill workboard phase brief before isolating work when an annex exists (kit 2.11.1) |
 | 1.2.5 | docs-author verify: description passes identity test (new/on-edit; not a historical gate) (kit 2.11.0) |
 | 1.2.4 | docs-author verify: durable YAML except omit list; description is the blurb; keywords optional, not a dump |
