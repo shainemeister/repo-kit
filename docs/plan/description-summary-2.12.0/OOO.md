@@ -218,16 +218,16 @@ Fill **only** the `active` / current wait phase, plus the next `open` if needed 
 | **Deny** | Any `kit/**` law |
 | **Exit** | Annex linked from the board; plan index lists the open pack; P1 `active` |
 
-### P1 *(fill when `active`)*
+### P2
 
 | Field | Value |
 |-------|--------|
-| **Current state** | Freeze is on the annex; MARKDOWN-STANDARD **1.5.0** still uniqueness-only. |
-| **Issue** | L4 does not yet require a current-content summary. |
-| **Fix** | Put tests 1–4 inside YAML frontmatter H3; field reference; checklist; anti-pattern; bump **1.6.0**. |
-| **Allow** | `kit/MARKDOWN-STANDARD.md` only |
-| **Deny** | Templates, SETUP, UPGRADE, files.md, new H2, slug change |
-| **Exit** | Tests 1–4 present; one sentence legal; `#description-identity` unchanged; this file’s own `description` passes test 1 |
+| **Current state** | MARKDOWN-STANDARD **1.6.0** has tests 1–4. files.md still cites the identity test at one line without splitting uniqueness from content summary. |
+| **Issue** | Peers could apply test 1 to Function cells or reprint the table. |
+| **Fix** | One-sentence cites: Function = tests 2–3; YAML `description` keeps test 1. |
+| **Allow** | `kit/rules/files.md`, `kit/rules/authoring-and-style.md` |
+| **Deny** | Reprint of the identity test; new Musts; reopen adopt-mode matrix; verification-and-ops; examples |
+| **Exit** | One sentence each; files.md Must table still 5; adopt-mode matrix untouched |
 
 ---
 

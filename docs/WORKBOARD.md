@@ -47,9 +47,9 @@ last_updated: "2026-09-04"
 
 | ID | Work | Status | Commit | Notes |
 |----|------|--------|--------|-------|
-| P0 | Register annex + freeze identity test | `done` | — | Exit: annex linked; no `kit/` law |
-| P1 | MARKDOWN-STANDARD current-content test | `active` | — | Allow: `kit/MARKDOWN-STANDARD.md` only |
-| P2 | Cite files.md + authoring | `open` | — | Cite only; Must table still 5 |
+| P0 | Register annex + freeze identity test | `done` | `d7bdd4c` | Exit: annex linked; no `kit/` law |
+| P1 | MARKDOWN-STANDARD current-content test | `done` | `39302a8` | Allow: `kit/MARKDOWN-STANDARD.md` only |
+| P2 | Cite files.md + authoring | `active` | — | Cite only; Must table still 5 |
 | P3 | Templates | `open` | — | `{{DESCRIPTION}}` hint; DIR-README Function uniqueness |
 | P4 | SETUP / UPGRADE / hub label | `open` | — | No complete-fail for historical stale blurbs |
 | P5 | CATALOG docs-author verify | `open` | — | No BUILD |
@@ -57,7 +57,9 @@ last_updated: "2026-09-04"
 
 ### Progress log (newest first, max ~15 lines)
 
-- 2026-09-04 Registered **description-summary-2.12.0**. P0 freeze; P1 `active`.
+- 2026-09-04 P1 `done` `39302a8` — identity test 1 is current-content summary.
+- 2026-09-04 P0 `done` `d7bdd4c`. P2 `active`.
+- 2026-09-04 Registered **description-summary-2.12.0**.
 - 2026-09-01 **workboard-packet-2.11.1** complete: `9adf471` kit `2.11.1`. P0 `09fdb3e` · P1 `9240842` · P2 `705742f` · P3 `8b4fcae` · P4 `804e508` · P5 `ce44edb`. Annex archived.
 - 2026-09-01 **definitional-identity-2.11.0** complete: `580ffd9` kit `2.11.0`. P0 `de1aa08` · P1 `d10b8a6` · P2 `6096529` · P3 `580749b` · P4 `3b46f8f` · P5 `3a597ed`. Annex archived.
 - 2026-08-31 **frontmatter-2.10.0** complete: `5a7a486` kit `2.10.0`. P0 `1fee91e` · P1 `1854ae6` · P2 `4f2c5cc` · P3 `52393a8` · P4 `1e374ea` · P5 `e602c1c`. Annex archived.
