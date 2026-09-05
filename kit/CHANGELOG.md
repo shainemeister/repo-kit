@@ -26,6 +26,25 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 
 ## repo-kit
 
+### [2.12.0] - 2026-09-04
+
+#### Added
+
+- Description identity test **current-content summary** (MARKDOWN-STANDARD **1.6.0**): `description` must state what this file actually contains now (owned rules, surfaces, or procedures) and would be **stale** if those facts changed. Uniqueness (not already in `title` / filename / `doc_type`; wrong if swapped onto a sibling) unchanged. When-to-open only if the summary does not already imply it. One sentence remains legal. No sentence quota.
+
+#### Changed
+
+- Directory-index **Function** cells stay uniqueness (tests 2–3) at one-line resolution; current-content summary stays on YAML `description`. Column name stays **Function**.
+- files.md **1.0.3** / authoring-and-style **1.2.5**: cite the current-content test. Adopt-mode matrix and files.md Must table unchanged.
+- YAML templates: `{{DESCRIPTION}}` hint names current-content summary + uniqueness. Landing / host-alias / AGENTS templates stay unfenced. TEMPLATE-DIR-README **1.1.1**.
+- SETUP: fill `description` as a current-content summary on new files and when already editing. UPGRADE **1.8.8**: no complete-fail for historical stale blurbs (forward-only / on-edit).
+- RULES hub **2.7.4**: authority-map concern label names current-content summary. Must index unchanged.
+- CATALOG **1.2.7** docs-author verify: current-content summary + uniqueness (new/on-edit; not a historical gate).
+
+#### Notes
+
+- Minor on **2.11.2**. No inventory, SAST, hub Must-map, or layout migration. No directory-index backfill. No universe sweep of existing descriptions. Identity test including current-content is new/on-edit; historical stale blurbs are not a failed complete.
+
 ### [2.11.2] - 2026-09-01
 
 #### Changed

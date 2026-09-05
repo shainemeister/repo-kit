@@ -11,7 +11,7 @@ related:
   - ../kit/rules/workboard.md
   - ../kit/CHANGELOG.md
   - ./README.md
-  - ./plan/description-summary-2.12.0/README.md
+  - ./plan/archive/description-summary-2.12.0/README.md
   - ./plan/archive/workboard-packet-2.11.1/README.md
   - ./plan/archive/definitional-identity-2.11.0/README.md
 last_updated: "2026-09-04"
@@ -20,7 +20,7 @@ last_updated: "2026-09-04"
 # Workboard
 
 **Updated:** 2026-09-04  
-**Primary program:** `description-summary-2.12.0`  
+**Primary program:** `none`  
 **Rules:** [kit/rules/workboard.md](../kit/rules/workboard.md) · kit README (mission) · [docs/plan/](./plan/) (detail)
 
 | Status | Meaning |
@@ -34,35 +34,24 @@ last_updated: "2026-09-04"
 
 ---
 
-## Active program — description-summary-2.12.0
+## Active program — none
 
 | Field | Value |
 |-------|--------|
-| **Goal** | YAML `description` must summarize this file’s current content (identity test 1); uniqueness stays |
-| **L4 docs to update** | [MARKDOWN-STANDARD](../kit/MARKDOWN-STANDARD.md) · [files.md](../kit/rules/files.md) · [CHANGELOG](../kit/CHANGELOG.md) `### [2.12.0]` |
-| **Optional annex** | [docs/plan/description-summary-2.12.0/](./plan/description-summary-2.12.0/) |
+| **Goal** | — |
+| **L4 docs to update** | — |
+| **Optional annex** | — |
 | **Smoke / gates** | Author checklist; relative links; no `{{PLACEHOLDERS}}` in finished policy |
 
 ### Phases
 
 | ID | Work | Status | Commit | Notes |
 |----|------|--------|--------|-------|
-| P0 | Register annex + freeze identity test | `done` | `d7bdd4c` | Exit: annex linked; no `kit/` law |
-| P1 | MARKDOWN-STANDARD current-content test | `done` | `39302a8` | Allow: `kit/MARKDOWN-STANDARD.md` only |
-| P2 | Cite files.md + authoring | `done` | `01ab89a` | Cite only; Must table still 5 |
-| P3 | Templates | `done` | `aee00fd` | `{{DESCRIPTION}}` hint; DIR-README Function uniqueness |
-| P4 | SETUP / UPGRADE / hub label | `done` | `797748a` | No complete-fail for historical stale blurbs |
-| P5 | CATALOG docs-author verify | `active` | — | No BUILD |
-| P6 | Ship 2.12.0 + archive | `open` | — | CHANGELOG; annex archive; primary `none` |
+| — | — | — | — | Register a program here before multi-phase kit work |
 
 ### Progress log (newest first, max ~15 lines)
 
-- 2026-09-04 P4 `done` `797748a`. P5 `active`.
-- 2026-09-04 P3 `done` `aee00fd`.
-- 2026-09-04 P2 `done` `01ab89a`.
-- 2026-09-04 P1 `done` `39302a8` — identity test 1 is current-content summary.
-- 2026-09-04 P0 `done` `d7bdd4c`.
-- 2026-09-04 Registered **description-summary-2.12.0**.
+- 2026-09-04 **description-summary-2.12.0** complete: kit `2.12.0`. P0 `d7bdd4c` · P1 `39302a8` · P2 `01ab89a` · P3 `aee00fd` · P4 `797748a` · P5 `cdd4c8e`. Annex archived.
 - 2026-09-01 **workboard-packet-2.11.1** complete: `9adf471` kit `2.11.1`. P0 `09fdb3e` · P1 `9240842` · P2 `705742f` · P3 `8b4fcae` · P4 `804e508` · P5 `ce44edb`. Annex archived.
 - 2026-09-01 **definitional-identity-2.11.0** complete: `580ffd9` kit `2.11.0`. P0 `de1aa08` · P1 `d10b8a6` · P2 `6096529` · P3 `580749b` · P4 `3b46f8f` · P5 `3a597ed`. Annex archived.
 - 2026-08-31 **frontmatter-2.10.0** complete: `5a7a486` kit `2.10.0`. P0 `1fee91e` · P1 `1854ae6` · P2 `4f2c5cc` · P3 `52393a8` · P4 `1e374ea` · P5 `e602c1c`. Annex archived.
@@ -87,11 +76,11 @@ last_updated: "2026-09-04"
 
 | Program | Ended | L4 pointer |
 |---------|-------|------------|
+| description-summary-2.12.0 | 2026-09-04 | [MARKDOWN-STANDARD](../kit/MARKDOWN-STANDARD.md) **1.6.0** · [CHANGELOG](../kit/CHANGELOG.md) `### [2.12.0]` |
 | workboard-packet-2.11.1 | 2026-09-01 | [workboard](../kit/rules/workboard.md) **1.2.0** · [CHANGELOG](../kit/CHANGELOG.md) `### [2.11.1]` |
 | definitional-identity-2.11.0 | 2026-09-01 | [MARKDOWN-STANDARD](../kit/MARKDOWN-STANDARD.md) **1.5.0** · [CHANGELOG](../kit/CHANGELOG.md) `### [2.11.0]` |
 | frontmatter-2.10.0 | 2026-08-31 | [MARKDOWN-STANDARD](../kit/MARKDOWN-STANDARD.md) **1.4.0** · [CHANGELOG](../kit/CHANGELOG.md) `### [2.10.0]` |
 | files-law-2.9.0 | 2026-08-31 | [files.md](../kit/rules/files.md) · [CHANGELOG](../kit/CHANGELOG.md) `### [2.9.0]` |
-| workboard-rigidity-2.8.2 | 2026-08-22 | [workboard](../kit/rules/workboard.md) · [CHANGELOG](../kit/CHANGELOG.md) `### [2.8.2]` |
 
 ---
 

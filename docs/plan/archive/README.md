@@ -3,7 +3,7 @@ title: "docs/plan/archive/"
 description: Index of shipped program annexes after archive. Open when reading historical kit programs; not the live todo list.
 status: current
 doc_type: other
-last_updated: "2026-09-01"
+last_updated: "2026-09-04"
 ---
 
 # docs/plan/archive/
@@ -18,6 +18,7 @@ This folder is **archaeology only**. It is not the live todo list. Active work i
 
 | Pack | Ended | Read instead (L4) |
 |------|-------|-------------------|
+| [description-summary-2.12.0](./description-summary-2.12.0/) | 2026-09-04 | [MARKDOWN-STANDARD](../../../kit/MARKDOWN-STANDARD.md) **1.6.0** · [CHANGELOG](../../../kit/CHANGELOG.md) `### [2.12.0]` |
 | [workboard-packet-2.11.1](./workboard-packet-2.11.1/) | 2026-09-01 | [workboard](../../../kit/rules/workboard.md) **1.2.0** · [CHANGELOG](../../../kit/CHANGELOG.md) `### [2.11.1]` |
 | [definitional-identity-2.11.0](./definitional-identity-2.11.0/) | 2026-09-01 | [MARKDOWN-STANDARD](../../../kit/MARKDOWN-STANDARD.md) **1.5.0** · [CHANGELOG](../../../kit/CHANGELOG.md) `### [2.11.0]` |
 | [frontmatter-2.10.0](./frontmatter-2.10.0/) | 2026-08-31 | [MARKDOWN-STANDARD](../../../kit/MARKDOWN-STANDARD.md) **1.4.0** · [CHANGELOG](../../../kit/CHANGELOG.md) `### [2.10.0]` |
