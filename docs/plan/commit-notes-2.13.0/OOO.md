@@ -192,16 +192,16 @@ P5 Ship 2.13.0 + archive
 | **Deny** | Any `kit/**` law |
 | **Exit** | Annex linked; P1 `active` |
 
-### P3
+### P4
 
 | Field | Value |
 |-------|--------|
-| **Current state** | Hub and checklist cite the test. Maintainer verify still says “type matches staged files” only. |
-| **Issue** | Instruct views would not fail an objective-only commit note. |
-| **Fix** | CATALOG maintainer verify + maintainer template/sample; reviewer procedure one-line cite. |
-| **Allow** | `kit/agents/CATALOG.md` maintainer/reviewer; `kit/agents/templates/maintainer.md`; `kit/agents/examples/generated-maintainer.sample.md`; reviewer template one-line |
-| **Deny** | BUILD; generated/; other seed packs except reviewer cite |
-| **Exit** | generated/ empty; BUILD not run; maintainer verify names staged-change |
+| **Current state** | L4 and Instruct views name the test. UPGRADE does not say historical commit messages are not a gate. |
+| **Issue** | Adopters might try to rewrite git history or fail complete on old subjects. |
+| **Fix** | UPGRADE preserve: no complete-fail; do not rewrite published history. |
+| **Allow** | `kit/UPGRADE.md` |
+| **Deny** | History rewrite; Operator prompts; universe sweep |
+| **Exit** | UPGRADE names 1.1.0; no rewrite instruction |
 
 ---
 
