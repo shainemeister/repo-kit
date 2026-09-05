@@ -1,7 +1,7 @@
 ---
 title: Upgrade repo-kit
 description: Durable guide for upgrading an existing kit baseline, including 1.x to 2.x layout migration (standards under kit/) and merge options.
-version: "1.8.8"
+version: "1.8.9"
 status: current
 audience:
   - developers
@@ -195,6 +195,7 @@ Never clobber on merge:
 - Do **not** backfill directory-index READMEs for historical folders ([files.md](./rules/files.md) is **forward-only**; not a failed complete)  
 - Do **not** treat historical missing YAML fences as a failed complete ([MARKDOWN-STANDARD](./MARKDOWN-STANDARD.md#when-to-use-this-standard) is **forward-only** / on-edit; same spirit as directory-index)  
 - Do **not** treat historical tautological, title-paraphrase, or stale YAML `description` values as a failed complete (identity test including current-content summary is new/on-edit; same spirit as YAML fences)  
+- Do **not** treat historical commit messages as a failed complete, and do **not** rewrite published git history to retrofit them ([commit-note identity](./rules/versioning-and-git.md#commit-note-identity) applies to **new** commits)  
 - Do **not** create root `./rules/` as a compat tree; law stays under `kit/`  
 - Folded-hub adopters: port [files.md](./rules/files.md) into the hub **or** keep `kit/rules/files.md`; record in the map  
 
@@ -236,6 +237,7 @@ This repository has no repo-kit baseline. Follow kit/SETUP.md selective adoption
 
 | Version | Notes |
 |---------|--------|
+| 1.8.9 | Merge versioning-and-git 1.1.0; no complete-fail or history rewrite for historical commit messages (kit 2.13.0) |
 | 1.8.8 | Merge MARKDOWN-STANDARD 1.6.0; no complete-fail for historical stale descriptions (kit 2.12.0) |
 | 1.8.7 | Merge workboard 1.2.0; no complete-fail for historical annexes without a phase brief (kit 2.11.1) |
 | 1.8.6 | Merge MARKDOWN-STANDARD 1.5.0; no complete-fail for historical tautological descriptions (kit 2.11.0) |
