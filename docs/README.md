@@ -32,7 +32,7 @@ Standards and portable law remain under **`kit/`**. Product-style contracts for 
 |--------|------|---------|---------|
 | Research | [research/](./research/) | on demand | Kit design investigations, comparisons |
 | Workboard | [WORKBOARD.md](./WORKBOARD.md) | **on** | Multi-phase kit execution (dogfood) |
-| Plan | [plan/](./plan/) | **on** | Shipped annexes under [plan/archive/](./plan/archive/) |
+| Plan | [plan/](./plan/) | **on** | Open annex [commit-notes-2.13.0](./plan/commit-notes-2.13.0/); shipped under [plan/archive/](./plan/archive/) |
 | Project build | [project_build/](./project_build/) | **on** | Implementation notes while shipping kit changes; [kit-context](./project_build/kit-context.md) |
 | Resources | [resources/](./resources/) | on demand | Curated pointers for kit maintainers |
 

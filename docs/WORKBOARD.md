@@ -11,16 +11,16 @@ related:
   - ../kit/rules/workboard.md
   - ../kit/CHANGELOG.md
   - ./README.md
+  - ./plan/commit-notes-2.13.0/README.md
   - ./plan/archive/description-summary-2.12.0/README.md
   - ./plan/archive/workboard-packet-2.11.1/README.md
-  - ./plan/archive/definitional-identity-2.11.0/README.md
 last_updated: "2026-09-04"
 ---
 
 # Workboard
 
 **Updated:** 2026-09-04  
-**Primary program:** `none`  
+**Primary program:** `commit-notes-2.13.0`  
 **Rules:** [kit/rules/workboard.md](../kit/rules/workboard.md) · kit README (mission) · [docs/plan/](./plan/) (detail)
 
 | Status | Meaning |
@@ -34,23 +34,29 @@ last_updated: "2026-09-04"
 
 ---
 
-## Active program — none
+## Active program — commit-notes-2.13.0
 
 | Field | Value |
 |-------|--------|
-| **Goal** | — |
-| **L4 docs to update** | — |
-| **Optional annex** | — |
+| **Goal** | Commit notes name the staged change (not the completed objective); keep type(scope) + AI trailers |
+| **L4 docs to update** | [versioning-and-git](../kit/rules/versioning-and-git.md) · [CHANGELOG](../kit/CHANGELOG.md) `### [2.13.0]` |
+| **Optional annex** | [docs/plan/commit-notes-2.13.0/](./plan/commit-notes-2.13.0/) |
 | **Smoke / gates** | Author checklist; relative links; no `{{PLACEHOLDERS}}` in finished policy |
 
 ### Phases
 
 | ID | Work | Status | Commit | Notes |
 |----|------|--------|--------|-------|
-| — | — | — | — | Register a program here before multi-phase kit work |
+| P0 | Register annex + freeze commit-note test | `done` | — | Exit: annex linked; no `kit/` law |
+| P1 | versioning-and-git staged-change test | `active` | — | Allow: `kit/rules/versioning-and-git.md` only |
+| P2 | Cite RULES + verification-and-ops | `open` | — | No new hub Must |
+| P3 | CATALOG maintainer/reviewer + templates | `open` | — | No BUILD |
+| P4 | UPGRADE forward-only | `open` | — | No history rewrite |
+| P5 | Ship 2.13.0 + archive | `open` | — | CHANGELOG; annex archive; primary `none` |
 
 ### Progress log (newest first, max ~15 lines)
 
+- 2026-09-04 Registered **commit-notes-2.13.0**. P0 freeze; P1 `active`.
 - 2026-09-04 **description-summary-2.12.0** complete: `234d808` kit `2.12.0`. P0 `d7bdd4c` · P1 `39302a8` · P2 `01ab89a` · P3 `aee00fd` · P4 `797748a` · P5 `cdd4c8e`. Annex archived.
 - 2026-09-01 **workboard-packet-2.11.1** complete: `9adf471` kit `2.11.1`. P0 `09fdb3e` · P1 `9240842` · P2 `705742f` · P3 `8b4fcae` · P4 `804e508` · P5 `ce44edb`. Annex archived.
 - 2026-09-01 **definitional-identity-2.11.0** complete: `580ffd9` kit `2.11.0`. P0 `de1aa08` · P1 `d10b8a6` · P2 `6096529` · P3 `580749b` · P4 `3b46f8f` · P5 `3a597ed`. Annex archived.
