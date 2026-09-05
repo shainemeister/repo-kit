@@ -1,7 +1,7 @@
 ---
 title: Markdown Documentation Standard
-description: Owns markdown structure, YAML identity except the omit list, writing form, and the description identity test. Open when adding or editing durable markdown; not file placement.
-version: "1.5.0"
+description: Owns markdown structure, YAML except the omit list, writing form, and the description identity test (current-content summary plus uniqueness). Not file placement.
+version: "1.6.0"
 status: current
 audience:
   - developers
@@ -17,14 +17,14 @@ related:
   - rules/files.md
   - templates/TEMPLATE-README.md
   - templates/TEMPLATE-LANDING-README.md
-last_updated: "2026-09-01"
+last_updated: "2026-09-04"
 ---
 
 # Markdown Documentation Standard
 
-Owns markdown structure, YAML identity except the omit list, writing form, and the description identity test.
+Owns markdown structure, YAML except the omit list, writing form, and the description identity test (current-content summary plus uniqueness). Not file placement.
 
-**Standard version:** 1.5.0  
+**Standard version:** 1.6.0  
 **Location:** `kit/MARKDOWN-STANDARD.md`  
 **Templates:** [`templates/`](./templates/)
 
@@ -224,7 +224,7 @@ last_updated: "2026-07-22"
 | Field | Required | Allowed values / notes |
 |-------|----------|-------------------------|
 | `title` | **Yes** | Short title (may match H1 without decoration) |
-| `description` | **Yes** | Canonical blurb. Pass the [identity test](#description-identity). One sentence is legal; more only if needed; no marketing fluff. Do not reprint the whole blurb in the lead or in `## Summary` |
+| `description` | **Yes** | Canonical blurb. Pass the [identity test](#description-identity) (current-content summary plus uniqueness). One sentence is legal; more only if needed; no marketing fluff. Do not reprint the whole blurb in the lead or in `## Summary`. Refresh in the same change set when this file’s owned facts change ([contracts](./rules/contracts.md#same-change-set-rule)) |
 | `version` | **Yes** | Semver or doc version string; keep in sync with status block |
 | `status` | **Yes** | `draft` · `current` · `deprecated` |
 | `audience` | Yes on substantial docs; omit-if on thin indexes | YAML list, e.g. `users`, `developers`, `security`, `it`, `analysts`, `automation` |
@@ -235,15 +235,16 @@ last_updated: "2026-07-22"
 
 ### Description identity
 
-A `description` is definitional when all of these hold. This is a quality floor, not a sentence quota.
+A `description` summarizes this file’s **current content**. It is definitional when all of these hold. This is a quality floor, not a sentence quota.
 
 | # | Test |
 |---|------|
-| 1 | Adds at least one claim not already in `title`, filename, or `doc_type` |
-| 2 | Would be **wrong** if swapped onto a sibling in the same directory |
-| 3 | Includes when-to-open only if the definition does not already imply it |
+| 1 | **Current-content summary:** states what this file actually contains now (owned rules, surfaces, or procedures). Would be **stale** if those owned facts changed and this line did not. Not a Contents reprint |
+| 2 | Adds at least one claim not already in `title`, filename, or `doc_type` |
+| 3 | Would be **wrong** if swapped onto a sibling in the same directory |
+| 4 | Includes when-to-open only if the summary does not already imply it |
 
-One sentence remains legal if 1 and 2 hold. Folded scalar legal. No fluff. Lead **Should** match `description` sentence 1. Directory-index **Function** cells use tests 1–2 at one-line resolution ([directory index](#directory-index-omit-if-doc_type-other); [files.md](./rules/files.md) owns **when** the index exists).
+One sentence remains legal if 1–3 hold. Folded scalar legal. No fluff. Lead **Should** match `description` sentence 1. When this file’s owned facts change, refresh `description` in the same change set ([contracts](./rules/contracts.md#same-change-set-rule)). Directory-index **Function** cells use tests 2–3 at one-line resolution ([directory index](#directory-index-omit-if-doc_type-other); [files.md](./rules/files.md) owns **when** the index exists).
 
 ---
 
@@ -580,7 +581,7 @@ Use **Summary (if needed) → body**. Contents only if the threshold is met; His
 
 ### Directory index (omit-if; `doc_type: other`)
 
-When [files.md](./rules/files.md) requires a directory-index `README.md` (a **new** navigable, versioned directory that holds other intentional files): table **File → Function**. Function cells use the [identity test](#description-identity) at one-line resolution (unique role in this folder; not a paste of YAML `description`). Extra outline items are omit-if. [files.md](./rules/files.md) still owns **when** the index exists.
+When [files.md](./rules/files.md) requires a directory-index `README.md` (a **new** navigable, versioned directory that holds other intentional files): table **File → Function**. Function cells use the [identity test](#description-identity) uniqueness checks (tests 2–3) at one-line resolution (unique role in this folder; not a paste of YAML `description`). Extra outline items are omit-if. [files.md](./rules/files.md) still owns **when** the index exists.
 
 **Not** a [landing](#landing--root-readme-no-frontmatter) page (no Overview, no Operator prompts). **Not** a package `readme`. Skeleton: [TEMPLATE-DIR-README.md](./templates/TEMPLATE-DIR-README.md). Forward-only — missing historical indexes are not a failed gate.
 
@@ -621,7 +622,7 @@ There is no dedicated runbook file. For `runbook`, copy [TEMPLATE-GENERIC.md](./
 | `{{LAST_UPDATED}}` | `YYYY-MM-DD` |
 | `{{RELATED_DOC}}` | Sibling doc filename |
 | `{{FILE_NAME}}` | Directory-index table: a file in this folder |
-| `{{FILE_FUNCTION}}` | Directory-index table: unique role in this folder (identity test at one line; not a filename restatement) |
+| `{{FILE_FUNCTION}}` | Directory-index table: unique role in this folder (identity tests 2–3 at one line; not a filename restatement; not a paste of YAML `description`) |
 
 Templates may use additional `{{TOKENS}}` beyond this table. Replace every token in the copied file—do not leave unresolved placeholders.
 
@@ -656,7 +657,7 @@ Before merging or publishing a doc:
 ### Standard docs (frontmatter except omit list)
 
 - [ ] Identity fields present (`title`, `description`, `status`, `last_updated`, `doc_type`) except [omit list](#when-to-use-this-standard); `status` accurate  
-- [ ] `description` passes the [identity test](#description-identity); lead does not reprint all of it  
+- [ ] `description` passes the [identity test](#description-identity) (current-content summary + uniqueness); lead does not reprint all of it; refresh when this file’s owned facts changed  
 - [ ] `keywords` omit-if; not a dump or per-turn log  
 - [ ] Contents links resolve and match H2 titles (if Contents present)  
 - [ ] Version in frontmatter matches status block (if both exist)  
@@ -694,6 +695,7 @@ Before merging or publishing a doc:
 | YAML on [omit-list](#when-to-use-this-standard) files | Omit the fence; landing, host aliases, dumps, CHANGELOG, and root `AGENTS.md` stay unfenced |
 | Appending `keywords` each chat | Replace a weak token or omit; never a per-turn tag log |
 | Padding `description` to a sentence quota | One sentence is legal; more only if needed |
+| Stale or topic-only `description` (does not match the current body) | Refresh the summary when owned facts change; uniqueness tests still apply |
 | Title restated + “open when looking here” | Add a claim `title`/`doc_type` do not already contain; drop tautological when-to-open |
 | Third prose recap in `## Summary` | Must table or omit-if; `description` already owns the blurb |
 | Frontmatter on the root landing README | Omit frontmatter; H1 + lead + Overview |
@@ -711,6 +713,7 @@ Before merging or publishing a doc:
 
 | Version | Notes |
 |---------|--------|
+| 1.6.0 | Identity test requires current-content summary; uniqueness unchanged; Function cells stay tests 2–3 (kit 2.12.0) |
 | 1.5.0 | Description identity test (no sentence quota); Function cells one-line unique role (kit 2.11.0) |
 | 1.4.0 | YAML except omit list; description is the one blurb; optional keywords; descriptive language (kit 2.10.0) |
 | 1.3.2 | Directory-index type (omit-if); TEMPLATE-DIR-README; forward-only checklist (kit 2.9.0) |
