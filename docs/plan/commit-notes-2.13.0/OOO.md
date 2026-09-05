@@ -192,16 +192,16 @@ P5 Ship 2.13.0 + archive
 | **Deny** | Any `kit/**` law |
 | **Exit** | Annex linked; P1 `active` |
 
-### P1
+### P2
 
 | Field | Value |
 |-------|--------|
-| **Current state** | Freeze is on the annex; versioning-and-git **1.0.5** still optional why-body. |
-| **Issue** | L4 does not require notes to name the staged change. |
-| **Fix** | Put tests 1–4 inside Commit message format; retarget Must row 3; pre-commit checks; bump **1.1.0**. |
-| **Allow** | `kit/rules/versioning-and-git.md` only |
-| **Deny** | RULES extra Must; trailer cascade rewrite; new H2; CHANGELOG ship |
-| **Exit** | Tests 1–4 present; signature unchanged; Must table still 5; this file’s `description` passes current-content test |
+| **Current state** | versioning-and-git **1.1.0** owns the test. Hub Must still says “match staged files” only. |
+| **Issue** | Operator checklist and contributor checklist do not fail objective-only notes. |
+| **Fix** | Retarget existing hub Must + Operator step 5; verification-and-ops checklist and anti-pattern cite. |
+| **Allow** | `kit/RULES.md` (existing commit Must + Operator step 5); `kit/rules/verification-and-ops.md` |
+| **Deny** | New hub Must; reprint of the identity table; examples |
+| **Exit** | Hub Must count unchanged; cites only |
 
 ---
 

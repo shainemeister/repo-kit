@@ -26,7 +26,7 @@ No root `PLAN.md` (Instruct off).
 |-------|--------|
 | **Program id** | `commit-notes-2.13.0` |
 | **Status** | `active` |
-| **Next phase** | P1 |
+| **Next phase** | P2 |
 | **L4 owners to update on ship** | [versioning-and-git](../../../kit/rules/versioning-and-git.md) · [CHANGELOG](../../../kit/CHANGELOG.md) `### [2.13.0]` |
 
 ## Contents of this annex

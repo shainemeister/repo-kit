@@ -47,16 +47,18 @@ last_updated: "2026-09-04"
 
 | ID | Work | Status | Commit | Notes |
 |----|------|--------|--------|-------|
-| P0 | Register annex + freeze commit-note test | `done` | — | Exit: annex linked; no `kit/` law |
-| P1 | versioning-and-git staged-change test | `active` | — | Allow: `kit/rules/versioning-and-git.md` only |
-| P2 | Cite RULES + verification-and-ops | `open` | — | No new hub Must |
+| P0 | Register annex + freeze commit-note test | `done` | `4708eff` | Exit: annex linked; no `kit/` law |
+| P1 | versioning-and-git staged-change test | `done` | `c4cf33b` | Allow: `kit/rules/versioning-and-git.md` only |
+| P2 | Cite RULES + verification-and-ops | `active` | — | No new hub Must |
 | P3 | CATALOG maintainer/reviewer + templates | `open` | — | No BUILD |
 | P4 | UPGRADE forward-only | `open` | — | No history rewrite |
 | P5 | Ship 2.13.0 + archive | `open` | — | CHANGELOG; annex archive; primary `none` |
 
 ### Progress log (newest first, max ~15 lines)
 
-- 2026-09-04 Registered **commit-notes-2.13.0**. P0 freeze; P1 `active`.
+- 2026-09-04 P1 `done` `c4cf33b`. P2 `active`.
+- 2026-09-04 P0 `done` `4708eff`.
+- 2026-09-04 Registered **commit-notes-2.13.0**.
 - 2026-09-04 **description-summary-2.12.0** complete: `234d808` kit `2.12.0`. P0 `d7bdd4c` · P1 `39302a8` · P2 `01ab89a` · P3 `aee00fd` · P4 `797748a` · P5 `cdd4c8e`. Annex archived.
 - 2026-09-01 **workboard-packet-2.11.1** complete: `9adf471` kit `2.11.1`. P0 `09fdb3e` · P1 `9240842` · P2 `705742f` · P3 `8b4fcae` · P4 `804e508` · P5 `ce44edb`. Annex archived.
 - 2026-09-01 **definitional-identity-2.11.0** complete: `580ffd9` kit `2.11.0`. P0 `de1aa08` · P1 `d10b8a6` · P2 `6096529` · P3 `580749b` · P4 `3b46f8f` · P5 `3a597ed`. Annex archived.
