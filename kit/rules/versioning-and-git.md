@@ -1,7 +1,7 @@
 ---
 title: Versioning and Git
-description: Three version surfaces, mandatory CHANGELOG, kit baseline pointer, git hygiene, commit format, and AI disclosure.
-version: "1.0.5"
+description: Three version surfaces, mandatory CHANGELOG, kit baseline pointer, git hygiene, commit-note identity (staged-change summary), and AI disclosure.
+version: "1.1.0"
 status: current
 audience:
   - developers
@@ -14,12 +14,12 @@ related:
   - ./verification-and-ops.md
   - ./hygiene.md
   - ../agents/PLAN-HOOK.md
-last_updated: "2026-08-21"
+last_updated: "2026-09-04"
 ---
 
 # Versioning and Git
 
-Version surfaces, CHANGELOG discipline, and git / commit rules.
+Three version surfaces, mandatory CHANGELOG, kit baseline pointer, git hygiene, commit-note identity (staged-change summary), and AI disclosure.
 
 **Related:** [RULES.md](../RULES.md) · [UPGRADE.md](../UPGRADE.md) · [CHANGELOG.md](../CHANGELOG.md) · [contracts.md](./contracts.md) · [verification-and-ops.md](./verification-and-ops.md) · [hygiene.md](./hygiene.md) · [PLAN-HOOK.md](../agents/PLAN-HOOK.md)
 
@@ -31,7 +31,7 @@ Version surfaces, CHANGELOG discipline, and git / commit rules.
 |------|
 | Maintain **project root** `CHANGELOG.md` (Keep a Changelog); ship version bumps with a matching version section |
 | Keep [Kit baseline](../RULES.md#kit-baseline) current in `kit/RULES.md`; do not paste full kit history into project CHANGELOG |
-| Use conventional commits that match staged files; avoid vague subjects (`update stuff`, `wip`) |
+| Use conventional commits that match staged files and name the staged change (not the completed objective); avoid vague subjects (`update stuff`, `wip`) ([commit-note identity](#commit-note-identity)) |
 | Disclose AI assistance when applicable (`Assisted-by` / `Compliance` / `Instructed-by`; no `Directed-by`) |
 | Do not rewrite shared published history without coordination |
 
@@ -148,9 +148,9 @@ Respect `.gitignore`. Do not force-add ignored generated artifacts “for conven
 
 ## Commit message format
 
-**Principle:** The commit subject (and body, when present) should remain understandable **years later** when searching history—name the real surface and intent, not a temporary mood.
+**Principle:** The commit subject (and body, when present) should remain understandable **years later** when searching history—name the **staged change**, not a temporary mood and not the completed objective.
 
-Use a **Conventional Commits–style** subject so history stays scannable.
+Use a **Conventional Commits–style** subject so history stays scannable. **Signature is unchanged:** `type(scope):` subject, then body, then AI trailers when assisted.
 
 ```text
 <type>(<scope>): <imperative summary>
@@ -160,8 +160,8 @@ Use a **Conventional Commits–style** subject so history stays scannable.
 |------|------|
 | **type** | One of the types in the table below |
 | **scope** | Package or area; see [Scope conventions](#scope-conventions). Omit for true repo-wide root files when no better scope fits |
-| **summary** | Imperative mood, specific, ≤ ~72 characters; no trailing period |
-| **body** (optional) | For non-trivial commits: **why** the change matters and any **migration** notes; link to the canonical doc if non-obvious. Tiny one-line docs fixes may omit a body |
+| **summary** | Imperative mood, specific, ≤ ~72 characters; no trailing period; names the staged change ([commit-note identity](#commit-note-identity)) |
+| **body** | Required unless the subject alone names the staged actions. States **what changed**; why/migration may follow. Tiny one-file wording fixes may omit. Not a `git diff` dump |
 
 | type | Use when |
 |------|----------|
@@ -183,6 +183,19 @@ Use a **Conventional Commits–style** subject so history stays scannable.
 **Agent Instruct (when used):** enablement-only PLAN edits often use `docs(plan):` or `chore(agents):`; new/updated generated packs use `docs(agents):` or `chore(agents):`. Full enablement contract: [PLAN-HOOK.md](../agents/PLAN-HOOK.md).
 
 Scopes are advisory: consistency within a repo matters more than matching this table exactly.
+
+### Commit-note identity
+
+A commit note (subject, and body when present) summarizes this commit’s **staged change**. It is definitional when all of these hold. This is a quality floor, not a sentence quota.
+
+| # | Test |
+|---|------|
+| 1 | **Staged-change summary:** names what this commit actually changed (actions, rules, or paths in the staged diff). Would be **stale** if the staged files changed and this text did not. Not the program or phase objective (`ship 2.12.0`, `complete P1`) |
+| 2 | Conventional `type(scope):` signature; type matches staged files |
+| 3 | Would be **wrong** if swapped onto another commit in the same stack |
+| 4 | Body required unless the subject alone names the staged actions. Body states **what changed**; why/migration may follow. Not a Contents reprint or a diff dump |
+
+One-line subject remains legal if 1–3 hold. AI disclosure trailers stay as in [AI-assisted commits](#ai-assisted-commits-required-disclosure). Do **not** rewrite published history to retrofit old messages.
 
 ### Optional footers
 
@@ -268,10 +281,10 @@ Resolve **in order**. Stop at the first success.
 **Good example** (illustrative; `Instructed-by` resolved from `git config user.name` when set):
 
 ```text
-docs(rules): require AI disclosure footer on assisted commits
+docs(rules): add Assisted-by Compliance Instructed-by trailers
 
-Add Assisted-by / Compliance / Instructed-by trailers so AI
-participation is transparent and auditable years later.
+Require those three footers on AI-assisted commits. Keep
+Instructed-by dynamic (git user.name). Do not add Directed-by.
 
 Assisted-by: Grok (xAI)
 Compliance: RULES.md
@@ -299,6 +312,7 @@ docs(rules): clarify non-Python style gate expectations
 | `wip` | Finish, then commit a clear subject |
 | `fix bugs` | `fix(my-cli): handle missing config path without traceback` |
 | `feat: updates` (docs-only staged) | `docs: …` — do not use `feat` for documentation-only changes |
+| `docs(kit): ship 2.12.0` / `complete P1` | `docs(std): require current-content summary in identity test` — name the staged action, not the objective |
 
 **Multi-commit stack example:**
 
@@ -327,14 +341,16 @@ Commit messages and **what is staged** must stay consistent with the documentati
 
 1. Does the subject type match the staged content?  
 2. Is this **one logical surface** (or an intentional code+docs pair)?  
-3. If CLI/API shapes changed, is the matching guide updated?  
-4. If trust/execution model changed, is the matching security doc updated?  
-5. If formulas or public output fields changed, are methodology + fixtures updated?  
-6. If product Python / Rust / C++ changed **and that surface is in inventory**, will the declared Domain B + Domain A gates pass?  
-7. Were **declared** Domain A/B gates for other touched language surfaces run?  
-8. Would a reviewer find the subject by searching the feature name used in the README?  
-9. Would this subject still make sense **two years** from now?  
-10. If AI assisted: are `Assisted-by` / `Compliance` / `Instructed-by` present with `Instructed-by` resolved via the cascade (git user.name → ask+record → `User`)?
+3. Does the subject (and body when present) name the **staged change**, not the completed objective ([commit-note identity](#commit-note-identity))?  
+4. If a body is required, does it state **what changed** (why/migration may follow)?  
+5. If CLI/API shapes changed, is the matching guide updated?  
+6. If trust/execution model changed, is the matching security doc updated?  
+7. If formulas or public output fields changed, are methodology + fixtures updated?  
+8. If product Python / Rust / C++ changed **and that surface is in inventory**, will the declared Domain B + Domain A gates pass?  
+9. Were **declared** Domain A/B gates for other touched language surfaces run?  
+10. Would a reviewer find the subject by searching the feature name used in the README?  
+11. Would this subject still make sense **two years** from now?  
+12. If AI assisted: are `Assisted-by` / `Compliance` / `Instructed-by` present with `Instructed-by` resolved via the cascade (git user.name → ask+record → `User`)?
 
 ---
 
@@ -344,7 +360,7 @@ Commit messages and **what is staged** must stay consistent with the documentati
 git status
 git diff
 git add path/to/file
-git commit -m "type(scope): imperative summary of this file or surface"
+git commit -m "type(scope): imperative summary of the staged change"
 git status
 ```
 
@@ -364,6 +380,7 @@ A remote is optional. When one exists, do not assume write access to `main`/`mas
 
 | Version | Notes |
 |---------|--------|
+| 1.1.0 | Commit-note identity: staged-change summary; signature unchanged (kit 2.13.0) |
 | 1.0.5 | Density restyle (kit 2.8.0); unique rules unchanged |
 | 1.0.4 | Pre-commit check names inventory-gated Python / Rust / C++ Domain A/B (kit 2.5.0) |
 | 1.0.3 | Instructed-by resolution cascade (git user.name → ask+record → `User`); no Directed-by trailer; blank line before trailers |
