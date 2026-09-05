@@ -87,14 +87,14 @@ repo-kit/
 
 | Field | Value |
 |-------|--------|
-| Kit version | **2.12.0** (2026-09-04) — latest dated `### [X.Y.Z]` under `## repo-kit` in [kit/CHANGELOG.md](../../kit/CHANGELOG.md) |
+| Kit version | **2.13.0** (2026-09-04) — latest dated `### [X.Y.Z]` under `## repo-kit` in [kit/CHANGELOG.md](../../kit/CHANGELOG.md) |
 | Inventory | Empty (docs-only). No pylint, rustfmt, clang-format, Bandit, cargo-audit, or cppcheck |
 | Workboard | [docs/WORKBOARD.md](../WORKBOARD.md) — primary program **`none`** |
 | Declared gates | Author checklist, relative links, last citations ([completion](../../kit/rules/verification-and-ops.md#completion-rule)) |
 | `SECURITY.md` | Omit ([modularity](../../kit/rules/security.md#security-documentation-modularity)) |
 | Root `CHANGELOG.md` | **None** — this kit’s history is `kit/CHANGELOG.md`. Adopting repos **must** keep a root project CHANGELOG |
 
-Recent shipped programs (read L4, not annexes): description current-content **2.12.0**, workboard packet **2.11.1**, description identity **2.11.0**, YAML except omit list **2.10.0**. Archaeology: [docs/plan/archive/](../plan/archive/).
+Recent shipped programs (read L4, not annexes): commit-note staged-change **2.13.0**, description current-content **2.12.0**, workboard packet **2.11.1**, description identity **2.11.0**. Archaeology: [docs/plan/archive/](../plan/archive/).
 
 ---
 

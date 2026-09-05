@@ -1,29 +1,29 @@
 ---
 title: "commit-notes-2.13.0 — order of operations"
-description: Goals, frozen commit-note identity test (staged-change summary), phased OOO, verification, and risks for kit 2.13.0.
+description: Goals, frozen commit-note identity test (staged-change summary), phased OOO, verification, and risks for kit 2.13.0. Archived; read L4 versioning-and-git 1.1.0.
 version: "1.0.0"
-status: active
+status: archived
 audience:
   - ai-agents
   - maintainers
 doc_type: plan
 related:
   - ./README.md
-  - ../../WORKBOARD.md
-  - ../../../kit/rules/workboard.md
-  - ../../../kit/rules/versioning-and-git.md
-  - ../../../kit/RULES.md
-  - ../../../kit/rules/verification-and-ops.md
-  - ../../../kit/UPGRADE.md
+  - ../../../WORKBOARD.md
+  - ../../../../kit/rules/workboard.md
+  - ../../../../kit/rules/versioning-and-git.md
+  - ../../../../kit/RULES.md
+  - ../../../../kit/rules/verification-and-ops.md
+  - ../../../../kit/UPGRADE.md
 last_updated: "2026-09-04"
 ---
 
 # Commit notes 2.13.0 — order of operations
 
-**Board:** [docs/WORKBOARD.md](../../WORKBOARD.md)  
+**Board:** [docs/WORKBOARD.md](../../../WORKBOARD.md)  
 **Annex index:** [README.md](./README.md)
 
-Program-level OOO. Per-phase file patches wait until that phase is `active`. Law ships as kit **2.13.0**. Current baseline: **2.12.0**. Instruct off. No root `PLAN.md`.
+Program-level OOO. Per-phase file patches wait until that phase is `active`. Law ships as kit **2.13.0**. Instruct off. No root `PLAN.md`.
 
 Body cites below use repo-root `kit/…` so they survive archive. `related:` and the Board line stay relative.
 

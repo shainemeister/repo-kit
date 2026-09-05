@@ -18,6 +18,7 @@ This folder is **archaeology only**. It is not the live todo list. Active work i
 
 | Pack | Ended | Read instead (L4) |
 |------|-------|-------------------|
+| [commit-notes-2.13.0](./commit-notes-2.13.0/) | 2026-09-04 | [versioning-and-git](../../../kit/rules/versioning-and-git.md) **1.1.0** · [CHANGELOG](../../../kit/CHANGELOG.md) `### [2.13.0]` |
 | [description-summary-2.12.0](./description-summary-2.12.0/) | 2026-09-04 | [MARKDOWN-STANDARD](../../../kit/MARKDOWN-STANDARD.md) **1.6.0** · [CHANGELOG](../../../kit/CHANGELOG.md) `### [2.12.0]` |
 | [workboard-packet-2.11.1](./workboard-packet-2.11.1/) | 2026-09-01 | [workboard](../../../kit/rules/workboard.md) **1.2.0** · [CHANGELOG](../../../kit/CHANGELOG.md) `### [2.11.1]` |
 | [definitional-identity-2.11.0](./definitional-identity-2.11.0/) | 2026-09-01 | [MARKDOWN-STANDARD](../../../kit/MARKDOWN-STANDARD.md) **1.5.0** · [CHANGELOG](../../../kit/CHANGELOG.md) `### [2.11.0]` |

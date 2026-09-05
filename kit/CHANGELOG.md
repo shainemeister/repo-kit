@@ -26,6 +26,23 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 
 ## repo-kit
 
+### [2.13.0] - 2026-09-04
+
+#### Added
+
+- Commit-note **identity test** (versioning-and-git **1.1.0**): subject and body name the **staged change** (actions in the diff), not the completed objective. Conventional `type(scope):` signature and AI trailers (`Assisted-by` / `Compliance` / `Instructed-by`) **unchanged**. Body required unless the subject alone names the staged actions. Do not rewrite published history.
+
+#### Changed
+
+- RULES hub **2.7.5**: existing commit Must + Operator step 5 name staged-change notes. Must index count unchanged.
+- verification-and-ops **1.7.3**: contributor checklist and anti-pattern cite commit-note identity.
+- CATALOG **1.2.8** maintainer verify; maintainer template/sample; reviewer procedure cite.
+- UPGRADE **1.8.9**: no complete-fail and no history rewrite for historical commit messages.
+
+#### Notes
+
+- Minor on **2.12.0**. No inventory, SAST, hub Must-count, or layout migration. New commits only; historical messages are not a failed complete.
+
 ### [2.12.0] - 2026-09-04
 
 #### Added
