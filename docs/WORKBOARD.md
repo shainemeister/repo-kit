@@ -49,14 +49,15 @@ last_updated: "2026-09-04"
 |----|------|--------|--------|-------|
 | P0 | Register annex + freeze commit-note test | `done` | `4708eff` | Exit: annex linked; no `kit/` law |
 | P1 | versioning-and-git staged-change test | `done` | `c4cf33b` | Allow: `kit/rules/versioning-and-git.md` only |
-| P2 | Cite RULES + verification-and-ops | `active` | — | No new hub Must |
-| P3 | CATALOG maintainer/reviewer + templates | `open` | — | No BUILD |
+| P2 | Cite RULES + verification-and-ops | `done` | `16807a8` | No new hub Must |
+| P3 | CATALOG maintainer/reviewer + templates | `active` | — | No BUILD |
 | P4 | UPGRADE forward-only | `open` | — | No history rewrite |
 | P5 | Ship 2.13.0 + archive | `open` | — | CHANGELOG; annex archive; primary `none` |
 
 ### Progress log (newest first, max ~15 lines)
 
-- 2026-09-04 P1 `done` `c4cf33b`. P2 `active`.
+- 2026-09-04 P2 `done` `16807a8`. P3 `active`.
+- 2026-09-04 P1 `done` `c4cf33b`.
 - 2026-09-04 P0 `done` `4708eff`.
 - 2026-09-04 Registered **commit-notes-2.13.0**.
 - 2026-09-04 **description-summary-2.12.0** complete: `234d808` kit `2.12.0`. P0 `d7bdd4c` · P1 `39302a8` · P2 `01ab89a` · P3 `aee00fd` · P4 `797748a` · P5 `cdd4c8e`. Annex archived.

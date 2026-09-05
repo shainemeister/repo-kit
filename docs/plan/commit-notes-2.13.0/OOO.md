@@ -192,16 +192,16 @@ P5 Ship 2.13.0 + archive
 | **Deny** | Any `kit/**` law |
 | **Exit** | Annex linked; P1 `active` |
 
-### P2
+### P3
 
 | Field | Value |
 |-------|--------|
-| **Current state** | versioning-and-git **1.1.0** owns the test. Hub Must still says “match staged files” only. |
-| **Issue** | Operator checklist and contributor checklist do not fail objective-only notes. |
-| **Fix** | Retarget existing hub Must + Operator step 5; verification-and-ops checklist and anti-pattern cite. |
-| **Allow** | `kit/RULES.md` (existing commit Must + Operator step 5); `kit/rules/verification-and-ops.md` |
-| **Deny** | New hub Must; reprint of the identity table; examples |
-| **Exit** | Hub Must count unchanged; cites only |
+| **Current state** | Hub and checklist cite the test. Maintainer verify still says “type matches staged files” only. |
+| **Issue** | Instruct views would not fail an objective-only commit note. |
+| **Fix** | CATALOG maintainer verify + maintainer template/sample; reviewer procedure one-line cite. |
+| **Allow** | `kit/agents/CATALOG.md` maintainer/reviewer; `kit/agents/templates/maintainer.md`; `kit/agents/examples/generated-maintainer.sample.md`; reviewer template one-line |
+| **Deny** | BUILD; generated/; other seed packs except reviewer cite |
+| **Exit** | generated/ empty; BUILD not run; maintainer verify names staged-change |
 
 ---
 
