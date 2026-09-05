@@ -218,16 +218,16 @@ Fill **only** the `active` / current wait phase, plus the next `open` if needed 
 | **Deny** | Any `kit/**` law |
 | **Exit** | Annex linked from the board; plan index lists the open pack; P1 `active` |
 
-### P3
+### P4
 
 | Field | Value |
 |-------|--------|
-| **Current state** | Peers cite tests 2–3. YAML templates still say “identity test (cite; not a sentence count).” |
-| **Issue** | Copiers will not learn that `description` must summarize the current body. |
-| **Fix** | Hint current-content + uniqueness on `{{DESCRIPTION}}`; DIR-README Function stays tests 2–3. |
-| **Allow** | `TEMPLATE-DIR-README.md`; HTML comment next to `{{DESCRIPTION}}` on TEMPLATE-README / CLI / SECURITY / METHODOLOGY / CONCEPT / GENERIC |
-| **Deny** | TEMPLATE-LANDING-README; TEMPLATE-HOST-ALIAS; TEMPLATE-AGENTS; TEMPLATE-PROGRAM-README |
-| **Exit** | Hints name current-content; landing/alias/AGENTS still omit YAML |
+| **Current state** | Templates teach the test. SETUP/UPGRADE still name the 2.11.0 uniqueness-only identity test. |
+| **Issue** | Adopters could complete-fail old blurbs, or miss that new files need a current-content summary. |
+| **Fix** | SETUP: fill current-content description on new/on-edit. UPGRADE: no complete-fail for historical stale blurbs. Optional hub label. |
+| **Allow** | `kit/SETUP.md`; `kit/UPGRADE.md`; optional `kit/RULES.md` map-row label |
+| **Deny** | YAML on CHANGELOG / AGENTS.md / landing; universe sweep; Operator prompts; new hub Must or map row |
+| **Exit** | UPGRADE names 1.6.0; hub Must index unchanged |
 
 ---
 
