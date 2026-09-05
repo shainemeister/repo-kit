@@ -1,7 +1,7 @@
 ---
 title: Repository Maintenance Rules
 description: Maintenance policy hub—authority map, kit baseline, and index to domain rule modules.
-version: "2.7.3"
+version: "2.7.4"
 status: current
 audience:
   - developers
@@ -33,7 +33,7 @@ related:
   - configs/clippy.toml
   - configs/clang-format
   - configs/clang-tidy
-last_updated: "2026-09-01"
+last_updated: "2026-09-04"
 ---
 
 # Repository Maintenance Rules
@@ -138,7 +138,7 @@ Replace paths below with your project’s real files. Rows that do not apply may
 | One-time adoption (ephemeral) | [SETUP.md](./SETUP.md) — under `kit/`; follow, then delete or archive |
 | Kit upgrade / migration (durable) | [UPGRADE.md](./UPGRADE.md) — under `kit/` |
 | Path-level file inventory (optional) | Root `FILE-CATALOG.md` (or equivalent) |
-| Markdown structure, frontmatter / description identity, author checklist | [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) · [templates/](./templates/) |
+| Markdown structure, frontmatter / description identity (current-content summary), author checklist | [MARKDOWN-STANDARD.md](./MARKDOWN-STANDARD.md) · [templates/](./templates/) |
 | Maintenance policy hub (this file) | **`kit/RULES.md`** ([RULES.md](./RULES.md)) |
 | Contract policy (breaking changes, co-updates, cross-links) | [rules/contracts.md](./rules/contracts.md) |
 | Root hygiene / packaging (`kit/` vs product) | [rules/hygiene.md](./rules/hygiene.md) |
@@ -275,6 +275,7 @@ Copy-paste prompt also on root [README — Upgrade repo-kit](../README.md#upgrad
 
 | Version | Notes |
 |---------|--------|
+| 2.7.4 | Authority-map concern label names current-content summary (kit 2.12.0); Must index unchanged |
 | 2.7.3 | Authority-map concern label names description identity (kit 2.11.0); Must index unchanged |
 | 2.7.2 | Authority-map + domain-index row for files.md (kit 2.9.0); Must index unchanged |
 | 2.7.1 | Hub chrome (identity echo, Contents); Must index unchanged so the map stays complete (kit 2.8.0) |
