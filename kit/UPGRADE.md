@@ -1,7 +1,7 @@
 ---
 title: Upgrade repo-kit
-description: Durable guide for upgrading an existing kit baseline, including 1.x to 2.x layout migration (standards under kit/) and merge options.
-version: "1.8.9"
+description: Durable guide for upgrading an existing kit baseline, including 1.x to 2.x layout migration (standards under kit/), 2.14.0 programming-source home (src/; historical crates/ not a complete-fail), and merge options.
+version: "1.9.0"
 status: current
 audience:
   - developers
@@ -15,12 +15,12 @@ related:
   - rules/versioning-and-git.md
   - rules/hygiene.md
   - rules/workboard.md
-last_updated: "2026-09-04"
+last_updated: "2026-09-10"
 ---
 
 # Upgrade repo-kit
 
-Durable procedure for **repositories that already adopted** the Repository Standards Kit. Not deleted after initiation—keep under project `kit/` or always open this file at Kit source.
+Durable guide for upgrading an existing kit baseline, including 1.x to 2.x layout migration (standards under `kit/`), 2.14.0 programming-source home (`src/`; historical `crates/` not a complete-fail), and merge options.
 
 **Related:** [RULES.md](./RULES.md) · [SETUP.md](./SETUP.md) · [CHANGELOG.md](./CHANGELOG.md) · [README.md](../README.md) · [versioning-and-git.md](./rules/versioning-and-git.md) · [hygiene.md](./rules/hygiene.md) · [workboard.md](./rules/workboard.md)
 
@@ -44,12 +44,13 @@ Durable procedure for **repositories that already adopted** the Repository Stand
 
 1. [Choose your path](#choose-your-path)
 2. [Routine upgrade procedure](#routine-upgrade-procedure)
-3. [Migrate from kit 1.x / root layout to 2.x](#migrate-from-kit-1x--root-layout-to-2x)
-4. [Merge strategy options](#merge-strategy-options)
-5. [Agent Instruct on upgrade](#agent-instruct-on-upgrade)
-6. [Preserve list](#preserve-list)
-7. [Copy-paste AI prompts](#copy-paste-ai-prompts)
-8. [Document history](#document-history)
+3. [Kit 2.14.0 — programming-source home](#kit-2140--programming-source-home)
+4. [Migrate from kit 1.x / root layout to 2.x](#migrate-from-kit-1x--root-layout-to-2x)
+5. [Merge strategy options](#merge-strategy-options)
+6. [Agent Instruct on upgrade](#agent-instruct-on-upgrade)
+7. [Preserve list](#preserve-list)
+8. [Copy-paste AI prompts](#copy-paste-ai-prompts)
+9. [Document history](#document-history)
 
 ---
 
@@ -68,7 +69,7 @@ Durable procedure for **repositories that already adopted** the Repository Stand
 1. Read this project’s **Kit baseline** (Adopted kit version, Kit source, Adopted on) in **`kit/RULES.md`**.  
 2. Open **Kit source** (canonical: https://github.com/shainemeister/repo-kit) → [`kit/CHANGELOG.md`](./CHANGELOG.md) → `## repo-kit`.  
 3. List releases **after** your Adopted kit version only.  
-4. Build a **focused merge plan**: only pieces this project uses (hub `RULES.md`, `rules/*` including **ai-docs-workspace**, **workboard**, **continuity** policy, **files.md**, `MARKDOWN-STANDARD.md` (**1.6.0** — YAML except omit list + description identity test including current-content summary; do not sweep product trees for historical fences, tautological blurbs, or stale descriptions), templates including **TEMPLATE-LANDING-README.md**, **templates/docs/** and **WORKBOARD.md**, configs, **`kit/agents/HABITAT.md`** if a coding agent is used, remaining **`kit/agents/`** if Instruct is used, `.gitignore` patterns).  
+4. Build a **focused merge plan**: only pieces this project uses (hub `RULES.md`, `rules/*` including **ai-docs-workspace**, **workboard**, **continuity** policy, **files.md** (**1.1.0** — repo-root `src/` home; do **not** complete-fail historical `crates/`), `MARKDOWN-STANDARD.md` (**1.6.0** — YAML except omit list + description identity test including current-content summary; do not sweep product trees for historical fences, tautological blurbs, or stale descriptions), templates including **TEMPLATE-LANDING-README.md**, **templates/docs/** and **WORKBOARD.md**, configs, **`kit/agents/HABITAT.md`** if a coding agent is used, remaining **`kit/agents/`** if Instruct is used, `.gitignore` patterns).  
 5. **Merge into project `kit/`** — not onto the product root. **Preserve** project root **`docs/`** content (do not overwrite with empty templates). **Never** replace a filled `docs/WORKBOARD.md` with the empty template. Merge new files under `kit/configs/` (pylintrc, rustfmt.toml, clippy.toml, clang-format, clang-tidy) as **catalog**. Do **not** force-copy them onto the product root; copy to `.pylintrc` / `rustfmt.toml` / `.clang-format` only when that language is **in the inventory**. If a coding agent is used (or root `AGENTS.md` exists): merge `kit/agents/HABITAT.md` and L0 templates. **Preserve** a filled root `AGENTS.md` and host aliases — do not overwrite with the empty template. Kit **2.7.0** density and templates are the contract; later module restyles are editorial — preserve local additions.  
 6. **Root `README.md`:** required [landing](./MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter) — no frontmatter; `## Overview` then `## Operator prompts`. Rewrite in place or start from [TEMPLATE-LANDING-README.md](./templates/TEMPLATE-LANDING-README.md). Keep this repo’s Overview content; Operator prompts is **this** repo’s session load path — do not paste upstream kit adopt/upgrade fences. Package READMEs stay on [TEMPLATE-README.md](./templates/TEMPLATE-README.md).  
 7. **Preserve** project-specific values — see [Preserve list](#preserve-list).  
@@ -78,6 +79,12 @@ Durable procedure for **repositories that already adopted** the Repository Stand
 11. **Project root** `CHANGELOG.md`: short note (e.g. “Upgraded repo-kit baseline to X.Y.Z”)—**never** paste full kit history.  
 12. Re-run the project verification table / [completion rule](./rules/verification-and-ops.md#completion-rule).  
 13. Optional: refresh local `kit/UPGRADE.md` from upstream.
+
+---
+
+## Kit 2.14.0 — programming-source home
+
+Merge [files.md](./rules/files.md) **1.1.0**. Programming source home is repo-root `src/` (segment noun, module noun, verb as function). Do **not** complete-fail historical `crates/`, `packages/<name>/` as source root, `build-aux/`, or `scripts/`. New source after this kit date Must go under `src/`. An optional layout program may migrate old trees; this is not a universe rewrite.
 
 ---
 
@@ -198,6 +205,7 @@ Never clobber on merge:
 - Do **not** treat historical commit messages as a failed complete, and do **not** rewrite published git history to retrofit them ([commit-note identity](./rules/versioning-and-git.md#commit-note-identity) applies to **new** commits)  
 - Do **not** create root `./rules/` as a compat tree; law stays under `kit/`  
 - Folded-hub adopters: port [files.md](./rules/files.md) into the hub **or** keep `kit/rules/files.md`; record in the map  
+- Do **not** treat historical `crates/`, `packages/<name>/` as source root, `build-aux/`, or `scripts/` as a failed complete ([files.md](./rules/files.md) **1.1.0**; new source under `src/`; layout migration is a program, not a universe rewrite)  
 
 ---
 
@@ -210,7 +218,7 @@ Upgrade repo-kit for this repository (Kit baseline in kit/RULES.md).
 
 1. Read Kit baseline (Adopted kit version, Kit source).
 2. Open kit/UPGRADE.md and kit/CHANGELOG.md under ## repo-kit at Kit source (https://github.com/shainemeister/repo-kit).
-3. Follow UPGRADE routine procedure; merge only appropriate deltas into this project's kit/; preserve authority map product paths and verification.
+3. Follow UPGRADE routine procedure; merge only appropriate deltas into this project's kit/; preserve authority map product paths and verification. Merge files.md 1.1.0 (src/ home); do not complete-fail historical crates/build-aux/scripts; new source under src/.
 4. Reshape root README.md to landing if needed (no frontmatter; ## Overview then ## Operator prompts). Keep this repo's Overview; do not paste upstream kit adopt/upgrade fences. Package READMEs unchanged.
 5. If a coding agent is used (or AGENTS.md exists): merge kit/agents/HABITAT.md; do not overwrite a filled root AGENTS.md or host aliases.
 6. If Agent Instruct is in use: merge the rest of kit/agents/ docs+templates; preserve PLAN Agent models and adopter/platform generated packs; re-run kit/agents/BUILD.md (kit seeds regen only; source load order).
@@ -237,6 +245,7 @@ This repository has no repo-kit baseline. Follow kit/SETUP.md selective adoption
 
 | Version | Notes |
 |---------|--------|
+| 1.9.0 | Kit 2.14.0 programming-source home: merge files.md 1.1.0; historical crates/build-aux/scripts not a complete-fail; new source under src/ |
 | 1.8.9 | Merge versioning-and-git 1.1.0; no complete-fail or history rewrite for historical commit messages (kit 2.13.0) |
 | 1.8.8 | Merge MARKDOWN-STANDARD 1.6.0; no complete-fail for historical stale descriptions (kit 2.12.0) |
 | 1.8.7 | Merge workboard 1.2.0; no complete-fail for historical annexes without a phase brief (kit 2.11.1) |

@@ -12,7 +12,7 @@ related:
   - ../MARKDOWN-STANDARD.md
   - ../rules/files.md
   - ../rules/hygiene.md
-last_updated: "2026-08-31"
+last_updated: "2026-09-10"
 ---
 
 # Example: C / C++ library
@@ -23,7 +23,7 @@ last_updated: "2026-08-31"
 
 **Primary platform (example):** multi
 
-**Packaging:** standards under `kit/`; sources under `my_clib/` (outside `kit/`). See [hygiene](../rules/hygiene.md).
+**Packaging:** standards under `kit/`; programming source under `src/` (outside `kit/`). See [hygiene](../rules/hygiene.md) · [files.md](../rules/files.md).
 
 ---
 
@@ -32,8 +32,8 @@ last_updated: "2026-08-31"
 | Template | Becomes |
 |----------|---------|
 | [TEMPLATE-LANDING-README.md](../templates/TEMPLATE-LANDING-README.md) | Root `README.md` (Overview + Operator prompts) |
-| [TEMPLATE-README.md](../templates/TEMPLATE-README.md) | `my_clib/README.md` (package; frontmatter) |
-| [TEMPLATE-SECURITY.md](../templates/TEMPLATE-SECURITY.md) | `my_clib/SECURITY.md` **only if** trust boundary matters—otherwise **omit** |
+| [TEMPLATE-README.md](../templates/TEMPLATE-README.md) | `src/README.md` (package overview / directory index; frontmatter) |
+| [TEMPLATE-SECURITY.md](../templates/TEMPLATE-SECURITY.md) | `src/SECURITY.md` **only if** trust boundary matters—otherwise **omit** |
 
 Optional: methodology template if formulas or scoring are part of the contract.
 
@@ -50,10 +50,10 @@ Optional: methodology template if formulas or scoring are part of the contract.
 | File placement / creation / naming | `kit/rules/files.md` |
 | Project history (**required**) | Root `CHANGELOG.md` |
 | Standards kit baseline | `kit/RULES.md` — Kit baseline |
-| Package overview | `my_clib/README.md` |
-| Public API contract | `my_clib/README.md` (or `API.md` / public header) |
-| Security / trust boundary | `my_clib/SECURITY.md` *(omit if modularity allows)* |
-| Default config | `my_clib/defaults.yaml` (or documented compile flags) |
+| Package overview | `src/README.md` |
+| Public API contract | `src/README.md` (or `API.md` / public header beside `src/`) |
+| Security / trust boundary | `src/SECURITY.md` *(omit if modularity allows)* |
+| Default config | `src/defaults.yaml` (or documented compile flags) |
 | Golden tests / fixtures | `tests/fixtures/` |
 | C / C++ style gate | `.clang-format` + `.clang-tidy` (from `kit/configs/`; **set `BasedOnStyle`**) |
 | Language surface inventory | Inventory in project RULES / security module (filled below) |

@@ -12,7 +12,7 @@ related:
   - ../MARKDOWN-STANDARD.md
   - ../rules/files.md
   - ../rules/hygiene.md
-last_updated: "2026-08-31"
+last_updated: "2026-09-10"
 ---
 
 # Example: Python library package
@@ -23,7 +23,7 @@ last_updated: "2026-08-31"
 
 **Primary platform (example):** multi
 
-**Packaging:** standards under `kit/`; package under `my_library/` (outside `kit/`). See [hygiene](../rules/hygiene.md).
+**Packaging:** standards under `kit/`; programming source under `src/` (outside `kit/`). See [hygiene](../rules/hygiene.md) · [files.md](../rules/files.md).
 
 ---
 
@@ -32,8 +32,8 @@ last_updated: "2026-08-31"
 | Template | Becomes |
 |----------|---------|
 | [TEMPLATE-LANDING-README.md](../templates/TEMPLATE-LANDING-README.md) | Root `README.md` (Overview + Operator prompts) |
-| [TEMPLATE-README.md](../templates/TEMPLATE-README.md) | `my_library/README.md` (package; frontmatter) |
-| [TEMPLATE-SECURITY.md](../templates/TEMPLATE-SECURITY.md) | `my_library/SECURITY.md` **only if** trust boundary matters—otherwise **omit** |
+| [TEMPLATE-README.md](../templates/TEMPLATE-README.md) | `src/README.md` (package overview / directory index; frontmatter) |
+| [TEMPLATE-SECURITY.md](../templates/TEMPLATE-SECURITY.md) | `src/SECURITY.md` **only if** trust boundary matters—otherwise **omit** |
 
 Optional: methodology template if formulas or scoring are part of the contract.
 
@@ -50,10 +50,10 @@ Optional: methodology template if formulas or scoring are part of the contract.
 | File placement / creation / naming | `kit/rules/files.md` |
 | Project history (**required**) | Root `CHANGELOG.md` |
 | Standards kit baseline | `kit/RULES.md` — Kit baseline |
-| Package overview | `my_library/README.md` |
-| Public API contract | `my_library/README.md` (or `API.md`) |
-| Security / trust boundary | `my_library/SECURITY.md` *(omit if modularity allows)* |
-| Default config | `my_library/defaults.yaml` |
+| Package overview | `src/README.md` |
+| Public API contract | `src/README.md` (or `API.md` beside `src/`) |
+| Security / trust boundary | `src/SECURITY.md` *(omit if modularity allows)* |
+| Default config | `src/defaults.yaml` |
 | Golden tests / fixtures | `tests/fixtures/` |
 | Python style / PEP-8 gate | `.pylintrc` (from `kit/configs/pylintrc`; **set `py-version`**) |
 | Language surface inventory | Inventory in project RULES / security module (filled below) |
@@ -67,7 +67,7 @@ Optional: methodology template if formulas or scoring are part of the contract.
 
 | Surface | Domain B (validation) | Domain A (security) | Notes |
 |---------|----------------------|---------------------|--------|
-| **Python** product code | `python -m pylint my_library` (exit 0, 10.00/10) | `python -m bandit -r my_library` | Required when this row is present |
+| **Python** product code | `python -m pylint src` (exit 0, 10.00/10) | `python -m bandit -r src` | Required when this row is present |
 | **Python** dependencies | — | `pip-audit` | Only if third-party deps exist |
 
 ### Sample kit baseline
@@ -97,8 +97,8 @@ Optional: methodology template if formulas or scoring are part of the contract.
 | Change type | Minimum verification |
 |-------------|----------------------|
 | Public behavior / exports | `python -m pytest tests/` (or project test command) |
-| Python product code style | `python -m pylint my_library` — **required** when Python is in inventory |
-| Security / SAST (Python only) | `python -m bandit -r my_library` — **required** when declared; `pip-audit` when deps row exists |
+| Python product code style | `python -m pylint src` — **required** when Python is in inventory |
+| Security / SAST (Python only) | `python -m bandit -r src` — **required** when declared; `pip-audit` when deps row exists |
 | Formal certification | If `certification/` maintained: regenerate `last_certification.*`; do not stage outputs |
 | Schema or sample data | Headers/fields match schema; consumers still load samples |
 | Docs only | Author checklist (including [density](../MARKDOWN-STANDARD.md#density-force-and-incorporation)); relative links resolve; last citations remain; consume example in README still runs |

@@ -12,7 +12,7 @@ related:
   - ../MARKDOWN-STANDARD.md
   - ../rules/files.md
   - ../rules/hygiene.md
-last_updated: "2026-08-31"
+last_updated: "2026-09-10"
 ---
 
 # Example: CLI / automation tool
@@ -23,7 +23,7 @@ last_updated: "2026-08-31"
 
 **Primary platform (example):** multi (Windows + Linux/macOS)
 
-**Packaging:** standards under `kit/`; product under `my-cli/` (outside `kit/`). See [hygiene](../rules/hygiene.md).
+**Packaging:** standards under `kit/`; programming source under `src/` (outside `kit/`). See [hygiene](../rules/hygiene.md) · [files.md](../rules/files.md).
 
 ---
 
@@ -32,9 +32,9 @@ last_updated: "2026-08-31"
 | Template | Becomes |
 |----------|---------|
 | [TEMPLATE-LANDING-README.md](../templates/TEMPLATE-LANDING-README.md) | Root `README.md` (Overview + Operator prompts) |
-| [TEMPLATE-README.md](../templates/TEMPLATE-README.md) | `my-cli/README.md` (package; frontmatter) |
-| [TEMPLATE-CLI.md](../templates/TEMPLATE-CLI.md) | `my-cli/CLI-GUIDE.md` |
-| [TEMPLATE-SECURITY.md](../templates/TEMPLATE-SECURITY.md) | `my-cli/SECURITY.md` |
+| [TEMPLATE-README.md](../templates/TEMPLATE-README.md) | `src/README.md` (package overview / directory index; frontmatter) |
+| [TEMPLATE-CLI.md](../templates/TEMPLATE-CLI.md) | `src/CLI-GUIDE.md` (contract beside source) |
+| [TEMPLATE-SECURITY.md](../templates/TEMPLATE-SECURITY.md) | `src/SECURITY.md` |
 
 ---
 
@@ -49,13 +49,13 @@ last_updated: "2026-08-31"
 | File placement / creation / naming | `kit/rules/files.md` |
 | Project history (**required**) | Root `CHANGELOG.md` |
 | Standards kit baseline | `kit/RULES.md` — Kit baseline |
-| Package overview | `my-cli/README.md` |
-| CLI or automation contract | `my-cli/CLI-GUIDE.md` |
-| Security / trust boundary | `my-cli/SECURITY.md` *(CLI is an execution surface)* |
+| Package overview | `src/README.md` |
+| CLI or automation contract | `src/CLI-GUIDE.md` |
+| Security / trust boundary | `src/SECURITY.md` *(CLI is an execution surface)* |
 | Language surface inventory | Inventory in project RULES / security module (filled below) |
 | Security & code-validation certification | `certification/README.md` *(optional)* |
-| Default config | `my-cli/config.example.yaml` |
-| Golden tests / fixtures | `my-cli/tests/fixtures/` |
+| Default config | `src/config.example.yaml` |
+| Golden tests / fixtures | `tests/fixtures/` |
 | Agent Instruct (optional) | `kit/agents/README.md`; PLAN **Agent models** if using agents ([PLAN-HOOK](../agents/PLAN-HOOK.md)); BUILD → `kit/agents/generated/` — see [PLAN snippet](../agents/examples/PLAN-agent-models-snippet.md) |
 | AI docs workspace (when used) | Root `docs/README.md` + modules; policy `kit/rules/ai-docs-workspace.md` |
 | Multi-phase execution (when used) | `docs/WORKBOARD.md` · policy `kit/rules/workboard.md` |
@@ -67,7 +67,7 @@ Rows that do not apply (schema, methodology, etc.) are omitted.
 
 | Surface | Domain B (validation) | Domain A (security) | Notes |
 |---------|----------------------|---------------------|--------|
-| **Python** product code | `python -m pylint my_cli` (if the CLI is Python) | `python -m bandit -r my_cli` | Swap the whole row for the real stack |
+| **Python** product code | `python -m pylint src` (if the CLI is Python) | `python -m bandit -r src` | Swap the whole row for the real stack |
 | **Secrets** (optional) | — | `gitleaks detect` | When configs or tokens might appear in history |
 
 Declare **only** surfaces this CLI ships. Never paste the full kit language table.
@@ -103,7 +103,7 @@ Declare **only** surfaces this CLI ships. Never paste the full kit language tabl
 | Product style (Domain B) | Gate for the CLI’s language—**required** when in inventory |
 | Security / SAST (Domain A) | Language-specific SAST for declared surfaces—**required** when declared |
 | Formal certification | If `certification/` maintained: regenerate `last_certification.*`; do not stage outputs |
-| Docs only | Author checklist (including [density](../MARKDOWN-STANDARD.md#density-force-and-incorporation)); relative links from `my-cli/` resolve; last citations remain |
+| Docs only | Author checklist (including [density](../MARKDOWN-STANDARD.md#density-force-and-incorporation)); relative links from `src/` resolve; last citations remain |
 | New/removed source files | Inventory/catalog updated (if maintained) |
 | New navigable directory | Directory-index `README.md` (file → function) for **new** dirs ([files.md](../rules/files.md)); **forward-only** — not a gate for historical folders |
 

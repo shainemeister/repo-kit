@@ -12,7 +12,7 @@ related:
   - ../MARKDOWN-STANDARD.md
   - ../rules/files.md
   - ../rules/hygiene.md
-last_updated: "2026-08-31"
+last_updated: "2026-09-10"
 ---
 
 # Example: Docs-only / standards repository
@@ -23,7 +23,7 @@ last_updated: "2026-08-31"
 
 **Primary platform (example):** multi (path examples only; no runtime gate)
 
-**Packaging:** standards under `kit/`; design docs at repo root or under a docs tree **outside** `kit/` if you want clear separation. See [hygiene](../rules/hygiene.md).
+**Packaging:** standards under `kit/`; design docs at repo root or under a docs tree **outside** `kit/` if you want clear separation. Docs-only needs no `src/`. See [hygiene](../rules/hygiene.md) · [files.md](../rules/files.md).
 
 ---
 

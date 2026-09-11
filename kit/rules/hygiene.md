@@ -1,7 +1,7 @@
 ---
 title: Root Hygiene
-description: Unified packaging—standards under kit/, repository-specific data outside; SETUP and UPGRADE lifecycles.
-version: "1.6.1"
+description: Unified packaging—standards under kit/, programming source under src/ (files.md), repository-specific data outside; SETUP and UPGRADE lifecycles.
+version: "1.7.0"
 status: current
 audience:
   - developers
@@ -15,12 +15,12 @@ related:
   - ./ai-docs-workspace.md
   - ./workboard.md
   - ../../README.md
-last_updated: "2026-08-31"
+last_updated: "2026-09-10"
 ---
 
 # Root Hygiene
 
-Keep the repository root **scannable**: entry points and project-specific surfaces first; **standards under `kit/`**; product code and AI workspace in purpose directories outside `kit/`.
+Keep the repository root **scannable**: entry points and project-specific surfaces first; **standards under `kit/`**; programming source under `src/` ([files.md](./files.md)); product and AI workspace in purpose directories outside `kit/`.
 
 **Related:** [RULES.md](../RULES.md) · [SETUP.md](../SETUP.md) · [UPGRADE.md](../UPGRADE.md) · [files.md](./files.md) · [ai-docs-workspace.md](./ai-docs-workspace.md) · [workboard.md](./workboard.md) · [README.md](../../README.md)
 
@@ -56,7 +56,7 @@ Keep the repository root **scannable**: entry points and project-specific surfac
 | Context | Standards | Repository-specific |
 |---------|-----------|---------------------|
 | **This repository (repo-kit)** | Entire payload under [`kit/`](../) | Root README (kit landing), LICENSE, `.gitignore`; kit history in `kit/CHANGELOG.md` under `## repo-kit` |
-| **Adopting product repo** | Same: standards under **`kit/`** (copy/merge from upstream `kit/`, or link/submodule) | Root product README, **project** `CHANGELOG.md`, optional `PLAN.md`, optional/dynamic **`docs/`**, packages/src, certification |
+| **Adopting product repo** | Same: standards under **`kit/`** (copy/merge from upstream `kit/`, or link/submodule) | Root product README, **project** `CHANGELOG.md`, optional `PLAN.md`, optional/dynamic **`docs/`**, programming source under `src/` ([files.md](./files.md)), certification |
 
 **Default for new implementations:** `kit/RULES.md` (filled hub) + `kit/rules/*` — not root-level `RULES.md`.
 
@@ -108,11 +108,11 @@ When to create a path, how to name it, and when a directory needs an index READM
 
 | Concern | Preferred home |
 |---------|----------------|
-| Product packages / services | `packages/`, `src/`, or project-chosen layout **outside** `kit/` |
+| Product packages / services | Programming source: repo-root `src/` ([files.md](./files.md)). Workflow-joined package dirs (e.g. `packages/<name>/`) may remain **if** their source still lives under `src/<segment>/` |
 | Package-level contracts (CLI, SECURITY, methodology) | Inside the package |
 | Formal security + code-validation certificates | `certification/` at repo root (or documented path); regenerable outputs gitignored |
 | AI research / detailed plans / build notes | Root **`docs/`** — not under `kit/` and not as ad-hoc root `notes.md` sprawl ([ai-docs-workspace](./ai-docs-workspace.md)) |
-| Scripts / helpers | `scripts/` or `tooling/` (keep minimal) |
+| Scripts / helpers | Developer/build helpers: `src/build/` procedure segment ([files.md](./files.md)). Do not use `scripts/` or `tooling/` as a competing home |
 | Regenerable output | Never committed |
 | CI workflows | `.github/` (or equivalent) |
 | Regenerable **mirrors** of agent packs in a host skill/rules dir | Prefer gitignore; keep packs under `kit/agents/generated/` |
@@ -155,6 +155,7 @@ When to create a path, how to name it, and when a directory needs an index READM
 
 | Version | Notes |
 |---------|--------|
+| 1.7.0 | Programming source cites files.md (`src/`); helpers `src/build/`; `scripts/` is not a competing home (kit 2.14.0) |
 | 1.6.1 | Cite files.md for create/place/name/index; packaging Musts unchanged |
 | 1.6.0 | Restyle to density shape (kit 2.7.0); unique packaging rules unchanged |
 | 1.5.1 | Root README landing shape required (kit 2.6.2) |

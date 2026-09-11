@@ -26,6 +26,23 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 
 ## repo-kit
 
+### [2.14.0] - 2026-09-10
+
+#### Added
+
+- Programming-source home is repo-root `src/` plus three-layer path shape (segment noun, module noun, verb as function) in [files.md](./rules/files.md) **1.1.0**. Procedure-script verb filenames only under a procedure segment (`src/build/certify.py`).
+
+#### Changed
+
+- architecture **1.2.0**: one Source layout row cites files.md (does not reprint layers).
+- hygiene **1.7.0**: programming source cites files.md (`src/`); helpers `src/build/`; `scripts/` is not a competing home. Workflow-joined package dirs may remain if source still lives under `src/<segment>/`.
+- examples: illustrative source home is `src/` (package overview `src/README.md`); docs-only still needs no `src/`.
+- UPGRADE **1.9.0**: forward-only 2.14.0 subsection; merge files.md; do not complete-fail historical `crates/` / `build-aux/` / `scripts/`; new files under `src/`; optional layout program, not a universe rewrite.
+
+#### Notes
+
+- Minor on **2.13.0**. No inventory, SAST, or hub Must-count change. Historical `crates/` is not a failed complete. No universe rewrite.
+
 ### [2.13.0] - 2026-09-04
 
 #### Added

@@ -12,7 +12,7 @@ related:
   - ../MARKDOWN-STANDARD.md
   - ../rules/files.md
   - ../rules/hygiene.md
-last_updated: "2026-08-31"
+last_updated: "2026-09-10"
 ---
 
 # Example: Rust library crate
@@ -23,7 +23,7 @@ last_updated: "2026-08-31"
 
 **Primary platform (example):** multi
 
-**Packaging:** standards under `kit/`; crate under `my_crate/` (outside `kit/`). See [hygiene](../rules/hygiene.md).
+**Packaging:** standards under `kit/`; programming source under `src/` (outside `kit/`). See [hygiene](../rules/hygiene.md) · [files.md](../rules/files.md).
 
 ---
 
@@ -32,8 +32,8 @@ last_updated: "2026-08-31"
 | Template | Becomes |
 |----------|---------|
 | [TEMPLATE-LANDING-README.md](../templates/TEMPLATE-LANDING-README.md) | Root `README.md` (Overview + Operator prompts) |
-| [TEMPLATE-README.md](../templates/TEMPLATE-README.md) | `my_crate/README.md` (package; frontmatter) |
-| [TEMPLATE-SECURITY.md](../templates/TEMPLATE-SECURITY.md) | `my_crate/SECURITY.md` **only if** trust boundary matters—otherwise **omit** |
+| [TEMPLATE-README.md](../templates/TEMPLATE-README.md) | `src/README.md` (package overview / directory index; frontmatter) |
+| [TEMPLATE-SECURITY.md](../templates/TEMPLATE-SECURITY.md) | `src/SECURITY.md` **only if** trust boundary matters—otherwise **omit** |
 
 Optional: methodology template if formulas or scoring are part of the contract.
 
@@ -50,10 +50,10 @@ Optional: methodology template if formulas or scoring are part of the contract.
 | File placement / creation / naming | `kit/rules/files.md` |
 | Project history (**required**) | Root `CHANGELOG.md` |
 | Standards kit baseline | `kit/RULES.md` — Kit baseline |
-| Package overview | `my_crate/README.md` |
-| Public API contract | `my_crate/README.md` (or `API.md`) |
-| Security / trust boundary | `my_crate/SECURITY.md` *(omit if modularity allows)* |
-| Default config | `my_crate/defaults.yaml` (or crate `Config` docs) |
+| Package overview | `src/README.md` |
+| Public API contract | `src/README.md` (or `API.md` beside `src/`) |
+| Security / trust boundary | `src/SECURITY.md` *(omit if modularity allows)* |
+| Default config | `src/defaults.yaml` (or crate `Config` docs) |
 | Golden tests / fixtures | `tests/fixtures/` |
 | Rust style gate | `rustfmt.toml` + `clippy.toml` (from `kit/configs/`; **set `edition`**) |
 | Language surface inventory | Inventory in project RULES / security module (filled below) |
