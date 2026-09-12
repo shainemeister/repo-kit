@@ -1,7 +1,7 @@
 ---
 title: "repo-kit — maintainer build context"
-description: Session map of this upstream kit’s layout, current ship state (2.14.0 src/ home), and how adopters copy kit/ into product repos. Open before kit edits or first adopt from this tree; not a substitute for RULES.
-version: "1.1.0"
+description: Session map of this upstream kit’s layout, 2.14.0 ship state, L4 document versions, and a 2026-09-12 review snapshot. Open before kit edits or first adopt from this tree; not a substitute for RULES.
+version: "1.2.0"
 status: current
 audience:
   - maintainers
@@ -37,8 +37,10 @@ This repository **is** the kit (docs-only, Agent Instruct off). Copy `kit/` into
 1. [What this tree is](#what-this-tree-is)
 2. [Layout](#layout)
 3. [Current ship state](#current-ship-state)
-4. [Implementing into a product repo](#implementing-into-a-product-repo)
-5. [Working on this kit](#working-on-this-kit)
+4. [Review snapshot](#review-snapshot)
+5. [L4 versions](#l4-versions)
+6. [Implementing into a product repo](#implementing-into-a-product-repo)
+7. [Working on this kit](#working-on-this-kit)
 
 ---
 
@@ -90,9 +92,10 @@ repo-kit/
 | Field | Value |
 |-------|--------|
 | Kit version | **2.14.0** (2026-09-10) — latest dated `### [X.Y.Z]` under `## repo-kit` in [kit/CHANGELOG.md](../../kit/CHANGELOG.md) |
-| HEAD | `7e27feb` `docs(rules): require src/ as the programming-source home` — **ahead of `origin/main` by 1** (unpushed at last refresh) |
+| HEAD | `0285cde` `docs(project_build): refresh kit-context ship-state for 2.14.0` — **ahead of `origin/main` by 2** (unpushed at last refresh) |
+| Unpushed | `7e27feb` 2.14.0 `src/` home · `0285cde` this file’s prior refresh |
 | Inventory | Empty (docs-only). No pylint, rustfmt, clang-format, Bandit, cargo-audit, or cppcheck. No `src/` |
-| Workboard | [docs/WORKBOARD.md](../WORKBOARD.md) — primary program **`none`**. 2.14.0 shipped as a **single change set** (no annex) |
+| Workboard | [docs/WORKBOARD.md](../WORKBOARD.md) — primary program **`none`**. 2.14.0 shipped as a **single change set** (no annex); board “recently completed” still lists **2.13.0** |
 | Declared gates | Author checklist, relative links, last citations ([completion](../../kit/rules/verification-and-ops.md#completion-rule)) |
 | `SECURITY.md` | Omit ([modularity](../../kit/rules/security.md#security-documentation-modularity)) |
 | Root `CHANGELOG.md` | **None** — this kit’s history is `kit/CHANGELOG.md`. Adopting repos **must** keep a root project CHANGELOG |
@@ -100,6 +103,52 @@ repo-kit/
 **2.14.0 in one line:** programming-source home is repo-root `src/` (segment noun, module noun, verb as function). Law: [files.md](../../kit/rules/files.md) **1.1.0**; architecture cites that row; hygiene helpers under `src/build/`; `scripts/` is not a competing home. Historical `crates/` / `build-aux/` / `scripts/` are **not** a complete-fail ([UPGRADE](../../kit/UPGRADE.md) **1.9.0**). Docs-only still needs no `src/`.
 
 Recent shipped programs (read L4, not annexes): src/ home **2.14.0**, commit-note staged-change **2.13.0**, description current-content **2.12.0**, workboard packet **2.11.1**, description identity **2.11.0**. Archaeology: [docs/plan/archive/](../plan/archive/).
+
+---
+
+## Review snapshot
+
+Reviewed 2026-09-12 against [RULES](../../kit/RULES.md), domain modules, landing README, workboard, and git (`main` vs `origin/main`). Working tree was clean.
+
+| Finding | Verdict |
+|---------|---------|
+| Hygiene layout (`kit/` payload, root landing + `AGENTS.md` + `docs/`, no product under `kit/`) | Matches [hygiene](../../kit/rules/hygiene.md) |
+| Landing README: Overview then Operator prompts, no YAML | Matches [landing](../../kit/MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter) |
+| Instruct off; no `PLAN.md`; `kit/agents/generated/` empty | Matches [AGENTS.md](../../AGENTS.md) — skip O3 |
+| Empty language inventory; no Domain A/B; no `src/` | Correct for this tree; do not invent gates |
+| `SETUP.md` still present | Correct — kit source keeps it for adopters |
+| No root `CHANGELOG.md` | Correct here; **not** the adopter pattern ([versioning](../../kit/rules/versioning-and-git.md#mandatory-project-changelog)) |
+| RULES authority map still has `{{PACKAGE}}` / `{{KIT_VERSION}}` rows | **Template** for adopters. Do not fill this kit’s map with fake product packages. This tree’s filled facts: Kit baseline “this repository” table, [AGENTS.md](../../AGENTS.md), [docs-only example](../../kit/examples/docs-only.md) |
+| 2.14.0 L4 co-update | files **1.1.0**, architecture **1.2.0**, hygiene **1.7.0**, UPGRADE **1.9.0**, examples, CHANGELOG — same-change-set looks complete |
+| Workboard silent on 2.14.0 | Expected: not multi-phase. Register the board **before** the next multi-phase program |
+| `origin/main` at `a4242eb` (2.13.0 complete-line) | Local **2.14.0 is unpushed**. Push is an operator choice, not a gate |
+
+No declared gate failed. No policy defect to promote to L4 from this review.
+
+---
+
+## L4 versions
+
+Document versions (frontmatter), not kit semver. Open the owner, not this table, when editing.
+
+| Owner | Version |
+|-------|---------|
+| [RULES.md](../../kit/RULES.md) hub | 2.7.5 |
+| [MARKDOWN-STANDARD](../../kit/MARKDOWN-STANDARD.md) | 1.6.0 |
+| [files](../../kit/rules/files.md) | 1.1.0 |
+| [hygiene](../../kit/rules/hygiene.md) | 1.7.0 |
+| [architecture](../../kit/rules/architecture.md) | 1.2.0 |
+| [contracts](../../kit/rules/contracts.md) | 1.4.2 |
+| [authoring-and-style](../../kit/rules/authoring-and-style.md) | 1.2.5 |
+| [security](../../kit/rules/security.md) | 1.1.2 |
+| [versioning-and-git](../../kit/rules/versioning-and-git.md) | 1.1.0 |
+| [verification-and-ops](../../kit/rules/verification-and-ops.md) | 1.7.3 |
+| [ai-docs-workspace](../../kit/rules/ai-docs-workspace.md) | 1.1.5 |
+| [workboard](../../kit/rules/workboard.md) | 1.2.0 |
+| [continuity](../../kit/rules/continuity.md) | 1.0.1 |
+| [UPGRADE](../../kit/UPGRADE.md) | 1.9.0 |
+| [HABITAT](../../kit/agents/HABITAT.md) | 1.0.3 |
+| [OPS](../../kit/agents/OPS.md) | 1.3.3 (unused while Instruct is off) |
 
 ---
 
