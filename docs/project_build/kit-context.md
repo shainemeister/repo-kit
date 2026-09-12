@@ -1,7 +1,7 @@
 ---
 title: "repo-kit — maintainer build context"
-description: Session map of this upstream kit’s layout, 2.14.0 ship state, L4 document versions, and a 2026-09-12 review snapshot. Open before kit edits or first adopt from this tree; not a substitute for RULES.
-version: "1.2.0"
+description: Session map of this upstream kit’s layout, 2.14.0 ship state, L4 document versions, and a 2026-09-12 review snapshot (HEAD 713aa02). Open before kit edits or first adopt from this tree; not a substitute for RULES.
+version: "1.2.1"
 status: current
 audience:
   - maintainers
@@ -92,8 +92,8 @@ repo-kit/
 | Field | Value |
 |-------|--------|
 | Kit version | **2.14.0** (2026-09-10) — latest dated `### [X.Y.Z]` under `## repo-kit` in [kit/CHANGELOG.md](../../kit/CHANGELOG.md) |
-| HEAD | `0285cde` `docs(project_build): refresh kit-context ship-state for 2.14.0` — **ahead of `origin/main` by 2** (unpushed at last refresh) |
-| Unpushed | `7e27feb` 2.14.0 `src/` home · `0285cde` this file’s prior refresh |
+| HEAD | `713aa02` `docs(project_build): add review snapshot and L4 version index` — **ahead of `origin/main` by 3** (unpushed at last refresh) |
+| Unpushed | `7e27feb` 2.14.0 `src/` home · `0285cde` ship-state refresh · `713aa02` review snapshot |
 | Inventory | Empty (docs-only). No pylint, rustfmt, clang-format, Bandit, cargo-audit, or cppcheck. No `src/` |
 | Workboard | [docs/WORKBOARD.md](../WORKBOARD.md) — primary program **`none`**. 2.14.0 shipped as a **single change set** (no annex); board “recently completed” still lists **2.13.0** |
 | Declared gates | Author checklist, relative links, last citations ([completion](../../kit/rules/verification-and-ops.md#completion-rule)) |
@@ -108,7 +108,7 @@ Recent shipped programs (read L4, not annexes): src/ home **2.14.0**, commit-not
 
 ## Review snapshot
 
-Reviewed 2026-09-12 against [RULES](../../kit/RULES.md), domain modules, landing README, workboard, and git (`main` vs `origin/main`). Working tree was clean.
+Re-verified 2026-09-12 against [RULES](../../kit/RULES.md), domain modules, landing README, workboard, and git (`main` vs `origin/main`). Working tree was clean. Prior snapshot named HEAD `0285cde` / ahead-by-2; that was the only drift.
 
 | Finding | Verdict |
 |---------|---------|
@@ -121,7 +121,7 @@ Reviewed 2026-09-12 against [RULES](../../kit/RULES.md), domain modules, landing
 | RULES authority map still has `{{PACKAGE}}` / `{{KIT_VERSION}}` rows | **Template** for adopters. Do not fill this kit’s map with fake product packages. This tree’s filled facts: Kit baseline “this repository” table, [AGENTS.md](../../AGENTS.md), [docs-only example](../../kit/examples/docs-only.md) |
 | 2.14.0 L4 co-update | files **1.1.0**, architecture **1.2.0**, hygiene **1.7.0**, UPGRADE **1.9.0**, examples, CHANGELOG — same-change-set looks complete |
 | Workboard silent on 2.14.0 | Expected: not multi-phase. Register the board **before** the next multi-phase program |
-| `origin/main` at `a4242eb` (2.13.0 complete-line) | Local **2.14.0 is unpushed**. Push is an operator choice, not a gate |
+| `origin/main` at `a4242eb` (2.13.0 complete-line) | Local **2.14.0 + two `docs/project_build` commits are unpushed**. Push is an operator choice, not a gate |
 
 No declared gate failed. No policy defect to promote to L4 from this review.
 

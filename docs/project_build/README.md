@@ -14,4 +14,4 @@ Implementation / build context while changing the kit itself.
 
 | Note | Status | Summary |
 |------|--------|---------|
-| [kit-context.md](./kit-context.md) | current | Upstream layout, ship state (kit **2.14.0** `src/` home), L4 version index, 2026-09-12 review snapshot, and how adopters copy `kit/` |
+| [kit-context.md](./kit-context.md) | current | Upstream layout, ship state (kit **2.14.0** `src/` home, HEAD `713aa02`), L4 version index, 2026-09-12 review snapshot, and how adopters copy `kit/` |
