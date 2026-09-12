@@ -1,7 +1,7 @@
 ---
 title: "repo-kit — maintainer build context"
-description: Session map of this upstream kit’s layout, current ship state, and how adopters copy kit/ into product repos. Open before kit edits or first adopt from this tree; not a substitute for RULES.
-version: "1.0.0"
+description: Session map of this upstream kit’s layout, current ship state (2.14.0 src/ home), and how adopters copy kit/ into product repos. Open before kit edits or first adopt from this tree; not a substitute for RULES.
+version: "1.1.0"
 status: current
 audience:
   - maintainers
@@ -15,7 +15,7 @@ related:
   - ../WORKBOARD.md
   - ../../kit/rules/hygiene.md
   - ../../kit/rules/ai-docs-workspace.md
-last_updated: "2026-09-04"
+last_updated: "2026-09-12"
 ---
 
 # repo-kit — maintainer build context
@@ -46,9 +46,11 @@ This repository **is** the kit (docs-only, Agent Instruct off). Copy `kit/` into
 
 Canonical source: https://github.com/shainemeister/repo-kit. Domain-agnostic standards for libraries, CLIs, services, data tools, monorepos, or docs-only work. No traditional install; dependency is **`git`**.
 
-Portable payload lives under [`kit/`](../../kit/). Adopters copy (or link) that tree into the **target** repo’s `kit/`. Product code, project `CHANGELOG.md`, and live `docs/` stay **outside** `kit/` ([hygiene](../../kit/rules/hygiene.md)).
+Portable payload lives under [`kit/`](../../kit/). Adopters copy (or link) that tree into the **target** repo’s `kit/`. Product code, project `CHANGELOG.md`, programming source under `src/` (when any exists), and live `docs/` stay **outside** `kit/` ([hygiene](../../kit/rules/hygiene.md) · [files.md](../../kit/rules/files.md)).
 
 This tree **dogfoods** the kit: landing [README](../../README.md), thin L0 [`AGENTS.md`](../../AGENTS.md), root [`docs/`](../README.md). [`kit/SETUP.md`](../../kit/SETUP.md) **stays** here so adopters can copy it; they delete or archive it after first adopt.
+
+This tree itself has **no** `src/` (docs-only; empty inventory). Do not create an empty `src/` for ceremony.
 
 ---
 
@@ -75,7 +77,7 @@ repo-kit/
 | L0 | Root `AGENTS.md` | Thin discovery ([HABITAT](../../kit/agents/HABITAT.md)) |
 | L1 | Root `PLAN.md` | **Absent** here — required only if Agent Instruct is on |
 | L2 | `kit/agents/` | Instruct how-to; **skip** in this tree |
-| L3 | `kit/agents/generated/` | Empty (`.gitkeep` only) |
+| L3 | `kit/agents/generated/` | Empty (no packs) |
 | L4 | `kit/RULES.md` + `kit/rules/*` | Canonical law — **wins** on conflict |
 | Working memory | `docs/` | Board, plans, this file ([ai-docs-workspace](../../kit/rules/ai-docs-workspace.md)) |
 
@@ -87,14 +89,17 @@ repo-kit/
 
 | Field | Value |
 |-------|--------|
-| Kit version | **2.13.0** (2026-09-04) — latest dated `### [X.Y.Z]` under `## repo-kit` in [kit/CHANGELOG.md](../../kit/CHANGELOG.md) |
-| Inventory | Empty (docs-only). No pylint, rustfmt, clang-format, Bandit, cargo-audit, or cppcheck |
-| Workboard | [docs/WORKBOARD.md](../WORKBOARD.md) — primary program **`none`** |
+| Kit version | **2.14.0** (2026-09-10) — latest dated `### [X.Y.Z]` under `## repo-kit` in [kit/CHANGELOG.md](../../kit/CHANGELOG.md) |
+| HEAD | `7e27feb` `docs(rules): require src/ as the programming-source home` — **ahead of `origin/main` by 1** (unpushed at last refresh) |
+| Inventory | Empty (docs-only). No pylint, rustfmt, clang-format, Bandit, cargo-audit, or cppcheck. No `src/` |
+| Workboard | [docs/WORKBOARD.md](../WORKBOARD.md) — primary program **`none`**. 2.14.0 shipped as a **single change set** (no annex) |
 | Declared gates | Author checklist, relative links, last citations ([completion](../../kit/rules/verification-and-ops.md#completion-rule)) |
 | `SECURITY.md` | Omit ([modularity](../../kit/rules/security.md#security-documentation-modularity)) |
 | Root `CHANGELOG.md` | **None** — this kit’s history is `kit/CHANGELOG.md`. Adopting repos **must** keep a root project CHANGELOG |
 
-Recent shipped programs (read L4, not annexes): commit-note staged-change **2.13.0**, description current-content **2.12.0**, workboard packet **2.11.1**, description identity **2.11.0**. Archaeology: [docs/plan/archive/](../plan/archive/).
+**2.14.0 in one line:** programming-source home is repo-root `src/` (segment noun, module noun, verb as function). Law: [files.md](../../kit/rules/files.md) **1.1.0**; architecture cites that row; hygiene helpers under `src/build/`; `scripts/` is not a competing home. Historical `crates/` / `build-aux/` / `scripts/` are **not** a complete-fail ([UPGRADE](../../kit/UPGRADE.md) **1.9.0**). Docs-only still needs no `src/`.
+
+Recent shipped programs (read L4, not annexes): src/ home **2.14.0**, commit-note staged-change **2.13.0**, description current-content **2.12.0**, workboard packet **2.11.1**, description identity **2.11.0**. Archaeology: [docs/plan/archive/](../plan/archive/).
 
 ---
 
@@ -115,7 +120,8 @@ Fill, do not fork:
 1. **Authority map** — real product paths ([RULES](../../kit/RULES.md#authority-map)). Existing repos: map current trees; do not rewrite them. Patterns: [kit/examples/](../../kit/examples/) (`docs-only`, `cli-tool`, `python-library`, `rust-library`, `c-cpp-library`).
 2. **Language surface inventory** — only declared rows get Domain B (style) and Domain A (SAST). Empty ⇒ no language gates ([security](../../kit/rules/security.md#language-surface-inventory)). Unused files under `kit/configs/` stay dormant.
 3. **Kit baseline** — adopted version + date; Kit source always https://github.com/shainemeister/repo-kit
-4. **Optional overlays** — L0 `AGENTS.md` if a coding agent is used (do not clobber a filled file); rest of `kit/agents/` + PLAN Agent models + BUILD only if Instruct; `docs/WORKBOARD.md` if multi-phase; continuity overlay at a recorded project path if high-blast-radius code exists.
+4. **Source layout (when product code exists)** — new programming source under repo-root `src/<segment>/<module>` ([files.md](../../kit/rules/files.md)). Do not put `.rs` / `.py` at repo root or helpers under `scripts/` / `crates/` / `build-aux/` as the home. Historical trees are mapped, not a failed complete.
+5. **Optional overlays** — L0 `AGENTS.md` if a coding agent is used (do not clobber a filled file); rest of `kit/agents/` + PLAN Agent models + BUILD only if Instruct; `docs/WORKBOARD.md` if multi-phase; continuity overlay at a recorded project path if high-blast-radius code exists.
 
 Product landing Operator prompts is **that** repo’s load path. Do not paste this kit’s adopt/upgrade fences into a product README.
 
@@ -135,6 +141,6 @@ Session load path: [Operator prompts](../../README.md#operator-prompts) — hub 
 | Multi-phase kit work | Register [WORKBOARD](../WORKBOARD.md) **before** phase edits; annex only if the board cannot hold the OOO ([workboard](../../kit/rules/workboard.md)) |
 | Finding becomes kit law | Promote from `docs/` to L4; do not leave the only copy here |
 
-**Must not** in this tree: invent product languages, host folder trees, or Domain A/B gates; paste `kit/rules/*` into `AGENTS.md`; claim complete if the author checklist, links, or last citations fail.
+**Must not** in this tree: invent product languages, host folder trees, or Domain A/B gates; paste `kit/rules/*` into `AGENTS.md`; add empty `src/` here; claim complete if the author checklist, links, or last citations fail.
 
-Git: conventional commits that match staged files; when AI assisted, footer `Assisted-by` / `Compliance` / `Instructed-by` ([versioning-and-git](../../kit/rules/versioning-and-git.md#ai-assisted-commits-required-disclosure)).
+Git: conventional commits that match staged files and name the **staged change** (not the completed objective); when AI assisted, footer `Assisted-by` / `Compliance` / `Instructed-by` ([versioning-and-git](../../kit/rules/versioning-and-git.md#commit-note-identity)).
