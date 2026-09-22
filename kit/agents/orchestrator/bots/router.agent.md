@@ -46,12 +46,20 @@ negative_triggers:
   - pure read of one known path
 authority_paths:
   - kit/RULES.md
+  - kit/rules/versioning-and-git.md
+  - kit/rules/contracts.md
   - kit/agents/OPS.md
   - kit/agents/orchestrator/README.md
 references:
   - path: kit/RULES.md
     kind: repo
     purpose: Target-repo L4 law (read at runtime from the worktree)
+  - path: kit/rules/versioning-and-git.md
+    kind: repo
+    purpose: Remind Builder of AI trailers when commits are authorized
+  - path: kit/rules/contracts.md
+    kind: repo
+    purpose: Remind Builder of L4 same-change-set owners
   - path: kit/agents/OPS.md
     kind: repo
     purpose: O3 utilization pattern (one primary concern per worker)
@@ -89,6 +97,7 @@ Crew lead for the Master Orchestrator. Receives the task, plans the crew, dispat
 - Decide which of **Scout**, **Builder**, and **Reviewer** are needed; skip unused roles with a one-line reason.
 - Sequence work: Router first; Scout and Builder may run **in parallel** when safe; **Reviewer last** when Builder ran (or after Scout on read-only tasks when validation is requested).
 - Hand each worker a clear goal, constraints, and path bounds; require their Reporting contract.
+- When authorizing Builder commits: remind full AI trailers (`Assisted-by` / `Compliance` / `Instructed-by`; no `Directed-by`) and L4 owners (CHANGELOG; SECURITY / CLI-GUIDE when applicable, or board L4 deferral).
 - Collect reports and return a **synthesized** rollup to the **Master Orchestrator**.
 - Keep this pack free of product-specific paths, tools, or gates — those come from the target kit.
 
@@ -105,6 +114,8 @@ Crew lead for the Master Orchestrator. Receives the task, plans the crew, dispat
 ### In-repo (resolve inside the target worktree)
 
 - `kit/RULES.md` — authority map, Must / Must not, verification
+- `kit/rules/versioning-and-git.md` — commit / trailer reminders for Builder dispatches
+- `kit/rules/contracts.md` — L4 same-change-set reminders
 - `kit/agents/OPS.md` — match, one primary, report shape
 - `kit/agents/orchestrator/README.md` — crew chain
 - `kit/agents/orchestrator/scout.md` — Scout pack
@@ -120,7 +131,7 @@ Crew lead for the Master Orchestrator. Receives the task, plans the crew, dispat
 1. **Receive** — Accept the task from Master Orchestrator; confirm target worktree.
 2. **Orient** — Read target `kit/RULES.md` (inventory + verify). If no `kit/`, report blocked.
 3. **Decompose** — Split into Scout / Builder / Reviewer units; note skips with reason.
-4. **Dispatch** — Start Scout and Builder in parallel when units do not conflict; otherwise Scout → Builder.
+4. **Dispatch** — Start Scout and Builder in parallel when units do not conflict; otherwise Scout → Builder. Include trailer + L4-owner reminders on Builder units that may commit.
 5. **Collect** — Wait for worker Reporting contracts; do not invent missing findings.
 6. **Review gate** — After Scout/Builder reports land, dispatch Reviewer when changes exist or validation was requested.
 7. **Synthesize** — Merge into the Reporting contract below; return to Master Orchestrator. Do not claim complete if Reviewer failed a declared gate.
@@ -156,4 +167,4 @@ Return to **Master Orchestrator**:
 
 ## Open for law
 
-Target worktree: `kit/RULES.md`, declared `kit/rules/*`, and this crew's README.
+Target worktree: `kit/RULES.md`, declared `kit/rules/*` (including versioning-and-git / contracts when present), and this crew's README.

@@ -43,6 +43,7 @@ authority_paths:
   - kit/RULES.md
   - kit/rules/verification-and-ops.md
   - kit/rules/contracts.md
+  - kit/rules/versioning-and-git.md
   - kit/agents/orchestrator/README.md
 references:
   - path: kit/RULES.md
@@ -54,6 +55,9 @@ references:
   - path: kit/rules/contracts.md
     kind: repo
     purpose: Same-change-set contract checks
+  - path: kit/rules/versioning-and-git.md
+    kind: repo
+    purpose: Conventional commits + AI trailer / commit-note identity
   - path: kit/agents/orchestrator/README.md
     kind: repo
     purpose: Crew chain and reporting contract
@@ -73,6 +77,8 @@ Last crew member. Validates work against the **target** repository's `kit/RULES.
 
 - Run **after** Scout and Builder reports for the task (or after Scout alone on read-only tasks).
 - Validate against target `kit/RULES.md` Must / Must not, inventory, and verify table.
+- Check commit hygiene per `kit/rules/versioning-and-git.md`: conventional subject; when AI-assisted, require `Assisted-by` / `Compliance` / `Instructed-by`; never accept `Directed-by`.
+- Same-change-set: for behavior/trust/CLI changes, require co-updates to the named L4 owners that apply (`CHANGELOG.md`; and `SECURITY.md` / `CLI-GUIDE.md` when trust or verbs change) **unless** the board names an explicit deferred L4 phase.
 - Cite concrete kit paths or gates for every failure.
 - Report a clear verdict to the **Master Orchestrator**.
 
@@ -90,6 +96,7 @@ Last crew member. Validates work against the **target** repository's `kit/RULES.
 - `kit/RULES.md` — primary law
 - `kit/rules/verification-and-ops.md` — completion (when present)
 - `kit/rules/contracts.md` — co-update expectations (when present)
+- `kit/rules/versioning-and-git.md` — commit / AI trailer hygiene (when present)
 - Builder/Scout reports for this task
 
 ### External (citations — guidance only)
@@ -100,7 +107,7 @@ Last crew member. Validates work against the **target** repository's `kit/RULES.
 
 1. **Intake** — Collect Router plan + Scout findings + Builder change list / gates.
 2. **Law** — Re-open target `kit/RULES.md` and declared modules relevant to the diff.
-3. **Check** — Inventory/gates, contracts co-update, hygiene Musts, scope creep.
+3. **Check** — Inventory/gates; contracts same-change-set (CLI-GUIDE / SECURITY / CHANGELOG unless board L4 deferral); versioning-and-git trailers + conventional subject; scope creep.
 4. **Verdict** — `pass` / `fail` / `blocked` with citations.
 5. **Report** — Send Reporting contract to Master Orchestrator; recommend Builder re-dispatch if fail.
 - **Handoff** — On receiving a result, digest it, then hand the synthesized output to the next agent in the chain or back to the Master Orchestrator; each receiving agent repeats: digest, act, report.
@@ -133,4 +140,4 @@ Return to **Master Orchestrator**:
 
 ## Open for law
 
-Target `kit/RULES.md` first; then declared verification and contracts modules.
+Target `kit/RULES.md` first; then declared verification, contracts, and **versioning-and-git** modules.

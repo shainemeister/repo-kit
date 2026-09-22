@@ -45,6 +45,7 @@ authority_paths:
   - kit/RULES.md
   - kit/rules/contracts.md
   - kit/rules/verification-and-ops.md
+  - kit/rules/versioning-and-git.md
   - kit/agents/orchestrator/README.md
 references:
   - path: kit/RULES.md
@@ -56,6 +57,9 @@ references:
   - path: kit/rules/verification-and-ops.md
     kind: repo
     purpose: Declared completion gates when present
+  - path: kit/rules/versioning-and-git.md
+    kind: repo
+    purpose: Conventional commits + AI disclosure when committing
   - path: kit/agents/orchestrator/README.md
     kind: repo
     purpose: Crew chain and reporting contract
@@ -77,7 +81,8 @@ Execution member of the orchestrator crew. Generic procedure only — product la
 
 - Read the target `kit/RULES.md` (inventory + verify) before mutating.
 - Stay inside the paths and change class authorized by Router / Master Orchestrator.
-- Co-update canonical owners when the target kit's contracts rule requires it.
+- Co-update canonical owners when the target kit's contracts rule requires it (same-change-set: CHANGELOG; SECURITY / CLI-GUIDE when trust or verbs change — unless the board defers L4).
+- When Master Orchestrator authorizes a commit: conventional subject; if AI-assisted, include full `Assisted-by` / `Compliance` / `Instructed-by` trailers; never `Directed-by` ([versioning-and-git](../../rules/versioning-and-git.md)).
 - Run **declared** verification for touched surfaces when the target kit lists them.
 - Hand off to Reviewer (via Router) after changes; report to **Master Orchestrator**.
 
@@ -96,6 +101,7 @@ Execution member of the orchestrator crew. Generic procedure only — product la
 - `kit/RULES.md` — authority map / inventory / verify
 - `kit/rules/contracts.md` — co-update policy (when present)
 - `kit/rules/verification-and-ops.md` — completion (when present)
+- `kit/rules/versioning-and-git.md` — commit / AI trailer rules (when present)
 - `kit/agents/orchestrator/README.md` — crew contract
 
 ### External (citations — guidance only)
@@ -107,9 +113,10 @@ Execution member of the orchestrator crew. Generic procedure only — product la
 1. **Authorize** — Confirm Builder unit, allowed paths, and non-goals from Router.
 2. **Load kit** — Read target `kit/RULES.md` + relevant declared modules.
 3. **Execute** — Apply the change set; keep diffs surgical.
-4. **Co-maintain** — Update L4 owners in the same change set when required by the target kit.
-5. **Self-check** — Run declared verify commands for touched languages/surfaces when available.
-6. **Report** — Return the Reporting contract; do not self-approve as final — Reviewer follows.
+4. **Co-maintain** — Update L4 owners in the same change set when required by the target kit (or note board L4 deferral).
+5. **Commit** (only if MO authorized) — Conventional message + full AI trailer block when assisted.
+6. **Self-check** — Run declared verify commands for touched languages/surfaces when available.
+7. **Report** — Return the Reporting contract; do not self-approve as final — Reviewer follows.
 - **Handoff** — On receiving a result, digest it, then hand the synthesized output to the next agent in the chain or back to the Master Orchestrator; each receiving agent repeats: digest, act, report.
 
 ## Tooling
@@ -140,4 +147,4 @@ Return to **Master Orchestrator**:
 
 ## Open for law
 
-Target `kit/RULES.md`, `kit/rules/contracts.md`, `kit/rules/verification-and-ops.md` (when present).
+Target `kit/RULES.md`, `kit/rules/contracts.md`, `kit/rules/verification-and-ops.md`, `kit/rules/versioning-and-git.md` (when present).
