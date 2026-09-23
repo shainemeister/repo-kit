@@ -1,26 +1,43 @@
-# Orchestrator crew — optional install
+---
+title: Orchestrator crew install
+description: Copy the four host-agnostic crew packs into a target kit and register them as slash_only, disabled by default.
+version: "1.0.0"
+status: current
+audience:
+  - developers
+  - maintainers
+doc_type: other
+related:
+  - ./README.md
+  - ../CATALOG.md
+  - ../PARAMS.md
+last_updated: "2026-09-22"
+---
 
-Surgical adopt of the Master Orchestrator packs into a repo that already has RepoKit (`kit/RULES.md` present). Manual only — no scripts.
+# Orchestrator crew install
+
+Surgical adopt of the crew packs into a repo that already has `kit/RULES.md`. Copy files only. Leave host launchers outside `kit/`.
 
 ## Procedure
 
-1. **Copy packs** — Copy this `orchestrator/` directory into the target repo as `kit/agents/orchestrator/` (include `router.md`, `scout.md`, `builder.md`, `reviewer.md`, `README.md`, and this file). Do not overwrite unrelated `kit/agents/` files.
+1. **Copy packs** — Copy `README.md`, `INSTALL.md`, `router.md`, `scout.md`, `builder.md`, and `reviewer.md` into the target repo as `kit/agents/orchestrator/`. Do not overwrite unrelated `kit/agents/` files. Do not copy a host adapter into `kit/`.
 
-2. **Register in CATALOG** — In the target repo, edit `kit/agents/CATALOG.md` (create a minimal one if absent). Add four entries, **enabled-by-default: false**:
+2. **Register** — In the target `kit/agents/CATALOG.md` (create a minimal one if it is absent), add four entries, `enabled-by-default: false`, `activation: slash_only`:
 
    | id | role | enabled-by-default |
    |----|------|--------------------|
-   | `orchestrator-router` | Decompose and dispatch | false |
+   | `orchestrator-router` | Decompose and dispatch the smallest set | false |
    | `orchestrator-scout` | Read-only exploration | false |
-   | `orchestrator-builder` | Execute authorized changes | false |
+   | `orchestrator-builder` | Execute the authorized unit | false |
    | `orchestrator-reviewer` | Validate against kit law | false |
 
-   Point each entry at `kit/agents/orchestrator/<name>.md`. Do not turn them on in PLAN unless you want Instruct match to load them.
+   Point each entry at `kit/agents/orchestrator/<name>.md`. Dispatch them explicitly. Do not add them to the default active set.
 
-3. **Verify runtime law** — Open the target repo’s `kit/RULES.md`. Confirm inventory and verify table are readable. Packs adopt **that** law at runtime; they must not hard-code another project’s rules.
+3. **Verify runtime law** — Open the target `kit/RULES.md`. Confirm the inventory and verify table are readable. Packs adopt that law at runtime.
 
 ## Done when
 
-- `kit/agents/orchestrator/` exists with the four packs.
-- CATALOG lists all four ids with `enabled-by-default: false`.
-- Target `kit/RULES.md` opens cleanly for the crew to follow.
+- `kit/agents/orchestrator/` contains the four packs, `README.md`, and this file.
+- The catalog lists all four ids with `enabled-by-default: false` and `activation: slash_only`.
+- Target `kit/RULES.md` opens for the crew to follow.
+- No host launcher lives under that `kit/agents/orchestrator/` tree.

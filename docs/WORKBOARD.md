@@ -49,14 +49,15 @@ last_updated: "2026-09-22"
 | ID | Work | Status | Commit | Notes |
 |----|------|--------|--------|-------|
 | P0 | Register board + annex | done | `5df2054` | |
-| P1 | Host-agnostic packs + crew README | done | — | SHA recorded when P2 opens |
-| P2 | Delete `bots/` + fence INSTALL | active | — | Copy `bots/` outside the repo or waive first |
-| P3 | Register optional seed in 2.15.0 | open | — | |
+| P1 | Host-agnostic packs + crew README | done | `f0dbda0` | |
+| P2 | Delete `bots/` + fence INSTALL | done | — | SHA recorded when P3 opens; copy kept outside the repo |
+| P3 | Register optional seed in 2.15.0 | active | — | |
 | P4 | Archive annex + refresh kit-context | open | — | |
 
 ### Progress log (newest first, max ~15 lines)
 
-- 2026-09-22 **orchestrator-portability-2.15.0** P1 packs + crew README host-agnostic. P0 `5df2054`. P2 active.
+- 2026-09-22 **orchestrator-portability-2.15.0** P2 removed `bots/` and fenced INSTALL. P1 `f0dbda0`. P3 active.
+- 2026-09-22 **orchestrator-portability-2.15.0** P1 packs + crew README host-agnostic. P0 `5df2054`.
 - 2026-09-22 **orchestrator-portability-2.15.0** registered. Annex linked.
 - 2026-09-04 **commit-notes-2.13.0** complete: `a15bbac` kit `2.13.0`. P0 `4708eff` · P1 `c4cf33b` · P2 `16807a8` · P3 `cc62e0c` · P4 `e111255`. Annex archived.
 - 2026-09-04 **description-summary-2.12.0** complete: `234d808` kit `2.12.0`. P0 `d7bdd4c` · P1 `39302a8` · P2 `01ab89a` · P3 `aee00fd` · P4 `797748a` · P5 `cdd4c8e`. Annex archived.
