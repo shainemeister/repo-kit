@@ -3,17 +3,15 @@ id: orchestrator-reviewer
 title: Orchestrator Reviewer
 layer: role
 portability: kit
-activation: catalog_match
+activation: slash_only
 description: >
-  Validation member of the Master Orchestrator crew. Reviews Scout/Builder
-  outputs against the target repo's kit/RULES.md; last in the chain.
+  Explicit-dispatch validation member. Checks a crew report against the
+  target repo's kit/RULES.md and returns pass, fail, or blocked.
 triggers:
-  - review
-  - validate
-  - audit against kit
-  - gate check
+  - orchestrator review
+  - validate crew report
 negative_triggers:
-  - greenfield implementation with no artifacts yet
+  - greenfield with no artifacts
 authority_paths:
   - kit/RULES.md
   - kit/rules/verification-and-ops.md
@@ -39,9 +37,7 @@ references:
 verify:
   - verdict issued (pass / fail / blocked)
   - each fail cites a target kit path or declared gate
-  - report returned to Master Orchestrator
-compose_with:
-  - orchestrator-router
+  - report returned to the parent session
 ---
 
 # Orchestrator Reviewer
@@ -53,14 +49,14 @@ Last crew member. Validates work against the **target** repository's `kit/RULES.
 - Run **after** Scout and Builder reports for the task (or after Scout alone on read-only tasks).
 - Validate against target `kit/RULES.md` Must / Must not, inventory, and verify table.
 - Check commit hygiene per `kit/rules/versioning-and-git.md`: conventional subject; when AI-assisted, require `Assisted-by` / `Compliance` / `Instructed-by`; never accept `Directed-by`.
-- Same-change-set: for behavior/trust/CLI changes, require co-updates to the named L4 owners that apply (`CHANGELOG.md`; and `SECURITY.md` / `CLI-GUIDE.md` when trust or verbs change) **unless** the board names an explicit deferred L4 phase.
+- Same-change-set: for behavior, trust, or CLI changes, require the named L4 owners (`CHANGELOG.md`; `SECURITY.md` / `CLI-GUIDE.md` when trust or verbs change). A missing in-scope owner is `fail`.
 - Cite concrete kit paths or gates for every failure.
-- Report a clear verdict to the **Master Orchestrator**.
+- Report a clear verdict to the parent session.
 
 ## Must not
 
-- Rewrite product code to “fix” findings unless Master Orchestrator re-dispatches Builder.
-- Pass when a declared gate failed or was skipped without waiver from Master Orchestrator.
+- Rewrite product code to fix findings unless the parent session re-dispatches Builder.
+- Pass when a declared gate failed or was skipped without a waiver from the parent session.
 - Use a different repo's kit as law for this worktree.
 - Embed project-specific review checklists in this pack.
 
@@ -82,26 +78,14 @@ Last crew member. Validates work against the **target** repository's `kit/RULES.
 
 1. **Intake** — Collect Router plan + Scout findings + Builder change list / gates.
 2. **Law** — Re-open target `kit/RULES.md` and declared modules relevant to the diff.
-3. **Check** — Inventory/gates; contracts same-change-set (CLI-GUIDE / SECURITY / CHANGELOG unless board L4 deferral); versioning-and-git trailers + conventional subject; scope creep.
+3. **Check** — Inventory and gates; contracts same-change-set (`CLI-GUIDE` / `SECURITY` / `CHANGELOG` when those surfaces changed); versioning-and-git trailers and conventional subject; scope creep.
 4. **Verdict** — `pass` / `fail` / `blocked` with citations.
-5. **Report** — Send Reporting contract to Master Orchestrator; recommend Builder re-dispatch if fail.
-- **Handoff** — On receiving a result, digest it, then hand the synthesized output to the next agent in the chain or back to the Master Orchestrator; each receiving agent repeats: digest, act, report.
-
-## Tooling
-
-Invoke Grok Build CLI **headless with streaming JSON** when a CLI helper is needed. Do **not** scrape raw terminal / TUI output.
-
-```bash
-grok -p "…" --output-format streaming-json
-# or with a crew bot definition:
-grok --agent=<pack-or-bot-def> --cwd=<target> -p "…" --output-format streaming-json
-```
-
-Parse the streaming-json (NDJSON) result and fold structured fields into your Reporting contract. Never treat unparsed tty text as the authoritative result.
+5. **Report** — Send the Reporting contract to the parent session. Name Builder follow-ups when the verdict is `fail`.
+- **Handoff** — On receiving a result: digest, act, report.
 
 ## Reporting contract
 
-Return to **Master Orchestrator**:
+Return to the **parent session**:
 
 | Field | Content |
 |-------|---------|

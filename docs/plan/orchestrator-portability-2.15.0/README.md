@@ -1,6 +1,6 @@
 ---
 title: "orchestrator-portability-2.15.0 — program annex"
-description: Annex index for the host-agnostic orchestrator crew. Open while the workboard points here; next phase is P1 (strip host law from the packs).
+description: Annex index for the host-agnostic orchestrator crew. Open while the workboard points here; next phase is P2 (remove the host adapter and fence INSTALL).
 version: "1.0.0"
 status: active
 audience:
@@ -26,7 +26,7 @@ No root `PLAN.md` (Instruct off).
 |-------|--------|
 | **Program id** | `orchestrator-portability-2.15.0` |
 | **Status** | `active` |
-| **Next phase** | P1 — host-agnostic packs and crew README |
+| **Next phase** | P2 — delete `bots/` and fence INSTALL |
 | **L4 owners to update on ship** | [orchestrator README](../../../kit/agents/orchestrator/README.md) · [CATALOG](../../../kit/agents/CATALOG.md) · [agents README](../../../kit/agents/README.md) · [RULES](../../../kit/RULES.md) · [UPGRADE](../../../kit/UPGRADE.md) · [CHANGELOG](../../../kit/CHANGELOG.md) `### [2.15.0]` |
 
 ## Contents of this annex

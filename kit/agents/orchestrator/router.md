@@ -3,22 +3,20 @@ id: orchestrator-router
 title: Orchestrator Router
 layer: playbook
 portability: kit
-activation: catalog_match
+activation: slash_only
 description: >
-  Master Orchestrator crew lead: receive a task, decompose it, decide which of
-  Scout / Builder / Reviewer are needed, sequence and dispatch them, collect
-  reports, and return a synthesized result. Loads the target repo's installed
-  kit at runtime; no project-specific logic.
+  Explicit-dispatch crew lead. Receives a task from the parent session,
+  picks the smallest Scout / Builder / Reviewer set, and returns one
+  synthesized report. Loads the target repo's installed kit at runtime.
 triggers:
   - orchestrate
   - decompose
-  - dispatch
-  - crew
-  - router
+  - dispatch crew
   - master orchestrator
 negative_triggers:
-  - single-file typo with no multi-role need
+  - single-file typo
   - pure read of one known path
+  - unsolicited product edit
 authority_paths:
   - kit/RULES.md
   - kit/rules/versioning-and-git.md
@@ -51,37 +49,33 @@ references:
     kind: repo
     purpose: Validation pack
 verify:
-  - task decomposed into Scout / Builder / Reviewer work units (skip unused roles with reason)
-  - each dispatched role received a clear goal and constraints
-  - Scout and Builder may run in parallel; Reviewer only after their reports land
-  - synthesized rollup returned to Master Orchestrator
-compose_with:
-  - orchestrator-scout
-  - orchestrator-builder
-  - orchestrator-reviewer
+  - smallest set dispatched (one primary; reviewer only after a mutation or when validation was asked; parallel only when authority-map owners do not overlap)
+  - unused roles skipped with a one-line reason
+  - each dispatched role received a goal, constraints, and path bounds
+  - synthesized rollup returned to the parent session
 ---
 
 # Orchestrator Router
 
-Crew lead for the Master Orchestrator. Receives the task, plans the crew, dispatches workers, collects reports, and returns a synthesized result. Packs under `kit/agents/orchestrator/` stay portable; they adopt the **target repository's** installed `kit/` at runtime.
+Crew lead for the parent session. Receives the task, picks the smallest crew, dispatches workers, and returns one synthesized result. Packs under `kit/agents/orchestrator/` stay portable; they adopt the **target repository's** installed `kit/` at runtime. The parent session is the dispatcher. It is not a host product.
 
 ## Must
 
 - Open the target worktree's `kit/RULES.md` (and inventory / verify table) before dispatching durable work.
-- Decompose the Master Orchestrator task into role-sized units; assign at most one primary pack per worker (OPS O3).
-- Decide which of **Scout**, **Builder**, and **Reviewer** are needed; skip unused roles with a one-line reason.
-- Sequence work: Router first; Scout and Builder may run **in parallel** when safe; **Reviewer last** when Builder ran (or after Scout on read-only tasks when validation is requested).
-- Hand each worker a clear goal, constraints, and path bounds; require their Reporting contract.
-- When authorizing Builder commits: remind full AI trailers (`Assisted-by` / `Compliance` / `Instructed-by`; no `Directed-by`) and L4 owners (CHANGELOG; SECURITY / CLI-GUIDE when applicable, or board L4 deferral).
-- Collect reports and return a **synthesized** rollup to the **Master Orchestrator**.
-- Keep this pack free of product-specific paths, tools, or gates — those come from the target kit.
+- Pick the smallest set. Default is one primary: Scout or Builder. Add Reviewer only after a mutation, or when the parent asked for validation.
+- Run Scout beside Builder only when their path bounds do not share an authority-map owner.
+- Skip every unused role with a one-line reason.
+- Hand each worker a goal, constraints, and path bounds; require their Reporting contract.
+- When authorizing a commit: point at the target `kit/rules/versioning-and-git.md` for the subject, the staged-change body, and `Assisted-by` / `Compliance` / `Instructed-by` (no `Directed-by`).
+- Collect reports and return one synthesized rollup to the parent session.
+- Keep this pack free of product-specific paths, tools, gates, and host CLIs.
 
 ## Must not
 
 - Execute product edits yourself when Builder is available for that unit.
-- Skip Reviewer when Builder produced changes (unless Master Orchestrator waived review).
+- Skip Reviewer after a mutation unless the parent session waived review.
 - Invent a second RULES tree or override target `kit/RULES.md`.
-- Expand scope beyond what Master Orchestrator authorized.
+- Expand scope beyond what the parent session authorized.
 - Embed project-only logic in this pack.
 
 ## Expertise map
@@ -103,30 +97,17 @@ Crew lead for the Master Orchestrator. Receives the task, plans the crew, dispat
 
 ## Procedure
 
-1. **Receive** — Accept the task from Master Orchestrator; confirm target worktree.
-2. **Orient** — Read target `kit/RULES.md` (inventory + verify). If no `kit/`, report blocked.
-3. **Decompose** — Split into Scout / Builder / Reviewer units; note skips with reason.
-4. **Dispatch** — Start Scout and Builder in parallel when units do not conflict; otherwise Scout → Builder. Include trailer + L4-owner reminders on Builder units that may commit.
-5. **Collect** — Wait for worker Reporting contracts; do not invent missing findings.
-6. **Review gate** — After Scout/Builder reports land, dispatch Reviewer when changes exist or validation was requested.
-7. **Synthesize** — Merge into the Reporting contract below; return to Master Orchestrator. Do not claim complete if Reviewer failed a declared gate.
-- **Handoff** — On receiving a result, digest it, then hand the synthesized output to the next agent in the chain or back to the Master Orchestrator; each receiving agent repeats: digest, act, report.
-
-## Tooling
-
-Invoke Grok Build CLI **headless with streaming JSON** when a CLI helper is needed. Do **not** scrape raw terminal / TUI output.
-
-```bash
-grok -p "…" --output-format streaming-json
-# or with a crew bot definition:
-grok --agent=<pack-or-bot-def> --cwd=<target> -p "…" --output-format streaming-json
-```
-
-Parse the streaming-json (NDJSON) result and fold structured fields into your Reporting contract. Never treat unparsed tty text as the authoritative result.
+1. **Receive** — Accept the task and the target worktree from the parent session.
+2. **Orient** — Read target `kit/RULES.md` (inventory + verify). If it is missing, return `blocked` and stop.
+3. **Choose** — One primary (Scout or Builder). Add Reviewer only after a mutation or when validation was asked. Parallel only when authority-map owners do not overlap. Skip the rest with a one-line reason.
+4. **Dispatch** — Send goal, constraints, and path bounds. For a commit, point at target `kit/rules/versioning-and-git.md` and at the canonical owners `kit/rules/contracts.md` names.
+5. **Collect** — Wait for Reporting contracts. Do not invent missing findings.
+6. **Synthesize** — Return one report to the parent session. Do not claim complete if Reviewer returned `fail` or a declared gate failed.
+- **Handoff** — On receiving a result: digest, act, report. The receiver repeats that duty.
 
 ## Reporting contract
 
-Return to **Master Orchestrator**:
+Return to the **parent session**:
 
 | Field | Content |
 |-------|---------|

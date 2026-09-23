@@ -1,7 +1,7 @@
 ---
 title: Orchestrator crew packs
-description: Generic Master Orchestrator agent packs (Router, Scout, Builder, Reviewer) that adopt a target repo's installed kit at runtime.
-version: "1.1.0"
+description: Host-agnostic explicit-dispatch crew packs (Router, Scout, Builder, Reviewer) that adopt a target repo's installed kit at runtime.
+version: "1.2.0"
 status: current
 audience:
   - developers
@@ -13,16 +13,18 @@ related:
   - ../PARAMS.md
   - ../CATALOG.md
   - ../FRAMEWORK.md
-last_updated: "2026-09-21"
+last_updated: "2026-09-22"
 ---
 
 # Orchestrator crew packs
 
-Portable **Agent Instruct** packs for a Master Orchestrator crew. They live under `kit/agents/orchestrator/` and stay **generic**: role, procedure, and reporting contract only. No product-specific paths, tools, or gates are hard-coded here.
+Portable **Agent Instruct** packs for a parent session that dispatches a small crew. They live under `kit/agents/orchestrator/` and stay generic: role, procedure, and reporting contract only. No product paths, host CLIs, or gates are hard-coded here.
 
-At runtime each agent opens the **target repository's** installed kit (`kit/RULES.md` and declared `kit/rules/*`) and adopts that law dynamically.
+At runtime each agent opens the **target repository's** installed kit (`kit/RULES.md` and declared `kit/rules/*`) and adopts that law. On conflict, target `kit/RULES.md` wins.
 
-These packs follow the same AgentPack shape as [PARAMS.md](../PARAMS.md) and seed templates under [templates/](../templates/). Utilization still follows [OPS.md](../OPS.md) (one primary pack per worker). They are **not** a substitute for L4 law and are **not** registered in the upstream [CATALOG.md](../CATALOG.md) by default — enable them via PLAN overlays or explicit Master Orchestrator dispatch.
+These packs follow the AgentPack shape in [PARAMS.md](../PARAMS.md). Utilization still follows [OPS.md](../OPS.md): one primary pack per worker, and at most one extra when the task needs it. They are not a substitute for L4. They are optional `slash_only` seeds, not the default active set. Register them from [CATALOG.md](../CATALOG.md) only when a repo wants explicit dispatch.
+
+The parent session is the dispatcher. It is not a host product.
 
 ---
 
@@ -31,10 +33,11 @@ These packs follow the same AgentPack shape as [PARAMS.md](../PARAMS.md) and see
 | Must |
 |------|
 | Keep packs lean and portable; load target `kit/` at runtime |
-| Chain: **Router first** → **Scout** and **Builder** (parallel when safe) → **Reviewer last** |
-| Every pack reports back to the **Master Orchestrator** using its Reporting contract |
-| On receiving a result: **digest → act → report / handoff** to the next agent or Master Orchestrator |
-| CLI helpers use `grok … -p … --output-format streaming-json` (parse JSON; no tty scrape) |
+| Dispatch the smallest set: one primary; Reviewer after a mutation or when validation was asked |
+| Run Scout beside Builder only when their path bounds do not share an authority-map owner |
+| Every pack returns its Reporting contract to the parent session |
+| On receiving a result: **digest → act → report** |
+| The parent reads that report; the host chooses how to invoke the worker |
 | On L3 vs L4 conflict, **target `kit/RULES.md` wins** |
 
 ---
@@ -46,8 +49,7 @@ These packs follow the same AgentPack shape as [PARAMS.md](../PARAMS.md) and see
 3. [Local catalog](#local-catalog)
 4. [How to use](#how-to-use)
 5. [Handoff](#handoff)
-6. [JSON invocation (Grok Build CLI)](#json-invocation-grok-build-cli)
-7. [Document history](#document-history)
+6. [Document history](#document-history)
 
 ---
 
@@ -55,87 +57,69 @@ These packs follow the same AgentPack shape as [PARAMS.md](../PARAMS.md) and see
 
 | Pack | Id | Role |
 |------|-----|------|
-| [router.md](./router.md) | `orchestrator-router` | Decompose task; dispatch workers; roll up reports |
+| [router.md](./router.md) | `orchestrator-router` | Decompose; dispatch the smallest set; roll up reports |
 | [scout.md](./scout.md) | `orchestrator-scout` | Read-only exploration and kit/repo mapping |
-| [builder.md](./builder.md) | `orchestrator-builder` | Execute authorized changes under target kit law |
-| [reviewer.md](./reviewer.md) | `orchestrator-reviewer` | Validate against target `kit/RULES.md`; last gate |
+| [builder.md](./builder.md) | `orchestrator-builder` | Execute the authorized unit under target kit law |
+| [reviewer.md](./reviewer.md) | `orchestrator-reviewer` | Validate against target `kit/RULES.md` |
 
 ---
 
 ## Chain
 
 ```text
-Master Orchestrator
-        │
-        ▼
-     Router          (always first)
-      /        \
-   Scout      Builder   (parallel when units do not conflict)
-      \        /
-      Reviewer          (always last when Builder ran; optional after Scout-only)
-        │
-        ▼
-Master Orchestrator   ◄── all Reporting contracts
+parent session
+      │
+      ▼
+   Router
+      │
+      ├─ one primary: Scout or Builder
+      ├─ Reviewer only after a mutation, or when validation was asked
+      └─ Scout beside Builder only when authority-map owners do not overlap
+      │
+      ▼
+parent session   ◄── Reporting contract from each worker
 ```
 
-- **Router** plans and dispatches; does not replace Builder for product edits.
+- **Router** plans and dispatches. It does not replace Builder for product edits.
 - **Scout** never writes.
-- **Builder** mutates only within authorized scope.
-- **Reviewer** issues `pass` / `fail` / `blocked` with kit citations.
+- **Builder** mutates only inside the authorized unit. A missing in-scope L4 owner is `blocked`.
+- **Reviewer** issues `pass` / `fail` / `blocked` with kit citations. A missing in-scope owner is `fail`.
 
 ---
 
 ## Local catalog
 
-Crew-local index (not merged into upstream CATALOG unless you choose to):
+Crew-local index. Upstream registration is the optional subsection in [CATALOG.md](../CATALOG.md). These ids are not in the default active set.
 
 | id | layer | activation | compose_with |
 |----|-------|------------|--------------|
-| `orchestrator-router` | playbook | catalog_match | scout, builder, reviewer |
-| `orchestrator-scout` | role | catalog_match | router |
-| `orchestrator-builder` | role | catalog_match | router, reviewer |
-| `orchestrator-reviewer` | role | catalog_match | router |
+| `orchestrator-router` | playbook | slash_only | — |
+| `orchestrator-scout` | role | slash_only | — |
+| `orchestrator-builder` | role | slash_only | reviewer |
+| `orchestrator-reviewer` | role | slash_only | — |
 
 ---
 
 ## How to use
 
 1. Ensure the **target** repo has an adopted `kit/` (at least `kit/RULES.md`).
-2. Point Master Orchestrator at this directory (or copy these packs into the target repo's `kit/agents/orchestrator/`).
-3. Start with **Router** for multi-step work; pass the user goal and target worktree.
-4. Require each worker's Reporting contract before closing the task.
-5. Optional PLAN: add these ids under Agent models overlays without editing upstream CATALOG.
+2. Copy this directory’s packs (see [INSTALL.md](./INSTALL.md)) or dispatch them from this tree.
+3. Invoke **Router** explicitly for multi-step work. Pass the user goal and the target worktree.
+4. Require each worker’s Reporting contract before closing the task.
+5. Leave host launchers outside `kit/`. This directory does not ship one.
 
-Bare adopt without Instruct elsewhere still works: treat these as explicit slash/dispatch packs.
-
+Bare adopt without Instruct still works: these packs run only when the parent dispatches them.
 
 ---
 
 ## Handoff
 
-On receiving a result, each agent **digests** it, **acts** in role, then **reports** — handing the synthesized output to the next agent in the chain or back to the Master Orchestrator. Receivers repeat: digest, act, report.
+On receiving a result, the worker digests it, acts in role, and reports. The receiver repeats that duty.
 
 ```text
-MO → Router → (Scout ∥ Builder) → Reviewer → MO
-         ↑____________handoff / report_______________|
+parent → Router → one primary (Scout or Builder) → parent
+                 ↘ Reviewer, when required ──────↗
 ```
-
----
-
-## JSON invocation (Grok Build CLI)
-
-Prefer headless streaming JSON (see [bots/invoke.sh](./bots/invoke.sh)):
-
-```bash
-grok -p "…" --output-format streaming-json
-grok --agent=kit/agents/orchestrator/bots/scout.agent.md --cwd=<target> \
-     -p "…" --output-format streaming-json
-
-# Wrapper (parses stream → JSON object on stdout):
-./bots/invoke.sh scout /path/to/target-repo "Map kit + version"
-```
-
-Do not scrape interactive TUI output for automation.
 
 ---
 
@@ -143,5 +127,6 @@ Do not scrape interactive TUI output for automation.
 
 | Version | Notes |
 |---------|--------|
-| 1.1.0 | Handoff digest/act/report; streaming-json tooling; invoke.sh JSON default |
+| 1.2.0 | `slash_only` smallest-set dispatch; host invocation stays outside this directory (kit 2.15.0) |
+| 1.1.0 | Handoff digest/act/report; host launcher added (removed in 1.2.0) |
 | 1.0.0 | Initial Router / Scout / Builder / Reviewer crew packs |
