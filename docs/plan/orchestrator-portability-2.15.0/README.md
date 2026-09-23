@@ -1,6 +1,6 @@
 ---
 title: "orchestrator-portability-2.15.0 — program annex"
-description: Annex index for the host-agnostic orchestrator crew. Open while the workboard points here; next phase is P3 (register the optional 2.15.0 seed).
+description: Annex index for the host-agnostic orchestrator crew. Open while the workboard points here; next phase is P4 (archive the annex and refresh kit-context).
 version: "1.0.0"
 status: active
 audience:
@@ -26,7 +26,7 @@ No root `PLAN.md` (Instruct off).
 |-------|--------|
 | **Program id** | `orchestrator-portability-2.15.0` |
 | **Status** | `active` |
-| **Next phase** | P3 — register the optional seed in 2.15.0 |
+| **Next phase** | P4 — archive the annex and refresh kit-context |
 | **L4 owners to update on ship** | [orchestrator README](../../../kit/agents/orchestrator/README.md) · [CATALOG](../../../kit/agents/CATALOG.md) · [agents README](../../../kit/agents/README.md) · [RULES](../../../kit/RULES.md) · [UPGRADE](../../../kit/UPGRADE.md) · [CHANGELOG](../../../kit/CHANGELOG.md) `### [2.15.0]` |
 
 ## Contents of this annex

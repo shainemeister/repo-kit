@@ -26,6 +26,21 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 
 ## repo-kit
 
+### [2.15.0] - 2026-09-22
+
+#### Added
+
+- Optional orchestrator crew under [agents/orchestrator/](./agents/orchestrator/): Router, Scout, Builder, Reviewer. `activation: slash_only`. Not in the default active set. BUILD does not emit these packs into `generated/`.
+
+#### Changed
+
+- Crew packs adopt the target `kit/RULES.md` and return a reporting contract to the parent session. Dispatch is the smallest set: one primary, Reviewer after a mutation or when validation was asked, Scout beside Builder only when authority-map owners do not overlap.
+- CATALOG **1.2.9**, agents README **1.2.4**, RULES hub **2.7.6** (one authority-map row; Must index unchanged), UPGRADE **1.9.1**.
+
+#### Notes
+
+- Minor on **2.14.0**. No inventory, SAST, or hub Must-count change. Host invocation stays outside the kit. A historical `bots/` tree is not a failed complete.
+
 ### [2.14.0] - 2026-09-10
 
 #### Added

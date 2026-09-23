@@ -1,7 +1,7 @@
 ---
 title: Agent Catalog
-description: Default portable seed agents for repo-kit Agent Instruct.
-version: "1.2.8"
+description: Default portable seed agents for repo-kit Agent Instruct, plus an optional slash_only orchestrator crew that is outside the default active set.
+version: "1.2.9"
 status: current
 audience:
   - developers
@@ -14,12 +14,12 @@ related:
   - BUILD.md
   - PLAN-HOOK.md
   - templates/
-last_updated: "2026-09-04"
+last_updated: "2026-09-22"
 ---
 
 # Agent Catalog
 
-Upstream repo-kit ships a **small catalog of portable seed agents**. Adopters enable/disable them via PLAN. Product-specific agents are **overlays or project-generated packs**, not rows in this default table. Seeds ship with **expertise** (in-repo + optional external citations) so BUILD emits expert packs.
+Upstream repo-kit ships a **small catalog of portable seed agents**. Adopters enable/disable them via PLAN. Product-specific agents are **overlays or project-generated packs**, not rows in this default table. Seeds ship with **expertise** (in-repo + optional external citations) so BUILD emits expert packs. An optional orchestrator crew is catalogued below as `slash_only` and is not part of the default active set.
 
 **Related:** [README.md](./README.md) · [OPS.md](./OPS.md) · [PARAMS.md](./PARAMS.md) · [BUILD.md](./BUILD.md) · [PLAN-HOOK.md](./PLAN-HOOK.md) · [templates/](./templates/)
 
@@ -42,9 +42,11 @@ Upstream repo-kit ships a **small catalog of portable seed agents**. Adopters en
 1. [Default active set (suggested)](#default-active-set-suggested)
 2. [Catalog entries](#catalog-entries)
 3. [Compose matrix (suggested)](#compose-matrix-suggested)
-4. [Project-generated agents](#project-generated-agents)
-5. [Adopter overlays](#adopter-overlays)
-6. [Document history](#document-history)
+4. [Optional orchestrator crew](#optional-orchestrator-crew)
+5. [Project-generated agents](#project-generated-agents)
+6. [Adopter overlays](#adopter-overlays)
+7. [Seed expertise (defaults)](#seed-expertise-defaults)
+8. [Document history](#document-history)
 
 ---
 
@@ -198,6 +200,19 @@ Guidance only—runtime loads **one primary** pack; compose_with only when the t
 
 ---
 
+## Optional orchestrator crew
+
+Explicit dispatch only. Not in the [default active set](#default-active-set-suggested). BUILD does not emit these packs into `generated/`. Host adapters are not kit payload. Law and procedure: [orchestrator/README.md](./orchestrator/README.md).
+
+| id | layer | portability | activation | enabled-by-default | path |
+|----|-------|-------------|------------|--------------------|------|
+| `orchestrator-router` | playbook | kit | slash_only | false | [orchestrator/router.md](./orchestrator/router.md) |
+| `orchestrator-scout` | role | kit | slash_only | false | [orchestrator/scout.md](./orchestrator/scout.md) |
+| `orchestrator-builder` | role | kit | slash_only | false | [orchestrator/builder.md](./orchestrator/builder.md) |
+| `orchestrator-reviewer` | role | kit | slash_only | false | [orchestrator/reviewer.md](./orchestrator/reviewer.md) |
+
+---
+
 ## Project-generated agents
 
 | Rule | Detail |
@@ -255,6 +270,7 @@ Templates under [templates/](./templates/) carry the full Expertise map. Summary
 
 | Version | Notes |
 |---------|--------|
+| 1.2.9 | Optional orchestrator crew: four `slash_only` ids, not in the default active set (kit 2.15.0) |
 | 1.2.8 | maintainer verify: commit notes name the staged change (not the completed objective) (kit 2.13.0) |
 | 1.2.7 | docs-author verify: description current-content summary + uniqueness (new/on-edit; not a historical gate) (kit 2.12.0) |
 | 1.2.6 | plan-author verify: fill workboard phase brief before isolating work when an annex exists (kit 2.11.1) |

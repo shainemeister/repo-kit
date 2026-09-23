@@ -1,7 +1,7 @@
 ---
 title: Agent Instruct
-description: Portable agent personas as expert views over repo-kit law—index, decisions, and start paths.
-version: "1.2.3"
+description: Portable agent personas as expert views over repo-kit law—index, decisions, start paths, and the optional slash_only orchestrator crew.
+version: "1.2.4"
 status: current
 audience:
   - developers
@@ -15,7 +15,7 @@ related:
   - CATALOG.md
   - PLAN-HOOK.md
   - BUILD.md
-last_updated: "2026-08-21"
+last_updated: "2026-09-22"
 ---
 
 # Agent Instruct
@@ -69,6 +69,7 @@ Portable way for AI (and humans) to **build and maintain modular expert agent pe
 | Match / load activation detail | [RUNTIME.md](./RUNTIME.md) |
 | First adopt | [SETUP.md](../SETUP.md) (Agent Instruct path) |
 | Kit upgrade | [UPGRADE.md](../UPGRADE.md) |
+| Dispatch the optional orchestrator crew | [orchestrator/README.md](./orchestrator/README.md) — explicit only; host adapters are not in this tree |
 
 ---
 
@@ -103,6 +104,7 @@ Detail: [FRAMEWORK.md](./FRAMEWORK.md). Utilization: [OPS.md](./OPS.md).
 | [templates/](./templates/) | Seed role templates (PARAMS frontmatter + expertise) |
 | [examples/](./examples/) | PLAN snippet, sample pack, anti-patterns |
 | [generated/](./generated/) | Project-filled packs (`<id>.md`); track thin packs |
+| [orchestrator/](./orchestrator/) | Optional `slash_only` crew. Explicit dispatch. Host adapters are not in this tree. BUILD does not emit these packs |
 
 ---
 
@@ -127,6 +129,7 @@ Do not force full MARKDOWN-STANDARD `doc_type` package shape onto every generate
 
 | Version | Notes |
 |---------|--------|
+| 1.2.4 | Index row for the optional slash_only orchestrator crew (kit 2.15.0) |
 | 1.2.3 | Drop in-body document-version echo (kit 2.8.1) |
 | 1.2.2 | Density restyle (kit 2.8.0); index, layers map, and AgentPack format note unchanged |
 | 1.2.1 | Instruct law docs follow density (Summary/Contents when required); packs stay AgentPack (kit 2.7.0) |

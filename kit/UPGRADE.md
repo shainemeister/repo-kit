@@ -1,7 +1,7 @@
 ---
 title: Upgrade repo-kit
-description: Durable guide for upgrading an existing kit baseline, including 1.x to 2.x layout migration (standards under kit/), 2.14.0 programming-source home (src/; historical crates/ not a complete-fail), and merge options.
-version: "1.9.0"
+description: Durable guide for upgrading an existing kit baseline, including 1.x to 2.x layout migration (standards under kit/), 2.14.0 programming-source home (src/; historical crates/ not a complete-fail), 2.15.0 optional orchestrator crew (slash_only; host adapters are not kit payload), and merge options.
+version: "1.9.1"
 status: current
 audience:
   - developers
@@ -15,12 +15,12 @@ related:
   - rules/versioning-and-git.md
   - rules/hygiene.md
   - rules/workboard.md
-last_updated: "2026-09-10"
+last_updated: "2026-09-22"
 ---
 
 # Upgrade repo-kit
 
-Durable guide for upgrading an existing kit baseline, including 1.x to 2.x layout migration (standards under `kit/`), 2.14.0 programming-source home (`src/`; historical `crates/` not a complete-fail), and merge options.
+Durable guide for upgrading an existing kit baseline, including 1.x to 2.x layout migration (standards under `kit/`), 2.14.0 programming-source home (`src/`; historical `crates/` not a complete-fail), 2.15.0 optional orchestrator crew (`slash_only`; host adapters are not kit payload), and merge options.
 
 **Related:** [RULES.md](./RULES.md) · [SETUP.md](./SETUP.md) · [CHANGELOG.md](./CHANGELOG.md) · [README.md](../README.md) · [versioning-and-git.md](./rules/versioning-and-git.md) · [hygiene.md](./rules/hygiene.md) · [workboard.md](./rules/workboard.md)
 
@@ -45,12 +45,13 @@ Durable guide for upgrading an existing kit baseline, including 1.x to 2.x layou
 1. [Choose your path](#choose-your-path)
 2. [Routine upgrade procedure](#routine-upgrade-procedure)
 3. [Kit 2.14.0 — programming-source home](#kit-2140--programming-source-home)
-4. [Migrate from kit 1.x / root layout to 2.x](#migrate-from-kit-1x--root-layout-to-2x)
-5. [Merge strategy options](#merge-strategy-options)
-6. [Agent Instruct on upgrade](#agent-instruct-on-upgrade)
-7. [Preserve list](#preserve-list)
-8. [Copy-paste AI prompts](#copy-paste-ai-prompts)
-9. [Document history](#document-history)
+4. [Kit 2.15.0 — optional orchestrator crew](#kit-2150--optional-orchestrator-crew)
+5. [Migrate from kit 1.x / root layout to 2.x](#migrate-from-kit-1x--root-layout-to-2x)
+6. [Merge strategy options](#merge-strategy-options)
+7. [Agent Instruct on upgrade](#agent-instruct-on-upgrade)
+8. [Preserve list](#preserve-list)
+9. [Copy-paste AI prompts](#copy-paste-ai-prompts)
+10. [Document history](#document-history)
 
 ---
 
@@ -85,6 +86,12 @@ Durable guide for upgrading an existing kit baseline, including 1.x to 2.x layou
 ## Kit 2.14.0 — programming-source home
 
 Merge [files.md](./rules/files.md) **1.1.0**. Programming source home is repo-root `src/` (segment noun, module noun, verb as function). Do **not** complete-fail historical `crates/`, `packages/<name>/` as source root, `build-aux/`, or `scripts/`. New source after this kit date Must go under `src/`. An optional layout program may migrate old trees; this is not a universe rewrite.
+
+---
+
+## Kit 2.15.0 — optional orchestrator crew
+
+Merge [agents/orchestrator/](./agents/orchestrator/) when the adopter wants the crew: `README.md`, `INSTALL.md`, and the four packs. Activation is `slash_only`. Do not add the four ids to the default active set. Do not copy a host adapter into `kit/`. A leftover local `bots/` directory is not kit payload and is not a failed complete. BUILD does not emit these packs into `generated/`.
 
 ---
 
@@ -245,6 +252,7 @@ This repository has no repo-kit baseline. Follow kit/SETUP.md selective adoption
 
 | Version | Notes |
 |---------|--------|
+| 1.9.1 | Kit 2.15.0 optional orchestrator crew: merge the packs; host adapters are not payload; leftover bots/ is not a failed complete |
 | 1.9.0 | Kit 2.14.0 programming-source home: merge files.md 1.1.0; historical crates/build-aux/scripts not a complete-fail; new source under src/ |
 | 1.8.9 | Merge versioning-and-git 1.1.0; no complete-fail or history rewrite for historical commit messages (kit 2.13.0) |
 | 1.8.8 | Merge MARKDOWN-STANDARD 1.6.0; no complete-fail for historical stale descriptions (kit 2.12.0) |

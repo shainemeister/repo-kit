@@ -1,7 +1,7 @@
 ---
 title: Repository Maintenance Rules
 description: Maintenance policy hub—authority map, kit baseline, and index to domain rule modules.
-version: "2.7.5"
+version: "2.7.6"
 status: current
 audience:
   - developers
@@ -33,7 +33,7 @@ related:
   - configs/clippy.toml
   - configs/clang-format
   - configs/clang-tidy
-last_updated: "2026-09-04"
+last_updated: "2026-09-22"
 ---
 
 # Repository Maintenance Rules
@@ -167,6 +167,7 @@ Replace paths below with your project’s real files. Rows that do not apply may
 | Agent utilization (order of operations) | [agents/OPS.md](./agents/OPS.md) — required O3 when Instruct is in use |
 | Project agent control surface | Root `PLAN.md` (**Agent models** section) — required when using agents; see [agents/PLAN-HOOK.md](./agents/PLAN-HOOK.md) |
 | Generated agent packs | [agents/generated/](./agents/generated/) — project-filled expert views; track thin packs recommended |
+| Optional orchestrator crew (slash_only) | [agents/orchestrator/README.md](./agents/orchestrator/README.md) — explicit dispatch; not the default active set; host adapters are not kit payload |
 | AI docs workspace policy | [rules/ai-docs-workspace.md](./rules/ai-docs-workspace.md) |
 | AI docs workspace (index) | Project root `docs/README.md` (**outside** `kit/`) — scaffold when first needed |
 | Research notes (AI) | `docs/research/` |
@@ -275,6 +276,7 @@ Copy-paste prompt also on root [README — Upgrade repo-kit](../README.md#upgrad
 
 | Version | Notes |
 |---------|--------|
+| 2.7.6 | Authority-map row for the optional slash_only orchestrator crew (kit 2.15.0); Must index unchanged |
 | 2.7.5 | Commit Must + Operator step 5 name staged-change notes (kit 2.13.0); Must index unchanged |
 | 2.7.4 | Authority-map concern label names current-content summary (kit 2.12.0); Must index unchanged |
 | 2.7.3 | Authority-map concern label names description identity (kit 2.11.0); Must index unchanged |
