@@ -52,7 +52,7 @@ last_updated: "2026-09-22"
 
 ### Progress log (newest first, max ~15 lines)
 
-- 2026-09-22 **orchestrator-portability-2.15.0** complete: law `531d892` kit `2.15.0`. P0 `5df2054` · P1 `f0dbda0` · P2 `ee18583` · P3 `531d892`. Annex archived.
+- 2026-09-22 **orchestrator-portability-2.15.0** complete: law `531d892` kit `2.15.0`. P0 `5df2054` · P1 `f0dbda0` · P2 `ee18583` · P3 `531d892` · P4 `43976ed`. Annex archived.
 - 2026-09-04 **commit-notes-2.13.0** complete: `a15bbac` kit `2.13.0`. P0 `4708eff` · P1 `c4cf33b` · P2 `16807a8` · P3 `cc62e0c` · P4 `e111255`. Annex archived.
 - 2026-09-04 **description-summary-2.12.0** complete: `234d808` kit `2.12.0`. P0 `d7bdd4c` · P1 `39302a8` · P2 `01ab89a` · P3 `aee00fd` · P4 `797748a` · P5 `cdd4c8e`. Annex archived.
 - 2026-09-01 **workboard-packet-2.11.1** complete: `9adf471` kit `2.11.1`. P0 `09fdb3e` · P1 `9240842` · P2 `705742f` · P3 `8b4fcae` · P4 `804e508` · P5 `ce44edb`. Annex archived.
