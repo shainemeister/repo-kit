@@ -1,7 +1,7 @@
 ---
 title: "repo-kit — maintainer build context"
-description: Session map of this upstream kit’s layout, 2.14.0 ship state, L4 document versions, and a 2026-09-12 review snapshot (HEAD 713aa02). Open before kit edits or first adopt from this tree; not a substitute for RULES.
-version: "1.2.1"
+description: Session map of this upstream kit’s layout, 2.15.0 ship state (law 531d892), L4 document versions, and the optional slash_only orchestrator crew. Open before kit edits or first adopt from this tree; not a substitute for RULES.
+version: "1.3.0"
 status: current
 audience:
   - maintainers
@@ -15,7 +15,7 @@ related:
   - ../WORKBOARD.md
   - ../../kit/rules/hygiene.md
   - ../../kit/rules/ai-docs-workspace.md
-last_updated: "2026-09-12"
+last_updated: "2026-09-22"
 ---
 
 # repo-kit — maintainer build context
@@ -91,22 +91,26 @@ repo-kit/
 
 | Field | Value |
 |-------|--------|
-| Kit version | **2.14.0** (2026-09-10) — latest dated `### [X.Y.Z]` under `## repo-kit` in [kit/CHANGELOG.md](../../kit/CHANGELOG.md) |
-| HEAD | `713aa02` `docs(project_build): add review snapshot and L4 version index` — **ahead of `origin/main` by 3** (unpushed at last refresh) |
-| Unpushed | `7e27feb` 2.14.0 `src/` home · `0285cde` ship-state refresh · `713aa02` review snapshot |
+| Kit version | **2.15.0** (2026-09-22) — latest dated `### [X.Y.Z]` under `## repo-kit` in [kit/CHANGELOG.md](../../kit/CHANGELOG.md) |
+| Law ship | `531d892` `docs(kit): register optional orchestrator crew in 2.15.0` |
 | Inventory | Empty (docs-only). No pylint, rustfmt, clang-format, Bandit, cargo-audit, or cppcheck. No `src/` |
-| Workboard | [docs/WORKBOARD.md](../WORKBOARD.md) — primary program **`none`**. 2.14.0 shipped as a **single change set** (no annex); board “recently completed” still lists **2.13.0** |
+| Workboard | [docs/WORKBOARD.md](../WORKBOARD.md) — primary program **`none`**. `orchestrator-portability-2.15.0` is archived |
+| Orchestrator | Optional `slash_only` crew under [kit/agents/orchestrator/](../../kit/agents/orchestrator/). Host adapters are not kit payload. Instruct stays off |
 | Declared gates | Author checklist, relative links, last citations ([completion](../../kit/rules/verification-and-ops.md#completion-rule)) |
 | `SECURITY.md` | Omit ([modularity](../../kit/rules/security.md#security-documentation-modularity)) |
 | Root `CHANGELOG.md` | **None** — this kit’s history is `kit/CHANGELOG.md`. Adopting repos **must** keep a root project CHANGELOG |
 
-**2.14.0 in one line:** programming-source home is repo-root `src/` (segment noun, module noun, verb as function). Law: [files.md](../../kit/rules/files.md) **1.1.0**; architecture cites that row; hygiene helpers under `src/build/`; `scripts/` is not a competing home. Historical `crates/` / `build-aux/` / `scripts/` are **not** a complete-fail ([UPGRADE](../../kit/UPGRADE.md) **1.9.0**). Docs-only still needs no `src/`.
+**2.15.0 in one line:** optional orchestrator crew is explicit dispatch (`slash_only`), adopts the target `kit/RULES.md`, and does not ship a host launcher. Law: [orchestrator README](../../kit/agents/orchestrator/README.md) **1.2.0**, [CATALOG](../../kit/agents/CATALOG.md) **1.2.9**, hub **2.7.6**, [UPGRADE](../../kit/UPGRADE.md) **1.9.1**. A leftover `bots/` tree is not a failed complete.
 
-Recent shipped programs (read L4, not annexes): src/ home **2.14.0**, commit-note staged-change **2.13.0**, description current-content **2.12.0**, workboard packet **2.11.1**, description identity **2.11.0**. Archaeology: [docs/plan/archive/](../plan/archive/).
+**2.14.0 in one line:** programming-source home is repo-root `src/` (segment noun, module noun, verb as function). Law: [files.md](../../kit/rules/files.md) **1.1.0**. Docs-only still needs no `src/`.
+
+Recent shipped programs (read L4, not annexes): orchestrator crew **2.15.0**, src/ home **2.14.0**, commit-note staged-change **2.13.0**, description current-content **2.12.0**, workboard packet **2.11.1**. Archaeology: [docs/plan/archive/](../plan/archive/).
 
 ---
 
 ## Review snapshot
+
+Dated 2026-09-12. Current ship state is the section above.
 
 Re-verified 2026-09-12 against [RULES](../../kit/RULES.md), domain modules, landing README, workboard, and git (`main` vs `origin/main`). Working tree was clean. Prior snapshot named HEAD `0285cde` / ahead-by-2; that was the only drift.
 
@@ -133,7 +137,7 @@ Document versions (frontmatter), not kit semver. Open the owner, not this table,
 
 | Owner | Version |
 |-------|---------|
-| [RULES.md](../../kit/RULES.md) hub | 2.7.5 |
+| [RULES.md](../../kit/RULES.md) hub | 2.7.6 |
 | [MARKDOWN-STANDARD](../../kit/MARKDOWN-STANDARD.md) | 1.6.0 |
 | [files](../../kit/rules/files.md) | 1.1.0 |
 | [hygiene](../../kit/rules/hygiene.md) | 1.7.0 |
@@ -146,7 +150,10 @@ Document versions (frontmatter), not kit semver. Open the owner, not this table,
 | [ai-docs-workspace](../../kit/rules/ai-docs-workspace.md) | 1.1.5 |
 | [workboard](../../kit/rules/workboard.md) | 1.2.0 |
 | [continuity](../../kit/rules/continuity.md) | 1.0.1 |
-| [UPGRADE](../../kit/UPGRADE.md) | 1.9.0 |
+| [UPGRADE](../../kit/UPGRADE.md) | 1.9.1 |
+| [CATALOG](../../kit/agents/CATALOG.md) | 1.2.9 |
+| [agents README](../../kit/agents/README.md) | 1.2.4 |
+| [orchestrator README](../../kit/agents/orchestrator/README.md) | 1.2.0 |
 | [HABITAT](../../kit/agents/HABITAT.md) | 1.0.3 |
 | [OPS](../../kit/agents/OPS.md) | 1.3.3 (unused while Instruct is off) |
 

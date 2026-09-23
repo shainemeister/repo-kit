@@ -11,7 +11,7 @@ related:
   - ../kit/rules/workboard.md
   - ../kit/CHANGELOG.md
   - ./README.md
-  - ./plan/orchestrator-portability-2.15.0/README.md
+  - ./plan/archive/orchestrator-portability-2.15.0/README.md
   - ./plan/archive/commit-notes-2.13.0/README.md
   - ./plan/archive/description-summary-2.12.0/README.md
   - ./plan/archive/workboard-packet-2.11.1/README.md
@@ -21,7 +21,7 @@ last_updated: "2026-09-22"
 # Workboard
 
 **Updated:** 2026-09-22  
-**Primary program:** `orchestrator-portability-2.15.0`  
+**Primary program:** `none`  
 **Rules:** [kit/rules/workboard.md](../kit/rules/workboard.md) · kit README (mission) · [docs/plan/](./plan/) (detail)
 
 | Status | Meaning |
@@ -35,31 +35,24 @@ last_updated: "2026-09-22"
 
 ---
 
-## Active program — orchestrator-portability-2.15.0
+## Active program — none
 
 | Field | Value |
 |-------|--------|
-| **Goal** | Host-agnostic `slash_only` orchestrator crew; drop the host adapter; register it as an optional kit 2.15.0 seed |
-| **L4 docs to update** | `kit/agents/orchestrator/README.md`, `INSTALL.md`, `kit/agents/CATALOG.md`, `kit/agents/README.md`, `kit/RULES.md`, `kit/UPGRADE.md`, `kit/CHANGELOG.md` |
-| **Optional annex** | [orchestrator-portability-2.15.0](./plan/orchestrator-portability-2.15.0/README.md) |
-| **Smoke / gates** | Author checklist; relative links; no `grok` or `invoke.sh` left under the crew directory |
+| **Goal** | — |
+| **L4 docs to update** | — |
+| **Optional annex** | — |
+| **Smoke / gates** | Author checklist; relative links; no `{{PLACEHOLDERS}}` in finished policy |
 
 ### Phases
 
 | ID | Work | Status | Commit | Notes |
 |----|------|--------|--------|-------|
-| P0 | Register board + annex | done | `5df2054` | |
-| P1 | Host-agnostic packs + crew README | done | `f0dbda0` | |
-| P2 | Delete `bots/` + fence INSTALL | done | `ee18583` | Copy kept outside the repo |
-| P3 | Register optional seed in 2.15.0 | done | — | SHA recorded when P4 opens |
-| P4 | Archive annex + refresh kit-context | active | — | |
+| — | — | — | — | Register a program here before multi-phase kit work |
 
 ### Progress log (newest first, max ~15 lines)
 
-- 2026-09-22 **orchestrator-portability-2.15.0** P3 registered the optional crew in kit 2.15.0. P2 `ee18583`. P4 active.
-- 2026-09-22 **orchestrator-portability-2.15.0** P2 removed `bots/` and fenced INSTALL. P1 `f0dbda0`.
-- 2026-09-22 **orchestrator-portability-2.15.0** P1 packs + crew README host-agnostic. P0 `5df2054`.
-- 2026-09-22 **orchestrator-portability-2.15.0** registered. Annex linked.
+- 2026-09-22 **orchestrator-portability-2.15.0** complete: law `531d892` kit `2.15.0`. P0 `5df2054` · P1 `f0dbda0` · P2 `ee18583` · P3 `531d892`. Annex archived.
 - 2026-09-04 **commit-notes-2.13.0** complete: `a15bbac` kit `2.13.0`. P0 `4708eff` · P1 `c4cf33b` · P2 `16807a8` · P3 `cc62e0c` · P4 `e111255`. Annex archived.
 - 2026-09-04 **description-summary-2.12.0** complete: `234d808` kit `2.12.0`. P0 `d7bdd4c` · P1 `39302a8` · P2 `01ab89a` · P3 `aee00fd` · P4 `797748a` · P5 `cdd4c8e`. Annex archived.
 - 2026-09-01 **workboard-packet-2.11.1** complete: `9adf471` kit `2.11.1`. P0 `09fdb3e` · P1 `9240842` · P2 `705742f` · P3 `8b4fcae` · P4 `804e508` · P5 `ce44edb`. Annex archived.
@@ -86,11 +79,11 @@ last_updated: "2026-09-22"
 
 | Program | Ended | L4 pointer |
 |---------|-------|------------|
+| orchestrator-portability-2.15.0 | 2026-09-22 | [orchestrator README](../kit/agents/orchestrator/README.md) **1.2.0** · [CHANGELOG](../kit/CHANGELOG.md) `### [2.15.0]` |
 | commit-notes-2.13.0 | 2026-09-04 | [versioning-and-git](../kit/rules/versioning-and-git.md) **1.1.0** · [CHANGELOG](../kit/CHANGELOG.md) `### [2.13.0]` |
 | description-summary-2.12.0 | 2026-09-04 | [MARKDOWN-STANDARD](../kit/MARKDOWN-STANDARD.md) **1.6.0** · [CHANGELOG](../kit/CHANGELOG.md) `### [2.12.0]` |
 | workboard-packet-2.11.1 | 2026-09-01 | [workboard](../kit/rules/workboard.md) **1.2.0** · [CHANGELOG](../kit/CHANGELOG.md) `### [2.11.1]` |
 | definitional-identity-2.11.0 | 2026-09-01 | [MARKDOWN-STANDARD](../kit/MARKDOWN-STANDARD.md) **1.5.0** · [CHANGELOG](../kit/CHANGELOG.md) `### [2.11.0]` |
-| frontmatter-2.10.0 | 2026-08-31 | [MARKDOWN-STANDARD](../kit/MARKDOWN-STANDARD.md) **1.4.0** · [CHANGELOG](../kit/CHANGELOG.md) `### [2.10.0]` |
 
 ---
 

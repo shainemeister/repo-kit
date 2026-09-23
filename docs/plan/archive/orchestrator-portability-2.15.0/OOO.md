@@ -1,24 +1,24 @@
 ---
 title: "orchestrator-portability-2.15.0 — order of operations"
-description: Phased order for a host-agnostic slash_only orchestrator crew registered as an optional kit seed (2.15.0). Open while that program is active on the workboard.
-version: "1.0.0"
-status: active
+description: Archived phased order for the host-agnostic slash_only orchestrator crew (kit 2.15.0). Read the changelog and orchestrator README; this pack is not live law.
+version: "1.0.1"
+status: archived
 audience:
   - ai-agents
   - developers
 doc_type: plan
 related:
   - ./README.md
-  - ../../WORKBOARD.md
-  - ../../../kit/rules/workboard.md
-  - ../../../kit/agents/orchestrator/README.md
-  - ../../../kit/CHANGELOG.md
+  - ../../../WORKBOARD.md
+  - ../../../../kit/rules/workboard.md
+  - ../../../../kit/agents/orchestrator/README.md
+  - ../../../../kit/CHANGELOG.md
 last_updated: "2026-09-22"
 ---
 
 # Orchestrator portability — order of operations
 
-**Board:** [docs/WORKBOARD.md](../../WORKBOARD.md)  
+**Board:** [docs/WORKBOARD.md](../../../WORKBOARD.md)  
 **Annex index:** [README.md](./README.md)  
 No root `PLAN.md` (Instruct off).
 
