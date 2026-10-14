@@ -6,13 +6,14 @@ audience:
   - developers
   - maintainers
 doc_type: other
+version: "1.0.0"
 related:
-  - ../SETUP.md
-  - ../RULES.md
-  - ../MARKDOWN-STANDARD.md
-  - ../rules/files.md
-  - ../rules/hygiene.md
-last_updated: "2026-09-10"
+  - ../../../kit/SETUP.md
+  - ../../../kit/RULES.md
+  - ../../../kit/MARKDOWN-STANDARD.md
+  - ../../../kit/rules/files.md
+  - ../../../kit/UPGRADE.md
+last_updated: "2026-10-13"
 ---
 
 # Example: CLI / automation tool
@@ -23,7 +24,7 @@ last_updated: "2026-09-10"
 
 **Primary platform (example):** multi (Windows + Linux/macOS)
 
-**Packaging:** standards under `kit/`; programming source under `src/` (outside `kit/`). See [hygiene](../rules/hygiene.md) · [files.md](../rules/files.md).
+**Packaging:** standards under `kit/`; programming source under `src/` (outside `kit/`). See [files.md](../../../kit/rules/files.md).
 
 ---
 
@@ -107,7 +108,7 @@ Declare **only** surfaces this CLI ships. Never paste the full kit language tabl
 | New/removed source files | Inventory/catalog updated (if maintained) |
 | New navigable directory | Directory-index `README.md` (file → function) for **new** dirs ([files.md](../rules/files.md)); **forward-only** — not a gate for historical folders |
 
-**SECURITY.md** is required here because the package is an execution surface. Declared gates must pass before task completion ([Completion rule](../rules/verification-and-ops.md#completion-rule)). Upgrades: [UPGRADE.md](../UPGRADE.md).
+**SECURITY.md** is required here because the package is an execution surface. Declared gates must pass before task completion ([Completion rule](../rules/verification-and-ops.md#completion-rule)). Upgrades: [UPGRADE.md](../../../kit/UPGRADE.md).
 
 ---
 

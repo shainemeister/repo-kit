@@ -1,7 +1,23 @@
+---
+title: "Official-source checker"
+description: "Compares each family's sources.yaml pins with the official page and reports drift."
+version: "1.0.0"
+status: current
+doc_type: other
+related:
+  - ../README.md
+  - ../os/linux/README.md
+  - ../os/macos/README.md
+  - ../program-language/rust/README.md
+  - ../program-language/python/README.md
+last_updated: "2026-10-14"
+---
+
 # Official-source checker
 
-Watch lists: each family’s [`sources.yaml`](../os/linux/sources.yaml)
-(and the same filename under `os/macos` and `program-language/*`).
+Compares each family's sources.yaml pins with the official page and reports drift.
+
+Watch lists: each family's [`sources.yaml`](../os/linux/sources.yaml) (and the same filename under `os/macos` and `program-language/*`).
 
 This checker **fetches official pages and compares pins**. It does **not**
 dump manuals into the policy packs. On `DRIFT`, patch the owning pack with

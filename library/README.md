@@ -1,6 +1,15 @@
+---
+title: "Library"
+description: "Index of the reference sets and skill packs in this library."
+version: "1.0.0"
+status: current
+doc_type: other
+last_updated: "2026-10-14"
+---
+
 # Library
 
-Reference sets and skill packs. Open a set when the work needs it.
+Index of the reference sets and skill packs in this library. Open a set when the work needs it.
 
 | Set | Function |
 |-----|----------|

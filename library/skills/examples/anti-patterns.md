@@ -1,4 +1,15 @@
+---
+title: "Agent Instruct anti-patterns"
+description: "Anti-patterns for Agent Instruct, and the practice to use instead."
+version: "1.0.0"
+status: current
+doc_type: other
+last_updated: "2026-10-14"
+---
+
 # Anti-patterns (Agent Instruct)
+
+Anti-patterns for Agent Instruct, and the practice to use instead.
 
 | Bad | Why | Prefer |
 |-----|-----|--------|

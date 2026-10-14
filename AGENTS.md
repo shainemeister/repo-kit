@@ -12,4 +12,6 @@ Standards live in `kit/`. The project lives outside it: product code, the change
 
 Kit text stays generic. An adopted repository writes descriptions of its own files. [kit/MARKDOWN-STANDARD.md](kit/MARKDOWN-STANDARD.md) owns that shape.
 
+An adopted repository takes this order from [kit/templates/TEMPLATE-AGENTS.md](kit/templates/TEMPLATE-AGENTS.md). Paste that block into a new file, or once into an existing `AGENTS.md`. Keep project text that is already there.
+
 Do not claim the work done if a check this repository declares was skipped. For this docs-only kit, that check is the author checklist in the markdown standard.

@@ -3,6 +3,7 @@ title: "Python development policy packs (archive)"
 description: Frozen snapshots of python-dev-policy packs. Empty until the first post-1.0.0 freeze.
 version: "1.0.0"
 status: archive
+doc_type: other
 last_updated: "2026-08-29"
 ---
 

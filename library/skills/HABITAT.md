@@ -1,7 +1,7 @@
 ---
 title: Host Habitat (L0)
 description: Detect and create thin always-on discovery files in each coding-agent host’s natural path; portable law stays under kit/.
-version: "1.0.3"
+version: "1.0.4"
 status: current
 audience:
   - developers
@@ -12,10 +12,10 @@ related:
   - OPS.md
   - FRAMEWORK.md
   - ../RULES.md
-  - ../templates/TEMPLATE-AGENTS.md
+  - ../../kit/templates/TEMPLATE-AGENTS.md
   - ../rules/hygiene.md
   - ../rules/files.md
-last_updated: "2026-08-31"
+last_updated: "2026-10-13"
 ---
 
 # Host Habitat (L0)
@@ -76,7 +76,7 @@ Do **not** add a fourth home for agent essays. Durable procedure belongs in PLAN
 | Situation | Action |
 |-----------|--------|
 | No coding agent; user did not ask | **Stop.** Do not create habitat files. |
-| Some agent will maintain the repo | If root `AGENTS.md` is **missing**, copy [TEMPLATE-AGENTS](../../kit/templates/TEMPLATE-AGENTS.md) and fill placeholders. If it already exists, do **not** replace the body; add a one-line pointer to `kit/RULES.md` only if that pointer is absent |
+| Some agent will maintain the repo | If root `AGENTS.md` is **missing**, copy the paste block in [TEMPLATE-AGENTS](../../kit/templates/TEMPLATE-AGENTS.md). If it already exists, paste that block once. Do not replace project text |
 | Host already has a native file (`CLAUDE.md`, `.github/copilot-instructions.md`, …) | Do **not** clobber. Add a thin alias **only if** that host will not see `AGENTS.md` |
 | Instruct in use (PLAN Agent models / generated packs) | L0 points at [OPS](./OPS.md); parent/child protocol when work is isolated |
 | Bare adopt (no Instruct) | L0 still points at `kit/RULES.md`; skip OPS / packs ([PLAN dual path](./PLAN-HOOK.md#plan-dual-path)) |
@@ -102,7 +102,7 @@ Do not treat “the kit *could* support N hosts” as evidence for N trees.
 
 Whether to create `AGENTS.md` remains this file; the habitat path category is [files.md](../../kit/rules/files.md) (do not add root `./rules/`).
 
-1. If root `AGENTS.md` is missing, copy [TEMPLATE-AGENTS.md](../../kit/templates/TEMPLATE-AGENTS.md) and replace placeholders.  
+1. If root `AGENTS.md` is missing, copy the paste block in [TEMPLATE-AGENTS.md](../../kit/templates/TEMPLATE-AGENTS.md). If the file exists, paste that block once and keep the project's sections.  
 2. List existing habitat files. Leave them in place.  
 3. **Alias:** only when a **detected** host will not load `AGENTS.md` unless pointed. Add the **minimum** native file that points at `AGENTS.md` and `kit/RULES.md`. Copy include or symlink syntax from **that host’s current documentation**. If unsure, skip the alias. See [TEMPLATE-HOST-ALIAS](../../kit/templates/TEMPLATE-HOST-ALIAS.md).  
 4. Authority-map row for L0 + aliases, same change set.  
@@ -180,6 +180,7 @@ Kit correctness does **not** depend on any host skill directory ([RUNTIME](./RUN
 
 | Version | Notes |
 |---------|--------|
+| 1.0.4 | Adopt uses the paste block in `kit/templates/TEMPLATE-AGENTS.md`. Do not replace a filled file |
 | 1.0.3 | Cite files.md for habitat path category; L0 pointer and evidence rules unchanged |
 | 1.0.2 | Drop in-body document-version echo (kit 2.8.1) |
 | 1.0.1 | Density restyle (kit 2.8.0); unique L0 pointer, evidence, and host catalog unchanged |

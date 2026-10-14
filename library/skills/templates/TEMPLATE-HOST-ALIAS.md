@@ -1,6 +1,15 @@
+---
+title: "Host alias template"
+description: "Use only when a detected coding-agent host will not load root AGENTS.md unless pointed."
+version: "1.0.0"
+status: current
+doc_type: other
+last_updated: "2026-10-14"
+---
+
 # Host alias (L0) — template
 
-Use **only** when a **detected** coding-agent host will not load root `AGENTS.md` unless pointed. Confirm include, import, or symlink syntax in **that host’s current documentation**. If unsure, do not create this file.
+Use only when a detected coding-agent host will not load root AGENTS.md unless pointed. Confirm include, import, or symlink syntax in that host's current documentation. If unsure, do not create this file.
 
 This native file must stay **1–3 lines**. It is not a second essay.
 

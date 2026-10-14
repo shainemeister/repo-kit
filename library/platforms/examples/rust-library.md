@@ -6,13 +6,14 @@ audience:
   - developers
   - maintainers
 doc_type: other
+version: "1.0.0"
 related:
-  - ../SETUP.md
-  - ../RULES.md
-  - ../MARKDOWN-STANDARD.md
-  - ../rules/files.md
-  - ../rules/hygiene.md
-last_updated: "2026-09-10"
+  - ../../../kit/SETUP.md
+  - ../../../kit/RULES.md
+  - ../../../kit/MARKDOWN-STANDARD.md
+  - ../../../kit/rules/files.md
+  - ../../../kit/UPGRADE.md
+last_updated: "2026-10-13"
 ---
 
 # Example: Rust library crate
@@ -23,7 +24,7 @@ last_updated: "2026-09-10"
 
 **Primary platform (example):** multi
 
-**Packaging:** standards under `kit/`; programming source under `src/` (outside `kit/`). See [hygiene](../rules/hygiene.md) · [files.md](../rules/files.md).
+**Packaging:** standards under `kit/`; programming source under `src/` (outside `kit/`). See [files.md](../../../kit/rules/files.md).
 
 ---
 
@@ -105,7 +106,7 @@ Declare **only** this row when the repo ships Rust. Docs-only inventories stay e
 | Docs only | Author checklist (including [density](../MARKDOWN-STANDARD.md#density-force-and-incorporation)); relative links resolve; last citations remain; consume example in README still runs |
 | New navigable directory | Directory-index `README.md` (file → function) for **new** dirs ([files.md](../rules/files.md)); **forward-only** — not a gate for historical folders |
 
-**Adopt rustfmt + clippy:** copy `kit/configs/rustfmt.toml` and `kit/configs/clippy.toml` to the crate or repo root; set rustfmt `edition`; keep rustfmt, clippy, and cargo-audit **developer-only**. Do not add these rows on a docs-only adopt. Declared gates must pass before task completion ([Completion rule](../rules/verification-and-ops.md#completion-rule)). Style chapter: [Rust style gate](../rules/authoring-and-style.md#rust-style-gate-rustfmt--clippy). Upgrades: [UPGRADE.md](../UPGRADE.md).
+**Adopt rustfmt + clippy:** copy `kit/configs/rustfmt.toml` and `kit/configs/clippy.toml` to the crate or repo root; set rustfmt `edition`; keep rustfmt, clippy, and cargo-audit **developer-only**. Do not add these rows on a docs-only adopt. Declared gates must pass before task completion ([Completion rule](../rules/verification-and-ops.md#completion-rule)). Style chapter: [Rust style gate](../rules/authoring-and-style.md#rust-style-gate-rustfmt--clippy). Upgrades: [UPGRADE.md](../../../kit/UPGRADE.md).
 
 ---
 

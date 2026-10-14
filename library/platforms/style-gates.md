@@ -1,29 +1,29 @@
-> Tool commands for a declared language. The platform packs own the policy. This file is the command catalog.
-
 ---
 title: Authoring and Style
-description: Documentation rules, formatting conventions, inventory-gated style gates for Python, Rust, and C/C++, and other language style gates.
-version: "1.2.5"
+description: "Tool commands for a declared language. The platform packs own the policy."
+version: "1.2.6"
 status: current
 audience:
   - developers
   - technical-writers
 doc_type: other
 related:
-  - ../RULES.md
-  - ../MARKDOWN-STANDARD.md
-  - ./contracts.md
-  - ./verification-and-ops.md
-  - ./security.md
-  - ./files.md
-last_updated: "2026-09-04"
+  - README.md
+  - program-language/python/README.md
+  - program-language/rust/README.md
+  - program-language/c/README.md
+  - scripts/README.md
+  - ../../kit/MARKDOWN-STANDARD.md
+last_updated: "2026-10-14"
 ---
 
 # Authoring and Style
 
+Tool commands for a declared language. The platform packs own the policy. This file is the command catalog.
+
 How to write documentation and how to gate product code style (Domain B). **Declared** Domain B gates apply only when that language is in the [language surface inventory](./security.md#language-surface-inventory); this file owns command strings, pass criteria, and adopt steps.
 
-**Related:** [RULES.md](../RULES.md) · [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md) · [contracts.md](./contracts.md) · [verification-and-ops.md](./verification-and-ops.md) · [security.md](./security.md) · [files.md](./files.md)
+**Related:** [platforms](README.md) · [Python](program-language/python/README.md) · [Rust](program-language/rust/README.md) · [C/C++](program-language/c/README.md) · [checker](scripts/README.md) · [markdown](../../kit/MARKDOWN-STANDARD.md)
 
 ---
 
@@ -53,7 +53,7 @@ How to write documentation and how to gate product code style (Domain B). **Decl
 ## Documentation rules
 
 1. **Substantial documents** follow [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md): YAML frontmatter, single H1, lead, then the **required core** for the type ([density](../MARKDOWN-STANDARD.md#density-force-and-incorporation)). Summary and Contents only when those rules require them. **Root `README.md`** uses the [landing](../MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter) outline only: no frontmatter; **Overview** then **Operator prompts**.
-2. **New docs** start from [templates/](../templates/); leave no unresolved `{{PLACEHOLDERS}}`. Pick templates from [project interest](../SETUP.md#5-pick-templates-by-interest) so contracts exist before or with first code. Durable markdown has YAML except the omit list; `description` passes the [identity test](../MARKDOWN-STANDARD.md#description-identity) (current-content summary plus uniqueness). Directory-index `README.md` for a new navigable directory follows [files.md](./files.md) (file → function; not [landing](../MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter) shape).
+2. **New docs** start from [templates/](../../kit/templates/); leave no unresolved `{{PLACEHOLDERS}}`. Durable markdown has YAML except the omit list; `description` passes the [identity test](../MARKDOWN-STANDARD.md#description-identity) (current-content summary plus uniqueness). Directory-index `README.md` for a new navigable directory follows [files.md](./files.md) (file → function; not [landing](../MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter) shape).
 3. **Behavior change ⇒ doc change** in the same commit or PR ([contracts](./contracts.md#same-change-set-rule)):
    - CLI verbs, flags, exit codes, JSON shapes → matching CLI / API guide
    - Formulas, output columns, validation → methodology (+ fixtures if contract shifts)
@@ -196,6 +196,7 @@ Advisory starting points for other surfaces (choose what the team will actually 
 
 | Version | Notes |
 |---------|--------|
+| 1.2.6 | Front matter is the first block. The description names the command catalog |
 | 1.2.5 | Description cite names current-content summary plus uniqueness (kit 2.12.0) |
 | 1.2.4 | Description cite retargets the identity test (kit 2.11.0) |
 | 1.2.3 | Durable markdown YAML except omit list; description is the blurb |

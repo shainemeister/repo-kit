@@ -1,6 +1,15 @@
+---
+title: "PLAN.md Agent models snippet"
+description: "Illustrative Agent models section to copy into an adopter PLAN.md."
+version: "1.0.0"
+status: current
+doc_type: other
+last_updated: "2026-10-14"
+---
+
 # Example: PLAN.md Agent models snippet
 
-**Illustrative** — copy into adopter PLAN.md and adapt. Full contract: [PLAN-HOOK.md](../PLAN-HOOK.md). Utilization: [OPS.md](../OPS.md).
+Illustrative Agent models section to copy into an adopter PLAN.md. Full contract: [PLAN-HOOK.md](../PLAN-HOOK.md). Utilization: [OPS.md](../OPS.md).
 
 When using **Agent Instruct**, PLAN.md is **required** and must include this section. Bare kit adopt without agents may omit PLAN and skip BUILD.
 

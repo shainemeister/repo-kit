@@ -3,7 +3,8 @@ title: "docs/resources/ (repo-kit)"
 description: Index of curated in-repo and external resources for kit maintainers. Open when adding or finding high-signal citations.
 status: current
 doc_type: other
-last_updated: "2026-08-31"
+version: "1.0.0"
+last_updated: "2026-10-13"
 ---
 
 # docs/resources/ (repo-kit)
@@ -25,6 +26,5 @@ Curated resources for kit maintainers and AI.
 
 | URL | Purpose |
 |-----|---------|
-| https://keepachangelog.com/en/1.1.0/ | Changelog structure guidance |
 | https://www.conventionalcommits.org/en/v1.0.0/ | Commit subject format guidance |
 | https://github.com/shainemeister/repo-kit | Canonical kit source |

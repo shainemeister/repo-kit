@@ -1,7 +1,7 @@
 ---
 title: File creation, placement, and naming
 description: "Evidence, category, and path shape: a segment and a module are nouns, a verb is the function, and a nested directory is allowed when it names one procedure."
-version: "1.3.0"
+version: "1.3.2"
 status: current
 audience:
   - developers
@@ -80,13 +80,13 @@ New durable markdown (not on the MARKDOWN-STANDARD omit list) gets YAML in the s
 
 | Category | Home | Notes |
 |----------|------|-------|
-| Law | `kit/` | Hub, `kit/rules/*.md`, SETUP (ephemeral), UPGRADE |
+| Law | `kit/` | Hub, `kit/rules/*.md`, SETUP, UPGRADE |
 | Form | `kit/MARKDOWN-STANDARD.md`, `kit/templates/` | Authoring standard and skeletons |
 | Landing | Root `README.md` | [Landing](../MARKDOWN-STANDARD.md#landing-readme) shape |
 | History | Project root `CHANGELOG.md` | Kit history stays in `kit/CHANGELOG.md` |
 | Product contract | Package dirs **outside** `kit/` | README, CLI, API. `SECURITY.md` only when the package executes, uses the network, elevates, or handles secrets |
 | Working memory | Root `docs/` | Research, plans, and the workboard |
-| Session order | Root `AGENTS.md` | Hygiene principle and the short order. Not a second rules tree |
+| Session order | Root `AGENTS.md` | Hygiene principle and the short order. Skeleton: `kit/templates/TEMPLATE-AGENTS.md`. Not a second rules tree |
 | Regenerable | gitignored workspace | Never commit |
 | Language / source | Repo-root `src/` | Programming source. Segment and module are nouns. A verb is a function inside the module. Nest a directory only to name one procedure |
 
@@ -138,13 +138,13 @@ The index is **forward-only** (new dirs; existing-adopt from the adopt date). Mi
 | Greenfield | This file in `kit/rules/`; directory index on **new** navigable dirs; programming source under `src/` | Empty trees for ceremony |
 | Existing first adopt | Map **real** paths; this file with `rules/`; index **from adopt date forward**; new source after this kit date under `src/` | Rewrite historical trees as a **complete-fail** (UPGRADE may migrate); README in every historical folder; flatten kit to root |
 | Upgrade 2.x | Merge this file; map row if missing; preserve product docs and `AGENTS.md`; new source under `src/` | Backfill directory READMEs; restyle package docs; overwrite filled `AGENTS.md`; complete-fail historical `crates/` / `packages/<name>/` / `build-aux/` / `scripts/` |
-| Upgrade 1.x | Migrate into `kit/` **first** ([UPGRADE](../UPGRADE.md)), then same as 2.x | Leave law at root `./rules/` as compat |
+| Upgrade 1.x | Take the current kit files from the Kit source ([UPGRADE](../UPGRADE.md)) | Leave law at root `./rules/` as compat |
 | Folded hub | Port this file **or** keep `kit/rules/files.md` beside a thin hub; document in the map | Force un-fold |
 | Bare adopt | This file. `AGENTS.md` only when a coding agent is used | Require a skill pack |
 
 Layout migration of historical source trees is a program ([UPGRADE](../UPGRADE.md)), not a universe rewrite.
 
-Install and upgrade of this kit stay in [SETUP.md](../SETUP.md) and [UPGRADE.md](../UPGRADE.md). The session order stays in `AGENTS.md`.
+Install of this kit stays in [SETUP.md](../SETUP.md) in this repository. An adopted repository keeps [UPGRADE.md](../UPGRADE.md). The session order stays in `AGENTS.md`.
 
 ## Anti-patterns
 

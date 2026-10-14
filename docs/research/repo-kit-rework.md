@@ -1,7 +1,7 @@
 ---
 title: "Repo kit rework"
 description: "Records settled rework decisions for a short agnostic kit whose descriptions stay generic, with library sets named platforms and skills and a condensed core. An adopted repository tailors its own descriptions. Not kit law until those owners change."
-version: "1.6.0"
+version: "1.7.0"
 status: draft
 audience:
   - ai-agents
@@ -45,7 +45,7 @@ Draft only. Promoting it means editing those owners in one change set ([same-cha
 | Architecture | Entry points, workflow composition, a documented cross-stack boundary, and a declared dependency policy become a few lines in [`contracts.md`](../../kit/rules/contracts.md). [`architecture.md`](../../kit/rules/architecture.md) retires. Source layout stays in `files.md` |
 | Completion | One hub sentence: do not claim done if a check this repo declares was skipped. For this docs-only kit, that check is the markdown author checklist. [`verification-and-ops.md`](../../kit/rules/verification-and-ops.md) retires. Language gates leave with `library/platforms/` |
 | README shape | [`MARKDOWN-STANDARD.md`](../../kit/MARKDOWN-STANDARD.md) stays and shrinks to the landing README, the directory-index README, and the minimum frontmatter. The author checklist enforces it |
-| Install | [`SETUP.md`](../../kit/SETUP.md) and [`UPGRADE.md`](../../kit/UPGRADE.md) stay in this repository as a short install path. They are not copied into every product as standing law |
+| Install | [`SETUP.md`](../../kit/SETUP.md) stays in this repository. An adopted repository keeps [`UPGRADE.md`](../../kit/UPGRADE.md) and the kit baseline. Upgrade reads the Kit source in that baseline and does not require SETUP |
 | Descriptions | Concise, maintainable, and definitional when a term needs a precise meaning. Kit text stays generic. An adopted repository replaces that with a description of its own files |
 
 ## Contents
@@ -67,7 +67,8 @@ The kit remains a modular, language-agnostic setup kit. An adopted copy contains
 | `kit/rules/contracts.md` | One owner per rule, same-change-set updates, and the short architecture lines |
 | `kit/rules/versioning-and-git.md` | Version surfaces and what git tracks. Changelog detail leaves this file |
 | `kit/MARKDOWN-STANDARD.md` | Landing README, directory-index README, and the minimum frontmatter. Kept smaller |
-| `kit/SETUP.md`, `kit/UPGRADE.md` | Short install path for this repository. Not standing law in every product |
+| `kit/SETUP.md` | Install procedure for this repository. An adopted repository does not keep it |
+| `kit/UPGRADE.md` | Upgrade procedure the adopted repository keeps. It reads the Kit source in the baseline |
 | `AGENTS.md` | Hygiene principle, then the session order. Points at `files.md` |
 | `docs/WORKBOARD.md` | Open work for a project that runs more than one phase. Also the map an install builds |
 
@@ -168,8 +169,9 @@ The rewrite follows [`files.md`](../../kit/rules/files.md): one purpose, one own
 | Completion | One sentence in `kit/RULES.md` | The verification step list moved whole |
 | README shape | `kit/MARKDOWN-STANDARD.md`, reduced to landing, directory index, and minimum frontmatter | A second README format in `files.md` or `AGENTS.md` |
 | Description wording | Generic in this kit. Tailored in an adopted repository | A product-specific sentence kept in `kit/`, or a kit definition pasted over a real directory index |
-| Install | `kit/SETUP.md` and `kit/UPGRADE.md` in this repository | Copies carried as standing law in every product |
+| Install | `kit/SETUP.md` in this repository | A copy of SETUP kept as standing law in a product |
+| Upgrade | `kit/UPGRADE.md`, using the Kit source in the baseline | A procedure that requires SETUP.md to be present |
 | Session order | `AGENTS.md` | Policy paragraphs pasted into `AGENTS.md` |
 | Multi-phase continuity of work | `docs/WORKBOARD.md` | A long workboard essay beside the board |
 
-The working tree now contains that promotion: `git-commit.md`, the short hub, the shorter markdown standard and install path, the retired modules, `library/platforms/`, and `library/skills/`. This file stays the research record. It is not committed.
+The working tree contains that promotion: `git-commit.md`, the short hub, the shorter markdown standard and install path, the retired modules, `library/platforms/`, and `library/skills/`. This file stays the research record.

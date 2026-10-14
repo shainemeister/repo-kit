@@ -1,7 +1,7 @@
 ---
 title: Agent Catalog
 description: Default portable seed agents for repo-kit Agent Instruct, plus an optional slash_only orchestrator crew that is outside the default active set.
-version: "1.2.9"
+version: "1.2.10"
 status: current
 audience:
   - developers
@@ -14,7 +14,7 @@ related:
   - BUILD.md
   - PLAN-HOOK.md
   - templates/
-last_updated: "2026-09-22"
+last_updated: "2026-10-13"
 ---
 
 # Agent Catalog
@@ -94,12 +94,12 @@ Exact enablement is filled by BUILD from PLAN + inventory ([BUILD.md](./BUILD.md
 | **layer** | playbook |
 | **portability** | kit |
 | **activation** | catalog_match |
-| **description** | First-time repo-kit adoption: SETUP checklist, kit/ layout, authority map, kit baseline, delete SETUP. |
+| **description** | First-time repo-kit adoption: follow SETUP in the kit repository, fill the authority map and kit baseline, and leave UPGRADE in the target. |
 | **triggers** | adopt repo-kit, SETUP, first kit, authority map, kit baseline |
 | **negative_triggers** | kit already adopted (baseline present); routine feature work |
 | **authority_paths** | `kit/SETUP.md`, `kit/RULES.md`, `AGENTS.md`, `kit/rules/files.md`, `kit/UPGRADE.md`, `library/skills/PLAN-HOOK.md`, `library/skills/BUILD.md` |
 | **compose_with** | `plan-author`, `maintainer` |
-| **verify** | kit/ present; baseline filled; SETUP removed or archived; project CHANGELOG exists; Agent models + first BUILD when using agents; new navigable dirs get directory-index README per files.md (forward-only; not a historical gate) |
+| **verify** | kit/ present; baseline filled, including Kit source; target keeps UPGRADE and does not keep SETUP; project CHANGELOG exists; Agent models + first BUILD when using agents; new navigable dirs get directory-index README per files.md (forward-only; not a historical gate) |
 | **template** | [templates/adopter.md](./templates/adopter.md) |
 
 ### `maintainer`
@@ -256,13 +256,13 @@ Templates under [templates/](./templates/) carry the full Expertise map. Summary
 
 | id | External citation themes (illustrative) |
 |----|----------------------------------------|
-| maintainer | Keep a Changelog; Conventional Commits |
+| maintainer | Conventional Commits |
 | implementer | Language style guides per project inventory |
 | security | OWASP guidance (citation); project SAST tool docs |
 | docs-author | CommonMark / project MARKDOWN-STANDARD |
 | reviewer | — (primarily in-repo verification/contracts) |
 | plan-author | — (PLAN-HOOK + project PLAN) |
-| adopter | — (SETUP / hygiene / UPGRADE) |
+| adopter | — (SETUP and UPGRADE) |
 
 ---
 
@@ -270,6 +270,7 @@ Templates under [templates/](./templates/) carry the full Expertise map. Summary
 
 | Version | Notes |
 |---------|--------|
+| 1.2.10 | Adopter verify: the target keeps UPGRADE and the kit baseline; it does not keep SETUP |
 | 1.2.9 | Optional orchestrator crew: four `slash_only` ids, not in the default active set (kit 2.15.0) |
 | 1.2.8 | maintainer verify: commit notes name the staged change (not the completed objective) (kit 2.13.0) |
 | 1.2.7 | docs-author verify: description current-content summary + uniqueness (new/on-edit; not a historical gate) (kit 2.12.0) |

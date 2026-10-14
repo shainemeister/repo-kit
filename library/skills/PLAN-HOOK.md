@@ -1,7 +1,7 @@
 ---
 title: PLAN.md Agent Models Hook
 description: Durable control surface contract for Agent Instruct in adopter PLAN.md.
-version: "1.3.3"
+version: "1.3.4"
 status: current
 audience:
   - developers
@@ -13,9 +13,9 @@ related:
   - BUILD.md
   - CATALOG.md
   - PARAMS.md
-  - ../SETUP.md
-  - ../UPGRADE.md
-last_updated: "2026-08-22"
+  - ../../kit/SETUP.md
+  - ../../kit/UPGRADE.md
+last_updated: "2026-10-13"
 ---
 
 # PLAN.md Agent Models Hook
@@ -250,9 +250,9 @@ BUILD reads these sections when filling templates; it does not delete them.
 
 ## SETUP and UPGRADE
 
-**SETUP:** When using Agent Instruct—ensure PLAN.md exists, insert Agent models if missing, run first BUILD, keep Agent models when deleting SETUP. Bare adopt may skip. See [SETUP.md](../../kit/SETUP.md).
+**SETUP:** [SETUP.md](../../kit/SETUP.md) is the install procedure in the kit repository. When using Agent Instruct, ensure PLAN.md exists, insert Agent models if missing, and run the first BUILD. Keep Agent models. An adopted repository does not keep SETUP.md. Bare adopt may skip Agent Instruct.
 
-**UPGRADE:** Preserve Agent models; re-run BUILD after template merge with [source load order](./BUILD.md#source-load-order) (kit seeds regen; adopter/platform packs preserved). Never reset `active_models` without user intent. See [UPGRADE.md](../../kit/UPGRADE.md).
+**UPGRADE:** Preserve Agent models. Re-run BUILD after a template merge with [source load order](./BUILD.md#source-load-order) (kit seeds regen; adopter and platform packs stay). Do not reset `active_models` without user intent. See [UPGRADE.md](../../kit/UPGRADE.md). That procedure reads the Kit source in the baseline and does not require SETUP.md in the target.
 
 ---
 
@@ -260,6 +260,7 @@ BUILD reads these sections when filling templates; it does not delete them.
 
 | Version | Notes |
 |---------|--------|
+| 1.3.4 | Install keeps Agent models. Upgrade does not require SETUP.md in the target |
 | 1.3.3 | Restore unique Must-not digest (kit 2.8.2) |
 | 1.3.2 | Drop in-body document-version echo (kit 2.8.1) |
 | 1.3.1 | Density restyle (kit 2.8.0); unique Agent models fields, dual path, and required section unchanged |

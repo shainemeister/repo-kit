@@ -1,3 +1,12 @@
+---
+title: "Platform examples"
+description: "Filled sketches of a repository that declares one language."
+version: "1.0.0"
+status: current
+doc_type: other
+last_updated: "2026-10-14"
+---
+
 # Platform examples
 
 Filled sketches of a repository that declares one language. They are not kit law.

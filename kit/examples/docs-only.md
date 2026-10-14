@@ -6,6 +6,7 @@ audience:
   - developers
   - maintainers
 doc_type: other
+version: "1.0.0"
 related:
   - ../SETUP.md
   - ../RULES.md

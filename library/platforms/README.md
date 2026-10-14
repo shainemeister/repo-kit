@@ -1,8 +1,23 @@
+---
+title: "Development policy packs"
+description: "Curated maps of what each layer checks for a language or an operating system."
+version: "1.0.0"
+status: current
+doc_type: other
+related:
+  - os/linux/README.md
+  - os/macos/README.md
+  - program-language/python/README.md
+  - program-language/rust/README.md
+  - program-language/c/README.md
+  - program-language/node/README.md
+  - scripts/README.md
+last_updated: "2026-10-14"
+---
+
 # Development policy packs
 
-Curated maps of **what each layer actually checks**. Not tutorials. Not
-product law for any one repository. **Not** [repo-kit](https://github.com/shainemeister/repo-kit)
-(that kit is how a git repo is kept honest).
+Curated maps of what each layer checks for a language or an operating system. Not tutorials, and not product law for any one repository. Not [repo-kit](https://github.com/shainemeister/repo-kit) (that kit is how a git repo is kept honest).
 
 Two buckets. Compose packs; do not merge them into one rulebook.
 
@@ -20,7 +35,7 @@ for humans and agents. Cite them; do not treat this tree as a substitute
 for Debian Policy, the GNOME HIG, the macOS Human Interface Guidelines,
 Apple's distribution docs, the Rust Reference, PEPs, or npm docs.
 
-## Overview
+## Families
 
 | Bucket | Question | Family |
 |--------|----------|--------|
@@ -119,10 +134,9 @@ Copy the axes, not the files.
   packs and its own `sources.yaml`.
 - Do **not** create a new git repository for one family.
 
-## Operator prompts
+## Load path
 
-Session load path for **this** repository. Law for git hygiene stays in
-repo-kit. This section is not a second RULES tree.
+Open this guide, then only the family the work needs. Git rules stay in repo-kit. This section is not a second rules tree.
 
 1. Open this README — buckets, composition table, checker.
 2. Open only the family READMEs for surfaces in play.

@@ -3,6 +3,7 @@ title: "docs/plan/archive/"
 description: Index of shipped program annexes after archive. Open when reading historical kit programs; not the live todo list.
 status: current
 doc_type: other
+version: "1.0.0"
 last_updated: "2026-09-04"
 ---
 

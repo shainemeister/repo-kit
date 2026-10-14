@@ -6,13 +6,14 @@ audience:
   - developers
   - maintainers
 doc_type: other
+version: "1.0.0"
 related:
-  - ../SETUP.md
-  - ../RULES.md
-  - ../MARKDOWN-STANDARD.md
-  - ../rules/files.md
-  - ../rules/hygiene.md
-last_updated: "2026-09-10"
+  - ../../../kit/SETUP.md
+  - ../../../kit/RULES.md
+  - ../../../kit/MARKDOWN-STANDARD.md
+  - ../../../kit/rules/files.md
+  - ../../../kit/UPGRADE.md
+last_updated: "2026-10-13"
 ---
 
 # Example: C / C++ library
@@ -23,7 +24,7 @@ last_updated: "2026-09-10"
 
 **Primary platform (example):** multi
 
-**Packaging:** standards under `kit/`; programming source under `src/` (outside `kit/`). See [hygiene](../rules/hygiene.md) · [files.md](../rules/files.md).
+**Packaging:** standards under `kit/`; programming source under `src/` (outside `kit/`). See [files.md](../../../kit/rules/files.md).
 
 ---
 
@@ -105,7 +106,7 @@ Declare **only** this row when the repo ships C / C++ product sources. Docs-only
 | Docs only | Author checklist (including [density](../MARKDOWN-STANDARD.md#density-force-and-incorporation)); relative links resolve; last citations remain; consume example in README still runs |
 | New navigable directory | Directory-index `README.md` (file → function) for **new** dirs ([files.md](../rules/files.md)); **forward-only** — not a gate for historical folders |
 
-**Adopt clang-format + clang-tidy:** copy `kit/configs/clang-format` → `.clang-format` and `kit/configs/clang-tidy` → `.clang-tidy`; set `BasedOnStyle` if the tree already has a house style; generate `compile_commands.json` from the **product** build (the kit does not ship CMake/Meson/Bazel). Keep clang-format, clang-tidy, and cppcheck **developer-only**. Do not add these rows on a docs-only adopt. Missing compile DB when C / C++ is declared is a failed gate unless a header-only `--` fallback is documented. Declared gates must pass before task completion ([Completion rule](../rules/verification-and-ops.md#completion-rule)). Style chapter: [C / C++ style gate](../rules/authoring-and-style.md#c--c-style-gate-clang-format--clang-tidy). Upgrades: [UPGRADE.md](../UPGRADE.md).
+**Adopt clang-format + clang-tidy:** copy `kit/configs/clang-format` → `.clang-format` and `kit/configs/clang-tidy` → `.clang-tidy`; set `BasedOnStyle` if the tree already has a house style; generate `compile_commands.json` from the **product** build (the kit does not ship CMake/Meson/Bazel). Keep clang-format, clang-tidy, and cppcheck **developer-only**. Do not add these rows on a docs-only adopt. Missing compile DB when C / C++ is declared is a failed gate unless a header-only `--` fallback is documented. Declared gates must pass before task completion ([Completion rule](../rules/verification-and-ops.md#completion-rule)). Style chapter: [C / C++ style gate](../rules/authoring-and-style.md#c--c-style-gate-clang-format--clang-tidy). Upgrades: [UPGRADE.md](../../../kit/UPGRADE.md).
 
 ---
 
