@@ -3,13 +3,15 @@ title: "docs/research/ (repo-kit)"
 description: Index of kit-maintainer research notes. Open when adding or finding investigations, spikes, or findings.
 status: current
 doc_type: other
-last_updated: "2026-08-31"
+version: "1.0.0"
+last_updated: "2026-10-13"
 ---
 
 # docs/research/ (repo-kit)
 
 Kit-maintainer research notes. Scaffold topic files here when investigating standards design.
 
-| Note | Status | Summary |
-|------|--------|---------|
-| *(none yet)* | — | Add dated notes as needed |
+| File | Function |
+|------|----------|
+| [repo-kit-rules-enhancement.md](./repo-kit-rules-enhancement.md) | Forked-path proposal and edge record for one role per purpose |
+| [repo-kit-rework.md](./repo-kit-rework.md) | Rework record for a short hub, library sets named platforms and skills, and a condensed core |

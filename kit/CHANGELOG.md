@@ -4,7 +4,7 @@ History of the **Repository Standards Kit**. **Kit version** is defined by dated
 
 This file is the history of the Repository Standards Kit itself (path: `kit/CHANGELOG.md`).  
 **Adopting projects** maintain their own root `CHANGELOG.md` for *project/package* history (behavior, contracts, releases, kit adoption/upgrade notes).  
-They record the adopted kit version in the **Kit baseline** table inside `RULES.md` (see [RULES — Kit baseline](./RULES.md#kit-baseline) and [Mandatory project CHANGELOG](./rules/versioning-and-git.md#mandatory-project-changelog)).
+They record the adopted kit version in the **Kit baseline** table inside `RULES.md` (see [RULES — Kit baseline](./RULES.md#kit-baseline)). A changelog entry summarizes a notable change. The commit holds the detail ([versioning](./rules/versioning-and-git.md)).
 
 Versioned standards also record per-document history in YAML frontmatter and document-history tables. Those document versions are independent of kit and product versions—see [versioning-and-git](./rules/versioning-and-git.md).
 
@@ -25,6 +25,10 @@ Versioned standards also record per-document history in YAML frontmatter and doc
 ---
 
 ## repo-kit
+
+### [3.0.0] - 2026-10-13
+
+The kit core is the hub, path rules, contracts, commit messages, versions, README shape, and a short install. Language and operating-system packs live in `library/platforms/`. Instruct and the orchestrator live in `library/skills/`.
 
 ### [2.15.0] - 2026-09-22
 

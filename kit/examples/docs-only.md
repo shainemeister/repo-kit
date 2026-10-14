@@ -11,8 +11,8 @@ related:
   - ../RULES.md
   - ../MARKDOWN-STANDARD.md
   - ../rules/files.md
-  - ../rules/hygiene.md
-last_updated: "2026-09-10"
+  - ../rules/contracts.md
+last_updated: "2026-10-13"
 ---
 
 # Example: Docs-only / standards repository
@@ -23,7 +23,7 @@ last_updated: "2026-09-10"
 
 **Primary platform (example):** multi (path examples only; no runtime gate)
 
-**Packaging:** standards under `kit/`; design docs at repo root or under a docs tree **outside** `kit/` if you want clear separation. Docs-only needs no `src/`. See [hygiene](../rules/hygiene.md) · [files.md](../rules/files.md).
+**Packaging:** standards under `kit/`. Design notes stay outside `kit/`. A docs-only repository needs no `src/`. See [files.md](../rules/files.md).
 
 ---
 
@@ -55,12 +55,11 @@ Copy [RULES.md](../RULES.md) and [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md)
 | Design / concept notes | `CONCEPT-v1.md` (outside `kit/`) |
 | Formulas / “how it works” | `METHODOLOGY.md` |
 | Kit evolution / planning | Root `PLAN.md` (if used) |
-| Agent Instruct (optional) | `kit/agents/README.md`; PLAN **Agent models** if using agents ([PLAN-HOOK](../agents/PLAN-HOOK.md)); BUILD → `kit/agents/generated/` — see [PLAN snippet](../agents/examples/PLAN-agent-models-snippet.md) |
-| AI docs workspace (when used) | Root `docs/` (research/plan/project_build/resources); policy `kit/rules/ai-docs-workspace.md` — complements design docs outside kit |
-| Multi-phase execution (when used) | `docs/WORKBOARD.md` · policy `kit/rules/workboard.md` |
-| Host always-on / L0 | **Omit** unless a coding agent maintains the repo — then thin `AGENTS.md` ([HABITAT](../agents/HABITAT.md)) |
+| Working notes | Root `docs/` when the work needs them |
+| Multi-phase work | `docs/WORKBOARD.md` |
+| Coding agent | Root `AGENTS.md` when an agent maintains the repo |
 
-Omit package CLI, schema, fixtures, Python style, and **Security / trust boundary** rows when they do not apply. This example **omits `SECURITY.md`**—see [Security documentation modularity](../rules/security.md#security-documentation-modularity). Docs-only repos still **must** keep root `CHANGELOG.md` for policy/doc releases.
+Omit package CLI, schema, and fixtures when they do not apply. This example omits `SECURITY.md` because a docs-only repository does not execute, use the network, elevate, or handle secrets. A notable change still gets a changelog line. The commit holds the detail.
 
 ### Language surface inventory (snippet)
 

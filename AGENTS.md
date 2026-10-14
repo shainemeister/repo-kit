@@ -1,26 +1,15 @@
 # AGENTS.md
 
-Instructions for **coding agents** working in **repo-kit**. Project entry: root [README.md](./README.md). Adopt/upgrade paste blocks: [Operator prompts](./README.md#operator-prompts).
+Standards live in `kit/`. The project lives outside it: product code, the changelog, and `docs/`. A new path extends the file that already holds the role.
 
-This repository **is** the Repository Standards Kit. Portable law lives under `kit/`. This file is a **pointer** (L0). It is not a second RULES tree.
+## Order
 
-## Open first
+1. Confirm the request.
+2. Check existing files before creating one. [kit/rules/files.md](kit/rules/files.md) owns nouns, verbs, and the directory README.
+3. When installing this kit, open [docs/WORKBOARD.md](docs/WORKBOARD.md) and map the repository without waiting to be asked.
+4. Update the workboard when the work has phases.
+5. Leave this file at that order.
 
-1. [kit/RULES.md](./kit/RULES.md) — authority map, Must / Must not, operator checklist.  
-2. Language inventory: this tree is **docs-only**. No pylint, rustfmt, clang-format, Bandit, cargo-audit, or cppcheck gates.  
-3. [kit/rules/contracts.md](./kit/rules/contracts.md) — one canonical owner; same change set.
+Kit text stays generic. An adopted repository writes descriptions of its own files. [kit/MARKDOWN-STANDARD.md](kit/MARKDOWN-STANDARD.md) owns that shape.
 
-## Working memory
-
-- Multi-phase: [docs/WORKBOARD.md](./docs/WORKBOARD.md).  
-- Habitat / host discovery: [kit/agents/HABITAT.md](./kit/agents/HABITAT.md).
-
-## Agent Instruct
-
-There is **no** root `PLAN.md` Agent models section and `kit/agents/generated/` has no packs. **Skip Instruct / O3.** Use `kit/RULES.md` only.
-
-## Do not
-
-- Invent product languages, host folder trees (`.claude/`, `.cursor/`, Copilot instruction matrices), or Domain A/B gates.  
-- Paste `kit/rules/*` into this file.  
-- Claim complete if a **declared** gate failed (none are declared here except the author checklist).
+Do not claim the work done if a check this repository declares was skipped. For this docs-only kit, that check is the author checklist in the markdown standard.

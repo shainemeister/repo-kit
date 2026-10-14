@@ -1,7 +1,7 @@
 ---
 title: Contracts
-description: What counts as a contract, canonical ownership, co-update rules, fixtures/schema/API, and cross-reference policy.
-version: "1.4.2"
+description: What counts as a contract, who owns it, what must ship together, and the short boundary rules.
+version: "1.5.0"
 status: current
 audience:
   - developers
@@ -10,20 +10,18 @@ audience:
 doc_type: other
 related:
   - ../RULES.md
-  - ./architecture.md
   - ./versioning-and-git.md
-  - ./verification-and-ops.md
   - ./files.md
-  - ./workboard.md
+  - ./git-commit.md
   - ../MARKDOWN-STANDARD.md
-last_updated: "2026-08-31"
+last_updated: "2026-10-13"
 ---
 
 # Contracts
 
 Stable promises a repository makes—behavior, shapes, exits, fields—and the rules for keeping them honest.
 
-**Related:** [RULES.md](../RULES.md) · [architecture.md](./architecture.md) · [versioning-and-git.md](./versioning-and-git.md) · [verification-and-ops.md](./verification-and-ops.md) · [files.md](./files.md) · [workboard.md](./workboard.md) · [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md)
+**Related:** [RULES.md](../RULES.md) · [versioning-and-git.md](./versioning-and-git.md) · [files.md](./files.md) · [git-commit.md](./git-commit.md) · [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md)
 
 ---
 
@@ -44,11 +42,12 @@ Stable promises a repository makes—behavior, shapes, exits, fields—and the r
 ## Contents
 
 1. [What counts as a contract](#what-counts-as-a-contract)
-2. [Ownership rules](#ownership-rules)
-3. [Same-change-set rule](#same-change-set-rule)
-4. [Cross-reference rules](#cross-reference-rules)
-5. [Anti-patterns](#anti-patterns)
-6. [Document history](#document-history)
+2. [Boundaries](#boundaries)
+3. [Ownership rules](#ownership-rules)
+4. [Same-change-set rule](#same-change-set-rule)
+5. [Cross-reference rules](#cross-reference-rules)
+6. [Anti-patterns](#anti-patterns)
+7. [Document history](#document-history)
 
 ---
 
@@ -65,18 +64,15 @@ Stable promises a repository makes—behavior, shapes, exits, fields—and the r
 | Style / SAST gates | language inventory + verification | declared tools and pass criteria |
 | Kit / maintenance policy | [RULES.md](../RULES.md) + [rules/](./) | authority map, baseline, gates |
 
-Package structure and runtime boundaries are **architecture** ([architecture.md](./architecture.md)); the promises those packages make are **contracts**.
+## Boundaries
+
+Keep packages composable at the workflow layer. A call from one stack into another needs a documented boundary. Prefer a documented entry point over an ad-hoc script as the public surface. Declare the dependency policy. Prefer schema or config over a hard-coded business list buried in an engine. Source layout is [files.md](./files.md).
 
 **Not contracts:**
 
-- Agent Instruct packs under `kit/agents/` are **views** over L4 law (`kit/RULES.md`, `kit/rules/*`, product contracts). They do not own CHANGELOG, SAST, hygiene, or public API promises—see [agents/README.md](../agents/README.md).  
-- Root **`docs/`** AI workspace (research, plan, project_build, resources) is **working memory for AI**—not the canonical home for public product promises. Promote durable findings to authority-map owners ([ai-docs-workspace](./ai-docs-workspace.md)).  
-- **`docs/WORKBOARD.md`** is an **execution contract** (what is open / next / SHA), not a product API/CLI/SECURITY contract. Still update it in the **same change set** as a phase ship ([workboard](./workboard.md)). Do not leave the only copy of a public promise on the board or in an annex.  
-- Root **`AGENTS.md`** and thin host aliases are **L0 discovery**, not product contracts and not a second RULES tree ([HABITAT](../agents/HABITAT.md)).
-
-### Agent Instruct bridge (when in use)
-
-When Agent Instruct is adopted, the primary pack’s `authority_paths` (and Expertise map) **direct** which L4 owners to open—they do **not** replace those owners. Operators still apply this file’s same-change-set rule to the **canonical** docs. Utilization order: [OPS.md](../agents/OPS.md). On feature or surface growth, update contracts **and** evolve agents via PLAN + [BUILD](../agents/BUILD.md) when enablement or authority paths change.
+- `docs/` is working memory. A public promise moves to the authority-map owner.
+- `docs/WORKBOARD.md` records open work. Update it in the same change set when a phase ships. It is not the only copy of a public promise.
+- `AGENTS.md` is the session order. It is not a second copy of these rules.
 
 ---
 
@@ -103,7 +99,7 @@ When behavior or a public contract changes, ship together (as applicable):
 3. Version bump when a public surface changes  
 4. Project `CHANGELOG.md` when the change is release-worthy  
 
-A new path or name follows [files.md](./files.md); this file still owns what is a contract. Details: [versioning-and-git.md](./versioning-and-git.md). Proof before “done”: [verification-and-ops.md](./verification-and-ops.md).
+A new path or name follows [files.md](./files.md). Versions follow [versioning-and-git.md](./versioning-and-git.md). Done means the checks in [RULES.md](../RULES.md#completion).
 
 ---
 
@@ -150,19 +146,15 @@ Every substantial markdown file should remain navigable for humans and AI agents
 | Avoid | Prefer |
 |-------|--------|
 | README as the only API/CLI contract | Canonical package guide + short README summary |
-| Empty `SECURITY.md` “for the template” | Omit when [security modularity](./security.md#security-documentation-modularity) allows |
+| Empty `SECURITY.md` for the template | Omit unless the package executes, uses the network, elevates, or handles secrets |
 | Code ships, guide “later” | Same change set as the canonical doc |
 | Silent public field or API rename | Coordinated contract bump + fixtures + docs + CHANGELOG |
 | Duplicating full matrices into every doc; second-home reprint of an owned rule | Link + short summary (one sentence + deep link) |
 | Deleting the last citation of an owner | Keep at least one citation; then drop the reprint |
-| Pack redefines CHANGELOG, SAST, hygiene, or public API law | Short procedure + `authority_paths` to L4; fix pack/BUILD if conflict ([agents](../agents/README.md)) |
-| Instruct in use but contracts updated without consulting pack authority_paths | Open primary pack expertise first ([OPS](../agents/OPS.md)); still edit L4 owners |
-| Public API/CLI matrix lives only under `docs/` | Promote to package contract; leave pointer in docs if useful ([ai-docs-workspace](./ai-docs-workspace.md)) |
-| Phase marked done only in chat | Same-change-set `docs/WORKBOARD.md` status + SHA ([workboard](./workboard.md)) |
-| Only explanation of shipped behavior lives in an annex | Promote to L4 owner; archive the annex |
-| Full `kit/rules/*` pasted into `AGENTS.md` / `CLAUDE.md` | Thin pointer to `kit/RULES.md` ([HABITAT](../agents/HABITAT.md)) |
-| Only CLI/API matrix lives in root README Operator prompts | Package guide owns the contract; Operator prompts is a load path |
-| Isolated work marked done only in chat (map/board never opened) | Parent updates L4 + workboard; child reports files and gates ([OPS](../agents/OPS.md#parent--child-when-work-is-isolated)) |
+| A procedure pack restates a rule this file owns | Cite the owner |
+| Public API or CLI matrix lives only under `docs/` | Promote it to the package contract |
+| Phase marked done only in chat | Update `docs/WORKBOARD.md` in the same change set |
+| Full `kit/rules/*` pasted into `AGENTS.md` | Point at `kit/RULES.md` |
 
 ---
 
@@ -170,6 +162,7 @@ Every substantial markdown file should remain navigable for humans and AI agents
 
 | Version | Notes |
 |---------|--------|
+| 1.5.0 | Boundary rules live here. Architecture file retired. |
 | 1.4.2 | Cite files.md for new path/name; ownership and same-change-set unchanged |
 | 1.4.1 | Density restyle (kit 2.8.0); unique ownership, same-change-set, and incorporation rules unchanged |
 | 1.4.0 | Incorporation + inbound-link duty (kit 2.7.0) |

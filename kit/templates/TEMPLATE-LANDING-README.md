@@ -40,8 +40,8 @@ Session load path for **this** repository. Law stays in [kit/RULES.md](./kit/RUL
 
 1. Open `kit/RULES.md` — authority map, inventory, operator checklist.  
 2. Use **declared** inventory rows only (empty ⇒ no language gates).  
-3. If a coding agent is used: `kit/agents/HABITAT.md` and root `AGENTS.md` (do not clobber a filled file).  
-4. If Instruct (PLAN Agent models or `kit/agents/generated/` packs): `kit/agents/OPS.md`.  
+3. If a coding agent is used: root `AGENTS.md` (do not clobber a filled file).  
+4. Open a library skill only when the task matches it.
 5. If multi-phase: `docs/WORKBOARD.md`.
 
 {{SESSION_NOTES}}

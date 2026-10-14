@@ -10,7 +10,7 @@ last_updated: "2026-09-12"
 
 Implementation / build context while changing the kit itself.
 
-**Policy:** [ai-docs-workspace](../../kit/rules/ai-docs-workspace.md)
+**Index:** [docs workspace](../README.md)
 
 | Note | Status | Summary |
 |------|--------|---------|

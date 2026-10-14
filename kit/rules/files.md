@@ -1,7 +1,7 @@
 ---
 title: File creation, placement, and naming
-description: Evidence, category, path shape (repo-root src/ home; segment and module are nouns; verb is a function), and forward-only directory indexes for versioned paths. Open when adding, moving, splitting, or naming a path; kit-vs-product packaging stays in hygiene.
-version: "1.1.0"
+description: "Evidence, category, and path shape: a segment and a module are nouns, a verb is the function, and a nested directory is allowed when it names one procedure."
+version: "1.3.0"
 status: current
 audience:
   - developers
@@ -10,19 +10,17 @@ audience:
 doc_type: other
 related:
   - ../RULES.md
-  - ./hygiene.md
   - ./contracts.md
   - ../MARKDOWN-STANDARD.md
-  - ../agents/HABITAT.md
-  - ./ai-docs-workspace.md
-last_updated: "2026-09-10"
+  - ./git-commit.md
+last_updated: "2026-10-13"
 ---
 
 # File creation, placement, and naming
 
-Evidence, category, path shape (repo-root `src/` home; segment and module are nouns; verb is a function), and forward-only directory indexes for versioned paths.
+Evidence, category, and path shape: a segment and a module are nouns, a verb is the function, and a nested directory is allowed when it names one procedure.
 
-**Related:** [RULES.md](../RULES.md) · [hygiene.md](./hygiene.md) · [contracts.md](./contracts.md) · [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md) · [HABITAT](../agents/HABITAT.md) · [ai-docs-workspace.md](./ai-docs-workspace.md)
+**Related:** [RULES.md](../RULES.md) · [contracts.md](./contracts.md) · [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md) · [git-commit.md](./git-commit.md)
 
 ---
 
@@ -31,7 +29,7 @@ Evidence, category, path shape (repo-root `src/` home; segment and module are no
 | Must |
 |------|
 | Create or keep a path only with **evidence** (surface exists, inventory row, user asked, or a module is needed) |
-| Place each path in a [category](#categories) this module names; programming source home is repo-root `src/` (three layers: segment noun, module noun, verb as function) |
+| Place source under `src/<segment>/<module>`. Both names are nouns. A verb is a function inside the module. A nested directory is allowed when it names one procedure |
 | Shape paths as `<category>/` then a noun or procedure directory; **code leaves are nouns**; procedure docs may be verbs; procedure **scripts** may use a verb filename only under a procedure segment |
 | Add a directory-index `README.md` in the **same change set** as a **new** navigable, versioned directory that holds other intentional files |
 | When adding, moving, or splitting a path: open the [authority map](../RULES.md#authority-map) then this module (`AGENTS.md` → hub when a coding agent is used) |
@@ -53,16 +51,17 @@ Evidence, category, path shape (repo-root `src/` home; segment and module are no
 1. [When this module applies](#when-this-module-applies)
 2. [Categories](#categories)
 3. [Path shape and naming](#path-shape-and-naming)
-4. [Directory index](#directory-index)
-5. [Adopt modes](#adopt-modes)
-6. [Anti-patterns](#anti-patterns)
-7. [Document history](#document-history)
+4. [One role](#one-role)
+5. [Directory index](#directory-index)
+6. [Adopt modes](#adopt-modes)
+7. [Anti-patterns](#anti-patterns)
+8. [Document history](#document-history)
 
 ---
 
 ## When this module applies
 
-Open this file when **adding, moving, splitting, or naming** a versioned path, or when creating a navigable directory. Skip trivial edits that do not add paths. Do not paste this module into `AGENTS.md` or Operator prompts ([HABITAT](../agents/HABITAT.md#what-l0-may-say)). Adopters **may** fold this module into `kit/RULES.md`; record the choice in the [authority map](../RULES.md#authority-map). Do not require un-folding.
+Open this file when adding, moving, splitting, or naming a versioned path. Do not paste it into `AGENTS.md`. `AGENTS.md` points here.
 
 Create a file or directory only when at least one row holds:
 
@@ -71,54 +70,62 @@ Create a file or directory only when at least one row holds:
 | Surface exists | Public CLI, package, or schema already shipping |
 | Inventory row | Language or path listed on the map or inventory |
 | User asked | Explicit request for the path |
-| Module needed | Domain, contract, or `docs/` module the work requires ([ai-docs-workspace](./ai-docs-workspace.md)) |
+| Module needed | A domain or contract the work requires |
 
 New durable markdown (not on the MARKDOWN-STANDARD omit list) gets YAML in the same change set ([MARKDOWN-STANDARD when to use](../MARKDOWN-STANDARD.md#when-to-use-this-standard)); this file still owns create/place/name.
 
 ## Categories
 
-**This file owns placement.** Kit vs product remains [hygiene](./hygiene.md#unified-packaging). Domain modules stay **flat** in `kit/rules/` — not `kit/rules/<category>/`.
+**This file owns placement.** Standards stay in `kit/`. The project stays outside it. Domain modules stay flat in `kit/rules/`.
 
 | Category | Home | Notes |
 |----------|------|-------|
 | Law | `kit/` | Hub, `kit/rules/*.md`, SETUP (ephemeral), UPGRADE |
 | Form | `kit/MARKDOWN-STANDARD.md`, `kit/templates/` | Authoring standard and skeletons |
-| Landing | Root `README.md` | [Landing](../MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter) shape |
-| History | Project root `CHANGELOG.md` | Kit notes stay in kit CHANGELOG ([hygiene](./hygiene.md)) |
-| Product contract | Package dirs **outside** `kit/` | README, CLI, API, METHODOLOGY; `SECURITY.md` only when [security modularity](./security.md#security-documentation-modularity) requires it |
-| Working memory | Root `docs/` | Modules in [ai-docs-workspace](./ai-docs-workspace.md#default-modular-layout) |
-| Habitat | Root `AGENTS.md` | Thin L0 pointer ([HABITAT](../agents/HABITAT.md)); skip if no coding agent |
-| Instruct views | `kit/agents/` | Views over L4; not a second RULES tree |
-| Style catalog | `kit/configs/` | Copy only for [inventory](./security.md#language-surface-inventory) languages; leftover files are dormant |
+| Landing | Root `README.md` | [Landing](../MARKDOWN-STANDARD.md#landing-readme) shape |
+| History | Project root `CHANGELOG.md` | Kit history stays in `kit/CHANGELOG.md` |
+| Product contract | Package dirs **outside** `kit/` | README, CLI, API. `SECURITY.md` only when the package executes, uses the network, elevates, or handles secrets |
+| Working memory | Root `docs/` | Research, plans, and the workboard |
+| Session order | Root `AGENTS.md` | Hygiene principle and the short order. Not a second rules tree |
 | Regenerable | gitignored workspace | Never commit |
-| Language / source | Repo-root `src/` | All programming source: compiled product, extension source, developer/build helper scripts. Three layers: segment (noun) = first directory under `src/`; module (noun) = code leaf (`window.rs`, `mod.rs`); verb = **function** inside the noun module |
+| Language / source | Repo-root `src/` | Programming source. Segment and module are nouns. A verb is a function inside the module. Nest a directory only to name one procedure |
 
 **Not `src/`:** `kit/`, `data/`, packaging metadata, `docs/`, landing / CHANGELOG / `AGENTS.md`, regenerable.
 
 ## Path shape and naming
 
-```text
-<category>/<noun-or-procedure>/…
-```
-
-Language / source (do not add a fourth path layer):
+A **segment** is the product concern, the first directory under `src/`. A **module** is the noun unit inside that segment. That is the usual industry layout: segment, then module. A **verb** is a function inside the module.
 
 ```text
-src/<segment>/<module>
+src/billing/invoice.py
+    charge()                  # verb inside the noun module
+    refund()
+
+src/billing/invoice/export/pdf.py
+    render()                  # export is one procedure directory; pdf is the noun module
+
+src/build/certify.py          # procedure segment; a verb filename is allowed here
 ```
 
 | Kind | Rule |
 |------|------|
-| After category | Noun directory (`parser/`, `plan/`) or a procedure directory |
-| Segment | Noun; first directory under `src/` (product concern: `git`, `app`, `build`, …) |
-| Code leaves | **Nouns** (a module is a thing). Functions **may** be verbs |
-| Procedure docs | Verb titles allowed (`UPGRADE.md`) |
-| Procedure scripts | Verb filename allowed **only** under a procedure segment (`src/build/certify.py`) |
-| Same leaf names | Allowed when **category + path** scopes them (`README.md`, `SECURITY.md`) |
+| Segment | Noun. First directory under `src/` (`billing`, `git`, `build`) |
+| Module | Noun. The code leaf (`invoice.py`, `pdf.py`, `mod.rs`) |
+| Verb | A function inside the module |
+| Nested directory | Allowed when its name is one procedure, action, or function (`export/`). Each directory is one name |
+| Procedure script | A verb filename is allowed under a procedure segment (`src/build/certify.py`) |
+| Procedure doc | A verb title is allowed (`UPGRADE.md`) |
+| Same leaf names | Allowed when category and path scope them (`README.md`, `SECURITY.md`) |
+
+A nested directory names one role. It does not narrate the steps. `src/git/history/walk/do_commit.rs` is a sentence-path: `do_commit` is a verb used as a module. The action belongs in a function, or in one procedure directory such as `src/git/commit/`.
+
+## One role
+
+A new file is allowed when its role is absent from the directory index. When the role is already listed, edit that file. A split removes the role from the old file in the same change set. The long edge record stays in [repo-kit-rules-enhancement.md](../../docs/research/repo-kit-rules-enhancement.md). This file does not restate it.
 
 ## Directory index
 
-A **navigable, versioned** directory that contains other **intentional** files gets `README.md` in the **same change set** as adding that directory or an intentional file it contains ([contracts](./contracts.md#same-change-set-rule)). Shape: table **file → function**. Function cells use the [identity test](../MARKDOWN-STANDARD.md#description-identity) uniqueness checks (tests 2–3) at one-line resolution (unique role in this folder; not a paste of YAML `description`). YAML `description` still needs test 1 (current-content summary). Not [landing](../MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter) (no Overview / Operator prompts).
+A **navigable, versioned** directory that contains other **intentional** files gets `README.md` in the **same change set** as adding that directory or an intentional file it contains ([contracts](./contracts.md#same-change-set-rule)). Shape: table **file → function**. The function cell is the role in this folder, one line, and it would be wrong on a sibling file. It is not a paste of YAML `description`. Not the [landing README](../MARKDOWN-STANDARD.md#landing-readme).
 
 **Exclude:** regenerable outputs, vendor, `.git/`, secrets, host trees this repo did not create, language leaves already listed in the parent **package** README.
 
@@ -133,12 +140,11 @@ The index is **forward-only** (new dirs; existing-adopt from the adopt date). Mi
 | Upgrade 2.x | Merge this file; map row if missing; preserve product docs and `AGENTS.md`; new source under `src/` | Backfill directory READMEs; restyle package docs; overwrite filled `AGENTS.md`; complete-fail historical `crates/` / `packages/<name>/` / `build-aux/` / `scripts/` |
 | Upgrade 1.x | Migrate into `kit/` **first** ([UPGRADE](../UPGRADE.md)), then same as 2.x | Leave law at root `./rules/` as compat |
 | Folded hub | Port this file **or** keep `kit/rules/files.md` beside a thin hub; document in the map | Force un-fold |
-| Bare adopt | This file recommended; skip HABITAT / `AGENTS.md` | Require `AGENTS.md` |
-| Instruct | Seeds later; packs **BUILD** locally | Force Instruct on bare adopt |
+| Bare adopt | This file. `AGENTS.md` only when a coding agent is used | Require a skill pack |
 
 Layout migration of historical source trees is a program ([UPGRADE](../UPGRADE.md)), not a universe rewrite.
 
-Hygiene keeps kit-vs-product and SETUP/UPGRADE lifecycle ([hygiene](./hygiene.md)). HABITAT keeps L0 pointer rules ([HABITAT](../agents/HABITAT.md)). Security keeps the `SECURITY.md` **trigger** and SAST table ([security modularity](./security.md#security-documentation-modularity)). `docs/` module list stays in [ai-docs-workspace](./ai-docs-workspace.md#default-modular-layout).
+Install and upgrade of this kit stay in [SETUP.md](../SETUP.md) and [UPGRADE.md](../UPGRADE.md). The session order stays in `AGENTS.md`.
 
 ## Anti-patterns
 
@@ -146,12 +152,12 @@ Hygiene keeps kit-vs-product and SETUP/UPGRADE lifecycle ([hygiene](./hygiene.md
 |-------|--------|
 | Empty `docs/` or `src/` on day one (docs-only needs no `src/`) | Create when evidence exists |
 | Nested `kit/rules/files/placement.md` | Flat `kit/rules/files.md` |
-| Verb-named module or sentence-path (`src/do_parse_the_config.py`, `src/git/history/walk/do_commit.rs`) | Noun module; verb function; procedure-script verb only under a procedure segment |
+| Verb-named module or sentence-path (`src/do_parse_the_config.py`, `src/git/history/walk/do_commit.rs`) | `src/<segment>/<module>` with the verb inside the module, or one procedure directory |
 | Product `.rs` / `.py` at repo root; helpers under `scripts/`, `tooling/`, `crates/`, or `build-aux/` as the source home | `src/<segment>/`; helpers in `src/build/` |
 | Upgrade fails complete for old folders without README, or for historical `crates/` | Forward-only index; map real paths; new source under `src/` |
-| Root `./rules/` beside `kit/rules/` | Law under `kit/` only ([hygiene](./hygiene.md)) |
-| This table pasted into `AGENTS.md` | Thin pointer to `kit/RULES.md` ([HABITAT](../agents/HABITAT.md)) |
-| Hygiene reprint of this category table | Cite this file for category; hygiene for kit-vs-product |
+| Root `./rules/` beside `kit/rules/` | Law under `kit/` only |
+| This table pasted into `AGENTS.md` | `AGENTS.md` points at `kit/RULES.md` and at this file |
+| A second file for a role the index already lists | Edit the file that holds the role |
 | `FILE-CATALOG.md` required to adopt | Optional; directory README when the index rule applies |
 
 ---
@@ -160,6 +166,8 @@ Hygiene keeps kit-vs-product and SETUP/UPGRADE lifecycle ([hygiene](./hygiene.md
 
 | Version | Notes |
 |---------|--------|
+| 1.3.0 | Path shape is segment/module. A nested directory is one procedure. The verb stays a function. |
+| 1.2.0 | One role, one file. Hygiene, habitat, and style-catalog rows leave this module. |
 | 1.1.0 | Language/source home is repo-root `src/`; three layers (segment noun, module noun, verb as function); historical `crates/` not a complete-fail (kit 2.14.0) |
 | 1.0.3 | Function cells cite uniqueness tests 2–3; current-content summary stays on YAML `description` (kit 2.12.0) |
 | 1.0.2 | Function cells cite the description identity test (one line; not a reprint) (kit 2.11.0) |

@@ -15,9 +15,9 @@ Curated resources for kit maintainers and AI.
 | Path | Purpose |
 |------|---------|
 | `kit/RULES.md` | Maintenance hub |
-| `kit/rules/ai-docs-workspace.md` | AI docs workspace policy |
-| `kit/rules/workboard.md` | Multi-phase workboard / annex / archive |
-| `kit/agents/OPS.md` | Agent utilization O3 |
+| `docs/README.md` | Workspace index |
+| `docs/WORKBOARD.md` | Multi-phase work |
+| `library/skills/README.md` | Skill packs, opened when a task matches |
 | `kit/CHANGELOG.md` | Kit version history (`## repo-kit`) |
 | `README.md` | Kit landing |
 

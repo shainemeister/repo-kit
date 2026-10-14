@@ -10,7 +10,7 @@ last_updated: "2026-09-04"
 
 Shipped program annexes live here after `git mv` from `docs/plan/<program-id>/`.
 
-**Policy:** [workboard — archive annex](../../../kit/rules/workboard.md#archive-annex-checklist)
+**Board:** [WORKBOARD.md](../../WORKBOARD.md). The annexes below record past kit versions.
 
 This folder is **archaeology only**. It is not the live todo list. Active work is [docs/WORKBOARD.md](../../WORKBOARD.md).
 
