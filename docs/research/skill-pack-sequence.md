@@ -1,7 +1,7 @@
 ---
 title: "Skill pack sequence"
 description: "Numbered working sequence for the skill-pack fix, the choice to keep or reintegrate that tree, and the other audit findings that follow. Includes the overlap inventory for library/skills/."
-version: "1.1.0"
+version: "1.2.0"
 status: draft
 audience:
   - ai-agents
@@ -39,13 +39,13 @@ Work one section at a time, in order. A later section starts when every section 
 
 On each change of status, edit that section's status line and append a dated log line. When a section edits `kit/` or `library/`, register it on [docs/WORKBOARD.md](../WORKBOARD.md) in the same change set. The board's own stale pointers are section 10, so the first registration also repairs the rows that registration would otherwise repeat.
 
-Paths in sections 4–9 are the current tree, `library/skills/`. If section 2 moves that tree, apply those edits at the new paths and retarget the links in this note in that same change set.
+Paths in sections 4–9 are `library/skills/`. Section 1 closed on that home. Section 2 does not move the tree.
 
 ## Sequence
 
 | # | Section | Status | Depends on |
 |---|---------|--------|------------|
-| 1 | [Decide the skill home](#1-decide-the-skill-home) | open | — |
+| 1 | [Decide the skill home](#1-decide-the-skill-home) | done | — |
 | 2 | [Carry out the home decision](#2-carry-out-the-home-decision) | open | 1 |
 | 3 | [Correct the law the packs will cite](#3-correct-the-law-the-packs-will-cite) | open | — |
 | 4 | [Repair skill links and anchors](#4-repair-skill-links-and-anchors) | open | 2 |
@@ -66,7 +66,7 @@ Paths in sections 4–9 are the current tree, `library/skills/`. If section 2 mo
 
 | Field | Value |
 |-------|--------|
-| Status | open |
+| Status | done |
 | Depends on | — |
 | Owners this section edits | This file only |
 
@@ -76,23 +76,23 @@ Choose where Agent Instruct and the orchestrator crew live before any skill file
 
 ### Evidence
 
-Kit 3.0.0 (`kit/CHANGELOG.md`, 2026-10-13) moved Instruct and the orchestrator to `library/skills/` and left the hub silent about that tree. [repo-kit-rework.md](./repo-kit-rework.md) records the reason: the core stays small, and the kit does not cite the library. A skill cites `kit/` and does not restate it. Bare adopt still skips Instruct.
+The [rework record](./repo-kit-rework.md) already shipped this decision. Instruct and the orchestrator live in `library/skills/`. The hub does not cite that tree. A skill cites the kit and does not restate it. Bare adopt still skips Instruct.
 
-The category table in [files.md](../../kit/rules/files.md#categories) has no row for `library/`. Ninety-two tracked files sit outside every named home. Eighty-three of them are under `library/`.
+The category table in [files.md](../../kit/rules/files.md#categories) still has no `library/` row. That gap is section 2, not a reason to reopen the home.
 
 ### Change
 
-Pick one row. Write it into **Decision** and **Chosen home** below. Do not move files in this section.
+Closed. The choices below stay so a later reader can see what was declined.
 
-| Choice | Result | What changes with it |
-|--------|--------|----------------------|
-| A. Stay | `library/skills/` remains the skill home. The hub stays silent | Section 2 adds a `library/` category row and does not move the tree |
-| B. Reintegrate | The skill tree moves back under `kit/` and `library/skills/` is removed in that change set | The hub gains an owner row. The core cites the procedure again. Every relative link retargets with the move |
-| C. Point from the hub | The tree stays in `library/skills/`, and `kit/RULES.md` gains one map row that names it | The "kit does not cite the library" rule is amended in the same change set |
+| Choice | Result |
+|--------|--------|
+| A. Stay | `library/skills/` remains the skill home. The hub stays silent. Section 2 adds the category row |
+| B. Reintegrate | Declined. The tree does not move back under `kit/` |
+| C. Point from the hub | Declined. `kit/RULES.md` does not gain a row that names the library |
 
-**Decision:** undecided
+**Decision:** A. Stay
 
-**Chosen home:** —
+**Chosen home:** `library/skills/`
 
 ### Done when
 
@@ -101,6 +101,7 @@ The two lines above name A, B, or C, and a log line records the date and the rea
 ### Log
 
 - 2026-10-15 — Opened. Decision not made.
+- 2026-10-15 — Closed on A. The rework record is the decision. This queue does not reopen it.
 
 ## 2. Carry out the home decision
 
@@ -108,29 +109,25 @@ The two lines above name A, B, or C, and a log line records the date and the rea
 |-------|--------|
 | Status | open |
 | Depends on | 1 |
-| Owners this section edits | The paths named by the choice in section 1, plus [files.md](../../kit/rules/files.md) and [kit/RULES.md](../../kit/RULES.md) when that choice adds a row |
+| Owners this section edits | [files.md](../../kit/rules/files.md), and the remainder row in [repo-kit-rework.md](./repo-kit-rework.md) |
 
 ### Subject
 
-Make the repository match the decision in section 1. This is the placement change, not the prose repair.
+Add the `library/` category row for the home section 1 already chose. This is not a move, and it does not add a hub row.
 
 ### Evidence
 
-`library/skills/` holds the instruct docs, `templates/`, `examples/`, `generated/.gitkeep`, and `orchestrator/`. Root [README.md](../../README.md) and [library/README.md](../../library/README.md) already point at that tree. [files.md](../../kit/rules/files.md#categories) does not.
+`library/skills/` holds the instruct docs, `templates/`, `examples/`, `generated/.gitkeep`, and `orchestrator/`. `library/platforms/` holds the language and OS packs. Root [README.md](../../README.md) and [library/README.md](../../library/README.md) already point at that tree. [files.md](../../kit/rules/files.md#categories) does not.
 
 ### Change
 
-| Choice from section 1 | Work |
-|-----------------------|------|
-| A. Stay | Add one category row whose home is `library/`. Name platforms and skills in the notes. Leave the files where they are. Update the research and rework notes that describe the category table in the same change set |
-| B. Reintegrate | Move the skill tree to the path chosen in section 1. Update the hub map, the root README, `library/README.md`, and every link that named `library/skills/`. Remove the empty directory in that change set. Retarget sections 4–9 of this note |
-| C. Point from the hub | Add the category row from choice A, and add one authority-map row for the skill index. Amend the sentence that says the kit does not cite the library, in the same change set |
+Add one category row whose home is `library/`. Name platforms and skills in the notes. Leave the files where they are. Leave [kit/RULES.md](../../kit/RULES.md) silent about the library. Update the [rework record](./repo-kit-rework.md) remainder row for this gap in the same change set.
 
 Do not rewrite pack procedures here. Sections 4–8 do that.
 
 ### Done when
 
-`git` shows the tree in the chosen home, the category table names that home, and no current file still points at the old home.
+The category table names `library/`, the skill and platform trees are still under `library/`, and the hub still has no library row.
 
 ### Log
 
@@ -148,7 +145,7 @@ Give the skill packs a true sentence to cite for style and SAST gates, for the f
 
 ### Evidence
 
-- [contracts.md](../../kit/rules/contracts.md) lists style and SAST gates under "language inventory + verification". The hub has no inventory and no verification table. The live baseline is [docs/security.md](../security.md). Language checks live under `library/platforms/`. The kit does not cite `library/`, so the contracts row has to name the baseline without pointing into the library unless section 1 choice C changed that rule.
+- [contracts.md](../../kit/rules/contracts.md) lists style and SAST gates under "language inventory + verification". The hub has no inventory and no verification table. The live baseline is [docs/security.md](../security.md). Language checks live under `library/platforms/`. The kit does not cite `library/`, so the contracts row names the baseline and says the language checks sit outside the kit.
 - [files.md](../../kit/rules/files.md) front matter says `version: "1.3.2"` (commit `9a7a637`, 2026-10-14). The document history stops at 1.3.0.
 - The same file links to `MARKDOWN-STANDARD.md#when-to-use-this-standard`. The heading is "When this applies" (`#when-this-applies`).
 
@@ -545,17 +542,17 @@ The docs index names every intentional child, the security baseline has 3–7 `r
 |-------|--------|
 | Status | open |
 | Depends on | 10 |
-| Owners this section edits | `docs/plan/archive/`, `docs/research/repo-kit-rework.md`, `docs/research/repo-kit-rules-enhancement.md`, and the platform `archive/` READMEs only if this section chooses to retarget them |
+| Owners this section edits | `docs/plan/archive/` and the platform `archive/` READMEs, only if this section chooses to retarget them |
 
 ### Subject
 
-Decide whether historical notes keep broken links to retired modules.
+Decide whether archive notes keep broken links to retired modules.
 
 ### Evidence
 
-Current research notes contain 9 relative links to retired files (`continuity.md`, `hygiene.md`, `architecture.md`, `verification-and-ops.md`). `docs/plan/archive/` contains 27, mostly `kit/rules/workboard.md` and `kit/agents/`. Three density ledgers have no front matter. Archive packs use `status: archived` or `status: archive`, outside `draft` | `current` | `deprecated`.
+[repo-kit-rework.md](./repo-kit-rework.md) and [repo-kit-rules-enhancement.md](./repo-kit-rules-enhancement.md) name removed modules in plain text and link only to owners that exist. `docs/plan/archive/` still contains 27 links, mostly `kit/rules/workboard.md` and `kit/agents/`. Three density ledgers have no front matter. Archive packs use `status: archived` or `status: archive`, outside `draft` | `current` | `deprecated`.
 
-These files are the record of the deletion. Retargeting every historical citation rewrites the record. Leaving them makes the author checklist fail if someone treats archive as current.
+These packs are the record of the deletion. Retargeting every historical citation rewrites that record. Leaving the links makes the author checklist fail if someone treats an archive pack as a current file.
 
 ### Change
 
@@ -615,3 +612,4 @@ The table matches the tree, and no open audit item is missing from sections 1–
 |------|--------|
 | 2026-10-15 | Sequence opened from the repository audit. Sections 1–16 are `open`. Decision in section 1 is undecided. |
 | 2026-10-15 | Overlap inventory from `skills-evaluation-rework.md` folded into sections 6 and 7. That file is removed. This note is the working copy. |
+| 2026-10-15 | Section 1 closed on A. Stay in `library/skills/`. The rework record holds shipped decisions. The forked-path note holds the unpromoted proposal. |

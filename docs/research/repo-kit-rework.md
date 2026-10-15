@@ -1,8 +1,8 @@
 ---
 title: "Repo kit rework"
-description: "Records settled rework decisions for a short agnostic kit whose descriptions stay generic, with library sets named platforms and skills and a condensed core. An adopted repository tailors its own descriptions. Not kit law until those owners change."
-version: "1.7.0"
-status: draft
+description: "Records the rework decisions that are already in the kit, and the owner that holds each one."
+version: "1.8.0"
+status: current
 audience:
   - ai-agents
   - developers
@@ -10,168 +10,68 @@ doc_type: other
 related:
   - ../../kit/RULES.md
   - ../../kit/rules/files.md
-  - ../../kit/rules/versioning-and-git.md
+  - ../../kit/rules/git-commit.md
   - ../../kit/rules/contracts.md
   - ./repo-kit-rules-enhancement.md
-  - ../../library/platforms/README.md
-  - ../../library/skills/README.md
-last_updated: "2026-10-13"
+  - ./skill-pack-sequence.md
+  - ../../library/README.md
+last_updated: "2026-10-15"
 ---
 
 # Repo kit rework
 
-Records settled rework decisions for a short agnostic kit whose descriptions stay generic, with library sets named platforms and skills and a condensed core.
+Records the rework decisions that are already in the kit, and the owner that holds each one.
 
-**Related:** [RULES](../../kit/RULES.md) · [files.md](../../kit/rules/files.md) · [versioning-and-git](../../kit/rules/versioning-and-git.md) · [contracts](../../kit/rules/contracts.md) · [forked-path note](./repo-kit-rules-enhancement.md) · [platforms](../../library/platforms/README.md) · [skills](../../library/skills/README.md)
+**Related:** [RULES](../../kit/RULES.md) · [files](../../kit/rules/files.md) · [commits](../../kit/rules/git-commit.md) · [contracts](../../kit/rules/contracts.md) · [forked-path proposal](./repo-kit-rules-enhancement.md) · [open queue](./skill-pack-sequence.md) · [library](../../library/README.md)
 
-Draft only. Promoting it means editing those owners in one change set ([same-change-set](../../kit/rules/contracts.md#same-change-set-rule)).
+Reference only. The owner holds the rule. This note does not restate it. Checked against the tree on 2026-10-15. The kit version is 3.0.0 (2026-10-13).
 
-## Summary
+## Shipped
 
-| Topic | Decision |
-|-------|----------|
-| Hub | [`kit/RULES.md`](../../kit/RULES.md) stays the authority map, written shorter and less directive |
-| Changelog | A concise summary of notable changes. The git log holds the detail. Several commits in a day do not each earn a line |
-| Commit law | New `kit/rules/git-commit.md` owns the template, its conditions, one example, and the required AI trailers |
-| Paths | [`files.md`](../../kit/rules/files.md) keeps nouns, verbs, and fork awareness, in short form. Edge cases stay in the [forked-path note](./repo-kit-rules-enhancement.md) |
-| Three trees | `kit/` is the core. `docs/` is the workspace. `library/` holds expansive reference sets |
-| Platforms | [Platform packs](../../library/platforms/README.md) are the reference set. They now live at `library/platforms/` |
-| Skills | [Skill packs](../../library/skills/README.md), including the orchestrator crew, now live at `library/skills/`. A skill cites the kit and does not restate it |
-| Security | Language and OS detail stays inside those packs. A short fundamental baseline stays a workspace note until it grows into its own library set |
-| Continuity overlay | Remove [`continuity.md`](../../kit/rules/continuity.md). The hub already covers that job. Do not keep a second copy |
-| Workboard | [`docs/WORKBOARD.md`](../WORKBOARD.md) stays the multi-phase record. The kit states that practice in one line. An install maps the target repo on the board without waiting to be asked |
-| `AGENTS.md` | Front-loads the hygiene principle and a short order. It points at [`files.md`](../../kit/rules/files.md) and does not collect policy |
-| Hygiene | The principle lives in `AGENTS.md`: standards live in `kit/`, the project lives outside it, and a new path extends the file that already holds the role. [`hygiene.md`](../../kit/rules/hygiene.md) retires. Nouns, verbs, and the directory README stay in `files.md` |
-| Architecture | Entry points, workflow composition, a documented cross-stack boundary, and a declared dependency policy become a few lines in [`contracts.md`](../../kit/rules/contracts.md). [`architecture.md`](../../kit/rules/architecture.md) retires. Source layout stays in `files.md` |
-| Completion | One hub sentence: do not claim done if a check this repo declares was skipped. For this docs-only kit, that check is the markdown author checklist. [`verification-and-ops.md`](../../kit/rules/verification-and-ops.md) retires. Language gates leave with `library/platforms/` |
-| README shape | [`MARKDOWN-STANDARD.md`](../../kit/MARKDOWN-STANDARD.md) stays and shrinks to the landing README, the directory-index README, and the minimum frontmatter. The author checklist enforces it |
-| Install | [`SETUP.md`](../../kit/SETUP.md) stays in this repository. An adopted repository keeps [`UPGRADE.md`](../../kit/UPGRADE.md) and the kit baseline. Upgrade reads the Kit source in that baseline and does not require SETUP |
-| Descriptions | Concise, maintainable, and definitional when a term needs a precise meaning. Kit text stays generic. An adopted repository replaces that with a description of its own files |
+| Decision | Owner now |
+|----------|-----------|
+| The hub is a short authority map | [kit/RULES.md](../../kit/RULES.md) |
+| A notable change gets one changelog line. The commit holds the detail | [Changelog](../../kit/RULES.md#changelog) and [kit/CHANGELOG.md](../../kit/CHANGELOG.md). [versioning-and-git.md](../../kit/rules/versioning-and-git.md) cites that sentence |
+| Commit subject, body, identity, and AI trailers have one owner | [git-commit.md](../../kit/rules/git-commit.md). Version numbers and what git tracks stay in [versioning-and-git.md](../../kit/rules/versioning-and-git.md) |
+| Paths, nouns, verbs, and the directory README stay one short module | [files.md](../../kit/rules/files.md). The long edge record stays in the [forked-path proposal](./repo-kit-rules-enhancement.md) |
+| Three trees: core, workspace, library | `kit/`, `docs/`, [library/](../../library/README.md) |
+| Platform packs are a library set | [library/platforms/](../../library/platforms/README.md). The old `kit/configs/` set and `docs/dev-policy/` are gone |
+| Skill packs, including the orchestrator, are a library set. The kit does not cite that set | [library/skills/](../../library/skills/README.md). Bare adopt still skips Instruct |
+| Language and OS checks stay in the platform packs. The fundamental baseline is one workspace note | [docs/security.md](../security.md). A package `SECURITY.md` exists only when that package executes, uses the network, elevates, or handles secrets |
+| The continuity overlay is removed | No successor file. The hub's map is the maintenance path |
+| The workboard is the multi-phase record. An install maps the target there without being asked | [docs/WORKBOARD.md](../WORKBOARD.md). The hub states that in one row. There is no `kit/rules/workboard.md` |
+| The session order is short and front-loads the hygiene principle | [AGENTS.md](../../AGENTS.md). The paste block is [TEMPLATE-AGENTS.md](../../kit/templates/TEMPLATE-AGENTS.md) |
+| The hygiene module is removed. Nouns, verbs, and the directory README stay in the path module | [AGENTS.md](../../AGENTS.md) and [files.md](../../kit/rules/files.md) |
+| Architecture is a few lines on boundaries. The architecture module is removed | [contracts.md](../../kit/rules/contracts.md) Boundaries. Source layout stays in [files.md](../../kit/rules/files.md) |
+| Completion is one hub sentence. The verification module is removed. Language gates left with the platform packs | [kit/RULES.md#completion](../../kit/RULES.md#completion). This docs-only kit uses the [author checklist](../../kit/MARKDOWN-STANDARD.md#author-checklist) |
+| README shape is the landing page, the directory index, and the minimum front matter | [MARKDOWN-STANDARD.md](../../kit/MARKDOWN-STANDARD.md) |
+| Install stays in this repository. An adopted repository keeps the upgrade procedure and the kit baseline | [SETUP.md](../../kit/SETUP.md) and [UPGRADE.md](../../kit/UPGRADE.md). Upgrade reads the Kit source in the baseline |
+| Kit descriptions stay generic. An adopted repository writes what its own files do | [kit/RULES.md](../../kit/RULES.md) and [MARKDOWN-STANDARD.md](../../kit/MARKDOWN-STANDARD.md) |
+| The AI-docs module is removed. Workspace notes stay under `docs/` | [docs/README.md](../README.md) |
 
-## Contents
+## Removed
 
-1. [Core](#core)
-2. [Workspace and library](#workspace-and-library)
-3. [Commit law](#commit-law)
-4. [Rewrite rules](#rewrite-rules)
+These paths have no file in the tree. Successors are in the table above.
 
-## Core
+`kit/rules/continuity.md`, `kit/rules/hygiene.md`, `kit/rules/architecture.md`, `kit/rules/verification-and-ops.md`, `kit/rules/ai-docs-workspace.md`, `kit/rules/workboard.md`, `kit/configs/`, `docs/dev-policy/`.
 
-The kit remains a modular, language-agnostic setup kit. An adopted copy contains the core only.
+## Not this note
 
-| Piece | Role |
-|-------|------|
-| `kit/RULES.md` | Map plus a short Must index. One line and a link per row |
-| `kit/rules/files.md` | Where a path goes, noun modules, verb functions, and how to extend an existing file |
-| `kit/rules/git-commit.md` | Commit template and conditions. Created on promotion |
-| `kit/rules/contracts.md` | One owner per rule, same-change-set updates, and the short architecture lines |
-| `kit/rules/versioning-and-git.md` | Version surfaces and what git tracks. Changelog detail leaves this file |
-| `kit/MARKDOWN-STANDARD.md` | Landing README, directory-index README, and the minimum frontmatter. Kept smaller |
-| `kit/SETUP.md` | Install procedure for this repository. An adopted repository does not keep it |
-| `kit/UPGRADE.md` | Upgrade procedure the adopted repository keeps. It reads the Kit source in the baseline |
-| `AGENTS.md` | Hygiene principle, then the session order. Points at `files.md` |
-| `docs/WORKBOARD.md` | Open work for a project that runs more than one phase. Also the map an install builds |
-
-The changelog rule is one hub sentence: notable changes get a summary line, and the commit history holds the detail. No category schema and no requirement to log every commit. [`versioning-and-git.md`](../../kit/rules/versioning-and-git.md) cites that sentence and drops the long changelog procedure.
-
-`AGENTS.md` opens with the hygiene principle, then this order:
-
-1. Confirm the request.
-2. Check existing files before creating one. [`files.md`](../../kit/rules/files.md) owns nouns, verbs, and the directory README.
-3. When installing this kit, open [`docs/WORKBOARD.md`](../WORKBOARD.md) and map the repository without waiting to be asked.
-4. Update the workboard when the work has phases.
-5. Leave this file at that order.
-
-New policy goes into the path rules, a workspace note, or a library set. The kit does not cite the library.
-
-Kit descriptions stay agnostic. A term that needs a precise meaning gets a short definition, not a project story and not an essay. [`MARKDOWN-STANDARD.md`](../../kit/MARKDOWN-STANDARD.md) owns that shape. An adopted repository keeps the shape and writes the words for its own tree: a directory index says what each file does there. A kit example is not copied in as that description.
-
-## Workspace and library
-
-| Tree | Role |
+| Role | File |
 |------|------|
-| `kit/` | Short git-honesty core |
-| `docs/` | Workspace: research, workboard, plans, build notes, pointer list |
-| `library/` | Reference sets and skill packs. Title index only. Each set stays silent until opened |
+| Unpromoted forked-path proposal | [repo-kit-rules-enhancement.md](./repo-kit-rules-enhancement.md) |
+| Open repair after this rework | [skill-pack-sequence.md](./skill-pack-sequence.md) |
 
-`docs/resources/` stays a list of pointers. It does not hold the packs.
+## Remainders
 
-`library/platforms/` is the reference set. It now lives at [library/platforms/](../../library/platforms/README.md). A language is a directory under `program-language/` with three packs: language, ecosystem, and OS carve-out. Operating-system placement is a directory under `os/`. Compose packs. Do not merge them into one rulebook, and do not add a `security/` or `certification/` child under a language. The root of that tree owns the composition rules. This note does not restate them.
+The decision in each row shipped. The drift is repair, owned by the queue. Do not treat it as an open rework decision.
 
-`kit/configs/` is the old flat config set. Those checks belong to the matching language pack. A new language or operating system is a new directory inside `platforms/`. The core kit does not grow.
+| Shipped decision | Drift | Queue |
+|------------------|-------|-------|
+| Skills stay in `library/skills/`. The hub stays silent about that tree | [files.md](../../kit/rules/files.md) has no category row for `library/` | [Section 2](./skill-pack-sequence.md#2-carry-out-the-home-decision) |
+| A skill cites the kit and does not restate it | Packs still restate owners and still name retired hub sections | [Sections 4–9](./skill-pack-sequence.md#4-repair-skill-links-and-anchors) |
+| Completion is the hub sentence. The verification module is gone | [contracts.md](../../kit/rules/contracts.md) still says "language inventory + verification" | [Section 3](./skill-pack-sequence.md#3-correct-the-law-the-packs-will-cite) |
+| The workboard is the multi-phase owner | [docs/WORKBOARD.md](../WORKBOARD.md) still links `kit/rules/workboard.md` and `kit/agents/orchestrator/` | [Section 10](./skill-pack-sequence.md#10-repair-workboard-pointers) |
+| Platform packs live under `library/platforms/` | Examples, style gates, and the certification skeleton still use kit-era paths | [Sections 11–13](./skill-pack-sequence.md#11-repair-platform-links) |
 
-`docs/dev-policy/` has moved to `library/platforms/` in the working tree.
-
-A fundamental security baseline (privilege, network, secrets, when a `SECURITY.md` exists) is one concept. Language packs and ecosystem packs keep their own checks. Repo-wide scanners such as Gitleaks stay with the baseline, because they are not a language. The baseline stays a short workspace note. If it becomes its own dataset, it gets a directory under `library/`.
-
-| Current material | After the rework |
-|------------------|------------------|
-| Platform packs, language configs, style gates, per-language certification | `library/platforms/` |
-| Fundamental security baseline | [docs/security.md](../security.md) |
-| Skill packs and the orchestrator crew | `library/skills/` |
-| AI-docs policy | Stays with the workspace, shortened. No kit citation |
-| [`continuity.md`](../../kit/rules/continuity.md) and its template | Removed. No library copy and no workspace copy |
-| [`hygiene.md`](../../kit/rules/hygiene.md) | Principle moves into `AGENTS.md`. The root catalog does not |
-| [`architecture.md`](../../kit/rules/architecture.md) | A few lines in [`contracts.md`](../../kit/rules/contracts.md). Layout stays in `files.md` |
-| [`verification-and-ops.md`](../../kit/rules/verification-and-ops.md) | One completion sentence in the hub. The step list does not get a new home |
-
-An agent opens a platform family only when the task needs that language or operating system, and opens one skill only when the task matches that procedure.
-
-## Commit law
-
-Commit requirements are mandatory and get their own file so they can be cited and enforced without the rest of the versioning module.
-
-**Future owner:** `kit/rules/git-commit.md`.
-
-**Current statement, until the split:** [Commit message format](../../kit/rules/versioning-and-git.md#commit-message-format) through [AI-assisted commits](../../kit/rules/versioning-and-git.md#ai-assisted-commits-required-disclosure). The type table and the `Instructed-by` cascade move with the split. This note does not restate them.
-
-The new file is concise and still complete enough to apply. It holds:
-
-- The subject form `type(scope):` plus an imperative summary of the **staged** change.
-- A body when the subject alone does not name the staged actions but concisely describes change made - should reasonably detail what was changed as a summary without becoming a paragraph.
-- The identity conditions now in [commit-note identity](../../kit/rules/versioning-and-git.md#commit-note-identity).
-- The AI trailer block, required when an AI assisted the change or the message. Human-only commits omit it.
-- One filled example.
-- The condition that published history is not rewritten to match the template.
-
-Target shape (informative only; `git-commit.md` will own the enforceable text):
-
-```text
-<type>(<scope>): <imperative summary of the staged change>
-
-<body when the subject does not name the staged actions>
-
-Assisted-by: <AI make / model>
-Compliance: RULES.md
-Instructed-by: <directing human>
-```
-
-The hub keeps one authority-map row and one Must line that link here. It stops repeating the trailer block in the Must table and in the operator list.
-
-`git-commit.md` does not own changelog wording, version numbers, or remotes.
-
-## Rewrite rules
-
-The rewrite follows [`files.md`](../../kit/rules/files.md): one purpose, one owner. A new file names the role it adds or the existing file it extends.
-
-| Purpose | Owner after the rework | What must not gain a second copy |
-|---------|------------------------|----------------------------------|
-| Commit template, conditions, example, AI trailers | `kit/rules/git-commit.md` | Hub Must text, operator steps, `versioning-and-git.md` |
-| Notable-change summary | One sentence in `kit/RULES.md` | A changelog procedure in `versioning-and-git.md` |
-| Fork check | `kit/rules/files.md`, kept short | Edge-case writeups. Those stay in the [forked-path note](./repo-kit-rules-enhancement.md) until a real repo hits one |
-| Expansive reference sets | `library/<set>/`, index is titles only | Pack text inside `kit/` or `docs/resources/` |
-| Platform composition | `library/platforms/README.md` | A restatement in this note or in the hub |
-| Skill procedures | `library/skills/`. One skill open when the task matches | A second RULES tree, a hub "when in use" section, or a skill that restates a kit Must |
-| Fundamental security baseline | One short workspace note | A copy inside each language pack |
-| Hygiene principle | `AGENTS.md` | A second `hygiene.md`, or the root catalog pasted into `AGENTS.md` |
-| Path shape, including nouns, verbs, and the directory README | `kit/rules/files.md` | Those rules pasted into `AGENTS.md` |
-| Architecture boundaries | A few lines in `kit/rules/contracts.md` | `architecture.md` kept beside that text |
-| Completion | One sentence in `kit/RULES.md` | The verification step list moved whole |
-| README shape | `kit/MARKDOWN-STANDARD.md`, reduced to landing, directory index, and minimum frontmatter | A second README format in `files.md` or `AGENTS.md` |
-| Description wording | Generic in this kit. Tailored in an adopted repository | A product-specific sentence kept in `kit/`, or a kit definition pasted over a real directory index |
-| Install | `kit/SETUP.md` in this repository | A copy of SETUP kept as standing law in a product |
-| Upgrade | `kit/UPGRADE.md`, using the Kit source in the baseline | A procedure that requires SETUP.md to be present |
-| Session order | `AGENTS.md` | Policy paragraphs pasted into `AGENTS.md` |
-| Multi-phase continuity of work | `docs/WORKBOARD.md` | A long workboard essay beside the board |
-
-The working tree contains that promotion: `git-commit.md`, the short hub, the shorter markdown standard and install path, the retired modules, `library/platforms/`, and `library/skills/`. This file stays the research record.
+A library set for the security baseline was conditional on that note becoming its own dataset. It is still [docs/security.md](../security.md). That growth is not queued.
