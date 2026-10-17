@@ -1,7 +1,7 @@
 ---
 title: "Markdown standard"
 description: "Landing README, directory-index README, and the minimum frontmatter for a kit document. An adopted repository keeps this shape and writes its own words."
-version: "3.0.0"
+version: "3.0.1"
 status: current
 audience:
   - developers
@@ -11,7 +11,7 @@ related:
   - RULES.md
   - rules/files.md
   - rules/contracts.md
-last_updated: "2026-10-13"
+last_updated: "2026-10-17"
 ---
 
 # Markdown standard
@@ -30,6 +30,7 @@ Durable markdown carries the frontmatter below. These files omit it:
 |------|-----|
 | Root `README.md` | Landing shape |
 | Root `AGENTS.md` | Short session order |
+| Root `MEMORY.md` | Agent notepad |
 | `CHANGELOG.md` | A list of notable changes |
 
 ## Frontmatter

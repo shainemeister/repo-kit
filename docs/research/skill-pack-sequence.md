@@ -1,7 +1,7 @@
 ---
 title: "Skill pack sequence"
-description: "Numbered working sequence for the skill-pack fix, the choice to keep or reintegrate that tree, and the other audit findings that follow. Includes the overlap inventory for library/skills/."
-version: "1.2.0"
+description: "Numbered working sequence for the skill-pack fix, the choice to keep or reintegrate that tree, and the other audit findings that follow. Includes the overlap inventory for skills/."
+version: "1.4.10"
 status: draft
 audience:
   - ai-agents
@@ -9,19 +9,19 @@ audience:
 doc_type: other
 related:
   - ./repo-kit-rework.md
-  - ../../library/skills/README.md
-  - ../../library/skills/CATALOG.md
+  - ../../kit/skills/README.md
+  - ../../docs/library/kit-adopter/skills/kit-map-layers/SKILL.md
   - ../../kit/RULES.md
   - ../../kit/rules/files.md
-  - ../WORKBOARD.md
-last_updated: "2026-10-15"
+  - ../../WORKBOARD.md
+last_updated: "2026-10-17"
 ---
 
 # Skill pack sequence
 
 Numbered working sequence for the skill-pack fix, the choice to keep or reintegrate that tree, and the other audit findings that follow.
 
-**Related:** [rework record](./repo-kit-rework.md) · [skills](../../library/skills/README.md) · [CATALOG](../../library/skills/CATALOG.md) · [RULES](../../kit/RULES.md) · [files](../../kit/rules/files.md) · [workboard](../WORKBOARD.md)
+**Related:** [rework record](./repo-kit-rework.md) · [skills](../../kit/skills/README.md) · [layers](../../docs/library/kit-adopter/skills/kit-map-layers/SKILL.md) · [RULES](../../kit/RULES.md) · [files](../../kit/rules/files.md) · [workboard](../../WORKBOARD.md)
 
 Draft only. This note is the order of work and the inventory for that work. It is not kit law. The overlap tables below were taken on 2026-10-14, after the 3.0.0 move out of `kit/agents/`.
 
@@ -39,22 +39,22 @@ Work one section at a time, in order. A later section starts when every section 
 
 On each change of status, edit that section's status line and append a dated log line. When a section edits `kit/` or `library/`, register it on [docs/WORKBOARD.md](../WORKBOARD.md) in the same change set. The board's own stale pointers are section 10, so the first registration also repairs the rows that registration would otherwise repeat.
 
-Paths in sections 4–9 are `library/skills/`. Section 1 closed on that home. Section 2 does not move the tree.
+Paths in sections 4–9 are `skills/`. Section 1 closed on root `skills/`. Section 2 recorded that home in `files.md`.
 
 ## Sequence
 
 | # | Section | Status | Depends on |
 |---|---------|--------|------------|
 | 1 | [Decide the skill home](#1-decide-the-skill-home) | done | — |
-| 2 | [Carry out the home decision](#2-carry-out-the-home-decision) | open | 1 |
-| 3 | [Correct the law the packs will cite](#3-correct-the-law-the-packs-will-cite) | open | — |
-| 4 | [Repair skill links and anchors](#4-repair-skill-links-and-anchors) | open | 2 |
-| 5 | [Remove retired hub requirements](#5-remove-retired-hub-requirements) | open | 3, 4 |
-| 6 | [Keep one copy of each Instruct rule](#6-keep-one-copy-of-each-instruct-rule) | open | 5 |
-| 7 | [Make surviving packs cite owners](#7-make-surviving-packs-cite-owners) | open | 6 |
-| 8 | [Refresh skill identity fields](#8-refresh-skill-identity-fields) | open | 6, 7 |
-| 9 | [Index the skill directories that remain](#9-index-the-skill-directories-that-remain) | open | 6 |
-| 10 | [Repair workboard pointers](#10-repair-workboard-pointers) | open | 2 |
+| 2 | [Carry out the home decision](#2-carry-out-the-home-decision) | done | 1 |
+| 3 | [Correct the law the packs will cite](#3-correct-the-law-the-packs-will-cite) | done | — |
+| 4 | [Repair skill links and anchors](#4-repair-skill-links-and-anchors) | done | 2 |
+| 5 | [Remove retired hub requirements](#5-remove-retired-hub-requirements) | done | 3, 4 |
+| 6 | [Keep one copy of each Instruct rule](#6-keep-one-copy-of-each-instruct-rule) | done | 5 |
+| 7 | [Make surviving packs cite owners](#7-make-surviving-packs-cite-owners) | done | 6 |
+| 8 | [Refresh skill identity fields](#8-refresh-skill-identity-fields) | done | 6, 7 |
+| 9 | [Index the skill directories that remain](#9-index-the-skill-directories-that-remain) | done | 6 |
+| 10 | [Repair workboard pointers](#10-repair-workboard-pointers) | done | 2 |
 | 11 | [Repair platform links](#11-repair-platform-links) | open | 2 |
 | 12 | [Align platform descriptions and indexes](#12-align-platform-descriptions-and-indexes) | open | 11 |
 | 13 | [Decide the platform changelog schema](#13-decide-the-platform-changelog-schema) | open | 3 |
@@ -76,9 +76,7 @@ Choose where Agent Instruct and the orchestrator crew live before any skill file
 
 ### Evidence
 
-The [rework record](./repo-kit-rework.md) already shipped this decision. Instruct and the orchestrator live in `library/skills/`. The hub does not cite that tree. A skill cites the kit and does not restate it. Bare adopt still skips Instruct.
-
-The category table in [files.md](../../kit/rules/files.md#categories) still has no `library/` row. That gap is section 2, not a reason to reopen the home.
+The 3.0.0 record put Instruct in `library/skills/`. On 2026-10-15 that home was revised. Instruct and the orchestrator live in root `skills/`. The hub does not cite that tree. A skill cites the kit and does not restate it. Bare adopt still skips Instruct.
 
 ### Change
 
@@ -86,13 +84,13 @@ Closed. The choices below stay so a later reader can see what was declined.
 
 | Choice | Result |
 |--------|--------|
-| A. Stay | `library/skills/` remains the skill home. The hub stays silent. Section 2 adds the category row |
-| B. Reintegrate | Declined. The tree does not move back under `kit/` |
-| C. Point from the hub | Declined. `kit/RULES.md` does not gain a row that names the library |
+| A. Stay under `library/` | Superseded the same day. Procedure packs are not a reference set |
+| B. Reintegrate under `kit/` | Declined |
+| C. Point from the hub | Declined. `kit/RULES.md` does not gain a skills row |
 
-**Decision:** A. Stay
+**Decision:** Root `skills/`. `files.md` holds the category row. The hub stays silent.
 
-**Chosen home:** `library/skills/`
+**Chosen home:** `skills/`
 
 ### Done when
 
@@ -102,40 +100,43 @@ The two lines above name A, B, or C, and a log line records the date and the rea
 
 - 2026-10-15 — Opened. Decision not made.
 - 2026-10-15 — Closed on A. The rework record is the decision. This queue does not reopen it.
+- 2026-10-15 — Home revised. Root `skills/`, noun and verb filenames, agent-model contract folded into `plan.md`. B and C stay declined.
 
 ## 2. Carry out the home decision
 
 | Field | Value |
 |-------|--------|
-| Status | open |
+| Status | done |
 | Depends on | 1 |
 | Owners this section edits | [files.md](../../kit/rules/files.md), and the remainder row in [repo-kit-rework.md](./repo-kit-rework.md) |
 
 ### Subject
 
-Add the `library/` category row for the home section 1 already chose. This is not a move, and it does not add a hub row.
+Record the root `skills/` home in the category table. Do not add a hub row.
 
 ### Evidence
 
-`library/skills/` holds the instruct docs, `templates/`, `examples/`, `generated/.gitkeep`, and `orchestrator/`. `library/platforms/` holds the language and OS packs. Root [README.md](../../README.md) and [library/README.md](../../library/README.md) already point at that tree. [files.md](../../kit/rules/files.md#categories) does not.
+`skills/` holds the procedure packs, `templates/`, `examples/`, `generated/.gitkeep`, and `orchestrator/`. `library/platforms/` stays the reference set. [library/README.md](../../library/README.md) indexes platforms only.
 
 ### Change
 
-Add one category row whose home is `library/`. Name platforms and skills in the notes. Leave the files where they are. Leave [kit/RULES.md](../../kit/RULES.md) silent about the library. Update the [rework record](./repo-kit-rework.md) remainder row for this gap in the same change set.
+One category row, home root `skills/`. [kit/RULES.md](../../kit/RULES.md) stays silent. The rework record names that home and drops the old remainder row.
 
 Do not rewrite pack procedures here. Sections 4–8 do that.
 
 ### Done when
 
-The category table names `library/`, the skill and platform trees are still under `library/`, and the hub still has no library row.
+The category table names `skills/`, the packs are at that root, and the hub still has no skills row.
 
 ### Log
+
+- 2026-10-15 — Done. Category row added. Packs moved out of `library/`.
 
 ## 3. Correct the law the packs will cite
 
 | Field | Value |
 |-------|--------|
-| Status | open |
+| Status | done |
 | Depends on | — |
 | Owners this section edits | [contracts.md](../../kit/rules/contracts.md), [files.md](../../kit/rules/files.md) |
 
@@ -163,11 +164,13 @@ The three evidence items are gone, and each edited file's `description`, `versio
 
 ### Log
 
+- 2026-10-15 — Done. Style and SAST cite `docs/security.md`. `files.md` records 1.3.2 (no separate 1.3.1) and cites `#when-this-applies`.
+
 ## 4. Repair skill links and anchors
 
 | Field | Value |
 |-------|--------|
-| Status | open |
+| Status | done |
 | Depends on | 2 |
 | Owners this section edits | The skill files named below |
 
@@ -177,27 +180,14 @@ Make every relative link and every `related` path in the skill tree resolve. Lea
 
 ### Evidence
 
-Front matter `related` still uses the old `kit/agents/` relative depth:
-
-| File | `related` entry that does not resolve |
-|------|----------------------------------------|
-| [BUILD.md](../../library/skills/BUILD.md) | `../UPGRADE.md` |
-| [RUNTIME.md](../../library/skills/RUNTIME.md) | `../RULES.md` |
-| [OPS.md](../../library/skills/OPS.md) | `../rules/contracts.md` |
-| [HABITAT.md](../../library/skills/HABITAT.md) | `../RULES.md`, `../rules/hygiene.md`, `../rules/files.md` |
-
-Body links on existing files use anchors the targets no longer have:
+The home move retargeted the old `related` depths to files that exist, and pointed the host alias at `skills/kit-discover-host/TEMPLATE-HOST-ALIAS.md`. What remains is anchors the targets no longer have:
 
 | From | Anchor |
 |------|--------|
-| [OPS.md](../../library/skills/OPS.md) | `kit/RULES.md#operator-enforcement`, `#progress-tracker-minimum-shape` |
-| [RUNTIME.md](../../library/skills/RUNTIME.md) | `MARKDOWN-STANDARD.md#density-force-and-incorporation` |
-| [docs-author.md](../../library/skills/templates/docs-author.md) | `#density-force-and-incorporation`, `#when-to-use-this-standard`, `#description-identity` |
-| [maintainer.md](../../library/skills/templates/maintainer.md), [reviewer.md](../../library/skills/templates/reviewer.md) | `versioning-and-git.md#commit-note-identity` |
-
-[HABITAT.md](../../library/skills/HABITAT.md) links `kit/templates/TEMPLATE-HOST-ALIAS.md`. The file is [library/skills/templates/TEMPLATE-HOST-ALIAS.md](../../library/skills/templates/TEMPLATE-HOST-ALIAS.md).
-
-[FRAMEWORK.md](../../library/skills/FRAMEWORK.md) and [RUNTIME.md](../../library/skills/RUNTIME.md) still name `kit/agents` as a living path.
+| [run.md](../../skills/kit-use-instruct/SKILL.md) | `kit/RULES.md#operator-enforcement`, `#progress-tracker-minimum-shape` |
+| [RUNTIME.md](../../skills/kit-load-packs/SKILL.md) | `MARKDOWN-STANDARD.md#density-force-and-incorporation` |
+| [docs-author.md](../../skills/kit-author-docs/SKILL.md) | `#density-force-and-incorporation`, `#when-to-use-this-standard`, `#description-identity` |
+| [maintainer.md](../../skills/kit-commit/SKILL.md), [reviewer.md](../../skills/kit-review-change/SKILL.md) | `versioning-and-git.md#commit-note-identity` |
 
 ### Change
 
@@ -209,13 +199,15 @@ A link check of the skill tree reports no missing file and no missing anchor, ou
 
 ### Log
 
+- 2026-10-15 — Done with the compliance pass. Dead anchors in the evidence table were removed from the packs. Each pack now lives in its own directory.
+
 ## 5. Remove retired hub requirements
 
 | Field | Value |
 |-------|--------|
-| Status | open |
+| Status | done |
 | Depends on | 3, 4 |
-| Owners this section edits | [OPS.md](../../library/skills/OPS.md), [FRAMEWORK.md](../../library/skills/FRAMEWORK.md), [RUNTIME.md](../../library/skills/RUNTIME.md), [CATALOG.md](../../library/skills/CATALOG.md), [BUILD.md](../../library/skills/BUILD.md), [PLAN-HOOK.md](../../library/skills/PLAN-HOOK.md), [HABITAT.md](../../library/skills/HABITAT.md), and the seed templates that still require the retired gates |
+| Owners this section edits | [run.md](../../skills/kit-use-instruct/SKILL.md), [FRAMEWORK.md](../../skills/kit-map-layers/SKILL.md), [RUNTIME.md](../../skills/kit-load-packs/SKILL.md), [catalog.md](../../skills/kit-match-agents/SKILL.md), [build.md](../../skills/kit-emit-packs/SKILL.md), [plan.md](../../skills/kit-author-plan/SKILL.md), [habitat.md](../../skills/kit-discover-host/SKILL.md), and the seed templates that still require the retired gates |
 
 ### Subject
 
@@ -225,7 +217,7 @@ Stop the skill procedure from requiring hub sections that 3.0.0 removed.
 
 The live hub's completion rule is [kit/RULES.md#completion](../../kit/RULES.md#completion): do not claim the work done if a declared check was skipped. This repository's check is the [author checklist](../../kit/MARKDOWN-STANDARD.md#author-checklist).
 
-[OPS.md](../../library/skills/OPS.md) still tells step 2 to open a language inventory and a verification table, step 10 and the report shape to run Domain A/B gates, and the parent to own a progress tracker. The same requirements remain in FRAMEWORK, RUNTIME, CATALOG, BUILD, PLAN-HOOK, HABITAT, and in the implementer, security, docs-author, maintainer, and reviewer packs. Section 7 names each pack and the owner it repeats.
+Before this pass, [run.md](../../skills/kit-use-instruct/SKILL.md) told step 2 to open a language inventory and a verification table, step 10 and the report shape to run Domain A/B gates, and the parent to own a progress tracker. The same requirements were in framework, runtime, catalog, build, plan, habitat, and in the implementer, security, docs-author, maintainer, and reviewer packs. Section 7 names each pack and the owner it repeated.
 
 ### Change
 
@@ -237,11 +229,13 @@ A search of the skill tree finds those retired requirements only inside a log or
 
 ### Log
 
+- 2026-10-15 — Done. Packs cite completion and `docs/security.md`. The retired gate names are gone from procedure text.
+
 ## 6. Keep one copy of each Instruct rule
 
 | Field | Value |
 |-------|--------|
-| Status | open |
+| Status | done |
 | Depends on | 5 |
 | Owners this section edits | The skill files named in the tables below. Survivors keep the rule. The other copies lose it |
 
@@ -255,30 +249,30 @@ The same rule is written in several files:
 
 | Rule | Copies |
 |------|--------|
-| L0–L4, and L4 wins | [README](../../library/skills/README.md) layers, [FRAMEWORK](../../library/skills/FRAMEWORK.md) layers and hard rules, [HABITAT](../../library/skills/HABITAT.md) three habitats, [PARAMS](../../library/skills/PARAMS.md) trust, [OPS](../../library/skills/OPS.md) steps 2 and 7 |
-| One primary pack; compose only for a second concern | [FRAMEWORK](../../library/skills/FRAMEWORK.md) compose default, [RUNTIME](../../library/skills/RUNTIME.md) compose default, [OPS](../../library/skills/OPS.md) steps 4–5 and parent/child, [CATALOG](../../library/skills/CATALOG.md) compose-matrix intro |
-| Bare adopt skips BUILD and O3 | [PLAN-HOOK](../../library/skills/PLAN-HOOK.md) dual path, [README](../../library/skills/README.md), [FRAMEWORK](../../library/skills/FRAMEWORK.md), [RUNTIME](../../library/skills/RUNTIME.md), [OPS](../../library/skills/OPS.md), [HABITAT](../../library/skills/HABITAT.md), [BUILD](../../library/skills/BUILD.md) resolution, [PLAN snippet](../../library/skills/examples/PLAN-agent-models-snippet.md) |
-| Active models: absent, unset, or empty | [PLAN-HOOK](../../library/skills/PLAN-HOOK.md) field contract and [BUILD](../../library/skills/BUILD.md) resolution rules, plus the [snippet](../../library/skills/examples/PLAN-agent-models-snippet.md) comment |
-| Overlays stay in-repo; citations are not law | [PLAN-HOOK](../../library/skills/PLAN-HOOK.md), [BUILD](../../library/skills/BUILD.md) fill rules, [PARAMS](../../library/skills/PARAMS.md) expertise, [OPS](../../library/skills/OPS.md) expertise, [FRAMEWORK](../../library/skills/FRAMEWORK.md) hard rules 7 and 12, [anti-patterns](../../library/skills/examples/anti-patterns.md) |
-| Activation modes and size budgets | [PARAMS](../../library/skills/PARAMS.md) enums and [RUNTIME](../../library/skills/RUNTIME.md) activation and budgets; [FRAMEWORK](../../library/skills/FRAMEWORK.md) repeats the size table |
-| O3 steps | Full text in [OPS](../../library/skills/OPS.md). Shortened again in [RUNTIME](../../library/skills/RUNTIME.md) matching guidance and [FRAMEWORK](../../library/skills/FRAMEWORK.md) hard rule 11 |
-| Regen, new persona, durable vs this session | [OPS](../../library/skills/OPS.md) lifecycle and creating a persona, [PLAN-HOOK](../../library/skills/PLAN-HOOK.md) mid-project and durable vs session, [BUILD](../../library/skills/BUILD.md) regen triggers, [PARAMS](../../library/skills/PARAMS.md) user-instruction deltas |
-| Anti-patterns | Short table in [OPS](../../library/skills/OPS.md); longer table in [anti-patterns](../../library/skills/examples/anti-patterns.md) covering the same failures |
-| Pack shape and the doc index | [README](../../library/skills/README.md) pack-format note and [PARAMS](../../library/skills/PARAMS.md) pack-format doctrine. [README](../../library/skills/README.md) start-here and document index list the same files |
+| L0–L4, and L4 wins | [README](../../skills/README.md) layers, [FRAMEWORK](../../skills/kit-map-layers/SKILL.md) layers and hard rules, [HABITAT](../../skills/kit-discover-host/SKILL.md) three habitats, [PARAMS](../../skills/kit-define-pack/SKILL.md) trust, [OPS](../../skills/kit-use-instruct/SKILL.md) steps 2 and 7 |
+| One primary pack; compose only for a second concern | [FRAMEWORK](../../skills/kit-map-layers/SKILL.md) compose default, [RUNTIME](../../skills/kit-load-packs/SKILL.md) compose default, [OPS](../../skills/kit-use-instruct/SKILL.md) steps 4–5 and parent/child, [CATALOG](../../skills/kit-match-agents/SKILL.md) compose-matrix intro |
+| Bare adopt skips BUILD and O3 | [PLAN-HOOK](../../skills/kit-author-plan/SKILL.md) dual path, [README](../../skills/README.md), [FRAMEWORK](../../skills/kit-map-layers/SKILL.md), [RUNTIME](../../skills/kit-load-packs/SKILL.md), [OPS](../../skills/kit-use-instruct/SKILL.md), [HABITAT](../../skills/kit-discover-host/SKILL.md), [BUILD](../../skills/kit-emit-packs/SKILL.md) resolution, [PLAN snippet](../../skills/kit-author-plan/example.md) |
+| Active models: absent, unset, or empty | [PLAN-HOOK](../../skills/kit-author-plan/SKILL.md) field contract and [BUILD](../../skills/kit-emit-packs/SKILL.md) resolution rules, plus the [snippet](../../skills/kit-author-plan/example.md) comment |
+| Overlays stay in-repo; citations are not law | [PLAN-HOOK](../../skills/kit-author-plan/SKILL.md), [BUILD](../../skills/kit-emit-packs/SKILL.md) fill rules, [PARAMS](../../skills/kit-define-pack/SKILL.md) expertise, [OPS](../../skills/kit-use-instruct/SKILL.md) expertise, [FRAMEWORK](../../skills/kit-map-layers/SKILL.md) hard rules 7 and 12, [anti-patterns](../../skills/kit-use-instruct/example.md) |
+| Activation modes and size budgets | [PARAMS](../../skills/kit-define-pack/SKILL.md) enums and [RUNTIME](../../skills/kit-load-packs/SKILL.md) activation and budgets; [FRAMEWORK](../../skills/kit-map-layers/SKILL.md) repeats the size table |
+| O3 steps | Full text in [OPS](../../skills/kit-use-instruct/SKILL.md). Shortened again in [RUNTIME](../../skills/kit-load-packs/SKILL.md) matching guidance and [FRAMEWORK](../../skills/kit-map-layers/SKILL.md) hard rule 11 |
+| Regen, new persona, durable vs this session | [OPS](../../skills/kit-use-instruct/SKILL.md) lifecycle and creating a persona, [PLAN-HOOK](../../skills/kit-author-plan/SKILL.md) mid-project and durable vs session, [BUILD](../../skills/kit-emit-packs/SKILL.md) regen triggers, [PARAMS](../../skills/kit-define-pack/SKILL.md) user-instruction deltas |
+| Anti-patterns | Short table in [OPS](../../skills/kit-use-instruct/SKILL.md); longer table in [anti-patterns](../../skills/kit-use-instruct/example.md) covering the same failures |
+| Pack shape and the doc index | [README](../../skills/README.md) pack-format note and [PARAMS](../../skills/kit-define-pack/SKILL.md) pack-format doctrine. [README](../../skills/README.md) start-here and document index list the same files |
 
-[CATALOG.md](../../library/skills/CATALOG.md) copies each seed's id, triggers, authority paths, compose list, and verify list. [templates/](../../library/skills/templates/) holds that same YAML plus the procedure. [generated-maintainer.sample.md](../../library/skills/examples/generated-maintainer.sample.md) is a third [maintainer](../../library/skills/templates/maintainer.md) pack. The [PLAN snippet](../../library/skills/examples/PLAN-agent-models-snippet.md) repeats the [PLAN-HOOK](../../library/skills/PLAN-HOOK.md) template.
+Before this pass, catalog rows copied each seed's authority paths and verify list, `templates/` held the same YAML, and a generated maintainer sample was a third maintainer pack. Those extra copies are gone. The paste example is [kit-author-plan/example.md](../../skills/kit-author-plan/example.md). The failure list is [kit-use-instruct/example.md](../../skills/kit-use-instruct/example.md).
 
-The seven seeds are [plan-author](../../library/skills/templates/plan-author.md), [adopter](../../library/skills/templates/adopter.md), [maintainer](../../library/skills/templates/maintainer.md), [implementer](../../library/skills/templates/implementer.md), [docs-author](../../library/skills/templates/docs-author.md), [security](../../library/skills/templates/security.md), and [reviewer](../../library/skills/templates/reviewer.md). `generated/` has no live packs.
+The seven seeds are [plan-author](../../skills/kit-author-plan/SKILL.md), [adopter](../../skills/kit-adopter/SKILL.md), [maintainer](../../skills/kit-commit/SKILL.md), [implementer](../../skills/kit-apply-change/SKILL.md), [docs-author](../../skills/kit-author-docs/SKILL.md), [security](../../skills/kit-apply-security/SKILL.md), and [reviewer](../../skills/kit-review-change/SKILL.md). `generated/` has no live packs.
 
-The four crew ids are listed in [CATALOG](../../library/skills/CATALOG.md), [orchestrator/README.md](../../library/skills/orchestrator/README.md), and [orchestrator/INSTALL.md](../../library/skills/orchestrator/INSTALL.md): [orchestrator-router](../../library/skills/orchestrator/router.md), [orchestrator-scout](../../library/skills/orchestrator/scout.md), [orchestrator-builder](../../library/skills/orchestrator/builder.md), and [orchestrator-reviewer](../../library/skills/orchestrator/reviewer.md). [orchestrator-reviewer](../../library/skills/orchestrator/reviewer.md) and the seed [reviewer](../../library/skills/templates/reviewer.md) are two review roles. The [router](../../library/skills/orchestrator/router.md) procedure repeats the [OPS](../../library/skills/OPS.md) smallest-set rule. Section 7 separates that role pair. This section only stops the router from repeating OPS.
+The four crew ids are listed in [CATALOG](../../skills/kit-match-agents/SKILL.md), [dispatch-crew/SKILL.md](../../library/archive/dispatch-crew/SKILL.md), and [orchestrator/INSTALL.md](../../library/archive/dispatch-crew/INSTALL.md): [orchestrator-router](../../library/archive/dispatch-crew/router.md), [orchestrator-scout](../../library/archive/dispatch-crew/scout.md), [orchestrator-builder](../../library/archive/dispatch-crew/builder.md), and [orchestrator-reviewer](../../library/archive/dispatch-crew/review.md). [orchestrator-reviewer](../../library/archive/dispatch-crew/review.md) and the seed [reviewer](../../skills/kit-review-change/SKILL.md) are two review roles. The [router](../../library/archive/dispatch-crew/router.md) procedure repeats the [OPS](../../skills/kit-use-instruct/SKILL.md) smallest-set rule. Section 7 separates that role pair. This section only stops the router from repeating OPS.
 
 These four surfaces stay. They are the owners, not extra copies:
 
 | Surface | Owns |
 |---------|------|
-| [PARAMS.md](../../library/skills/PARAMS.md) | AgentPack schema, enums, and validation |
-| [BUILD.md](../../library/skills/BUILD.md) | Emit algorithm and source load order |
-| [HABITAT.md](../../library/skills/HABITAT.md) | Host catalog and alias evidence |
+| [params.md](../../skills/kit-define-pack/SKILL.md) | AgentPack schema, enums, and validation |
+| [build.md](../../skills/kit-emit-packs/SKILL.md) | Emit algorithm and source load order |
+| [habitat.md](../../skills/kit-discover-host/SKILL.md) | Host catalog and alias evidence |
 | Orchestrator reporting contracts | What each crew pack returns to the parent |
 
 ### Change
@@ -291,11 +285,14 @@ Each rule-table row has one owner recorded here, and the other files link to it.
 
 ### Log
 
+- 2026-10-15 — Done. Owners: layers in [framework.md](../../skills/kit-map-layers/SKILL.md); one primary and O3 in [run.md](../../skills/kit-use-instruct/SKILL.md); bare adopt, active models, trust, durable versus session, and mid-project edits in [plan.md](../../skills/kit-author-plan/SKILL.md); activation enums and pack shape in [params.md](../../skills/kit-define-pack/SKILL.md); load and size budgets in [runtime.md](../../skills/kit-load-packs/SKILL.md); regen in [build.md](../../skills/kit-emit-packs/SKILL.md); failures in [kit-use-instruct/example.md](../../skills/kit-use-instruct/example.md); the paste specimen in [kit-author-plan/example.md](../../skills/kit-author-plan/example.md); the host alias in [TEMPLATE-HOST-ALIAS.md](../../skills/kit-discover-host/TEMPLATE-HOST-ALIAS.md); the tree index in [skills/README.md](../../skills/README.md); the match index in [catalog.md](../../skills/kit-match-agents/SKILL.md); the crew list in [dispatch-crew/SKILL.md](../../library/archive/dispatch-crew/SKILL.md). The generated maintainer sample is dropped. Shared `examples/` and `templates/` are gone.
+- 2026-10-15 — Later cut, outside sections 11–16. One skill per task. `dispatch-crew` is deprecated. This kit does not delegate to another agent. The evidence above records the tree before that cut. Sections 11–16 stay open.
+
 ## 7. Make surviving packs cite owners
 
 | Field | Value |
 |-------|--------|
-| Status | open |
+| Status | done |
 | Depends on | 6 |
 | Owners this section edits | The seed templates and crew packs that section 6 kept |
 
@@ -305,18 +302,18 @@ A pack points at the kit owner. It does not restate the owner's rule.
 
 ### Evidence
 
-Each surviving pack restates a kit owner:
+Before this pass, each surviving pack restated a kit owner:
 
 | Pack | Owner it repeats |
 |------|------------------|
-| [maintainer](../../library/skills/templates/maintainer.md) | Commit messages, versioning, and the changelog sentence. It also cites Keep a Changelog and `https://keepachangelog.com/en/1.1.0/`. This kit's history is the one-sentence index in [kit/CHANGELOG.md](../../kit/CHANGELOG.md). Commit law is [git-commit.md](../../kit/rules/git-commit.md) and [versioning-and-git.md](../../kit/rules/versioning-and-git.md) |
-| [implementer](../../library/skills/templates/implementer.md) | [contracts.md](../../kit/rules/contracts.md), [files.md](../../kit/rules/files.md), and completion |
-| [docs-author](../../library/skills/templates/docs-author.md) | [MARKDOWN-STANDARD.md](../../kit/MARKDOWN-STANDARD.md) |
-| [adopter](../../library/skills/templates/adopter.md) | [SETUP.md](../../kit/SETUP.md), [UPGRADE.md](../../kit/UPGRADE.md), and the kit baseline |
-| [plan-author](../../library/skills/templates/plan-author.md) | [PLAN-HOOK](../../library/skills/PLAN-HOOK.md) and [docs/WORKBOARD.md](../WORKBOARD.md) |
-| [security](../../library/skills/templates/security.md) | The old language inventory and Domain A/B gates. The live baseline is [docs/security.md](../security.md) |
-| [reviewer](../../library/skills/templates/reviewer.md) | Completion, plus the other packs' checks. [orchestrator-reviewer](../../library/skills/orchestrator/reviewer.md) is a second review role |
-| [HABITAT](../../library/skills/HABITAT.md) | [TEMPLATE-AGENTS.md](../../kit/templates/TEMPLATE-AGENTS.md) and the session order |
+| [maintainer](../../skills/kit-commit/SKILL.md) | Commit messages, versioning, and the changelog sentence. It also cites Keep a Changelog and `https://keepachangelog.com/en/1.1.0/`. This kit's history is the one-sentence index in [kit/CHANGELOG.md](../../kit/CHANGELOG.md). Commit law is [git-commit.md](../../kit/rules/git-commit.md) and [versioning-and-git.md](../../kit/rules/versioning-and-git.md) |
+| [implementer](../../skills/kit-apply-change/SKILL.md) | [contracts.md](../../kit/rules/contracts.md), [files.md](../../kit/rules/files.md), and completion |
+| [docs-author](../../skills/kit-author-docs/SKILL.md) | [MARKDOWN-STANDARD.md](../../kit/MARKDOWN-STANDARD.md) |
+| [adopter](../../skills/kit-adopter/SKILL.md) | [SETUP.md](../../kit/SETUP.md), [UPGRADE.md](../../kit/UPGRADE.md), and the kit baseline |
+| [plan-author](../../skills/kit-author-plan/SKILL.md) | [PLAN-HOOK](../../skills/kit-author-plan/SKILL.md) and [docs/WORKBOARD.md](../WORKBOARD.md) |
+| [security](../../skills/kit-apply-security/SKILL.md) | The old language inventory and Domain A/B gates. The live baseline is [docs/security.md](../security.md) |
+| [reviewer](../../skills/kit-review-change/SKILL.md) | Completion, plus the other packs' checks. [orchestrator-reviewer](../../library/archive/dispatch-crew/review.md) is a second review role |
+| [HABITAT](../../skills/kit-discover-host/SKILL.md) | [TEMPLATE-AGENTS.md](../../kit/templates/TEMPLATE-AGENTS.md) and the session order |
 
 Current [kit/RULES.md](../../kit/RULES.md) is a short map. It has no language inventory, verification table, or progress tracker.
 
@@ -330,11 +327,13 @@ Reading a pack and then its authority path does not produce two different statem
 
 ### Log
 
+- 2026-10-15 — Done. Seeds cite the owner and keep the job. Security no longer requires a language inventory. The crew no longer names an inventory or a verify table.
+
 ## 8. Refresh skill identity fields
 
 | Field | Value |
 |-------|--------|
-| Status | open |
+| Status | done |
 | Depends on | 6, 7 |
 | Owners this section edits | Each skill markdown file that sections 4–7 changed |
 
@@ -346,10 +345,10 @@ After the prose is cut, make front matter and the opening paragraph describe the
 
 The author checklist requires the first sentence of `description` to match the lead under the title. These current leads do not match:
 
-- [README.md](../../library/skills/README.md), [FRAMEWORK.md](../../library/skills/FRAMEWORK.md), [PARAMS.md](../../library/skills/PARAMS.md), [CATALOG.md](../../library/skills/CATALOG.md), [PLAN-HOOK.md](../../library/skills/PLAN-HOOK.md), [BUILD.md](../../library/skills/BUILD.md), [RUNTIME.md](../../library/skills/RUNTIME.md), [OPS.md](../../library/skills/OPS.md), [HABITAT.md](../../library/skills/HABITAT.md)
-- [orchestrator/README.md](../../library/skills/orchestrator/README.md), [orchestrator/INSTALL.md](../../library/skills/orchestrator/INSTALL.md)
+- [README.md](../../skills/README.md), [FRAMEWORK.md](../../skills/kit-map-layers/SKILL.md), [params.md](../../skills/kit-define-pack/SKILL.md), [catalog.md](../../skills/kit-match-agents/SKILL.md), [plan.md](../../skills/kit-author-plan/SKILL.md), [build.md](../../skills/kit-emit-packs/SKILL.md), [RUNTIME.md](../../skills/kit-load-packs/SKILL.md), [run.md](../../skills/kit-use-instruct/SKILL.md), [habitat.md](../../skills/kit-discover-host/SKILL.md)
+- [dispatch-crew/SKILL.md](../../library/archive/dispatch-crew/SKILL.md), [orchestrator/INSTALL.md](../../library/archive/dispatch-crew/INSTALL.md)
 
-`last_updated` is 2026-08-21 on FRAMEWORK and RUNTIME, and 2026-09-01 on OPS, while the bodies already mention `library/skills/`. Document versions sit on the 2.x kit. Refresh them only for files this sequence actually changes. A version-only edit does not bump `last_updated`. A structural edit bumps `version` and adds a history row where the file already has one.
+`last_updated` is 2026-08-21 on FRAMEWORK and RUNTIME, and 2026-09-01 on OPS, while the bodies already mention `skills/`. Document versions sit on the 2.x kit. Refresh them only for files this sequence actually changes. A version-only edit does not bump `last_updated`. A structural edit bumps `version` and adds a history row where the file already has one.
 
 ### Change
 
@@ -361,13 +360,15 @@ Every file this sequence edited passes the author checklist.
 
 ### Log
 
+- 2026-10-15 — Done for the skill tree. The description's first sentence matches the lead on the instruct docs, the directory indexes, the rewritten seeds, and the four crew role files. `kit/rules/contracts.md` was not in this section. Platform examples stay in section 12.
+
 ## 9. Index the skill directories that remain
 
 | Field | Value |
 |-------|--------|
-| Status | open |
+| Status | done |
 | Depends on | 6 |
-| Owners this section edits | `library/skills/examples/`, `library/skills/templates/`, `library/skills/generated/`, and [library/skills/README.md](../../library/skills/README.md) |
+| Owners this section edits | `skills/examples/`, `skills/templates/`, `skills/generated/`, and [skills/README.md](../../skills/README.md) |
 
 ### Subject
 
@@ -375,7 +376,7 @@ Give each remaining skill directory the index the placement rule requires, and s
 
 ### Evidence
 
-[files.md](../../kit/rules/files.md#directory-index) requires a directory README in the same change set as a new navigable directory of intentional files. `examples/` and `templates/` have no README. The parent README names both. `generated/` is tracked and contains only `.gitkeep`. The placement rule calls regenerable output gitignored. BUILD still expects that keep file so the emit directory exists.
+[files.md](../../kit/rules/files.md#directory-index) requires a directory README in the same change set as a new navigable directory of intentional files. The home move added those indexes. `generated/` is tracked and contains only `.gitkeep`. The parent index says it ships empty. Section 6 still decides whether `examples/` and `templates/` stay.
 
 ### Change
 
@@ -389,11 +390,13 @@ Every remaining skill directory that holds intentional files has an index, and `
 
 ### Log
 
+- 2026-10-15 — Done. Section 6 removed shared `examples/` and `templates/`. Each pack directory has a thin index. A companion file exists only where a specimen already did: [kit-author-plan/example.md](../../skills/kit-author-plan/example.md), [kit-use-instruct/example.md](../../skills/kit-use-instruct/example.md), and [TEMPLATE-HOST-ALIAS.md](../../skills/kit-discover-host/TEMPLATE-HOST-ALIAS.md). `generated/` stays an empty emit target named from [skills/README.md](../../skills/README.md), with no index of its own.
+
 ## 10. Repair workboard pointers
 
 | Field | Value |
 |-------|--------|
-| Status | open |
+| Status | done |
 | Depends on | 2 |
 | Owners this section edits | [docs/WORKBOARD.md](../WORKBOARD.md) |
 
@@ -406,7 +409,7 @@ Make the current workboard point at owners that exist.
 [docs/WORKBOARD.md](../WORKBOARD.md) is dated 2026-09-22. Primary program is `none`. These links do not resolve:
 
 - `kit/rules/workboard.md` in front matter and in two body links. The hub names this board as the multi-phase owner.
-- `kit/agents/orchestrator/README.md` in the completed-program table. The crew index is [library/skills/orchestrator/README.md](../../library/skills/orchestrator/README.md), unless section 2 moved it.
+- `kit/agents/dispatch-crew/SKILL.md` in the completed-program table. The crew index is [skills/dispatch-crew/SKILL.md](../../library/archive/dispatch-crew/SKILL.md), unless section 2 moved it.
 
 The progress log ends at orchestrator-portability 2.15.0. Kit 3.0.0 is not on the board. `related` also lists seven archive annexes. A substantial doc keeps 3–7 peers. After the retired path is removed, recount.
 
@@ -419,6 +422,8 @@ Retarget the policy links to this board and to [kit/RULES.md](../../kit/RULES.md
 Every link in the workboard resolves, and the board's status lines match the programs that are actually open.
 
 ### Log
+
+- 2026-10-15 — Done with the home move. Retired paths retargeted. Active program is `skills-home`.
 
 ## 11. Repair platform links
 
@@ -514,7 +519,7 @@ The log names the schema, and both changelog files follow that decision.
 |-------|--------|
 | Status | open |
 | Depends on | — |
-| Owners this section edits | [docs/README.md](../README.md), [docs/security.md](../security.md), [docs/plan/README.md](../plan/README.md), [docs/project_build/README.md](../project_build/README.md), [docs/resources/README.md](../resources/README.md) |
+| Owners this section edits | [docs/README.md](../README.md), [docs/security.md](../security.md), [docs/plan/SKILL.md](../plan/SKILL.md), [docs/project_build/SKILL.md](../project_build/SKILL.md), [docs/resources/README.md](../resources/README.md) |
 
 ### Subject
 
@@ -524,7 +529,7 @@ Make the docs indexes and the security baseline match the markdown standard.
 
 - [docs/README.md](../README.md) does not list [TEMPLATE-SECURITY.md](../TEMPLATE-SECURITY.md).
 - [docs/security.md](../security.md) has two `related` peers. A substantial doc lists 3–7.
-- These leads do not match their descriptions: [docs/plan/README.md](../plan/README.md) ("Detailed execution plans for kit work."), [docs/project_build/README.md](../project_build/README.md), [docs/resources/README.md](../resources/README.md). The plan index was last updated 2026-09-22.
+- These leads do not match their descriptions: [docs/plan/SKILL.md](../plan/SKILL.md) ("Detailed execution plans for kit work."), [docs/project_build/SKILL.md](../project_build/SKILL.md), [docs/resources/README.md](../resources/README.md). The plan index was last updated 2026-09-22.
 
 ### Change
 
@@ -560,7 +565,7 @@ Pick one and write it here:
 
 | Choice | Work |
 |--------|------|
-| Keep the record | Add one sentence to [docs/plan/README.md](../plan/README.md) and [docs/research/README.md](./README.md) that archive links and archive `status` values are historical and are not a current-file defect. Do not retarget |
+| Keep the record | Add one sentence to [docs/plan/SKILL.md](../plan/SKILL.md) and [docs/research/README.md](./README.md) that archive links and archive `status` values are historical and are not a current-file defect. Do not retarget |
 | Retarget | Point each link at the successor, or convert it to plain text when the successor is "removed". Leave status values as they are if the keep-the-record sentence covers them |
 
 ### Done when
@@ -612,4 +617,15 @@ The table matches the tree, and no open audit item is missing from sections 1–
 |------|--------|
 | 2026-10-15 | Sequence opened from the repository audit. Sections 1–16 are `open`. Decision in section 1 is undecided. |
 | 2026-10-15 | Overlap inventory from `skills-evaluation-rework.md` folded into sections 6 and 7. That file is removed. This note is the working copy. |
-| 2026-10-15 | Section 1 closed on A. Stay in `library/skills/`. The rework record holds shipped decisions. The forked-path note holds the unpromoted proposal. |
+| 2026-10-15 | Section 1 closed on A, then the home was revised to root `skills/`. |
+| 2026-10-15 | Sections 2 and 10 done with that move. Compliance of the packs stays in sections 4–9. |
+| 2026-10-15 | Later cut, outside sections 11–16: one skill per task. `dispatch-crew` is deprecated. No sub-agent delegation. Sections 11–16 stay open. |
+| 2026-10-15 | The retired crew is archived at `library/archive/dispatch-crew/`. Sections 11–16 stay open. |
+| 2026-10-15 | Seven action directories renamed: `emit-packs`, `use-instruct`, `apply-change`, `commit-version`, `author-docs`, `author-plan`, `review-change`. Ids stay. Sections 11–16 stay open. Section 14 still cites `docs/plan/SKILL.md`. |
+| 2026-10-15 | The commit verb is `skills/commit/` (id `maintainer`). [git-commit.md](../../kit/rules/git-commit.md) keeps the principle. Sections 11–16 stay open. `kit-adopter` is not applied. |
+| 2026-10-15 | The adopt verb is `skills/kit-adopter/` (id `adopter`). Sections 11–16 stay open. |
+| 2026-10-15 | Pack cut. `apply-change` is the agnostic verb. Match rows live in `skills/README.md`. The other named packs cite their owners. Sections 11–16 stay open. |
+| 2026-10-15 | Kit packs are `skills/kit-<action>/`. Ids stay. `kit-adopter` and `generated/` stay. Sections 11–16 stay open. |
+| 2026-10-17 | Later program `kit-skill-path` moved the packs to `kit/skills/kit-<action>/`. Sections 1–10 keep the root-`skills/` record, so those links name the previous home. Sections 11–16 stay open. |
+| 2026-10-17 | Later program `kit-skill-fold` removed `kit-load-packs` and `kit-match-agents`. Activation and size live in `kit-map-layers`. Match rows stay on the skills index. Sections 1–10 keep the earlier record. Sections 11–16 stay open. |
+| 2026-10-17 | Later program `kit-homes` left eight repeated verbs in `kit/skills/`. Adopt and upgrade packs are `docs/library/kit-adopter/`. Sections 1–10 keep the earlier record. Sections 11–16 stay open. |

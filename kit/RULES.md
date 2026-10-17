@@ -1,7 +1,7 @@
 ---
 title: Repository maintenance rules
-description: Authority map for a repository. Names the owner of each concern and the short rules that every adopt shares.
-version: "3.0.0"
+description: Authority map for a repository. Detail lives in the linked file.
+version: "3.4.0"
 status: current
 audience:
   - developers
@@ -15,7 +15,7 @@ related:
   - rules/contracts.md
   - rules/git-commit.md
   - rules/versioning-and-git.md
-last_updated: "2026-10-13"
+last_updated: "2026-10-17"
 ---
 
 # Repository maintenance rules
@@ -43,9 +43,11 @@ Authority map for a repository. Detail lives in the linked file.
 | Commit messages | [git-commit.md](rules/git-commit.md) |
 | Versions and what git tracks | [versioning-and-git.md](rules/versioning-and-git.md) |
 | README shape and frontmatter | [MARKDOWN-STANDARD.md](MARKDOWN-STANDARD.md) |
-| Install and upgrade of this kit | [SETUP.md](SETUP.md), [UPGRADE.md](UPGRADE.md) |
+| Adopt, once | [ADOPTER.md](../ADOPTER.md) |
+| Upgrade, and where the shelf index lives | [UPGRADE.md](UPGRADE.md) |
 | Session order | [AGENTS.md](../AGENTS.md) |
-| Multi-phase work | [docs/WORKBOARD.md](../docs/WORKBOARD.md) |
+| Agent notepad | [MEMORY.md](../MEMORY.md) |
+| Multi-phase work | [WORKBOARD.md](../WORKBOARD.md) |
 | Notable-change summary | The sentence below. The history file is [CHANGELOG.md](CHANGELOG.md). |
 
 Kit descriptions stay generic. An adopted repository writes descriptions of its own files.

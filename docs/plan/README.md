@@ -3,18 +3,18 @@ title: "docs/plan/ (repo-kit)"
 description: Index of detailed execution plans and program annexes. Open when adding a plan or checking whether an annex is live on the workboard.
 status: current
 doc_type: other
-version: "1.0.1"
+version: "1.0.2"
 audience:
   - maintainers
   - ai-agents
-last_updated: "2026-09-22"
+last_updated: "2026-10-17"
 ---
 
 # docs/plan/ (repo-kit)
 
-Detailed execution plans for kit work. Durable kit version history remains in `kit/CHANGELOG.md`.
+Index of detailed execution plans and program annexes. Durable kit version history remains in `kit/CHANGELOG.md`.
 
-**Live multi-phase work:** [docs/WORKBOARD.md](../WORKBOARD.md). A folder here is active only if the board’s Optional annex field links it.
+**Live multi-phase work:** [WORKBOARD.md](../../WORKBOARD.md). A folder here is active only if the board’s Optional annex field links it.
 
 | Plan | Status | Summary |
 |------|--------|---------|
