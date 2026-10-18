@@ -8,6 +8,10 @@ Upgrades: [UPGRADE.md](./UPGRADE.md).
 
 ## repo-kit
 
+### [3.8.0] - 2026-10-17
+
+Path rules are `path-pattern.md` and `directory-index.md`, procedure packs live in `kit/skills/`, adopt and upgrade stay on the shelf, the root workboard is filed in the commit that finishes a program, and project agents live under `docs/library/agent-skills/`.
+
 ### [3.0.0] - 2026-10-13
 
 The kit core is the hub, path rules, contracts, commit messages, versions, README shape, and a short install. An adopted repository keeps `UPGRADE.md` and the kit baseline. Its session order comes from `kit/templates/TEMPLATE-AGENTS.md`. Language and operating-system packs live in `library/platforms/`. Instruct and the orchestrator live in `library/skills/`.
