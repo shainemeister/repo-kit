@@ -1,26 +1,21 @@
 # AGENTS.md
 
-Instructions for **coding agents** working in **repo-kit**. Project entry: root [README.md](./README.md). Adopt/upgrade paste blocks: [Operator prompts](./README.md#operator-prompts).
+Standards live in `kit/`. The project lives outside it: product code, the changelog, and `docs/`. A new path extends the file that already holds the role.
 
-This repository **is** the Repository Standards Kit. Portable law lives under `kit/`. This file is a **pointer** (L0). It is not a second RULES tree.
+## Order
 
-## Open first
+1. Confirm the request.
+2. Check existing files before creating one. [kit/rules/path-pattern.md](kit/rules/path-pattern.md) owns the path pattern. [kit/rules/directory-index.md](kit/rules/directory-index.md) owns the directory README.
+3. When installing this kit, open [WORKBOARD.md](WORKBOARD.md) and map the repository without waiting to be asked.
+4. When the work has more than one phase, open [WORKBOARD.md](WORKBOARD.md), write every step there, and check each off as it is finished.
+5. Leave this file at that order.
 
-1. [kit/RULES.md](./kit/RULES.md) — authority map, Must / Must not, operator checklist.  
-2. Language inventory: this tree is **docs-only**. No pylint, rustfmt, clang-format, Bandit, cargo-audit, or cppcheck gates.  
-3. [kit/rules/contracts.md](./kit/rules/contracts.md) — one canonical owner; same change set.
+When [WORKBOARD.md](WORKBOARD.md) names a primary program other than `—`, start each reply with that file's phase table: ID, Work, and Status.
 
-## Working memory
+An authorized commit updates [WORKBOARD.md](WORKBOARD.md) before that commit is created. [Contracts](kit/rules/contracts.md#boundaries) owns that step.
 
-- Multi-phase: [docs/WORKBOARD.md](./docs/WORKBOARD.md).  
-- Habitat / host discovery: [kit/agents/HABITAT.md](./kit/agents/HABITAT.md).
+[MEMORY.md](MEMORY.md) is the agent's notepad. Update it freely. Keep it to the user's intent and the direction of this repository, and keep it short.
 
-## Agent Instruct
+Kit text stays generic. An adopted repository writes descriptions of its own files. [kit/MARKDOWN-STANDARD.md](kit/MARKDOWN-STANDARD.md) owns that shape.
 
-There is **no** root `PLAN.md` Agent models section and `kit/agents/generated/` has no packs. **Skip Instruct / O3.** Use `kit/RULES.md` only.
-
-## Do not
-
-- Invent product languages, host folder trees (`.claude/`, `.cursor/`, Copilot instruction matrices), or Domain A/B gates.  
-- Paste `kit/rules/*` into this file.  
-- Claim complete if a **declared** gate failed (none are declared here except the author checklist).
+Do not claim the work done if a check this repository declares was skipped. The check is the one [kit/RULES.md](kit/RULES.md) records for this repository.
