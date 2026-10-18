@@ -1,7 +1,7 @@
 ---
 title: "Memory blank"
 description: "Notepad blank for root MEMORY.md. Copy the fenced body when that file is missing."
-version: "1.0.0"
+version: "1.0.1"
 status: current
 audience:
   - ai-agents
@@ -10,7 +10,7 @@ doc_type: other
 related:
   - ./agents.md
   - ../../../../../../AGENTS.md
-  - ../../../../../../kit/rules/files.md
+  - ../../../../../../kit/rules/path-pattern.md
   - ../../../../../../MEMORY.md
 last_updated: "2026-10-17"
 ---
@@ -19,7 +19,7 @@ last_updated: "2026-10-17"
 
 Notepad blank for root MEMORY.md. Copy the fenced body when that file is missing.
 
-**Related:** [agents blank](./agents.md) · [session order](../../../../../../AGENTS.md) · [files](../../../../../../kit/rules/files.md) · [live notepad](../../../../../../MEMORY.md)
+**Related:** [agents blank](./agents.md) · [session order](../../../../../../AGENTS.md) · [path pattern](../../../../../../kit/rules/path-pattern.md) · [live notepad](../../../../../../MEMORY.md)
 
 The fence is the root file. Remove the fence when you copy it. If root `MEMORY.md` already exists, leave it.
 

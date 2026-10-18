@@ -1,7 +1,7 @@
 ---
 title: "AGENTS.md template"
 description: "Paste block for a root AGENTS.md. Use it to create the file, or to add the kit session order to one that already exists."
-version: "1.2.1"
+version: "1.2.3"
 status: current
 audience:
   - developers
@@ -9,7 +9,8 @@ audience:
 doc_type: other
 related:
   - ../../../../../../kit/RULES.md
-  - ../../../../../../kit/rules/files.md
+  - ../../../../../../kit/rules/path-pattern.md
+  - ../../../../../../kit/rules/directory-index.md
   - ../../../../../../kit/MARKDOWN-STANDARD.md
   - ../../../../../../AGENTS.md
 last_updated: "2026-10-17"
@@ -19,7 +20,7 @@ last_updated: "2026-10-17"
 
 Paste block for a root AGENTS.md. Use it to create the file, or to add the kit session order to one that already exists.
 
-**Related:** [RULES](../../../../../../kit/RULES.md) · [files](../../../../../../kit/rules/files.md) · [markdown](../../../../../../kit/MARKDOWN-STANDARD.md) · [this repository](../../../../../../AGENTS.md)
+**Related:** [RULES](../../../../../../kit/RULES.md) · [path pattern](../../../../../../kit/rules/path-pattern.md) · [directory index](../../../../../../kit/rules/directory-index.md) · [markdown](../../../../../../kit/MARKDOWN-STANDARD.md) · [this repository](../../../../../../AGENTS.md)
 
 ## How to use
 
@@ -41,14 +42,14 @@ Standards live in `kit/`. The project lives outside it: product code, the change
 ## Order
 
 1. Confirm the request.
-2. Check existing files before creating one. [kit/rules/files.md](kit/rules/files.md) owns nouns, verbs, and the directory README.
+2. Check existing files before creating one. [kit/rules/path-pattern.md](kit/rules/path-pattern.md) owns the path pattern. [kit/rules/directory-index.md](kit/rules/directory-index.md) owns the directory README.
 3. When installing this kit, open [WORKBOARD.md](WORKBOARD.md) and map the repository without waiting to be asked.
 4. When the work has more than one phase, open [WORKBOARD.md](WORKBOARD.md), write every step there, and check each off as it is finished.
 5. Leave this file at that order.
 
 When [WORKBOARD.md](WORKBOARD.md) names a primary program other than `—`, start each reply with that file's phase table: ID, Work, and Status.
 
-Every commit updates [WORKBOARD.md](WORKBOARD.md) before the session closes. [Contracts](kit/rules/contracts.md#boundaries) owns that step.
+An authorized commit updates [WORKBOARD.md](WORKBOARD.md) before that commit is created. [Contracts](kit/rules/contracts.md#boundaries) owns that step.
 
 [MEMORY.md](MEMORY.md) is the agent's notepad. Update it freely. Keep it to the user's intent and the direction of this repository, and keep it short.
 

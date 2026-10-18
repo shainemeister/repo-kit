@@ -19,7 +19,7 @@ authority_paths:
   - kit/rules/git-commit.md
   - kit/RULES.md
   - kit/rules/versioning-and-git.md
-  - kit/rules/files.md
+  - kit/rules/path-pattern.md
   - kit/rules/contracts.md
   - WORKBOARD.md
 references:
@@ -32,22 +32,23 @@ references:
   - path: kit/rules/versioning-and-git.md
     kind: repo
     purpose: Versions and what git tracks
-  - path: kit/rules/files.md
+  - path: kit/rules/path-pattern.md
     kind: repo
-    purpose: New paths
+    purpose: Confirm a path already follows the pattern
   - path: kit/rules/contracts.md
     kind: repo
-    purpose: Every commit updates the board before the session closes
+    purpose: An authorized commit updates the board before that commit is created
   - path: WORKBOARD.md
     kind: repo
-    purpose: The multi-phase record read after the commit exists
+    purpose: The multi-phase record updated before the commit is created
 verify:
   - subject names the staged change and the type matches the staged files
   - identity checks pass
   - trailer block present when AI assisted, and omitted on a human-only commit
   - changelog sentence updated when the change is notable
   - staged files are ones versioning-and-git.md tracks
-  - the next task named is kit-workboard-archive and this task did not edit the board
+  - the board update required by contracts is in this commit
+  - this task did not create a second commit for the board
 # BUILD fills: {{PROJECT_NAME}}, {{TUNING_MUST_NOT_EXTRA}}
 ---
 
@@ -64,15 +65,15 @@ The principle is [git-commit.md](../../rules/git-commit.md). That file stays the
 - Pass the [identity checks](#identity).
 - When AI assisted, place the [trailer block](../../rules/git-commit.md#ai-trailers) as [trailer placement](#trailer-placement) describes.
 - When the change is notable, add the one changelog sentence ([changelog](../../RULES.md#changelog)).
-- When a path is added, follow [files.md](../../rules/files.md).
-- After the commit exists, name `kit-workboard-archive` as the next task. [Contracts](../../rules/contracts.md#boundaries) requires that update before the session closes.
+- When a path is added, confirm it already follows [path-pattern.md](../../rules/path-pattern.md). Do not name the path in this task.
+- Before the commit is created, update [WORKBOARD.md](../../../WORKBOARD.md). [Contracts](../../rules/contracts.md#boundaries) owns that update. Follow [kit-workboard-archive](../kit-workboard-archive/SKILL.md) for the edit, and include the result in this commit.
 
 ## Must not
 
 - Stage secrets, environment files, or regenerable output ([what git tracks](../../rules/versioning-and-git.md#what-git-tracks)).
 - Paste this kit's history into a project changelog ([changelog](../../rules/versioning-and-git.md#changelog)).
 - Restate the version surfaces or the changelog sentence in the message.
-- File the workboard or replace it with the blank.
+- Leave the board update for a second commit.
 - {{TUNING_MUST_NOT_EXTRA}}
 
 ## Types
@@ -133,8 +134,8 @@ Instructed-by: Jane Developer
 - `kit/rules/git-commit.md` — subject principle and the trailer block
 - `kit/RULES.md` — changelog sentence and completion
 - `kit/rules/versioning-and-git.md` — versions and what git tracks
-- `kit/rules/files.md` — new paths
-- `kit/rules/contracts.md` — every commit updates the board before the session closes
+- `kit/rules/path-pattern.md` — confirm a new path already follows the pattern
+- `kit/rules/contracts.md` — an authorized commit updates the board before that commit is created
 - `WORKBOARD.md` — read after the commit exists
 
 ### External (citations — guidance only)
@@ -150,8 +151,9 @@ Instructed-by: Jane Developer
 5. If the change is notable, update the changelog with one sentence ([changelog](../../RULES.md#changelog)).
 6. If AI assisted, place the trailer block ([trailer placement](#trailer-placement)).
 7. If a declared check failed or was skipped, stop ([completion](../../RULES.md#completion)).
-8. Create the commit with that message.
-9. If that commit exists, name `kit-workboard-archive` and stop. Do not open that skill.
+8. Update [WORKBOARD.md](../../../WORKBOARD.md) before the commit is created. Follow [kit-workboard-archive](../kit-workboard-archive/SKILL.md). Include that edit in this commit.
+9. Create the commit with that message.
+10. Stop. Do not make a second commit for the board.
 
 ## Open for law
 

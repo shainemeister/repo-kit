@@ -1,7 +1,7 @@
 ---
 title: Agent Instruct Framework
 description: Agent Instruct is a layered context system. Thin always-on rules, PLAN as the control surface, these packs as the build and run playbook, generated AgentPacks as on-demand expert views, and canonical kit and product docs as the only law.
-version: "1.10.0"
+version: "1.10.1"
 status: current
 audience:
   - developers
@@ -36,7 +36,7 @@ Related lists maintainer peers. Do not load them for this task.
 | L0–L4, and the rule that L4 wins | — |
 | Job types and portability | — |
 | Activation and size budgets | — |
-| — | One task loads one skill: [files.md](../../../../../kit/rules/files.md) |
+| — | One task loads one skill: [path-pattern.md](../../../../../kit/rules/path-pattern.md) |
 | — | Bare adopt: [kit-author-plan](../kit-author-plan/SKILL.md#plan-dual-path) |
 | — | Utilization: [kit-use-instruct](../kit-use-instruct/SKILL.md#order-of-operations-o3) |
 | — | Match rows: [skills index](../../../../../kit/skills/README.md#match-index) |
@@ -168,7 +168,7 @@ A host mirror of those packs is [kit-discover-host](../kit-discover-host/SKILL.m
 | Rule | Owner |
 |------|--------|
 | L4 wins on conflict with a pack | The layer rule above |
-| One task loads one skill | [files.md](../../../../../kit/rules/files.md) |
+| One task loads one skill | [path-pattern.md](../../../../../kit/rules/path-pattern.md) |
 | Utilization when Instruct is in use | [kit-use-instruct](../kit-use-instruct/SKILL.md#order-of-operations-o3) |
 | Bare adopt skips BUILD and this procedure | [kit-author-plan](../kit-author-plan/SKILL.md#plan-dual-path) |
 | Overlays stay in the repo | [kit-author-plan](../kit-author-plan/SKILL.md#trust-boundary) |
@@ -187,6 +187,7 @@ A host mirror of those packs is [kit-discover-host](../kit-discover-host/SKILL.m
 
 | Version | Notes |
 |---------|--------|
+| 1.10.1 | One task loads one skill cites path-pattern.md |
 | 1.10.0 | Calibration packs and generated packs live under `docs/library/kit-adopter/` |
 | 1.9.0 | This file owns activation, size budgets, and the default paths. `kit-load-packs` is gone |
 | 1.8.0 | Home is `kit/skills/kit-<action>/`. A blank is `template/<noun>.md` |

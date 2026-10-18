@@ -19,7 +19,8 @@ authority_paths:
   - ADOPTER.md
   - kit/RULES.md
   - AGENTS.md
-  - kit/rules/files.md
+  - kit/rules/path-pattern.md
+  - kit/rules/directory-index.md
   - kit/UPGRADE.md
 references:
   - path: ADOPTER.md
@@ -37,7 +38,7 @@ verify:
   - target keeps UPGRADE and deletes ADOPTER.md when the adopt is finished
   - project root CHANGELOG exists
   - Agent models section present and first BUILD run when using agents
-  - map real paths; directory index from adopt date forward (files.md)
+  - map real paths; directory index from adopt date forward (directory-index.md)
 # BUILD fills: {{PROJECT_NAME}}, {{TUNING_MUST_NOT_EXTRA}}
 ---
 
@@ -49,7 +50,7 @@ Adopt the kit once by following ADOPTER.md. When Agent Instruct is in use, the n
 
 - Follow [ADOPTER.md](../../../../../ADOPTER.md). Do not restate it.
 - When using Agent Instruct, the next task is kit-author-plan, then kit-emit-packs. Stop. Do not open those skills in this session.
-- When adding a path, follow [files.md](../../../../../kit/rules/files.md).
+- When adding a path, follow [path-pattern.md](../../../../../kit/rules/path-pattern.md). A new directory index follows [directory-index.md](../../../../../kit/rules/directory-index.md).
 
 ## Must not
 

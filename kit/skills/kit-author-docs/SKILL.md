@@ -21,7 +21,8 @@ authority_paths:
   - library/platforms/style-gates.md
   - kit/rules/contracts.md
   - WORKBOARD.md
-  - kit/rules/files.md
+  - kit/rules/directory-index.md
+  - kit/rules/path-pattern.md
   - kit/skills/kit-author-docs/template/
 references:
   - path: kit/MARKDOWN-STANDARD.md
@@ -53,7 +54,8 @@ Author durable markdown by applying the markdown standard, and cite an owner ins
 
 - Apply [MARKDOWN-STANDARD](../../MARKDOWN-STANDARD.md) for frontmatter, the lead, and the [author checklist](../../MARKDOWN-STANDARD.md#author-checklist).
 - Cite the owner. Do not paste a second copy of its rule ([contracts](../../rules/contracts.md)).
-- When adding a path, follow [files.md](../../rules/files.md#directory-index).
+- When the task is the directory index, the next task is `kit-index-directory`. Stop.
+- When the task is naming a path, the next task is `kit-name-path`. Stop.
 
 ## Must not
 
@@ -67,8 +69,9 @@ Author durable markdown by applying the markdown standard, and cite an owner ins
 
 - `kit/MARKDOWN-STANDARD.md` — form and the author checklist
 - `kit/rules/contracts.md` — one owner, one statement
-- `kit/rules/files.md` — directory index
-- `template/` — blanks: landing, readme, dir, cli, concept, methodology, generic
+- `kit/rules/directory-index.md` — when a directory gets an index
+- `kit/rules/path-pattern.md` — how a path is named
+- `template/` — blanks: landing, readme, cli, concept, methodology, generic. The index blank is `kit-index-directory/template/index.md`
 
 ### External (citations — guidance only)
 

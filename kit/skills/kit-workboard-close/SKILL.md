@@ -51,7 +51,7 @@ The record is [WORKBOARD.md](../../../WORKBOARD.md). That file stays the owner.
 ## Must not
 
 - Do the phase's product work in this task.
-- File a copy of the board or restore the blank. That waits for the commit [contracts](../../rules/contracts.md#boundaries) names.
+- File a copy of the board or restore the blank. That is part of the authorized commit [contracts](../../rules/contracts.md#boundaries) names.
 - Call the work done when a check this repository declares was skipped ([completion](../../RULES.md#completion)).
 - Restate the status meanings. Those stay on the board.
 - {{TUNING_MUST_NOT_EXTRA}}

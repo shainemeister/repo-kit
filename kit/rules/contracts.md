@@ -1,7 +1,7 @@
 ---
 title: Contracts
 description: "Stable promises a repository makes—behavior, shapes, exits, fields—and the rules for keeping them honest."
-version: "1.10.0"
+version: "1.12.0"
 status: current
 audience:
   - developers
@@ -11,7 +11,7 @@ doc_type: other
 related:
   - ../RULES.md
   - ./versioning-and-git.md
-  - ./files.md
+  - ./path-pattern.md
   - ./git-commit.md
   - ../MARKDOWN-STANDARD.md
 last_updated: "2026-10-17"
@@ -21,7 +21,7 @@ last_updated: "2026-10-17"
 
 Stable promises a repository makes—behavior, shapes, exits, fields—and the rules for keeping them honest.
 
-**Related:** [RULES.md](../RULES.md) · [versioning-and-git.md](./versioning-and-git.md) · [files.md](./files.md) · [git-commit.md](./git-commit.md) · [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md)
+**Related:** [RULES.md](../RULES.md) · [versioning-and-git.md](./versioning-and-git.md) · [path-pattern.md](./path-pattern.md) · [git-commit.md](./git-commit.md) · [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md)
 
 ---
 
@@ -66,12 +66,12 @@ Stable promises a repository makes—behavior, shapes, exits, fields—and the r
 
 ## Boundaries
 
-Keep packages composable at the workflow layer. A call from one stack into another needs a documented boundary. Prefer a documented entry point over an ad-hoc script as the public surface. Declare the dependency policy. Prefer schema or config over a hard-coded business list buried in an engine. Source layout is [files.md](./files.md).
+Keep packages composable at the workflow layer. A call from one stack into another needs a documented boundary. Prefer a documented entry point over an ad-hoc script as the public surface. Declare the dependency policy. Prefer schema or config over a hard-coded business list buried in an engine. Source layout is [path-pattern.md](./path-pattern.md).
 
 **Not contracts:**
 
 - `docs/` is working memory. A public promise moves to the authority-map owner.
-- `WORKBOARD.md` records open work. Every commit updates it before the session closes. When a phase ships, that update is in the same change set. When no phase is `open`, `active`, or `blocked`, that update files the copy and restores the blank. The board is not the only copy of a public promise.
+- `WORKBOARD.md` records open work. An authorized commit updates it before that commit is created, and the update is in that commit. When a phase ships, that update is in the same change set. When the primary program is `—`, the commit does not file the board. When a phase is `open`, `active`, or `blocked`, the update adds one progress line. When no phase is `open`, `active`, or `blocked`, the update files the copy and restores the blank. The board is not the only copy of a public promise.
 - `AGENTS.md` is the session order. It is not a second copy of these rules.
 
 ---
@@ -99,7 +99,7 @@ When behavior or a public contract changes, ship together (as applicable):
 3. Version bump when a public surface changes  
 4. Project `CHANGELOG.md` when the change is release-worthy  
 
-A new path or name follows [files.md](./files.md). Versions follow [versioning-and-git.md](./versioning-and-git.md). Done means the checks in [RULES.md](../RULES.md#completion).
+A new path or name follows [path-pattern.md](./path-pattern.md). Versions follow [versioning-and-git.md](./versioning-and-git.md). Done means the checks in [RULES.md](../RULES.md#completion).
 
 ---
 
@@ -154,7 +154,8 @@ Every substantial markdown file should remain navigable for humans and AI agents
 | A procedure pack restates a rule this file owns | Cite the owner |
 | Public API or CLI matrix lives only under `docs/` | Promote it to the package contract |
 | Phase marked done only in chat | Update `WORKBOARD.md` in the same change set |
-| Commit that leaves the workboard stale | Update the board before the session closes |
+| Commit that leaves the workboard stale | Update the board before that commit is created |
+| A second commit whose only change is the workboard filing | File the board in the authorized commit |
 | Full `kit/rules/*` pasted into `AGENTS.md` | Point at `kit/RULES.md` |
 
 ---
@@ -163,6 +164,8 @@ Every substantial markdown file should remain navigable for humans and AI agents
 
 | Version | Notes |
 |---------|--------|
+| 1.12.0 | A new path cites path-pattern.md |
+| 1.11.0 | The board update is in the authorized commit, before that commit is created |
 | 1.10.0 | A program is filed when no phase is `open`, `active`, or `blocked` |
 | 1.9.0 | Every commit updates the workboard before the session closes. A finished program is filed and the blank restored |
 | 1.8.0 | A fully done board stays in place for the commit that shipped it. Filing the copy is the next task |

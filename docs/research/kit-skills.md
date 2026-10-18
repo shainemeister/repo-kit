@@ -1,7 +1,7 @@
 ---
 title: "Kit and skills"
 description: "Working model for how the kit and the skill set fit together. The user states the task, and the agent matches one SKILL.md. A specific verb carries a fixed procedure. An agnostic verb adopts the repository's own skills and docs."
-version: "1.6.0"
+version: "1.6.1"
 status: draft
 audience:
   - ai-agents
@@ -10,7 +10,7 @@ doc_type: other
 related:
   - ../../kit/RULES.md
   - ../../kit/rules/git-commit.md
-  - ../../kit/rules/files.md
+  - ../../kit/rules/path-pattern.md
   - ../../docs/library/kit-adopter/skills/kit-discover-host/template/agents.md
   - ../../kit/skills/README.md
   - ./skill-pack-sequence.md
@@ -22,7 +22,7 @@ last_updated: "2026-10-17"
 
 Working model for how the kit and the skill set fit together. The user states the task, and the agent matches one SKILL.md. A specific verb carries a fixed procedure. An agnostic verb adopts the repository's own skills and docs.
 
-**Related:** [RULES](../../kit/RULES.md) · [git-commit](../../kit/rules/git-commit.md) · [files](../../kit/rules/files.md) · [AGENTS template](../../docs/library/kit-adopter/skills/kit-discover-host/template/agents.md) · [skills](../../kit/skills/README.md) · [sequence](./skill-pack-sequence.md) · [workboard](../../WORKBOARD.md)
+**Related:** [RULES](../../kit/RULES.md) · [git-commit](../../kit/rules/git-commit.md) · [path pattern](../../kit/rules/path-pattern.md) · [AGENTS template](../../docs/library/kit-adopter/skills/kit-discover-host/template/agents.md) · [skills](../../kit/skills/README.md) · [sequence](./skill-pack-sequence.md) · [workboard](../../WORKBOARD.md)
 
 Draft only. This note is not kit law. The owners stay [kit/RULES.md](../../kit/RULES.md) and the file the authority map names. Promotion means editing that owner and the skill in one change set.
 
@@ -57,7 +57,7 @@ Both kinds are `SKILL.md`. Both cite the kit owner. The kit owner wins.
 
 ## Routing
 
-The match belongs in the session order, beside the authority map. [files.md](../../kit/rules/files.md) already places `kit/skills/kit-<action>/SKILL.md` and says one task loads one skill. The hub stays a map. It does not grow a skill index.
+The match belongs in the session order, beside the authority map. [path-pattern.md](../../kit/rules/path-pattern.md) places `kit/skills/kit-<action>/SKILL.md` and says one task loads one skill. The hub stays a map. It does not grow a skill index.
 
 Promoting the match means editing the paste block in [agents.md](../../docs/library/kit-adopter/skills/kit-discover-host/template/agents.md) and the owners that block cites, in one change set. This note does not do that.
 

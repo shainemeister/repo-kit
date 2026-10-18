@@ -1,7 +1,7 @@
 ---
 title: Skills
 description: "Index of procedure packs and the match rows for the seed ids. Open the pack whose action matches the task."
-version: "1.16.0"
+version: "1.18.0"
 status: current
 audience:
   - developers
@@ -26,7 +26,7 @@ Index of procedure packs and the match rows for the seed ids. Open the pack whos
 
 Related lists maintainer peers. Do not load them for this task.
 
-One task loads one skill ([files.md](../rules/files.md)). Adopt and upgrade orders are [kit-adopter](../../docs/library/kit-adopter/README.md).
+One task loads one skill ([path pattern](../rules/path-pattern.md)). A repository skill stays unprefixed at root `skills/<action>/` only when that repository has one. This kit does not delegate to another agent. Adopt and upgrade orders are [kit-adopter](../../docs/library/kit-adopter/README.md).
 
 ---
 
@@ -46,6 +46,8 @@ One task loads one skill ([files.md](../rules/files.md)). Adopt and upgrade orde
 | Commit the staged change | [kit-commit](kit-commit/SKILL.md) |
 | Open, advance, close, or archive a program | [kit-workboard-register](kit-workboard-register/SKILL.md) · [kit-workboard-advance](kit-workboard-advance/SKILL.md) · [kit-workboard-close](kit-workboard-close/SKILL.md) · [kit-workboard-archive](kit-workboard-archive/SKILL.md) |
 | Do the change a phase names | [kit-apply-change](kit-apply-change/SKILL.md) |
+| Name, move, or split a path | [kit-name-path](kit-name-path/SKILL.md) |
+| Index a new directory | [kit-index-directory](kit-index-directory/SKILL.md) |
 | Write durable markdown | [kit-author-docs](kit-author-docs/SKILL.md) |
 | Review a change | [kit-review-change](kit-review-change/SKILL.md) |
 | Apply the security baseline | [kit-apply-security](kit-apply-security/SKILL.md) |
@@ -63,8 +65,10 @@ One task loads one skill ([files.md](../rules/files.md)). Adopt and upgrade orde
 | [kit-workboard-register/](kit-workboard-register/SKILL.md) | Open one program on the workboard |
 | [kit-workboard-advance/](kit-workboard-advance/SKILL.md) | Set the one active phase and add the progress line |
 | [kit-workboard-close/](kit-workboard-close/SKILL.md) | Mark a phase done, cancelled, or deferred |
-| [kit-workboard-archive/](kit-workboard-archive/SKILL.md) | Update the board after a commit. File it when no phase is open, active, or blocked |
+| [kit-workboard-archive/](kit-workboard-archive/SKILL.md) | Update the board for an authorized commit. File it when no phase is open, active, or blocked |
 | [kit-apply-change/](kit-apply-change/SKILL.md) | Agnostic verb. Adopt the repository's existing role, or seed one when it is absent |
+| [kit-name-path/](kit-name-path/SKILL.md) | Name, move, or split a path. The principle is `kit/rules/path-pattern.md` |
+| [kit-index-directory/](kit-index-directory/SKILL.md) | Write the index for a new directory. Blank in `template/index.md` |
 | [kit-author-docs/](kit-author-docs/SKILL.md) | Author durable markdown. Blanks in `template/` |
 | [kit-review-change/](kit-review-change/SKILL.md) | Review a change. A commit rewrite is the next task |
 | [kit-apply-security/](kit-apply-security/SKILL.md) | Apply the security baseline. Blank in `template/security.md` |
@@ -81,8 +85,10 @@ Match text only. Open the seed for procedure, authority paths, and verify. Trigg
 | `workboard-register` | catalog_match | Open one program on the workboard | [kit-workboard-register](kit-workboard-register/SKILL.md) |
 | `workboard-advance` | catalog_match | Set the one active phase and add the progress line | [kit-workboard-advance](kit-workboard-advance/SKILL.md) |
 | `workboard-close` | catalog_match | Mark a phase done, cancelled, or deferred | [kit-workboard-close](kit-workboard-close/SKILL.md) |
-| `workboard-archive` | catalog_match | Update the board after a commit. File it when no phase is open, active, or blocked | [kit-workboard-archive](kit-workboard-archive/SKILL.md) |
+| `workboard-archive` | catalog_match | Update the board for an authorized commit. File it when no phase is open, active, or blocked | [kit-workboard-archive](kit-workboard-archive/SKILL.md) |
 | `implementer` | catalog_match | Adopt the repository's existing role for the change | [kit-apply-change](kit-apply-change/SKILL.md) |
+| `name-path` | catalog_match | Name, move, or split a path | [kit-name-path](kit-name-path/SKILL.md) |
+| `index-directory` | catalog_match | Write the index for a new directory | [kit-index-directory](kit-index-directory/SKILL.md) |
 | `docs-author` | catalog_match | Author durable markdown | [kit-author-docs](kit-author-docs/SKILL.md) |
 | `security` | catalog_match | Apply the security baseline | [kit-apply-security](kit-apply-security/SKILL.md) |
 | `reviewer` | catalog_match | Review a change in this session | [kit-review-change](kit-review-change/SKILL.md) |
@@ -99,6 +105,8 @@ Match text only. Open the seed for procedure, authority paths, and verify. Trigg
 | `workboard-close` | match |
 | `workboard-archive` | match |
 | `implementer` | on |
+| `name-path` | match |
+| `index-directory` | match |
 | `docs-author` | on |
 | `security` | on when the change touches privilege, network, or secrets; otherwise match |
 | `reviewer` | match |
@@ -113,6 +121,8 @@ The retired crew is archived outside this tree. Do not register it.
 
 | Version | Notes |
 |---------|--------|
+| 1.18.0 | `kit-name-path` and `kit-index-directory` are the path and index instructs |
+| 1.17.0 | The board update is part of the authorized commit |
 | 1.16.0 | A program is filed when no phase is open, active, or blocked |
 | 1.15.0 | `kit-workboard-archive` runs after every commit. A finished program is filed and the blank restored |
 | 1.14.0 | This index lists nine repeated verbs. `kit-workboard-archive` files a finished board and restores the blank |

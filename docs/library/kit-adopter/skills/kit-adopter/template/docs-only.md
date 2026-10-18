@@ -6,12 +6,13 @@ audience:
   - developers
   - maintainers
 doc_type: other
-version: "1.1.0"
+version: "1.1.1"
 related:
   - ../../../../../../ADOPTER.md
   - ../../../../../../kit/RULES.md
   - ../../../../../../kit/MARKDOWN-STANDARD.md
-  - ../../../../../../kit/rules/files.md
+  - ../../../../../../kit/rules/path-pattern.md
+  - ../../../../../../kit/rules/directory-index.md
   - ../../../../../../kit/rules/contracts.md
 last_updated: "2026-10-17"
 ---
@@ -24,7 +25,7 @@ last_updated: "2026-10-17"
 
 **Primary platform (example):** multi (path examples only; no runtime gate)
 
-**Packaging:** standards under `kit/`. Design notes stay outside `kit/`. A docs-only repository needs no `src/`. See [files.md](../../../../../../kit/rules/files.md).
+**Packaging:** standards under `kit/` ([RULES](../../../../../../kit/RULES.md)). Design notes stay outside `kit/`. A docs-only repository needs no `src/` ([path pattern](../../../../../../kit/rules/path-pattern.md)).
 
 ---
 
@@ -50,7 +51,8 @@ Copy [RULES.md](../../../../../../kit/RULES.md) and [MARKDOWN-STANDARD.md](../..
 | Markdown structure | `kit/MARKDOWN-STANDARD.md` |
 | Maintenance policy | `kit/RULES.md` + `kit/rules/` |
 | Contract policy | `kit/rules/contracts.md` |
-| File placement / creation / naming | `kit/rules/files.md` |
+| Path pattern | `kit/rules/path-pattern.md` |
+| Directory index | `kit/rules/directory-index.md` |
 | Project history (**required**) | Root `CHANGELOG.md` |
 | Standards kit baseline | `kit/RULES.md` — Kit baseline |
 | Design / concept notes | `CONCEPT-v1.md` (outside `kit/`) |
@@ -98,7 +100,7 @@ Empty inventory: no language gates. No `certification/` folder required.
 |-------------|----------------------|
 | Docs only | Author checklist (including [density](../../../../../../kit/MARKDOWN-STANDARD.md#author-checklist)); relative links resolve; last citations remain |
 | New/removed source files | `FILE-CATALOG.md` updated (if maintained) |
-| New navigable directory | Directory-index `README.md` (file → function) for **new** dirs ([files.md](../../../../../../kit/rules/files.md)); **forward-only** — not a gate for historical folders |
+| New navigable directory | Directory-index `README.md` (file → function) for **new** dirs ([directory index](../../../../../../kit/rules/directory-index.md)); **forward-only** — not a gate for historical folders |
 | Methodology interpretation change | Document history row + status honesty |
 
 No product language gates unless code is later added. Upgrades: [UPGRADE.md](../../../../../../kit/UPGRADE.md).

@@ -1,7 +1,7 @@
 ---
 title: Authoring and Style
 description: "Tool commands for a declared language. The platform packs own the policy."
-version: "1.2.8"
+version: "1.2.9"
 status: current
 audience:
   - developers
@@ -53,7 +53,7 @@ How to write documentation and how to gate product code style (Domain B). **Decl
 ## Documentation rules
 
 1. **Substantial documents** follow [MARKDOWN-STANDARD.md](../../../kit/MARKDOWN-STANDARD.md): YAML frontmatter, single H1, lead, then the **required core** for the type ([author checklist](../../../kit/MARKDOWN-STANDARD.md#author-checklist)). Summary and Contents only when those rules require them. **Root `README.md`** uses the [landing](../../../kit/MARKDOWN-STANDARD.md#landing-readme) outline only: no frontmatter; **Overview** then **Operator prompts**.
-2. **New docs** start from [template/](../../../kit/skills/kit-author-docs/template); leave no unresolved `{{PLACEHOLDERS}}`. Durable markdown has YAML except the omit list; `description` passes the [identity test](../../../kit/MARKDOWN-STANDARD.md#frontmatter) (current-content summary plus uniqueness). Directory-index `README.md` for a new navigable directory follows [files.md](../../../kit/rules/files.md) (file → function; not [landing](../../../kit/MARKDOWN-STANDARD.md#landing-readme) shape).
+2. **New docs** start from [template/](../../../kit/skills/kit-author-docs/template); leave no unresolved `{{PLACEHOLDERS}}`. Durable markdown has YAML except the omit list; `description` passes the [identity test](../../../kit/MARKDOWN-STANDARD.md#frontmatter) (current-content summary plus uniqueness). Directory-index `README.md` for a new navigable directory follows [directory-index.md](../../../kit/rules/directory-index.md) (file → function; not [landing](../../../kit/MARKDOWN-STANDARD.md#landing-readme) shape).
 3. **Behavior change ⇒ doc change** in the same commit or PR ([contracts](../../../kit/rules/contracts.md#same-change-set-rule)):
    - CLI verbs, flags, exit codes, JSON shapes → matching CLI / API guide
    - Formulas, output columns, validation → methodology (+ fixtures if contract shifts)
@@ -196,6 +196,7 @@ Advisory starting points for other surfaces (choose what the team will actually 
 
 | Version | Notes |
 |---------|--------|
+| 1.2.9 | A new directory index cites directory-index.md |
 | 1.2.8 | Links cite the current markdown standard, contracts, completion rule, security baseline, and tool configs |
 | 1.2.7 | New docs start from `kit/skills/kit-author-docs/template/` |
 | 1.2.6 | Front matter is the first block. The description names the command catalog |

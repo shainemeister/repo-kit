@@ -1,7 +1,7 @@
 ---
 title: "Markdown standard"
 description: "Landing README, directory-index README, and the minimum frontmatter for a kit document. An adopted repository keeps this shape and writes its own words."
-version: "3.0.1"
+version: "3.0.2"
 status: current
 audience:
   - developers
@@ -9,7 +9,7 @@ audience:
 doc_type: other
 related:
   - RULES.md
-  - rules/files.md
+  - rules/directory-index.md
   - rules/contracts.md
 last_updated: "2026-10-17"
 ---
@@ -18,7 +18,7 @@ last_updated: "2026-10-17"
 
 Landing README, directory-index README, and the minimum frontmatter for a kit document.
 
-**Related:** [RULES](RULES.md) · [files](rules/files.md) · [contracts](rules/contracts.md)
+**Related:** [RULES](RULES.md) · [directory index](rules/directory-index.md) · [contracts](rules/contracts.md)
 
 Kit text stays generic. A term that needs a precise meaning gets a short definition. An adopted repository keeps this shape and writes what its own files do. A kit example is not that description.
 
@@ -68,7 +68,7 @@ Overview says what the repository is, who it is for, and one way to start. Opera
 
 A directory README that lists the files in that directory is a table of file to function. The function cell says the role of that file in that folder, in one line. It is not the landing page, and it does not repeat the file's `description` verbatim.
 
-[files.md](rules/files.md) owns when the index is required.
+[directory-index.md](rules/directory-index.md) owns when the index is required.
 
 ## Author checklist
 

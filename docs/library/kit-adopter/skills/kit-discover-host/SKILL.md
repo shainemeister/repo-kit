@@ -1,7 +1,7 @@
 ---
 title: Host Habitat (L0)
 description: How AI and humans establish thin discovery files where a coding-agent host already looks, without moving law out of kit/ or inventing host folder trees.
-version: "1.8.0"
+version: "1.8.1"
 status: current
 audience:
   - developers
@@ -13,7 +13,7 @@ related:
   - ../kit-map-layers/SKILL.md
   - ../../../../../kit/RULES.md
   - template/agents.md
-  - ../../../../../kit/rules/files.md
+  - ../../../../../kit/rules/path-pattern.md
   - template/memory.md
 last_updated: "2026-10-17"
 ---
@@ -22,7 +22,7 @@ last_updated: "2026-10-17"
 
 How AI and humans establish thin discovery files where a coding-agent host already looks, without moving law out of kit/ or inventing host folder trees. `kit/skills/` is L2 (how to match, build, and run). It is not the file most hosts auto-load.
 
-**Related:** [README.md](../../../../../kit/skills/README.md) · [kit-use-instruct](../kit-use-instruct/SKILL.md) · [FRAMEWORK.md](../kit-map-layers/SKILL.md) · [RULES.md](../../../../../kit/RULES.md) · [TEMPLATE-AGENTS](template/agents.md) · [files.md](../../../../../kit/rules/files.md) · [memory blank](template/memory.md)
+**Related:** [README.md](../../../../../kit/skills/README.md) · [kit-use-instruct](../kit-use-instruct/SKILL.md) · [FRAMEWORK.md](../kit-map-layers/SKILL.md) · [RULES.md](../../../../../kit/RULES.md) · [TEMPLATE-AGENTS](template/agents.md) · [path pattern](../../../../../kit/rules/path-pattern.md) · [memory blank](template/memory.md)
 
 Related lists maintainer peers. Do not load them for this task.
 
@@ -60,7 +60,7 @@ Procedure: [ADOPTER.md](../../../../../ADOPTER.md) when installing. Completion: 
 
 ## Three habitats
 
-Layers are [kit-map-layers](../kit-map-layers/SKILL.md#layers-l0l4). L0 is root `AGENTS.md`. Law stays in `kit/`. `docs/` is working memory ([docs workspace](../../../../README.md)). Root `MEMORY.md` is the notepad [files.md](../../../../../kit/rules/files.md) names. Do not add a fourth home for agent essays. Durable procedure belongs in PLAN or `kit/skills/`.
+Layers are [kit-map-layers](../kit-map-layers/SKILL.md#layers-l0l4). L0 is root `AGENTS.md`. Law stays in `kit/`. `docs/` is working memory ([docs workspace](../../../../README.md)). Root [MEMORY.md](../../../../../MEMORY.md) is the notepad. Do not add a fourth home for agent essays. Durable procedure belongs in PLAN or `kit/skills/`.
 
 ---
 
@@ -93,7 +93,7 @@ Do not treat “the kit *could* support N hosts” as evidence for N trees.
 
 ## Create and alias
 
-Whether to create `AGENTS.md` remains this file; the habitat path category is [files.md](../../../../../kit/rules/files.md) (do not add root `./rules/`).
+Whether to create `AGENTS.md` remains this file. Law stays in `kit/` ([RULES](../../../../../kit/RULES.md)). Do not add root `./rules/`.
 
 1. If root `AGENTS.md` is missing, copy the paste block in [TEMPLATE-AGENTS.md](template/agents.md). If the file exists, paste that block once and keep the project's sections. If root `MEMORY.md` is missing, copy the fenced body in [memory.md](template/memory.md) and remove the fence. If it exists, leave it.  
 2. List existing habitat files. Leave them in place.  
@@ -167,6 +167,7 @@ Kit correctness does not depend on any host skill directory. The default paths a
 
 | Version | Notes |
 |---------|--------|
+| 1.8.1 | The notepad cites MEMORY.md. Law stays in kit/ |
 | 1.8.0 | A missing `MEMORY.md` is copied from `template/memory.md`. A filled notepad stays |
 | 1.7.0 | This pack lives under `docs/library/kit-adopter/skills/` |
 | 1.6.0 | Layers and size cite `kit-map-layers`. Install stays `kit-adopter` |

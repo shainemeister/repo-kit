@@ -20,11 +20,11 @@ negative_triggers:
 authority_paths:
   - kit/RULES.md
   - kit/rules/contracts.md
-  - kit/rules/files.md
+  - kit/rules/path-pattern.md
   - WORKBOARD.md
   - PLAN.md
 references:
-  - path: kit/rules/files.md
+  - path: kit/rules/path-pattern.md
     kind: repo
     purpose: One role per path. Extend the file that already holds the role
   - path: kit/rules/contracts.md
@@ -55,8 +55,8 @@ Adopt the skills and documents this repository already has for the change. Cite 
 ## Must
 
 - Find the skill or document that already holds the role. Follow that file.
-- Cite the kit owner. The owners are [files.md](../../rules/files.md#one-role), [contracts.md](../../rules/contracts.md), and [completion](../../RULES.md#completion).
-- When the role is absent, add one path. The kit principle for that concern is the seed.
+- Cite the kit owner. The owners are [path-pattern.md](../../rules/path-pattern.md#one-role), [contracts.md](../../rules/contracts.md), and [completion](../../RULES.md#completion).
+- When the role is absent, the next task is `kit-name-path`. Stop.
 - Run the checks this repository declares. Fill {{VERIFY_COMMANDS}} from those checks. Do not invent tools.
 - When a second concern appears, name that task and stop.
 
@@ -72,7 +72,7 @@ Adopt the skills and documents this repository already has for the change. Cite 
 ### In-repo
 
 - The repository's own skill or document for this role
-- `kit/rules/files.md` — one role, and when to add a path
+- `kit/rules/path-pattern.md` — one role, and when to add a path
 - `kit/rules/contracts.md` — boundaries and co-updates
 - `kit/RULES.md` — authority map and completion
 - `WORKBOARD.md` — multi-phase record
@@ -86,7 +86,7 @@ Adopt the skills and documents this repository already has for the change. Cite 
 
 1. Open the authority map.
 2. Find the skill or document that already holds this role. Follow that file. Cite the kit owner it uses.
-3. When no file holds the role, add one path under [files.md](../../rules/files.md#one-role). The kit principle for that concern is the seed.
+3. When no file holds the role, the next task is `kit-name-path`. Stop.
 4. Make the smallest change that does the task. When behavior changes, follow the [same-change-set rule](../../rules/contracts.md#same-change-set-rule).
 5. Run {{VERIFY_COMMANDS}} when the repository names them.
 6. If the work should outlive this session, the next task is kit-author-plan, then kit-emit-packs. Stop.

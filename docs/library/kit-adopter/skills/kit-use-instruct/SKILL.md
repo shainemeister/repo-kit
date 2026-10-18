@@ -1,7 +1,7 @@
 ---
 title: Agent Instruct Order of Operations
 description: "Utilization when Agent Instruct is in use. Detect it, report the task, and create a persona when that is the task."
-version: "1.11.0"
+version: "1.11.1"
 status: current
 audience:
   - developers
@@ -122,7 +122,7 @@ When Instruct is in use, maintenance is part of the task. The rule stays in the 
 | Research, plan, or build notes | [docs workspace](../../../../README.md) |
 | Multi-phase work | [workboard](../../../../../WORKBOARD.md) |
 | A finding becomes a product promise | The owner the authority map names |
-| A new, removed, or renamed path | [files.md](../../../../../kit/rules/files.md) |
+| A new, removed, or renamed path | [path-pattern.md](../../../../../kit/rules/path-pattern.md) |
 | A notable change | [changelog](../../../../../kit/RULES.md#changelog) |
 | Agent enablement or expertise | [kit-author-plan](../kit-author-plan/SKILL.md), then [kit-emit-packs](../kit-emit-packs/SKILL.md) as the next task |
 | A declared check changes | The owner of that check, then [kit-emit-packs](../kit-emit-packs/SKILL.md) so `verify` follows |
@@ -161,6 +161,7 @@ The failure list lives in [example.md](template/failures.md).
 
 | Version | Notes |
 |---------|--------|
+| 1.11.1 | A new path cites path-pattern.md |
 | 1.11.0 | This pack lives under `docs/library/kit-adopter/skills/` |
 | 1.10.0 | Activation cites `kit-map-layers`. A new persona is the `kit-emit-packs` task |
 | 1.9.0 | Home is `kit/skills/kit-<action>/`. A blank is `template/<noun>.md` |

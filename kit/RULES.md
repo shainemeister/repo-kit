@@ -1,17 +1,17 @@
 ---
 title: Repository maintenance rules
 description: Authority map for a repository. Detail lives in the linked file.
-version: "3.4.0"
+version: "3.5.0"
 status: current
 audience:
   - developers
   - ai-agents
 doc_type: other
 related:
-  - ../README.md
   - ../AGENTS.md
   - MARKDOWN-STANDARD.md
-  - rules/files.md
+  - rules/path-pattern.md
+  - rules/directory-index.md
   - rules/contracts.md
   - rules/git-commit.md
   - rules/versioning-and-git.md
@@ -22,7 +22,7 @@ last_updated: "2026-10-17"
 
 Authority map for a repository. Detail lives in the linked file.
 
-**Related:** [README](../README.md) · [AGENTS](../AGENTS.md) · [markdown](MARKDOWN-STANDARD.md) · [files](rules/files.md) · [contracts](rules/contracts.md) · [commits](rules/git-commit.md) · [versioning](rules/versioning-and-git.md)
+**Related:** [AGENTS](../AGENTS.md) · [markdown](MARKDOWN-STANDARD.md) · [path pattern](rules/path-pattern.md) · [directory index](rules/directory-index.md) · [contracts](rules/contracts.md) · [commits](rules/git-commit.md) · [versioning](rules/versioning-and-git.md)
 
 ## Summary
 
@@ -38,7 +38,8 @@ Authority map for a repository. Detail lives in the linked file.
 
 | Concern | Owner |
 |---------|--------|
-| Paths, nouns, verbs, directory README | [files.md](rules/files.md) |
+| Path pattern | [path-pattern.md](rules/path-pattern.md) |
+| Directory index | [directory-index.md](rules/directory-index.md) |
 | Contracts and boundaries | [contracts.md](rules/contracts.md) |
 | Commit messages | [git-commit.md](rules/git-commit.md) |
 | Versions and what git tracks | [versioning-and-git.md](rules/versioning-and-git.md) |

@@ -1,15 +1,15 @@
 ---
 title: "{{FOLDER_NAME}}"
 description: "Catalog of intentional files in this folder (file → unique role). Open when adding, moving, or finding a path here; not a landing page or package README."
-version: "1.2.0"
+version: "1.0.0"
 status: current
 audience:
   - developers
   - maintainers
 doc_type: other
 related:
-  - ../../../rules/files.md
-  - ../../../RULES.md
+  - ../../../rules/directory-index.md
+  - ../../../rules/path-pattern.md
   - ../../../MARKDOWN-STANDARD.md
 last_updated: "{{LAST_UPDATED}}"
 # keywords:          # omit-if
@@ -20,9 +20,9 @@ last_updated: "{{LAST_UPDATED}}"
 
 Catalog of intentional files in this folder (file → unique role).
 
-**Related:** [files.md](../../../rules/files.md) · [RULES.md](../../../RULES.md) · [MARKDOWN-STANDARD.md](../../../MARKDOWN-STANDARD.md)
+**Related:** [directory index](../../../rules/directory-index.md) · [path pattern](../../../rules/path-pattern.md) · [markdown](../../../MARKDOWN-STANDARD.md)
 
-**Copy:** this file becomes `README.md` in a **new** navigable directory. Retarget relative links if the destination is not this blank's folder. Canonical owner: `kit/rules/files.md`.
+**Copy:** this file becomes `README.md` in a **new** navigable directory. Retarget relative links if the destination is not this blank's folder. When the index is required: `kit/rules/directory-index.md`.
 
 ---
 
@@ -32,7 +32,7 @@ Catalog of intentional files in this folder (file → unique role).
 |------|----------|
 | {{FILE_NAME}} | {{FILE_FUNCTION}} |
 
-Add or remove rows so the table matches this directory. Function cells pass the [identity test](../../../MARKDOWN-STANDARD.md#frontmatter) uniqueness checks (tests 2–3) at one line (unique role in this folder; not a filename restatement). YAML `description` still needs test 1 (current-content summary). Omit regenerable outputs, vendor, `.git/`, secrets, host trees this repo did not create, and language leaves already listed in the parent package README ([directory index](../../../rules/files.md#directory-index)).
+Add or remove rows so the table matches this directory. The cell shape is the [directory index](../../../MARKDOWN-STANDARD.md#directory-index). Omit regenerable outputs, vendor, `.git/`, secrets, host trees this repo did not create, and language leaves already listed in the parent package README ([directory index](../../../rules/directory-index.md#directory-index)).
 
 <!-- Example only — replace with this folder’s files; do not ship these sample names.
 | File | Function |
@@ -46,6 +46,6 @@ Add or remove rows so the table matches this directory. Function cells pass the 
 
 ## When to add a sibling
 
-When adding, moving, or splitting a path here, follow [files.md](../../../rules/files.md).
+When adding, moving, or splitting a path here, follow [path-pattern.md](../../../rules/path-pattern.md).
 
 Replace every `{{PLACEHOLDER}}`. Delete commented `keywords` if unused. This skeleton is a **directory index** (file → function), not [landing](../../../MARKDOWN-STANDARD.md#landing-readme). Forward-only: do not backfill historical folders.

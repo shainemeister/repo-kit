@@ -25,7 +25,7 @@ There is no package install. The dependency is git. Follow [ADOPTER.md](ADOPTER.
 |------|--------|
 | Install the kit | [ADOPTER.md](ADOPTER.md) |
 | Upgrade a kit already in use | [kit/UPGRADE.md](kit/UPGRADE.md) |
-| Name a file or avoid a duplicate | [kit/rules/files.md](kit/rules/files.md) |
+| Name a file or avoid a duplicate | [kit/rules/path-pattern.md](kit/rules/path-pattern.md) |
 | Write a commit | [kit/rules/git-commit.md](kit/rules/git-commit.md) |
 | Multi-phase work | [WORKBOARD.md](WORKBOARD.md) |
 
@@ -43,5 +43,5 @@ Law stays in [kit/RULES.md](kit/RULES.md). The session order stays in [AGENTS.md
 
 1. Open `kit/RULES.md`.
 2. For a new install, follow `ADOPTER.md` and map the repository on `WORKBOARD.md`.
-3. Check existing files before creating one (`kit/rules/files.md`).
+3. Check existing files before creating one (`kit/rules/path-pattern.md`).
 4. Do not claim the work done if a check this repository declares was skipped.

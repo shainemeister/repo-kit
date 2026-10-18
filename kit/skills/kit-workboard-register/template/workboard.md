@@ -1,7 +1,7 @@
 ---
 title: "Workboard blank"
 description: "Blank for root WORKBOARD.md. Copy the fenced body when that file is missing, and when a finished program is archived."
-version: "1.0.2"
+version: "1.0.4"
 status: current
 audience:
   - ai-agents
@@ -10,7 +10,8 @@ doc_type: other
 related:
   - ../../../RULES.md
   - ../../../rules/contracts.md
-  - ../../../rules/files.md
+  - ../../../rules/path-pattern.md
+  - ../../../rules/directory-index.md
   - ../../../../WORKBOARD.md
 last_updated: "2026-10-17"
 ---
@@ -19,7 +20,7 @@ last_updated: "2026-10-17"
 
 Blank for root WORKBOARD.md. Copy the fenced body when that file is missing, and when a finished program is archived.
 
-**Related:** [RULES](../../../RULES.md) · [contracts](../../../rules/contracts.md) · [files](../../../rules/files.md) · [live board](../../../../WORKBOARD.md)
+**Related:** [RULES](../../../RULES.md) · [contracts](../../../rules/contracts.md) · [path pattern](../../../rules/path-pattern.md) · [directory index](../../../rules/directory-index.md) · [live board](../../../../WORKBOARD.md)
 
 The fence is the root file. Remove the fence when you copy it. Links inside the fence are written for that root file.
 
@@ -29,7 +30,7 @@ The fence is the root file. Remove the fence when you copy it. Links inside the 
 ---
 title: Active workboard
 description: Open multi-phase work. One program is active at a time.
-version: "1.1.0"
+version: "1.2.0"
 status: current
 audience:
   - ai-agents
@@ -61,7 +62,7 @@ Open multi-phase work. One program is active at a time.
 
 Primary program `—` means no program is registered.
 
-Every commit updates this file before the session closes ([contracts](kit/rules/contracts.md#boundaries)). When no phase is `open`, `active`, or `blocked`, that update files a copy at `docs/plan/archive/<program>/WORKBOARD.md` and replaces this file with the blank.
+An authorized commit updates this file before that commit is created ([contracts](kit/rules/contracts.md#boundaries)). When no phase is `open`, `active`, or `blocked`, that update files a copy at `docs/plan/archive/<program>/WORKBOARD.md` and replaces this file with the blank.
 
 ## Active program
 

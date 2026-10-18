@@ -6,12 +6,13 @@ audience:
   - developers
   - maintainers
 doc_type: other
-version: "1.0.3"
+version: "1.0.4"
 related:
   - ../../../../ADOPTER.md
   - ../../../../kit/RULES.md
   - ../../../../kit/MARKDOWN-STANDARD.md
-  - ../../../../kit/rules/files.md
+  - ../../../../kit/rules/path-pattern.md
+  - ../../../../kit/rules/directory-index.md
   - ../../../../kit/UPGRADE.md
 last_updated: "2026-10-17"
 ---
@@ -24,7 +25,7 @@ Illustrative filled authority map and verification for a Rust crate. Copy the pa
 
 **Primary platform (example):** multi
 
-**Packaging:** standards under `kit/`; programming source under `src/` (outside `kit/`). See [files.md](../../../../kit/rules/files.md).
+**Packaging:** standards under `kit/`; programming source under `src/` ([path pattern](../../../../kit/rules/path-pattern.md)).
 
 ---
 
@@ -48,7 +49,8 @@ Optional: methodology template if formulas or scoring are part of the contract.
 | Markdown structure | `kit/MARKDOWN-STANDARD.md` |
 | Maintenance policy | `kit/RULES.md` + `kit/rules/` |
 | Contract policy | `kit/rules/contracts.md` |
-| File placement / creation / naming | `kit/rules/files.md` |
+| Path pattern | `kit/rules/path-pattern.md` |
+| Directory index | `kit/rules/directory-index.md` |
 | Project history (**required**) | Root `CHANGELOG.md` |
 | Standards kit baseline | `kit/RULES.md` — Kit baseline |
 | Package overview | `src/README.md` |
@@ -60,7 +62,7 @@ Optional: methodology template if formulas or scoring are part of the contract.
 | Language surface inventory | Inventory in project RULES / security module (filled below) |
 | Security & code-validation certification | `certification/README.md` *(optional)* |
 | Agent Instruct (optional) | `kit/skills/README.md`; PLAN **Agent models** if using agents ([plan](../../kit-adopter/skills/kit-author-plan/SKILL.md)); BUILD → `docs/library/kit-adopter/generated/` — see [plan.md](../../kit-adopter/skills/kit-author-plan/template/plan.md) |
-| AI docs workspace (when used) | Root `docs/README.md` + modules; policy `kit/rules/files.md` |
+| AI docs workspace (when used) | Root `docs/README.md` + modules; policy `kit/rules/contracts.md` |
 | Multi-phase execution (when used) | `WORKBOARD.md` · policy `kit/rules/contracts.md` |
 | Host always-on / L0 | Root `AGENTS.md` **if** a coding agent is used ([habitat](../../kit-adopter/skills/kit-discover-host/SKILL.md)); skip otherwise |
 
@@ -104,7 +106,7 @@ Declare **only** this row when the repo ships Rust. Docs-only inventories stay e
 | Formal certification | If `certification/` maintained: regenerate `last_certification.*`; do not stage outputs |
 | Schema or sample data | Headers/fields match schema; consumers still load samples |
 | Docs only | Author checklist (including [author checklist](../../../../kit/MARKDOWN-STANDARD.md#author-checklist)); relative links resolve; last citations remain; consume example in README still runs |
-| New navigable directory | Directory-index `README.md` (file → function) for **new** dirs ([files.md](../../../../kit/rules/files.md)); **forward-only** — not a gate for historical folders |
+| New navigable directory | Directory-index `README.md` (file → function) for **new** dirs ([directory index](../../../../kit/rules/directory-index.md)); **forward-only** — not a gate for historical folders |
 
 **Adopt rustfmt + clippy:** copy [`rustfmt.toml`](../program-language/rust/rustfmt.toml) and [`clippy.toml`](../program-language/rust/clippy.toml) to the crate or repo root; set rustfmt `edition`; keep rustfmt, clippy, and cargo-audit **developer-only**. Do not add these rows on a docs-only adopt. Declared gates must pass before task completion ([Completion rule](../../../../kit/RULES.md#completion)). Style chapter: [Rust style gate](../style-gates.md#rust-style-gate-rustfmt-clippy). Upgrades: [UPGRADE.md](../../../../kit/UPGRADE.md).
 
