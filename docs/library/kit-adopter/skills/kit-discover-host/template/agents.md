@@ -1,7 +1,7 @@
 ---
 title: "AGENTS.md template"
 description: "Paste block for a root AGENTS.md. Use it to create the file, or to add the kit session order to one that already exists."
-version: "1.2.0"
+version: "1.2.1"
 status: current
 audience:
   - developers
@@ -47,6 +47,8 @@ Standards live in `kit/`. The project lives outside it: product code, the change
 5. Leave this file at that order.
 
 When [WORKBOARD.md](WORKBOARD.md) names a primary program other than `—`, start each reply with that file's phase table: ID, Work, and Status.
+
+Every commit updates [WORKBOARD.md](WORKBOARD.md) before the session closes. [Contracts](kit/rules/contracts.md#boundaries) owns that step.
 
 [MEMORY.md](MEMORY.md) is the agent's notepad. Update it freely. Keep it to the user's intent and the direction of this repository, and keep it short.
 

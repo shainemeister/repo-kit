@@ -1,7 +1,7 @@
 ---
 title: "Workboard blank"
 description: "Blank for root WORKBOARD.md. Copy the fenced body when that file is missing, and when a finished program is archived."
-version: "1.0.0"
+version: "1.0.1"
 status: current
 audience:
   - ai-agents
@@ -61,7 +61,7 @@ Open multi-phase work. One program is active at a time.
 
 Primary program `—` means no program is registered.
 
-When every phase is `done`, the commit that shipped the work leaves this file in place. The next task files a copy at `docs/plan/archive/<program>/WORKBOARD.md` and replaces this file with the blank. [Contracts](kit/rules/contracts.md#boundaries) owns that split.
+Every commit updates this file before the session closes ([contracts](kit/rules/contracts.md#boundaries)). When every phase is `done`, that update files a copy at `docs/plan/archive/<program>/WORKBOARD.md` and replaces this file with the blank.
 
 ## Active program
 

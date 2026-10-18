@@ -1,7 +1,7 @@
 ---
 title: Skills
 description: "Index of procedure packs and the match rows for the seed ids. Open the pack whose action matches the task."
-version: "1.14.0"
+version: "1.15.0"
 status: current
 audience:
   - developers
@@ -63,7 +63,7 @@ One task loads one skill ([files.md](../rules/files.md)). Adopt and upgrade orde
 | [kit-workboard-register/](kit-workboard-register/SKILL.md) | Open one program on the workboard |
 | [kit-workboard-advance/](kit-workboard-advance/SKILL.md) | Set the one active phase and add the progress line |
 | [kit-workboard-close/](kit-workboard-close/SKILL.md) | Mark a phase done, cancelled, or deferred |
-| [kit-workboard-archive/](kit-workboard-archive/SKILL.md) | File a finished board and restore the blank |
+| [kit-workboard-archive/](kit-workboard-archive/SKILL.md) | Update the board after a commit. File it when every phase is done |
 | [kit-apply-change/](kit-apply-change/SKILL.md) | Agnostic verb. Adopt the repository's existing role, or seed one when it is absent |
 | [kit-author-docs/](kit-author-docs/SKILL.md) | Author durable markdown. Blanks in `template/` |
 | [kit-review-change/](kit-review-change/SKILL.md) | Review a change. A commit rewrite is the next task |
@@ -81,7 +81,7 @@ Match text only. Open the seed for procedure, authority paths, and verify. Trigg
 | `workboard-register` | catalog_match | Open one program on the workboard | [kit-workboard-register](kit-workboard-register/SKILL.md) |
 | `workboard-advance` | catalog_match | Set the one active phase and add the progress line | [kit-workboard-advance](kit-workboard-advance/SKILL.md) |
 | `workboard-close` | catalog_match | Mark a phase done, cancelled, or deferred | [kit-workboard-close](kit-workboard-close/SKILL.md) |
-| `workboard-archive` | catalog_match | File a finished board and restore the blank | [kit-workboard-archive](kit-workboard-archive/SKILL.md) |
+| `workboard-archive` | catalog_match | Update the board after a commit. File it when every phase is done | [kit-workboard-archive](kit-workboard-archive/SKILL.md) |
 | `implementer` | catalog_match | Adopt the repository's existing role for the change | [kit-apply-change](kit-apply-change/SKILL.md) |
 | `docs-author` | catalog_match | Author durable markdown | [kit-author-docs](kit-author-docs/SKILL.md) |
 | `security` | catalog_match | Apply the security baseline | [kit-apply-security](kit-apply-security/SKILL.md) |
@@ -113,6 +113,7 @@ The retired crew is archived outside this tree. Do not register it.
 
 | Version | Notes |
 |---------|--------|
+| 1.15.0 | `kit-workboard-archive` runs after every commit. A finished program is filed and the blank restored |
 | 1.14.0 | This index lists nine repeated verbs. `kit-workboard-archive` files a finished board and restores the blank |
 | 1.13.0 | This index lists the eight repeated verbs. Adopt and upgrade packs are the shelf index |
 | 1.12.0 | Activation and size live in `kit-map-layers`. The match rows stay in this index. `kit-load-packs` and `kit-match-agents` are gone |

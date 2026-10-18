@@ -37,7 +37,7 @@ references:
     purpose: New paths
   - path: kit/rules/contracts.md
     kind: repo
-    purpose: The finishing commit leaves a fully done board in place
+    purpose: Every commit updates the board before the session closes
   - path: WORKBOARD.md
     kind: repo
     purpose: The multi-phase record read after the commit exists
@@ -47,7 +47,7 @@ verify:
   - trailer block present when AI assisted, and omitted on a human-only commit
   - changelog sentence updated when the change is notable
   - staged files are ones versioning-and-git.md tracks
-  - when every phase is done, the next task named is kit-workboard-archive and this task did not edit the board
+  - the next task named is kit-workboard-archive and this task did not edit the board
 # BUILD fills: {{PROJECT_NAME}}, {{TUNING_MUST_NOT_EXTRA}}
 ---
 
@@ -65,7 +65,7 @@ The principle is [git-commit.md](../../rules/git-commit.md). That file stays the
 - When AI assisted, place the [trailer block](../../rules/git-commit.md#ai-trailers) as [trailer placement](#trailer-placement) describes.
 - When the change is notable, add the one changelog sentence ([changelog](../../RULES.md#changelog)).
 - When a path is added, follow [files.md](../../rules/files.md).
-- After the commit exists, when [WORKBOARD.md](../../../WORKBOARD.md) names a primary program other than `—` and every phase is `done`, name `kit-workboard-archive` as the next task. [Contracts](../../rules/contracts.md#boundaries) leaves the board in place for this commit.
+- After the commit exists, name `kit-workboard-archive` as the next task. [Contracts](../../rules/contracts.md#boundaries) requires that update before the session closes.
 
 ## Must not
 
@@ -134,7 +134,7 @@ Instructed-by: Jane Developer
 - `kit/RULES.md` — changelog sentence and completion
 - `kit/rules/versioning-and-git.md` — versions and what git tracks
 - `kit/rules/files.md` — new paths
-- `kit/rules/contracts.md` — the finishing commit leaves a fully done board in place
+- `kit/rules/contracts.md` — every commit updates the board before the session closes
 - `WORKBOARD.md` — read after the commit exists
 
 ### External (citations — guidance only)
@@ -151,7 +151,7 @@ Instructed-by: Jane Developer
 6. If AI assisted, place the trailer block ([trailer placement](#trailer-placement)).
 7. If a declared check failed or was skipped, stop ([completion](../../RULES.md#completion)).
 8. Create the commit with that message.
-9. If that commit exists, open [WORKBOARD.md](../../../WORKBOARD.md). When it names a primary program other than `—` and every phase is `done`, name `kit-workboard-archive` and stop. Do not open that skill. Otherwise stop.
+9. If that commit exists, name `kit-workboard-archive` and stop. Do not open that skill.
 
 ## Open for law
 

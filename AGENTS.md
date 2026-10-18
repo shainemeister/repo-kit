@@ -12,6 +12,8 @@ Standards live in `kit/`. The project lives outside it: product code, the change
 
 When [WORKBOARD.md](WORKBOARD.md) names a primary program other than `—`, start each reply with that file's phase table: ID, Work, and Status.
 
+Every commit updates [WORKBOARD.md](WORKBOARD.md) before the session closes. [Contracts](kit/rules/contracts.md#boundaries) owns that step.
+
 [MEMORY.md](MEMORY.md) is the agent's notepad. Update it freely. Keep it to the user's intent and the direction of this repository, and keep it short.
 
 Kit text stays generic. An adopted repository writes descriptions of its own files. [kit/MARKDOWN-STANDARD.md](kit/MARKDOWN-STANDARD.md) owns that shape.

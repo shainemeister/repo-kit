@@ -3,7 +3,7 @@ title: "docs/plan/ (repo-kit)"
 description: Index of detailed execution plans and program annexes. Open when adding a plan or checking whether an annex is live on the workboard.
 status: current
 doc_type: other
-version: "1.0.2"
+version: "1.0.3"
 audience:
   - maintainers
   - ai-agents
@@ -18,6 +18,7 @@ Index of detailed execution plans and program annexes. Durable kit version histo
 
 | Plan | Status | Summary |
 |------|--------|---------|
+| [kit-board-notepad](./archive/kit-board-notepad/) | archived | Filed workboard for the checklist, the notepad, and archive-after-commit |
 | [orchestrator-portability-2.15.0](./archive/orchestrator-portability-2.15.0/) | archived | Host-agnostic slash_only orchestrator crew (kit 2.15.0) — read L4, not this pack |
 | [commit-notes-2.13.0](./archive/commit-notes-2.13.0/) | archived | Staged-change floor for git commit notes (kit 2.13.0) — read L4, not this pack |
 | [description-summary-2.12.0](./archive/description-summary-2.12.0/) | archived | Current-content floor for YAML `description` (kit 2.12.0) — read L4, not this pack |

@@ -1,7 +1,7 @@
 ---
 title: Contracts
 description: "Stable promises a repository makes—behavior, shapes, exits, fields—and the rules for keeping them honest."
-version: "1.8.0"
+version: "1.9.0"
 status: current
 audience:
   - developers
@@ -71,7 +71,7 @@ Keep packages composable at the workflow layer. A call from one stack into anoth
 **Not contracts:**
 
 - `docs/` is working memory. A public promise moves to the authority-map owner.
-- `WORKBOARD.md` records open work. Update it in the same change set when a phase ships. When every phase of that program is `done`, the commit that shipped the work leaves the board in place. Filing the copy and restoring the blank is the next task. The board is not the only copy of a public promise.
+- `WORKBOARD.md` records open work. Every commit updates it before the session closes. When a phase ships, that update is in the same change set. When every phase is `done`, the update files the copy and restores the blank. The board is not the only copy of a public promise.
 - `AGENTS.md` is the session order. It is not a second copy of these rules.
 
 ---
@@ -154,6 +154,7 @@ Every substantial markdown file should remain navigable for humans and AI agents
 | A procedure pack restates a rule this file owns | Cite the owner |
 | Public API or CLI matrix lives only under `docs/` | Promote it to the package contract |
 | Phase marked done only in chat | Update `WORKBOARD.md` in the same change set |
+| Commit that leaves the workboard stale | Update the board before the session closes |
 | Full `kit/rules/*` pasted into `AGENTS.md` | Point at `kit/RULES.md` |
 
 ---
@@ -162,6 +163,7 @@ Every substantial markdown file should remain navigable for humans and AI agents
 
 | Version | Notes |
 |---------|--------|
+| 1.9.0 | Every commit updates the workboard before the session closes. A finished program is filed and the blank restored |
 | 1.8.0 | A fully done board stays in place for the commit that shipped it. Filing the copy is the next task |
 | 1.7.0 | The multi-phase record is root `WORKBOARD.md` |
 | 1.6.0 | Style and SAST cite the security baseline. Language checks sit outside the kit |

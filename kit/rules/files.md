@@ -1,7 +1,7 @@
 ---
 title: File creation, placement, and naming
 description: "Evidence, category, and path shape: a segment and a module are nouns, a verb is the function, and a nested directory is allowed when it names one procedure."
-version: "1.11.0"
+version: "1.12.0"
 status: current
 audience:
   - developers
@@ -87,7 +87,7 @@ New durable markdown (not on the MARKDOWN-STANDARD omit list) gets YAML in the s
 | History | Project root `CHANGELOG.md` | Kit history stays in `kit/CHANGELOG.md` |
 | Product contract | Package dirs **outside** `kit/` | README, CLI, API. `SECURITY.md` only when the package executes, uses the network, elevates, or handles secrets |
 | Adopt, once | Root `ADOPTER.md` | One-time order. An adopted repository deletes it. This repository keeps it |
-| Multi-phase record | Root `WORKBOARD.md` | Open programs. Blank: `kit/skills/kit-workboard-register/template/workboard.md`. A filed program is `docs/plan/archive/<program>/WORKBOARD.md`. Not a skill |
+| Multi-phase record | Root `WORKBOARD.md` | Open programs. Every commit updates it. Blank: `kit/skills/kit-workboard-register/template/workboard.md`. A filed program is `docs/plan/archive/<program>/WORKBOARD.md`. Not a skill |
 | Agent notepad | Root `MEMORY.md` | Short notes the agent rewrites. Blank: `docs/library/kit-adopter/skills/kit-discover-host/template/memory.md`. Not a skill |
 | Working memory | Root `docs/` | Research, plans, and `docs/library/` |
 | Procedure packs | `kit/skills/kit-<action>/SKILL.md` | A repeated verb is `kit-` plus the action. The whole name is one to three words joined by `-`, so the action stem is one or two words. `SKILL.md` is the pack and the index of any other file there. A blank is `template/<noun>.md` in that pack, and only when the blank exists. `kit/skills/README.md` indexes those packs. Adopt and upgrade packs live under `docs/library/kit-adopter/skills/`. That directory's index is `docs/library/kit-adopter/README.md`. `docs/library/kit-adopter/generated/` is the emit target and is not a pack. A repository skill stays at root `skills/<action>/`, unprefixed, and only when that repository has one. One task loads one skill. A retired crew is [archive](../../docs/library/archive/dispatch-crew/SKILL.md). It is not a live pack. This kit does not delegate to another agent. The hub does not restate them |
@@ -173,6 +173,7 @@ Install of this kit stays in root [ADOPTER.md](../../ADOPTER.md). An adopted rep
 
 | Version | Notes |
 |---------|--------|
+| 1.12.0 | Every commit updates the workboard |
 | 1.11.0 | The workboard blank and the filed copy have paths. Root `MEMORY.md` is the agent notepad |
 | 1.10.0 | Repeated verbs stay in `kit/skills/`. Adopt and upgrade packs are `docs/library/kit-adopter/`. The workboard is root `WORKBOARD.md`. Install is root `ADOPTER.md` |
 | 1.9.0 | A kit pack is `kit/skills/kit-<action>/SKILL.md`. A blank is `template/<noun>.md`. `kit/skills/generated/` is the emit target. A repository skill stays unprefixed at root `skills/` |
