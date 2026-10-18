@@ -8,13 +8,13 @@ audience:
   - maintainers
 doc_type: other
 related:
-  - kit/RULES.md
-  - kit/CHANGELOG.md
-  - docs/README.md
-  - docs/plan/archive/orchestrator-portability-2.15.0/README.md
-  - docs/plan/archive/commit-notes-2.13.0/README.md
-  - docs/plan/archive/description-summary-2.12.0/README.md
-  - docs/plan/archive/workboard-packet-2.11.1/README.md
+  - ../../../../kit/RULES.md
+  - ../../../../kit/CHANGELOG.md
+  - ../../../README.md
+  - ../orchestrator-portability-2.15.0/README.md
+  - ../commit-notes-2.13.0/README.md
+  - ../description-summary-2.12.0/README.md
+  - ../workboard-packet-2.11.1/README.md
 last_updated: "2026-10-17"
 ---
 
@@ -24,7 +24,7 @@ Open multi-phase kit work. One program is active at a time.
 
 **Updated:** 2026-10-17  
 **Primary program:** `kit-board-notepad`  
-**Rules:** [kit/RULES.md](kit/RULES.md) · kit README (mission) · [docs/plan/](docs/plan/) (detail)
+**Rules:** [kit/RULES.md](../../../../kit/RULES.md) · kit README (mission) · [docs/plan/](../..) (detail)
 
 | Status | Meaning |
 |--------|---------|
@@ -37,7 +37,7 @@ Open multi-phase kit work. One program is active at a time.
 
 Primary program `—` means no program is registered.
 
-When every phase is `done`, the commit that shipped the work leaves this file in place. The next task files a copy at `docs/plan/archive/<program>/WORKBOARD.md` and replaces this file with the blank. [Contracts](kit/rules/contracts.md#boundaries) owns that split.
+When every phase is `done`, the commit that shipped the work leaves this file in place. The next task files a copy at `docs/plan/archive/<program>/WORKBOARD.md` and replaces this file with the blank. [Contracts](../../../../kit/rules/contracts.md#boundaries) owns that split.
 
 ---
 
@@ -47,7 +47,7 @@ When every phase is `done`, the commit that shipped the work leaves this file in
 |-------|--------|
 | **Goal** | Multi-phase work is written on this board and checked off here. The blank can start a board. After the commit that leaves every phase `done`, the next task files the board and restores the blank. `MEMORY.md` is the agent's notepad |
 | **Base** | Uncommitted `kit-homes`. Do not redo it. Do not archive this board: no commit has run. Sections 11–16 stay deferred |
-| **L4 docs to update** | [files.md](kit/rules/files.md), [contracts.md](kit/rules/contracts.md), [RULES.md](kit/RULES.md), [UPGRADE.md](kit/UPGRADE.md), root [AGENTS.md](AGENTS.md), the agents paste, [kit/skills/README.md](kit/skills/README.md). The hub stays a map |
+| **L4 docs to update** | [files.md](../../../../kit/rules/files.md), [contracts.md](../../../../kit/rules/contracts.md), [RULES.md](../../../../kit/RULES.md), [UPGRADE.md](../../../../kit/UPGRADE.md), root [AGENTS.md](../../../../AGENTS.md), the agents paste, [kit/skills/README.md](../../../../kit/skills/README.md). The hub stays a map |
 | **Optional annex** | — |
 | **Smoke / gates** | Author checklist on edited durable markdown. `MEMORY.md` has no front matter. No `README.md` beside `SKILL.md`. Hub has no skills row. `[3.0.0]`, `[3.1.0]`, `[3.2.0]`, and `[3.3.0]` stay. Commit only when the user asks |
 
@@ -57,7 +57,7 @@ When every phase is `done`, the commit that shipped the work leaves this file in
 |------|--------|
 | Checklist | Root `AGENTS.md` step 4. Write every step on this board and check it off here |
 | Reply grid | The same session file. When a primary program is set, the reply opens with ID, Work, and Status |
-| Blank | [template/workboard.md](kit/skills/kit-workboard-register/template/workboard.md). Copy the fenced body |
+| Blank | [template/workboard.md](../../../../kit/skills/kit-workboard-register/template/workboard.md). Copy the fenced body |
 | Close | `kit-workboard-close` sets a phase status and leaves the program here |
 | Commit pointer | `kit-commit` names `kit-workboard-archive` only after the commit exists and every phase is `done` |
 | Archive | `kit-workboard-archive` files `docs/plan/archive/<program>/WORKBOARD.md` and restores the blank. It does not commit |
@@ -73,7 +73,7 @@ When every phase is `done`, the commit that shipped the work leaves this file in
 | 3 | Blanks | done | — | Workboard blank, memory blank, root `MEMORY.md`, markdown omit row |
 | 4 | Packs | done | — | Register copies the blank. Close leaves the program. `kit-workboard-archive` is new. `kit-commit` names it after the commit |
 | 5 | Law and indexes | done | — | `files.md` **1.11.0**, `contracts.md` **1.8.0**, `RULES.md` **3.4.0**, `UPGRADE.md` **3.2.0**. Skills index **1.14.0** |
-| 6 | Verify | done | — | [kit/CHANGELOG.md](kit/CHANGELOG.md) `### [3.4.0]` is on disk and unstaged. Not committed. This board stays |
+| 6 | Verify | done | — | [kit/CHANGELOG.md](../../../../kit/CHANGELOG.md) `### [3.4.0]` is on disk and unstaged. Not committed. This board stays |
 
 ### Progress log (newest first, max ~15 lines)
 
@@ -100,11 +100,11 @@ When every phase is `done`, the commit that shipped the work leaves this file in
 
 | Program | Ended | L4 pointer |
 |---------|-------|------------|
-| kit-homes | 2026-10-17 | [files.md](kit/rules/files.md) **1.10.0** · [CHANGELOG](kit/CHANGELOG.md) `### [3.3.0]` unstaged |
-| kit-skill-fold | 2026-10-17 | [kit-map-layers](docs/library/kit-adopter/skills/kit-map-layers/SKILL.md) **1.9.0** · [CHANGELOG](kit/CHANGELOG.md) `### [3.2.0]` unstaged |
-| kit-skill-path | 2026-10-17 | [files.md](kit/rules/files.md) **1.9.0** · [CHANGELOG](kit/CHANGELOG.md) `### [3.1.0]` unstaged |
-| orchestrator-portability-2.15.0 | 2026-09-22 | [orchestrator README](docs/library/archive/dispatch-crew/SKILL.md) **1.2.1** · [CHANGELOG](kit/CHANGELOG.md) `### [2.15.0]` |
-| commit-notes-2.13.0 | 2026-09-04 | [versioning-and-git](kit/rules/versioning-and-git.md) **1.1.0** · [CHANGELOG](kit/CHANGELOG.md) `### [2.13.0]` |
+| kit-homes | 2026-10-17 | [files.md](../../../../kit/rules/files.md) **1.10.0** · [CHANGELOG](../../../../kit/CHANGELOG.md) `### [3.3.0]` unstaged |
+| kit-skill-fold | 2026-10-17 | [kit-map-layers](../../../library/kit-adopter/skills/kit-map-layers/SKILL.md) **1.9.0** · [CHANGELOG](../../../../kit/CHANGELOG.md) `### [3.2.0]` unstaged |
+| kit-skill-path | 2026-10-17 | [files.md](../../../../kit/rules/files.md) **1.9.0** · [CHANGELOG](../../../../kit/CHANGELOG.md) `### [3.1.0]` unstaged |
+| orchestrator-portability-2.15.0 | 2026-09-22 | [orchestrator README](../../../library/archive/dispatch-crew/SKILL.md) **1.2.1** · [CHANGELOG](../../../../kit/CHANGELOG.md) `### [2.15.0]` |
+| commit-notes-2.13.0 | 2026-09-04 | [versioning-and-git](../../../../kit/rules/versioning-and-git.md) **1.1.0** · [CHANGELOG](../../../../kit/CHANGELOG.md) `### [2.13.0]` |
 
 ---
 
@@ -112,12 +112,12 @@ When every phase is `done`, the commit that shipped the work leaves this file in
 
 | Concern | Where |
 |---------|--------|
-| Kit mission / adopt prompts | Root [README.md](README.md) |
+| Kit mission / adopt prompts | Root [README.md](../../../../README.md) |
 | Shipped kit law | `kit/RULES.md` · `kit/rules/*` |
 | Kit version history | `kit/CHANGELOG.md` under `## repo-kit` |
 | Multi-phase record | This file. The hub names it in one row |
-| Agent notepad | Root [MEMORY.md](MEMORY.md) |
+| Agent notepad | Root [MEMORY.md](../../../../MEMORY.md) |
 
 ---
 
-*Write every step here and check it off. The blank is [template/workboard.md](kit/skills/kit-workboard-register/template/workboard.md).*
+*Write every step here and check it off. The blank is [template/workboard.md](../../../../kit/skills/kit-workboard-register/template/workboard.md).*

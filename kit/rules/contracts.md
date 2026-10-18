@@ -1,7 +1,7 @@
 ---
 title: Contracts
 description: "Stable promises a repository makes—behavior, shapes, exits, fields—and the rules for keeping them honest."
-version: "1.9.0"
+version: "1.10.0"
 status: current
 audience:
   - developers
@@ -71,7 +71,7 @@ Keep packages composable at the workflow layer. A call from one stack into anoth
 **Not contracts:**
 
 - `docs/` is working memory. A public promise moves to the authority-map owner.
-- `WORKBOARD.md` records open work. Every commit updates it before the session closes. When a phase ships, that update is in the same change set. When every phase is `done`, the update files the copy and restores the blank. The board is not the only copy of a public promise.
+- `WORKBOARD.md` records open work. Every commit updates it before the session closes. When a phase ships, that update is in the same change set. When no phase is `open`, `active`, or `blocked`, that update files the copy and restores the blank. The board is not the only copy of a public promise.
 - `AGENTS.md` is the session order. It is not a second copy of these rules.
 
 ---
@@ -163,6 +163,7 @@ Every substantial markdown file should remain navigable for humans and AI agents
 
 | Version | Notes |
 |---------|--------|
+| 1.10.0 | A program is filed when no phase is `open`, `active`, or `blocked` |
 | 1.9.0 | Every commit updates the workboard before the session closes. A finished program is filed and the blank restored |
 | 1.8.0 | A fully done board stays in place for the commit that shipped it. Filing the copy is the next task |
 | 1.7.0 | The multi-phase record is root `WORKBOARD.md` |

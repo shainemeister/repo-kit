@@ -6,7 +6,7 @@ audience:
   - developers
   - maintainers
 doc_type: other
-version: "1.0.2"
+version: "1.0.3"
 related:
   - ../../../../ADOPTER.md
   - ../../../../kit/RULES.md
@@ -18,7 +18,7 @@ last_updated: "2026-10-17"
 
 # Example: CLI / automation tool
 
-**Illustrative only** — copy the *pattern* of a filled authority map and verification table. Replace names and commands with your project’s.
+Illustrative filled authority map and verification for a CLI or automation tool. Copy the pattern and replace the names and commands.
 
 **Sample interest:** “CLI that validates config files and reports contract failures with stable exit codes.”
 
@@ -57,10 +57,10 @@ last_updated: "2026-10-17"
 | Security & code-validation certification | `certification/README.md` *(optional)* |
 | Default config | `src/config.example.yaml` |
 | Golden tests / fixtures | `tests/fixtures/` |
-| Agent Instruct (optional) | `kit/skills/README.md`; PLAN **Agent models** if using agents ([plan](../../../../kit/skills/kit-author-plan/SKILL.md)); BUILD → `kit/skills/generated/` — see [plan.md](../../../../kit/skills/kit-author-plan/template/plan.md) |
-| AI docs workspace (when used) | Root `docs/README.md` + modules; policy `kit/rules/ai-docs-workspace.md` |
-| Multi-phase execution (when used) | `docs/WORKBOARD.md` · policy `kit/rules/workboard.md` |
-| Host always-on / L0 | Root `AGENTS.md` **if** a coding agent is used ([habitat](../../../../kit/skills/kit-discover-host/SKILL.md)); skip otherwise |
+| Agent Instruct (optional) | `kit/skills/README.md`; PLAN **Agent models** if using agents ([plan](../../kit-adopter/skills/kit-author-plan/SKILL.md)); BUILD → `docs/library/kit-adopter/generated/` — see [plan.md](../../kit-adopter/skills/kit-author-plan/template/plan.md) |
+| AI docs workspace (when used) | Root `docs/README.md` + modules; policy `kit/rules/files.md` |
+| Multi-phase execution (when used) | `WORKBOARD.md` · policy `kit/rules/contracts.md` |
+| Host always-on / L0 | Root `AGENTS.md` **if** a coding agent is used ([habitat](../../kit-adopter/skills/kit-discover-host/SKILL.md)); skip otherwise |
 
 Rows that do not apply (schema, methodology, etc.) are omitted.
 
@@ -104,11 +104,11 @@ Declare **only** surfaces this CLI ships. Never paste the full kit language tabl
 | Product style (Domain B) | Gate for the CLI’s language—**required** when in inventory |
 | Security / SAST (Domain A) | Language-specific SAST for declared surfaces—**required** when declared |
 | Formal certification | If `certification/` maintained: regenerate `last_certification.*`; do not stage outputs |
-| Docs only | Author checklist (including [density](../MARKDOWN-STANDARD.md#density-force-and-incorporation)); relative links from `src/` resolve; last citations remain |
+| Docs only | Author checklist (including [author checklist](../../../../kit/MARKDOWN-STANDARD.md#author-checklist)); relative links from `src/` resolve; last citations remain |
 | New/removed source files | Inventory/catalog updated (if maintained) |
-| New navigable directory | Directory-index `README.md` (file → function) for **new** dirs ([files.md](../rules/files.md)); **forward-only** — not a gate for historical folders |
+| New navigable directory | Directory-index `README.md` (file → function) for **new** dirs ([files.md](../../../../kit/rules/files.md)); **forward-only** — not a gate for historical folders |
 
-**SECURITY.md** is required here because the package is an execution surface. Declared gates must pass before task completion ([Completion rule](../rules/verification-and-ops.md#completion-rule)). Upgrades: [UPGRADE.md](../../../../kit/UPGRADE.md).
+**SECURITY.md** is required here because the package is an execution surface. Declared gates must pass before task completion ([Completion rule](../../../../kit/RULES.md#completion)). Upgrades: [UPGRADE.md](../../../../kit/UPGRADE.md).
 
 ---
 

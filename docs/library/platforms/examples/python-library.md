@@ -6,7 +6,7 @@ audience:
   - developers
   - maintainers
 doc_type: other
-version: "1.0.2"
+version: "1.0.3"
 related:
   - ../../../../ADOPTER.md
   - ../../../../kit/RULES.md
@@ -18,7 +18,7 @@ last_updated: "2026-10-17"
 
 # Example: Python library package
 
-**Illustrative only** — copy the *pattern* of a filled authority map and verification table. Replace names and commands with your project’s.
+Illustrative filled authority map and verification for a Python library. Copy the pattern and replace the names and commands.
 
 **Sample interest:** “Library that transforms tabular records and exposes a small public API for callers.”
 
@@ -56,13 +56,13 @@ Optional: methodology template if formulas or scoring are part of the contract.
 | Security / trust boundary | `src/SECURITY.md` *(omit if modularity allows)* |
 | Default config | `src/defaults.yaml` |
 | Golden tests / fixtures | `tests/fixtures/` |
-| Python style / PEP-8 gate | `.pylintrc` (from `kit/configs/pylintrc`; **set `py-version`**) |
+| Python style / PEP-8 gate | `.pylintrc` (from [`pylintrc`](../program-language/python/pylintrc); **set `py-version`**) |
 | Language surface inventory | Inventory in project RULES / security module (filled below) |
 | Security & code-validation certification | `certification/README.md` *(optional)* |
-| Agent Instruct (optional) | `kit/skills/README.md`; PLAN **Agent models** if using agents ([plan](../../../../kit/skills/kit-author-plan/SKILL.md)); BUILD → `kit/skills/generated/` — see [plan.md](../../../../kit/skills/kit-author-plan/template/plan.md) |
-| AI docs workspace (when used) | Root `docs/README.md` + modules; policy `kit/rules/ai-docs-workspace.md` |
-| Multi-phase execution (when used) | `docs/WORKBOARD.md` · policy `kit/rules/workboard.md` |
-| Host always-on / L0 | Root `AGENTS.md` **if** a coding agent is used ([habitat](../../../../kit/skills/kit-discover-host/SKILL.md)); skip otherwise |
+| Agent Instruct (optional) | `kit/skills/README.md`; PLAN **Agent models** if using agents ([plan](../../kit-adopter/skills/kit-author-plan/SKILL.md)); BUILD → `docs/library/kit-adopter/generated/` — see [plan.md](../../kit-adopter/skills/kit-author-plan/template/plan.md) |
+| AI docs workspace (when used) | Root `docs/README.md` + modules; policy `kit/rules/files.md` |
+| Multi-phase execution (when used) | `WORKBOARD.md` · policy `kit/rules/contracts.md` |
+| Host always-on / L0 | Root `AGENTS.md` **if** a coding agent is used ([habitat](../../kit-adopter/skills/kit-discover-host/SKILL.md)); skip otherwise |
 
 ### Language surface inventory (snippet)
 
@@ -102,10 +102,10 @@ Optional: methodology template if formulas or scoring are part of the contract.
 | Security / SAST (Python only) | `python -m bandit -r src` — **required** when declared; `pip-audit` when deps row exists |
 | Formal certification | If `certification/` maintained: regenerate `last_certification.*`; do not stage outputs |
 | Schema or sample data | Headers/fields match schema; consumers still load samples |
-| Docs only | Author checklist (including [density](../MARKDOWN-STANDARD.md#density-force-and-incorporation)); relative links resolve; last citations remain; consume example in README still runs |
-| New navigable directory | Directory-index `README.md` (file → function) for **new** dirs ([files.md](../rules/files.md)); **forward-only** — not a gate for historical folders |
+| Docs only | Author checklist (including [author checklist](../../../../kit/MARKDOWN-STANDARD.md#author-checklist)); relative links resolve; last citations remain; consume example in README still runs |
+| New navigable directory | Directory-index `README.md` (file → function) for **new** dirs ([files.md](../../../../kit/rules/files.md)); **forward-only** — not a gate for historical folders |
 
-**Adopt pylint:** copy `kit/configs/pylintrc` to package or repo root as `.pylintrc`; set `py-version`; keep pylint **developer-only**. Declared gates must pass before task completion ([Completion rule](../rules/verification-and-ops.md#completion-rule)). Upgrades: [UPGRADE.md](../../../../kit/UPGRADE.md).
+**Adopt pylint:** copy [`pylintrc`](../program-language/python/pylintrc) to package or repo root as `.pylintrc`; set `py-version`; keep pylint **developer-only**. Declared gates must pass before task completion ([Completion rule](../../../../kit/RULES.md#completion)). Upgrades: [UPGRADE.md](../../../../kit/UPGRADE.md).
 
 ---
 

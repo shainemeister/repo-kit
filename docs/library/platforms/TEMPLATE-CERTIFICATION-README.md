@@ -9,9 +9,9 @@ audience:
   - it
 doc_type: other
 related:
-  - ../RULES.md
-  - ../rules/security.md
-  - ../CHANGELOG.md
+  - ../../../kit/RULES.md
+  - ../../security.md
+  - ./CHANGELOG.md
 last_updated: "{{LAST_UPDATED}}"
 # keywords:          # omit-if
 #   - {{KEYWORD}}
@@ -19,12 +19,12 @@ last_updated: "{{LAST_UPDATED}}"
 
 # {{PRODUCT_OR_REPO_NAME}} — Certification
 
-Operator guide for the **formal, regenerable** security and code-validation certificate for this repository. Implementation of an automated harness is optional; this folder documents schema and how to regenerate the pair.
+Operator guide for regenerable self-attestation certificates (security static analysis and code validation). Implementation of an automated harness is optional; this folder documents schema and how to regenerate the pair.
 
 **Document version:** {{VERSION}}  
 **Status:** draft  
 
-**Related:** [Security and code-validation certification](../rules/security.md#security-and-code-validation-certification) · [Language surface inventory](../rules/security.md#language-surface-inventory) · [RULES.md](../RULES.md)
+**Related:** [Security baseline](../../security.md#baseline) · [RULES.md](../../../kit/RULES.md)
 
 Replace every `{{PLACEHOLDER}}`. Delete commented `keywords` if unused.
 
@@ -59,7 +59,7 @@ This is **not** a third-party audit, SOC 2, or ISO seal.
 
 After any change set that touches product code or declared gates:
 
-1. Run Domain B and Domain A commands for surfaces in the project [language surface inventory](../rules/security.md#language-surface-inventory).  
+1. Run Domain B and Domain A commands for surfaces in the project [security baseline](../../security.md#baseline).  
 2. Write or refresh `last_certification.json` and `last_certification.txt`.  
 3. Confirm `OverallPass` is true when shipping.  
 4. Leave regenerable outputs **untracked** (gitignored).
@@ -85,7 +85,7 @@ Do not mark the task complete if a **declared** gate was skipped or failed.
 | `last_certification.json` | Machine-readable certificate (gitignored) |
 | `last_certification.txt` | Human-readable certificate (gitignored) |
 
-Illustrative JSON fields: `CertificateType`, `OverallPass`, `GitCommit`, `GitDirty`, `LanguageSurfaces`, `ToolVersions`, `Domains.Security`, `Domains.CodeValidation`, `Checks[]`, `Disclaimer`. Full shape: [Certificate shape](../rules/security.md#certificate-shape-illustrative).
+Illustrative JSON fields: `CertificateType`, `OverallPass`, `GitCommit`, `GitDirty`, `LanguageSurfaces`, `ToolVersions`, `Domains.Security`, `Domains.CodeValidation`, `Checks[]`, `Disclaimer`. Full shape: [security baseline](../../security.md#baseline).
 
 ---
 

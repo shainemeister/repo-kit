@@ -1,7 +1,7 @@
 ---
 title: Authoring and Style
 description: "Tool commands for a declared language. The platform packs own the policy."
-version: "1.2.7"
+version: "1.2.8"
 status: current
 audience:
   - developers
@@ -21,7 +21,7 @@ last_updated: "2026-10-17"
 
 Tool commands for a declared language. The platform packs own the policy. This file is the command catalog.
 
-How to write documentation and how to gate product code style (Domain B). **Declared** Domain B gates apply only when that language is in the [language surface inventory](./security.md#language-surface-inventory); this file owns command strings, pass criteria, and adopt steps.
+How to write documentation and how to gate product code style (Domain B). **Declared** Domain B gates apply only when that language is in the [security baseline](../../security.md#baseline); this file owns command strings, pass criteria, and adopt steps.
 
 **Related:** [platforms](README.md) · [Python](program-language/python/README.md) · [Rust](program-language/rust/README.md) · [C/C++](program-language/c/README.md) · [checker](scripts/README.md) · [markdown](../../../kit/MARKDOWN-STANDARD.md)
 
@@ -31,10 +31,10 @@ How to write documentation and how to gate product code style (Domain B). **Decl
 
 | Must |
 |------|
-| Follow [MARKDOWN-STANDARD](../MARKDOWN-STANDARD.md) required core (root `README.md` uses the [landing](../MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter) outline); leave no `{{PLACEHOLDERS}}` in finished docs |
-| Cite, don’t reprint; keep the last citation of each owner ([contracts](./contracts.md#incorporation)) |
+| Follow [MARKDOWN-STANDARD](../../../kit/MARKDOWN-STANDARD.md) required core (root `README.md` uses the [landing](../../../kit/MARKDOWN-STANDARD.md#landing-readme) outline); leave no `{{PLACEHOLDERS}}` in finished docs |
+| Cite, don’t reprint; keep the last citation of each owner ([contracts](../../../kit/rules/contracts.md#incorporation)) |
 | Run **declared** style gates before complete; pylint, rustfmt, clippy, clang-format, and clang-tidy are **not** product runtime dependencies |
-| Update canonical docs with behavior in the same change set ([contracts](./contracts.md)) |
+| Update canonical docs with behavior in the same change set ([contracts](../../../kit/rules/contracts.md)) |
 
 ---
 
@@ -43,8 +43,8 @@ How to write documentation and how to gate product code style (Domain B). **Decl
 1. [Documentation rules](#documentation-rules)
 2. [Formatting and style](#formatting-and-style)
 3. [Python style gate (pylint)](#python-style-gate-pylint)
-4. [Rust style gate (rustfmt + clippy)](#rust-style-gate-rustfmt--clippy)
-5. [C / C++ style gate (clang-format + clang-tidy)](#c--c-style-gate-clang-format--clang-tidy)
+4. [Rust style gate (rustfmt + clippy)](#rust-style-gate-rustfmt-clippy)
+5. [C / C++ style gate (clang-format + clang-tidy)](#c-c-style-gate-clang-format-clang-tidy)
 6. [Other language style gates](#other-language-style-gates)
 7. [Document history](#document-history)
 
@@ -52,41 +52,41 @@ How to write documentation and how to gate product code style (Domain B). **Decl
 
 ## Documentation rules
 
-1. **Substantial documents** follow [MARKDOWN-STANDARD.md](../MARKDOWN-STANDARD.md): YAML frontmatter, single H1, lead, then the **required core** for the type ([density](../MARKDOWN-STANDARD.md#density-force-and-incorporation)). Summary and Contents only when those rules require them. **Root `README.md`** uses the [landing](../MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter) outline only: no frontmatter; **Overview** then **Operator prompts**.
-2. **New docs** start from [template/](../../../kit/skills/kit-author-docs/template); leave no unresolved `{{PLACEHOLDERS}}`. Durable markdown has YAML except the omit list; `description` passes the [identity test](../MARKDOWN-STANDARD.md#description-identity) (current-content summary plus uniqueness). Directory-index `README.md` for a new navigable directory follows [files.md](./files.md) (file → function; not [landing](../MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter) shape).
-3. **Behavior change ⇒ doc change** in the same commit or PR ([contracts](./contracts.md#same-change-set-rule)):
+1. **Substantial documents** follow [MARKDOWN-STANDARD.md](../../../kit/MARKDOWN-STANDARD.md): YAML frontmatter, single H1, lead, then the **required core** for the type ([author checklist](../../../kit/MARKDOWN-STANDARD.md#author-checklist)). Summary and Contents only when those rules require them. **Root `README.md`** uses the [landing](../../../kit/MARKDOWN-STANDARD.md#landing-readme) outline only: no frontmatter; **Overview** then **Operator prompts**.
+2. **New docs** start from [template/](../../../kit/skills/kit-author-docs/template); leave no unresolved `{{PLACEHOLDERS}}`. Durable markdown has YAML except the omit list; `description` passes the [identity test](../../../kit/MARKDOWN-STANDARD.md#frontmatter) (current-content summary plus uniqueness). Directory-index `README.md` for a new navigable directory follows [files.md](../../../kit/rules/files.md) (file → function; not [landing](../../../kit/MARKDOWN-STANDARD.md#landing-readme) shape).
+3. **Behavior change ⇒ doc change** in the same commit or PR ([contracts](../../../kit/rules/contracts.md#same-change-set-rule)):
    - CLI verbs, flags, exit codes, JSON shapes → matching CLI / API guide
    - Formulas, output columns, validation → methodology (+ fixtures if contract shifts)
    - Trust boundary or execution model → matching security doc
-4. **Cite, don’t reprint:** one sentence + deep link ([contracts](./contracts.md#incorporation)); do not paste another document in full.
-5. **Root README** stays an overview; deep contracts stay in package docs ([landing](../MARKDOWN-STANDARD.md#landing--root-readme-no-frontmatter)).
-6. **Status honesty:** set frontmatter `status` to `draft` / `current` / `deprecated` accurately ([field reference](../MARKDOWN-STANDARD.md#field-reference)).
-7. **Platform-aware examples** follow [MARKDOWN-STANDARD — Platform-aware examples](../MARKDOWN-STANDARD.md#platform-aware-examples): declare primary OS when examples are OS-specific; dual fences when multi-platform.
+4. **Cite, don’t reprint:** one sentence + deep link ([contracts](../../../kit/rules/contracts.md#incorporation)); do not paste another document in full.
+5. **Root README** stays an overview; deep contracts stay in package docs ([landing](../../../kit/MARKDOWN-STANDARD.md#landing-readme)).
+6. **Status honesty:** set frontmatter `status` to `draft` / `current` / `deprecated` accurately ([field reference](../../../kit/MARKDOWN-STANDARD.md#frontmatter)).
+7. **Platform-aware examples** follow [MARKDOWN-STANDARD — Platform-aware examples](../../../kit/MARKDOWN-STANDARD.md#author-checklist): declare primary OS when examples are OS-specific; dual fences when multi-platform.
 
-Starter configs: [pylintrc](../configs/pylintrc) · [rustfmt.toml](../configs/rustfmt.toml) · [clippy.toml](../configs/clippy.toml) · [clang-format](../configs/clang-format) · [clang-tidy](../configs/clang-tidy). Copy **only** files for languages the inventory lists.
+Starter configs: [pylintrc](program-language/python/pylintrc) · [rustfmt.toml](program-language/rust/rustfmt.toml) · [clippy.toml](program-language/rust/clippy.toml) · [clang-format](program-language/c/clang-format) · [clang-tidy](program-language/c/clang-tidy). Copy **only** files for languages the inventory lists.
 
 ---
 
 ## Formatting and style
 
-Writing conventions, fences, relative links, and platform-aware examples: [MARKDOWN-STANDARD](../MARKDOWN-STANDARD.md#writing-conventions). Domain B gates when the surface is **declared**:
+Writing conventions, fences, relative links, and platform-aware examples: [MARKDOWN-STANDARD](../../../kit/MARKDOWN-STANDARD.md#author-checklist). Domain B gates when the surface is **declared**:
 
 | Area | Rule |
 |------|------|
 | Python | **PEP-8 via pylint** — [Python style gate (pylint)](#python-style-gate-pylint) |
-| Rust | **rustfmt + clippy** — [Rust style gate](#rust-style-gate-rustfmt--clippy) |
-| C / C++ | **clang-format + clang-tidy** — [C / C++ style gate](#c--c-style-gate-clang-format--clang-tidy) |
+| Rust | **rustfmt + clippy** — [Rust style gate](#rust-style-gate-rustfmt-clippy) |
+| C / C++ | **clang-format + clang-tidy** — [C / C++ style gate](#c-c-style-gate-clang-format-clang-tidy) |
 | Other languages | Declare **one** primary gate — [Other language style gates](#other-language-style-gates) |
 
 ---
 
 ## Python style gate (pylint)
 
-When Python product code is in the [language surface inventory](./security.md#language-surface-inventory). All **product** Python under the packages this project ships must stay **pylint-clean** under the project’s gate config before sharing behavior or packaging changes.
+When Python product code is in the [security baseline](../../security.md#baseline). All **product** Python under the packages this project ships must stay **pylint-clean** under the project’s gate config before sharing behavior or packaging changes.
 
 | Item | Rule |
 |------|------|
-| **Config** | [configs/pylintrc](../configs/pylintrc) — copy to the package or repo as `.pylintrc` (or pass `--rcfile`). PEP-8–aligned conventions (line length 100, docstrings, names, unused imports/vars, selected errors) |
+| **Config** | [pylintrc](program-language/python/pylintrc) — copy to the package or repo as `.pylintrc` (or pass `--rcfile`). PEP-8–aligned conventions (line length 100, docstrings, names, unused imports/vars, selected errors) |
 | **Scope** | Product packages and modules only (not one-off scratch scripts unless the project says so) |
 | **Command** | `python -m pylint <package_or_paths>` (or `py -3.x -m pylint …` on Windows) |
 | **Pass criteria** | Exit code **0** and score **10.00/10** under that config |
@@ -99,47 +99,47 @@ If pylint is not installed on a developer machine, install it into the **develop
 **Adopt steps** (when Python is declared or first introduced):
 
 1. Add the **Python** inventory row and verification commands in the **same change set** (skip if already declared).
-2. Copy `configs/pylintrc` (from kit: `library/platforms/program-language/pylintrc`) to the package or repo root as `.pylintrc`.
+2. Copy `program-language/python/pylintrc` to the package or repo root as `.pylintrc`.
 3. **Must:** set `py-version` to the project’s supported Python (the file ships a starter default only—change it).
-4. Point the [verification table](./verification-and-ops.md#verification-before-ship) at the real package path.
+4. Point the [completion rule](../../../kit/RULES.md#completion) at the real package path.
 5. Extend `good-names` only when short identifiers are intentional and repeated.
 
 ---
 
 ## Rust style gate (rustfmt + clippy)
 
-When Rust is in the [language surface inventory](./security.md#language-surface-inventory) (typically a product `Cargo.toml`).
+When Rust is in the [security baseline](../../security.md#baseline) (typically a product `Cargo.toml`).
 
 | Item | Rule |
 |------|------|
-| **Config** | [configs/rustfmt.toml](../configs/rustfmt.toml) and [configs/clippy.toml](../configs/clippy.toml) — copy to the crate or repo root (or pass rustfmt/clippy config flags). Line width 100; complexity lints out of gate |
+| **Config** | [rustfmt.toml](program-language/rust/rustfmt.toml) and [clippy.toml](program-language/rust/clippy.toml) — copy to the crate or repo root (or pass rustfmt/clippy config flags). Line width 100; complexity lints out of gate |
 | **Scope** | Product crates and modules only (not one-off scratch crates unless the project says so) |
 | **Command** | `cargo fmt --check` and `cargo clippy --all-targets -- -D clippy::correctness -D clippy::suspicious -D clippy::style -A clippy::complexity` |
 | **Pass criteria** | Both commands exit **0** under the kit starter configs. Non-Python gates **do not** inherit pylint’s 10.00/10 score rule |
 | **When to run** | After any edit to product Rust, `rustfmt.toml` / `clippy.toml`, or packaging that can affect style |
 | **Product dependency** | **No.** rustfmt and clippy are **developer tooling** only |
 | **Out of gate** | Clippy **complexity** (too-many-*, cognitive-complexity) stays allowed; do not “fix” them by silent API rewrites |
-| **Domain A** | **cargo-audit** (`cargo audit`) — command only; no kit `audit.toml` (Bandit pattern). Catalog: [SAST gates](./security.md#security--sast-gates-required-when-declared) |
+| **Domain A** | **cargo-audit** (`cargo audit`) — command only; no kit `audit.toml` (Bandit pattern). Catalog: [security baseline](../../security.md#baseline) |
 
 If rustfmt/clippy/cargo-audit are not installed, install them into the **developer** environment (rustup components / `cargo install cargo-audit`), never into a product runtime path meant only for end users.
 
 **Adopt steps** (when Rust is declared or first introduced):
 
 1. Add the **Rust** inventory row and verification commands in the **same change set**.
-2. Copy `library/platforms/program-language/rustfmt.toml` and `library/platforms/program-language/clippy.toml` to the crate or repo root.
+2. Copy `program-language/rust/rustfmt.toml` and `program-language/rust/clippy.toml` to the crate or repo root.
 3. **Must:** set rustfmt `edition` to the crate edition (the file ships a starter default only—change it).
-4. Point the [verification table](./verification-and-ops.md#verification-before-ship) at `cargo fmt --check` and the clippy command above; add `cargo audit` for Domain A.
+4. Point the [completion rule](../../../kit/RULES.md#completion) at `cargo fmt --check` and the clippy command above; add `cargo audit` for Domain A.
 5. Missing required tools (or skipping a declared command) is a **failed** gate.
 
 ---
 
 ## C / C++ style gate (clang-format + clang-tidy)
 
-When C / C++ is in the [language surface inventory](./security.md#language-surface-inventory) (product `*.c` / `*.h` / `*.cc` / `*.cpp` / `*.cxx` / `*.hpp`).
+When C / C++ is in the [security baseline](../../security.md#baseline) (product `*.c` / `*.h` / `*.cc` / `*.cpp` / `*.cxx` / `*.hpp`).
 
 | Item | Rule |
 |------|------|
-| **Config** | [configs/clang-format](../configs/clang-format) and [configs/clang-tidy](../configs/clang-tidy) — copy as `.clang-format` and `.clang-tidy` at package or repo root. Column limit 100; 4-space indent |
+| **Config** | [clang-format](program-language/c/clang-format) and [clang-tidy](program-language/c/clang-tidy) — copy as `.clang-format` and `.clang-tidy` at package or repo root. Column limit 100; 4-space indent |
 | **Scope** | Product C / C++ sources only (not generated sources unless the project says so) |
 | **Command** | `clang-format --dry-run --Werror <sources>` and `clang-tidy -p compile_commands.json <sources>` |
 | **Pass criteria** | Both commands exit **0** under the kit starter configs. Non-Python gates **do not** inherit pylint’s 10.00/10 score rule |
@@ -147,32 +147,32 @@ When C / C++ is in the [language surface inventory](./security.md#language-surfa
 | **Product dependency** | **No.** clang-format and clang-tidy are **developer tooling** only |
 | **Compile database** | Product build must emit `compile_commands.json`. The kit does **not** ship a compilation database or a CMake/Meson/Bazel template. Missing DB when C / C++ is **declared** is a **failed** gate unless the project documents a header-only `--` compile-flag fallback |
 | **Out of gate** | Large modernize-the-codebase CERT dumps and design/refactor metrics stay out of the starter `.clang-tidy` Checks list |
-| **Domain A** | **cppcheck** (`cppcheck --error-exitcode=1 --enable=warning,style,performance,portability <src>`) — command only; no kit `cppcheck.cfg` (Bandit pattern). Catalog: [SAST gates](./security.md#security--sast-gates-required-when-declared) |
+| **Domain A** | **cppcheck** (`cppcheck --error-exitcode=1 --enable=warning,style,performance,portability <src>`) — command only; no kit `cppcheck.cfg` (Bandit pattern). Catalog: [security baseline](../../security.md#baseline) |
 
 If clang-format, clang-tidy, or cppcheck are not installed, install them into the **developer** environment, never into a product runtime path meant only for end users.
 
 **Adopt steps** (when C / C++ is declared or first introduced):
 
 1. Add the **C / C++** inventory row and verification commands in the **same change set**.
-2. Copy `library/platforms/program-language/clang-format` → `.clang-format` and `library/platforms/program-language/clang-tidy` → `.clang-tidy`.
+2. Copy `program-language/c/clang-format` → `.clang-format` and `program-language/c/clang-tidy` → `.clang-tidy`.
 3. **Must:** set `BasedOnStyle` if the tree already uses Google / WebKit / Mozilla / other (LLVM is a starter default only—change it).
 4. Arrange the product build to write `compile_commands.json`; point clang-tidy at it.
-5. Point the [verification table](./verification-and-ops.md#verification-before-ship) at the format, tidy, and cppcheck commands.
+5. Point the [completion rule](../../../kit/RULES.md#completion) at the format, tidy, and cppcheck commands.
 6. Missing required tools, a missing compile DB (without a documented fallback), or skipping a declared command is a **failed** gate.
 
 ---
 
 ## Other language style gates
 
-Projects that ship product code in a language **without** a named kit style chapter should declare **one primary gate per language surface** in RULES or a thin overlay: tool name, command, and pass criteria. Put the command in the [verification table](./verification-and-ops.md#verification-before-ship). Those gates **do not** inherit the pylint 10.00 score rule.
+Projects that ship product code in a language **without** a named kit style chapter should declare **one primary gate per language surface** in RULES or a thin overlay: tool name, command, and pass criteria. Put the command in the [completion rule](../../../kit/RULES.md#completion). Those gates **do not** inherit the pylint 10.00 score rule.
 
 Named kit gates (inventory-gated):
 
 | Language / ecosystem | Kit gate | Typical pass criteria |
 |----------------------|----------|------------------------|
 | Python | [pylint](#python-style-gate-pylint) | Exit 0 and score **10.00/10** under kit `pylintrc` |
-| Rust | [rustfmt + clippy](#rust-style-gate-rustfmt--clippy) | `cargo fmt --check` clean; clippy exit 0 under kit flags |
-| C / C++ | [clang-format + clang-tidy](#c--c-style-gate-clang-format--clang-tidy) | Format check clean; tidy exit 0 under kit file + compile DB |
+| Rust | [rustfmt + clippy](#rust-style-gate-rustfmt-clippy) | `cargo fmt --check` clean; clippy exit 0 under kit flags |
+| C / C++ | [clang-format + clang-tidy](#c-c-style-gate-clang-format-clang-tidy) | Format check clean; tidy exit 0 under kit file + compile DB |
 
 Advisory starting points for other surfaces (choose what the team will actually run):
 
@@ -187,8 +187,8 @@ Advisory starting points for other surfaces (choose what the team will actually 
 
 1. Name the tool and pass criteria explicitly—do not leave “we lint somehow” implied.
 2. Keep style tools as **developer tooling** unless the product truly requires them at runtime.
-3. Docs-only repositories may omit language style gates entirely ([inventory](./security.md#language-surface-inventory)).
-4. Copy **only** the starter configs for languages the inventory lists. A whole-`kit/` copy may leave unused files under `library/platforms/program-language/` — that is dormant catalog, not a live gate.
+3. Docs-only repositories may omit language style gates entirely ([security baseline](../../security.md#baseline)).
+4. Copy **only** the starter configs for languages the inventory lists. A whole-`kit/` copy may leave unused files under `program-language/` — that is dormant catalog, not a live gate.
 
 ---
 
@@ -196,6 +196,7 @@ Advisory starting points for other surfaces (choose what the team will actually 
 
 | Version | Notes |
 |---------|--------|
+| 1.2.8 | Links cite the current markdown standard, contracts, completion rule, security baseline, and tool configs |
 | 1.2.7 | New docs start from `kit/skills/kit-author-docs/template/` |
 | 1.2.6 | Front matter is the first block. The description names the command catalog |
 | 1.2.5 | Description cite names current-content summary plus uniqueness (kit 2.12.0) |

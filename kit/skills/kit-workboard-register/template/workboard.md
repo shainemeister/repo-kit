@@ -1,7 +1,7 @@
 ---
 title: "Workboard blank"
 description: "Blank for root WORKBOARD.md. Copy the fenced body when that file is missing, and when a finished program is archived."
-version: "1.0.1"
+version: "1.0.2"
 status: current
 audience:
   - ai-agents
@@ -29,7 +29,7 @@ The fence is the root file. Remove the fence when you copy it. Links inside the 
 ---
 title: Active workboard
 description: Open multi-phase work. One program is active at a time.
-version: "1.0.0"
+version: "1.1.0"
 status: current
 audience:
   - ai-agents
@@ -61,7 +61,7 @@ Open multi-phase work. One program is active at a time.
 
 Primary program `—` means no program is registered.
 
-Every commit updates this file before the session closes ([contracts](kit/rules/contracts.md#boundaries)). When every phase is `done`, that update files a copy at `docs/plan/archive/<program>/WORKBOARD.md` and replaces this file with the blank.
+Every commit updates this file before the session closes ([contracts](kit/rules/contracts.md#boundaries)). When no phase is `open`, `active`, or `blocked`, that update files a copy at `docs/plan/archive/<program>/WORKBOARD.md` and replaces this file with the blank.
 
 ## Active program
 
@@ -81,9 +81,9 @@ Every commit updates this file before the session closes ([contracts](kit/rules/
 
 ### Phases
 
-| ID | Work | Status | Commit | Notes |
-|----|------|--------|--------|-------|
-| — | — | — | — | — |
+| ID | Work | Status | Notes |
+|----|------|--------|-------|
+| — | — | — | — |
 
 ### Progress log (newest first, max ~15 lines)
 
@@ -94,12 +94,6 @@ Every commit updates this file before the session closes ([contracts](kit/rules/
 | ID | Note |
 |----|------|
 | — | — |
-
-## Recently completed (max 5 programs)
-
-| Program | Ended | L4 pointer |
-|---------|-------|------------|
-| — | — | — |
 
 ## Not on this board
 

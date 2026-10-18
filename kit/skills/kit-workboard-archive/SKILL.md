@@ -5,7 +5,7 @@ layer: playbook
 portability: kit
 activation: catalog_match
 description: >
-  Update the workboard after a commit. When every phase is done, file the board and restore the blank.
+  Update the workboard after a commit. When no phase is open, active, or blocked, file the board and restore the blank.
 triggers:
   - archive the workboard
   - reset the workboard
@@ -33,8 +33,10 @@ references:
     kind: repo
     purpose: Every commit updates the board before the session closes
 verify:
-  - a finished program is filed and the live board is the blank
-  - an open program stays in place with one new progress line
+  - a program with no open, active, or blocked phase is filed and the live board is the blank
+  - links in that copy resolve from the archive file
+  - an open, active, or blocked phase stays, with one new progress line inside the log cap
+  - a program that already has a plan-index row does not gain a second one
   - a blank board is left as it is
   - this task did not edit MEMORY.md or AGENTS.md
   - this task did not commit
@@ -43,22 +45,24 @@ verify:
 
 # Workboard archive
 
-Update the workboard after a commit. When every phase is done, file the board and restore the blank.
+Update the workboard after a commit. When no phase is open, active, or blocked, file the board and restore the blank.
 
-The record is [WORKBOARD.md](../../../WORKBOARD.md). The blank is [template/workboard.md](../kit-workboard-register/template/workboard.md). [files.md](../../rules/files.md) owns those paths. [Contracts](../../rules/contracts.md#boundaries) requires this update before the session closes.
+The record is [WORKBOARD.md](../../../WORKBOARD.md). The blank is [template/workboard.md](../kit-workboard-register/template/workboard.md). [files.md](../../rules/files.md) owns those paths. [Contracts](../../rules/contracts.md#boundaries) owns when this update files the board.
 
 ## Must
 
-- When [WORKBOARD.md](../../../WORKBOARD.md) names a primary program and every phase is `done`, copy it to `docs/plan/archive/<program>/WORKBOARD.md`. The directory name is the primary program.
-- When that directory is new, add the directory README [files.md](../../rules/files.md#directory-index) requires, with one row for the snapshot. When a README is already there, add one row.
-- Add one row for that snapshot on [docs/plan/README.md](../../../docs/plan/README.md).
+- When no phase is `open`, `active`, or `blocked`, copy [WORKBOARD.md](../../../WORKBOARD.md) to `docs/plan/archive/<program>/WORKBOARD.md`. The directory name is the primary program.
+- Rewrite each relative link in that copy, and each `related:` path, so it resolves from the archive file to the same target.
+- When that directory is new, add the directory README [files.md](../../rules/files.md#directory-index) requires, with one row for the snapshot. When the README already lists that snapshot, leave the row.
+- Add one row on [docs/plan/README.md](../../../docs/plan/README.md) only when that program has no row there.
 - Replace root `WORKBOARD.md` with the fenced body of the blank. Remove the fence. Set `last_updated` to the day you copy it.
-- When a phase is not `done`, add one progress line for the commit and leave the program in place.
+- When a phase is `open`, `active`, or `blocked`, add one progress line for the commit, newest first, and drop the oldest line when the log is over the cap. Leave the program in place.
 - Leave `MEMORY.md` and `AGENTS.md` as they are.
 
 ## Must not
 
-- File the board or restore the blank while a phase is not `done`.
+- File the board or restore the blank while a phase is `open`, `active`, or `blocked`.
+- Add a second plan-index row for a program that already has one.
 - Edit `MEMORY.md` or `AGENTS.md`.
 - Commit. A later `kit-commit` is a separate task. The blank does not name this pack again.
 - Restate the status meanings. Those stay on the board.
@@ -81,8 +85,8 @@ The record is [WORKBOARD.md](../../../WORKBOARD.md). The blank is [template/work
 
 1. Open [WORKBOARD.md](../../../WORKBOARD.md).
 2. If the primary program is `—`, stop.
-3. If any phase is not `done`, add one progress line for the commit, newest first, and stop.
-4. Copy the file to `docs/plan/archive/<program>/WORKBOARD.md`. Follow [files.md](../../rules/files.md#directory-index) for a new directory, and add one row on [docs/plan/README.md](../../../docs/plan/README.md).
+3. If any phase is `open`, `active`, or `blocked`, add one progress line for the commit, newest first. Drop the oldest line when the log is over the cap. Stop.
+4. Copy the file to `docs/plan/archive/<program>/WORKBOARD.md`. Rewrite each relative link, and each `related:` path, so it resolves from that file to the same target. Follow [files.md](../../rules/files.md#directory-index) for a new directory. Add one row on [docs/plan/README.md](../../../docs/plan/README.md) only when that program has no row there.
 5. Replace root `WORKBOARD.md` with the fenced body of [the blank](../kit-workboard-register/template/workboard.md). Remove the fence. Set `last_updated` to the day you copy it.
 6. Stop. Do not commit. Do not open another skill.
 

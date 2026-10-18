@@ -6,7 +6,7 @@ audience:
   - developers
   - maintainers
 doc_type: other
-version: "1.0.2"
+version: "1.0.3"
 related:
   - ../../../../ADOPTER.md
   - ../../../../kit/RULES.md
@@ -18,7 +18,7 @@ last_updated: "2026-10-17"
 
 # Example: C / C++ library
 
-**Illustrative only** — copy the *pattern* of a filled authority map and verification table. Replace names and commands with your project’s. Use this file when the interest is a **C or C++** library. Docs-only adopters use [docs-only.md](./docs-only.md) and skip these configs.
+Illustrative filled authority map and verification for a C or C++ library. Copy the pattern, replace the names and commands, and use [docs-only.md](../../kit-adopter/skills/kit-adopter/template/docs-only.md) on a docs-only adopt.
 
 **Sample interest:** “Library that exposes a small public C API (or C++ header) for callers.”
 
@@ -56,13 +56,13 @@ Optional: methodology template if formulas or scoring are part of the contract.
 | Security / trust boundary | `src/SECURITY.md` *(omit if modularity allows)* |
 | Default config | `src/defaults.yaml` (or documented compile flags) |
 | Golden tests / fixtures | `tests/fixtures/` |
-| C / C++ style gate | `.clang-format` + `.clang-tidy` (from `kit/configs/`; **set `BasedOnStyle`**) |
+| C / C++ style gate | `.clang-format` + `.clang-tidy` (from [program-language/c/](../program-language/c/); **set `BasedOnStyle`**) |
 | Language surface inventory | Inventory in project RULES / security module (filled below) |
 | Security & code-validation certification | `certification/README.md` *(optional)* |
-| Agent Instruct (optional) | `kit/skills/README.md`; PLAN **Agent models** if using agents ([plan](../../../../kit/skills/kit-author-plan/SKILL.md)); BUILD → `kit/skills/generated/` — see [plan.md](../../../../kit/skills/kit-author-plan/template/plan.md) |
-| AI docs workspace (when used) | Root `docs/README.md` + modules; policy `kit/rules/ai-docs-workspace.md` |
-| Multi-phase execution (when used) | `docs/WORKBOARD.md` · policy `kit/rules/workboard.md` |
-| Host always-on / L0 | Root `AGENTS.md` **if** a coding agent is used ([habitat](../../../../kit/skills/kit-discover-host/SKILL.md)); skip otherwise |
+| Agent Instruct (optional) | `kit/skills/README.md`; PLAN **Agent models** if using agents ([plan](../../kit-adopter/skills/kit-author-plan/SKILL.md)); BUILD → `docs/library/kit-adopter/generated/` — see [plan.md](../../kit-adopter/skills/kit-author-plan/template/plan.md) |
+| AI docs workspace (when used) | Root `docs/README.md` + modules; policy `kit/rules/files.md` |
+| Multi-phase execution (when used) | `WORKBOARD.md` · policy `kit/rules/contracts.md` |
+| Host always-on / L0 | Root `AGENTS.md` **if** a coding agent is used ([habitat](../../kit-adopter/skills/kit-discover-host/SKILL.md)); skip otherwise |
 
 ### Language surface inventory (snippet)
 
@@ -70,7 +70,7 @@ Declare **only** this row when the repo ships C / C++ product sources. Docs-only
 
 | Surface | Domain B (validation) | Domain A (security) | Notes |
 |---------|----------------------|---------------------|--------|
-| **C / C++** | clang-format dry-run + clang-tidy ([style gate](../rules/authoring-and-style.md#c--c-style-gate-clang-format--clang-tidy)) | cppcheck ([SAST catalog](../rules/security.md#security--sast-gates-required-when-declared)) | Required when this row is present. Product build emits `compile_commands.json` |
+| **C / C++** | clang-format dry-run + clang-tidy ([style gate](../style-gates.md#c-c-style-gate-clang-format-clang-tidy)) | cppcheck ([SAST catalog](../../../security.md#baseline)) | Required when this row is present. Product build emits `compile_commands.json` |
 
 ### Sample kit baseline
 
@@ -103,10 +103,10 @@ Declare **only** this row when the repo ships C / C++ product sources. Docs-only
 | Security / SAST (C / C++ only) | `cppcheck …` — **required** when declared |
 | Formal certification | If `certification/` maintained: regenerate `last_certification.*`; do not stage outputs |
 | Schema or sample data | Headers/fields match schema; consumers still load samples |
-| Docs only | Author checklist (including [density](../MARKDOWN-STANDARD.md#density-force-and-incorporation)); relative links resolve; last citations remain; consume example in README still runs |
-| New navigable directory | Directory-index `README.md` (file → function) for **new** dirs ([files.md](../rules/files.md)); **forward-only** — not a gate for historical folders |
+| Docs only | Author checklist (including [author checklist](../../../../kit/MARKDOWN-STANDARD.md#author-checklist)); relative links resolve; last citations remain; consume example in README still runs |
+| New navigable directory | Directory-index `README.md` (file → function) for **new** dirs ([files.md](../../../../kit/rules/files.md)); **forward-only** — not a gate for historical folders |
 
-**Adopt clang-format + clang-tidy:** copy `kit/configs/clang-format` → `.clang-format` and `kit/configs/clang-tidy` → `.clang-tidy`; set `BasedOnStyle` if the tree already has a house style; generate `compile_commands.json` from the **product** build (the kit does not ship CMake/Meson/Bazel). Keep clang-format, clang-tidy, and cppcheck **developer-only**. Do not add these rows on a docs-only adopt. Missing compile DB when C / C++ is declared is a failed gate unless a header-only `--` fallback is documented. Declared gates must pass before task completion ([Completion rule](../rules/verification-and-ops.md#completion-rule)). Style chapter: [C / C++ style gate](../rules/authoring-and-style.md#c--c-style-gate-clang-format--clang-tidy). Upgrades: [UPGRADE.md](../../../../kit/UPGRADE.md).
+**Adopt clang-format + clang-tidy:** copy [`clang-format`](../program-language/c/clang-format) → `.clang-format` and [`clang-tidy`](../program-language/c/clang-tidy) → `.clang-tidy`; set `BasedOnStyle` if the tree already has a house style; generate `compile_commands.json` from the **product** build (the kit does not ship CMake/Meson/Bazel). Keep clang-format, clang-tidy, and cppcheck **developer-only**. Do not add these rows on a docs-only adopt. Missing compile DB when C / C++ is declared is a failed gate unless a header-only `--` fallback is documented. Declared gates must pass before task completion ([Completion rule](../../../../kit/RULES.md#completion)). Style chapter: [C / C++ style gate](../style-gates.md#c-c-style-gate-clang-format-clang-tidy). Upgrades: [UPGRADE.md](../../../../kit/UPGRADE.md).
 
 ---
 

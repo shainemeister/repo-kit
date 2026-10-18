@@ -27,6 +27,7 @@ references:
     purpose: A shipped phase updates the board in the same change set
 verify:
   - one program is recorded before the phase work
+  - an existing primary program was left in place
   - the live table is not copied into another file
 # BUILD fills: {{PROJECT_NAME}}, {{TUNING_MUST_NOT_EXTRA}}
 ---
@@ -43,9 +44,11 @@ The record is [WORKBOARD.md](../../../WORKBOARD.md). That file stays the owner.
 - When that file is missing, copy the fenced body of [template/workboard.md](template/workboard.md) to the repository root and remove the fence.
 - Record the goal, the base, the decisions, and every step in the phase table.
 - Leave exactly one program as the primary program.
+- When the primary program is not `—`, stop. Leave that program in place.
 
 ## Must not
 
+- Replace a program that is already primary.
 - Paste the live phase table into another file.
 - Do the phase's product work in this task.
 - Restate the status meanings. Those stay on the board.
@@ -67,10 +70,11 @@ The record is [WORKBOARD.md](../../../WORKBOARD.md). That file stays the owner.
 ## Procedure
 
 1. Open [WORKBOARD.md](../../../WORKBOARD.md). If it is missing, copy the fenced body of [template/workboard.md](template/workboard.md) to the repository root and remove the fence. Set `last_updated` to the day you copy it.
-2. If this work has no phases, stop. Do not open a program.
-3. Write one program: goal, base, decisions, and every step in the phase table. One phase is `active` only when that phase is the work about to start. The others stay `open`.
-4. Add one progress line.
-5. Name the next task and stop. Do not open that skill.
+2. If the primary program is not `—`, stop.
+3. If this work has no phases, stop. Do not open a program.
+4. Write one program: goal, base, decisions, and every step in the phase table. One phase is `active` only when that phase is the work about to start. The others stay `open`.
+5. Add one progress line.
+6. Name the next task and stop. Do not open that skill.
 
 ## Open for law
 
