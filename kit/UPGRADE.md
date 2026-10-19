@@ -1,7 +1,7 @@
 ---
 title: "Upgrade repo-kit"
 description: "How a project that already adopted this kit takes a newer copy from the Kit source recorded in its baseline."
-version: "3.3.0"
+version: "3.4.0"
 status: current
 audience:
   - developers
@@ -13,15 +13,15 @@ related:
   - rules/versioning-and-git.md
   - ../WORKBOARD.md
   - ../MEMORY.md
-  - ../docs/library/kit-adopter/README.md
-last_updated: "2026-10-17"
+  - ../docs/library/kit-upgrade/README.md
+last_updated: "2026-10-18"
 ---
 
 # Upgrade repo-kit
 
 How a project that already adopted this kit takes a newer copy from the Kit source recorded in its baseline.
 
-**Related:** [RULES](RULES.md) · [CHANGELOG](CHANGELOG.md) · [versioning](rules/versioning-and-git.md) · [workboard](../WORKBOARD.md) · [notepad](../MEMORY.md) · [shelf](../docs/library/kit-adopter/README.md)
+**Related:** [RULES](RULES.md) · [CHANGELOG](CHANGELOG.md) · [versioning](rules/versioning-and-git.md) · [workboard](../WORKBOARD.md) · [notepad](../MEMORY.md) · [upgrade shelf](../docs/library/kit-upgrade/README.md)
 
 ## Steps
 
@@ -31,4 +31,4 @@ How a project that already adopted this kit takes a newer copy from the Kit sour
 4. Update the adopted version in the project's kit baseline.
 5. Add one line to the project's own changelog for the upgrade. Do not paste this kit's history into that file.
 
-Adopt and upgrade packs are [kit-adopter](../docs/library/kit-adopter/README.md). Open that index and follow the order it names.
+The pack order is [the upgrade shelf](../docs/library/kit-upgrade/README.md). Open that index and follow the order it names. This file stays followable from the Kit source when that shelf is not in the target.

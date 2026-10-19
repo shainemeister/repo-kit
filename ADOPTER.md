@@ -1,7 +1,7 @@
 ---
 title: Adopt repo-kit
 description: "One-time adopt of this kit into a target repository. An adopted repository deletes this file when the adopt is finished."
-version: "1.1.0"
+version: "1.2.0"
 status: current
 audience:
   - developers
@@ -14,7 +14,7 @@ related:
   - MEMORY.md
   - WORKBOARD.md
   - docs/library/kit-adopter/README.md
-last_updated: "2026-10-17"
+last_updated: "2026-10-18"
 ---
 
 # Adopt repo-kit
@@ -23,7 +23,7 @@ One-time adopt of this kit into a target repository. An adopted repository delet
 
 **Related:** [RULES](kit/RULES.md) · [UPGRADE](kit/UPGRADE.md) · [AGENTS](AGENTS.md) · [notepad](MEMORY.md) · [workboard](WORKBOARD.md) · [shelf](docs/library/kit-adopter/README.md)
 
-This repository keeps this file. It is the source of the adopt order.
+This repository keeps this file. An adopted repository deletes it when the adopt is finished.
 
 ## Steps
 
@@ -33,5 +33,5 @@ This repository keeps this file. It is the source of the adopt order.
 4. Record the adopted version and the Kit source in the target's kit baseline. The version is the latest dated section under `## repo-kit` in [CHANGELOG.md](kit/CHANGELOG.md). The Kit source is the URL in [RULES.md](kit/RULES.md#kit-baseline).
 5. Write the target's root `README.md` and directory indexes for its own files. Use [MARKDOWN-STANDARD.md](kit/MARKDOWN-STANDARD.md) for the shape. Do not paste kit examples in as those descriptions.
 6. If a coding agent is used, add a root `AGENTS.md` from the paste block in [agents.md](docs/library/kit-adopter/skills/kit-discover-host/template/agents.md). If one already exists, paste that block once. Do not replace project text. If `MEMORY.md` is missing, copy the fenced body of [memory.md](docs/library/kit-adopter/skills/kit-discover-host/template/memory.md) to the repository root and remove the fence. If it exists, leave it.
-7. When Agent Instruct is used, open [kit-adopter](docs/library/kit-adopter/README.md) and follow the adopt order. Copy that directory. Stop after emit.
+7. The pack order is [the adopt shelf](docs/library/kit-adopter/README.md). Do not paste that table here. A bare adopt stops before kit-author-plan. When Agent Instruct is used, copy that directory and stop after emit.
 8. Later upgrades use [UPGRADE.md](kit/UPGRADE.md).

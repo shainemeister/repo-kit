@@ -3,7 +3,7 @@ title: "docs/plan/archive/"
 description: Index of shipped program annexes after archive. Open when reading historical kit programs; not the live todo list.
 status: current
 doc_type: other
-version: "1.0.3"
+version: "1.0.4"
 last_updated: "2026-10-18"
 ---
 
@@ -19,6 +19,7 @@ This folder is **archaeology only**. It is not the live todo list. Active work i
 
 | Pack | Ended | Read instead (L4) |
 |------|-------|-------------------|
+| [shelf-crews](./shelf-crews/) | 2026-10-18 | [ADOPTER.md](../../../ADOPTER.md) **1.2.0** · [UPGRADE.md](../../../kit/UPGRADE.md) **3.4.0** |
 | [skill-shape](./skill-shape/) | 2026-10-18 | [kit-define-pack](../../../docs/library/kit-adopter/skills/kit-define-pack/SKILL.md) **1.9.0** · [kit-emit-packs](../../../docs/library/kit-adopter/skills/kit-emit-packs/SKILL.md) **1.12.0** |
 | [audit-repairs](./audit-repairs/) | 2026-10-18 | [contracts](../../../kit/rules/contracts.md) **1.13.0** · [path-pattern](../../../kit/rules/path-pattern.md) **1.1.0** |
 | [commit-notes-2.13.0](./commit-notes-2.13.0/) | 2026-09-04 | [versioning-and-git](../../../kit/rules/versioning-and-git.md) **1.1.0** · [CHANGELOG](../../../kit/CHANGELOG.md) `### [2.13.0]` |

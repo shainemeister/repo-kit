@@ -22,3 +22,6 @@ Phase drafts for the shelf-crews program.
 | [8-adopt-qa.md](8-adopt-qa.md) | Adopt QA reports fits or a short fix list |
 | [9-upgrade.md](9-upgrade.md) | Upgrade pack names the next upgrade row and stops |
 | [10-upgrade-qa.md](10-upgrade-qa.md) | Upgrade QA reports fits or a short fix list |
+| [11-point-adopter.md](11-point-adopter.md) | ADOPTER.md names the adopt shelf |
+| [12-point-upgrade.md](12-point-upgrade.md) | UPGRADE.md names the upgrade shelf |
+| [WORKBOARD.md](WORKBOARD.md) | Snapshot of the board when the program finished |
