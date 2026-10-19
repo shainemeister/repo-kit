@@ -69,9 +69,9 @@ An authorized commit updates this file before that commit is created, and files 
 | 5 | Draft `kit-catalog-scout` | [kit-catalog-scout](docs/library/kit-adopter/skills/kit-catalog-scout/SKILL.md) | `done` | QA passed after the lead matched the description and step 4 no longer contradicted itself. Adopt order row 2. |
 | 6 | Draft `kit-context-register` | [kit-context-register](docs/library/kit-adopter/skills/kit-context-register/SKILL.md) | `done` | QA passed after the draft step cited the blank instead of pasting it. Adopt order row 3. Upgrade order row 2 links this pack. |
 | 7 | Rewrite the adopt execution pack | [kit-adopter](docs/library/kit-adopter/skills/kit-adopter/SKILL.md) | `done` | QA passed. Same id. Names the next adopt-README row and stops. A bare adopt stops before `kit-author-plan`. |
-| 8 | Draft `kit-adopt-qa` | [kit-adopt-qa](docs/library/kit-adopter/skills/kit-adopt-qa/SKILL.md) | `open` | Read the phase draft and the File target. Report fits, or a short fix list. Do not edit the phase. Do not carry the reviewer's commit checks. |
-| 9 | Draft `kit-upgrade` | [kit-upgrade](docs/library/kit-upgrade/skills/kit-upgrade/SKILL.md) | `open` | Read the Kit source and the notable changes since the baseline. Keep project `AGENTS.md`, `MEMORY.md`, and `WORKBOARD.md`. Name the next upgrade row and stop. Do not paste this kit's changelog into the project. |
-| 10 | Draft `kit-upgrade-qa` | [kit-upgrade-qa](docs/library/kit-upgrade/skills/kit-upgrade-qa/SKILL.md) | `open` | Read the changelog span and the rows this upgrade registered. Report fits, or a short fix list. Do not edit the phase. Do not treat a product file as a kit file. |
+| 8 | Draft `kit-adopt-qa` | [kit-adopt-qa](docs/library/kit-adopter/skills/kit-adopt-qa/SKILL.md) | `done` | QA passed against the board and ADOPTER.md. Adopt order row 5. Reports fits or a short fix list and does not edit the phase. |
+| 9 | Draft `kit-upgrade` | [kit-upgrade](docs/library/kit-upgrade/skills/kit-upgrade/SKILL.md) | `done` | QA passed. Keeps project AGENTS.md, MEMORY.md, and WORKBOARD.md. Names the next upgrade row and stops. Does not paste the kit changelog. |
+| 10 | Draft `kit-upgrade-qa` | [kit-upgrade-qa](docs/library/kit-upgrade/skills/kit-upgrade-qa/SKILL.md) | `done` | QA passed. Reads the changelog span and the registered rows. Does not treat a product file as a kit file. |
 | 11 | Point `ADOPTER.md` at the adopt order | [ADOPTER.md](ADOPTER.md) | `open` | One sentence names `docs/library/kit-adopter/README.md`. Do not paste the pack table. The target still deletes this file when the adopt is finished. |
 | 12 | Point `UPGRADE.md` at the upgrade order | [UPGRADE.md](kit/UPGRADE.md) | `open` | One sentence names `docs/library/kit-upgrade/README.md`. The five steps stay. The target can follow this file from the Kit source when the shelf is not copied in. |
 
@@ -79,6 +79,7 @@ Each registered phase has a draft at `docs/plan/<program>/<id>-<verb>.md` with t
 
 ### Progress log (newest first, max ~15 lines)
 
+- 2026-10-18 — Phases 8–10 done after QA against the board and ADOPTER.md.
 - 2026-10-18 — Phases 5–7 done after QA. Catalog scout and context register are adopt rows 2 and 3.
 - 2026-10-18 — Phases 2–4 done. The adopt shelf and the upgrade shelf each have one order. Drafts are under `docs/plan/shelf-crews/`.
 - 2026-10-18 — Phase 1 done. A registered phase has a draft. This program's rows were registered before that rule and were not backfilled.
