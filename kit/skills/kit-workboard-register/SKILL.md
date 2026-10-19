@@ -30,22 +30,13 @@ verify:
   - an existing primary program was left in place
   - the live table is not copied into another file
   - each phase File cell is a relative link or `—`
+  - each registered phase has a draft with a body, and the File cell is not that draft
 # BUILD fills: {{PROJECT_NAME}}, {{TUNING_MUST_NOT_EXTRA}}
 ---
 
 # Workboard register
 
-Open one program on the workboard before phased work starts. Record the goal, the decisions, and the phases.
-
 The record is [WORKBOARD.md](../../../WORKBOARD.md). That file stays the owner.
-
-## Must
-
-- Register one program on [WORKBOARD.md](../../../WORKBOARD.md) before the phase work.
-- When that file is missing, copy the fenced body of [template/workboard.md](template/workboard.md) to the repository root and remove the fence.
-- Record the goal, the base, the decisions, and every step in the phase table.
-- Leave exactly one program as the primary program.
-- When the primary program is not `—`, stop. Leave that program in place.
 
 ## Must not
 
@@ -73,7 +64,7 @@ The record is [WORKBOARD.md](../../../WORKBOARD.md). That file stays the owner.
 1. Open [WORKBOARD.md](../../../WORKBOARD.md). If it is missing, copy the fenced body of [template/workboard.md](template/workboard.md) to the repository root and remove the fence. Set `last_updated` to the day you copy it.
 2. If the primary program is not `—`, stop.
 3. If this work has no phases, stop. Do not open a program.
-4. Write one program: goal, base, decisions, and every step in the phase table. One phase is `active` only when that phase is the work about to start. The others stay `open`. The File cell is a relative link to the file that phase edits, or `—` when it edits no file. Notes do not repeat that path. The blank owns the columns.
+4. Write one program: goal, base, decisions, and every step in the phase table. One phase is `active` only when that phase is the work about to start. The others stay `open`. The File cell is a relative link to the file that phase edits, or `—` when it edits no file. Notes do not repeat that path. The blank owns the columns. Write the draft the blank names, with that phase's working text, in the same change set as the row. Do not create a draft that has no body.
 5. Add one progress line.
 6. Name the next task and stop. Do not open that skill.
 

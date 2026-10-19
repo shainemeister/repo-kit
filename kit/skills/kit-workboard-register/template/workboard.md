@@ -1,7 +1,7 @@
 ---
 title: "Workboard blank"
 description: "Blank for root WORKBOARD.md. Copy the fenced body when that file is missing, and when a finished program is archived."
-version: "1.0.6"
+version: "1.0.7"
 status: current
 audience:
   - ai-agents
@@ -30,7 +30,7 @@ The fence is the root file. Remove the fence when you copy it. Links inside the 
 ---
 title: Active workboard
 description: Open multi-phase work. One program is active at a time.
-version: "1.3.0"
+version: "1.4.0"
 status: current
 audience:
   - ai-agents
@@ -85,6 +85,8 @@ An authorized commit updates this file before that commit is created, and files 
 | ID | Work | File | Status | Notes |
 |----|------|------|--------|-------|
 | — | — | — | — | — |
+
+Each registered phase has a draft at `docs/plan/<program>/<id>-<verb>.md` with that phase's working text. The File cell stays the product file.
 
 ### Progress log (newest first, max ~15 lines)
 

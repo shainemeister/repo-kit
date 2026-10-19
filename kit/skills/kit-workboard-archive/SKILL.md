@@ -38,6 +38,7 @@ references:
 verify:
   - a named program with no open, active, or blocked phase is filed and the live board is the blank
   - links in that copy resolve from the archive file
+  - phase drafts move with the board, and an absent `docs/plan/<program>/` directory is not created
   - an open, active, or blocked phase stays, with one new progress line inside the log cap
   - a program that already has a plan-index row does not gain a second one
   - a blank board is left as it is
@@ -48,19 +49,7 @@ verify:
 
 # Workboard archive
 
-Update the workboard for an authorized commit. File a named program when no phase is open, active, or blocked, and restore the blank.
-
 The record is [WORKBOARD.md](../../../WORKBOARD.md). The blank is [template/workboard.md](../kit-workboard-register/template/workboard.md). Those paths follow [path-pattern.md](../../rules/path-pattern.md). [Contracts](../../rules/contracts.md#boundaries) owns when this update files the board. Do this before that commit is created. This task does not create the commit.
-
-## Must
-
-- When the primary program is named and no phase is `open`, `active`, or `blocked`, copy [WORKBOARD.md](../../../WORKBOARD.md) to `docs/plan/archive/<program>/WORKBOARD.md`. The directory name is the primary program. [Contracts](../../rules/contracts.md#boundaries) owns that order.
-- Rewrite each relative link in that copy, and each `related:` path, so it resolves from the archive file to the same target.
-- When that directory is new, follow [kit-index-directory](../kit-index-directory/SKILL.md) for the index [directory-index.md](../../rules/directory-index.md#directory-index) requires. When the README already lists that snapshot, leave the row.
-- Add one row on [docs/plan/README.md](../../../docs/plan/README.md) only when that program has no row there.
-- Replace root `WORKBOARD.md` with the fenced body of the blank. Remove the fence. Set `last_updated` to the day you copy it.
-- When a phase is `open`, `active`, or `blocked`, add one progress line for the commit, newest first, and drop the oldest line when the log is over the cap. Leave the program in place.
-- Leave `MEMORY.md` and `AGENTS.md` as they are.
 
 ## Must not
 
@@ -90,7 +79,7 @@ The record is [WORKBOARD.md](../../../WORKBOARD.md). The blank is [template/work
 1. Open [WORKBOARD.md](../../../WORKBOARD.md).
 2. If the primary program is `—`, stop.
 3. If any phase is `open`, `active`, or `blocked`, add one progress line for the commit, newest first. Drop the oldest line when the log is over the cap. Stop.
-4. Copy the file to `docs/plan/archive/<program>/WORKBOARD.md`. Rewrite each relative link, and each `related:` path, so it resolves from that file to the same target. When that directory is new, follow [kit-index-directory](../kit-index-directory/SKILL.md). Add one row on [docs/plan/README.md](../../../docs/plan/README.md) only when that program has no row there.
+4. Copy the file to `docs/plan/archive/<program>/WORKBOARD.md`. The directory name is the primary program. When `docs/plan/<program>/` exists, move its files into that archive directory and rewrite relative links in those files. Do not create `docs/plan/<program>/` when it is absent. Rewrite each relative link, and each `related:` path, so it resolves from the archive file to the same target. When that directory is new, follow [kit-index-directory](../kit-index-directory/SKILL.md). When the archive directory already has a README that lists the snapshot, leave that row. Add one row on [docs/plan/README.md](../../../docs/plan/README.md) only when that program has no row there.
 5. Replace root `WORKBOARD.md` with the fenced body of [the blank](../kit-workboard-register/template/workboard.md). Remove the fence. Set `last_updated` to the day you copy it.
 6. Stop. Do not commit. Do not open another skill.
 
