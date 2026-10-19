@@ -63,9 +63,9 @@ An authorized commit updates this file before that commit is created, and files 
 | ID | Work | File | Status | Notes |
 |----|------|------|--------|-------|
 | 1 | Require a phase draft when a phase is registered | [workboard blank](kit/skills/kit-workboard-register/template/workboard.md) | `done` | The blank names `docs/plan/<program>/<id>-<verb>.md`. The File cell stays the product file. Archive moves that directory with the board and does not create it when it is absent. |
-| 2 | Leave only the adopt order on the adopter shelf | [kit-adopter README](docs/library/kit-adopter/README.md) | `open` | Remove the upgrade table. One sentence cites `docs/library/kit-upgrade/README.md`. Discover-host, author-plan, emit-packs, map-layers, define-pack, and use-instruct stay here. |
-| 3 | Add the upgrade shelf index | [kit-upgrade README](docs/library/kit-upgrade/README.md) | `open` | New directory. The order is `kit-upgrade`, `kit-context-register`, `kit-map-layers`, `kit-define-pack`, `kit-author-plan`, `kit-emit-packs`, `kit-use-instruct`, `kit-upgrade-qa`. Cite the shared packs. Do not copy them. |
-| 4 | Point the library index at both shelves | [library README](docs/library/README.md) | `open` | The kit-adopter row no longer says it holds the upgrade order. Add the kit-upgrade row. |
+| 2 | Leave only the adopt order on the adopter shelf | [kit-adopter README](docs/library/kit-adopter/README.md) | `done` | Upgrade table removed. One sentence cites the kit-upgrade shelf. Shared packs stay in this directory. |
+| 3 | Add the upgrade shelf index | [kit-upgrade README](docs/library/kit-upgrade/README.md) | `done` | Eight-row order. Shared packs are linked. Packs not drafted yet are named in code. |
+| 4 | Point the library index at both shelves | [library README](docs/library/README.md) | `done` | Adopt and upgrade are separate rows. |
 | 5 | Draft `kit-catalog-scout` | [kit-catalog-scout](docs/library/kit-adopter/skills/kit-catalog-scout/SKILL.md) | `open` | Seed shape, no `## Must`. List tracked paths the index rule keeps, one line each. Do not place the session file. Do not add a catalog the workboard or an index already holds. |
 | 6 | Draft `kit-context-register` | [kit-context-register](docs/library/kit-adopter/skills/kit-context-register/SKILL.md) | `open` | One catalogued path becomes one phase, a File link, the edge case in Notes, and the phase draft from phase 1. Cite `kit-workboard-register`. Do not open a second program. |
 | 7 | Rewrite the adopt execution pack | [kit-adopter](docs/library/kit-adopter/skills/kit-adopter/SKILL.md) | `open` | Same id. Follow the current adopt-README row, name the next row, and stop. A bare adopt stops before `kit-author-plan`. Do not restate `ADOPTER.md`. Do not open the next pack in this session. |
@@ -79,6 +79,7 @@ Each registered phase has a draft at `docs/plan/<program>/<id>-<verb>.md` with t
 
 ### Progress log (newest first, max ~15 lines)
 
+- 2026-10-18 — Phases 2–4 done. The adopt shelf and the upgrade shelf each have one order. Drafts are under `docs/plan/shelf-crews/`.
 - 2026-10-18 — Phase 1 done. A registered phase has a draft. This program's rows were registered before that rule and were not backfilled.
 - 2026-10-18 — Registered `shelf-crews`. Phases 1–12 are open. None are active. `skill-shape` is filed at `docs/plan/archive/skill-shape/`.
 
