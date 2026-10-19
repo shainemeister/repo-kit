@@ -1,7 +1,7 @@
 ---
 title: "Node.js development policy packs"
 description: Modular language, ecosystem, and OS policy maps for Node.js. Security and trusted modules over feature sprawl. Compose packs; do not merge them.
-version: "1.0.0"
+version: "1.0.2"
 status: current
 audience:
   - developers
@@ -11,14 +11,14 @@ related:
   - node-language-policy.md
   - node-ecosystem-policy.md
   - node-os-policy.md
-  - sources.yaml
-last_updated: "2026-08-29"
+last_updated: "2026-10-19"
 ---
 
 # Node.js development policy packs
 
-Curated maps of **what each layer actually checks**. Not tutorials. Not
-product law for any one application.
+Modular language, ecosystem, and OS policy maps for Node.js. Curated
+maps of **what each layer actually checks**. Not tutorials. Not product
+law for any one application.
 
 Three axes. Compose packs; do not merge them. Language and ecosystem
 are **OS-agnostic**. OS tools and ship formats live in **carve-outs**
@@ -152,22 +152,23 @@ How a `node` binary exists on a system. Shared: official binaries vs
 distro. Carve-outs: Debian, Arch, macOS, Windows.
 
 ------------------------------------------------------------------------
-Retrieving updates from official sources
+Pins
 ------------------------------------------------------------------------
 
-[sources.yaml](sources.yaml) /
-[../../scripts/check_sources.py](../../scripts/check_sources.py)
-(`--family program-language/node`). On `DRIFT`, bite-sized rule then
-bump the pin.
+Official manuals remain the authority. This table records the pin that was read. It does not fetch.
 
-Current pins as of 2026-08-29:
-
-- **Node.js 24** Active LTS (`24.20.0`). **26** is Current (LTS
-  October 2026) — not the ship bar.
-- New projects: `engines.node = ">=20"` minimum; CI on **24**.
-- npm **12** lifecycle-script limits / `allowScripts` — treat
-  third-party install scripts as denied unless listed.
-
+| Source | Pin | Pack | Read |
+|--------|-----|------|------|
+| [Node.js release schedule](https://github.com/nodejs/Release) | `24` | [node-language-policy.md](node-language-policy.md), [node-os-policy.md](node-os-policy.md), [README.md](README.md) | 2026-08-29 |
+| [Node.js download](https://nodejs.org/en/download) | `LTS` | [node-os-policy.md](node-os-policy.md) | 2026-08-29 |
+| [Node.js crypto API](https://nodejs.org/docs/latest-v24.x/api/crypto.html) | `crypto` | [node-language-policy.md](node-language-policy.md) | 2026-08-29 |
+| [Node.js test runner](https://nodejs.org/docs/latest-v24.x/api/test.html) | `test runner` | [node-language-policy.md](node-language-policy.md) | 2026-08-29 |
+| [npm ci](https://docs.npmjs.com/cli/v10/commands/npm-ci) | `npm ci` | [node-ecosystem-policy.md](node-ecosystem-policy.md) | 2026-08-29 |
+| [npm audit](https://docs.npmjs.com/cli/v10/commands/npm-audit) | `npm audit` | [node-ecosystem-policy.md](node-ecosystem-policy.md) | 2026-08-29 |
+| [package-lock.json](https://docs.npmjs.com/cli/v10/configuring-npm/package-lock-json) | `lockfileVersion` | [node-ecosystem-policy.md](node-ecosystem-policy.md) | 2026-08-29 |
+| [npm trusted publishers](https://docs.npmjs.com/trusted-publishers) | `Trusted publishing` | [node-ecosystem-policy.md](node-ecosystem-policy.md) | 2026-08-29 |
+| [Debian nodejs package](https://packages.debian.org/stable/nodejs) | `nodejs` | [node-os-policy.md](node-os-policy.md) | 2026-08-29 |
+| [ArchWiki Node.js](https://wiki.archlinux.org/title/Node.js) | `nodejs` | [node-os-policy.md](node-os-policy.md) | 2026-08-29 |
 ------------------------------------------------------------------------
 Document history
 ------------------------------------------------------------------------
@@ -175,3 +176,4 @@ Document history
 | Version | Notes |
 |---------|--------|
 | 1.0.0 | Initial three-pack split. Security-over-features: trusted-module bar, lockfile + ignore-scripts, npm audit. OS carve-outs Debian/Arch/macOS/Windows. |
+| 1.0.2 | Pin table replaces sources.yaml. |

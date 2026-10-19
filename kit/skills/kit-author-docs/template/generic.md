@@ -8,7 +8,7 @@ audience:
 doc_type: other
 related:
   - README.md
-  - {{RELATED_DOC}}
+  - "{{RELATED_DOC}}"
 last_updated: "{{LAST_UPDATED}}"
 # keywords:          # omit-if
 #   - {{KEYWORD}}

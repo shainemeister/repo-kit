@@ -1,7 +1,7 @@
 ---
 title: Authoring and Style
 description: "Tool commands for a declared language. The platform packs own the policy."
-version: "1.2.10"
+version: "1.2.11"
 status: current
 audience:
   - developers
@@ -12,9 +12,8 @@ related:
   - program-language/python/README.md
   - program-language/rust/README.md
   - program-language/c/README.md
-  - scripts/README.md
   - ../../../kit/MARKDOWN-STANDARD.md
-last_updated: "2026-10-18"
+last_updated: "2026-10-19"
 ---
 
 # Authoring and Style
@@ -23,7 +22,7 @@ Tool commands for a declared language. The platform packs own the policy. This f
 
 How to write documentation and how to gate product code style (Domain B). **Declared** Domain B gates apply only when that language is in the [security baseline](../../security.md#baseline); this file owns command strings, pass criteria, and adopt steps.
 
-**Related:** [platforms](README.md) · [Python](program-language/python/README.md) · [Rust](program-language/rust/README.md) · [C/C++](program-language/c/README.md) · [checker](scripts/README.md) · [markdown](../../../kit/MARKDOWN-STANDARD.md)
+**Related:** [platforms](README.md) · [Python](program-language/python/README.md) · [Rust](program-language/rust/README.md) · [C/C++](program-language/c/README.md) · [markdown](../../../kit/MARKDOWN-STANDARD.md)
 
 ---
 
@@ -196,6 +195,7 @@ Advisory starting points for other surfaces (choose what the team will actually 
 
 | Version | Notes |
 |---------|--------|
+| 1.2.11 | The source checker is removed. Pins live on the family indexes |
 | 1.2.10 | Documentation cites use the current markdown and contracts headings |
 | 1.2.9 | A new directory index cites directory-index.md |
 | 1.2.8 | Links cite the current markdown standard, contracts, completion rule, security baseline, and tool configs |

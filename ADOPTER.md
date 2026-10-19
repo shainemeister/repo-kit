@@ -1,7 +1,7 @@
 ---
 title: Adopt repo-kit
 description: "One-time adopt of this kit into a target repository. An adopted repository deletes this file when the adopt is finished."
-version: "1.2.0"
+version: "1.2.1"
 status: current
 audience:
   - developers
@@ -14,7 +14,7 @@ related:
   - MEMORY.md
   - WORKBOARD.md
   - docs/library/kit-adopter/README.md
-last_updated: "2026-10-18"
+last_updated: "2026-10-19"
 ---
 
 # Adopt repo-kit
@@ -28,7 +28,7 @@ This repository keeps this file. An adopted repository deletes it when the adopt
 ## Steps
 
 1. Open [WORKBOARD.md](WORKBOARD.md) and map the target: what it is, where the code lives, and which documents already exist. Do this without waiting to be asked.
-2. Copy `kit/RULES.md`, `kit/rules/`, `kit/MARKDOWN-STANDARD.md`, `kit/UPGRADE.md`, and `kit/skills/` into the target. Leave product code, the project changelog, and `docs/` outside `kit/`.
+2. Copy `kit/RULES.md`, `kit/rules/`, `kit/MARKDOWN-STANDARD.md`, `kit/UPGRADE.md`, and `kit/skills/` into the target. Leave product code, the project changelog, and `docs/` outside `kit/`. A copied skill names the shelf as a kit-source read. It does not require `docs/library/` in the target.
 3. Fill the authority map with paths that exist in the target. Drop rows that do not apply.
 4. Record the adopted version and the Kit source in the target's kit baseline. The version is the latest dated section under `## repo-kit` in [CHANGELOG.md](kit/CHANGELOG.md). The Kit source is the URL in [RULES.md](kit/RULES.md#kit-baseline).
 5. Write the target's root `README.md` and directory indexes for its own files. Use [MARKDOWN-STANDARD.md](kit/MARKDOWN-STANDARD.md) for the shape. Do not paste kit examples in as those descriptions.

@@ -1,7 +1,7 @@
 ---
 title: "Python development policy packs"
 description: Modular language, ecosystem, and OS policy maps for Python. Security and trusted libraries over feature sprawl. Compose packs; do not merge them.
-version: "1.0.0"
+version: "1.0.3"
 status: current
 audience:
   - developers
@@ -11,14 +11,14 @@ related:
   - python-language-policy.md
   - python-ecosystem-policy.md
   - python-os-policy.md
-  - sources.yaml
-last_updated: "2026-08-29"
+last_updated: "2026-10-19"
 ---
 
 # Python development policy packs
 
-Curated maps of **what each layer actually checks**. Not tutorials. Not
-product law for any one application.
+Modular language, ecosystem, and OS policy maps for Python. Curated
+maps of **what each layer actually checks**. Not tutorials. Not product
+law for any one application.
 
 Three axes. Compose packs; do not merge them. Language and ecosystem
 are **OS-agnostic**. OS tools and ship formats live in **carve-outs**
@@ -166,29 +166,42 @@ Policy and the HIG live in [os/linux](../../os/linux/README.md).
 To add Fedora or NixOS as a *Python* carve-out, add a section to
 the OS pack.
 
+## Files
+
+| File | Function |
+|------|----------|
+| [pylintrc](pylintrc) | Starter pylint config an adopter copies into a Python package |
+
 ------------------------------------------------------------------------
-Retrieving updates from official sources
+Pins
 ------------------------------------------------------------------------
 
-[sources.yaml](sources.yaml) is the watch registry.
-[../../scripts/check_sources.py](../../scripts/check_sources.py)
-(`--family program-language/python`) prints `UNCHANGED` or `DRIFT`.
-On drift, patch the owning pack, bump the pin. Never dump HTML into
-packs.
+Official manuals remain the authority. This table records the pin that was read. It does not fetch.
 
-Current pins as of 2026-08-29:
-
-- Python **3.14** bugfix (current stable). **3.15.0rc1** is out;
-  final expected **2026-10-01**. 3.15 is not this pack's ship bar.
-- Security-supported: 3.10–3.12 (security), 3.13–3.14 (bugfix)
-- New projects: `requires-python = ">=3.12"` minimum; prefer 3.14
-  in CI
-- PEP 668 externally-managed environments on distro Pythons
-
+| Source | Pin | Pack | Read |
+|--------|-----|------|------|
+| [Status of Python versions](https://devguide.python.org/versions/) | `3.14` | [python-language-policy.md](python-language-policy.md), [python-os-policy.md](python-os-policy.md), [README.md](README.md) | 2026-08-29 |
+| [PEP 790 Python 3.15 release schedule](https://peps.python.org/pep-0790/) | `2026-10-01` | [python-language-policy.md](python-language-policy.md), [README.md](README.md) | 2026-08-29 |
+| [PEP 8](https://peps.python.org/pep-0008/) | `Style Guide for Python Code` | [python-language-policy.md](python-language-policy.md) | 2026-08-29 |
+| [PEP 668 externally managed environments](https://peps.python.org/pep-0668/) | `EXTERNALLY-MANAGED` | [python-os-policy.md](python-os-policy.md), [python-ecosystem-policy.md](python-ecosystem-policy.md) | 2026-08-29 |
+| [PEP 621 project metadata](https://peps.python.org/pep-0621/) | `pyproject.toml` | [python-ecosystem-policy.md](python-ecosystem-policy.md) | 2026-08-29 |
+| [PEP 751 pylock.toml](https://peps.python.org/pep-0751/) | `pylock.toml` | [python-ecosystem-policy.md](python-ecosystem-policy.md) | 2026-08-29 |
+| [pip secure installs (hash-checking)](https://pip.pypa.io/en/stable/topics/secure-installs/) | `require-hashes` | [python-ecosystem-policy.md](python-ecosystem-policy.md) | 2026-08-29 |
+| [PyPI trusted publishing](https://docs.pypi.org/trusted-publishers/) | `Trusted Publishing` | [python-ecosystem-policy.md](python-ecosystem-policy.md) | 2026-08-29 |
+| [PyPI attestations](https://docs.pypi.org/attestations/) | `attestations` | [python-ecosystem-policy.md](python-ecosystem-policy.md) | 2026-08-29 |
+| [pip-audit](https://github.com/pypa/pip-audit) | `pip-audit` | [python-ecosystem-policy.md](python-ecosystem-policy.md) | 2026-08-29 |
+| [PyPA packaging guide](https://packaging.python.org/en/latest/) | `Python Packaging User Guide` | [python-ecosystem-policy.md](python-ecosystem-policy.md) | 2026-08-29 |
+| [ssl — TLS/SSL wrapper](https://docs.python.org/3/library/ssl.html) | `create_default_context` | [python-language-policy.md](python-language-policy.md) | 2026-08-29 |
+| [Debian Python Policy](https://www.debian.org/doc/packaging-manuals/python-policy/) | `Python` | [python-os-policy.md](python-os-policy.md) | 2026-08-29 |
+| [ArchWiki Python](https://wiki.archlinux.org/title/Python) | `python-pip` | [python-os-policy.md](python-os-policy.md) | 2026-08-29 |
+| [PEP 773 Python Installation Manager for Windows](https://peps.python.org/pep-0773/) | `Python Installation Manager` | [python-os-policy.md](python-os-policy.md) | 2026-08-29 |
+| [Using Python on Windows](https://docs.python.org/3/using/windows.html) | `Python install manager` | [python-os-policy.md](python-os-policy.md) | 2026-08-29 |
 ------------------------------------------------------------------------
 Document history
 ------------------------------------------------------------------------
 
 | Version | Notes |
 |---------|--------|
+| 1.0.3 | The index names pylintrc. |
+| 1.0.2 | Pin table replaces sources.yaml. |
 | 1.0.0 | Initial three-pack split. Security-over-features: trusted-library bar, hash pins, pip-audit. OS carve-outs Debian/Arch/macOS/Windows. |

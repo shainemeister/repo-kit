@@ -1,7 +1,7 @@
 ---
 title: "C/C++ Ecosystem Policy"
 description: Curated map of how a C/C++ project lives — CMake, Meson, pkg-config, soversion, SPDX. Not clang-format and not OS packaging.
-version: "1.0.0"
+version: "1.0.1"
 status: current
 audience:
   - developers
@@ -11,14 +11,15 @@ related:
   - README.md
   - c-language-policy.md
   - c-os-policy.md
-last_updated: "2026-08-29"
+last_updated: "2026-10-19"
 ---
 
 # C/C++ Ecosystem Policy
 
-Reference pack for **how a hosted C/C++ project is described and
-built**: the build specification, public install interface
-(pkg-config / CMake package files), library versioning, and SPDX.
+Curated map of how a C/C++ project lives — CMake, Meson, pkg-config,
+soversion, SPDX. Reference pack for **how a hosted C/C++ project is
+described and built**: the build specification, public install
+interface (pkg-config / CMake package files), and library versioning.
 
 **Role:** curated map (working memory). **Not** L4 for any one
 library. **Not** `-std=` / clang-format / UB — that is
@@ -356,4 +357,5 @@ Document history
 
 | Version | Notes |
 |---------|--------|
+| 1.0.1 | Lead matches the description. |
 | 1.0.0 | Initial ecosystem pack: CMake common contract, Meson alternative, pkg-config/CMake packages, soversion, vcpkg/Conan extras |

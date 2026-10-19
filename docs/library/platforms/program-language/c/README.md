@@ -1,7 +1,7 @@
 ---
 title: "C/C++ development policy packs"
 description: Modular language, ecosystem, and OS policy maps for C and C++. Compose packs; do not merge them into one rulebook.
-version: "1.0.0"
+version: "1.0.3"
 status: current
 audience:
   - developers
@@ -11,13 +11,13 @@ related:
   - c-language-policy.md
   - c-ecosystem-policy.md
   - c-os-policy.md
-  - sources.yaml
-last_updated: "2026-08-29"
+last_updated: "2026-10-19"
 ---
 
 # C/C++ development policy packs
 
-Curated maps of **what each layer actually checks**. Not tutorials. Not
+Modular language, ecosystem, and OS policy maps for C and C++. Curated
+maps of **what each layer actually checks**. Not tutorials. Not
 product law for any one library.
 
 Three axes. Compose packs; do not merge them. Language and ecosystem
@@ -41,8 +41,7 @@ C and C++ share a compiler family and a link/ABI world. They are
 a C++ library still compose the same ecosystem and OS packs.
 
 Last verified against WG14, WG21, GCC, Clang, CMake, Meson, and OS
-installer docs as of 2026-08-29. Pins and the watch workflow are in
-**Retrieving updates from official sources**.
+installer docs as of 2026-08-29. Pins are in **Pins**.
 
 ------------------------------------------------------------------------
 How to compose
@@ -162,42 +161,45 @@ new directory under [program-language/](../). Debian Policy and the
 HIG live in [os/linux](../../os/linux/README.md). To add Fedora or
 NixOS as a *C/C++* carve-out, add a section to the OS pack.
 
+## Files
+
+| File | Function |
+|------|----------|
+| [clang-format](clang-format) | Starter clang-format config an adopter copies for C or C++ |
+| [clang-tidy](clang-tidy) | Starter clang-tidy config an adopter copies for C or C++ |
+
 ------------------------------------------------------------------------
-Retrieving updates from official sources
+Pins
 ------------------------------------------------------------------------
 
-Packs are maps. Official manuals remain the authority.
+Official manuals remain the authority. This table records the pin that was read. It does not fetch. `archive/` is reserved for a frozen snapshot.
 
-[sources.yaml](sources.yaml) is the watch registry.
-[../../scripts/check_sources.py](../../scripts/check_sources.py)
-(`--family program-language/c`) prints `UNCHANGED` or `DRIFT`. On
-drift, patch the owning pack with a bite-sized rule, then bump the
-pin. Never auto-merge HTML into packs.
-
-Cadence:
-
-- GCC / Clang / CMake releases: about every few months
-- WG14 / WG21 status: around meetings
-- OS packaging pages: weekly
-
-Current pins as of 2026-08-29:
-
-- C **23** (ISO/IEC 9899:2024); public draft **N3220**
-- C++ **23** published; C++ **26** technical work complete (DIS),
-  not yet the ship bar for this pack
-- New C projects: **C23** if the claimed compiler implements it,
-  else **C17**
-- New C++ projects: **C++23** if the claimed compiler implements
-  it, else **C++20**
-- clang-format default style: **LLVM**
-
-`archive/` is reserved for a frozen snapshot after the next version
-bump.
-
+| Source | Pin | Pack | Read |
+|--------|-----|------|------|
+| [WG14 project status (ISO C)](https://www.open-std.org/JTC1/SC22/wg14/www/projects) | `ISO/IEC 9899:2024` | [c-language-policy.md](c-language-policy.md), [README.md](README.md) | 2026-08-29 |
+| [ISO C++ status](https://isocpp.org/std/status) | `C++23` | [c-language-policy.md](c-language-policy.md), [README.md](README.md) | 2026-08-29 |
+| [GCC C status](https://gcc.gnu.org/projects/c-status.html) | `C23` | [c-language-policy.md](c-language-policy.md) | 2026-08-29 |
+| [GCC C++ status](https://gcc.gnu.org/projects/cxx-status.html) | `C++23` | [c-language-policy.md](c-language-policy.md) | 2026-08-29 |
+| [Clang C status](https://clang.llvm.org/c_status.html) | `C23` | [c-language-policy.md](c-language-policy.md) | 2026-08-29 |
+| [Clang C++ status](https://clang.llvm.org/cxx_status.html) | `C++23` | [c-language-policy.md](c-language-policy.md) | 2026-08-29 |
+| [ClangFormat](https://clang.llvm.org/docs/ClangFormat.html) | `clang-format` | [c-language-policy.md](c-language-policy.md) | 2026-08-29 |
+| [clang-tidy](https://clang.llvm.org/extra/clang-tidy/) | `clang-tidy` | [c-language-policy.md](c-language-policy.md) | 2026-08-29 |
+| [UndefinedBehaviorSanitizer](https://clang.llvm.org/docs/UndefinedBehaviorSanitizer.html) | `UndefinedBehaviorSanitizer` | [c-language-policy.md](c-language-policy.md) | 2026-08-29 |
+| [CMake documentation](https://cmake.org/cmake/help/latest/) | `CMake Reference Documentation` | [c-ecosystem-policy.md](c-ecosystem-policy.md) | 2026-08-29 |
+| [cmake-packages](https://cmake.org/cmake/help/latest/manual/cmake-packages.7.html) | `find_package` | [c-ecosystem-policy.md](c-ecosystem-policy.md) | 2026-08-29 |
+| [Meson](https://mesonbuild.com/) | `Meson` | [c-ecosystem-policy.md](c-ecosystem-policy.md) | 2026-08-29 |
+| [pkg-config](https://www.freedesktop.org/wiki/Software/pkg-config/) | `pkg-config` | [c-ecosystem-policy.md](c-ecosystem-policy.md) | 2026-08-29 |
+| [Debian Policy shared libraries](https://www.debian.org/doc/debian-policy/ch-sharedlibs.html) | `shared libraries` | [c-os-policy.md](c-os-policy.md) | 2026-08-29 |
+| [ArchWiki C++](https://wiki.archlinux.org/title/C++) | `gcc` | [c-os-policy.md](c-os-policy.md) | 2026-08-29 |
+| [MSVC /std language standard](https://learn.microsoft.com/en-us/cpp/build/reference/std-specify-language-standard-version) | `/std` | [c-language-policy.md](c-language-policy.md), [c-os-policy.md](c-os-policy.md) | 2026-08-29 |
+| [Clang users manual](https://clang.llvm.org/docs/UsersManual.html) | `Clang` | [c-os-policy.md](c-os-policy.md) | 2026-08-29 |
 ------------------------------------------------------------------------
 Document history
 ------------------------------------------------------------------------
 
 | Version | Notes |
 |---------|--------|
+| 1.0.3 | The index names clang-format and clang-tidy. |
+| 1.0.2 | Pin table replaces sources.yaml. |
+| 1.0.1 | Lead matches the description. |
 | 1.0.0 | Initial three-pack split: C/C++ Language (two halves), Ecosystem (CMake/Meson), OS (Debian, Arch, macOS, Windows). |

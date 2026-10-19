@@ -1,7 +1,7 @@
 ---
 title: "macOS development policy packs"
 description: Modular OS and application policy maps for direct distribution and the Mac App Store. Compose packs; do not merge them into one rulebook.
-version: "1.0.0"
+version: "1.0.2"
 status: current
 audience:
   - developers
@@ -12,14 +12,14 @@ related:
   - direct-application-policy.md
   - app-store-os-policy.md
   - app-store-application-policy.md
-  - sources.yaml
-last_updated: "2026-10-02"
+last_updated: "2026-10-19"
 ---
 
 # macOS development policy packs
 
-Curated maps of **what each layer actually checks**. Not tutorials. Not
-product law for any one repository.
+Modular OS and application policy maps for direct distribution and the
+Mac App Store. Curated maps of what each layer actually checks. Not
+tutorials. Not product law for any one repository.
 
 Two axes, four packs. Compose packs; do not merge them. Direct
 distribution is the primary map. The Mac App Store packs record the
@@ -39,8 +39,7 @@ Guidelines, the notarization documents, or the App Review Guidelines.
 
 Last verified against Apple's distribution, notarization, Human
 Interface Guidelines, App Review Guidelines, and developer news as of
-2026-10-02. Pins and the watch workflow are in **Retrieving updates
-from official sources**.
+2026-10-02. Pins are in **Pins**.
 
 There is no `archive/` yet. This 1.0.0 tree is the first cut.
 
@@ -165,38 +164,34 @@ Copy the axes, not the files.
    stay under [program-language/](../../program-language/).
 
 ------------------------------------------------------------------------
-Retrieving updates from official sources
+Pins
 ------------------------------------------------------------------------
 
-Packs are maps. Apple's manuals remain the authority.
+Official manuals remain the authority. This table records the pin that was read. It does not fetch.
 
-[sources.yaml](sources.yaml) is the watch registry. Each entry records
-a canonical URL, the owning pack, a pin, a detector, and whether the
-source splits **OS** vs **application**.
-
-[../../scripts/check_sources.py](../../scripts/check_sources.py)
-(`--family os/macos`) prints `UNCHANGED` or `DRIFT`. On drift, patch
-the owning pack with a bite-sized rule, then bump the pin. Never
-auto-merge HTML into packs.
-
-Developer documentation pages that render from JavaScript are watched
-at their `.md` URL so the pin is in the fetched body. The packs link
-the reader-facing page.
-
-Cadence:
-
-- Developer news: continuous
-- App Review Guidelines, notarization, packaging: weekly
-- Human Interface Guidelines and release notes: on major macOS releases
-
-Current pins as of 2026-10-02:
-
-- macOS **27** Golden Gate, Apple silicon only. SDK is in Xcode 27.
-- macOS 26 is the last release that runs on Intel Macs.
-- macOS 27 is the last release that includes Rosetta.
-- App Review Guidelines last updated **June 8, 2026**.
-- Original Developer ID Sub-CA expires **February 1, 2027**.
-
+| Source | Pin | Pack | Read |
+|--------|-----|------|------|
+| [macOS 27 Golden Gate release notes](https://developer.apple.com/documentation/macos-release-notes/macos-27-release-notes.md) | `macOS 27 Golden Gate` | [direct-os-policy.md](direct-os-policy.md), [direct-application-policy.md](direct-application-policy.md), [README.md](README.md) | 2026-10-02 |
+| [Developer ID Sub-CA expiry (developer news)](https://developer.apple.com/news/) | `February 1, 2027` | [direct-os-policy.md](direct-os-policy.md), [README.md](README.md) | 2026-10-02 |
+| [Rosetta transition (developer news)](https://developer.apple.com/news/) | `Final release to support Rosetta` | [direct-os-policy.md](direct-os-policy.md), [README.md](README.md) | 2026-10-02 |
+| [Full Disk Access controls (developer news)](https://developer.apple.com/news/) | `Updates to Full Disk Access in macOS` | [direct-os-policy.md](direct-os-policy.md), [direct-application-policy.md](direct-application-policy.md) | 2026-10-02 |
+| [Notarizing macOS software before distribution](https://developer.apple.com/documentation/security/notarizing-macos-software-before-distribution.md) | `Notarization of macOS software is not App Review` | [direct-os-policy.md](direct-os-policy.md), [direct-application-policy.md](direct-application-policy.md) | 2026-10-02 |
+| [Customizing the notarization workflow](https://developer.apple.com/documentation/security/customizing-the-notarization-workflow.md) | `notarytool` | [direct-application-policy.md](direct-application-policy.md) | 2026-10-02 |
+| [Resolving common notarization issues](https://developer.apple.com/documentation/security/resolving-common-notarization-issues.md) | `The signature of the binary is invalid` | [direct-application-policy.md](direct-application-policy.md) | 2026-10-02 |
+| [Packaging Mac software for distribution](https://developer.apple.com/documentation/xcode/packaging-mac-software-for-distribution.md) | `only notarize the outermost container` | [direct-os-policy.md](direct-os-policy.md), [app-store-os-policy.md](app-store-os-policy.md) | 2026-10-02 |
+| [Hardened Runtime](https://developer.apple.com/documentation/security/hardened-runtime.md) | `Hardened Runtime` | [direct-os-policy.md](direct-os-policy.md), [direct-application-policy.md](direct-application-policy.md) | 2026-10-02 |
+| [Configuring the macOS App Sandbox](https://developer.apple.com/documentation/xcode/configuring-the-macos-app-sandbox.md) | `enforces at the kernel level` | [direct-os-policy.md](direct-os-policy.md), [app-store-os-policy.md](app-store-os-policy.md) | 2026-10-02 |
+| [Accessing files from the macOS App Sandbox](https://developer.apple.com/documentation/security/accessing-files-from-the-macos-app-sandbox.md) | `sandbox container` | [direct-os-policy.md](direct-os-policy.md), [direct-application-policy.md](direct-application-policy.md) | 2026-10-02 |
+| [Protecting local app data using containers](https://developer.apple.com/documentation/xcode/protecting-local-app-data-using-containers.md) | `System Integrity Protection` | [direct-os-policy.md](direct-os-policy.md) | 2026-10-02 |
+| [SMAppService](https://developer.apple.com/documentation/servicemanagement/smappservice.md) | `SMAppService` | [direct-os-policy.md](direct-os-policy.md), [app-store-os-policy.md](app-store-os-policy.md) | 2026-10-02 |
+| [Designing for macOS](https://developer.apple.com/design/human-interface-guidelines/designing-for-macos) | `Designing for macOS \| Apple Developer Documentation` | [direct-application-policy.md](direct-application-policy.md) | 2026-10-02 |
+| [Human Interface Guidelines — Menus](https://developer.apple.com/design/human-interface-guidelines/menus) | `Menus \| Apple Developer Documentation` | [direct-application-policy.md](direct-application-policy.md) | 2026-10-02 |
+| [Human Interface Guidelines — App icons](https://developer.apple.com/design/human-interface-guidelines/app-icons) | `App icons \| Apple Developer Documentation` | [direct-application-policy.md](direct-application-policy.md) | 2026-10-02 |
+| [Information Property List](https://developer.apple.com/documentation/bundleresources/information-property-list.md) | `CFBundleIdentifier` | [direct-application-policy.md](direct-application-policy.md) | 2026-10-02 |
+| [App Sandbox entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com.apple.security.app-sandbox.md) | `com.apple.security.app-sandbox` | [direct-application-policy.md](direct-application-policy.md), [app-store-os-policy.md](app-store-os-policy.md) | 2026-10-02 |
+| [Privacy manifest files](https://developer.apple.com/documentation/bundleresources/privacy-manifest-files.md) | `PrivacyInfo.xcprivacy` | [direct-application-policy.md](direct-application-policy.md) | 2026-10-02 |
+| [App Review Guidelines](https://developer.apple.com/app-store/review/guidelines/) | `June 8, 2026` | [app-store-application-policy.md](app-store-application-policy.md), [app-store-os-policy.md](app-store-os-policy.md), [README.md](README.md) | 2026-10-02 |
+| [App Store Connect Help](https://developer.apple.com/help/app-store-connect/) | `App Store Connect` | [app-store-application-policy.md](app-store-application-policy.md), [app-store-os-policy.md](app-store-os-policy.md) | 2026-10-02 |
 ------------------------------------------------------------------------
 Document history
 ------------------------------------------------------------------------
@@ -204,3 +199,5 @@ Document history
 | Version | Notes |
 |---------|--------|
 | 1.0.0 | Initial four-pack split: Direct OS, Direct Application, Mac App Store OS, Mac App Store Application. Direct distribution is the primary map. |
+| 1.0.1 | Lead matches the description. |
+| 1.0.2 | Pin table replaces sources.yaml. |

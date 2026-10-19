@@ -1,7 +1,7 @@
 ---
 title: "GNOME Application Policy"
 description: Curated map of GNOME HIG, GTK 4 + Libadwaita, application identity, accessibility, and Circle app quality. Not Flatpak/Flathub and not Debian packaging.
-version: "1.1.0"
+version: "1.1.1"
 status: current
 audience:
   - developers
@@ -12,14 +12,14 @@ related:
   - gnome-os-policy.md
   - debian-os-policy.md
   - debian-application-policy.md
-last_updated: "2026-08-25"
+last_updated: "2026-10-19"
 ---
 
 # GNOME Application Policy
 
-Reference pack for **what the program is** when it is a GNOME-platform
-application: Human Interface Guidelines, GTK 4, Libadwaita, application
-ID, identity files' *contents*, accessibility, license and trademark.
+Curated map of GNOME HIG, GTK 4 + Libadwaita, application identity,
+accessibility, and Circle app quality. It states what a GNOME-platform
+program is, including identity files' contents, license, and trademark.
 
 **Role:** curated map (working memory). **Not** L4 for any one product.
 **Not** Flatpak, Flathub, or GNOME runtime EOL — that is

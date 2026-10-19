@@ -1,7 +1,7 @@
 ---
 title: "Kit and skills"
 description: "Working model for how the kit and the skill set fit together. The user states the task, and the agent matches one SKILL.md. A specific verb carries a fixed procedure. An agnostic verb adopts the repository's own skills and docs."
-version: "1.6.1"
+version: "1.6.2"
 status: draft
 audience:
   - ai-agents
@@ -15,7 +15,7 @@ related:
   - ../../kit/skills/README.md
   - ./skill-pack-sequence.md
   - ../../WORKBOARD.md
-last_updated: "2026-10-17"
+last_updated: "2026-10-19"
 ---
 
 # Kit and skills
@@ -26,7 +26,7 @@ Working model for how the kit and the skill set fit together. The user states th
 
 Draft only. This note is not kit law. The owners stay [kit/RULES.md](../../kit/RULES.md) and the file the authority map names. Promotion means editing that owner and the skill in one change set.
 
-Recorded 2026-10-17. The commit verb is [kit/skills/kit-commit/SKILL.md](../../kit/skills/kit-commit/SKILL.md). The adopt verb is [kit-adopter](../../docs/library/kit-adopter/skills/kit-adopter/SKILL.md). The agnostic verb is [kit/skills/kit-apply-change/SKILL.md](../../kit/skills/kit-apply-change/SKILL.md). A repeated verb stays in `kit/skills/`. Adopt and upgrade packs are `docs/library/kit-adopter/skills/`. Ids stay. `docs/library/kit-adopter/generated/` is the emit target. A repository skill stays unprefixed at root `skills/`.
+Recorded 2026-10-17. The commit verb is [kit/skills/kit-commit/SKILL.md](../../kit/skills/kit-commit/SKILL.md). The adopt verb is [kit-adopter](../../docs/library/kit-adopter/skills/kit-adopter/SKILL.md). The agnostic verb is [kit/skills/kit-apply-change/SKILL.md](../../kit/skills/kit-apply-change/SKILL.md). A repeated verb stays in `kit/skills/`. Adopt packs stay under `docs/library/kit-adopter/skills/`. Upgrade packs live under `docs/library/kit-upgrade/`. Ids stay. `docs/library/kit-adopter/generated/` is the emit target. A repository skill stays unprefixed at root `skills/`.
 
 ## Grain
 

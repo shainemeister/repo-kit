@@ -1,7 +1,7 @@
 ---
 title: "Direct distribution OS policy"
 description: Curated map of macOS as the system a Developer ID product lands on — filesystem, signing enforcement, Gatekeeper, notarization tickets, optional sandbox, containers. Not the Human Interface Guidelines and not App Review.
-version: "1.0.0"
+version: "1.0.1"
 status: current
 audience:
   - developers
@@ -12,15 +12,14 @@ related:
   - direct-application-policy.md
   - app-store-os-policy.md
   - app-store-application-policy.md
-last_updated: "2026-10-02"
+last_updated: "2026-10-19"
 ---
 
 # Direct distribution OS policy
 
-Reference pack for **macOS as the system a directly distributed
-product lands on**: where files may live, which signature Gatekeeper
-accepts, how a notarization ticket is checked, and which container
-carries the bytes to the user.
+Curated map of macOS as the system a Developer ID product lands on —
+filesystem, signing enforcement, Gatekeeper, notarization tickets,
+optional sandbox, containers.
 
 **Role:** curated map (working memory). **Not** product law for one
 app. **Not** the Human Interface Guidelines — that is
@@ -514,3 +513,4 @@ Document history
 | Version | Notes |
 |---------|--------|
 | 1.0.0 | Initial direct-distribution OS map. Golden Gate 27, Developer ID G2, notarization as trust, optional sandbox. |
+| 1.0.1 | Lead matches the description. |

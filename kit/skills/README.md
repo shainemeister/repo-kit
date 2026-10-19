@@ -1,7 +1,7 @@
 ---
 title: Skills
 description: "Index of procedure packs and the match rows for the seed ids. Open the pack whose action matches the task."
-version: "1.19.0"
+version: "1.19.1"
 status: current
 audience:
   - developers
@@ -15,7 +15,7 @@ related:
   - kit-apply-change/SKILL.md
   - kit-author-docs/SKILL.md
   - kit-review-change/SKILL.md
-last_updated: "2026-10-18"
+last_updated: "2026-10-19"
 ---
 
 # Skills
@@ -26,7 +26,7 @@ Index of procedure packs and the match rows for the seed ids. Open the pack whos
 
 Related lists maintainer peers. Do not load them for this task.
 
-One task loads one skill ([path pattern](../rules/path-pattern.md#pattern)). This kit does not delegate to another agent. Adopt and upgrade orders are [kit-adopter](../../docs/library/kit-adopter/README.md).
+One task loads one skill ([path pattern](../rules/path-pattern.md#pattern)). This kit does not delegate to another agent. Adopt and upgrade orders are read from the kit source at `docs/library/kit-adopter/README.md`. The copied skills do not require that shelf.
 
 ---
 
@@ -52,7 +52,7 @@ One task loads one skill ([path pattern](../rules/path-pattern.md#pattern)). Thi
 | Review a change | [kit-review-change](kit-review-change/SKILL.md) |
 | Apply the security baseline | [kit-apply-security](kit-apply-security/SKILL.md) |
 | Match a seed id | [Match index](#match-index) |
-| Adopt or upgrade | [kit-adopter](../../docs/library/kit-adopter/README.md) |
+| Adopt or upgrade | Kit source `docs/library/kit-adopter/README.md`. Not part of the copied skills |
 | The multi-phase record | [WORKBOARD.md](../../WORKBOARD.md) |
 
 ---
@@ -95,7 +95,7 @@ Match text only. Open the seed for procedure, authority paths, and verify. Trigg
 
 ### Suggested default set
 
-`on` is emit eligibility. It does not load those packs into this session. BUILD fills the exact set from PLAN. Open the emit pack only when the task is an emit ([shelf](../../docs/library/kit-adopter/README.md)).
+`on` is emit eligibility. It does not load those packs into this session. BUILD fills the exact set from PLAN. Open the emit pack only when the task is an emit. The emit pack is read from the kit source at `docs/library/kit-adopter/README.md`. Do not require that path.
 
 | id | Default |
 |----|---------|
@@ -111,7 +111,7 @@ Match text only. Open the seed for procedure, authority paths, and verify. Trigg
 | `security` | on when the change touches privilege, network, or secrets; otherwise match |
 | `reviewer` | match |
 
-Keep these ids stable. PLAN may disable any default. A product persona is an overlay or `docs/library/kit-adopter/generated/<id>.md`. It is not a row in this table. Creating one is its own task ([kit-author-plan trust boundary](../../docs/library/kit-adopter/skills/kit-author-plan/SKILL.md#trust-boundary)).
+Keep these ids stable. PLAN may disable any default. A product persona is an overlay or `docs/library/kit-adopter/generated/<id>.md`. It is not a row in this table. Creating one is its own task. The trust boundary is read from the kit source at `docs/library/kit-adopter/skills/kit-author-plan/SKILL.md`.
 
 The retired crew is archived outside this tree. Do not register it.
 
@@ -121,6 +121,7 @@ The retired crew is archived outside this tree. Do not register it.
 
 | Version | Notes |
 |---------|--------|
+| 1.19.1 | Shelf paths are kit-source reads. The copied index does not require docs/library/. |
 | 1.19.0 | The archive row files a named program only. The load sentence cites path-pattern |
 | 1.18.0 | `kit-name-path` and `kit-index-directory` are the path and index instructs |
 | 1.17.0 | The board update is part of the authorized commit |

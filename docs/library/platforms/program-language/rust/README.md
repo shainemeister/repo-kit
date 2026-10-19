@@ -1,7 +1,7 @@
 ---
 title: "Rust development policy packs"
 description: Modular language, ecosystem, and OS policy maps for Rust. Compose packs; do not merge them into one rulebook.
-version: "1.1.0"
+version: "1.1.3"
 status: current
 audience:
   - developers
@@ -11,14 +11,14 @@ related:
   - rust-language-policy.md
   - rust-ecosystem-policy.md
   - rust-os-policy.md
-  - sources.yaml
-last_updated: "2026-08-29"
+last_updated: "2026-10-19"
 ---
 
 # Rust development policy packs
 
-Curated maps of **what each layer actually checks**. Not tutorials. Not
-product law for any one crate.
+Modular language, ecosystem, and OS policy maps for Rust. Curated maps
+of **what each layer actually checks**. Not tutorials. Not product law
+for any one crate.
 
 Three axes. Compose packs; do not merge them. Language and ecosystem
 are **OS-agnostic**. OS tools and ship formats live in **carve-outs**
@@ -37,8 +37,7 @@ do not treat this folder as a substitute for the Rust Reference, the
 Cargo Book, crates.io policy, or an OS packaging guide.
 
 Last verified against official rust-lang, Cargo, crates.io, RustSec,
-and OS installer docs as of 2026-08-29. Pins and the watch workflow
-are in **Retrieving updates from official sources**.
+and OS installer docs as of 2026-08-29. Pins are in **Pins**.
 
 The **1.0.0** snapshot (two packs, Debian-centric composition) is
 frozen in [archive/](archive/). Read the root files.
@@ -172,46 +171,59 @@ Copy the axes, not the files. Do **not** create a sibling git repo.
    this OS pack. A full distro map is a new directory under `os/`.
 5. Do not silently overload Debian's section with another distro.
 
+## Files
+
+| File | Function |
+|------|----------|
+| [rustfmt.toml](rustfmt.toml) | Starter rustfmt config an adopter copies into a crate |
+| [clippy.toml](clippy.toml) | Starter Clippy config an adopter copies into a crate |
+
 ------------------------------------------------------------------------
-Retrieving updates from official sources
+Pins
 ------------------------------------------------------------------------
 
-Packs are maps. Official manuals remain the authority.
+Official manuals remain the authority. This table records the pin that was read. It does not fetch.
 
-The **1.0.0** snapshot lives in [archive/](archive/) and must not be
-edited.
-
-[sources.yaml](sources.yaml) is the watch registry. Each entry records
-a canonical URL, the owning pack, a pin, a detector, and whether the
-source splits **language**, **ecosystem**, or **os**.
-
-[../../scripts/check_sources.py](../../scripts/check_sources.py)
-(`--family program-language/rust`) prints `UNCHANGED` or `DRIFT`. On
-drift, patch the owning pack with a bite-sized rule, then bump the
-pin. Never auto-merge HTML into packs.
-
-Cadence:
-
-- rustc / Cargo / Clippy stable releases: about every six weeks
-- crates.io policy and RustSec: continuous
-- rustup / platform-support / OS packaging pages: weekly
-- API Guidelines, Nomicon, UCG, Style Guide: slower
-
-Current pins as of 2026-08-29:
-
-- rustc **1.98.0** (2026-08-20)
-- Edition **2024** (stable since 1.85.0, 2025-02-20)
-- Cargo resolver **3** is the edition-2024 default
-- Ship bar is **stable** rustc
-- macOS ship host: `aarch64-apple-darwin` (tier 1); Intel Mac is
-  tier 2 with host tools (RFC 3841)
-
+| Source | Pin | Pack | Read |
+|--------|-----|------|------|
+| [Rust release notes](https://doc.rust-lang.org/releases.html) | `1.98.0` | [rust-language-policy.md](rust-language-policy.md), [rust-ecosystem-policy.md](rust-ecosystem-policy.md), [README.md](README.md) | 2026-08-29 |
+| [Latest Rust stable announcement](https://blog.rust-lang.org/2026/08/20/Rust-1.98.0/) | `1.98.0` | [rust-language-policy.md](rust-language-policy.md), [README.md](README.md) | 2026-08-29 |
+| [Rust 2024 Edition Guide](https://doc.rust-lang.org/edition-guide/rust-2024/) | `1.85.0` | [rust-language-policy.md](rust-language-policy.md) | 2026-08-29 |
+| [Rust Style Guide](https://doc.rust-lang.org/style-guide/) | `The default Rust style` | [rust-language-policy.md](rust-language-policy.md) | 2026-08-29 |
+| [rustc lint groups](https://doc.rust-lang.org/rustc/lints/groups.html) | `rust-2024-compatibility` | [rust-language-policy.md](rust-language-policy.md) | 2026-08-29 |
+| [Clippy lint groups](https://doc.rust-lang.org/clippy/lints.html) | `clippy::restriction` | [rust-language-policy.md](rust-language-policy.md) | 2026-08-29 |
+| [The Rustonomicon](https://doc.rust-lang.org/nomicon/meet-safe-and-unsafe.html) | `Meet Safe and Unsafe` | [rust-language-policy.md](rust-language-policy.md) | 2026-08-29 |
+| [Unsafe Code Guidelines](https://rust-lang.github.io/unsafe-code-guidelines/) | `Unsafe Code Guidelines` | [rust-language-policy.md](rust-language-policy.md) | 2026-08-29 |
+| [Rust API Guidelines checklist](https://rust-lang.github.io/api-guidelines/checklist.html) | `C-CASE` | [rust-language-policy.md](rust-language-policy.md), [rust-ecosystem-policy.md](rust-ecosystem-policy.md) | 2026-08-29 |
+| [The Rust Reference](https://doc.rust-lang.org/reference/) | `The Rust Reference` | [rust-language-policy.md](rust-language-policy.md) | 2026-08-29 |
+| [cargo test](https://doc.rust-lang.org/cargo/commands/cargo-test.html) | `cargo test` | [rust-language-policy.md](rust-language-policy.md) | 2026-08-29 |
+| [Miri](https://github.com/rust-lang/miri) | `An interpreter for Rust's mid-level intermediate representation` | [rust-language-policy.md](rust-language-policy.md) | 2026-08-29 |
+| [Cargo manifest format](https://doc.rust-lang.org/cargo/reference/manifest.html) | `The Manifest Format` | [rust-ecosystem-policy.md](rust-ecosystem-policy.md) | 2026-08-29 |
+| [Cargo rust-version (MSRV)](https://doc.rust-lang.org/cargo/reference/rust-version.html) | `ignore-rust-version` | [rust-ecosystem-policy.md](rust-ecosystem-policy.md) | 2026-08-29 |
+| [Why have Cargo.lock in version control](https://doc.rust-lang.org/cargo/faq.html#why-have-cargolock-in-version-control) | `defaults to tracking` | [rust-ecosystem-policy.md](rust-ecosystem-policy.md) | 2026-08-29 |
+| [Cargo SemVer compatibility](https://doc.rust-lang.org/cargo/reference/semver.html) | `Possibly-breaking change` | [rust-ecosystem-policy.md](rust-ecosystem-policy.md) | 2026-08-29 |
+| [Cargo publishing](https://doc.rust-lang.org/cargo/reference/publishing.html) | `cargo publish` | [rust-ecosystem-policy.md](rust-ecosystem-policy.md) | 2026-08-29 |
+| [crates.io usage policy](https://raw.githubusercontent.com/rust-lang/crates.io/main/svelte/src/routes/policies/+page.svelte) | `first-come, first-serve` | [rust-ecosystem-policy.md](rust-ecosystem-policy.md) | 2026-08-29 |
+| [Rust Code of Conduct](https://www.rust-lang.org/policies/code-of-conduct) | `Code of Conduct` | [rust-ecosystem-policy.md](rust-ecosystem-policy.md) | 2026-08-29 |
+| [RustSec Advisory Database](https://rustsec.org/) | `cargo-audit` | [rust-ecosystem-policy.md](rust-ecosystem-policy.md) | 2026-08-29 |
+| [cargo-deny](https://embarkstudios.github.io/cargo-deny/) | `cargo deny check` | [rust-ecosystem-policy.md](rust-ecosystem-policy.md) | 2026-08-29 |
+| [cargo-vet](https://mozilla.github.io/cargo-vet/built-in-criteria.html) | `safe-to-deploy` | [rust-ecosystem-policy.md](rust-ecosystem-policy.md) | 2026-08-29 |
+| [rustc platform support](https://doc.rust-lang.org/rustc/platform-support.html) | `aarch64-apple-darwin` | [rust-os-policy.md](rust-os-policy.md), [README.md](README.md) | 2026-08-29 |
+| [The rustup book](https://rust-lang.github.io/rustup/) | `The rustup book` | [rust-os-policy.md](rust-os-policy.md) | 2026-08-29 |
+| [rustup on Windows](https://rust-lang.github.io/rustup/installation/windows.html) | `Visual Studio` | [rust-os-policy.md](rust-os-policy.md) | 2026-08-29 |
+| [rustup via other package managers](https://rust-lang.github.io/rustup/installation/other.html) | `Debian 13` | [rust-os-policy.md](rust-os-policy.md) | 2026-08-29 |
+| [Debian Rust Team book](https://rust-team.pages.debian.net/book/) | `Debian Rust Team` | [rust-os-policy.md](rust-os-policy.md) | 2026-08-29 |
+| [ArchWiki Rust](https://wiki.archlinux.org/title/Rust) | `rustup` | [rust-os-policy.md](rust-os-policy.md) | 2026-08-29 |
+| [RFC 3841: demote x86_64-apple-darwin](https://rust-lang.github.io/rfcs/3841-demote-x86_64-apple-darwin.html) | `Tier 2 with host tools` | [rust-os-policy.md](rust-os-policy.md), [README.md](README.md) | 2026-08-29 |
 ------------------------------------------------------------------------
 Document history
 ------------------------------------------------------------------------
 
 | Version | Notes |
 |---------|--------|
+| 1.1.3 | The index names rustfmt.toml and clippy.toml. |
+| 1.1.2 | Pin table replaces sources.yaml. |
+| 1.1.1 | Lead matches the description. |
 | 1.1.0 | OS pack with Debian, Arch, macOS, Windows carve-outs. Language and ecosystem made OS-agnostic. |
 | 1.0.0 | Initial two-pack split: Rust Language, Rust Ecosystem. Official map plus labeled audit extras. Hosted libs and bins only. |
 

@@ -1,7 +1,7 @@
 ---
 title: "Development policy packs"
 description: "Curated maps of what each layer checks for a language or an operating system."
-version: "1.0.0"
+version: "1.0.2"
 status: current
 doc_type: other
 related:
@@ -11,8 +11,7 @@ related:
   - program-language/rust/README.md
   - program-language/c/README.md
   - program-language/node/README.md
-  - scripts/README.md
-last_updated: "2026-10-14"
+last_updated: "2026-10-19"
 ---
 
 # Development policy packs
@@ -46,6 +45,15 @@ Apple's distribution docs, the Rust Reference, PEPs, or npm docs.
 | [program-language/c](program-language/c/README.md) | What ISO C/C++, compilers, and CMake check | Language / Ecosystem / OS carve-outs |
 | [program-language/node](program-language/node/README.md) | What Node, npm, and the lockfile check | Language / Ecosystem / OS carve-outs |
 | [style-gates.md](style-gates.md) | Tool commands for a declared language | Optional configs live beside that language |
+
+## Files
+
+| File | Function |
+|------|----------|
+| [CHANGELOG.md](CHANGELOG.md) | Notable changes for these packs |
+| [LICENSE](LICENSE) | MIT terms for this tree |
+| [examples/](examples/README.md) | Filled sketches of an adopted library or command-line tool |
+| [TEMPLATE-CERTIFICATION-README.md](TEMPLATE-CERTIFICATION-README.md) | Blank an adopter copies when a package needs a certification README |
 
 Language `*-os-policy.md` files stay **under the language**. They own
 toolchain install and distro lag (rustup vs apt rustc, PEP 668, MSVC).
@@ -106,41 +114,29 @@ Hard rules:
 Family READMEs own the detailed composition tables and conflict-resolution
 grids. Start there after you pick the rows above.
 
-## Retrieving updates
+## Pins
 
-[scripts/check_sources.py](scripts/check_sources.py) compares pins in each
-family’s `sources.yaml`. On `DRIFT`, write a bite-sized rule in the owning
-pack, then bump the pin. Never dump official HTML into packs.
-
-```bash
-python3 scripts/check_sources.py --offline
-python3 scripts/check_sources.py --offline --family os/linux
-python3 scripts/check_sources.py --offline --family os/macos
-python3 scripts/check_sources.py --offline --family program-language/rust
-```
-
-Details: [scripts/README.md](scripts/README.md).
+Each family index holds that family's pin table. The table records the pin that was read. It does not fetch. Official manuals remain the authority.
 
 ## Adding a family
 
 Copy the axes, not the files.
 
 - New OS family: `os/<id>/` with OS × application packs, one row per
-  payload, and its own `sources.yaml`. `os/macos` is that shape
+  payload, and its own pin table. `os/macos` is that shape
   (Direct distribution and the Mac App Store). A Linux distro uses
   the same shape. Do not fold it into `os/linux` or into a language
   carve-out.
 - New language: `program-language/<id>/` with language × ecosystem × OS
-  packs and its own `sources.yaml`.
+  packs and its own pin table.
 - Do **not** create a new git repository for one family.
 
 ## Load path
 
 Open this guide, then only the family the work needs. Git rules stay in repo-kit. This section is not a second rules tree.
 
-1. Open this README — buckets, composition table, checker.
+1. Open this README — buckets and the composition table.
 2. Open only the family READMEs for surfaces in play.
 3. Language OS packs for toolchain; `os/linux` for Debian/GNOME
    placement; `os/macos` for Developer ID or the Mac App Store.
-4. `python3 scripts/check_sources.py --offline` before claiming a pin bump
-   is complete.
+4. Read that family's pin table before changing a pin.

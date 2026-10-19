@@ -1,7 +1,7 @@
 ---
 title: "Direct distribution application policy"
 description: Curated map of what a directly distributed Mac program is — Human Interface Guidelines, bundle contents, entitlements, privacy strings, and the notarization queue. Not Gatekeeper enforcement and not App Review.
-version: "1.0.0"
+version: "1.0.1"
 status: current
 audience:
   - developers
@@ -12,15 +12,14 @@ related:
   - direct-os-policy.md
   - app-store-os-policy.md
   - app-store-application-policy.md
-last_updated: "2026-10-02"
+last_updated: "2026-10-19"
 ---
 
 # Direct distribution application policy
 
-Reference pack for **what a Mac program is** when you ship it
-yourself: the Human Interface Guidelines, the bundle's contents, the
-entitlements you declare, and the steps that submit that bundle to
-Apple's notary.
+Curated map of what a directly distributed Mac program is — Human
+Interface Guidelines, bundle contents, entitlements, privacy strings,
+and the notarization queue.
 
 **Role:** curated map (working memory). **Not** a Swift tutorial.
 **Not** Gatekeeper, filesystem placement, or container formats —
@@ -495,3 +494,4 @@ Document history
 | Version | Notes |
 |---------|--------|
 | 1.0.0 | Initial direct-distribution application map. Mac HIG, bundle contents, notarization queue. |
+| 1.0.1 | Lead matches the description. |

@@ -1,7 +1,7 @@
 ---
 title: "Rust Language Policy"
 description: Curated map of what Rust requires of the code — edition, rustc, rustfmt, Clippy, tests, API Guidelines, unsafe. Not crates.io and not OS packaging.
-version: "1.1.0"
+version: "1.1.1"
 status: current
 audience:
   - developers
@@ -11,14 +11,15 @@ related:
   - README.md
   - rust-ecosystem-policy.md
   - rust-os-policy.md
-last_updated: "2026-08-29"
+last_updated: "2026-10-19"
 ---
 
 # Rust Language Policy
 
-Reference pack for **what the code is** when it is a hosted Rust
-library or binary: edition, compiler lints, rustfmt, Clippy, tests,
-API shape, documentation, and unsafe/soundness.
+Curated map of what Rust requires of the code — edition, rustc,
+rustfmt, Clippy, tests, API Guidelines, unsafe. Reference pack for
+**what the code is** when it is a hosted Rust library or binary:
+compiler lints, API shape, documentation, and soundness.
 
 **Role:** curated map (working memory). **Not** L4 for any one crate.
 **Not** crates.io, lockfiles, or `cargo publish` — that is
@@ -583,5 +584,6 @@ Document history
 
 | Version | Notes |
 |---------|--------|
+| 1.1.1 | Lead matches the description. |
 | 1.1.0 | OS-agnostic: distro rustc / packaging moved to rust-os-policy.md |
 | 1.0.0 | Initial language pack: edition 2024 / rustc 1.98, rustfmt defaults, Clippy groups, tests, unsafe extras labeled, API Guidelines as convention |

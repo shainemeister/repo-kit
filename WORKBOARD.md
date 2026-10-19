@@ -11,7 +11,7 @@ related:
   - kit/RULES.md
   - kit/CHANGELOG.md
   - docs/README.md
-last_updated: "2026-10-18"
+last_updated: "2026-10-19"
 ---
 
 # Workboard

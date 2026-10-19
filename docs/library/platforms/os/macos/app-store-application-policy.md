@@ -1,7 +1,7 @@
 ---
 title: "Mac App Store application policy"
 description: Curated map of App Review and App Store Connect for a Mac app. Not the Human Interface Guidelines and not Developer ID notarization.
-version: "1.0.0"
+version: "1.0.1"
 status: current
 audience:
   - developers
@@ -12,15 +12,14 @@ related:
   - direct-application-policy.md
   - direct-os-policy.md
   - app-store-os-policy.md
-last_updated: "2026-10-02"
+last_updated: "2026-10-19"
 ---
 
 # Mac App Store application policy
 
-Reference pack for **what App Review checks on a Mac app**, and for
-the metadata you enter in App Store Connect. The program itself
-(Human Interface Guidelines, bundle contents, purpose strings) stays
-in [direct-application-policy.md](direct-application-policy.md).
+Curated map of App Review and App Store Connect for a Mac app. The
+program itself (Human Interface Guidelines, bundle contents, purpose
+strings) stays in [direct-application-policy.md](direct-application-policy.md).
 
 **Role:** curated map. **Not** a copy of the App Review Guidelines.
 **Not** notarization. **Not** the store installer and sandbox
@@ -294,3 +293,4 @@ Document history
 | Version | Notes |
 |---------|--------|
 | 1.0.0 | Initial Mac App Store application map. Review queue, guideline 2.4.5 product rules, App Store Connect metadata. |
+| 1.0.1 | Lead matches the description. |

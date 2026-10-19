@@ -1,7 +1,7 @@
 ---
 title: "Node.js Language Policy"
 description: Curated map of what Node.js requires of the code — engines, builtins, crypto/http/child_process, tests. Not npm and not OS packaging.
-version: "1.0.0"
+version: "1.0.1"
 status: current
 audience:
   - developers
@@ -11,14 +11,13 @@ related:
   - README.md
   - node-ecosystem-policy.md
   - node-os-policy.md
-last_updated: "2026-08-29"
+last_updated: "2026-10-19"
 ---
 
 # Node.js Language Policy
 
-Reference pack for **what the code is** when it is hosted Node.js:
-runtime version, builtin APIs, security-relevant stdlib contracts,
-tests.
+Curated map of what Node.js requires of the code — engines, builtins,
+crypto/http/child_process, tests. It applies when it is hosted Node.js.
 
 **Role:** curated map (working memory). **Not** L4 for any one app.
 **Not** `package.json` lockfiles or npm — that is

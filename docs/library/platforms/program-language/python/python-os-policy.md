@@ -1,7 +1,7 @@
 ---
 title: "Python OS Policy"
 description: Curated map of how Python lives on Debian, Arch, macOS, and Windows — interpreters, venv, PEP 668, ship formats. Not Ruff and not PyPI.
-version: "1.0.0"
+version: "1.0.1"
 status: current
 audience:
   - developers
@@ -11,14 +11,14 @@ related:
   - README.md
   - python-language-policy.md
   - python-ecosystem-policy.md
-last_updated: "2026-08-29"
+last_updated: "2026-10-19"
 ---
 
 # Python OS Policy
 
-Reference pack for **how a hosted Python project lives on an
-operating system**: which interpreter you run, venv vs distro
-site-packages, and how each OS ships the result.
+Curated map of how Python lives on Debian, Arch, macOS, and Windows —
+interpreters, venv, PEP 668, ship formats. It applies to a hosted
+Python project.
 
 **Role:** curated map (working memory). **Not** PEP 8 —
 [python-language-policy.md](python-language-policy.md).

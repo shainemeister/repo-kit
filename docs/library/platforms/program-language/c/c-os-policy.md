@@ -1,7 +1,7 @@
 ---
 title: "C/C++ OS Policy"
 description: Curated map of how a C/C++ program lives on Debian, Arch, macOS, and Windows — compilers, linkers, ship formats. Not clang-format and not CMake.
-version: "1.0.0"
+version: "1.0.1"
 status: current
 audience:
   - developers
@@ -11,14 +11,15 @@ related:
   - README.md
   - c-language-policy.md
   - c-ecosystem-policy.md
-last_updated: "2026-08-29"
+last_updated: "2026-10-19"
 ---
 
 # C/C++ OS Policy
 
-Reference pack for **how a hosted C/C++ project lives on an
-operating system**: how gcc/clang/MSVC arrive, which C ABI the
-host uses, and how each OS ships the result.
+Curated map of how a C/C++ program lives on Debian, Arch, macOS, and
+Windows — compilers, linkers, ship formats. Reference pack for **how a
+hosted C/C++ project lives on an operating system**: how gcc/clang/MSVC
+arrive, and which C ABI the host uses.
 
 **Role:** curated map (working memory). **Not** L4 for any one
 library. **Not** `-std=` or clang-format —
@@ -373,4 +374,5 @@ Document history
 
 | Version | Notes |
 |---------|--------|
+| 1.0.1 | Lead matches the description. |
 | 1.0.0 | Initial OS pack: shared compiler families; Debian, Arch, macOS, Windows carve-outs |

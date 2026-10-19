@@ -1,7 +1,7 @@
 ---
 title: "Debian OS Policy"
 description: Curated map of Debian as an operating system — archive, apt, FHS, usr-merge, systemd, Policy 10–11 files and virtual programs. Not application packaging and not HIG.
-version: "1.1.0"
+version: "1.1.1"
 status: current
 audience:
   - developers
@@ -12,14 +12,15 @@ related:
   - debian-application-policy.md
   - gnome-os-policy.md
   - gnome-application-policy.md
-last_updated: "2026-08-25"
+last_updated: "2026-10-19"
 ---
 
 # Debian OS Policy
 
-Reference pack for **Debian as an operating system**: how the archive
-is structured, how packages are installed, where files may live, how
-services start, and how the system is kept free and upgradable.
+Curated map of Debian as an operating system — archive, apt, FHS,
+usr-merge, systemd, Policy 10–11 files and virtual programs. How the
+archive is structured, how packages are installed, where files may live,
+how services start, and how the system is kept free and upgradable.
 
 **Role:** curated map (working memory). **Not** L4 for any one product.
 **Not** the application packaging cookbook — that is
@@ -766,3 +767,4 @@ Document history
 |---------|--------|
 | 1.0.0 | Initial four-pack split |
 | 1.1.0 | Reliability pins + Policy 10–11 OS rules that reject/mis-ship + LTS clock |
+| 1.1.1 | Lead matches the description. |

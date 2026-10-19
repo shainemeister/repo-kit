@@ -1,7 +1,7 @@
 ---
 title: "C/C++ Language Policy"
 description: Curated map of what C and C++ require of the code — ISO dialect, UB, compiler warnings, clang-format, tests. Not CMake and not OS packaging.
-version: "1.0.0"
+version: "1.0.1"
 status: current
 audience:
   - developers
@@ -11,14 +11,14 @@ related:
   - README.md
   - c-ecosystem-policy.md
   - c-os-policy.md
-last_updated: "2026-08-29"
+last_updated: "2026-10-19"
 ---
 
 # C/C++ Language Policy
 
-Reference pack for **what the code is** when it is hosted C, C++, or
-both: ISO dialect, undefined behavior, compiler diagnostics,
-clang-format, and tests.
+Curated map of what C and C++ require of the code — ISO dialect, UB,
+compiler warnings, clang-format, tests. Reference pack for **what the
+code is** when it is hosted C, C++, or both.
 
 **Role:** curated map (working memory). **Not** L4 for any one
 library. **Not** CMake/Meson/pkg-config — that is
@@ -416,4 +416,5 @@ Document history
 
 | Version | Notes |
 |---------|--------|
+| 1.0.1 | Lead matches the description. |
 | 1.0.0 | Initial language pack: C23/C17 and C++23/C++20 halves, compiler warning groups, clang-format LLVM, sanitizers/tidy labeled extras |

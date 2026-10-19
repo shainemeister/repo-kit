@@ -1,7 +1,7 @@
 ---
 title: "Debian Application Policy"
 description: Curated map of Debian Policy as it applies to an application package — control, copyright, build contract, lintian, ITP, NEW. Not FHS/apt internals and not HIG.
-version: "1.1.0"
+version: "1.1.1"
 status: current
 audience:
   - developers
@@ -12,14 +12,13 @@ related:
   - debian-os-policy.md
   - gnome-os-policy.md
   - gnome-application-policy.md
-last_updated: "2026-08-25"
+last_updated: "2026-10-19"
 ---
 
 # Debian Application Policy
 
-Reference pack for **what Debian requires of an application as a
-package**: source and binary metadata, copyright documentation, the
-`debian/rules` build contract, quality checks, and the path into apt.
+Curated map of Debian Policy as it applies to an application package —
+control, copyright, build contract, lintian, ITP, NEW.
 
 **Role:** curated map (working memory). **Not** L4 for any one product.
 **Not** the OS filesystem/init/archive map — that is
@@ -886,3 +885,4 @@ Document history
 |---------|--------|
 | 1.0.0 | Initial four-pack split: Debian Application as package rules (control, copyright, lintian, ITP, NEW) |
 | 1.1.0 | Build contract (Policy 4.9); Policy 4.7.3 fields (Priority default, Git-Tag-*); tag2upload; DEP-8/12/14; DFSG team / live NEW queue (NEW-checklist.html 404); conffile packaging vs OS 10.7; AI-GR watch; dead URL fixes |
+| 1.1.1 | Lead matches the description. |

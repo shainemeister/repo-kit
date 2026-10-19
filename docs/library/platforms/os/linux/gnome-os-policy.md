@@ -1,7 +1,7 @@
 ---
 title: "GNOME OS Policy"
 description: Curated map of GNOME as desktop session and as ship format — Shell, portals, Flatpak, runtime, Flathub, GNOME OS images. Not HIG and not Debian FHS.
-version: "1.1.0"
+version: "1.1.1"
 status: current
 audience:
   - developers
@@ -12,15 +12,15 @@ related:
   - gnome-application-policy.md
   - debian-os-policy.md
   - debian-application-policy.md
-last_updated: "2026-08-25"
+last_updated: "2026-10-19"
 ---
 
 # GNOME OS Policy
 
-Reference pack for **GNOME as an operating environment**: the session
-you log into, the services apps talk to, and GNOME's preferred way to
-distribute applications (Flatpak + GNOME runtime + Flathub). Also
-covers **GNOME OS** the image (nightly immutable OS).
+Curated map of GNOME as desktop session and as ship format — Shell,
+portals, Flatpak, runtime, Flathub, GNOME OS images. That ship format
+is the preferred way to distribute applications. The GNOME OS image is
+a nightly immutable OS.
 
 **Role:** curated map (working memory). **Not** L4 for any one product.
 **Not** the HIG or GTK widget contract — that is
@@ -844,3 +844,4 @@ Document history
 |---------|--------|
 | 1.0.0 | Initial pack: session vs payload split, Software Policy / Circle vs Core, portals as OS services, Flatpak `/app`, Flathub AI, GNOME OS images |
 | 1.1.0 | Flathub inclusion policy (English, from-source, ID rules, refusals, licenses, stable≠nightly). Portal catalog vs GTK subset; host Registry deprecation; gvfs talk grants; USB portal. GNOME 50/51 runtime EOL pin (49 → ~51.1). Flatpak 1.17 `--device-if` / `--socket-if`. Software backends and safety tile. Session services: search, GNotification, systemd vs autostart, malcontent, initial-setup, GDM |
+| 1.1.1 | Lead matches the description. |

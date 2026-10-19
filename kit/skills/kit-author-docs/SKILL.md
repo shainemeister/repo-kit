@@ -18,7 +18,6 @@ negative_triggers:
   - pure runtime debug
 authority_paths:
   - kit/MARKDOWN-STANDARD.md
-  - docs/library/platforms/style-gates.md
   - kit/rules/contracts.md
   - WORKBOARD.md
   - kit/rules/directory-index.md
@@ -74,6 +73,7 @@ The form is [kit/MARKDOWN-STANDARD.md](../../MARKDOWN-STANDARD.md). That file st
 - `kit/rules/directory-index.md` — when a directory gets an index
 - `kit/rules/path-pattern.md` — how a path is named
 - `docs/README.md` — AI docs/ workspace vs product contracts
+- Style commands, when a platform pack names them, are read from the kit source at `docs/library/platforms/style-gates.md`. Not kit law. This pack does not require that file.
 - `template/` — blanks: landing, readme, cli, concept, methodology, generic. The index blank is `kit-index-directory/template/index.md`
 
 ### External (citations — guidance only)

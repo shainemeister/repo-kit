@@ -1,7 +1,7 @@
 ---
 title: "Rust OS Policy"
 description: Curated map of how a Rust crate lives on Debian, Arch, macOS, and Windows — rustup vs distro rustc, linkers, ship formats. Not rustfmt and not crates.io.
-version: "1.1.0"
+version: "1.1.1"
 status: current
 audience:
   - developers
@@ -11,15 +11,16 @@ related:
   - README.md
   - rust-language-policy.md
   - rust-ecosystem-policy.md
-last_updated: "2026-08-29"
+last_updated: "2026-10-19"
 ---
 
 # Rust OS Policy
 
-Reference pack for **how a hosted Rust crate lives on an operating
-system**: how rustc arrives, which target triples are guaranteed,
-which C toolchain links the binary, and how each OS ships the
-result.
+Curated map of how a Rust crate lives on Debian, Arch, macOS, and
+Windows — rustup vs distro rustc, linkers, ship formats. Reference
+pack for **how a hosted Rust crate lives on an operating system**:
+which target triples are guaranteed, and which C toolchain links the
+binary.
 
 **Role:** curated map (working memory). **Not** L4 for any one crate.
 **Not** rustfmt, Clippy, or the Nomicon — that is
@@ -523,4 +524,5 @@ Document history
 
 | Version | Notes |
 |---------|--------|
+| 1.1.1 | Lead matches the description. |
 | 1.1.0 | Initial OS pack: shared rustup + tiers; carve-outs for Debian, Arch, macOS, Windows |

@@ -1,7 +1,7 @@
 ---
 title: "Python Language Policy"
 description: Curated map of what Python requires of the code — dialect, stdlib security APIs, typing, PEP 8, tests. Not PyPI and not OS packaging.
-version: "1.0.0"
+version: "1.0.1"
 status: current
 audience:
   - developers
@@ -11,13 +11,14 @@ related:
   - README.md
   - python-ecosystem-policy.md
   - python-os-policy.md
-last_updated: "2026-08-29"
+last_updated: "2026-10-19"
 ---
 
 # Python Language Policy
 
-Reference pack for **what the code is** when it is hosted Python:
-language version, stdlib security contracts, typing, PEP 8, tests.
+Curated map of what Python requires of the code — dialect, stdlib
+security APIs, typing, PEP 8, tests. It applies when it is hosted
+Python.
 
 **Role:** curated map (working memory). **Not** L4 for any one app.
 **Not** PyPI, lockfiles, or `twine` — that is

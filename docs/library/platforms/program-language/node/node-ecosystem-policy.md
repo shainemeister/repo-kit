@@ -1,7 +1,7 @@
 ---
 title: "Node.js Ecosystem Policy"
 description: Curated map of how a Node.js project lives — package.json, lockfile, npm, trusted-module bar, install scripts, npm audit. Security over feature sprawl.
-version: "1.0.0"
+version: "1.0.1"
 status: current
 audience:
   - developers
@@ -11,14 +11,14 @@ related:
   - README.md
   - node-language-policy.md
   - node-os-policy.md
-last_updated: "2026-08-29"
+last_updated: "2026-10-19"
 ---
 
 # Node.js Ecosystem Policy
 
-Reference pack for **how a hosted Node.js project lives**: packaging
-metadata, lockfiles, the npm registry, **which third-party modules
-may be depended on**, and install-script policy.
+Curated map of how a Node.js project lives — package.json, lockfile,
+npm, trusted-module bar, install scripts, npm audit. It applies to a
+hosted Node.js project.
 
 **Role:** curated map (working memory). **Not** L4 for any one app.
 **Not** `node:crypto` — that is

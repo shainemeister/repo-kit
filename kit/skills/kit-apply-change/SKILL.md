@@ -42,9 +42,6 @@ references:
   - path: docs/README.md
     kind: repo
     purpose: Notes this repository already keeps
-  - path: docs/library/platforms/style-gates.md
-    kind: repo
-    purpose: Style commands when a platform pack names them. Not kit law
 verify:
   - the change follows the skill or document that already holds the role
   - a new path was added only when that role was absent
@@ -76,7 +73,7 @@ The role rule is [path-pattern.md#one-role](../../rules/path-pattern.md#one-role
 - `WORKBOARD.md` — multi-phase record
 - `PLAN.md` — mission and non-goals
 - `docs/README.md` — notes this repository already keeps
-- `docs/library/platforms/style-gates.md` — style commands when a platform pack names them. Not kit law
+- Style commands, when a platform pack names them, are read from the kit source at `docs/library/platforms/style-gates.md`. Not kit law. This pack does not require that file.
 
 ### External (citations — guidance only)
 

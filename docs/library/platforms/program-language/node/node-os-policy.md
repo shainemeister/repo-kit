@@ -1,7 +1,7 @@
 ---
 title: "Node.js OS Policy"
 description: Curated map of how Node.js lives on Debian, Arch, macOS, and Windows — interpreters, official vs distro binaries, ship formats. Not ESLint and not npm.
-version: "1.0.0"
+version: "1.0.1"
 status: current
 audience:
   - developers
@@ -11,14 +11,14 @@ related:
   - README.md
   - node-language-policy.md
   - node-ecosystem-policy.md
-last_updated: "2026-08-29"
+last_updated: "2026-10-19"
 ---
 
 # Node.js OS Policy
 
-Reference pack for **how a hosted Node.js project lives on an
-operating system**: which `node` binary you run, official vs distro
-packages, and how each OS ships the result.
+Curated map of how Node.js lives on Debian, Arch, macOS, and Windows —
+interpreters, official vs distro binaries, ship formats. It applies to
+a hosted Node.js project.
 
 **Role:** curated map (working memory). **Not** `node:crypto` —
 [node-language-policy.md](node-language-policy.md).

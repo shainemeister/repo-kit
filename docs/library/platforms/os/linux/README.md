@@ -1,7 +1,7 @@
 ---
 title: "Linux development policy packs"
 description: Modular OS and application policy maps for Debian and GNOME. Compose packs; do not merge them into one rulebook.
-version: "1.1.0"
+version: "1.1.2"
 status: current
 audience:
   - developers
@@ -12,14 +12,14 @@ related:
   - debian-application-policy.md
   - gnome-os-policy.md
   - gnome-application-policy.md
-  - sources.yaml
-last_updated: "2026-08-29"
+last_updated: "2026-10-19"
 ---
 
 # Linux development policy packs
 
-Curated maps of **what each layer actually checks**. Not tutorials. Not
-product law for any one repository.
+Modular OS and application policy maps for Debian and GNOME. Curated
+maps of what each layer actually checks. Not tutorials. Not product law
+for any one repository.
 
 Two axes, four packs. Compose packs; do not merge them. Add more distros
 later on the same axes (Fedora OS, KDE Application, and so on) without
@@ -37,8 +37,7 @@ GNOME            gnome-application-policy.md         gnome-os-policy.md
 do not treat this folder as a substitute for Debian Policy or the HIG.
 
 Last verified against official Debian, GNOME, Freedesktop, Flatpak, and
-Flathub documents as of 2026-08-25. Pins and the watch workflow are in
-**Retrieving updates from official sources**.
+Flathub documents as of 2026-08-25. Pins are in **Pins**.
 
 Read the root files. [archive/](archive/) is the frozen 1.0.0 snapshot,
 kept for comparison only.
@@ -161,49 +160,58 @@ Copy the axes, not the files.
    [program-language/](../../program-language/).
 
 ------------------------------------------------------------------------
-Retrieving updates from official sources
+Pins
 ------------------------------------------------------------------------
 
-Packs are maps. Official manuals remain the authority.
+Official manuals remain the authority. This table records the pin that was read. It does not fetch.
 
-The **1.0.0** snapshot lives in [archive/](archive/) and must not be
-edited.
-
-[sources.yaml](sources.yaml) is the watch registry. Each entry records
-a canonical URL, the owning pack, a pin, a detector, and whether the
-source splits **OS** vs **application**.
-
-[../../scripts/check_sources.py](../../scripts/check_sources.py)
-(`--family os/linux`) prints `UNCHANGED` or `DRIFT`. On drift, patch
-the owning pack with a bite-sized rule, then bump the pin. Never
-auto-merge HTML into packs.
-
-Cadence:
-
-- Announce lists and the GNOME ICS calendar: continuous
-- Debian Policy, Developer's Reference, Flathub requirements,
-  AppCriteria: weekly
-- HIG, portal docs, AppStream: on GNOME point-zero releases
-
-Current pins as of 2026-08-25:
-
-- Debian Policy **4.7.4.1**
-- Developer's Reference **14.14**
-- GNOME **50** stable / **49** old-stable / **51** unstable
-  (51.0 on 2026-09-12)
-- Debian **13** (trixie) stable
-- Debian AI GR voting through **2026-08-28**
-- Circle intake closed **2026-05-29**
-
-`REJECT-FAQ.html` 404s. NEW process links live in the Debian Application
-pack.
-
+| Source | Pin | Pack | Read |
+|--------|-----|------|------|
+| [Debian Policy Manual](https://www.debian.org/doc/debian-policy/) | `4.7.4.1` | [debian-os-policy.md](debian-os-policy.md), [debian-application-policy.md](debian-application-policy.md) | 2026-08-25 |
+| [Debian Policy upgrading checklist](https://www.debian.org/doc/debian-policy/upgrading-checklist.html) | `4.7.4` | [debian-os-policy.md](debian-os-policy.md), [debian-application-policy.md](debian-application-policy.md) | 2026-08-25 |
+| [Debian Developer's Reference](https://www.debian.org/doc/manuals/developers-reference/) | `14.14` | [debian-application-policy.md](debian-application-policy.md) | 2026-08-25 |
+| [Debian NEW queue](https://ftp-master.debian.org/new.html) | `Summary for: NEW` | [debian-application-policy.md](debian-application-policy.md) | 2026-08-25 |
+| [ftp-master rejection mails](https://ftp-master.debian.org/reject.html) | `Deciphering Rejection mails` | [debian-application-policy.md](debian-application-policy.md) | 2026-08-25 |
+| [DFSG NEW dashboard](https://dfsg-new-queue.debian.org/) | `DFSG, Licensing & New Packages Team` | [debian-os-policy.md](debian-os-policy.md), [debian-application-policy.md](debian-application-policy.md) | 2026-08-25 |
+| [debian-devel-announce](https://lists.debian.org/debian-devel-announce/) | `debian-devel-announce` | [debian-os-policy.md](debian-os-policy.md), [debian-application-policy.md](debian-application-policy.md), [README.md](README.md) | 2026-08-25 |
+| [General Resolution LLM usage in Debian](https://www.debian.org/vote/2026/vote_002) | `2026-08-28` | [debian-os-policy.md](debian-os-policy.md), [debian-application-policy.md](debian-application-policy.md), [README.md](README.md) | 2026-08-25 |
+| [Debian releases](https://www.debian.org/releases/) | `trixie/Forky` | [debian-os-policy.md](debian-os-policy.md), [README.md](README.md) | 2026-08-25 |
+| [DEP-8: automatic as-installed package testing](https://dep-team.pages.debian.net/deps/dep8/) | `DRAFT` | [debian-application-policy.md](debian-application-policy.md) | 2026-08-25 |
+| [DEP-12: per-package machine-readable upstream metadata](https://dep-team.pages.debian.net/deps/dep12/) | `ACCEPTED` | [debian-application-policy.md](debian-application-policy.md) | 2026-08-25 |
+| [DEP-14: recommended Git packaging layout](https://dep-team.pages.debian.net/deps/dep14/) | `CANDIDATE` | [debian-application-policy.md](debian-application-policy.md) | 2026-08-25 |
+| [DEP-17: usr-merge aliasing](https://dep-team.pages.debian.net/deps/dep17/) | `ACCEPTED` | [debian-os-policy.md](debian-os-policy.md) | 2026-08-25 |
+| [Machine-readable debian/copyright (DEP-5)](https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/) | `Machine-readable debian/copyright file` | [debian-application-policy.md](debian-application-policy.md) | 2026-08-25 |
+| [tag2upload](https://wiki.debian.org/tag2upload) | `git-debpush` | [debian-application-policy.md](debian-application-policy.md) | 2026-08-25 |
+| [Filesystem Hierarchy Standard](https://specifications.freedesktop.org/fhs/latest/) | `3.0` | [debian-os-policy.md](debian-os-policy.md) | 2026-08-25 |
+| [GNOME Human Interface Guidelines](https://developer.gnome.org/hig/) | `GTK 4` | [gnome-application-policy.md](gnome-application-policy.md) | 2026-08-25 |
+| [GNOME App Criteria](https://gitlab.gnome.org/Teams/Releng/AppOrganization/-/raw/main/AppCriteria.md) | `Uses GTK 4 + Libadwaita` | [gnome-application-policy.md](gnome-application-policy.md), [gnome-os-policy.md](gnome-os-policy.md) | 2026-08-25 |
+| [Official GNOME App Definition](https://gitlab.gnome.org/Teams/Releng/AppOrganization/-/raw/main/OfficialAppDefinition.md) | `Official GNOME` | [gnome-application-policy.md](gnome-application-policy.md), [gnome-os-policy.md](gnome-os-policy.md) | 2026-08-25 |
+| [GNOME official app processes (AppLifecycle)](https://gitlab.gnome.org/Teams/Releng/AppOrganization/-/raw/main/AppLifecycle.md) | `incubation` | [gnome-os-policy.md](gnome-os-policy.md) | 2026-08-25 |
+| [GNOME Circle](https://gitlab.gnome.org/Teams/Circle/-/raw/main/README.md) | `Submissions are currently closed` | [gnome-application-policy.md](gnome-application-policy.md), [gnome-os-policy.md](gnome-os-policy.md) | 2026-08-25 |
+| [GNOME release calendar](https://release.gnome.org/calendar/) | `51/50/49` | [gnome-os-policy.md](gnome-os-policy.md), [gnome-application-policy.md](gnome-application-policy.md) | 2026-08-25 |
+| [GNOME release schedule (ICS)](https://release.gnome.org/calendar/schedule.ics) | `20260912` | [gnome-os-policy.md](gnome-os-policy.md) | 2026-08-25 |
+| [gnome-build-meta](https://gitlab.gnome.org/GNOME/gnome-build-meta/-/raw/master/README.md) | `GNOME OS` | [gnome-os-policy.md](gnome-os-policy.md) | 2026-08-25 |
+| [GNOME maintainer integrating guidelines](https://developer.gnome.org/documentation/guidelines/maintainer/integrating.html) | `D-Bus activation` | [gnome-os-policy.md](gnome-os-policy.md), [gnome-application-policy.md](gnome-application-policy.md) | 2026-08-25 |
+| [GNOME developer guidelines](https://developer.gnome.org/documentation/guidelines.html) | `Human Interface Guidelines` | [gnome-application-policy.md](gnome-application-policy.md) | 2026-08-25 |
+| [GNOME Software metadata meanings](https://gnome.pages.gitlab.gnome.org/gnome-software/help/C/software-metadata.html) | `software-metadata` | [gnome-os-policy.md](gnome-os-policy.md) | 2026-08-25 |
+| [Flathub app requirements](https://docs.flathub.org/docs/for-app-authors/requirements) | `Generative AI policy` | [gnome-os-policy.md](gnome-os-policy.md) | 2026-08-25 |
+| [Flathub quality guidelines](https://docs.flathub.org/docs/for-app-authors/metainfo-guidelines/quality-guidelines) | `not required for submission` | [gnome-os-policy.md](gnome-os-policy.md) | 2026-08-25 |
+| [Flathub runtimes](https://docs.flathub.org/docs/for-app-authors/runtimes) | `GNOME runtime` | [gnome-os-policy.md](gnome-os-policy.md) | 2026-08-25 |
+| [Flatpak sandbox permissions](https://docs.flatpak.org/en/latest/sandbox-permissions.html) | `finish-args` | [gnome-os-policy.md](gnome-os-policy.md) | 2026-08-25 |
+| [xdg-desktop-portal documentation](https://flatpak.github.io/xdg-desktop-portal/docs/) | `xdg-desktop-portal` | [gnome-os-policy.md](gnome-os-policy.md), [gnome-application-policy.md](gnome-application-policy.md) | 2026-08-25 |
+| [AppStream specification](https://www.freedesktop.org/software/appstream/docs/) | `1.0` | [debian-application-policy.md](debian-application-policy.md), [gnome-application-policy.md](gnome-application-policy.md), [gnome-os-policy.md](gnome-os-policy.md) | 2026-08-25 |
+| [Desktop Entry Specification](https://specifications.freedesktop.org/desktop-entry-spec/latest/) | `1.5` | [debian-os-policy.md](debian-os-policy.md), [debian-application-policy.md](debian-application-policy.md), [gnome-application-policy.md](gnome-application-policy.md) | 2026-08-25 |
+| [Icon Theme Specification](https://specifications.freedesktop.org/icon-theme-spec/latest/) | `Icon Theme Specification` | [debian-os-policy.md](debian-os-policy.md), [debian-application-policy.md](debian-application-policy.md), [gnome-application-policy.md](gnome-application-policy.md) | 2026-08-25 |
+| [Shared MIME-info Database](https://specifications.freedesktop.org/shared-mime-info-spec/latest/) | `Shared MIME-info` | [debian-os-policy.md](debian-os-policy.md), [debian-application-policy.md](debian-application-policy.md), [gnome-application-policy.md](gnome-application-policy.md) | 2026-08-25 |
+| [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir-spec/latest/) | `0.8` | [debian-os-policy.md](debian-os-policy.md), [gnome-os-policy.md](gnome-os-policy.md) | 2026-08-25 |
 ------------------------------------------------------------------------
 Document history
 ------------------------------------------------------------------------
 
 | Version | Notes |
 |---------|--------|
+| 1.1.2 | Pin table replaces sources.yaml. |
+| 1.1.1 | Lead matches the description. |
 | 1.1.0 | Reliability pins, gap fill from official docs, source watch (`sources.yaml` + `scripts/check_sources.py`). |
 | 1.0.0 | Initial four-pack split: Debian OS, Debian Application, GNOME OS, GNOME Application |
 

@@ -1,7 +1,7 @@
 ---
 title: Agent BUILD Procedure
 description: BUILD is the AI-executable procedure that resolves the active agent set and emits thin expert AgentPacks from templates and the authority map.
-version: "1.12.0"
+version: "1.12.1"
 status: current
 audience:
   - developers
@@ -14,7 +14,7 @@ related:
   - ../kit-author-plan/SKILL.md
   - ../kit-map-layers/SKILL.md
   - ../../../../../kit/UPGRADE.md
-last_updated: "2026-10-18"
+last_updated: "2026-10-19"
 ---
 
 # Agent BUILD Procedure
@@ -238,7 +238,7 @@ For each id in the resolved active set, choose **one** source. Emit path is alwa
 | No PLAN / no Agent models (bare adopt) | Skip BUILD |
 | `active_models` unset after first BUILD (no `use_catalog_defaults`) | Fail resolve; require explicit list |
 | `active_models: []` | Emit nothing; report empty set (not a failure) |
-| Authority map empty | Stop BUILD for implementer-heavy packs; run adopter/SETUP path first |
+| Authority map empty | Stop BUILD for implementer-heavy packs and follow [ADOPTER.md](../../../../../ADOPTER.md). |
 | Unknown agent id (no overlay, no generated pack) | Fail that id; report; do not invent skeleton |
 | Existing adopter/platform pack on regen | Preserve; do not clobber |
 | Overlay path missing | Fail that overlay; continue others; report |
@@ -274,6 +274,7 @@ Lifecycle context: [kit-use-instruct](../kit-use-instruct/SKILL.md#lifecycle-fea
 
 | Version | Notes |
 |---------|--------|
+| 1.12.1 | An empty authority map follows ADOPTER.md. |
 | 1.12.0 | Emit omits Must when the seed has none. Tuning stays under Must not or Tuning |
 | 1.11.0 | The seed table includes `name-path` and `index-directory` |
 | 1.10.0 | The seed table includes the workboard ids |

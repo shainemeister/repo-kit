@@ -1,7 +1,7 @@
 ---
 title: "Python Ecosystem Policy"
 description: Curated map of how a Python project lives — pyproject.toml, hash-pinned lockfiles, PyPI, trusted-library bar, pip-audit. Security over feature sprawl.
-version: "1.0.0"
+version: "1.0.1"
 status: current
 audience:
   - developers
@@ -11,14 +11,14 @@ related:
   - README.md
   - python-language-policy.md
   - python-os-policy.md
-last_updated: "2026-08-29"
+last_updated: "2026-10-19"
 ---
 
 # Python Ecosystem Policy
 
-Reference pack for **how a hosted Python project lives**: packaging
-metadata, lockfiles, PyPI, and **which third-party libraries may be
-depended on**.
+Curated map of how a Python project lives — pyproject.toml,
+hash-pinned lockfiles, PyPI, trusted-library bar, pip-audit. It
+applies to a hosted Python project.
 
 **Role:** curated map (working memory). **Not** L4 for any one app.
 **Not** PEP 8 or `secrets` — that is

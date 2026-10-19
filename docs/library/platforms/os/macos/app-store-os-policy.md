@@ -1,7 +1,7 @@
 ---
 title: "Mac App Store OS policy"
 description: Curated map of the Mac App Store payload — store certificates, the Xcode installer package, mandatory sandbox, and the system behaviors review forbids. Not Developer ID and not the Human Interface Guidelines.
-version: "1.0.0"
+version: "1.0.1"
 status: current
 audience:
   - developers
@@ -12,14 +12,14 @@ related:
   - direct-os-policy.md
   - direct-application-policy.md
   - app-store-application-policy.md
-last_updated: "2026-10-02"
+last_updated: "2026-10-19"
 ---
 
 # Mac App Store OS policy
 
-Reference pack for **the Mac App Store as a payload**: which
-certificate seals the product, where the store puts it, and which
-system behaviors a store app is not allowed to have.
+Curated map of the Mac App Store payload — store certificates, the
+Xcode installer package, mandatory sandbox, and the system behaviors
+review forbids. It also states where the store puts the product.
 
 **Role:** curated map. **Not** the Human Interface Guidelines and
 **not** the reviewer's checklist of content — those are
@@ -279,3 +279,4 @@ Document history
 | Version | Notes |
 |---------|--------|
 | 1.0.0 | Initial Mac App Store OS map. Store installer, mandatory sandbox, guideline 2.4.5 system rules. |
+| 1.0.1 | Lead matches the description. |

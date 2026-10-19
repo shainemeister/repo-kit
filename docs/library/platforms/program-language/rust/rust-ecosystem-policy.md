@@ -1,7 +1,7 @@
 ---
 title: "Rust Ecosystem Policy"
 description: Curated map of how a Rust crate lives — Cargo.toml, lockfile, SemVer, crates.io, RustSec. Not rustfmt and not OS packaging.
-version: "1.1.0"
+version: "1.1.1"
 status: current
 audience:
   - developers
@@ -11,14 +11,14 @@ related:
   - README.md
   - rust-language-policy.md
   - rust-os-policy.md
-last_updated: "2026-08-29"
+last_updated: "2026-10-19"
 ---
 
 # Rust Ecosystem Policy
 
-Reference pack for **how a hosted Rust crate lives**: the Cargo
-manifest, lockfile, SemVer, crates.io, licenses on the crate, and the
-advisory database.
+Curated map of how a Rust crate lives — Cargo.toml, lockfile, SemVer,
+crates.io, RustSec. Reference pack for **how a hosted Rust crate
+lives**: licenses on the crate.
 
 **Role:** curated map (working memory). **Not** L4 for any one crate.
 **Not** rustfmt, Clippy groups, or the Nomicon — that is
@@ -545,5 +545,6 @@ Document history
 
 | Version | Notes |
 |---------|--------|
+| 1.1.1 | Lead matches the description. |
 | 1.1.0 | OS-agnostic: distro queues / vendoring-on-buildd / rustsec.debian.net moved to rust-os-policy.md |
 | 1.0.0 | Initial ecosystem pack: manifest/MSRV/lockfile, SemVer, crates.io, RustSec official, deny/vet/auditable labeled extras. Notes 2026-08 crates.io build-script incident as supply-chain motivation. |

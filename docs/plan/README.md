@@ -3,11 +3,11 @@ title: "docs/plan/ (repo-kit)"
 description: Index of detailed execution plans and program annexes. Open when adding a plan or checking whether an annex is live on the workboard.
 status: current
 doc_type: other
-version: "1.0.10"
+version: "1.0.12"
 audience:
   - maintainers
   - ai-agents
-last_updated: "2026-10-18"
+last_updated: "2026-10-19"
 ---
 
 # docs/plan/ (repo-kit)
@@ -18,6 +18,7 @@ Index of detailed execution plans and program annexes. Durable kit version histo
 
 | Plan | Status | Summary |
 |------|--------|---------|
+| [platform-continuity](./archive/platform-continuity/) | archived | Filed workboard for platform pack continuity |
 | [shelf-crews](./archive/shelf-crews/) | archived | Filed workboard for the adopt shelf and the upgrade shelf |
 | [skill-shape](./archive/skill-shape/) | archived | Filed workboard for the shorter AgentPack body |
 | [audit-repairs](./archive/audit-repairs/) | archived | Filed workboard for the audit bugs and the drift cites |
