@@ -44,13 +44,7 @@ verify:
 
 # Kit adopter
 
-Adopt the kit once by following ADOPTER.md. When Agent Instruct is in use, the next task is kit-author-plan, then kit-emit-packs.
-
-## Must
-
-- Follow [ADOPTER.md](../../../../../ADOPTER.md). Do not restate it.
-- When using Agent Instruct, the next task is kit-author-plan, then kit-emit-packs. Stop. Do not open those skills in this session.
-- When adding a path, follow [path-pattern.md](../../../../../kit/rules/path-pattern.md). A new directory index follows [directory-index.md](../../../../../kit/rules/directory-index.md).
+The checklist is ADOPTER.md. That file stays the owner.
 
 ## Must not
 
@@ -74,7 +68,8 @@ Adopt the kit once by following ADOPTER.md. When Agent Instruct is in use, the n
 ## Procedure
 
 1. Open `kit/RULES.md`, then follow `ADOPTER.md`.
-2. When using Agent Instruct, the next task is kit-author-plan, then kit-emit-packs. Stop.
+2. When using Agent Instruct, the next task is kit-author-plan, then kit-emit-packs. Stop. Do not open those skills in this session.
+3. When adding a path, follow `kit/rules/path-pattern.md`. A new directory index follows `kit/rules/directory-index.md`. Do not paste those files.
 
 ## Open for law
 

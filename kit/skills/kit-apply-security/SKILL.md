@@ -26,6 +26,12 @@ references:
   - path: kit/RULES.md
     kind: repo
     purpose: Completion
+  - path: .gitignore
+    kind: repo
+    purpose: Secrets stay out of commits
+  - path: kit/skills/kit-apply-security/template/security.md
+    kind: repo
+    purpose: Blank when a package needs SECURITY.md
   - url: https://owasp.org/www-project-cheat-sheets/
     kind: external
     purpose: OWASP Cheat Sheet series for threat/control patterns
@@ -39,13 +45,7 @@ verify:
 
 # Security
 
-Apply the security baseline to privilege, network, secrets, and dependencies. Language checks sit outside the kit.
-
-## Must
-
-- Apply [docs/security.md](../../../docs/security.md#baseline) to the change.
-- Keep secrets out of commits.
-- When a repository declares a scanner, run that scanner. Fill {{SAST_COMMANDS}} from the repository. Do not invent one.
+The baseline is [docs/security.md](../../../docs/security.md). That file stays the owner.
 
 ## Must not
 
@@ -71,7 +71,7 @@ Apply the security baseline to privilege, network, secrets, and dependencies. La
 
 1. Read [docs/security.md](../../../docs/security.md).
 2. Apply the baseline rows that the change touches.
-3. Run {{SAST_COMMANDS}} when the repository names them.
+3. Run {{SAST_COMMANDS}} when the repository names them. Fill that token from the repository's declared scanner. Do not invent one.
 4. If a declared check failed or was skipped, stop ([completion](../../RULES.md#completion)).
 
 ## Open for law

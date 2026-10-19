@@ -1,7 +1,7 @@
 ---
 title: AgentPack Parameters
 description: Every agent model is an AgentPack. A structured record with catalog fields for match, a short body for procedure and expertise, and authority_paths and verify linking to canonical law.
-version: "1.8.0"
+version: "1.9.0"
 status: current
 audience:
   - developers
@@ -13,7 +13,7 @@ related:
   - ../kit-map-layers/SKILL.md
   - ../kit-emit-packs/SKILL.md
   - ../kit-author-plan/SKILL.md
-last_updated: "2026-10-17"
+last_updated: "2026-10-18"
 ---
 
 # AgentPack Parameters
@@ -32,7 +32,7 @@ Related lists maintainer peers. Do not load them for this task.
 |------|
 | Use stable `id` values from CATALOG or PLAN overlays; keep enums constrained (`layer` / `activation` / `portability`) |
 | Include `authority_paths` and `verify` in **YAML frontmatter**; document **expertise** (`references` and/or body **Expertise map**) |
-| Put Must / Must not / Procedure / Expertise map in the **markdown body** (not required as YAML keys) |
+| Put Procedure and an Expertise map in the markdown body. Must not, or a Tuning heading, holds prohibitions. Must is optional. None of these are required YAML keys. |
 | Map user freeform requests into PLAN deltas; do not silently invent durable policy only in chat |
 | External URLs only as **citations** under references/expertise — never remote overlays or substitute law |
 
@@ -69,11 +69,11 @@ AgentPack frontmatter is **not** required to carry full MARKDOWN-STANDARD fields
 | Location | What lives there |
 |----------|------------------|
 | **YAML frontmatter** | Match/catalog metadata: `id`, `title`, `layer`, `portability`, `activation`, `description`, `triggers`, `authority_paths`, `verify`, optional `compose_with`, `negative_triggers`, `stage_min`, `user_tuning_keys`, `references` |
-| **Markdown body** (after closing `---`) | Role content: `## Must`, `## Must not`, `## Expertise map`, `## Procedure` (or ordered steps), `## Open for law` (or authority_paths pointer) |
+| **Markdown body** (after closing `---`) | Role content: `## Procedure` (or ordered steps), `## Expertise map`, `## Must not` or `## Tuning`, optional `## Must`, `## Open for law` (or an authority_paths pointer) |
 
 **`body` is not a YAML key.** The body is the markdown after frontmatter. Seed files under `kit/skills/` follow this shape.
 
-**`must` / `must_not` are not required YAML keys.** Prefer body headings `## Must` and `## Must not`. Optional YAML lists are allowed if an adopter emit path needs them; templates and kit defaults use the body.
+**`must` / `must_not` are not required YAML keys.** Prefer body headings `## Procedure`, `## Expertise map`, and `## Must not` (or `## Tuning`). Must is optional. Optional YAML lists are allowed if an adopter emit path needs them; templates and kit defaults use the body.
 
 ---
 
@@ -95,8 +95,8 @@ AgentPack frontmatter is **not** required to carry full MARKDOWN-STANDARD fields
 | `verify` | yes | YAML | Gates before claiming done |
 | `user_tuning_keys` | no | YAML | PLAN tuning keys that affect this pack |
 | `references` | **yes** for generated packs | YAML | Expertise list: in-repo paths and/or external citation objects (see below) |
-| Must | yes | **Body** (`## Must`) | Hard requirements for this role |
-| Must not | yes | **Body** (`## Must not`) | Hard prohibitions |
+| Must | no | **Body** (`## Must`) | Optional. Hard requirements belong in Procedure. |
+| Must not | yes | **Body** (`## Must not`) | Hard prohibitions. A Tuning heading may hold them instead. |
 | Expertise map | **yes** for generated packs | **Body** (`## Expertise map`) | Scannable in-repo + external citations with purpose |
 | Procedure / body | yes | **Body** (markdown after frontmatter) | Short ordered procedure + Open for law |
 
@@ -201,7 +201,7 @@ The emit path and the fill rules are [kit-emit-packs](../kit-emit-packs/SKILL.md
 BUILD (and humans) reject or fix packs that:
 
 1. Lack **YAML** `authority_paths` or `verify`  
-2. Lack **body** Must / Must not sections (or empty placeholders only)  
+2. Lack a Procedure, or lack Must not and lack Tuning, or keep an empty Must, Must not, or Tuning heading. Omitting Must is valid.  
 3. Lack a short procedure body after frontmatter  
 4. Leave raw `{{PLACEHOLDER}}` tokens in **generated** packs (BUILD must omit empty optionals or fill; see [BUILD fill rules](../kit-emit-packs/SKILL.md#template-fill-rules))  
 5. Use unknown `id` not in CATALOG, PLAN overlays, or existing adopter-generated packs  
@@ -225,6 +225,7 @@ Kit **seed files** should pre-fill expertise so emit succeeds without freeform i
 
 | Version | Notes |
 |---------|--------|
+| 1.9.0 | A seed may omit Must. Procedure, Expertise map, and Must not or Tuning stay required |
 | 1.8.0 | Enum meaning, PLAN deltas, and emit paths cite their owners. The values and the validation list stay |
 | 1.7.0 | Home is `kit/skills/kit-<action>/`. A blank is `template/<noun>.md` |
 | 1.6.0 | Kit packs are `skills/kit-<action>/`. Ids stay. `kit-adopter` and `generated/` stay |

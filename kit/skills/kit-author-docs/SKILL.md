@@ -30,10 +30,19 @@ references:
     purpose: Form and the author checklist
   - path: kit/rules/contracts.md
     kind: repo
-    purpose: No dual contracts; co-updates
+    purpose: one owner, one statement
+  - path: kit/rules/directory-index.md
+    kind: repo
+    purpose: When a directory gets an index
+  - path: kit/rules/path-pattern.md
+    kind: repo
+    purpose: How a path is named
   - path: docs/README.md
     kind: repo
     purpose: AI docs/ workspace vs product contracts
+  - path: kit/skills/kit-author-docs/template/
+    kind: repo
+    purpose: Blanks for landing, readme, cli, concept, methodology, and generic
   - url: https://commonmark.org/help/
     kind: external
     purpose: CommonMark basics for portable markdown
@@ -48,14 +57,7 @@ verify:
 
 # Docs author
 
-Author durable markdown by applying the markdown standard, and cite an owner instead of restating it.
-
-## Must
-
-- Apply [MARKDOWN-STANDARD](../../MARKDOWN-STANDARD.md) for frontmatter, the lead, and the [author checklist](../../MARKDOWN-STANDARD.md#author-checklist).
-- Cite the owner. Do not paste a second copy of its rule ([contracts](../../rules/contracts.md)).
-- When the task is the directory index, the next task is `kit-index-directory`. Stop.
-- When the task is naming a path, the next task is `kit-name-path`. Stop.
+The form is [kit/MARKDOWN-STANDARD.md](../../MARKDOWN-STANDARD.md). That file stays the owner.
 
 ## Must not
 
@@ -71,6 +73,7 @@ Author durable markdown by applying the markdown standard, and cite an owner ins
 - `kit/rules/contracts.md` — one owner, one statement
 - `kit/rules/directory-index.md` — when a directory gets an index
 - `kit/rules/path-pattern.md` — how a path is named
+- `docs/README.md` — AI docs/ workspace vs product contracts
 - `template/` — blanks: landing, readme, cli, concept, methodology, generic. The index blank is `kit-index-directory/template/index.md`
 
 ### External (citations — guidance only)
@@ -80,8 +83,11 @@ Author durable markdown by applying the markdown standard, and cite an owner ins
 ## Procedure
 
 1. Edit the file that already holds the role.
-2. Apply the markdown standard. Run the author checklist.
-3. If a declared check failed or was skipped, stop ([completion](../../RULES.md#completion)).
+2. Cite the owner. Do not paste a second copy of its rule ([contracts](../../rules/contracts.md)).
+3. When the task is the directory index, the next task is `kit-index-directory`. Stop.
+4. When the task is naming a path, the next task is `kit-name-path`. Stop.
+5. Apply the markdown standard. Run the author checklist.
+6. If a declared check failed or was skipped, stop ([completion](../../RULES.md#completion)).
 
 ## Open for law
 

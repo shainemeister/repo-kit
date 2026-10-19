@@ -42,15 +42,7 @@ verify:
 
 # Name path
 
-Name, move, or split a path by applying the path pattern. Cite that file. Do not restate it.
-
 The principle is [path-pattern.md](../../rules/path-pattern.md). That file stays the owner.
-
-## Must
-
-- Open [path-pattern.md](../../rules/path-pattern.md) and apply it.
-- Require evidence before a new path.
-- When the parent index already lists the role, edit that file ([one role](../../rules/path-pattern.md#one-role)).
 
 ## Must not
 

@@ -38,15 +38,7 @@ verify:
 
 # Workboard close
 
-Mark a phase done, cancelled, or deferred. Leave the program on the board.
-
 The record is [WORKBOARD.md](../../../WORKBOARD.md). That file stays the owner.
-
-## Must
-
-- Set the phase status on [WORKBOARD.md](../../../WORKBOARD.md) to `done`, `cancelled`, or `deferred`.
-- Leave that program as the primary program.
-- When no phase is `open`, `active`, or `blocked`, and the change is notable, name `kit-commit` as the next task. The changelog sentence stays in [kit/RULES.md](../../RULES.md#changelog). [Contracts](../../rules/contracts.md#boundaries) owns when the board is filed.
 
 ## Must not
 
@@ -71,9 +63,9 @@ The record is [WORKBOARD.md](../../../WORKBOARD.md). That file stays the owner.
 ## Procedure
 
 1. Open [WORKBOARD.md](../../../WORKBOARD.md). If no program is registered, the next task is `kit-workboard-register`. Stop.
-2. Set the phase to `done`, `cancelled`, or `deferred`.
+2. Set the phase to `done`, `cancelled`, or `deferred`. Leave this program as the primary program. Do not clear that field.
 3. Add one progress line, newest first. Drop the oldest line when the log is over the cap.
-4. When no phase is `open`, `active`, or `blocked`, and the change is notable, name `kit-commit` as the next task. Stop. Do not open that skill.
+4. When no phase is `open`, `active`, or `blocked`, and the change is notable, name `kit-commit` as the next task. The changelog sentence stays in [kit/RULES.md](../../RULES.md#changelog). [Contracts](../../rules/contracts.md#boundaries) owns when the board is filed. Stop. Do not open that skill.
 5. Otherwise stop.
 
 ## Open for law

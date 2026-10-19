@@ -33,6 +33,12 @@ references:
   - path: kit/RULES.md
     kind: repo
     purpose: Authority map and completion
+  - path: WORKBOARD.md
+    kind: repo
+    purpose: Multi-phase record
+  - path: PLAN.md
+    kind: repo
+    purpose: Mission and non-goals
   - path: docs/README.md
     kind: repo
     purpose: Notes this repository already keeps
@@ -50,15 +56,7 @@ verify:
 
 # Implementer
 
-Adopt the skills and documents this repository already has for the change. Cite the kit owner. Add a path only when the role is absent.
-
-## Must
-
-- Find the skill or document that already holds the role. Follow that file.
-- Cite the kit owner. The owners are [path-pattern.md](../../rules/path-pattern.md#one-role), [contracts.md](../../rules/contracts.md), and [completion](../../RULES.md#completion).
-- When the role is absent, the next task is `kit-name-path`. Stop.
-- Run the checks this repository declares. Fill {{VERIFY_COMMANDS}} from those checks. Do not invent tools.
-- When a second concern appears, name that task and stop.
+The role rule is [path-pattern.md#one-role](../../rules/path-pattern.md#one-role). That file stays the owner.
 
 ## Must not
 
@@ -77,6 +75,8 @@ Adopt the skills and documents this repository already has for the change. Cite 
 - `kit/RULES.md` — authority map and completion
 - `WORKBOARD.md` — multi-phase record
 - `PLAN.md` — mission and non-goals
+- `docs/README.md` — notes this repository already keeps
+- `docs/library/platforms/style-gates.md` — style commands when a platform pack names them. Not kit law
 
 ### External (citations — guidance only)
 
@@ -85,12 +85,13 @@ Adopt the skills and documents this repository already has for the change. Cite 
 ## Procedure
 
 1. Open the authority map.
-2. Find the skill or document that already holds this role. Follow that file. Cite the kit owner it uses.
+2. Find the skill or document that already holds this role. Follow that file. Cite [path-pattern.md#one-role](../../rules/path-pattern.md#one-role), [contracts.md](../../rules/contracts.md), and [completion](../../RULES.md#completion). Do not paste those files.
 3. When no file holds the role, the next task is `kit-name-path`. Stop.
 4. Make the smallest change that does the task. When behavior changes, follow the [same-change-set rule](../../rules/contracts.md#same-change-set-rule).
-5. Run {{VERIFY_COMMANDS}} when the repository names them.
-6. If the work should outlive this session, the next task is kit-author-plan, then kit-emit-packs. Stop.
-7. If a declared check failed or was skipped, stop ([completion](../../RULES.md#completion)).
+5. When a second concern appears, name that task and stop.
+6. Fill {{VERIFY_COMMANDS}} from the checks the repository declares. Do not invent tools. Run {{VERIFY_COMMANDS}}.
+7. If the work should outlive this session, the next task is kit-author-plan, then kit-emit-packs. Stop.
+8. If a declared check failed or was skipped, stop ([completion](../../RULES.md#completion)).
 
 ## Open for law
 

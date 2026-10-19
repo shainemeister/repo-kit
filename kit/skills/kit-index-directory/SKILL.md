@@ -48,15 +48,7 @@ verify:
 
 # Index directory
 
-Write the index for a new navigable directory. Cite the directory-index rule. Do not restate it.
-
 The principle is [directory-index.md](../../rules/directory-index.md). That file stays the owner.
-
-## Must
-
-- Open [directory-index.md](../../rules/directory-index.md) and apply it.
-- Use the cell shape in the [markdown standard](../../MARKDOWN-STANDARD.md#directory-index).
-- Put the index in the same change set ([contracts](../../rules/contracts.md#same-change-set-rule)).
 
 ## Must not
 
@@ -83,9 +75,10 @@ The principle is [directory-index.md](../../rules/directory-index.md). That file
 
 1. Open [directory-index.md](../../rules/directory-index.md).
 2. When the directory is a procedure pack, confirm `SKILL.md` is the index ([directory index](../../rules/directory-index.md#directory-index)). Stop.
-3. Copy [template/index.md](template/index.md) to `README.md` in that directory. Retarget the links. One file-to-function row for each intentional file.
-4. When a listed name breaks the pattern, the next task is `kit-name-path`. Stop.
-5. If a declared check failed or was skipped, stop ([completion](../../RULES.md#completion)).
+3. Copy [template/index.md](template/index.md) to `README.md` in that directory. Retarget the links. One file-to-function row for each intentional file. Use the cell shape in the [markdown standard](../../MARKDOWN-STANDARD.md#directory-index).
+4. Put the index in the same change set ([contracts](../../rules/contracts.md#same-change-set-rule)).
+5. When a listed name breaks the pattern, the next task is `kit-name-path`. Stop.
+6. If a declared check failed or was skipped, stop ([completion](../../RULES.md#completion)).
 
 ## Open for law
 

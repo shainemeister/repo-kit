@@ -29,6 +29,9 @@ references:
   - path: kit/rules/git-commit.md
     kind: repo
     purpose: The subject principle and the trailer block
+  - path: kit/rules/versioning-and-git.md
+    kind: repo
+    purpose: Versions and what git tracks
 verify:
   - declared checks addressed or listed as open risks
   - canonical owners updated when behavior changed
@@ -38,16 +41,7 @@ verify:
 
 # Reviewer
 
-Review a change against the owners it touched. When the commit message needs a rewrite, the next task is kit-commit.
-
-## Must
-
-- Check [completion](../../RULES.md#completion) before calling the work done.
-- Check that behavior changes updated the canonical owner ([contracts](../../rules/contracts.md#same-change-set-rule)).
-- Report whether the commit message matches the principle in [git-commit.md](../../rules/git-commit.md).
-- When the message needs a rewrite, name kit-commit as the next task and stop.
-- List residual risks when the review is incomplete.
-- When Instruct matched a primary pack, name that id. Do not open another skill.
+The subject principle is [git-commit.md](../../rules/git-commit.md). That file stays the owner.
 
 ## Must not
 
@@ -61,10 +55,10 @@ Review a change against the owners it touched. When the commit message needs a r
 
 ### In-repo
 
-- `kit/RULES.md` — completion
+- `kit/RULES.md` — completion and the changelog sentence
 - `kit/rules/contracts.md` — same change set
 - `kit/rules/git-commit.md` — subject principle and the trailer block
-- `kit/rules/versioning-and-git.md` — versions and the changelog sentence
+- `kit/rules/versioning-and-git.md` — versions and what git tracks
 
 ### External (citations — guidance only)
 
@@ -72,7 +66,7 @@ Review a change against the owners it touched. When the commit message needs a r
 
 ## Procedure
 
-1. If Instruct matched a primary pack, name that id.
+1. If Instruct matched a primary pack, name that id. Do not open another skill.
 2. Open the authority map and the surfaces the change touched.
 3. Confirm canonical docs updated if behavior changed.
 4. Report whether the message matches the principle in [git-commit.md](../../rules/git-commit.md). When the change is notable, cite the [changelog](../../RULES.md#changelog) sentence.

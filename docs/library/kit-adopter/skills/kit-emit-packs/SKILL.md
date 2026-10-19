@@ -1,7 +1,7 @@
 ---
 title: Agent BUILD Procedure
 description: BUILD is the AI-executable procedure that resolves the active agent set and emits thin expert AgentPacks from templates and the authority map.
-version: "1.11.0"
+version: "1.12.0"
 status: current
 audience:
   - developers
@@ -97,7 +97,7 @@ BUILD is the AI-executable procedure that resolves the active agent set and emit
    a. Resolve source pack via Source load order (do not invent kits silently)
    b. If preserve (adopter/platform generated) → keep file; skip destructive overwrite
    c. Else FILL placeholders from PLAN + authority map + expertise/references
-   d. APPLY tuning (emphasize notes, must_not_extra under Must not/Tuning, stage_min)
+   d. APPLY tuning (emphasize notes, must_not_extra under Must not/Tuning, stage_min). Do not emit a `## Must` heading when the seed has none. Do not leave a raw tuning token.
    e. ENSURE Expertise map + references (PARAMS); external entries need purpose
    f. VALIDATE (PARAMS validation rules including expertise)
    g. EMIT docs/library/kit-adopter/generated/<id>.md (kit-portability seeds and filled overlays)
@@ -211,7 +211,7 @@ For each id in the resolved active set, choose **one** source. Emit path is alwa
 
 | Situation | Behavior |
 |-----------|----------|
-| Optional bullet empty (`{{TUNING_MUST_NOT_EXTRA}}`, extra notes) | **Omit the line/bullet** entirely |
+| Optional bullet empty (`{{TUNING_MUST_NOT_EXTRA}}`, extra notes) | **Omit the line/bullet** entirely; an empty tuning bullet is omitted rather than left as a raw token |
 | `{{VERIFY_COMMANDS}}` / `{{SAST_COMMANDS}}` with nothing declared | Write “none declared” — **never invent tools** |
 | Required project field unfilled | Fail validation; do not emit |
 | Any remaining raw `{{PLACEHOLDER}}` | Fail validation ([PARAMS](../kit-define-pack/SKILL.md)) — finished generated packs must not ship unfilled tokens |
@@ -219,7 +219,7 @@ For each id in the resolved active set, choose **one** source. Emit path is alwa
 **Body rules:**
 
 1. Procedure steps only (ordered); include co-maintain L4 + STOP on failed gates.  
-2. Must / Must not bullets (short).  
+2. Must not or Tuning bullets (short). Omit Must when the seed has none. Do not emit an empty Must heading.  
 3. **Expertise map** — in-repo + external citations with purpose (align with YAML `references`).  
 4. “Open these docs” list = authority_paths (+ expertise).  
 5. No full reproduction of contracts.md or versioning-and-git.md.  
@@ -248,7 +248,7 @@ For each id in the resolved active set, choose **one** source. Emit path is alwa
 | Missing expertise/references on generated pack | Do not emit; fill from template + map ([PARAMS](../kit-define-pack/SKILL.md)) |
 | External reference without purpose | Do not emit; add purpose or drop link |
 | `http(s)` in authority_paths | Fail validation; move to references as citation if appropriate |
-| Conflict must vs must_not_extra | Prefer stricter must_not; surface in report |
+| Conflict must vs must_not_extra | Prefer the Must not or Tuning line; surface in report |
 
 ---
 
@@ -274,6 +274,7 @@ Lifecycle context: [kit-use-instruct](../kit-use-instruct/SKILL.md#lifecycle-fea
 
 | Version | Notes |
 |---------|--------|
+| 1.12.0 | Emit omits Must when the seed has none. Tuning stays under Must not or Tuning |
 | 1.11.0 | The seed table includes `name-path` and `index-directory` |
 | 1.10.0 | The seed table includes the workboard ids |
 | 1.9.0 | The emit target is `docs/library/kit-adopter/generated/` |

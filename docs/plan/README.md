@@ -3,7 +3,7 @@ title: "docs/plan/ (repo-kit)"
 description: Index of detailed execution plans and program annexes. Open when adding a plan or checking whether an annex is live on the workboard.
 status: current
 doc_type: other
-version: "1.0.7"
+version: "1.0.8"
 audience:
   - maintainers
   - ai-agents
@@ -18,6 +18,7 @@ Index of detailed execution plans and program annexes. Durable kit version histo
 
 | Plan | Status | Summary |
 |------|--------|---------|
+| [skill-shape](./archive/skill-shape/) | archived | Filed workboard for the shorter AgentPack body |
 | [audit-repairs](./archive/audit-repairs/) | archived | Filed workboard for the audit bugs and the drift cites |
 | [path-pattern](./archive/path-pattern/) | archived | Filed workboard for the path pattern and the directory index |
 | [kit-link-edges](./archive/kit-link-edges/) | archived | Filed workboard for the file rule, the blank, and live platform links |

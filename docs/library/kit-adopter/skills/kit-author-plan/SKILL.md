@@ -47,16 +47,7 @@ verify:
 
 # PLAN author
 
-Draft or revise project PLAN.md, including the Agent models contract when Instruct is in use.
-
-## Must
-
-- Capture mission, non-goals, and constraints clearly.
-- Include Agent models section (active/disabled/overlays/tuning) when using Agent Instruct.
-- Prefer durable PLAN edits over chat-only intent.
-- When features/core tasks grow: update Agent models regenerate_when and active set as needed.
-- Put detailed multi-step execution plans in `docs/plan/` when needed; keep Agent models in root PLAN.md.
-- When work is multi-phase: register `WORKBOARD.md` before phase code; annex only if the board cannot hold the OOO. When an annex exists, fill the [phase brief](../../../../../WORKBOARD.md) before the phase starts.
+The Agent models contract below Open for law stays in this file.
 
 ## Must not
 

@@ -1,7 +1,7 @@
 ---
 title: "Skill template"
 description: "Frontmatter keys for one verb. Each value is that field's job."
-version: "1.0.3"
+version: "1.0.4"
 status: draft
 audience:
   - ai-agents
@@ -14,7 +14,7 @@ related:
   - ../../../kit/MARKDOWN-STANDARD.md
   - ../../../kit/rules/path-pattern.md
   - ../../research/kit-skills.md
-last_updated: "2026-10-17"
+last_updated: "2026-10-18"
 ---
 
 # Skill template
@@ -34,7 +34,7 @@ Draft. Emit does not read this note. This note follows the [markdown standard](.
 | `layer` | `job type` | One job type. The list is the [taxonomy](../kit-adopter/skills/kit-map-layers/SKILL.md#job-types-taxonomy). |
 | `portability` | `kit` | A repeated verb uses `kit`. A project agent uses `adopter`. |
 | `activation` | `catalog_match` | Loads when the task matches the description or a trigger. |
-| `description` | `State the action. Cite the principle.` | Match text. The lead repeats its first sentence. |
+| `description` | `State the action. Cite the principle.` | Match text. The H1 is the title. One owner sentence follows it. |
 | `triggers` | `the task, as the user states it` | Phrases that select this verb. |
 | `negative_triggers` | `the next task` | Phrases that belong to the next task. |
 | `authority_paths` | `kit/RULES.md`, `the principle` | Repo-relative owners. |
@@ -84,14 +84,7 @@ verify:
 
 # Action
 
-State the action. Cite the principle.
-
 The principle is the owner file. That file stays the owner.
-
-## Must
-
-- Open the principle and apply it.
-- Cite the owner.
 
 ## Must not
 
@@ -111,7 +104,7 @@ The principle is the owner file. That file stays the owner.
 
 ## Procedure
 
-1. Open the authority map and the principle.
+1. Open the authority map and the principle. Cite the owner.
 2. Carry out the action.
 3. When a second concern appears, name that task and stop.
 4. If a declared check failed or was skipped, stop.
@@ -125,6 +118,7 @@ See authority_paths. The principle stays in the owner file.
 
 | Version | Notes |
 |---------|--------|
+| 1.0.4 | The fence omits Must. Cite the owner is a procedure step |
 | 1.0.3 | Home is `docs/library/kit-skill-template/SKILL.md` |
 | 1.0.2 | Frontmatter is a key and value table |
 | 1.0.1 | The fence uses the kit's names for each field |

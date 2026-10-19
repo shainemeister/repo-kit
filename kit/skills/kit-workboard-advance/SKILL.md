@@ -33,15 +33,7 @@ verify:
 
 # Workboard advance
 
-Set the one active phase on the workboard and add the progress line.
-
 The record is [WORKBOARD.md](../../../WORKBOARD.md). That file stays the owner.
-
-## Must
-
-- Set exactly one phase to `active` on [WORKBOARD.md](../../../WORKBOARD.md).
-- Add one progress line, newest first.
-- Keep the progress log inside the cap the board states.
 
 ## Must not
 

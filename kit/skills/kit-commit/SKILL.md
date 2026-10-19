@@ -54,19 +54,7 @@ verify:
 
 # Commit
 
-Write the commit for the staged change. Types, body shape, identity checks, and trailer placement are this procedure.
-
 The principle is [git-commit.md](../../rules/git-commit.md). That file stays the owner.
-
-## Must
-
-- Name the subject for the staged change ([subject](../../rules/git-commit.md#subject)).
-- Use the [type table](#types) and the [body shape](#body).
-- Pass the [identity checks](#identity).
-- When AI assisted, place the [trailer block](../../rules/git-commit.md#ai-trailers) as [trailer placement](#trailer-placement) describes.
-- When the change is notable, add the one changelog sentence ([changelog](../../RULES.md#changelog)).
-- When a path is added, confirm it already follows [path-pattern.md](../../rules/path-pattern.md). Do not name the path in this task.
-- Before the commit is created, update [WORKBOARD.md](../../../WORKBOARD.md). [Contracts](../../rules/contracts.md#boundaries) owns that update. Follow [kit-workboard-archive](../kit-workboard-archive/SKILL.md) for the edit, and include the result in this commit.
 
 ## Must not
 
@@ -146,14 +134,15 @@ Instructed-by: Jane Developer
 
 1. Review `git status` and `git diff`.
 2. Stage one logical surface. Leave out anything [versioning-and-git.md](../../rules/versioning-and-git.md#what-git-tracks) excludes.
-3. Write the subject from the [type table](#types). Add the [body](#body) unless the subject alone names the staged actions.
-4. Run the [identity checks](#identity).
-5. If the change is notable, update the changelog with one sentence ([changelog](../../RULES.md#changelog)).
-6. If AI assisted, place the trailer block ([trailer placement](#trailer-placement)).
-7. If a declared check failed or was skipped, stop ([completion](../../RULES.md#completion)).
-8. Update [WORKBOARD.md](../../../WORKBOARD.md) before the commit is created. Follow [kit-workboard-archive](../kit-workboard-archive/SKILL.md). Include that edit in this commit.
-9. Create the commit with that message.
-10. Stop. Do not make a second commit for the board.
+3. When a path is added, confirm it already follows [path-pattern.md](../../rules/path-pattern.md). Do not name the path in this task.
+4. Write the subject from the [type table](#types) ([subject](../../rules/git-commit.md#subject)). Add the [body](#body) unless the subject alone names the staged actions.
+5. Run the [identity checks](#identity).
+6. If the change is notable, update the changelog with one sentence ([changelog](../../RULES.md#changelog)).
+7. If AI assisted, place the trailer block ([trailer placement](#trailer-placement)).
+8. If a declared check failed or was skipped, stop ([completion](../../RULES.md#completion)).
+9. Update [WORKBOARD.md](../../../WORKBOARD.md) before the commit is created. Follow [kit-workboard-archive](../kit-workboard-archive/SKILL.md). Include that edit in this commit.
+10. Create the commit with that message.
+11. Stop. Do not make a second commit for the board.
 
 ## Open for law
 
