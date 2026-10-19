@@ -1,7 +1,7 @@
 ---
 title: "Workboard blank"
 description: "Blank for root WORKBOARD.md. Copy the fenced body when that file is missing, and when a finished program is archived."
-version: "1.0.7"
+version: "1.0.8"
 status: current
 audience:
   - ai-agents
@@ -13,7 +13,7 @@ related:
   - ../../../rules/path-pattern.md
   - ../../../rules/directory-index.md
   - ../../../../WORKBOARD.md
-last_updated: "2026-10-18"
+last_updated: "2026-10-19"
 ---
 
 # Workboard blank
@@ -30,7 +30,7 @@ The fence is the root file. Remove the fence when you copy it. Links inside the 
 ---
 title: Active workboard
 description: Open multi-phase work. One program is active at a time.
-version: "1.4.0"
+version: "1.5.0"
 status: current
 audience:
   - ai-agents
@@ -82,11 +82,11 @@ An authorized commit updates this file before that commit is created, and files 
 
 ### Phases
 
-| ID | Work | File | Status | Notes |
-|----|------|------|--------|-------|
-| — | — | — | — | — |
+| ID | Work | File | Draft | Status | Notes |
+|----|------|------|-------|--------|-------|
+| — | — | — | — | — | — |
 
-Each registered phase has a draft at `docs/plan/<program>/<id>-<verb>.md` with that phase's working text. The File cell stays the product file.
+The File cell is the product file. The Draft cell is the phase document at `docs/plan/<program>/<id>-<verb>.md`. Notes do not repeat either path.
 
 ### Progress log (newest first, max ~15 lines)
 

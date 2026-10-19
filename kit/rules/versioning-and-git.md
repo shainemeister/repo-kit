@@ -1,7 +1,7 @@
 ---
 title: "Versioning and git"
 description: "Three version surfaces, what git tracks, and a pointer to the commit-message rules."
-version: "2.0.1"
+version: "2.0.2"
 status: current
 audience:
   - developers
@@ -11,7 +11,7 @@ related:
   - ./git-commit.md
   - ./contracts.md
   - ../CHANGELOG.md
-last_updated: "2026-10-18"
+last_updated: "2026-10-19"
 ---
 
 # Versioning and git
@@ -33,6 +33,8 @@ A kit upgrade does not by itself bump the project version. Bump the project vers
 ## Changelog
 
 The summary rule is in [RULES.md](../RULES.md#changelog). This file does not restate it. This kit's history stays in [CHANGELOG.md](../CHANGELOG.md) under `## repo-kit`.
+
+This kit keeps the three newest sections under `## repo-kit`. An adopter's changelog is not trimmed. Filing a finished program at `docs/plan/archive/<program>/` stays the procedure for a target.
 
 ## What git tracks
 

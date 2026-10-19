@@ -1,7 +1,7 @@
 ---
 title: Adopt repo-kit
 description: "One-time adopt of this kit into a target repository. An adopted repository deletes this file when the adopt is finished."
-version: "1.2.1"
+version: "1.2.2"
 status: current
 audience:
   - developers
@@ -32,6 +32,6 @@ This repository keeps this file. An adopted repository deletes it when the adopt
 3. Fill the authority map with paths that exist in the target. Drop rows that do not apply.
 4. Record the adopted version and the Kit source in the target's kit baseline. The version is the latest dated section under `## repo-kit` in [CHANGELOG.md](kit/CHANGELOG.md). The Kit source is the URL in [RULES.md](kit/RULES.md#kit-baseline).
 5. Write the target's root `README.md` and directory indexes for its own files. Use [MARKDOWN-STANDARD.md](kit/MARKDOWN-STANDARD.md) for the shape. Do not paste kit examples in as those descriptions.
-6. If a coding agent is used, add a root `AGENTS.md` from the paste block in [agents.md](docs/library/kit-adopter/skills/kit-discover-host/template/agents.md). If one already exists, paste that block once. Do not replace project text. If `MEMORY.md` is missing, copy the fenced body of [memory.md](docs/library/kit-adopter/skills/kit-discover-host/template/memory.md) to the repository root and remove the fence. If it exists, leave it.
+6. If a coding agent is used, follow [agents.md](docs/library/kit-adopter/skills/kit-discover-host/template/agents.md): create the file when missing; when one exists, replace the body with the block and keep that repository's directory paths in `{{PROJECT_NOTE}}`; do not keep the old sections; do not add a second copy when the block is already the whole file. If `MEMORY.md` is missing, copy the fenced body of [memory.md](docs/library/kit-adopter/skills/kit-discover-host/template/memory.md) to the repository root and remove the fence. If it exists, leave it.
 7. The pack order is [the adopt shelf](docs/library/kit-adopter/README.md). Do not paste that table here. A bare adopt stops before kit-author-plan. When Agent Instruct is used, copy that directory and stop after emit.
 8. Later upgrades use [UPGRADE.md](kit/UPGRADE.md).

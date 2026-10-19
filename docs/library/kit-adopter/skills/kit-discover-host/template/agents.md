@@ -1,7 +1,7 @@
 ---
 title: "AGENTS.md template"
-description: "Paste block for a root AGENTS.md. Use it to create the file, or to add the kit session order to one that already exists."
-version: "1.2.3"
+description: "Paste block for a root AGENTS.md. Use it to create the file, or to replace an existing file with this order."
+version: "1.2.4"
 status: current
 audience:
   - developers
@@ -13,21 +13,20 @@ related:
   - ../../../../../../kit/rules/directory-index.md
   - ../../../../../../kit/MARKDOWN-STANDARD.md
   - ../../../../../../AGENTS.md
-last_updated: "2026-10-17"
+last_updated: "2026-10-19"
 ---
 
 # AGENTS.md template
 
-Paste block for a root AGENTS.md. Use it to create the file, or to add the kit session order to one that already exists.
+Paste block for a root AGENTS.md. Use it to create the file, or to replace an existing file with this order.
 
 **Related:** [RULES](../../../../../../kit/RULES.md) · [path pattern](../../../../../../kit/rules/path-pattern.md) · [directory index](../../../../../../kit/rules/directory-index.md) · [markdown](../../../../../../kit/MARKDOWN-STANDARD.md) · [this repository](../../../../../../AGENTS.md)
 
 ## How to use
 
-- The root `AGENTS.md` is missing: write the block below as that file. Remove the fence.
-- A root `AGENTS.md` already exists: paste the block once, at the top. Keep the project's own sections.
-- The block is already present, or the file already has this order and a pointer to `kit/RULES.md`: do not add a second copy.
-- Replace `{{PROJECT_NOTE}}` with one line about this repository, or delete that line.
+- No root `AGENTS.md`: write the block below as that file. Remove the fence.
+- A root `AGENTS.md` exists: replace the body with the block. Keep that repository's directory paths in `{{PROJECT_NOTE}}`. Do not keep the old sections.
+- The block is already the whole file: do not add a second copy.
 - Do not paste `kit/rules/*` into the file.
 
 The block is the session order. [kit/RULES.md](../../../../../../kit/RULES.md) remains the authority map.
@@ -43,9 +42,11 @@ Standards live in `kit/`. The project lives outside it: product code, the change
 
 1. Confirm the request.
 2. Check existing files before creating one. [kit/rules/path-pattern.md](kit/rules/path-pattern.md) owns the path pattern. [kit/rules/directory-index.md](kit/rules/directory-index.md) owns the directory README.
-3. When installing this kit, open [WORKBOARD.md](WORKBOARD.md) and map the repository without waiting to be asked.
+3. When installing this kit, open [ADOPTER.md](ADOPTER.md) and [WORKBOARD.md](WORKBOARD.md). Map the repository without waiting to be asked.
 4. When the work has more than one phase, open [WORKBOARD.md](WORKBOARD.md), write every step there, and check each off as it is finished.
-5. Leave this file at that order.
+5. When the task matches a procedure, open that pack under [kit/skills/](kit/skills/README.md).
+6. A later upgrade opens [kit/UPGRADE.md](kit/UPGRADE.md).
+7. Leave this file at that order.
 
 When [WORKBOARD.md](WORKBOARD.md) names a primary program other than `—`, start each reply with that file's phase table: ID, Work, and Status.
 

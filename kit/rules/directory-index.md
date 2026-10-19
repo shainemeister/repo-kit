@@ -1,7 +1,7 @@
 ---
 title: Directory index
 description: "A new navigable directory of intentional files gets an index README in the same change set. A missing historical index is not a failed gate."
-version: "1.1.0"
+version: "1.1.1"
 status: current
 audience:
   - developers
@@ -13,7 +13,7 @@ related:
   - ./path-pattern.md
   - ./contracts.md
   - ../MARKDOWN-STANDARD.md
-last_updated: "2026-10-18"
+last_updated: "2026-10-19"
 ---
 
 # Directory index
@@ -34,6 +34,8 @@ The index is forward-only. Root `FILE-CATALOG.md` stays optional. When a whole-r
 
 A procedure pack uses `SKILL.md` as its index. Do not add `README.md` in that pack directory. The parent directory keeps its own index.
 
+`kit/` is indexed by `kit/RULES.md`. Do not add `kit/README.md`.
+
 ## Must not
 
 - Backfill a historical directory.
@@ -43,5 +45,6 @@ A procedure pack uses `SKILL.md` as its index. Do not add `README.md` in that pa
 
 | Version | Notes |
 |---------|--------|
+| 1.1.1 | `kit/` is indexed by `kit/RULES.md`. |
 | 1.1.0 | This file owns the ban on `README.md` beside `SKILL.md` |
 | 1.0.0 | Split from `files.md`. This file owns when an index is required |

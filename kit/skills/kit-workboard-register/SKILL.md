@@ -29,8 +29,9 @@ verify:
   - one program is recorded before the phase work
   - an existing primary program was left in place
   - the live table is not copied into another file
-  - each phase File cell is a relative link or `—`
-  - each registered phase has a draft with a body, and the File cell is not that draft
+  - each phase File cell is a relative link to the product file, or `—`
+  - each phase Draft cell is a relative link to that phase's draft, or `—`
+  - the File cell is not the draft, and the draft has a body
 # BUILD fills: {{PROJECT_NAME}}, {{TUNING_MUST_NOT_EXTRA}}
 ---
 
@@ -64,7 +65,7 @@ The record is [WORKBOARD.md](../../../WORKBOARD.md). That file stays the owner.
 1. Open [WORKBOARD.md](../../../WORKBOARD.md). If it is missing, copy the fenced body of [template/workboard.md](template/workboard.md) to the repository root and remove the fence. Set `last_updated` to the day you copy it.
 2. If the primary program is not `—`, stop.
 3. If this work has no phases, stop. Do not open a program.
-4. Write one program: goal, base, decisions, and every step in the phase table. One phase is `active` only when that phase is the work about to start. The others stay `open`. The File cell is a relative link to the file that phase edits, or `—` when it edits no file. Notes do not repeat that path. The blank owns the columns. Write the draft the blank names, with that phase's working text, in the same change set as the row. Do not create a draft that has no body.
+4. Write one program: goal, base, decisions, and every step in the phase table. One phase is `active` only when that phase is the work about to start. The others stay `open`. The File cell is a relative link to the file that phase edits, or `—` when it edits no file. The Draft cell is the phase document, a relative link to `docs/plan/<program>/<id>-<verb>.md`, or `—` when that phase has no draft. Notes do not repeat either path. The blank owns the columns. Write the draft the Draft cell names, with that phase's working text, in the same change set as the row. Do not create a draft that has no body.
 5. Add one progress line.
 6. Name the next task and stop. Do not open that skill.
 
