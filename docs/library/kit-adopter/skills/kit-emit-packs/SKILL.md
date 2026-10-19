@@ -1,7 +1,7 @@
 ---
 title: Agent BUILD Procedure
 description: BUILD is the AI-executable procedure that resolves the active agent set and emits thin expert AgentPacks from templates and the authority map.
-version: "1.10.0"
+version: "1.11.0"
 status: current
 audience:
   - developers
@@ -14,7 +14,7 @@ related:
   - ../kit-author-plan/SKILL.md
   - ../kit-map-layers/SKILL.md
   - ../../../../../kit/UPGRADE.md
-last_updated: "2026-10-17"
+last_updated: "2026-10-18"
 ---
 
 # Agent BUILD Procedure
@@ -185,6 +185,8 @@ For each id in the resolved active set, choose **one** source. Emit path is alwa
 | `workboard-close` | `kit/skills/kit-workboard-close/SKILL.md` |
 | `workboard-archive` | `kit/skills/kit-workboard-archive/SKILL.md` |
 | `implementer` | `kit/skills/kit-apply-change/SKILL.md` |
+| `name-path` | `kit/skills/kit-name-path/SKILL.md` |
+| `index-directory` | `kit/skills/kit-index-directory/SKILL.md` |
 | `docs-author` | `kit/skills/kit-author-docs/SKILL.md` |
 | `security` | `kit/skills/kit-apply-security/SKILL.md` |
 | `reviewer` | `kit/skills/kit-review-change/SKILL.md` |
@@ -272,6 +274,7 @@ Lifecycle context: [kit-use-instruct](../kit-use-instruct/SKILL.md#lifecycle-fea
 
 | Version | Notes |
 |---------|--------|
+| 1.11.0 | The seed table includes `name-path` and `index-directory` |
 | 1.10.0 | The seed table includes the workboard ids |
 | 1.9.0 | The emit target is `docs/library/kit-adopter/generated/` |
 | 1.8.0 | Absent, unset, and empty stay defined in `kit-author-plan`. This file applies them |

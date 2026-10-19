@@ -18,7 +18,7 @@ negative_triggers:
   - pure runtime debug
 authority_paths:
   - kit/MARKDOWN-STANDARD.md
-  - library/platforms/style-gates.md
+  - docs/library/platforms/style-gates.md
   - kit/rules/contracts.md
   - WORKBOARD.md
   - kit/rules/directory-index.md

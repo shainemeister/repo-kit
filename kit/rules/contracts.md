@@ -1,7 +1,7 @@
 ---
 title: Contracts
 description: "Stable promises a repository makes—behavior, shapes, exits, fields—and the rules for keeping them honest."
-version: "1.12.0"
+version: "1.13.0"
 status: current
 audience:
   - developers
@@ -14,7 +14,7 @@ related:
   - ./path-pattern.md
   - ./git-commit.md
   - ../MARKDOWN-STANDARD.md
-last_updated: "2026-10-17"
+last_updated: "2026-10-18"
 ---
 
 # Contracts
@@ -71,7 +71,7 @@ Keep packages composable at the workflow layer. A call from one stack into anoth
 **Not contracts:**
 
 - `docs/` is working memory. A public promise moves to the authority-map owner.
-- `WORKBOARD.md` records open work. An authorized commit updates it before that commit is created, and the update is in that commit. When a phase ships, that update is in the same change set. When the primary program is `—`, the commit does not file the board. When a phase is `open`, `active`, or `blocked`, the update adds one progress line. When no phase is `open`, `active`, or `blocked`, the update files the copy and restores the blank. The board is not the only copy of a public promise.
+- `WORKBOARD.md` records open work. An authorized commit updates it before that commit is created, and the update is in that commit. When a phase ships, that update is in the same change set. When the primary program is `—`, the commit does not file the board. When a named program has a phase `open`, `active`, or `blocked`, the update adds one progress line and does not file. When a named program has no phase `open`, `active`, or `blocked`, the update files the copy and restores the blank. The board is not the only copy of a public promise.
 - `AGENTS.md` is the session order. It is not a second copy of these rules.
 
 ---
@@ -164,6 +164,7 @@ Every substantial markdown file should remain navigable for humans and AI agents
 
 | Version | Notes |
 |---------|--------|
+| 1.13.0 | A named program is filed only when it has no open, active, or blocked phase. A primary program of `—` is not filed |
 | 1.12.0 | A new path cites path-pattern.md |
 | 1.11.0 | The board update is in the authorized commit, before that commit is created |
 | 1.10.0 | A program is filed when no phase is `open`, `active`, or `blocked` |

@@ -5,7 +5,7 @@ layer: playbook
 portability: kit
 activation: catalog_match
 description: >
-  Update the workboard for an authorized commit. When no phase is open, active, or blocked, file the board and restore the blank.
+  Update the workboard for an authorized commit. File a named program when no phase is open, active, or blocked, and restore the blank.
 triggers:
   - archive the workboard
   - reset the workboard
@@ -36,7 +36,7 @@ references:
     kind: repo
     purpose: An authorized commit updates the board before that commit is created
 verify:
-  - a program with no open, active, or blocked phase is filed and the live board is the blank
+  - a named program with no open, active, or blocked phase is filed and the live board is the blank
   - links in that copy resolve from the archive file
   - an open, active, or blocked phase stays, with one new progress line inside the log cap
   - a program that already has a plan-index row does not gain a second one
@@ -48,13 +48,13 @@ verify:
 
 # Workboard archive
 
-Update the workboard for an authorized commit. When no phase is open, active, or blocked, file the board and restore the blank.
+Update the workboard for an authorized commit. File a named program when no phase is open, active, or blocked, and restore the blank.
 
 The record is [WORKBOARD.md](../../../WORKBOARD.md). The blank is [template/workboard.md](../kit-workboard-register/template/workboard.md). Those paths follow [path-pattern.md](../../rules/path-pattern.md). [Contracts](../../rules/contracts.md#boundaries) owns when this update files the board. Do this before that commit is created. This task does not create the commit.
 
 ## Must
 
-- When no phase is `open`, `active`, or `blocked`, copy [WORKBOARD.md](../../../WORKBOARD.md) to `docs/plan/archive/<program>/WORKBOARD.md`. The directory name is the primary program.
+- When the primary program is named and no phase is `open`, `active`, or `blocked`, copy [WORKBOARD.md](../../../WORKBOARD.md) to `docs/plan/archive/<program>/WORKBOARD.md`. The directory name is the primary program. [Contracts](../../rules/contracts.md#boundaries) owns that order.
 - Rewrite each relative link in that copy, and each `related:` path, so it resolves from the archive file to the same target.
 - When that directory is new, follow [kit-index-directory](../kit-index-directory/SKILL.md) for the index [directory-index.md](../../rules/directory-index.md#directory-index) requires. When the README already lists that snapshot, leave the row.
 - Add one row on [docs/plan/README.md](../../../docs/plan/README.md) only when that program has no row there.

@@ -29,9 +29,10 @@ sources:
     pin_kind: regex
     pin: "3.14"
     detect:
-      regex: '3\.14'
+      regex: 'Supported versions[\s\S]{0,4000}?<td><p>(3\.\d+)</p></td>[\s\S]{0,800}?<td><p>bugfix</p></td>'
+      group: 1
     cadence: weekly
-    notes: "3.15 final → Language ship bar + README. Distro lag stays OS."
+    notes: "Newest supported bugfix branch. On DRIFT, update the language ship bar and README, then bump pin. Distro lag stays OS."
 
   - id: pep-790
     title: PEP 790 Python 3.15 release schedule
@@ -45,9 +46,10 @@ sources:
     pin_kind: regex
     pin: "2026-10-01"
     detect:
-      regex: '2026-10-01'
+      regex: '3\.15\.0 final:[^0-9]*(\d{4}-\d{2}-\d{2})'
+      group: 1
     cadence: weekly
-    notes: "3.15.0 final date. Not the ship bar until it happens."
+    notes: "Date on the 3.15.0 final line. On DRIFT, bump pin. Not the ship bar by itself."
 
   - id: pep-8
     title: PEP 8

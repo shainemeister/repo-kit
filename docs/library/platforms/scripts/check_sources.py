@@ -3,8 +3,9 @@
 
 Fetches each ``canonical_url`` in each family's ``sources.yaml`` and
 compares the configured ``detect`` regex (or git HEAD) to the stored
-``pin``. Network errors are expected and reported as ``FETCH_FAIL``,
-not tracebacks.
+``pin``. ``watch_path`` is stored and is not fetched. ``git`` is read
+only when ``detect.method`` is ``git_ls_remote``. Network errors are
+expected and reported as ``FETCH_FAIL``, not tracebacks.
 
 On DRIFT, patch the owning pack with a bite-sized rule; then bump
 ``pin``. Do **not** auto-merge official HTML into the packs. Do not dump

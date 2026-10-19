@@ -36,7 +36,7 @@ references:
   - path: docs/README.md
     kind: repo
     purpose: Notes this repository already keeps
-  - path: library/platforms/style-gates.md
+  - path: docs/library/platforms/style-gates.md
     kind: repo
     purpose: Style commands when a platform pack names them. Not kit law
 verify:

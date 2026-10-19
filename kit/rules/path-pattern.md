@@ -1,7 +1,7 @@
 ---
 title: Path pattern
 description: "A path is a category, then a noun. Under src/, the segment and the module are nouns, and a verb is a function."
-version: "1.0.0"
+version: "1.1.0"
 status: current
 audience:
   - developers
@@ -14,7 +14,7 @@ related:
   - ./contracts.md
   - ../MARKDOWN-STANDARD.md
   - ../skills/README.md
-last_updated: "2026-10-17"
+last_updated: "2026-10-18"
 ---
 
 # Path pattern
@@ -65,7 +65,7 @@ src/billing/invoice.py
 
 Programming source lives at repo-root `src/`. A rule module is a flat file in `kit/rules/`.
 
-A procedure pack is `kit/skills/kit-<action>/SKILL.md`. The action stem is one or two words. A blank is `template/<noun>.md` in that pack. One task loads one skill ([skills](../skills/README.md)).
+A procedure pack is `kit/skills/kit-<action>/SKILL.md`. The action stem is one or two words. A blank is `template/<noun>.md` in that pack. One task loads one skill. The pack may name the next task. A repository skill stays unprefixed at root `skills/<action>/` only when that repository has one. The pack is indexed by `SKILL.md` ([directory index](./directory-index.md#directory-index)).
 
 ## One role
 
@@ -81,4 +81,5 @@ A new file is allowed when its role is absent from the directory index. When the
 
 | Version | Notes |
 |---------|--------|
+| 1.1.0 | This file owns "one task, one skill" and the root `skills/<action>/` exception |
 | 1.0.0 | Split from `files.md`. This file owns the path pattern |

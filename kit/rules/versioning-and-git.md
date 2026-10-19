@@ -1,7 +1,7 @@
 ---
 title: "Versioning and git"
-description: "Three version surfaces, what git tracks, and a pointer to the commit-message rules. The changelog is a summary of notable changes."
-version: "2.0.0"
+description: "Three version surfaces, what git tracks, and a pointer to the commit-message rules."
+version: "2.0.1"
 status: current
 audience:
   - developers
@@ -11,12 +11,12 @@ related:
   - ./git-commit.md
   - ./contracts.md
   - ../CHANGELOG.md
-last_updated: "2026-10-13"
+last_updated: "2026-10-18"
 ---
 
 # Versioning and git
 
-Three version surfaces, what git tracks, and where commit messages are defined.
+Three version surfaces, what git tracks, and a pointer to the commit-message rules.
 
 **Related:** [RULES](../RULES.md) · [commits](./git-commit.md) · [contracts](./contracts.md) · [CHANGELOG](../CHANGELOG.md)
 
@@ -32,7 +32,7 @@ A kit upgrade does not by itself bump the project version. Bump the project vers
 
 ## Changelog
 
-The summary rule is in [RULES.md](../RULES.md#changelog). This file does not restate it. Record a notable change. Leave the detail in the commit. This kit's history stays in [CHANGELOG.md](../CHANGELOG.md) under `## repo-kit`. An adopted repository keeps its own changelog and does not paste this kit's history into it.
+The summary rule is in [RULES.md](../RULES.md#changelog). This file does not restate it. This kit's history stays in [CHANGELOG.md](../CHANGELOG.md) under `## repo-kit`.
 
 ## What git tracks
 

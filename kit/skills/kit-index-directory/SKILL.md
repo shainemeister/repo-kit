@@ -34,7 +34,7 @@ references:
     purpose: Same change set
   - path: kit/rules/path-pattern.md
     kind: repo
-    purpose: A procedure pack is indexed by SKILL.md
+    purpose: Path of a procedure pack
   - path: kit/skills/kit-index-directory/template/index.md
     kind: repo
     purpose: Blank copied to README.md
@@ -82,7 +82,7 @@ The principle is [directory-index.md](../../rules/directory-index.md). That file
 ## Procedure
 
 1. Open [directory-index.md](../../rules/directory-index.md).
-2. When the directory is a procedure pack, confirm `SKILL.md` is the index ([path pattern](../../rules/path-pattern.md)). Stop.
+2. When the directory is a procedure pack, confirm `SKILL.md` is the index ([directory index](../../rules/directory-index.md#directory-index)). Stop.
 3. Copy [template/index.md](template/index.md) to `README.md` in that directory. Retarget the links. One file-to-function row for each intentional file.
 4. When a listed name breaks the pattern, the next task is `kit-name-path`. Stop.
 5. If a declared check failed or was skipped, stop ([completion](../../RULES.md#completion)).

@@ -1,7 +1,7 @@
 ---
 title: Authoring and Style
 description: "Tool commands for a declared language. The platform packs own the policy."
-version: "1.2.9"
+version: "1.2.10"
 status: current
 audience:
   - developers
@@ -14,7 +14,7 @@ related:
   - program-language/c/README.md
   - scripts/README.md
   - ../../../kit/MARKDOWN-STANDARD.md
-last_updated: "2026-10-17"
+last_updated: "2026-10-18"
 ---
 
 # Authoring and Style
@@ -52,16 +52,16 @@ How to write documentation and how to gate product code style (Domain B). **Decl
 
 ## Documentation rules
 
-1. **Substantial documents** follow [MARKDOWN-STANDARD.md](../../../kit/MARKDOWN-STANDARD.md): YAML frontmatter, single H1, lead, then the **required core** for the type ([author checklist](../../../kit/MARKDOWN-STANDARD.md#author-checklist)). Summary and Contents only when those rules require them. **Root `README.md`** uses the [landing](../../../kit/MARKDOWN-STANDARD.md#landing-readme) outline only: no frontmatter; **Overview** then **Operator prompts**.
-2. **New docs** start from [template/](../../../kit/skills/kit-author-docs/template); leave no unresolved `{{PLACEHOLDERS}}`. Durable markdown has YAML except the omit list; `description` passes the [identity test](../../../kit/MARKDOWN-STANDARD.md#frontmatter) (current-content summary plus uniqueness). Directory-index `README.md` for a new navigable directory follows [directory-index.md](../../../kit/rules/directory-index.md) (file → function; not [landing](../../../kit/MARKDOWN-STANDARD.md#landing-readme) shape).
+1. **Substantial documents** follow [MARKDOWN-STANDARD.md](../../../kit/MARKDOWN-STANDARD.md): YAML frontmatter, a single H1, and a lead that matches the description ([frontmatter](../../../kit/MARKDOWN-STANDARD.md#frontmatter), [author checklist](../../../kit/MARKDOWN-STANDARD.md#author-checklist)). **Root `README.md`** uses the [landing](../../../kit/MARKDOWN-STANDARD.md#landing-readme) outline only: no frontmatter; **Overview** then **Operator prompts**.
+2. **New docs** start from [template/](../../../kit/skills/kit-author-docs/template); leave no unresolved `{{PLACEHOLDERS}}`. Durable markdown has YAML except the omit list. Directory-index `README.md` for a new navigable directory follows [directory-index.md](../../../kit/rules/directory-index.md) (file → function; not [landing](../../../kit/MARKDOWN-STANDARD.md#landing-readme) shape).
 3. **Behavior change ⇒ doc change** in the same commit or PR ([contracts](../../../kit/rules/contracts.md#same-change-set-rule)):
    - CLI verbs, flags, exit codes, JSON shapes → matching CLI / API guide
    - Formulas, output columns, validation → methodology (+ fixtures if contract shifts)
    - Trust boundary or execution model → matching security doc
-4. **Cite, don’t reprint:** one sentence + deep link ([contracts](../../../kit/rules/contracts.md#incorporation)); do not paste another document in full.
+4. **Cite, don’t reprint:** one sentence + deep link ([contracts](../../../kit/rules/contracts.md#cross-reference-rules)); do not paste another document in full.
 5. **Root README** stays an overview; deep contracts stay in package docs ([landing](../../../kit/MARKDOWN-STANDARD.md#landing-readme)).
 6. **Status honesty:** set frontmatter `status` to `draft` / `current` / `deprecated` accurately ([field reference](../../../kit/MARKDOWN-STANDARD.md#frontmatter)).
-7. **Platform-aware examples** follow [MARKDOWN-STANDARD — Platform-aware examples](../../../kit/MARKDOWN-STANDARD.md#author-checklist): declare primary OS when examples are OS-specific; dual fences when multi-platform.
+7. Run the [author checklist](../../../kit/MARKDOWN-STANDARD.md#author-checklist) before calling the documentation change done.
 
 Starter configs: [pylintrc](program-language/python/pylintrc) · [rustfmt.toml](program-language/rust/rustfmt.toml) · [clippy.toml](program-language/rust/clippy.toml) · [clang-format](program-language/c/clang-format) · [clang-tidy](program-language/c/clang-tidy). Copy **only** files for languages the inventory lists.
 
@@ -196,6 +196,7 @@ Advisory starting points for other surfaces (choose what the team will actually 
 
 | Version | Notes |
 |---------|--------|
+| 1.2.10 | Documentation cites use the current markdown and contracts headings |
 | 1.2.9 | A new directory index cites directory-index.md |
 | 1.2.8 | Links cite the current markdown standard, contracts, completion rule, security baseline, and tool configs |
 | 1.2.7 | New docs start from `kit/skills/kit-author-docs/template/` |

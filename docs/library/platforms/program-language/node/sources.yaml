@@ -29,7 +29,8 @@ sources:
     pin_kind: regex
     pin: "24"
     detect:
-      regex: '\b24\b'
+      regex: '(\d+)\.x</a>\s*</td>\s*<td[^>]*>\s*<strong>Active LTS</strong>'
+      group: 1
     cadence: weekly
     notes: "LTS line. 26 becomes LTS ~October 2026 → Language ship bar."
 

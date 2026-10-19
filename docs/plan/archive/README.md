@@ -3,13 +3,13 @@ title: "docs/plan/archive/"
 description: Index of shipped program annexes after archive. Open when reading historical kit programs; not the live todo list.
 status: current
 doc_type: other
-version: "1.0.1"
-last_updated: "2026-10-17"
+version: "1.0.2"
+last_updated: "2026-10-18"
 ---
 
 # docs/plan/archive/
 
-Shipped program annexes live here after `git mv` from `docs/plan/<program-id>/`.
+Index of shipped program annexes after archive.
 
 **Board:** [WORKBOARD.md](../../WORKBOARD.md). The annexes below record past kit versions.
 
@@ -19,6 +19,7 @@ This folder is **archaeology only**. It is not the live todo list. Active work i
 
 | Pack | Ended | Read instead (L4) |
 |------|-------|-------------------|
+| [audit-repairs](./audit-repairs/) | 2026-10-18 | [contracts](../../../kit/rules/contracts.md) **1.13.0** · [path-pattern](../../../kit/rules/path-pattern.md) **1.1.0** |
 | [commit-notes-2.13.0](./commit-notes-2.13.0/) | 2026-09-04 | [versioning-and-git](../../../kit/rules/versioning-and-git.md) **1.1.0** · [CHANGELOG](../../../kit/CHANGELOG.md) `### [2.13.0]` |
 | [description-summary-2.12.0](./description-summary-2.12.0/) | 2026-09-04 | [MARKDOWN-STANDARD](../../../kit/MARKDOWN-STANDARD.md) **1.6.0** · [CHANGELOG](../../../kit/CHANGELOG.md) `### [2.12.0]` |
 | [workboard-packet-2.11.1](./workboard-packet-2.11.1/) | 2026-09-01 | [workboard](../../../kit/rules/workboard.md) **1.2.0** · [CHANGELOG](../../../kit/CHANGELOG.md) `### [2.11.1]` |

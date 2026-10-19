@@ -1,7 +1,7 @@
 ---
 title: "Workboard blank"
 description: "Blank for root WORKBOARD.md. Copy the fenced body when that file is missing, and when a finished program is archived."
-version: "1.0.4"
+version: "1.0.5"
 status: current
 audience:
   - ai-agents
@@ -13,7 +13,7 @@ related:
   - ../../../rules/path-pattern.md
   - ../../../rules/directory-index.md
   - ../../../../WORKBOARD.md
-last_updated: "2026-10-17"
+last_updated: "2026-10-18"
 ---
 
 # Workboard blank
@@ -62,7 +62,7 @@ Open multi-phase work. One program is active at a time.
 
 Primary program `—` means no program is registered.
 
-An authorized commit updates this file before that commit is created ([contracts](kit/rules/contracts.md#boundaries)). When no phase is `open`, `active`, or `blocked`, that update files a copy at `docs/plan/archive/<program>/WORKBOARD.md` and replaces this file with the blank.
+An authorized commit updates this file before that commit is created, and files it only for a named program with no phase `open`, `active`, or `blocked` ([contracts](kit/rules/contracts.md#boundaries)).
 
 ## Active program
 

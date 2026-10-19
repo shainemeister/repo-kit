@@ -136,7 +136,7 @@ Instructed-by: Jane Developer
 - `kit/rules/versioning-and-git.md` — versions and what git tracks
 - `kit/rules/path-pattern.md` — confirm a new path already follows the pattern
 - `kit/rules/contracts.md` — an authorized commit updates the board before that commit is created
-- `WORKBOARD.md` — read after the commit exists
+- `WORKBOARD.md` — the update [contracts](../../rules/contracts.md#boundaries) names, in this commit, before the commit is created
 
 ### External (citations — guidance only)
 
