@@ -8,6 +8,10 @@ Upgrades: [UPGRADE.md](./UPGRADE.md).
 
 ## repo-kit
 
+### [3.8.1] - 2026-10-18
+
+A named program is filed only when it has no open phase, the phase table links the file each phase edits, a registered phase has a draft, a seed may omit Must, the emit table includes the path and index seeds, and a moving source pin can capture a successor.
+
 ### [3.8.0] - 2026-10-17
 
 Path rules are `path-pattern.md` and `directory-index.md`, procedure packs live in `kit/skills/`, adopt and upgrade stay on the shelf, the root workboard is filed in the commit that finishes a program, and project agents live under `docs/library/agent-skills/`.
