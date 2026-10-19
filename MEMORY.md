@@ -8,4 +8,4 @@ repo-kit is a docs-only standards kit. Law stays in `kit/`. Repeated verbs stay 
 
 ## Intent
 
-Multi-phase work is a checklist on `WORKBOARD.md`. The board's primary program is the only current program. This notepad holds intent and does not copy the phase table.
+Multi-phase work is a checklist on `WORKBOARD.md`. The board's primary program is the only current program. Intent is shorter AgentPack bodies, with each skill handled on that board. This notepad does not copy the phase table.
