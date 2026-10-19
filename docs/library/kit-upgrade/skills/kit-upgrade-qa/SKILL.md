@@ -5,7 +5,8 @@ layer: playbook
 portability: kit
 activation: catalog_match
 description: >
-  The check is UPGRADE.md. That file stays the owner.
+  Read every phase draft, its File, and that phase's skill.
+  Report fits, or a short fix list that names the phase skill.
 triggers:
   - check an upgrade
   - upgrade QA
@@ -22,7 +23,7 @@ authority_paths:
 references:
   - path: kit/UPGRADE.md
     kind: repo
-    purpose: The check. That file stays the owner
+    purpose: Orchestrator routes. This pack reads every phase
   - path: kit/skills/kit-review-change/SKILL.md
     kind: repo
     purpose: Reviewer. This pack does not carry its commit-message checks
@@ -38,11 +39,12 @@ references:
 verify:
   - the changelog span since the adopted version was read
   - the workboard rows this upgrade registered were read
-  - the report is fits, or a short fix list
+  - every phase draft, its File, and that phase's skill were read
+  - the report is fits, or a short fix list that names the phase skill
   - the fixes were not applied
   - the phase under check was not edited
   - a product file was not treated as a kit file
-  - project text in AGENTS.md or a filled MEMORY.md was not replaced
+  - each phase was checked against its skill
   - this kit's changelog was not pasted into the project
   - commit-message checks were not carried
   - this pack did not adopt
@@ -51,13 +53,13 @@ verify:
 
 # Upgrade QA
 
-The check is UPGRADE.md. That file stays the owner.
+Read every phase draft, its File, and that phase's skill. Report fits, or a short fix list that names the phase skill.
 
 ## Must not
 
 - Do not edit the phase under check.
 - Do not treat a product file as a kit file.
-- Do not replace project text in [AGENTS.md](../../../../../AGENTS.md) or a filled [MEMORY.md](../../../../../MEMORY.md).
+- Do not edit [AGENTS.md](../../../../../AGENTS.md) or [MEMORY.md](../../../../../MEMORY.md). The phase skill owns those files.
 - Do not paste this kit's changelog into the project.
 - Do not paste [UPGRADE.md](../../../../../kit/UPGRADE.md) or [ADOPTER.md](../../../../../ADOPTER.md).
 - Do not apply the fixes.
@@ -68,7 +70,7 @@ The check is UPGRADE.md. That file stays the owner.
 
 ### In-repo
 
-- [UPGRADE.md](../../../../../kit/UPGRADE.md) — the check. That file stays the owner
+- [UPGRADE.md](../../../../../kit/UPGRADE.md) — orchestrator routes. This pack reads every phase
 - [kit-review-change](../../../../../kit/skills/kit-review-change/SKILL.md) — reviewer. Do not carry its commit-message checks
 - [ADOPTER.md](../../../../../ADOPTER.md) — not this pack. An adopted repository deletes it when the adopt is finished
 - [CHANGELOG.md](../../../../../kit/CHANGELOG.md) — the span since the adopted version
@@ -78,12 +80,16 @@ The check is UPGRADE.md. That file stays the owner.
 
 - None.
 
+## Handback
+
+You are the sub-agent for this file. Do this procedure. Do not open another pack. Do not deploy a sub-agent. Return fits, or a short fix list that names the phase skill. Then stop.
+
 ## Procedure
 
-1. Open [UPGRADE.md](../../../../../kit/UPGRADE.md). That file stays the owner. Do not paste it. This pack checks an upgrade. It does not adopt. A missing [ADOPTER.md](../../../../../ADOPTER.md) is not a failed check. An adopted repository deletes that file when the adopt is finished.
+1. Read every phase draft on this upgrade, the file in each File cell, and that phase's skill. This pack checks an upgrade. A missing [ADOPTER.md](../../../../../ADOPTER.md) is not a failed check. An adopted repository deletes that file when the adopt is finished. Do not paste [UPGRADE.md](../../../../../kit/UPGRADE.md).
 2. Read the changelog span since the adopted version in [kit/CHANGELOG.md](../../../../../kit/CHANGELOG.md). Read the workboard rows this upgrade registered in [WORKBOARD.md](../../../../../WORKBOARD.md).
-3. Report fits, or a short fix list. Stop. Do not apply the fixes. Do not carry the commit-message checks in [kit-review-change](../../../../../kit/skills/kit-review-change/SKILL.md).
+3. Report fits, or a short fix list that names the phase skill. Stop. Do not apply the fixes. Do not carry the commit-message checks in [kit-review-change](../../../../../kit/skills/kit-review-change/SKILL.md).
 
 ## Open for law
 
-See authority_paths. The check stays in `kit/UPGRADE.md`.
+The routes stay in [UPGRADE.md](../../../../../kit/UPGRADE.md). The phase skill owns its work.

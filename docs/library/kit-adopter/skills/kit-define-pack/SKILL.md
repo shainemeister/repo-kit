@@ -24,6 +24,10 @@ Every agent model is an AgentPack. A structured record with catalog fields for m
 
 Related lists maintainer peers. Do not load them for this task.
 
+## Handback
+
+You are the sub-agent for this file. Do this procedure. Do not open another pack. Do not deploy a sub-agent. Return done, or a short fix list. Then stop.
+
 ---
 
 ## Summary

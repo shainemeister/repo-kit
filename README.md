@@ -1,47 +1,77 @@
 # Repository Standards Kit
 
-A short, language-agnostic kit for keeping a repository honest. Copy `kit/` into a target repository. Product code and project history stay outside it.
+`repo-kit` is an agent-centric, language-agnostic kit. It keeps a repository consistent, gives an agent a clear map for building context files, and stays maintainable no matter which harness or AI / SI model is used.
 
-## Overview
+## User prompts for AI
 
-There is no package install. The dependency is git. Follow [ADOPTER.md](ADOPTER.md). While that adopt runs, map the target repository on [WORKBOARD.md](WORKBOARD.md).
+### Adopt
 
-| Piece | Role |
-|-------|------|
-| [kit/RULES.md](kit/RULES.md) | Hub. One owner per concern |
-| [kit/rules/](kit/rules/) | Paths, contracts, commits, and versions |
-| [kit/MARKDOWN-STANDARD.md](kit/MARKDOWN-STANDARD.md) | README shape and minimum frontmatter |
-| [ADOPTER.md](ADOPTER.md) · [kit/UPGRADE.md](kit/UPGRADE.md) | One-time adopt, and upgrade for this kit |
-| [AGENTS.md](AGENTS.md) | Session order for a coding agent |
-| [MEMORY.md](MEMORY.md) | Agent notepad |
-| [WORKBOARD.md](WORKBOARD.md) | Multi-phase checklist |
-| [docs/](docs/README.md) | Working notes for this repository |
-| [docs/library/](docs/library/README.md) | Platform packs, the archive, and the adopt shelf |
-| [kit/skills/](kit/skills/README.md) | Repeated verbs. Open one when the task matches |
+A repository that **does not** have the kit.
 
-### Use cases
+```markdown
+# Agent Instruct 
+
+Adopt `repo-kit` from URL: `https://github.com/shainemeister/repo-kit`
+
+1. Identify in `AGENTS.md`.
+2. Stop. Ask for confirmation before continuing.
+3. Follow `ADOPTER.md`.
+```
+
+### Upgrade
+
+A repository that already has the kit.
+
+```markdown
+# Agent Instruct 
+
+Upgrade `repo-kit` from URL: `https://github.com/shainemeister/repo-kit`
+
+1. Identify in `AGENTS.md`.
+2. Stop. Ask for confirmation before continuing.
+3. Follow `kit/UPGRADE.md`.
+```
+
+## Use cases
 
 | Goal | Start |
-|------|--------|
+|------|-------|
 | Install the kit | [ADOPTER.md](ADOPTER.md) |
 | Upgrade a kit already in use | [kit/UPGRADE.md](kit/UPGRADE.md) |
 | Name a file or avoid a duplicate | [kit/rules/path-pattern.md](kit/rules/path-pattern.md) |
 | Write a commit | [kit/rules/git-commit.md](kit/rules/git-commit.md) |
 | Multi-phase work | [WORKBOARD.md](WORKBOARD.md) |
 
-### Quick start
+### Authority map
 
-Copy the kit core into the target `kit/`, fill the authority map with paths that exist, and write the target's own README in its own words. [ADOPTER.md](ADOPTER.md) is the procedure.
+There is no package install. The dependency is git. Follow [ADOPTER.md](ADOPTER.md).
 
-Standards live in `kit/`. The project lives outside it.
+```text
+repo-kit
+├── kit/
+│   ├── RULES.md                 hub. one owner per concern
+│   ├── rules/                   paths, contracts, commits, versions
+│   ├── MARKDOWN-STANDARD.md     README shape and frontmatter
+│   ├── UPGRADE.md               upgrade
+│   └── skills/                  repeated verbs. open one when the task matches
+├── ADOPTER.md                   one-time adopt
+├── AGENTS.md                    session order for a coding agent
+├── MEMORY.md                    agent notepad
+├── WORKBOARD.md                 multi-phase checklist
+└── docs/
+    ├── README.md                working notes for this repository
+    └── library/                 platform packs, the archive, and the adopt shelf
 
-Kit version is the latest dated section under `## repo-kit` in [kit/CHANGELOG.md](kit/CHANGELOG.md). Source: https://github.com/shainemeister/repo-kit. Licensed under MIT — [LICENSE](LICENSE).
+product code and project history stay outside kit/
+```
 
 ## Operator prompts
 
-Law stays in [kit/RULES.md](kit/RULES.md). The session order stays in [AGENTS.md](AGENTS.md).
+Law stays in [kit/RULES.md](kit/RULES.md). The session order stays in [AGENTS.md](AGENTS.md). [ADOPTER.md](ADOPTER.md) deploys the adopt shelf. [kit/UPGRADE.md](kit/UPGRADE.md) deploys the upgrade shelf at the Kit source.
 
 1. Open `kit/RULES.md`.
-2. For a new install, follow `ADOPTER.md` and map the repository on `WORKBOARD.md`.
+2. For a new install, follow `ADOPTER.md`.
 3. Check existing files before creating one (`kit/rules/path-pattern.md`).
 4. Do not claim the work done if a check this repository declares was skipped.
+
+Kit version is the latest dated section under `## repo-kit` in [kit/CHANGELOG.md](kit/CHANGELOG.md). Source: https://github.com/shainemeister/repo-kit. Licensed under MIT — [LICENSE](LICENSE).

@@ -26,6 +26,10 @@ The match rows live in [the skills index](../../../../../kit/skills/README.md#ma
 
 **Related:** [README.md](../../../../../kit/skills/README.md) · [kit-map-layers](../kit-map-layers/SKILL.md) · [kit-define-pack](../kit-define-pack/SKILL.md) · [kit-emit-packs](../kit-emit-packs/SKILL.md) · [kit-author-plan](../kit-author-plan/SKILL.md) · [kit-discover-host](../kit-discover-host/SKILL.md) · [contracts](../../../../../kit/rules/contracts.md)
 
+## Handback
+
+You are the sub-agent for this file. Do this procedure. Do not open another pack. Do not deploy a sub-agent. Return done, or a short fix list. Then stop.
+
 Related lists maintainer peers. Do not load them for this task.
 
 ---
@@ -66,7 +70,7 @@ Related lists maintainer peers. Do not load them for this task.
 | Root `PLAN.md` has **Agent models** | Run this procedure |
 | Tracked packs under `docs/library/kit-adopter/generated/` and the project uses agents | Run this procedure |
 | Bare kit adopt: no Agent models, no agent packs | Skip this procedure. Open the authority map ([PLAN dual path](../kit-author-plan/SKILL.md#plan-dual-path)) |
-| First adopt with agents intended but no packs yet | The next task is kit-emit-packs. Stop |
+| First adopt with agents intended but no packs yet | Return done. Do not open kit-emit-packs |
 
 Detect Instruct first. A bare adopt does not run this procedure.
 
@@ -83,7 +87,7 @@ Detect Instruct first. A bare adopt does not run this procedure.
    → match rows and suggested defaults: kit/skills/README.md
    → activation, disabled, negative_triggers, stage gates: kit-map-layers
 4  LOAD that one skill
-   → missing, and Instruct is intended → next task is kit-emit-packs. Stop
+   → missing, and Instruct is intended → return done. Do not open kit-emit-packs
 5  FOLLOW that procedure. On conflict, the layer rule in kit-map-layers wins
 6  CO-MAINTAIN by the owners in the next section
 7  VERIFY the pack verify list and the checks this repository declares
@@ -137,7 +141,7 @@ When durable work changes shape, name the next task and stop. A plan edit is the
 
 ## Creating a new expert persona
 
-When PLAN or the user asks for a new durable project agent, the next task is [kit-emit-packs](../kit-emit-packs/SKILL.md#source-load-order). Stop. Do not invent a kit catalog default for a product-only role.
+When PLAN or the user asks for a new durable project agent, return done. Do not open [kit-emit-packs](../kit-emit-packs/SKILL.md). Do not invent a kit catalog default for a product-only role.
 
 ---
 

@@ -25,6 +25,10 @@ BUILD is the AI-executable procedure that resolves the active agent set and emit
 
 **Related:** [README.md](../../../../../kit/skills/README.md) · [kit-use-instruct](../kit-use-instruct/SKILL.md) · [kit-define-pack](../kit-define-pack/SKILL.md) · [kit-author-plan](../kit-author-plan/SKILL.md) · [kit-map-layers](../kit-map-layers/SKILL.md) · [UPGRADE.md](../../../../../kit/UPGRADE.md)
 
+## Handback
+
+You are the sub-agent for this file. Do this procedure. Do not open another pack. Do not deploy a sub-agent. Return done, or a short fix list. Then stop.
+
 ---
 
 ## Summary

@@ -1,7 +1,7 @@
 ---
 title: "Upgrade repo-kit"
 description: "How a project that already adopted this kit takes a newer copy from the Kit source recorded in its baseline."
-version: "3.4.1"
+version: "3.4.4"
 status: current
 audience:
   - developers
@@ -23,12 +23,18 @@ How a project that already adopted this kit takes a newer copy from the Kit sour
 
 **Related:** [RULES](RULES.md) · [CHANGELOG](CHANGELOG.md) · [versioning](rules/versioning-and-git.md) · [workboard](../WORKBOARD.md) · [notepad](../MEMORY.md) · [upgrade shelf](../docs/library/kit-upgrade/README.md)
 
-## Steps
+## Deploy
 
-1. Read the Kit source and the adopted version in the project's [kit baseline](RULES.md#kit-baseline).
-2. In that source, read the notable changes since the adopted version under `## repo-kit` in `kit/CHANGELOG.md`. The git history holds the detail.
-3. Merge the kit files the project uses from that source. Keep the project's authority-map paths, its `MEMORY.md`, and its `WORKBOARD.md`, and refresh the session block the same way as [agents.md](../docs/library/kit-adopter/skills/kit-discover-host/template/agents.md), keeping the project's path note. A missing historical directory index, or programming source that still lives somewhere other than `src/`, is not a failed upgrade.
-4. Update the adopted version in the project's kit baseline.
-5. Add one line to the project's own changelog for the upgrade. Do not paste this kit's history into that file.
+You are the orchestrator. Pass the row its `SKILL.md`, its draft, and its File. Keep this file.
 
-The pack order is [the upgrade shelf](../docs/library/kit-upgrade/README.md). Open that index and follow the order it names. This file stays followable from the Kit source when that shelf is not in the target.
+Deploy sub-agents in shelf order. Wait until the earlier row returns before the next row starts. A second sub-agent runs beside an open row only when their files differ and it does not need the open row's result.
+
+| Route | Direction | Ends when |
+|-------|-----------|-----------|
+| Shelf | When [the upgrade shelf](../docs/library/kit-upgrade/README.md) is in this checkout, that file is the order. Open the pack each link points to. | The shelf is missing |
+| Kit source | When that shelf is missing, open the Kit source in the [baseline](RULES.md#kit-baseline) and use its upgrade shelf for the routes below. | The baseline has no Kit source |
+| Register | Open [kit-workboard-register](skills/kit-workboard-register/SKILL.md). Record one upgrade program. File is the product file. Draft is the phase document. | A primary program is already set |
+| Next row | Deploy the next shelf row after the previous row returns done. | That row returns done |
+| Pair | Two rows may run together when their files differ and the later row does not need the earlier row's result. | A second sub-agent would use the same file |
+| Fix | Send the list to the phase skill it names. Deploy that skill again, then [kit-upgrade-qa](../docs/library/kit-upgrade/skills/kit-upgrade-qa/SKILL.md) on that phase. | QA returns fits for that phase |
+| Done | [kit-upgrade-qa](../docs/library/kit-upgrade/skills/kit-upgrade-qa/SKILL.md) reads every phase. Leave [ADOPTER.md](../ADOPTER.md) as the adopt left it. | QA returns fits for every phase |

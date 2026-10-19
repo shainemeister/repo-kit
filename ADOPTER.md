@@ -1,7 +1,7 @@
 ---
 title: Adopt repo-kit
 description: "One-time adopt of this kit into a target repository. An adopted repository deletes this file when the adopt is finished."
-version: "1.2.2"
+version: "1.2.5"
 status: current
 audience:
   - developers
@@ -25,13 +25,19 @@ One-time adopt of this kit into a target repository. An adopted repository delet
 
 This repository keeps this file. An adopted repository deletes it when the adopt is finished.
 
-## Steps
+## Deploy
 
-1. Open [WORKBOARD.md](WORKBOARD.md) and map the target: what it is, where the code lives, and which documents already exist. Do this without waiting to be asked.
-2. Copy `kit/RULES.md`, `kit/rules/`, `kit/MARKDOWN-STANDARD.md`, `kit/UPGRADE.md`, and `kit/skills/` into the target. Leave product code, the project changelog, and `docs/` outside `kit/`. A copied skill names the shelf as a kit-source read. It does not require `docs/library/` in the target.
-3. Fill the authority map with paths that exist in the target. Drop rows that do not apply.
-4. Record the adopted version and the Kit source in the target's kit baseline. The version is the latest dated section under `## repo-kit` in [CHANGELOG.md](kit/CHANGELOG.md). The Kit source is the URL in [RULES.md](kit/RULES.md#kit-baseline).
-5. Write the target's root `README.md` and directory indexes for its own files. Use [MARKDOWN-STANDARD.md](kit/MARKDOWN-STANDARD.md) for the shape. Do not paste kit examples in as those descriptions.
-6. If a coding agent is used, follow [agents.md](docs/library/kit-adopter/skills/kit-discover-host/template/agents.md): create the file when missing; when one exists, replace the body with the block and keep that repository's directory paths in `{{PROJECT_NOTE}}`; do not keep the old sections; do not add a second copy when the block is already the whole file. If `MEMORY.md` is missing, copy the fenced body of [memory.md](docs/library/kit-adopter/skills/kit-discover-host/template/memory.md) to the repository root and remove the fence. If it exists, leave it.
-7. The pack order is [the adopt shelf](docs/library/kit-adopter/README.md). Do not paste that table here. A bare adopt stops before kit-author-plan. When Agent Instruct is used, copy that directory and stop after emit.
-8. Later upgrades use [UPGRADE.md](kit/UPGRADE.md).
+You are the orchestrator. The order is [the adopt shelf](docs/library/kit-adopter/README.md). Pass the row its `SKILL.md`, its draft, and its File.
+
+Deploy sub-agents in that shelf order. Wait until the earlier row returns before the next row starts. A second sub-agent runs beside an open row only when their files differ and it does not need the open row's result.
+
+| Route | Direction | Ends when |
+|-------|-----------|-----------|
+| Register | Open [kit-workboard-register](kit/skills/kit-workboard-register/SKILL.md). Record one adopt program. File is the product file. Draft is the phase document. | A primary program is already set |
+| Next row | Deploy the next shelf row after the previous row returns done. | That row returns done |
+| Pair | Two rows may run together when their files differ and the later row does not need the earlier row's result. | A second sub-agent would use the same file |
+| Session file | Row 1 uses [agents.md](docs/library/kit-adopter/skills/kit-discover-host/template/agents.md). That file owns the replace and `{{PROJECT_NOTE}}`. | Row 1 returns done |
+| Fix | Send the list to the phase skill it names. Deploy that skill again, then [kit-adopt-qa](docs/library/kit-adopter/skills/kit-adopt-qa/SKILL.md) on that phase. | QA returns fits for that phase |
+| Bare | When Agent Instruct is not in use, stop at [kit-adopt-qa](docs/library/kit-adopter/skills/kit-adopt-qa/SKILL.md). It reads every phase. | QA returns fits for every phase. Delete this file in the target. This repository keeps it |
+| Instruct | When Agent Instruct is in use, continue after that QA fits through [kit-author-plan](docs/library/kit-adopter/skills/kit-author-plan/SKILL.md), then [kit-emit-packs](docs/library/kit-adopter/skills/kit-emit-packs/SKILL.md). | Emit returns fits. Delete this file in the target. This repository keeps it |
+| Upgrade | Open [kit/UPGRADE.md](kit/UPGRADE.md). | The adopt has stopped |

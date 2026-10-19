@@ -1,7 +1,7 @@
 ---
 title: Skills
 description: "Index of procedure packs and the match rows for the seed ids. Open the pack whose action matches the task."
-version: "1.19.1"
+version: "1.19.2"
 status: current
 audience:
   - developers
@@ -26,7 +26,7 @@ Index of procedure packs and the match rows for the seed ids. Open the pack whos
 
 Related lists maintainer peers. Do not load them for this task.
 
-One task loads one skill ([path pattern](../rules/path-pattern.md#pattern)). This kit does not delegate to another agent. Adopt and upgrade orders are read from the kit source at `docs/library/kit-adopter/README.md`. The copied skills do not require that shelf.
+One task loads one skill ([path pattern](../rules/path-pattern.md#pattern)). A normal task does not deploy a sub-agent. Adopt and upgrade are the exception: [ADOPTER.md](../../ADOPTER.md) or [kit/UPGRADE.md](../UPGRADE.md) deploys one sub-agent per shelf row. That row's `SKILL.md` is the sub-agent's instruct file. The copied skills do not require `docs/library/` in the target.
 
 ---
 
@@ -52,7 +52,7 @@ One task loads one skill ([path pattern](../rules/path-pattern.md#pattern)). Thi
 | Review a change | [kit-review-change](kit-review-change/SKILL.md) |
 | Apply the security baseline | [kit-apply-security](kit-apply-security/SKILL.md) |
 | Match a seed id | [Match index](#match-index) |
-| Adopt or upgrade | Kit source `docs/library/kit-adopter/README.md`. Not part of the copied skills |
+| Adopt or upgrade | [ADOPTER.md](../../ADOPTER.md) or [kit/UPGRADE.md](../UPGRADE.md). The shelf is what those files deploy |
 | The multi-phase record | [WORKBOARD.md](../../WORKBOARD.md) |
 
 ---
@@ -121,6 +121,7 @@ The retired crew is archived outside this tree. Do not register it.
 
 | Version | Notes |
 |---------|--------|
+| 1.19.2 | Adopt and upgrade deploy one sub-agent per shelf row. A normal task does not |
 | 1.19.1 | Shelf paths are kit-source reads. The copied index does not require docs/library/. |
 | 1.19.0 | The archive row files a named program only. The load sentence cites path-pattern |
 | 1.18.0 | `kit-name-path` and `kit-index-directory` are the path and index instructs |

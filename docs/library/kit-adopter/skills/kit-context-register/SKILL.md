@@ -75,6 +75,10 @@ The table shape is kit-workboard-register. That file stays the owner.
 
 - None.
 
+## Handback
+
+You are the sub-agent for this file. Do this procedure. Do not open another pack. Do not deploy a sub-agent. Return done, or a short fix list. Then stop.
+
 ## Procedure
 
 1. Take one catalogued path.

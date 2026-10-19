@@ -1,7 +1,7 @@
 ---
 title: Host Habitat (L0)
 description: How AI and humans establish thin discovery files where a coding-agent host already looks, without moving law out of kit/ or inventing host folder trees.
-version: "1.8.1"
+version: "1.8.2"
 status: current
 audience:
   - developers
@@ -15,7 +15,7 @@ related:
   - template/agents.md
   - ../../../../../kit/rules/path-pattern.md
   - template/memory.md
-last_updated: "2026-10-17"
+last_updated: "2026-10-19"
 ---
 
 # Host Habitat (L0)
@@ -26,6 +26,10 @@ How AI and humans establish thin discovery files where a coding-agent host alrea
 
 Related lists maintainer peers. Do not load them for this task.
 
+## Handback
+
+You are the sub-agent for this file. Do this procedure. Do not open another pack. Do not deploy a sub-agent. Return done, or a short fix list. Then stop.
+
 ---
 
 ## Summary
@@ -35,7 +39,7 @@ Related lists maintainer peers. Do not load them for this task.
 | Prefer one portable L0 body: root **`AGENTS.md`**; create habitat files **only with evidence** (host in use, existing file, or user asked) |
 | Keep L0 a **pointer** (prefer far under the [size budget](../kit-map-layers/SKILL.md#size-budgets)); do not paste `kit/rules/*` or pack bodies into habitat files |
 | Record L0 + aliases in the [authority map](../../../../../kit/RULES.md#authority-map) same change set; confirm alias syntax against **that host’s current docs** |
-| Treat filled `AGENTS.md` and `MEMORY.md` as **project data** on upgrade ([UPGRADE](../../../../../kit/UPGRADE.md)); do not overwrite them with the blank |
+| On upgrade, [kit-upgrade](../../../kit-upgrade/skills/kit-upgrade/SKILL.md) owns the session file and the notepad |
 | Do **not** invent host trees (`.claude/agents`, skill matrices, spawn APIs) or dual-own CHANGELOG, SAST, or completion in `AGENTS.md` |
 
 No coding agent and the user did not ask: **skip this module**. Docs-only repos that *are* agent-maintained still get a thin `AGENTS.md`. Habitat vs skip follows the same evidence dual path as style configs. Instruct vs bare: [PLAN dual path](../kit-author-plan/SKILL.md#plan-dual-path).
@@ -69,7 +73,7 @@ Layers are [kit-map-layers](../kit-map-layers/SKILL.md#layers-l0l4). L0 is root 
 | Situation | Action |
 |-----------|--------|
 | No coding agent; user did not ask | **Stop.** Do not create habitat files. |
-| Some agent will maintain the repo | If root `AGENTS.md` is **missing**, copy the paste block in [TEMPLATE-AGENTS](template/agents.md). If it already exists, paste that block once. Do not replace project text. If root `MEMORY.md` is missing, copy the fenced body in [memory.md](template/memory.md) and remove the fence. If it exists, leave it |
+| Some agent will maintain the repo | Follow [agents.md](template/agents.md) for the session file. A missing notepad is step 1 under Create and alias |
 | Host already has a native file (`CLAUDE.md`, `.github/copilot-instructions.md`, …) | Do **not** clobber. Add a thin alias **only if** that host will not see `AGENTS.md` |
 | Instruct in use (PLAN Agent models / generated packs) | L0 points at [kit-use-instruct](../kit-use-instruct/SKILL.md). One session loads one skill |
 | Bare adopt (no Instruct) | L0 still points at `kit/RULES.md`; skip OPS / packs ([PLAN dual path](../kit-author-plan/SKILL.md#plan-dual-path)) |
@@ -95,7 +99,7 @@ Do not treat “the kit *could* support N hosts” as evidence for N trees.
 
 Whether to create `AGENTS.md` remains this file. Law stays in `kit/` ([RULES](../../../../../kit/RULES.md)). Do not add root `./rules/`.
 
-1. If root `AGENTS.md` is missing, copy the paste block in [TEMPLATE-AGENTS.md](template/agents.md). If the file exists, paste that block once and keep the project's sections. If root `MEMORY.md` is missing, copy the fenced body in [memory.md](template/memory.md) and remove the fence. If it exists, leave it.  
+1. Follow [agents.md](template/agents.md) for the session file. If root `MEMORY.md` is missing, copy the fenced body in [memory.md](template/memory.md) and remove the fence. If it exists, leave it.  
 2. List existing habitat files. Leave them in place.  
 3. **Alias:** only when a **detected** host will not load `AGENTS.md` unless pointed. Add the **minimum** native file that points at `AGENTS.md` and `kit/RULES.md`. Copy include or symlink syntax from **that host’s current documentation**. If unsure, skip the alias. See [TEMPLATE-HOST-ALIAS](template/host-alias.md).  
 4. Authority-map row for L0 + aliases, same change set.  
@@ -167,6 +171,7 @@ Kit correctness does not depend on any host skill directory. The default paths a
 
 | Version | Notes |
 |---------|--------|
+| 1.8.2 | The session file follows template/agents.md. Upgrade cites kit-upgrade |
 | 1.8.1 | The notepad cites MEMORY.md. Law stays in kit/ |
 | 1.8.0 | A missing `MEMORY.md` is copied from `template/memory.md`. A filled notepad stays |
 | 1.7.0 | This pack lives under `docs/library/kit-adopter/skills/` |

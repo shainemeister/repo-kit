@@ -5,7 +5,7 @@ layer: playbook
 portability: kit
 activation: catalog_match
 description: >
-  The order is UPGRADE.md. That file stays the owner.
+  Merge the newer kit files and record the adopted version.
 triggers:
   - upgrade repo-kit
   - newer kit
@@ -24,7 +24,7 @@ authority_paths:
 references:
   - path: kit/UPGRADE.md
     kind: repo
-    purpose: The order. That file stays the owner
+    purpose: The routes. That file stays the owner
   - path: docs/library/kit-upgrade/README.md
     kind: repo
     purpose: Upgrade order. This pack names the next row and stops
@@ -55,11 +55,12 @@ references:
   - url: https://github.com/shainemeister/repo-kit
     kind: external
     purpose: Kit source recorded in the baseline
-    trust_note: Citation only. The procedure stays in kit/UPGRADE.md
+    trust_note: Citation only. The routes stay in kit/UPGRADE.md
 verify:
   - the Kit source and the notable changes since the adopted version were read
-  - project AGENTS.md, MEMORY.md, and WORKBOARD.md were kept
-  - product text and the project's own AGENTS.md sections were not replaced
+  - project MEMORY.md and WORKBOARD.md were kept
+  - AGENTS.md was refreshed from the agents paste and the project's path note was kept
+  - product text was not replaced
   - a filled MEMORY.md was not replaced
   - this kit's changelog was not pasted into the project changelog
   - ADOPTER.md was not deleted
@@ -71,14 +72,12 @@ verify:
 
 # Kit upgrade
 
-The order is UPGRADE.md. That file stays the owner.
-
-Open [kit/UPGRADE.md](../../../../../kit/UPGRADE.md) for that read. Name the next row on [docs/library/kit-upgrade/README.md](../../README.md).
+Merge the newer kit files and record the adopted version.
 
 ## Must not
 
 - Do not paste this kit's changelog into the project changelog.
-- Do not replace product text or a project's own AGENTS.md sections.
+- Do not replace product text. Refresh `AGENTS.md` from the agents paste and keep the project's path note.
 - Do not replace a filled MEMORY.md.
 - Do not copy a shared pack into `docs/library/kit-upgrade/`.
 - Do not delete [ADOPTER.md](../../../../../ADOPTER.md) during an upgrade. That deletion belongs to the finished adopt.
@@ -88,8 +87,8 @@ Open [kit/UPGRADE.md](../../../../../kit/UPGRADE.md) for that read. Name the nex
 
 ### In-repo
 
-- [kit/UPGRADE.md](../../../../../kit/UPGRADE.md) — the order. That file stays the owner
-- [docs/library/kit-upgrade/README.md](../../README.md) — upgrade order. This pack names the next row
+- [kit/UPGRADE.md](../../../../../kit/UPGRADE.md) — the routes. That file stays the owner
+- [docs/library/kit-upgrade/README.md](../../README.md) — upgrade order. The orchestrator deploys the next row
 - [kit/RULES.md](../../../../../kit/RULES.md) — kit baseline and Kit source
 - [ADOPTER.md](../../../../../ADOPTER.md) — adopt file. An upgrade does not delete it
 - [kit-context-register](../../../kit-adopter/skills/kit-context-register/SKILL.md) — next row. Cite it. Do not open it in this session
@@ -101,13 +100,19 @@ Open [kit/UPGRADE.md](../../../../../kit/UPGRADE.md) for that read. Name the nex
 
 ### External (citations — guidance only)
 
-- Kit source — https://github.com/shainemeister/repo-kit — citation only. The procedure stays in `kit/UPGRADE.md`
+- Kit source — https://github.com/shainemeister/repo-kit — citation only. The routes stay in `kit/UPGRADE.md`
+
+## Handback
+
+You are the sub-agent for this file. Do this procedure. Do not open another pack. Do not deploy a sub-agent. Return done, or a short fix list. Then stop.
 
 ## Procedure
 
-1. Read the Kit source and the notable changes since the adopted version in the [baseline](../../../../../kit/RULES.md#kit-baseline).
-2. Keep the project's [AGENTS.md](../../../../../AGENTS.md), [MEMORY.md](../../../../../MEMORY.md), and [WORKBOARD.md](../../../../../WORKBOARD.md).
-3. Name the next row on [docs/library/kit-upgrade/README.md](../../README.md) and stop. Do not open that pack in this session.
+1. Read the Kit source and the adopted version in the [kit baseline](../../../../../kit/RULES.md#kit-baseline). Read the `## repo-kit` sections newer than that version in [CHANGELOG.md](../../../../../kit/CHANGELOG.md). The git history holds the detail.
+2. Merge the kit files the project uses from that source. Keep the project's authority-map paths, [MEMORY.md](../../../../../MEMORY.md), and [WORKBOARD.md](../../../../../WORKBOARD.md). A missing historical directory index, or programming source that still lives somewhere other than `src/`, is not a failed upgrade.
+3. Refresh [AGENTS.md](../../../../../AGENTS.md) from [agents.md](../../../kit-adopter/skills/kit-discover-host/template/agents.md). Keep the project's path note.
+4. Update the adopted version in the project's kit baseline.
+5. Add one line to the project's own changelog. Do not paste this kit's history into that file.
 
 ## Open for law
 

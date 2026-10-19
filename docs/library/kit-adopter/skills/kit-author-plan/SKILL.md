@@ -73,13 +73,17 @@ The Agent models contract below Open for law stays in this file.
 
 - Prefer project-specific planning conventions. No required external standard.
 
+## Handback
+
+You are the sub-agent for this file. Do this procedure. Do not open another pack. Do not deploy a sub-agent. Return done, or a short fix list. Then stop.
+
 ## Procedure
 
 1. Restate project interest in one sentence.
 2. Draft/update mission, non-goals, stages as needed.
 3. If multi-step execution detail is needed: ensure `docs/plan/` (+ `docs/README.md` index) per ai-docs-workspace.
 3b. If multi-phase: register or update `WORKBOARD.md`; create an annex only when the phase table cannot hold the OOO; link the annex from the board.
-4. If using Agent Instruct: ensure the Agent models section matches the contract in this file. The Instruct authority field names kit-map-layers, kit-define-pack, kit-emit-packs, this file, and kit-use-instruct. Match rows are the skills index. After enablement or surface growth, the next task is kit-emit-packs. Stop.
+4. If using Agent Instruct: ensure the Agent models section matches the contract in this file. The Instruct authority field names kit-map-layers, kit-define-pack, kit-emit-packs, this file, and kit-use-instruct. Match rows are the skills index. After enablement or surface growth, return done. Do not open kit-emit-packs.
 5. If bare adopt (no Instruct): omit Agent models and skip BUILD; mission/non-goals verify is enough.
 6. On new durable task classes, the next task is creating a persona. Stop.
 
@@ -166,7 +170,7 @@ Copy [example.md](template/plan.md). The field contract above is the meaning. Th
 ```text
 1. User (or AI with user intent) edits PLAN Agent models fields
 2. Confirm durable vs session-only
-3. The next task is kit-emit-packs. Stop.
+3. Return done. Do not open kit-emit-packs.
 ```
 
 | Change type | Typical commit type |
@@ -182,9 +186,9 @@ When the product gains durable work shapes, update agents in the same initiative
 
 | Trigger | PLAN / agent action |
 |---------|---------------------|
-| New package or product area | Record the authority-map paths. The next task is kit-emit-packs. Stop |
-| New public CLI/API/behavior | Co-update L4 contracts. If verify paths change, the next task is kit-emit-packs. Stop |
-| New privilege, network, or secrets surface | Record `security` on the active set. The next task is kit-emit-packs. Stop |
+| New package or product area | Record the authority-map paths. Return done. Do not open kit-emit-packs |
+| New public CLI/API/behavior | Co-update L4 contracts. If verify paths change, return done. Do not open kit-emit-packs |
+| New privilege, network, or secrets surface | Record `security` on the active set. Return done. Do not open kit-emit-packs |
 | New durable task class | Name the persona task and stop. This session stays on kit-author-plan |
 | Stage complete / post-adopt | `disabled` += `adopter` when appropriate; adjust `stage_gates` / `emphasize` |
 
@@ -223,8 +227,8 @@ BUILD reads these sections when filling templates; it does not delete them.
 
 ## SETUP and UPGRADE
 
-Install is [ADOPTER.md](../../../../../ADOPTER.md). When Instruct is in use, this file's Agent models section is required. The first emit is the kit-emit-packs task. Stop. An adopted repository deletes `ADOPTER.md` when the adopt is finished.
+Install is [ADOPTER.md](../../../../../ADOPTER.md). When Instruct is in use, this file's Agent models section is required. The first emit is the orchestrator's kit-emit-packs row. Do not open that pack in this session. An adopted repository deletes `ADOPTER.md` when the adopt is finished.
 
-Later upgrades are [UPGRADE.md](../../../../../kit/UPGRADE.md). Preserve Agent models. After a template merge, the next task is kit-emit-packs. Stop. Do not reset `active_models` without user intent. Open [kit-emit-packs](../kit-emit-packs/SKILL.md#source-load-order) only when that is the task.
+Later upgrades are [UPGRADE.md](../../../../../kit/UPGRADE.md). Preserve Agent models. After a template merge, return done. Do not open kit-emit-packs in this session. Do not reset `active_models` without user intent.
 
 ---

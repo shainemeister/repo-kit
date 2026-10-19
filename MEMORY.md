@@ -4,8 +4,4 @@ Notepad for this repository. Rewrite it freely. Keep it short. Track the user's 
 
 ## Direction
 
-repo-kit is a docs-only standards kit. Law stays in `kit/`. Repeated verbs stay in `kit/skills/`. Adopt and upgrade packs stay on the shelf under `docs/library/kit-adopter/`.
-
 ## Intent
-
-Multi-phase work is a checklist on `WORKBOARD.md`. The board's primary program is the only current program. Intent is two shelves, `docs/library/kit-adopter/` and `docs/library/kit-upgrade/`, plus a phase draft for each registered phase. The map is `docs/research/enhancement-notes.md`. This notepad does not copy the phase table.

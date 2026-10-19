@@ -1,7 +1,7 @@
 ---
 title: "repo-kit — maintainer build context"
 description: "Where this kit tree stands. ADOPTER.md stays in this repository. An adopted repository keeps UPGRADE and the kit baseline."
-version: "1.6.0"
+version: "1.6.1"
 status: current
 audience:
   - maintainers
@@ -14,7 +14,7 @@ related:
   - ../../kit/UPGRADE.md
   - ../../WORKBOARD.md
   - ../../MEMORY.md
-last_updated: "2026-10-17"
+last_updated: "2026-10-19"
 ---
 
 # repo-kit — maintainer build context
@@ -27,8 +27,8 @@ This repository is the kit. It is docs-only. The kit version is the latest dated
 
 [ADOPTER.md](../../ADOPTER.md) stays in this repository. It is the one-time adopt. An adopted repository deletes it when the adopt is finished. The copy into a target is `kit/RULES.md`, `kit/rules/`, `kit/MARKDOWN-STANDARD.md`, `kit/UPGRADE.md`, and `kit/skills/`. Product code, the project changelog, and `docs/` stay outside `kit/`.
 
-[UPGRADE](../../kit/UPGRADE.md) is the procedure after a baseline exists. It reads the Kit source in that baseline. It does not require `ADOPTER.md` in the target.
+[UPGRADE](../../kit/UPGRADE.md) is the route after a baseline exists. The order is the upgrade shelf at the Kit source in that baseline. It does not require `ADOPTER.md` in the target.
 
-During an adopt, map the target on [WORKBOARD](../../WORKBOARD.md) without waiting to be asked. Later multi-phase work is written on that board, one step per row, and checked off there. A coding-agent adopt places [MEMORY.md](../../MEMORY.md) from the discover-host blank when that file is missing.
+During an adopt, [ADOPTER](../../ADOPTER.md) registers the program on [WORKBOARD](../../WORKBOARD.md). Later multi-phase work is written on that board, one step per row, and checked off there. A coding-agent adopt places [MEMORY.md](../../MEMORY.md) from the discover-host blank when that file is missing.
 
 A finding that becomes a rule moves into `kit/` in the same change set.

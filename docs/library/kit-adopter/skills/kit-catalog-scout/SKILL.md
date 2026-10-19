@@ -65,6 +65,10 @@ The map rule is directory-index.md. That file stays the owner.
 
 - None.
 
+## Handback
+
+You are the sub-agent for this file. Do this procedure. Do not open another pack. Do not deploy a sub-agent. Return done, or a short fix list. Then stop.
+
 ## Procedure
 
 1. Open the target and [directory-index.md](../../../../../kit/rules/directory-index.md).

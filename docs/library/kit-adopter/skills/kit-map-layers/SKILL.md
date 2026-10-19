@@ -25,6 +25,10 @@ This file owns the layers, the job types, portability, activation, and size budg
 
 **Related:** [README.md](../../../../../kit/skills/README.md) · [kit-use-instruct](../kit-use-instruct/SKILL.md) · [kit-define-pack](../kit-define-pack/SKILL.md) · [kit-author-plan](../kit-author-plan/SKILL.md) · [kit-emit-packs](../kit-emit-packs/SKILL.md) · [kit-discover-host](../kit-discover-host/SKILL.md)
 
+## Handback
+
+You are the sub-agent for this file. Do this procedure. Do not open another pack. Do not deploy a sub-agent. Return done, or a short fix list. Then stop.
+
 Related lists maintainer peers. Do not load them for this task.
 
 ---
