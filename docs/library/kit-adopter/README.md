@@ -1,7 +1,7 @@
 ---
 title: Kit adopter
 description: "Adopt order for the packs on this shelf. Open the one pack the step names."
-version: "1.1.0"
+version: "1.1.1"
 status: current
 doc_type: other
 related:
@@ -28,8 +28,10 @@ Adopt order for the packs on this shelf. Open the one pack the step names.
 | Order | Pack | Action |
 |-------|------|--------|
 | 1 | [skills/kit-discover-host/](skills/kit-discover-host/SKILL.md) | Place the session file. Holds the agents blank |
-| 2 | [skills/kit-adopter/](skills/kit-adopter/SKILL.md) | First install |
-| 3 | [skills/kit-author-plan/](skills/kit-author-plan/SKILL.md) | Write the plan when Agent Instruct is used |
-| 4 | [skills/kit-emit-packs/](skills/kit-emit-packs/SKILL.md) | Emit, then stop |
+| 2 | [skills/kit-catalog-scout/](skills/kit-catalog-scout/SKILL.md) | List tracked paths the index rule keeps |
+| 3 | [skills/kit-context-register/](skills/kit-context-register/SKILL.md) | One path, one phase, then the phase draft |
+| 4 | [skills/kit-adopter/](skills/kit-adopter/SKILL.md) | Name the next row and stop. A bare adopt stops before author-plan |
+| 5 | [skills/kit-author-plan/](skills/kit-author-plan/SKILL.md) | Write the plan when Agent Instruct is used |
+| 6 | [skills/kit-emit-packs/](skills/kit-emit-packs/SKILL.md) | Emit, then stop |
 
 The upgrade order is [kit-upgrade](../kit-upgrade/README.md). Map-layers, define-pack, and use-instruct stay in this directory. That order cites them.

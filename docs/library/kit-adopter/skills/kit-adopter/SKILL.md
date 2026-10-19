@@ -5,7 +5,7 @@ layer: playbook
 portability: kit
 activation: catalog_match
 description: >
-  Adopt the kit once by following ADOPTER.md. When Agent Instruct is in use, the next task is kit-author-plan, then kit-emit-packs.
+  The order is ADOPTER.md. That file stays the owner.
 triggers:
   - adopt repo-kit
   - SETUP
@@ -17,6 +17,7 @@ negative_triggers:
   - routine feature work
 authority_paths:
   - ADOPTER.md
+  - docs/library/kit-adopter/README.md
   - kit/RULES.md
   - AGENTS.md
   - kit/rules/path-pattern.md
@@ -25,7 +26,10 @@ authority_paths:
 references:
   - path: ADOPTER.md
     kind: repo
-    purpose: One-time adoption checklist
+    purpose: The order. That file stays the owner
+  - path: docs/library/kit-adopter/README.md
+    kind: repo
+    purpose: Adopt order. This pack does the current row and names the next
   - path: AGENTS.md
     kind: repo
     purpose: kit/ vs product packaging
@@ -37,29 +41,29 @@ verify:
   - kit baseline filled, including Kit source
   - target keeps UPGRADE and deletes ADOPTER.md when the adopt is finished
   - project root CHANGELOG exists
-  - Agent models section present and first BUILD run when using agents
   - map real paths; directory index from adopt date forward (directory-index.md)
 # BUILD fills: {{PROJECT_NAME}}, {{TUNING_MUST_NOT_EXTRA}}
 ---
 
 # Kit adopter
 
-The checklist is ADOPTER.md. That file stays the owner.
+The order is ADOPTER.md. That file stays the owner.
 
 ## Must not
 
-- Restate the steps in [ADOPTER.md](../../../../../ADOPTER.md).
-- Delete Agent models during install.
+- Do not restate [ADOPTER.md](../../../../../ADOPTER.md).
+- Do not delete Agent models.
+- Do not open the next pack in this session.
 - {{TUNING_MUST_NOT_EXTRA}}
 
 ## Expertise map
 
 ### In-repo
 
-- `ADOPTER.md` — one-time adopt. This repository keeps it. An adopted repository deletes it when the adopt is finished
-- `kit/UPGRADE.md` — later upgrades
+- `ADOPTER.md` — the order. That file stays the owner
+- `docs/library/kit-adopter/README.md` — adopt order for this shelf
 - `kit/RULES.md` — hub and baseline
-- `template/docs-only.md` — filled map for a docs-only repository
+- `kit/UPGRADE.md` — later upgrades
 
 ### External (citations — guidance only)
 
@@ -67,9 +71,10 @@ The checklist is ADOPTER.md. That file stays the owner.
 
 ## Procedure
 
-1. Open `kit/RULES.md`, then follow `ADOPTER.md`.
-2. When using Agent Instruct, the next task is kit-author-plan, then kit-emit-packs. Stop. Do not open those skills in this session.
-3. When adding a path, follow `kit/rules/path-pattern.md`. A new directory index follows `kit/rules/directory-index.md`. Do not paste those files.
+1. Open [docs/library/kit-adopter/README.md](../../README.md) and do the current row for this task.
+2. Name the next row on that README and stop. Do not open that pack in this session.
+3. A bare adopt, with no Agent Instruct, stops before `kit-author-plan`.
+4. When adding a path, cite [path-pattern.md](../../../../../kit/rules/path-pattern.md) and [directory-index.md](../../../../../kit/rules/directory-index.md). Do not paste [ADOPTER.md](../../../../../ADOPTER.md) or those rules.
 
 ## Open for law
 
