@@ -8,6 +8,10 @@ Upgrades: [UPGRADE.md](./UPGRADE.md).
 
 ## repo-kit
 
+### [3.11.0] - 2026-10-19
+
+Adopt and upgrade deploy the shelf from a short onramp and copy the current kit files, leaving the target's commits in place.
+
 ### [3.10.0] - 2026-10-19
 
 The session file is the agents paste and replaces an existing AGENTS.md, each phase row links its draft, and this kit keeps three changelog sections without prior plan snapshots.
@@ -15,7 +19,3 @@ The session file is the agents paste and replaces an existing AGENTS.md, each ph
 ### [3.9.0] - 2026-10-19
 
 Platform packs record a pin in the family table and follow the author checklist, a copied skill does not require the shelf, and the closed repair queue and the shipped rework record are deprecated.
-
-### [3.8.1] - 2026-10-18
-
-A named program is filed only when it has no open phase, the phase table links the file each phase edits, a registered phase has a draft, a seed may omit Must, the emit table includes the path and index seeds, and a moving source pin can capture a successor.

@@ -9,13 +9,17 @@
 A repository that **does not** have the kit.
 
 ```markdown
-# Agent Instruct 
+# Agent Instruct
 
-Adopt `repo-kit` from URL: `https://github.com/shainemeister/repo-kit`
+Adopt repo-kit. The read-only kit tree is `https://github.com/shainemeister/repo-kit`. The order is `ADOPTER.md` in that tree.
 
-1. Identify in `AGENTS.md`.
-2. Stop. Ask for confirmation before continuing.
-3. Follow `ADOPTER.md`.
+You are the orchestrator. Deploy each shelf row to its own sub-agent. Pass that row's `SKILL.md`, its draft, its File, the target directory, and the kit tree. Wait until that row returns before the next row starts.
+
+Do not run the row in this session. Do not copy the kit files here. Do not merge git history.
+
+1. Stop. Ask for confirmation before the first deploy.
+2. Open `ADOPTER.md` and deploy its order.
+3. If this session cannot spawn a sub-agent, stop.
 ```
 
 ### Upgrade
@@ -23,13 +27,17 @@ Adopt `repo-kit` from URL: `https://github.com/shainemeister/repo-kit`
 A repository that already has the kit.
 
 ```markdown
-# Agent Instruct 
+# Agent Instruct
 
-Upgrade `repo-kit` from URL: `https://github.com/shainemeister/repo-kit`
+Upgrade repo-kit. The order is `kit/UPGRADE.md`. The kit tree is the Kit source in the baseline, read-only.
 
-1. Identify in `AGENTS.md`.
-2. Stop. Ask for confirmation before continuing.
-3. Follow `kit/UPGRADE.md`.
+You are the orchestrator. Deploy each shelf row to its own sub-agent. Pass that row's `SKILL.md`, its draft, its File, the target directory, and the kit tree. Wait until that row returns before the next row starts.
+
+Do not run the row in this session. Do not copy the kit files here. Do not merge git history.
+
+1. Stop. Ask for confirmation before the first deploy.
+2. Open `kit/UPGRADE.md` and deploy its order.
+3. If this session cannot spawn a sub-agent, stop.
 ```
 
 ## Use cases
@@ -70,8 +78,9 @@ product code and project history stay outside kit/
 Law stays in [kit/RULES.md](kit/RULES.md). The session order stays in [AGENTS.md](AGENTS.md). [ADOPTER.md](ADOPTER.md) deploys the adopt shelf. [kit/UPGRADE.md](kit/UPGRADE.md) deploys the upgrade shelf at the Kit source.
 
 1. Open `kit/RULES.md`.
-2. For a new install, follow `ADOPTER.md`.
-3. Check existing files before creating one (`kit/rules/path-pattern.md`).
-4. Do not claim the work done if a check this repository declares was skipped.
+2. For a new install, open `ADOPTER.md` and deploy its shelf. Do not run the row in this session.
+3. For an upgrade, open `kit/UPGRADE.md` and deploy its shelf. Do not run the row in this session.
+4. Check existing files before creating one (`kit/rules/path-pattern.md`).
+5. Do not claim the work done if a check this repository declares was skipped.
 
 Kit version is the latest dated section under `## repo-kit` in [kit/CHANGELOG.md](kit/CHANGELOG.md). Source: https://github.com/shainemeister/repo-kit. Licensed under MIT — [LICENSE](LICENSE).

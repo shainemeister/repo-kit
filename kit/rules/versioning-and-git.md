@@ -1,7 +1,7 @@
 ---
 title: "Versioning and git"
 description: "Three version surfaces, what git tracks, and a pointer to the commit-message rules."
-version: "2.0.2"
+version: "2.0.3"
 status: current
 audience:
   - developers
@@ -39,6 +39,8 @@ This kit keeps the three newest sections under `## repo-kit`. An adopter's chang
 ## What git tracks
 
 Track source, schema, fixtures, and docs. Do not track secrets, environment files, or regenerable build output. Respect `.gitignore`.
+
+Adopt and upgrade copy the current kit files into the target. The target's commits stay the target's.
 
 Do not rewrite published history on a shared branch without an explicit decision to do so.
 

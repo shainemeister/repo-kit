@@ -48,6 +48,7 @@ verify:
   - this kit's changelog was not pasted into the project
   - commit-message checks were not carried
   - this pack did not adopt
+  - when the upgrade has a commit, that commit has one parent
 # BUILD fills: {{PROJECT_NAME}}, {{TUNING_MUST_NOT_EXTRA}}
 ---
 
@@ -88,7 +89,8 @@ You are the sub-agent for this file. Do this procedure. Do not open another pack
 
 1. Read every phase draft on this upgrade, the file in each File cell, and that phase's skill. This pack checks an upgrade. A missing [ADOPTER.md](../../../../../ADOPTER.md) is not a failed check. An adopted repository deletes that file when the adopt is finished. Do not paste [UPGRADE.md](../../../../../kit/UPGRADE.md).
 2. Read the changelog span since the adopted version in [kit/CHANGELOG.md](../../../../../kit/CHANGELOG.md). Read the workboard rows this upgrade registered in [WORKBOARD.md](../../../../../WORKBOARD.md).
-3. Report fits, or a short fix list that names the phase skill. Stop. Do not apply the fixes. Do not carry the commit-message checks in [kit-review-change](../../../../../kit/skills/kit-review-change/SKILL.md).
+3. When the upgrade has a commit, that commit has one parent. [What git tracks](../../../../../kit/rules/versioning-and-git.md#what-git-tracks) keeps the target's commits. Zero commits is a fit for this check. A second parent is a fix list that names [kit-upgrade](../kit-upgrade/SKILL.md). Do not apply the fix. Do not carry the commit-message checks.
+4. Report fits, or a short fix list that names the phase skill. Stop. Do not apply the fixes. Do not carry the commit-message checks in [kit-review-change](../../../../../kit/skills/kit-review-change/SKILL.md).
 
 ## Open for law
 

@@ -5,7 +5,7 @@ layer: playbook
 portability: kit
 activation: catalog_match
 description: >
-  Merge the newer kit files and record the adopted version.
+  Copy the current kit files and record the adopted version.
 triggers:
   - upgrade repo-kit
   - newer kit
@@ -72,7 +72,7 @@ verify:
 
 # Kit upgrade
 
-Merge the newer kit files and record the adopted version.
+Copy the current kit files and record the adopted version.
 
 ## Must not
 
@@ -81,6 +81,7 @@ Merge the newer kit files and record the adopted version.
 - Do not replace a filled MEMORY.md.
 - Do not copy a shared pack into `docs/library/kit-upgrade/`.
 - Do not delete [ADOPTER.md](../../../../../ADOPTER.md) during an upgrade. That deletion belongs to the finished adopt.
+- Copy the current files. [What git tracks](../../../../../kit/rules/versioning-and-git.md#what-git-tracks) keeps the target's commits.
 - {{TUNING_MUST_NOT_EXTRA}}
 
 ## Expertise map
@@ -108,8 +109,8 @@ You are the sub-agent for this file. Do this procedure. Do not open another pack
 
 ## Procedure
 
-1. Read the Kit source and the adopted version in the [kit baseline](../../../../../kit/RULES.md#kit-baseline). Read the `## repo-kit` sections newer than that version in [CHANGELOG.md](../../../../../kit/CHANGELOG.md). The git history holds the detail.
-2. Merge the kit files the project uses from that source. Keep the project's authority-map paths, [MEMORY.md](../../../../../MEMORY.md), and [WORKBOARD.md](../../../../../WORKBOARD.md). A missing historical directory index, or programming source that still lives somewhere other than `src/`, is not a failed upgrade.
+1. Read the Kit source and the adopted version in the kit baseline. Read the `## repo-kit` sections newer than that version in the kit changelog.
+2. Copy the current kit files those sections name from the read-only kit tree onto the target. Keep the project's authority-map paths, `MEMORY.md`, and `WORKBOARD.md`. A missing historical directory index, or programming source that still lives somewhere other than `src/`, is not a failed upgrade.
 3. Refresh [AGENTS.md](../../../../../AGENTS.md) from [agents.md](../../../kit-adopter/skills/kit-discover-host/template/agents.md). Keep the project's path note.
 4. Update the adopted version in the project's kit baseline.
 5. Add one line to the project's own changelog. Do not paste this kit's history into that file.

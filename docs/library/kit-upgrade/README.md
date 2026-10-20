@@ -1,7 +1,7 @@
 ---
 title: Kit upgrade
 description: "Upgrade order for a repository that already has a kit baseline. Each row is a sub-agent instruct file."
-version: "1.0.3"
+version: "1.0.4"
 status: current
 audience:
   - ai-agents
@@ -30,7 +30,7 @@ Upgrade order for a repository that already has a kit baseline. Each row is a su
 
 | Order | Pack | Action |
 |-------|------|--------|
-| 1 | [skills/kit-upgrade/](skills/kit-upgrade/SKILL.md) | Merge the newer kit files and record the adopted version |
+| 1 | [skills/kit-upgrade/](skills/kit-upgrade/SKILL.md) | Copy the current kit files and record the adopted version |
 | 2 | [../kit-adopter/skills/kit-context-register/](../kit-adopter/skills/kit-context-register/SKILL.md) | Register the edge cases, one path at a time |
 | 3 | [../kit-adopter/skills/kit-map-layers/](../kit-adopter/skills/kit-map-layers/SKILL.md) | Layers, activation, size, default paths |
 | 4 | [../kit-adopter/skills/kit-define-pack/](../kit-adopter/skills/kit-define-pack/SKILL.md) | AgentPack fields and validation |
